@@ -1,0 +1,14 @@
+$sizes: (
+  xs: '16',
+  sm: '20',
+  md: '26',
+  lg: '32'
+);
+
+.icon {
+  @each $size, $value in $sizes {
+    &-#{$size} {
+      font-size: #{$value}px;
+    }
+  }
+}

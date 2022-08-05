@@ -1,0 +1,41 @@
+{
+  "name": "@nilfoundation/react-components",
+  "version": "0.0.1",
+  "author": {
+    "name": "Yury Korotovskikh",
+    "email": "u.korotovskiy@nil.foundation"
+  },
+  "license": "MIT",
+  "main": "build/index.js",
+  "module": "build/index.esm.js",
+  "files": [
+    "build"
+  ],
+  "description": "React components library based on Bootstrap UI",
+  "keywords": [
+    "react",
+    "components"
+  ],
+  "scripts": {
+    "lint": "eslint --ext=ts,tsx src",
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NilFoundation/react-components"
+  },
+  "peerDependencies": {
+    "react": ">=16.12.0",
+    "react-dom": ">=16.12.0",
+    "react-router-dom": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "eslint": "^8.21.0",
+    "typescript": "^4.7.4"
+  }
+}

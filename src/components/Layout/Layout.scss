@@ -1,0 +1,10 @@
+.layout {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+
+  &__body {
+    display: flex;
+    flex-grow: 1;
+  }
+}
