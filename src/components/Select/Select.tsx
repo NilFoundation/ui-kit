@@ -4,14 +4,14 @@
  */
 
 import React, { ReactElement, useRef, useState } from 'react';
-import { Size } from '../../src/enums';
+import { Size } from '../../enums';
 import clsx from 'clsx';
 import { InputGroup } from '../InputGroup';
 import { Input } from '../Input';
 import { Menu } from '../Menu';
 import { SelectOption, SelectOptionProps } from './SelectOption';
 import { SelectOptionModel } from './SelectOptionModel';
-import { uniqueId } from 'lodash';
+import { uniqueId } from '../../helpers';
 import { createSelectContext } from './SelectContext';
 
 /**

@@ -4,7 +4,7 @@
  */
 
 import React, {ReactElement} from 'react';
-import { Variant } from '../../src/enums';
+import { Variant } from '../../enums';
 import clsx from 'clsx';
 import { PlaceholderAnimation } from './PlaceholderAnimation';
 import './Placeholder.scss';

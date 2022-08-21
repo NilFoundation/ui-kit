@@ -4,17 +4,35 @@
  */
 
 import { useEffect, RefObject } from 'react';
-import { throttle } from 'lodash';
+import { throttle } from '../helpers';
 
 /**
  * Props.
  */
 export type UseEventListenerProps = {
+    /**
+     * Browser event.
+     */
     eventType: Event['type'];
+    /**
+     * Tagret DOM element ref to add event listener.
+     */
     ref: RefObject<HTMLElement>;
+    /**
+     * Callback to fire on browser event.
+     */
     callback: () => void;
+    /**
+     * Throttles callback execution.
+     */
     throttled?: boolean;
+    /**
+     * Wait time. If throttled is false, takes no effect.
+     */
     wait?: number;
+    /**
+     * Should capture browser event.
+     */
     shouldCapture?: boolean;
 };
 

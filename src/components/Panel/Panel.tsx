@@ -5,7 +5,7 @@
 
 import React, { ReactElement, ReactNode } from 'react';
 import { PanelContext } from './PanelContext';
-import { Variant } from '../../src/enums';
+import { Variant } from '../../enums';
 import { PanelFooter } from './PanelFooter';
 import { PanelContent } from './PanelContent';
 import { PanelImage } from './PanelImage';

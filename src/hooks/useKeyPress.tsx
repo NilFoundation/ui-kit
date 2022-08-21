@@ -4,14 +4,14 @@
  */
 
 import { KeyboardEvent } from 'react';
-import { KeyboardEventKey } from '../src/enums';
+import { KeyboardEventKey } from '../enums';
 
 /**
  * Returns callback with key pressed checking. Set allowedKeys empty to execute on every key press.
  *
  * @param callback - Callback.
  * @param allowedKeys - Array of allowed keys.
- * @param preventDefault - Prevent default browser events.
+ * @param [preventDefault = true] - Prevent default browser events.
  * @returns - Key event listener.
  */
 export const useKeyPress = <T extends HTMLElement>(

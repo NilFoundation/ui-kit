@@ -7,7 +7,7 @@ import React, { ReactElement, ReactNode, useState } from 'react';
 import { DropdownButton } from './DropdownButton';
 import { DropdownContext } from './DropdownContext';
 import { DropdownMenu } from './DropdownMenu';
-import { uniqueId } from 'lodash';
+import { uniqueId } from '../../helpers';
 
 /**
  * Props.

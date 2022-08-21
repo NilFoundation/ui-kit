@@ -6,13 +6,13 @@
 import React, { ReactElement } from 'react';
 import { Image } from '../Image';
 import { Link } from 'react-router-dom';
-import { Paths } from '../../../../routing';
 
 /**
  * Props.
  */
 type NavbarProps = {
     imgSource: string;
+    href: string;
 };
 
 /**
@@ -21,9 +21,9 @@ type NavbarProps = {
  * @param {NavbarProps} props - Props.
  * @returns React component.
  */
-export const NavbarBrand = ({imgSource}: NavbarProps): ReactElement =>
+export const NavbarBrand = ({imgSource, href}: NavbarProps): ReactElement =>
     <div className="navbar-brand" role="banner">
-        <Link to={Paths.root}>
+        <Link to={href}>
             <Image source={imgSource} />
         </Link>
     </div>;

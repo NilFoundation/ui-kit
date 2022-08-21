@@ -5,8 +5,8 @@
 
 import React, { ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
-import { Breakpoint } from '../../src/enums';
-import { BreakpointValue } from '../../src/models';
+import { Breakpoint } from '../../enums';
+import { BreakpointValue } from '../../models';
 
 /**
  * Breakpoints.

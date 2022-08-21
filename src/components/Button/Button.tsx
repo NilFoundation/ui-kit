@@ -5,7 +5,7 @@
 
 import React, { ButtonHTMLAttributes, DetailedHTMLProps, ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
-import { Size, Variant } from '../../src/enums';
+import { Size, Variant } from '../../enums';
 
 /**
  * Props.

@@ -7,7 +7,7 @@ import React, { ReactElement, ReactNode, useContext } from 'react';
 import { NavListContext } from './NavListContext';
 import clsx from 'clsx';
 import { useKeyPress } from '../../hooks';
-import { KeyboardEventKey } from '../../src/enums';
+import { KeyboardEventKey } from '../../enums';
 
 /**
  * Props.

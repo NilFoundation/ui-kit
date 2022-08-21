@@ -4,7 +4,7 @@
  */
 
 import React, { InputHTMLAttributes, useRef, ReactElement, useEffect, useState, forwardRef, ChangeEvent } from 'react';
-import { uniqueId } from 'lodash';
+import { uniqueId } from '../../../helpers';
 import './FormCheck.scss';
 
 /**

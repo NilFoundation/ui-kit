@@ -7,7 +7,7 @@ import React, { ReactElement, useContext, KeyboardEvent } from 'react';
 import { DropdownContext } from '../Dropdown/DropdownContext';
 import clsx from 'clsx';
 import { useKeyPress } from '../../hooks';
-import { KeyboardEventKey } from '../../src/enums';
+import { KeyboardEventKey } from '../../enums';
 
 /**
  * Props.

@@ -4,7 +4,7 @@
  */
 
 import React, {forwardRef, InputHTMLAttributes} from 'react';
-import { Size } from '../../src/enums';
+import { Size } from '../../enums';
 import clsx from 'clsx';
 import './Input.scss';
 

@@ -8,7 +8,7 @@ import { Toast } from '../Toast';
 import { CreateNotificationData } from './CreateNotificationData';
 import { NotificationContainerContext } from './NotificationContext';
 import { RenderNotificationData } from './RenderNotificationData';
-import {uniqueId} from 'lodash';
+import {uniqueId} from '../../helpers';
 
 /**
  * Props.

@@ -3,16 +3,16 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import clsx from 'clsx';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import { NavListElement } from './NavListElement';
 import { NavListContext } from './NavListContext';
+import clsx from 'clsx';
 
 /**
  * Props.
  */
 export type NavListProps = {
-    children: typeof NavListElement;
+    children: ReactNode;
     className?: string;
     onToggle?: () => void;
     vertical?: boolean;

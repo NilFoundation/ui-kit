@@ -5,6 +5,58 @@ LICENSE https://github.com/twbs/bootstrap/blob/main/LICENSE
 TODO - remove after migrating to BS-5
 */
 
+@function valid-radius($radius) {
+  $return: ();
+  @each $value in $radius {
+    @if type-of($value) == number {
+      $return: append($return, max($value, 0));
+    } @else {
+      $return: append($return, $value);
+    }
+  }
+  @return $return;
+}
+
+// scss-docs-start border-radius-mixins
+@mixin border-radius($radius: $border-radius, $fallback-border-radius: false) {
+  $enable-rounded: true;
+  @if $enable-rounded {
+    border-radius: valid-radius($radius);
+  }
+  @else if $fallback-border-radius != false {
+    border-radius: $fallback-border-radius;
+  }
+}
+
+@mixin transition($transition...) {
+  $enable-transitions: true;
+  $enable-reduced-motion: false;
+
+  @if length($transition) == 0 {
+    $transition: $transition-base;
+  }
+
+  @if length($transition) > 1 {
+    @each $value in $transition {
+      @if $value == null or $value == none {
+        @warn "The keyword 'none' or 'null' must be used as a single argument.";
+      }
+    }
+  }
+
+  @if $enable-transitions {
+    @if nth($transition, 1) != null {
+      transition: $transition;
+    }
+
+    @if $enable-reduced-motion and nth($transition, 1) != null and nth($transition, 1) != none {
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+    }
+  }
+}
+
 $form-check-input-width:                  1em;
 $form-check-min-height:                   13px;
 $form-check-padding-start:                $form-check-input-width + .5em;
@@ -12,6 +64,8 @@ $form-check-margin-bottom:                .125rem;
 $form-check-label-color:                  null;
 $form-check-label-cursor:                 null;
 $form-check-transition:                   null;
+
+$black:                                 #222;
 
 $form-check-input-active-filter:          brightness(90%);
 
@@ -45,12 +99,13 @@ $form-switch-bg-image:            url("data:image/svg+xml,<svg xmlns='http://www
 $form-switch-border-radius:       $form-switch-width !default;
 $form-switch-transition:          background-position .15s ease-in-out !default;
 
-$form-switch-focus-color:         $input-focus-border-color !default;
+$form-switch-focus-color:         var(--color-primary) !default;
 $form-switch-focus-bg-image:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-focus-color}'/></svg>") !default;
 
 $form-switch-checked-color:       var(--color-primary) !default;
 $form-switch-checked-bg-image:    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-checked-color}'/></svg>") !default;
 $form-switch-checked-bg-position: right center !default;
+$enable-gradients: false;
 
 .form-check {
   display: block;
@@ -79,7 +134,7 @@ $form-switch-checked-bg-position: right center !default;
 .form-check-input {
   width: $form-check-input-width;
   height: $form-check-input-width;
-  margin-top: ($line-height-base - $form-check-input-width) * .5; // line-height minus check height
+  margin-top: (1 - $form-check-input-width) * .5; // line-height minus check height
   vertical-align: top;
   background-color: $form-check-input-bg;
   background-repeat: no-repeat;
