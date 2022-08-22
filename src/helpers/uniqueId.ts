@@ -11,7 +11,7 @@ let counter = 0;
 /**
  * Generates a unique Id.
  *
- * @param prefix - Prefix to append to unique id value.
+ * @param [prefix = uniqueId-] - Prefix to append to unique id value.
  * @returns - unique Id.
  */
 export const uniqueId = (prefix = 'uniqueId-'): string => `${prefix}${++counter}`;

@@ -4,8 +4,8 @@
  */
 
 import React, { ReactElement, ReactNode } from 'react';
-import { Size } from '../../enums';
 import clsx from 'clsx';
+import { Size } from '../../enums';
 import { InputGroupIcon } from './InputGroupIcon';
 import { InputGroupButton } from './InputGroupButton';
 

@@ -5,10 +5,11 @@
 
  /**
   * Throttles callback execution.
-  * 
+  *
   * @param callback - Callback to throttle.
   * @param [wait = 100] - Wait time.
- */
+  * @returns - Throttled callback.
+  */
 export const throttle = <T extends any[]>(callback: (...args: [...T]) => void, wait = 100) => {
     let isThrottled = false;
     let savedArgs: [...T] | null;
@@ -24,7 +25,7 @@ export const throttle = <T extends any[]>(callback: (...args: [...T]) => void, w
 
         setTimeout(() => {
             isThrottled = false;
-            
+
             if (savedArgs) {
                 callback(...savedArgs);
                 savedArgs = null;
