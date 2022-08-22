@@ -1,6 +1,5 @@
 {
   "parser": "@typescript-eslint/parser",
-  "files": ["*.ts", "*.tsx"],
   "parserOptions": {
     "ecmaVersion": 2018,
     "ecmaFeatures": {
@@ -8,15 +7,38 @@
     },
     "sourceType": "module"
   },
-  "plugins": [
-    "@typescript-eslint",
-    "react",
-    "jsx-a11y",
-    "jsdoc",
-    "import"
-  ],
   "extends": [
+    "eslint:recommended'",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:jsdoc/recommended"
-  ]
+    "plugin:jsdoc/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ],
+  "overrides": [
+    {
+      "files": ["*.test.tsx"],
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/all"]
+    }
+  ],
+  "rules": {
+    "jsdoc/require-param-type": 0,
+    "jsdoc/require-returns-type": 0,
+    "jsdoc/require-file-overview": 1,
+    "import/newline-after-import": 1
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "."
+      }
+    }
+  }
 }
