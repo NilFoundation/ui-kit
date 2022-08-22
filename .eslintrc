@@ -48,7 +48,29 @@
       }
     ],
     "import/newline-after-import": 1,
-    "import/no-named-as-default": 0
+    "import/no-named-as-default": 0,
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["sibling", "parent", "index"],
+          ["object", "type"]
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "never",
+        "warnOnUnassignedImports": true
+      }
+    ]
   },
   "settings": {
     "import/parsers": {
@@ -59,6 +81,9 @@
         "alwaysTryTypes": true,
         "project": "./tsconfig.json"
       }
+    },
+    "react": {
+      "version": "detect"
     }
   }
 }
