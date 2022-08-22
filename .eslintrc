@@ -8,7 +8,6 @@
     "sourceType": "module"
   },
   "extends": [
-    "eslint:recommended'",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
@@ -28,7 +27,26 @@
     "jsdoc/require-param-type": 0,
     "jsdoc/require-returns-type": 0,
     "jsdoc/require-file-overview": 1,
-    "import/newline-after-import": 1
+    "jsdoc/require-jsdoc": [
+      "warn",
+      {
+          "publicOnly": true,
+          "contexts": [
+              "TSInterfaceDeclaration",
+              "TSTypeAliasDeclaration",
+              "TSEnumDeclaration"
+          ],
+          "require": {
+              "FunctionExpression": true,
+              "ClassDeclaration": true,
+              "MethodDefinition": true,
+              "ArrowFunctionExpression": true,
+              "ClassExpression": true
+          }
+      }
+  ],
+    "import/newline-after-import": 1,
+    "import/no-named-as-default": 0
   },
   "settings": {
     "import/parsers": {
@@ -37,7 +55,7 @@
     "import/resolver": {
       "typescript": {
         "alwaysTryTypes": true,
-        "project": "."
+        "project": "./tsconfig.json"
       }
     }
   }
