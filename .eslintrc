@@ -27,6 +27,8 @@
     "jsdoc/require-param-type": 0,
     "jsdoc/require-returns-type": 0,
     "jsdoc/require-file-overview": 1,
+    "jsdoc/check-syntax": 1,
+    "jsdoc/check-indentation": 1,
     "jsdoc/require-jsdoc": [
       "warn",
       {
@@ -44,7 +46,7 @@
               "ClassExpression": true
           }
       }
-  ],
+    ],
     "import/newline-after-import": 1,
     "import/no-named-as-default": 0
   },
