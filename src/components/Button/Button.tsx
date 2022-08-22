@@ -11,11 +11,29 @@ import { Size, Variant } from '../../enums';
  * Props.
  */
 export type ButtonProps = {
+    /**
+     * Component children.
+     */
     children?: ReactNode,
+    /**
+     * Button color sheme.
+     */
     variant?: Variant,
+    /**
+     * Button size.
+     */
     size?: Size,
+    /**
+     * Applies outline styles.
+     */
     outline?: boolean,
+    /**
+     * Makes button to span the entire width of the parent element.
+     */
     block?: boolean;
+    /**
+     * Applies active state to button.
+     */
     active?: boolean;
 } & Omit<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, 'type'>;
 
