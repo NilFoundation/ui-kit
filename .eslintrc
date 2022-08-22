@@ -32,19 +32,19 @@
     "jsdoc/require-jsdoc": [
       "warn",
       {
-          "publicOnly": true,
-          "contexts": [
-              "TSInterfaceDeclaration",
-              "TSTypeAliasDeclaration",
-              "TSEnumDeclaration"
-          ],
-          "require": {
-              "FunctionExpression": true,
-              "ClassDeclaration": true,
-              "MethodDefinition": true,
-              "ArrowFunctionExpression": true,
-              "ClassExpression": true
-          }
+        "publicOnly": true,
+        "contexts": [
+          "TSInterfaceDeclaration",
+          "TSTypeAliasDeclaration",
+          "TSEnumDeclaration"
+        ],
+        "require": {
+          "FunctionExpression": true,
+          "ClassDeclaration": true,
+          "MethodDefinition": true,
+          "ArrowFunctionExpression": true,
+          "ClassExpression": true
+        }
       }
     ],
     "import/newline-after-import": 1,
