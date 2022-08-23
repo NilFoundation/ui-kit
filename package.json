@@ -30,6 +30,7 @@
     "test": "jest",
     "prettier": "prettier --check **/*.{ts,tsx}",
     "build": "rollup -c",
+    "pre-commit": "lint-staged",
     "prepare": "husky install"
   },
   "peerDependencies": {
