@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, {ReactElement, ReactNode, AnchorHTMLAttributes, MouseEvent} from 'react';
+import React, { ReactElement, ReactNode, AnchorHTMLAttributes, MouseEvent } from 'react';
 import { Variant } from '../../enums';
 import clsx from 'clsx';
 
@@ -31,7 +31,7 @@ export const ListGroupItem = ({
     disabled,
     variant = Variant.default,
     href,
-    onClick
+    onClick,
 }: ListGroupItemProps): ReactElement => {
     const Component = href || onClick ? 'a' : 'div';
 
@@ -39,12 +39,12 @@ export const ListGroupItem = ({
         'list-group-item',
         `list-group-item-${variant}`,
         active && 'active',
-        disabled && 'disabled'
+        disabled && 'disabled',
     );
 
     const props: AnchorHTMLAttributes<HTMLElement> = {
         className: listItemClassName,
-        role: 'listitem'
+        role: 'listitem',
     };
 
     const handleNativeAnchorElementClick = (e: MouseEvent) => {
@@ -69,9 +69,5 @@ export const ListGroupItem = ({
         props.tabIndex = -1;
     }
 
-    return (
-        <Component {...props}>
-            {children}
-        </Component>
-    );
+    return <Component {...props}>{children}</Component>;
 };

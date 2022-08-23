@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, {ReactElement, ReactNode} from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { ListGroupItem } from './ListGroupItem';
 
@@ -21,14 +21,14 @@ export interface ListGroupProps {
  * @param {ListGroupProps} props - Props.
  * @returns - React component.
  */
-export const ListGroup = ({children, flush = false}: ListGroupProps): ReactElement => {
-    const listClassName = clsx(
-        'list-group',
-        flush && 'list-group-flush'
-    );
+export const ListGroup = ({ children, flush = false }: ListGroupProps): ReactElement => {
+    const listClassName = clsx('list-group', flush && 'list-group-flush');
 
     return (
-        <div className={listClassName} role="list">
+        <div
+            className={listClassName}
+            role="list"
+        >
             {children}
         </div>
     );

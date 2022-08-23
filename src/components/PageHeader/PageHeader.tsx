@@ -19,7 +19,6 @@ type PageHeaderProps = {
  * @param {PageHeaderProps} props - Props.
  * @returns React component.
  */
-export const PageHeader = ({children, className = ''}: PageHeaderProps): ReactElement =>
-    <div className={`page-header ${className}`}>
-        {children}
-    </div>;
+export const PageHeader = ({ children, className = '' }: PageHeaderProps): ReactElement => (
+    <div className={`page-header ${className}`}>{children}</div>
+);

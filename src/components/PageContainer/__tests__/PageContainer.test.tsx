@@ -4,8 +4,8 @@
  */
 
 import React from 'react';
-import {PageContainer} from '../PageContainer';
-import {render} from '@testing-library/react';
+import { PageContainer } from '../PageContainer';
+import { render } from '@testing-library/react';
 
 describe('PageContainer', () => {
     it('Renders', () => {

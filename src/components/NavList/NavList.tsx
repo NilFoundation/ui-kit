@@ -4,9 +4,9 @@
  */
 
 import React, { ReactElement, ReactNode } from 'react';
+import clsx from 'clsx';
 import { NavListElement } from './NavListElement';
 import { NavListContext } from './NavListContext';
-import clsx from 'clsx';
 
 /**
  * Props.
@@ -16,7 +16,7 @@ export type NavListProps = {
     className?: string;
     onToggle?: () => void;
     vertical?: boolean;
-}
+};
 
 /**
  * Panel image component.
@@ -24,21 +24,27 @@ export type NavListProps = {
  * @param {NavListProps} props - Props.
  * @returns React component.
  */
-export const NavList = ({ children, className, onToggle, vertical = true }: NavListProps): ReactElement => {
+export const NavList = ({
+    children,
+    className,
+    onToggle,
+    vertical = true,
+}: NavListProps): ReactElement => {
     const navListClassName = clsx(
         'nav',
         'nav-pills',
         className && className,
-        vertical && 'nav-stacked'
+        vertical && 'nav-stacked',
     );
 
     return (
-        <NavListContext.Provider value={{onToggle}}>
+        <NavListContext.Provider value={{ onToggle }}>
             <ul
                 className={navListClassName}
                 role="navigation"
-                aria-label="Dbms navigation">
-                { children }
+                aria-label="Dbms navigation"
+            >
+                {children}
             </ul>
         </NavListContext.Provider>
     );

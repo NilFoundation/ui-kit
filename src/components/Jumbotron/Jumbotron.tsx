@@ -19,7 +19,6 @@ type JumbotronProps = {
  * @param {JumbotronProps} props - Props.
  * @returns React component.
  */
-export const Jumbotron = ({children, className = ''}: JumbotronProps): ReactElement =>
-    <div className={`jumbotron ${className}`}>
-        {children}
-    </div>;
+export const Jumbotron = ({ children, className = '' }: JumbotronProps): ReactElement => (
+    <div className={`jumbotron ${className}`}>{children}</div>
+);

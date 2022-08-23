@@ -10,4 +10,4 @@ import { ToastProps } from '../Toast';
  */
 export type RenderNotificationData = {
     id: string;
-} & ToastProps
+} & ToastProps;

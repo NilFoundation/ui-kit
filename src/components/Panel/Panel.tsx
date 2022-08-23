@@ -15,10 +15,10 @@ import { PanelHeader } from './PanelHeader';
  * Props.
  */
 export type PanelProps = {
-    children: ReactNode,
-    loading?: boolean,
-    disabled?: boolean,
-    variant?: Variant
+    children: ReactNode;
+    loading?: boolean;
+    disabled?: boolean;
+    variant?: Variant;
     className?: string;
 };
 
@@ -33,13 +33,12 @@ export const Panel = ({
     loading = false,
     disabled = false,
     variant = Variant.default,
-    className
-}: PanelProps): ReactElement =>
+    className,
+}: PanelProps): ReactElement => (
     <article className={`panel panel-${variant} ${className ? className : ''}`}>
-        <PanelContext.Provider value={{ disabled, loading }}>
-            {children}
-        </PanelContext.Provider>
-    </article>;
+        <PanelContext.Provider value={{ disabled, loading }}>{children}</PanelContext.Provider>
+    </article>
+);
 
 /**
  * Component extensions.

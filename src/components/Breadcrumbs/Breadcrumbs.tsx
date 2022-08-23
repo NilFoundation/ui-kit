@@ -11,8 +11,8 @@ import { BreadcrumbsItem } from './BreadcrumbsItem';
  */
 export type BreadcrumbsProps = {
     children: ReactNode;
-    className?: string,
-}
+    className?: string;
+};
 
 /**
  * Breadcrumbs component.
@@ -20,14 +20,14 @@ export type BreadcrumbsProps = {
  * @param {BreadcrumbsProps} props - Props.
  * @returns React component.
  */
-export const Breadcrumbs = ({children, className = ''}: BreadcrumbsProps): ReactElement =>
+export const Breadcrumbs = ({ children, className = '' }: BreadcrumbsProps): ReactElement => (
     <nav
         className={className}
-        aria-label="breadcrumb navigation">
-        <ol className="breadcrumb">
-            {children}
-        </ol>
-    </nav>;
+        aria-label="breadcrumb navigation"
+    >
+        <ol className="breadcrumb">{children}</ol>
+    </nav>
+);
 
 /**
  * Component extensions.

@@ -17,8 +17,9 @@ type RadioProps = Omit<FormCheckBaseProps, 'type'>;
  * @param {RadioProps} props - Props.
  * @returns React component.
  */
-export const Radio = ({...props}: RadioProps): ReactElement =>
+export const Radio = ({ ...props }: RadioProps): ReactElement => (
     <FormCheckBase
         type="radio"
         {...props}
-    />;
+    />
+);

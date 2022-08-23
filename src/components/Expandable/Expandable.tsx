@@ -14,7 +14,7 @@ export type ExpandableProps = {
     isOpen?: boolean;
     unmountOnCollapse?: boolean;
     id?: string;
-}
+};
 
 /**
  * Expandable component.
@@ -27,13 +27,16 @@ export const Expandable = ({
     className = '',
     isOpen,
     unmountOnCollapse = true,
-    id
-}: ExpandableProps): ReactElement =>
+    id,
+}: ExpandableProps): ReactElement => (
     <div className={className}>
-        {
-            (!unmountOnCollapse || isOpen) &&
-                <div id={id} className={`collapse ${!isOpen ? 'hidden' : ''}`}>
-                    {children}
-                </div>
-        }
-    </div>;
+        {(!unmountOnCollapse || isOpen) && (
+            <div
+                id={id}
+                className={`collapse ${!isOpen ? 'hidden' : ''}`}
+            >
+                {children}
+            </div>
+        )}
+    </div>
+);

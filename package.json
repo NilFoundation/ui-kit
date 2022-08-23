@@ -28,9 +28,8 @@
   "scripts": {
     "lint": "eslint --ext=ts,tsx src --max-warnings=0",
     "test": "jest",
-    "prettier": "prettier --check",
+    "prettier": "prettier --write",
     "build": "rollup -c",
-    "pre-commit": "lint-staged",
     "prepare": "husky install"
   },
   "peerDependencies": {

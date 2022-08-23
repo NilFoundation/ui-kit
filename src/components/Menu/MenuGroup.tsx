@@ -10,7 +10,7 @@ import React, { ReactElement, ReactNode } from 'react';
  */
 export type MenuGroupProps = {
     title: string;
-    children?: ReactNode,
+    children?: ReactNode;
     className?: string;
 };
 
@@ -20,10 +20,9 @@ export type MenuGroupProps = {
  * @param {MenuGroupProps} props - Props.
  * @returns React component.
  */
-export const MenuGroup = ({children, title, className}: MenuGroupProps): ReactElement =>
+export const MenuGroup = ({ children, title, className }: MenuGroupProps): ReactElement => (
     <>
-        <li className={`dropdown-header ${className ? className : ''}`}>
-            {title}
-        </li>
+        <li className={`dropdown-header ${className ? className : ''}`}>{title}</li>
         {children && children}
-    </>;
+    </>
+);

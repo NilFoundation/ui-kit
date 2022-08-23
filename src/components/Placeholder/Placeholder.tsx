@@ -3,9 +3,9 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, {ReactElement} from 'react';
-import { Variant } from '../../enums';
+import React, { ReactElement } from 'react';
 import clsx from 'clsx';
+import { Variant } from '../../enums';
 import { PlaceholderAnimation } from './PlaceholderAnimation';
 import './Placeholder.scss';
 
@@ -27,13 +27,13 @@ export type PlaceholderProps = {
 export const Placeholder = ({
     variant = Variant.default,
     animation = PlaceholderAnimation.glow,
-    className
+    className,
 }: PlaceholderProps): ReactElement => {
     const placeholderContainerClassName = clsx(
         'placeholderContainer',
         `placeholder-${variant}`,
         `placeholder-${animation}`,
-        className && className
+        className && className,
     );
 
     return (

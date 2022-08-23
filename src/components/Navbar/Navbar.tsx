@@ -24,7 +24,6 @@ export type NavbarType = typeof Navbar;
  * @param {NavbarProps} props - Props.
  * @returns React component.
  */
-export const Navbar = ({children}: NavbarProps): ReactElement =>
-    <nav className="navbar navbar-default">
-        {children}
-    </nav>;
+export const Navbar = ({ children }: NavbarProps): ReactElement => (
+    <nav className="navbar navbar-default">{children}</nav>
+);

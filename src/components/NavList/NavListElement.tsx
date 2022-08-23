@@ -26,8 +26,14 @@ type NavListElementProps = {
  * @param {NavListElementProps} props - Props.
  * @returns React component.
  */
-export const NavListElement = ({children, onSelect, active, disabled, className}: NavListElementProps): ReactElement => {
-    const {onToggle} = useContext(NavListContext);
+export const NavListElement = ({
+    children,
+    onSelect,
+    active,
+    disabled,
+    className,
+}: NavListElementProps): ReactElement => {
+    const { onToggle } = useContext(NavListContext);
 
     const handleSelectElement = (): void => {
         onSelect && onSelect();
@@ -40,16 +46,16 @@ export const NavListElement = ({children, onSelect, active, disabled, className}
     const elementClassName = clsx(
         active && 'active',
         className && className,
-        disabled && 'disabled'
+        disabled && 'disabled',
     );
 
     return (
-        <li className={elementClassName}
+        <li
+            className={elementClassName}
             onClick={onClickHandler}
-            onKeyPress={onEnterKeyPress}>
-            <a href="#">
-                {children}
-            </a>
+            onKeyPress={onEnterKeyPress}
+        >
+            <a href="#">{children}</a>
         </li>
     );
 };

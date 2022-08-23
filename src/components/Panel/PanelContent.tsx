@@ -11,7 +11,7 @@ import React, { ReactElement, ReactNode } from 'react';
 export type PanelContentProps = {
     className?: string;
     children?: ReactNode;
-}
+};
 
 /**
  * Panel content component.
@@ -19,7 +19,6 @@ export type PanelContentProps = {
  * @param {PanelContentProps} props - Props.
  * @returns React component.
  */
-export const PanelContent = ({ className, children }: PanelContentProps): ReactElement =>
-    <div className={`panel-body ${className ? className : ''}`}>
-        {children}
-    </div>;
+export const PanelContent = ({ className, children }: PanelContentProps): ReactElement => (
+    <div className={`panel-body ${className ? className : ''}`}>{children}</div>
+);

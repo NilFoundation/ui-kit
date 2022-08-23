@@ -17,9 +17,10 @@ type SwitchProps = Omit<FormCheckBaseProps, 'type'>;
  * @param {SwitchProps} props - Props.
  * @returns React component.
  */
-export const Switch = ({className, ...props}: SwitchProps): ReactElement =>
+export const Switch = ({ className, ...props }: SwitchProps): ReactElement => (
     <FormCheckBase
         className={`form-switch ${className ? className : ''}`}
         type="checkbox"
         {...props}
-    />;
+    />
+);

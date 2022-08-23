@@ -9,7 +9,7 @@ import { Link, LinkProps } from '../Link';
 /**
  * Props.
  */
-export type AlertLinkProps = LinkProps
+export type AlertLinkProps = LinkProps;
 
 /**
  * Alert link component.
@@ -17,7 +17,6 @@ export type AlertLinkProps = LinkProps
  * @param {AlertLinkProps} props - Props.
  * @returns React component.
  */
-export const AlertLink = ({children}: AlertLinkProps): ReactElement =>
-    <Link className="alert-link">
-        {children}
-    </Link>;
+export const AlertLink = ({ children }: AlertLinkProps): ReactElement => (
+    <Link className="alert-link">{children}</Link>
+);

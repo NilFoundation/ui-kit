@@ -38,17 +38,13 @@ export const Toast = ({
     timeout = 3000,
     autoClose = variant === Variant.danger,
     close,
-    autoFocus = true
+    autoFocus = true,
 }: ToastProps): ReactElement => {
     const role = variant === Variant.danger ? 'alert' : 'status';
     const ariaLive = variant === Variant.danger ? 'assertive' : 'polite';
     const ref = useRef<HTMLDivElement>(null);
 
-    const toastClassName = clsx(
-        'toast',
-        className && className,
-        `bg-${variant}`
-    );
+    const toastClassName = clsx('toast', className && className, `bg-${variant}`);
 
     useEffect(() => {
         autoFocus && ref.current && ref.current.focus();
@@ -76,14 +72,13 @@ export const Toast = ({
             role={role}
             aria-live={ariaLive}
             aria-atomic="true"
-            ref={ref}>
+            ref={ref}
+        >
             <div className="toast-header">
                 <strong>{title}</strong>
                 {close && <Icon iconName="close" />}
             </div>
-            <div className="toast-body">
-                {children}
-            </div>
+            <div className="toast-body">{children}</div>
         </div>
     );
 };

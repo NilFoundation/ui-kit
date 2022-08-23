@@ -16,7 +16,7 @@ export type MenuItemProps = {
     title: string;
     className?: string;
     disabled?: boolean;
-    active?: boolean
+    active?: boolean;
     onSelect?: () => void;
 };
 
@@ -31,15 +31,11 @@ export const MenuItem = ({
     className,
     disabled,
     active,
-    onSelect
+    onSelect,
 }: MenuItemProps): ReactElement => {
-    const {onDropdownToggle} = useContext(DropdownContext);
+    const { onDropdownToggle } = useContext(DropdownContext);
 
-    const itemClassName = clsx(
-        active && 'active',
-        className && className,
-        disabled && 'disabled'
-    );
+    const itemClassName = clsx(active && 'active', className && className, disabled && 'disabled');
 
     const onSelectHandler = (): void => {
         onSelect && onSelect();
@@ -47,10 +43,10 @@ export const MenuItem = ({
     };
 
     const [onToggleWithKey] = useKeyPress(onDropdownToggle, [KeyboardEventKey.escape]);
-    const [onSelectWithKey] = useKeyPress(
-        onSelectHandler,
-        [KeyboardEventKey.enter, KeyboardEventKey.space]
-    );
+    const [onSelectWithKey] = useKeyPress(onSelectHandler, [
+        KeyboardEventKey.enter,
+        KeyboardEventKey.space,
+    ]);
 
     const onKeyPressHandler = (e: KeyboardEvent<HTMLLIElement>): void => {
         onToggleWithKey(e);
@@ -63,7 +59,8 @@ export const MenuItem = ({
             role="menuitem"
             onClick={onSelectHandler}
             onKeyPress={onKeyPressHandler}
-            tabIndex={disabled ? -1 : 0}>
+            tabIndex={disabled ? -1 : 0}
+        >
             {title}
         </li>
     );

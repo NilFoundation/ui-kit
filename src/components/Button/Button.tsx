@@ -14,19 +14,19 @@ export type ButtonProps = {
     /**
      * Component children.
      */
-    children?: ReactNode,
+    children?: ReactNode;
     /**
      * Button color sheme.
      */
-    variant?: Variant,
+    variant?: Variant;
     /**
      * Button size.
      */
-    size?: Size,
+    size?: Size;
     /**
      * Applies outline styles.
      */
-    outline?: boolean,
+    outline?: boolean;
     /**
      * Makes button to span the entire width of the parent element.
      */
@@ -52,7 +52,7 @@ export const Button = ({
     children,
     block,
     onClick,
-    active
+    active,
 }: ButtonProps): ReactElement => {
     const buttonClassName = clsx(
         'btn',
@@ -61,7 +61,7 @@ export const Button = ({
         className && className,
         size !== Size.md && `btn-${size}`,
         block && 'btn-block',
-        active && 'active'
+        active && 'active',
     );
 
     return (
@@ -69,8 +69,9 @@ export const Button = ({
             type="button"
             disabled={disabled}
             onClick={onClick}
-            className={buttonClassName}>
-            { children }
+            className={buttonClassName}
+        >
+            {children}
         </button>
     );
 };

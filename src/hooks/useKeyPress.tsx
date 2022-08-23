@@ -17,7 +17,7 @@ import { KeyboardEventKey } from '../enums';
 export const useKeyPress = <T extends HTMLElement>(
     callback: () => void,
     allowedKeys: KeyboardEventKey[],
-    preventDefault = true
+    preventDefault = true,
 ): [onKeyPress: (e: KeyboardEvent<T>) => void] => {
     const onKeyPress = (e: KeyboardEvent) => {
         if (preventDefault) {
@@ -30,7 +30,7 @@ export const useKeyPress = <T extends HTMLElement>(
             return;
         }
 
-        const {key} = e;
+        const { key } = e;
 
         if (!allowedKeys.some(k => k === key)) {
             return;

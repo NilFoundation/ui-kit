@@ -15,6 +15,4 @@ type NavListContextModel = {
 /**
  * Navlist context.
  */
-export const NavListContext = createContext<NavListContextModel>(
-    {} as NavListContextModel
-);
+export const NavListContext = createContext<NavListContextModel>({} as NavListContextModel);

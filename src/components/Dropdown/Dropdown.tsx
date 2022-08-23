@@ -13,7 +13,7 @@ import { uniqueId } from '../../helpers';
  * Props.
  */
 export type DropdownProps = {
-    children: ReactNode,
+    children: ReactNode;
     className?: string;
 };
 
@@ -23,7 +23,7 @@ export type DropdownProps = {
  * @param {DropdownProps} props - Props.
  * @returns React component.
  */
-export const Dropdown = ({children}: DropdownProps): ReactElement => {
+export const Dropdown = ({ children }: DropdownProps): ReactElement => {
     const [visible, setVisible] = useState(false);
     const onDropdownToggle = (): void => setVisible(!visible);
     const dropdownId = uniqueId('dropdownMenu');

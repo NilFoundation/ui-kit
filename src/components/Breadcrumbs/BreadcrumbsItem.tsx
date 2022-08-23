@@ -15,7 +15,7 @@ export type BreadcrumbsItemProps = {
     text: string;
     className?: string;
     href?: string;
-}
+};
 
 /**
  * Breadcrumbs component.
@@ -23,18 +23,20 @@ export type BreadcrumbsItemProps = {
  * @param {BreadcrumbsItemProps} props - Props.
  * @returns React component.
  */
-export const BreadcrumbsItem = ({active, className, text, href}: BreadcrumbsItemProps): ReactElement => {
-    const itemClassName = clsx(
-        'breadcrumb-item',
-        className && className,
-        active && 'active'
-    );
+export const BreadcrumbsItem = ({
+    active,
+    className,
+    text,
+    href,
+}: BreadcrumbsItemProps): ReactElement => {
+    const itemClassName = clsx('breadcrumb-item', className && className, active && 'active');
 
     return (
-        <li className={itemClassName} aria-current={active && 'page'}>
-            <Link href={href ?? '#'}>
-                {text}
-            </Link>
+        <li
+            className={itemClassName}
+            aria-current={active && 'page'}
+        >
+            <Link href={href ?? '#'}>{text}</Link>
         </li>
     );
 };

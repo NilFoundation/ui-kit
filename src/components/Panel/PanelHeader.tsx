@@ -11,8 +11,8 @@ import React, { ReactElement, ReactNode } from 'react';
 export type PanelHeaderProps = {
     className?: string;
     children?: ReactNode;
-    title?: string
-}
+    title?: string;
+};
 
 /**
  * Panel title component.
@@ -20,8 +20,9 @@ export type PanelHeaderProps = {
  * @param {PanelHeaderProps} props - Props.
  * @returns React component.
  */
-export const PanelHeader = ({ className, children, title }: PanelHeaderProps): ReactElement =>
+export const PanelHeader = ({ className, children, title }: PanelHeaderProps): ReactElement => (
     <div className={`panel-heading ${className ? className : ''}`}>
-        { title && <h3 className="panel-title">{title}</h3> }
-        { children && children }
-    </div>;
+        {title && <h3 className="panel-title">{title}</h3>}
+        {children && children}
+    </div>
+);

@@ -19,8 +19,8 @@ export type DropdownButtonProps = ButtonProps;
  * @param {DropdownButtonProps} props - Props.
  * @returns React component.
  */
-export const DropdownButton = ({children, className}: DropdownButtonProps): ReactElement => {
-    const {dropdownId, visible, onDropdownToggle} = useContext(DropdownContext);
+export const DropdownButton = ({ children, className }: DropdownButtonProps): ReactElement => {
+    const { dropdownId, visible, onDropdownToggle } = useContext(DropdownContext);
     const iconName = `caret-${visible ? 'up' : 'down'}`;
 
     return (
@@ -28,7 +28,8 @@ export const DropdownButton = ({children, className}: DropdownButtonProps): Reac
             id={dropdownId}
             active={visible}
             className={`dropdown-toggle ${className ? className : ''}`}
-            onClick={onDropdownToggle}>
+            onClick={onDropdownToggle}
+        >
             {children}
             <Icon iconName={iconName} />
         </Button>

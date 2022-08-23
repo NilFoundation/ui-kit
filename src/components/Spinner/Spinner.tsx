@@ -14,7 +14,7 @@ import './Spinner-BS-5.scss'; // TODO - remove after migrating to BS5.
 export type SpinnerProps = {
     variant?: Variant;
     size?: Size;
-}
+};
 
 /**
  * Spinner component.
@@ -22,14 +22,20 @@ export type SpinnerProps = {
  * @param {SpinnerProps} props - Props.
  * @returns React component.
  */
-export const Spinner = ({variant = Variant.default, size = Size.md}: SpinnerProps): ReactElement => {
+export const Spinner = ({
+    variant = Variant.default,
+    size = Size.md,
+}: SpinnerProps): ReactElement => {
     const spinnerClassName = clsx(
         `spinner-border${size !== Size.md ? `-${size}` : ''}`,
-        variant !== Variant.default && `text-${variant}`
+        variant !== Variant.default && `text-${variant}`,
     );
 
     return (
-        <div className={spinnerClassName} role="status">
+        <div
+            className={spinnerClassName}
+            role="status"
+        >
             <span className="visually-hidden">Loading...</span>
         </div>
     );

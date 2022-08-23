@@ -4,10 +4,10 @@
  */
 
 import React, { ReactElement, ReactNode } from 'react';
+import clsx from 'clsx';
 import { Variant } from '../../enums';
 import { Icon } from '../Icon';
 import { AlertLink } from './AlertLink';
-import clsx from 'clsx';
 
 /**
  * Props.
@@ -17,7 +17,7 @@ export type AlertProps = {
     variant?: Variant;
     className?: string;
     onClose?: () => void;
-}
+};
 
 /**
  * Alert component.
@@ -29,24 +29,19 @@ export const Alert = ({
     className,
     variant = Variant.default,
     children,
-    onClose
+    onClose,
 }: AlertProps): ReactElement => {
-    const alertClassName = clsx(
-        'alert',
-        `alert-${variant}`,
-        className && className
-    );
+    const alertClassName = clsx('alert', `alert-${variant}`, className && className);
 
     return (
         <div className={alertClassName}>
             {children && children}
-            {
-                onClose &&
-                    <Icon
-                        onClick={onClose}
-                        iconName="close"
-                    />
-            }
+            {onClose && (
+                <Icon
+                    onClick={onClose}
+                    iconName="close"
+                />
+            )}
         </div>
     );
 };

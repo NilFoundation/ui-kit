@@ -3,7 +3,14 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, {ReactElement, DetailedHTMLProps, ImgHTMLAttributes, ReactNode, useState, Fragment} from 'react';
+import React, {
+    ReactElement,
+    DetailedHTMLProps,
+    ImgHTMLAttributes,
+    ReactNode,
+    useState,
+    Fragment,
+} from 'react';
 import { Placeholder } from '../Placeholder';
 import clsx from 'clsx';
 
@@ -15,7 +22,7 @@ export type ImageProps = {
     placeholder?: ReactNode;
     thumbnail?: boolean;
     fluid?: boolean;
-} & DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>
+} & DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>;
 
 /**
  * Image component.
@@ -38,15 +45,11 @@ export const Image = ({
     const imgClassName = clsx(
         className && className,
         thumbnail && 'img-thumbnail',
-        fluid && 'img-fluid'
+        fluid && 'img-fluid',
     );
 
     if (!loaded) {
-        return (
-            <Fragment>
-                {placeholder ? placeholder : <Placeholder />}
-            </Fragment>
-        );
+        return <Fragment>{placeholder ? placeholder : <Placeholder />}</Fragment>;
     }
 
     return (

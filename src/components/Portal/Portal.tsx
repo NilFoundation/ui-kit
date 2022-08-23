@@ -9,9 +9,9 @@ import { createPortal } from 'react-dom';
 /**
  * Props.
  */
- export type PortalProps = {
-    children: ReactNode
-}
+export type PortalProps = {
+    children: ReactNode;
+};
 
 /**
  * Base create portal JSX helper.
@@ -19,5 +19,5 @@ import { createPortal } from 'react-dom';
  * @param {PortalProps} props - Props.
  * @returns React component.
  */
-export const Portal = ({children}: PortalProps): ReactElement =>
+export const Portal = ({ children }: PortalProps): ReactElement =>
     createPortal(children, document.getElementById('popup') || document.body);

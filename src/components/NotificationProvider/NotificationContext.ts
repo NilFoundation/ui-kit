@@ -11,9 +11,11 @@ import { RenderNotificationData } from './RenderNotificationData';
  */
 type NotificationContainerContextModel = {
     queue: RenderNotificationData[];
-}
+};
 
 /**
  * Notification context.
  */
-export const NotificationContainerContext = createContext<NotificationContainerContextModel>({} as NotificationContainerContextModel);
+export const NotificationContainerContext = createContext<NotificationContainerContextModel>(
+    {} as NotificationContainerContextModel,
+);

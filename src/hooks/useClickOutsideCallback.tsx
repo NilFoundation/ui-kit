@@ -11,7 +11,10 @@ import { useEffect, RefObject } from 'react';
  * @param ref - Ref.
  * @param callback - Callback.
  */
-export const useClickOutsideCallback = (ref: RefObject<HTMLElement>, callback: () => void): void => {
+export const useClickOutsideCallback = (
+    ref: RefObject<HTMLElement>,
+    callback: () => void,
+): void => {
     useEffect(() => {
         const handleClick = (evt: Event): void => {
             if (!ref.current) {
@@ -31,10 +34,12 @@ export const useClickOutsideCallback = (ref: RefObject<HTMLElement>, callback: (
             evt.preventDefault();
         };
 
-        document.addEventListener('click', handleClick, {capture: true});
+        document.addEventListener('click', handleClick, { capture: true });
 
         return (): void => {
-            document.removeEventListener('click', handleClick, {capture: true});
+            document.removeEventListener('click', handleClick, {
+                capture: true,
+            });
         };
     }, [ref, callback]);
 };

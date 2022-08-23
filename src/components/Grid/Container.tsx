@@ -22,7 +22,7 @@ type ContainerProps = {
  * @param {ContainerProps} props - Props.
  * @returns React component.
  */
-export const Container = ({children, className, fluid}: ContainerProps): ReactElement => {
+export const Container = ({ children, className, fluid }: ContainerProps): ReactElement => {
     const getFluidClassName = () => {
         if (!fluid) {
             return 'container';
@@ -35,14 +35,7 @@ export const Container = ({children, className, fluid}: ContainerProps): ReactEl
         return `container-${fluid}`;
     };
 
-    const containerClassName = clsx(
-        className && className,
-        getFluidClassName()
-    );
+    const containerClassName = clsx(className && className, getFluidClassName());
 
-    return (
-        <div className={containerClassName}>
-            {children}
-        </div>
-    );
+    return <div className={containerClassName}>{children}</div>;
 };

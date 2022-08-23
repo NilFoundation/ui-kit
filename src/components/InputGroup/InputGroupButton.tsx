@@ -10,7 +10,7 @@ import clsx from 'clsx';
 /**
  * Props.
  */
-export type InputGroupButtonProps = Omit<ButtonProps, 'size'>
+export type InputGroupButtonProps = Omit<ButtonProps, 'size'>;
 
 /**
  * Input group button component.
@@ -18,15 +18,11 @@ export type InputGroupButtonProps = Omit<ButtonProps, 'size'>
  * @param {InputGroupButtonProps} props - Props.
  * @returns - React component.
  */
-export const InputGroupButton = ({className, ...other}: InputGroupButtonProps): ReactElement => {
-    const inputButtonClassName = clsx(
-        'input-group-btn',
-        className && className
-    );
+export const InputGroupButton = ({ className, ...other }: InputGroupButtonProps): ReactElement => {
+    const inputButtonClassName = clsx('input-group-btn', className && className);
 
     return (
-        <span
-            className={inputButtonClassName}>
+        <span className={inputButtonClassName}>
             <Button {...other} />
         </span>
     );

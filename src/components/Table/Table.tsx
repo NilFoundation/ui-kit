@@ -21,11 +21,11 @@ export interface TableProps {
     /**
      * Adds borders on all sides of the table and cells.
      */
-    bordered ?: boolean;
+    bordered?: boolean;
     /**
      * Makes table more compact, reducing cell padding in half.
      */
-    condensed ?: boolean;
+    condensed?: boolean;
     /**
      * Adds horizontal scroll on small divices.
      */
@@ -45,34 +45,25 @@ export interface TableProps {
  * @returns - React component.
  */
 export const Table = forwardRef<HTMLTableElement, TableProps>(
-    ({
-        className,
-        children,
-        bordered,
-        condensed,
-        responsive = true,
-        striped
-    }: TableProps, ref) => {
+    ({ className, children, bordered, condensed, responsive = true, striped }: TableProps, ref) => {
         const tableClassName = clsx(
             'table',
             className && className,
             bordered && 'table-bordered',
             condensed && 'table-condensed',
             responsive && 'table-responsive',
-            striped && 'table-striped'
+            striped && 'table-striped',
         );
 
-        const renderTable = () =>
-            <table className={tableClassName} ref={ref}>
+        const renderTable = () => (
+            <table
+                className={tableClassName}
+                ref={ref}
+            >
                 {children}
-            </table>;
-
-        return (
-            responsive
-                ? <div className="table-responsive">
-                      {renderTable()}
-                  </div>
-                : renderTable()
+            </table>
         );
-    }
+
+        return responsive ? <div className="table-responsive">{renderTable()}</div> : renderTable();
+    },
 );

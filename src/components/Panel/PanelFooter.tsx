@@ -11,7 +11,7 @@ import React, { ReactElement, ReactNode } from 'react';
 export type PanelFooterProps = {
     className?: string;
     children: ReactNode;
-}
+};
 
 /**
  * Panel footer component.
@@ -19,7 +19,6 @@ export type PanelFooterProps = {
  * @param {PanelFooterProps} props - Props.
  * @returns React component.
  */
-export const PanelFooter = ({ className, children }: PanelFooterProps): ReactElement =>
-    <div className={`panel-footer ${className ? className : ''}`}>
-        {children}
-    </div>;
+export const PanelFooter = ({ className, children }: PanelFooterProps): ReactElement => (
+    <div className={`panel-footer ${className ? className : ''}`}>{children}</div>
+);

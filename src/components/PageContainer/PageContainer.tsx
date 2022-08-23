@@ -20,7 +20,11 @@ type PageContainerProps = {
  * @param {PageContainerProps} props - Props.
  * @returns React component.
  */
-export const PageContainer = ({children}: PageContainerProps): ReactElement =>
-    <Container className="pageContainer" fluid>
+export const PageContainer = ({ children }: PageContainerProps): ReactElement => (
+    <Container
+        className="pageContainer"
+        fluid
+    >
         {children}
-    </Container>;
+    </Container>
+);

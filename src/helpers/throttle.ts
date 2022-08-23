@@ -5,13 +5,13 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
- /**
-  * Throttles callback execution.
-  *
-  * @param callback - Callback to throttle.
-  * @param [wait = 100] - Wait time.
-  * @returns - Throttled callback.
-  */
+/**
+ * Throttles callback execution.
+ *
+ * @param callback - Callback to throttle.
+ * @param [wait = 100] - Wait time.
+ * @returns - Throttled callback.
+ */
 export const throttle = <T extends any[]>(callback: (...args: [...T]) => void, wait = 100) => {
     let isThrottled = false;
     let savedArgs: [...T] | null;

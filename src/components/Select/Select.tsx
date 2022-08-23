@@ -4,8 +4,8 @@
  */
 
 import React, { ReactElement, useRef, useState } from 'react';
-import { Size } from '../../enums';
 import clsx from 'clsx';
+import { Size } from '../../enums';
 import { InputGroup } from '../InputGroup';
 import { Input } from '../Input';
 import { Menu } from '../Menu';
@@ -18,13 +18,37 @@ import { createSelectContext } from './SelectContext';
  * Props.
  */
 export interface SelectProps<T> {
+    /**
+     * Component children. Expected to contain {@link ../SelectOption}
+     */
     children: ReactElement<SelectOptionProps<T>>[] | ReactElement<SelectOptionProps<T>>;
+    /**
+     * Callback on select option.
+     */
     onSelect?: (value: T) => void;
+    /**
+     * Component size.
+     */
     size?: Size;
+    /**
+     * Provide className to customize appearance.
+     */
     className?: string;
+    /**
+     * Displays when there are nothing to select.
+     */
     noItemsMessage?: string;
+    /**
+     * Displays when nothing is selected.
+     */
     placeholder?: string;
+    /**
+     * Disable component.
+     */
     disabled?: boolean;
+    /**
+     * Id.
+     */
     id?: string;
 }
 
@@ -34,7 +58,7 @@ export interface SelectProps<T> {
  * @param {SelectProps} props - Props.
  * @returns - React component.
  */
-export const Select = <T extends unknown>({
+export const Select = <T,>({
     className,
     onSelect,
     size = Size.md,
@@ -42,14 +66,11 @@ export const Select = <T extends unknown>({
     noItemsMessage = 'No items to select',
     placeholder = 'No items selected',
     disabled,
-    id
+    id,
 }: SelectProps<T>): ReactElement => {
     const ref = useRef<HTMLInputElement>(null);
     const selectId = id ?? uniqueId('select-');
-    const selectClassName = clsx(
-        'select',
-        className && className
-    );
+    const selectClassName = clsx('select', className && className);
 
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [selected, setSelected] = useState<SelectOptionModel<T>>();
@@ -81,38 +102,37 @@ export const Select = <T extends unknown>({
     };
 
     return (
-        <SelectContext.Provider value={{selected, onSelectOption}}>
+        <SelectContext.Provider value={{ selected, onSelectOption }}>
             <div className={selectClassName}>
                 <InputGroup size={size}>
                     <Input
-                        role="select"
+                        role="listbox"
                         ref={ref}
                         id={selectId}
                         value={selected?.title}
                         disabled={disabled}
                         placeholder={placeholder}
                     />
-                    {
-                        selected &&
-                            <InputGroup.Icon
-                                iconName="times"
-                                onClick={clearSelect}
-                            />
-                    }
+                    {selected && (
+                        <InputGroup.Icon
+                            iconName="times"
+                            onClick={clearSelect}
+                        />
+                    )}
                     <InputGroup.Icon
                         iconName={iconName}
-                        onClick={():void => setDropdownVisible(!dropdownVisible)}
+                        onClick={(): void => setDropdownVisible(!dropdownVisible)}
                     />
                 </InputGroup>
-                {
-                    dropdownVisible &&
-                        <Menu
-                            onSetVisible={():void => setDropdownVisible(false)}
-                            labeledBy={selectId}>
-                                {!children && noItemsMessage}
-                                {children}
-                        </Menu>
-                }
+                {dropdownVisible && (
+                    <Menu
+                        onSetVisible={(): void => setDropdownVisible(false)}
+                        labeledBy={selectId}
+                    >
+                        {!children && noItemsMessage}
+                        {children}
+                    </Menu>
+                )}
             </div>
         </SelectContext.Provider>
     );

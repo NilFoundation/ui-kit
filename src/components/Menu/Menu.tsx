@@ -13,11 +13,11 @@ import { MenuItem } from './MenuItem';
  * Props.
  */
 export type MenuProps = {
-    children: ReactNode,
+    children: ReactNode;
     onSetVisible: () => void;
     className?: string;
     labeledBy?: string;
-    autoFocus?: boolean
+    autoFocus?: boolean;
 };
 
 /**
@@ -31,7 +31,7 @@ export const Menu = ({
     className,
     onSetVisible,
     labeledBy,
-    autoFocus = true
+    autoFocus = true,
 }: MenuProps): ReactElement => {
     const ref = useRef<HTMLUListElement>(null);
 
@@ -44,7 +44,7 @@ export const Menu = ({
         eventType: 'scroll',
         ref,
         throttled: true,
-        callback: onSetVisible
+        callback: onSetVisible,
     });
 
     return (
@@ -53,7 +53,8 @@ export const Menu = ({
                 className={`dropdown-menu ${className ? className : ''}`}
                 role="menu"
                 aria-labelledby={labeledBy}
-                ref={ref}>
+                ref={ref}
+            >
                 {children}
             </ul>
         </Portal>

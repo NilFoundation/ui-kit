@@ -8,7 +8,7 @@ import { Toast } from '../Toast';
 import { CreateNotificationData } from './CreateNotificationData';
 import { NotificationContainerContext } from './NotificationContext';
 import { RenderNotificationData } from './RenderNotificationData';
-import {uniqueId} from '../../helpers';
+import { uniqueId } from '../../helpers';
 
 /**
  * Props.
@@ -16,7 +16,7 @@ import {uniqueId} from '../../helpers';
 type NotificationProviderProps = {
     children: ReactNode;
     maxNotificationsToShow?: number;
-}
+};
 
 /**
  * Actions.
@@ -38,30 +38,30 @@ export let notificationActions: NotificationActions = null;
  * @param {NotificationProviderProps} props - Props.
  * @returns React component.
  */
-export const NotificationProvider = ({children, maxNotificationsToShow = 5}: NotificationProviderProps): ReactElement => {
+export const NotificationProvider = ({
+    children,
+    maxNotificationsToShow = 5,
+}: NotificationProviderProps): ReactElement => {
     const [queue, setQueue] = useState<RenderNotificationData[]>([]);
 
     notificationActions = {
         create: (newNotification: CreateNotificationData): void =>
-            setQueue([...queue, {...newNotification, id: uniqueId('notification-')}]),
+            setQueue([...queue, { ...newNotification, id: uniqueId('notification-') }]),
 
-        remove: (id: string) => setQueue(queue.filter(x => x.id !== id))
+        remove: (id: string) => setQueue(queue.filter(x => x.id !== id)),
     };
 
     return (
-        <NotificationContainerContext.Provider value={{queue}}>
+        <NotificationContainerContext.Provider value={{ queue }}>
             {children}
             <div className="notificationContainer">
-                {
-                    queue
-                        .slice(0, maxNotificationsToShow)
-                        .map(({id, ...rest}) =>
-                            <Toast
-                                key={id}
-                                close={(): void => notificationActions?.remove(id)}
-                                {...rest}
-                            />)
-                }
+                {queue.slice(0, maxNotificationsToShow).map(({ id, ...rest }) => (
+                    <Toast
+                        key={id}
+                        close={(): void => notificationActions?.remove(id)}
+                        {...rest}
+                    />
+                ))}
             </div>
         </NotificationContainerContext.Provider>
     );

@@ -10,5 +10,5 @@ export enum Breakpoint {
     sm = 'xs',
     md = 'sm',
     lg = 'md',
-    xl = 'lg'
+    xl = 'lg',
 }

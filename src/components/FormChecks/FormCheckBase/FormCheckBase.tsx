@@ -3,7 +3,15 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { InputHTMLAttributes, useRef, ReactElement, useEffect, useState, forwardRef, ChangeEvent } from 'react';
+import React, {
+    InputHTMLAttributes,
+    useRef,
+    ReactElement,
+    useEffect,
+    useState,
+    forwardRef,
+    ChangeEvent,
+} from 'react';
 import { uniqueId } from '../../../helpers';
 import './FormCheck.scss';
 
@@ -28,15 +36,18 @@ export type FormCheckBaseProps = {
  * @returns React component.
  */
 export const FormCheckBase = forwardRef<HTMLInputElement, FormCheckBaseProps>(
-    ({
-        defaultChecked = false,
-        label,
-        className,
-        id,
-        checked,
-        onChange,
-        ...rest
-    }: FormCheckBaseProps, ref): ReactElement => {
+    (
+        {
+            defaultChecked = false,
+            label,
+            className,
+            id,
+            checked,
+            onChange,
+            ...rest
+        }: FormCheckBaseProps,
+        ref,
+    ): ReactElement => {
         const [isChecked, setIsChecked] = useState(defaultChecked);
         const refId = useRef(uniqueId('checkbox-'));
         const formCheckId = id ?? refId.current;
@@ -64,13 +75,15 @@ export const FormCheckBase = forwardRef<HTMLInputElement, FormCheckBaseProps>(
                     ref={ref}
                     {...rest}
                 />
-                {
-                    label &&
-                        <label className="form-check-label" htmlFor={formCheckId}>
-                            {label}
-                        </label>
-                }
+                {label && (
+                    <label
+                        className="form-check-label"
+                        htmlFor={formCheckId}
+                    >
+                        {label}
+                    </label>
+                )}
             </div>
         );
-    }
+    },
 );

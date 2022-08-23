@@ -24,7 +24,6 @@ export type SidebarType = typeof Sidebar;
  * @param {SidebarProps} props - Props.
  * @returns React component.
  */
-export const Sidebar = ({children}: SidebarProps): ReactElement =>
-    <aside className="sidebar">
-        {children}
-    </aside>;
+export const Sidebar = ({ children }: SidebarProps): ReactElement => (
+    <aside className="sidebar">{children}</aside>
+);

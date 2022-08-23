@@ -9,4 +9,4 @@
 export type SelectOptionModel<T> = {
     title: string;
     value: T;
-}
+};

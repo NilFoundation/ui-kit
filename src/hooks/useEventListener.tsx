@@ -47,15 +47,17 @@ export const useEventListener = ({
     callback,
     throttled = false,
     wait = 200,
-    shouldCapture = false
+    shouldCapture = false,
 }: UseEventListenerProps): void => {
     useEffect(() => {
         const cb = throttled ? throttle((): void => callback(), wait) : callback;
 
-        document.addEventListener(eventType, cb, {capture: shouldCapture});
+        document.addEventListener(eventType, cb, { capture: shouldCapture });
 
         return (): void => {
-            document.removeEventListener(eventType, cb, {capture: shouldCapture});
+            document.removeEventListener(eventType, cb, {
+                capture: shouldCapture,
+            });
         };
     }, [ref, callback]);
 };

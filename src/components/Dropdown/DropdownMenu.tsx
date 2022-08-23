@@ -11,7 +11,7 @@ import { Menu } from '../Menu';
  * Props.
  */
 export type DropdownProps = {
-    children: ReactNode,
+    children: ReactNode;
     className?: string;
 };
 
@@ -21,20 +21,20 @@ export type DropdownProps = {
  * @param {DropdownProps} props - Props.
  * @returns React component.
  */
-export const DropdownMenu = ({children, className}: DropdownProps): ReactElement => {
-    const {dropdownId, visible, onDropdownToggle} = useContext(DropdownContext);
+export const DropdownMenu = ({ children, className }: DropdownProps): ReactElement => {
+    const { dropdownId, visible, onDropdownToggle } = useContext(DropdownContext);
 
     return (
         <>
-            {
-                visible &&
-                    <Menu
-                        onSetVisible={onDropdownToggle}
-                        labeledBy={dropdownId}
-                        className={className}>
-                        {children}
-                    </Menu>
-            }
+            {visible && (
+                <Menu
+                    onSetVisible={onDropdownToggle}
+                    labeledBy={dropdownId}
+                    className={className}
+                >
+                    {children}
+                </Menu>
+            )}
         </>
     );
 };

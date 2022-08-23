@@ -21,9 +21,13 @@ type NavbarProps = {
  * @param {NavbarProps} props - Props.
  * @returns React component.
  */
-export const NavbarBrand = ({imgSource, href}: NavbarProps): ReactElement =>
-    <div className="navbar-brand" role="banner">
+export const NavbarBrand = ({ imgSource, href }: NavbarProps): ReactElement => (
+    <div
+        className="navbar-brand"
+        role="banner"
+    >
         <Link to={href}>
             <Image source={imgSource} />
         </Link>
-    </div>;
+    </div>
+);

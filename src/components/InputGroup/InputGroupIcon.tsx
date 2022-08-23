@@ -10,7 +10,7 @@ import clsx from 'clsx';
 /**
  * Props.
  */
-export type InputGroupIconProps = Omit<IconProps, 'size'>
+export type InputGroupIconProps = Omit<IconProps, 'size'>;
 
 /**
  * Input group icon component.
@@ -18,15 +18,11 @@ export type InputGroupIconProps = Omit<IconProps, 'size'>
  * @param {InputGroupIconProps} props - Props.
  * @returns - React component.
  */
-export const InputGroupIcon = ({className, ...other}: InputGroupIconProps): ReactElement => {
-    const inputIconClassName = clsx(
-        'input-group-addon',
-        className && className
-    );
+export const InputGroupIcon = ({ className, ...other }: InputGroupIconProps): ReactElement => {
+    const inputIconClassName = clsx('input-group-addon', className && className);
 
     return (
-        <span
-            className={inputIconClassName}>
+        <span className={inputIconClassName}>
             <Icon {...other} />
         </span>
     );

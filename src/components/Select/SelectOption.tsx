@@ -27,10 +27,10 @@ export const SelectOption = <T extends unknown>({
     value,
     children,
     disabled,
-    defaultSelected
+    defaultSelected,
 }: SelectOptionProps<T>): ReactElement<SelectOptionProps<T>> => {
-    const {onSelectOption} = useSelectContext<T>();
-    const handleSelectOption = (): void => onSelectOption({title: children, value});
+    const { onSelectOption } = useSelectContext<T>();
+    const handleSelectOption = (): void => onSelectOption({ title: children, value });
 
     useEffect(() => {
         !disabled && defaultSelected && handleSelectOption();

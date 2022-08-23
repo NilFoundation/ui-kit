@@ -8,5 +8,5 @@
  */
 export enum PlaceholderAnimation {
     wave = 'wave',
-    glow = 'glow'
+    glow = 'glow',
 }

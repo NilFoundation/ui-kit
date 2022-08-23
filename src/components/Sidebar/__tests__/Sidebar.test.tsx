@@ -4,8 +4,8 @@
  */
 
 import React from 'react';
-import {Sidebar} from '../Sidebar';
-import {render} from '@testing-library/react';
+import { Sidebar } from '../Sidebar';
+import { render } from '@testing-library/react';
 
 describe('Sidebar', () => {
     it('Renders', () => {

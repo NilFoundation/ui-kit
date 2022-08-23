@@ -11,7 +11,7 @@ import { createContext } from 'react';
 type PanelContextModel = {
     disabled: boolean;
     loading: boolean;
-}
+};
 
 /**
  * Panel internal state context.

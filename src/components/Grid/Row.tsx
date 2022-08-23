@@ -21,16 +21,8 @@ type RowProps = {
  * @param {RowProps} props - Props.
  * @returns React component.
  */
-export const Row = ({children, noGutters = false, className}: RowProps): ReactElement => {
-    const rowClassName = clsx(
-        'row',
-        noGutters && 'row-no-gutters',
-        className && className
-    );
+export const Row = ({ children, noGutters = false, className }: RowProps): ReactElement => {
+    const rowClassName = clsx('row', noGutters && 'row-no-gutters', className && className);
 
-    return (
-        <div className={rowClassName}>
-            {children}
-        </div>
-    );
+    return <div className={rowClassName}>{children}</div>;
 };

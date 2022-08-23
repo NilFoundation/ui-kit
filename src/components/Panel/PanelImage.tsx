@@ -9,7 +9,7 @@ import { Image, ImageProps } from '../Image';
 /**
  * Props.
  */
-export type PanelImageProps = ImageProps
+export type PanelImageProps = ImageProps;
 
 /**
  * Panel image component.
@@ -17,9 +17,10 @@ export type PanelImageProps = ImageProps
  * @param {PanelImageProps} props - Props.
  * @returns React component.
  */
-export const PanelImage = ({ className, ...rest }: PanelImageProps): ReactElement =>
+export const PanelImage = ({ className, ...rest }: PanelImageProps): ReactElement => (
     <Image
         {...rest}
         fluid
         className={`panel__image ${className ? className : ''}`}
-    />;
+    />
+);

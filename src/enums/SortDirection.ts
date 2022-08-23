@@ -6,8 +6,8 @@
 /**
  * Sort direction type.
  */
- export enum SortDirection {
+export enum SortDirection {
     none = 'none',
     asc = 'asc',
-    desc = 'desc'
+    desc = 'desc',
 }

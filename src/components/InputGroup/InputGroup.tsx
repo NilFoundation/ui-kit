@@ -24,18 +24,18 @@ export interface InputGroupProps {
  * @param {InputGroupProps} props - Props.
  * @returns - React component.
  */
-export const InputGroup = ({className, size = Size.md, children}: InputGroupProps): ReactElement => {
+export const InputGroup = ({
+    className,
+    size = Size.md,
+    children,
+}: InputGroupProps): ReactElement => {
     const inputGroupClassName = clsx(
         'input-group',
         className && className,
-        size !== Size.md && `input-group-${size}`
+        size !== Size.md && `input-group-${size}`,
     );
 
-    return (
-        <div className={inputGroupClassName}>
-            { children }
-        </div>
-    );
+    return <div className={inputGroupClassName}>{children}</div>;
 };
 
 /**

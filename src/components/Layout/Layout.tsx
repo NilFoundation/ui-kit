@@ -24,15 +24,14 @@ type LayoutProps = {
  * @param {LayoutProps} props - Props.
  * @returns React component.
  */
-export const Layout = ({children, sidebar, navbar}: LayoutProps): ReactElement =>
+export const Layout = ({ children, sidebar, navbar }: LayoutProps): ReactElement => (
     <PageContainer>
         <div className="layout">
-            <div className="layout__navbar">
-                { navbar && navbar }
-            </div>
+            <div className="layout__navbar">{navbar && navbar}</div>
             <div className="layout__body">
-                { sidebar && sidebar }
+                {sidebar && sidebar}
                 {children}
             </div>
         </div>
-    </PageContainer>;
+    </PageContainer>
+);

@@ -12,14 +12,14 @@ import { BreakpointValue } from '../../models';
  * Breakpoints.
  */
 type Breakpoints = {
-    [Property in keyof typeof Breakpoint]?: BreakpointValue
+    [Property in keyof typeof Breakpoint]?: BreakpointValue;
 };
 
 /**
  * Offset.
  */
 type Offset = {
-    [Property in keyof typeof Breakpoint as `${Property}-offset`]?: BreakpointValue
+    [Property in keyof typeof Breakpoint as `${Property}-offset`]?: BreakpointValue;
 };
 
 /**
@@ -41,7 +41,7 @@ type ColProps = {
  * @param {ColProps} props - Props.
  * @returns React component.
  */
-export const Col = ({children, className, ...restProps}: ColProps): ReactElement => {
+export const Col = ({ children, className, ...restProps }: ColProps): ReactElement => {
     const getColClassName = () => {
         const keys = Object.keys(restProps) as Array<keyof ColModificators>;
 
@@ -56,14 +56,7 @@ export const Col = ({children, className, ...restProps}: ColProps): ReactElement
         });
     };
 
-    const colClassName = clsx(
-        className && className,
-        getColClassName()
-    );
+    const colClassName = clsx(className && className, getColClassName());
 
-    return (
-        <div className={colClassName}>
-            {children}
-        </div>
-    );
+    return <div className={colClassName}>{children}</div>;
 };
