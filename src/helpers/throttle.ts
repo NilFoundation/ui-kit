@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * @file Helper function.
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
