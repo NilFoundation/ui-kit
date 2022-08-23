@@ -10,9 +10,11 @@ import { createContext } from 'react';
  */
 type NavListContextModel = {
     onToggle?: () => void;
-}
+};
 
 /**
  * Navlist context.
  */
-export const NavListContext = createContext<NavListContextModel>({} as NavListContextModel);
+export const NavListContext = createContext<NavListContextModel>(
+    {} as NavListContextModel
+);

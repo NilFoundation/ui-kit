@@ -27,7 +27,7 @@
   ],
   "scripts": {
     "lint": "eslint --ext=ts,tsx src",
-    "prettier": "prettier --write '**/*.{ts, tsx}' --cache node_modules/.cache/prettier",
+    "prettier": "prettier --check \"**/*.{ts, tsx}\"",
     "build": "rollup -c"
   },
   "peerDependencies": {
