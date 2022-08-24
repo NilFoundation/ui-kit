@@ -9,10 +9,14 @@ on:
   workflow_dispatch:
   # Allows to call from another workflow
   workflow_call:
-
-env:
-  ARTIFACT_PREFIX: "build-"
-  BUILD_FOLDER: "build"
+    inputs:
+      # Set to true when testing pre-release code to store build results
+      pre_release:
+        required: false
+        type: boolean
+      package_version:
+        required: false
+        type: string
 
 jobs:
   test:
@@ -20,9 +24,9 @@ jobs:
     strategy:
       matrix:
         node_version:
-          - 14
-          - 16
-          - 18
+          - 14.x
+          - 16.x
+          - 18.x
     name: Test on Nodejs v.${{ matrix.node_version }}
     steps:
       - name: Checkout
@@ -32,6 +36,19 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node_version }}
+
+      - name: Cache dependencies
+        id: cache-node-modules
+        uses: actions/cache@v3
+        env:
+          CACHE_NAME: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.CACHE_NAME }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.CACHE_NAME }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Install dependencies
         run : npm ci
@@ -45,11 +62,15 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Archive build results
-        run: tar -czf ${{ env.ARTIFACT_PREFIX }}${{ github.sha }}.tar.gz -C ${{ env.BUILD_FOLDER }} .
+        # Store build results if pre-release
+      - name: Pack build results
+        if: ${{ inputs.pre_release }}
+        run: npm pack
 
       - name: Upload workflow artifacts
+        if: ${{ inputs.pre_release }}
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.ARTIFACT_PREFIX }}${{ github.sha }}
-          path: ${{ env.ARTIFACT_PREFIX }}${{ github.sha }}.tar.gz
+          name: nilfoundation-react-components-${{ inputs.package_version }}
+          path: nilfoundation-react-components-${{ inputs.package_version }}.tgz
+          if-no-files-found: error
