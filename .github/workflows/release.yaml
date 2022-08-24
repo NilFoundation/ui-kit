@@ -4,7 +4,7 @@ on:
   # Triggers the workflow on push to master branch
   push:
     branches: [ master ]
-    #Runs only when package.json file changes
+    # Runs only when package.json file changes
     paths:
       - "package.json"
 
