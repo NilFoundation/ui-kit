@@ -24,10 +24,15 @@
     {
       "files": ["*.test.tsx"],
       "plugins": ["jest"],
-      "extends": ["plugin:jest/all"]
+      "extends": ["plugin:jest/all"],
+      "rules": {
+        "jest/prefer-expect-assertions": 0
+      }
     }
   ],
   "rules": {
+    "react/display-name": 1,
+    "jsx-a11y/anchor-is-valid": 0,
     "jsdoc/require-param-type": 0,
     "jsdoc/require-returns-type": 0,
     "jsdoc/require-file-overview": 1,
