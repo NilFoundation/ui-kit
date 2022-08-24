@@ -4,8 +4,8 @@
  */
 
 import React, { ReactElement, ReactNode, AnchorHTMLAttributes, MouseEvent } from 'react';
-import { Variant } from '../../enums';
 import clsx from 'clsx';
+import { Variant } from '../../enums';
 
 /**
  * Props.

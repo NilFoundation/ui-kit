@@ -11,7 +11,16 @@ import { DropdownContext } from './DropdownContext';
 /**
  * Props.
  */
-export type DropdownButtonProps = ButtonProps;
+export type DropdownButtonProps = {
+    /**
+     * Icon to display when dropdown is opend.
+     */
+    iconNameDropdownOpend?: string;
+    /**
+     * Icon to display when dropdown is closed.
+     */
+    iconNameDropdownClosed?: string;
+} & ButtonProps;
 
 /**
  * Dropdown button component.
@@ -19,16 +28,21 @@ export type DropdownButtonProps = ButtonProps;
  * @param {DropdownButtonProps} props - Props.
  * @returns React component.
  */
-export const DropdownButton = ({ children, className }: DropdownButtonProps): ReactElement => {
+export const DropdownButton = ({
+    children,
+    className,
+    iconNameDropdownOpend = 'caret-up',
+    iconNameDropdownClosed = 'caret-down',
+}: DropdownButtonProps): ReactElement => {
     const { dropdownId, visible, onDropdownToggle } = useContext(DropdownContext);
-    const iconName = `caret-${visible ? 'up' : 'down'}`;
+    const iconName = visible ? iconNameDropdownOpend : iconNameDropdownClosed;
 
     return (
         <Button
             id={dropdownId}
             active={visible}
             className={`dropdown-toggle ${className ? className : ''}`}
-            onClick={onDropdownToggle}
+            onClick={(): void => onDropdownToggle(!visible)}
         >
             {children}
             <Icon iconName={iconName} />

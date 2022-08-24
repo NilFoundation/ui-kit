@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import { createContext, useContext, Context } from 'react';
+import { createContext, useContext } from 'react';
 import { SelectOptionModel } from './SelectOptionModel';
 
 /**
@@ -15,17 +15,14 @@ type SelectContextModel<T> = {
 };
 
 /**
- * Create select context helper.
- *
- * @returns Create context helper.
+ * Select context.
  */
-export const createSelectContext = <T extends unknown>(): Context<SelectContextModel<T>> =>
-    createContext({} as SelectContextModel<T>);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const SelectContext = createContext({} as SelectContextModel<any>);
 
 /**
- * Use select context helper.
+ * Use select generic context helper.
  *
  * @returns Use context helper.
  */
-export const useSelectContext = <T extends unknown>(): SelectContextModel<T> =>
-    useContext(createSelectContext<T>());
+export const useSelectContext = <T>(): SelectContextModel<T> => useContext(SelectContext);

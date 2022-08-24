@@ -4,8 +4,8 @@
  */
 
 import React, { ReactElement, ReactNode, useContext } from 'react';
-import { NavListContext } from './NavListContext';
 import clsx from 'clsx';
+import { NavListContext } from './NavListContext';
 import { useKeyPress } from '../../hooks';
 import { KeyboardEventKey } from '../../enums';
 
@@ -54,6 +54,7 @@ export const NavListElement = ({
             className={elementClassName}
             onClick={onClickHandler}
             onKeyPress={onEnterKeyPress}
+            role="presentation"
         >
             <a href="#">{children}</a>
         </li>

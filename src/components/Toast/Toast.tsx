@@ -4,8 +4,8 @@
  */
 
 import React, { ReactElement, ReactNode, useEffect, useRef } from 'react';
-import { Variant, KeyboardEventKey } from '../../enums';
 import clsx from 'clsx';
+import { Variant, KeyboardEventKey } from '../../enums';
 import { useKeyPress } from '../../hooks';
 import { Icon } from '../Icon';
 import './Toast-BS-5.scss';
@@ -48,7 +48,7 @@ export const Toast = ({
 
     useEffect(() => {
         autoFocus && ref.current && ref.current.focus();
-    }, [ref]);
+    }, [ref, autoFocus]);
 
     useEffect(() => {
         const id = autoClose && setTimeout(() => close && close(), timeout);
@@ -58,7 +58,7 @@ export const Toast = ({
                 clearTimeout(id);
             }
         };
-    }, [autoClose, timeout]);
+    }, [autoClose, timeout, close]);
 
     const [onKeyPress] = useKeyPress(() => {
         close && close();

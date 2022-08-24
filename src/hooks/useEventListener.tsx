@@ -59,5 +59,5 @@ export const useEventListener = ({
                 capture: shouldCapture,
             });
         };
-    }, [ref, callback]);
+    }, [eventType, ref, callback, throttled, wait, shouldCapture]);
 };

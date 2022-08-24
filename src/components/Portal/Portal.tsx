@@ -10,11 +10,14 @@ import { createPortal } from 'react-dom';
  * Props.
  */
 export type PortalProps = {
+    /**
+     * Component children.
+     */
     children: ReactNode;
 };
 
 /**
- * Base create portal JSX helper.
+ * Create portal JSX helper.
  *
  * @param {PortalProps} props - Props.
  * @returns React component.

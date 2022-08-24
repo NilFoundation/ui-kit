@@ -4,8 +4,6 @@
  */
 
 import React, { ReactElement, ReactNode } from 'react';
-import { NavbarType } from '../Navbar';
-import { SidebarType } from '../Sidebar';
 import { PageContainer } from '../PageContainer';
 import './Layout.scss';
 
@@ -13,9 +11,22 @@ import './Layout.scss';
  * Props.
  */
 type LayoutProps = {
+    /**
+     * Component children. Will take free space between other layout elements.
+     */
     children: ReactNode;
-    sidebar?: SidebarType;
-    navbar?: NavbarType;
+    /**
+     * Sidebar.
+     */
+    sidebar?: ReactNode;
+    /**
+     * Navbar.
+     */
+    navbar?: ReactNode;
+    /**
+     * Footer.
+     */
+    footer?: ReactNode;
 };
 
 /**
@@ -24,7 +35,7 @@ type LayoutProps = {
  * @param {LayoutProps} props - Props.
  * @returns React component.
  */
-export const Layout = ({ children, sidebar, navbar }: LayoutProps): ReactElement => (
+export const Layout = ({ children, sidebar, navbar, footer }: LayoutProps): ReactElement => (
     <PageContainer>
         <div className="layout">
             <div className="layout__navbar">{navbar && navbar}</div>
@@ -32,6 +43,7 @@ export const Layout = ({ children, sidebar, navbar }: LayoutProps): ReactElement
                 {sidebar && sidebar}
                 {children}
             </div>
+            <div className="layout__footer">{footer && footer}</div>
         </div>
     </PageContainer>
 );

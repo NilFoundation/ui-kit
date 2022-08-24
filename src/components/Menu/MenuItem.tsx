@@ -3,8 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, useContext, KeyboardEvent } from 'react';
-import { DropdownContext } from '../Dropdown/DropdownContext';
+import React, { ReactElement, KeyboardEvent, ReactNode } from 'react';
 import clsx from 'clsx';
 import { useKeyPress } from '../../hooks';
 import { KeyboardEventKey } from '../../enums';
@@ -13,11 +12,30 @@ import { KeyboardEventKey } from '../../enums';
  * Props.
  */
 export type MenuItemProps = {
-    title: string;
+    /**
+     * Component children.
+     */
+    children: ReactNode;
+    /**
+     * Provide className to customize appearance.
+     */
     className?: string;
+    /**
+     * Makes element non-interactive.
+     */
     disabled?: boolean;
+    /**
+     * Applies active state.
+     */
     active?: boolean;
+    /**
+     * On select callback.
+     */
     onSelect?: () => void;
+    /**
+     * Provide href to use MenuItem like a link.
+     */
+    href?: string;
 };
 
 /**
@@ -27,29 +45,25 @@ export type MenuItemProps = {
  * @returns React component.
  */
 export const MenuItem = ({
-    title,
+    children,
     className,
     disabled,
     active,
     onSelect,
+    href,
 }: MenuItemProps): ReactElement => {
-    const { onDropdownToggle } = useContext(DropdownContext);
-
     const itemClassName = clsx(active && 'active', className && className, disabled && 'disabled');
 
     const onSelectHandler = (): void => {
-        onSelect && onSelect();
-        onDropdownToggle();
+        onSelect && !disabled && onSelect();
     };
 
-    const [onToggleWithKey] = useKeyPress(onDropdownToggle, [KeyboardEventKey.escape]);
     const [onSelectWithKey] = useKeyPress(onSelectHandler, [
         KeyboardEventKey.enter,
         KeyboardEventKey.space,
     ]);
 
     const onKeyPressHandler = (e: KeyboardEvent<HTMLLIElement>): void => {
-        onToggleWithKey(e);
         onSelectWithKey(e);
     };
 
@@ -61,7 +75,7 @@ export const MenuItem = ({
             onKeyPress={onKeyPressHandler}
             tabIndex={disabled ? -1 : 0}
         >
-            {title}
+            <a href={href}>{children}</a>
         </li>
     );
 };

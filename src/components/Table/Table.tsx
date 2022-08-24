@@ -44,26 +44,27 @@ export interface TableProps {
  * @param {TableProps} props - Props.
  * @returns - React component.
  */
-export const Table = forwardRef<HTMLTableElement, TableProps>(
-    ({ className, children, bordered, condensed, responsive = true, striped }: TableProps, ref) => {
-        const tableClassName = clsx(
-            'table',
-            className && className,
-            bordered && 'table-bordered',
-            condensed && 'table-condensed',
-            responsive && 'table-responsive',
-            striped && 'table-striped',
-        );
+export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
+    { className, children, bordered, condensed, responsive = true, striped }: TableProps,
+    ref,
+) {
+    const tableClassName = clsx(
+        'table',
+        className && className,
+        bordered && 'table-bordered',
+        condensed && 'table-condensed',
+        responsive && 'table-responsive',
+        striped && 'table-striped',
+    );
 
-        const renderTable = () => (
-            <table
-                className={tableClassName}
-                ref={ref}
-            >
-                {children}
-            </table>
-        );
+    const renderTable = () => (
+        <table
+            className={tableClassName}
+            ref={ref}
+        >
+            {children}
+        </table>
+    );
 
-        return responsive ? <div className="table-responsive">{renderTable()}</div> : renderTable();
-    },
-);
+    return responsive ? <div className="table-responsive">{renderTable()}</div> : renderTable();
+});

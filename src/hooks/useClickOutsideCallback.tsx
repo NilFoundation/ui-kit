@@ -10,13 +10,19 @@ import { useEffect, RefObject } from 'react';
  *
  * @param ref - Ref.
  * @param callback - Callback.
+ * @param [isElementVisible = false] - Is element visible (Important when just hiding, not destroying element).
  */
 export const useClickOutsideCallback = (
     ref: RefObject<HTMLElement>,
     callback: () => void,
+    isElementVisible = false,
 ): void => {
     useEffect(() => {
         const handleClick = (evt: Event): void => {
+            if (!isElementVisible) {
+                return;
+            }
+
             if (!ref.current) {
                 return;
             }
@@ -41,5 +47,5 @@ export const useClickOutsideCallback = (
                 capture: true,
             });
         };
-    }, [ref, callback]);
+    }, [ref, callback, isElementVisible]);
 };

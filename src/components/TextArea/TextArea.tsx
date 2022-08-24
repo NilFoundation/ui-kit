@@ -11,29 +11,32 @@ import './TextArea.scss';
  * Props.
  */
 export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+    /**
+     * Disable textarea vertical resize.
+     */
     fixedHeight?: boolean;
-    maxHeight?: `${number}px`;
 }
 
 /**
  * Basic textArea component.
  */
-export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-    ({ className, disabled = false, fixedHeight, ...restProps }: TextAreaProps, ref) => {
-        const inputClassName = clsx(
-            'form-control',
-            className && className,
-            disabled && 'input-disabled',
-            fixedHeight && 'fixedHeight',
-        );
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function TextArea(
+    { className, disabled = false, fixedHeight, ...restProps }: TextAreaProps,
+    ref,
+) {
+    const inputClassName = clsx(
+        'form-control',
+        className && className,
+        disabled && 'input-disabled',
+        fixedHeight && 'fixedHeight',
+    );
 
-        return (
-            <textarea
-                disabled={disabled}
-                className={inputClassName}
-                ref={ref}
-                {...restProps}
-            />
-        );
-    },
-);
+    return (
+        <textarea
+            disabled={disabled}
+            className={inputClassName}
+            ref={ref}
+            {...restProps}
+        />
+    );
+});

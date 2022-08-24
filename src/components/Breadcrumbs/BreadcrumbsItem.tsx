@@ -3,8 +3,8 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import clsx from 'clsx';
 import React, { ReactElement } from 'react';
+import clsx from 'clsx';
 import { Link } from '../Link';
 
 /**

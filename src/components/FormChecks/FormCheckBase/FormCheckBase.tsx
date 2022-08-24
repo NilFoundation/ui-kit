@@ -36,7 +36,7 @@ export type FormCheckBaseProps = {
  * @returns React component.
  */
 export const FormCheckBase = forwardRef<HTMLInputElement, FormCheckBaseProps>(
-    (
+    function FormCheckBase(
         {
             defaultChecked = false,
             label,
@@ -47,7 +47,7 @@ export const FormCheckBase = forwardRef<HTMLInputElement, FormCheckBaseProps>(
             ...rest
         }: FormCheckBaseProps,
         ref,
-    ): ReactElement => {
+    ): ReactElement {
         const [isChecked, setIsChecked] = useState(defaultChecked);
         const refId = useRef(uniqueId('checkbox-'));
         const formCheckId = id ?? refId.current;

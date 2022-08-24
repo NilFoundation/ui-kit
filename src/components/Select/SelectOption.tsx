@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement, ReactNode, useEffect } from 'react';
 import { MenuItem } from '../Menu';
 import { useSelectContext } from './SelectContext';
 
@@ -11,8 +11,9 @@ import { useSelectContext } from './SelectContext';
  * Props.
  */
 export interface SelectOptionProps<T> {
-    children: string;
+    children?: ReactNode;
     value: T;
+    title: string;
     disabled?: boolean;
     defaultSelected?: boolean;
 }
@@ -23,24 +24,28 @@ export interface SelectOptionProps<T> {
  * @param {SelectOptionProps} props - Props.
  * @returns - React component.
  */
-export const SelectOption = <T extends unknown>({
+export const SelectOption = <T,>({
     value,
     children,
+    title,
     disabled,
     defaultSelected,
 }: SelectOptionProps<T>): ReactElement<SelectOptionProps<T>> => {
-    const { onSelectOption } = useSelectContext<T>();
-    const handleSelectOption = (): void => onSelectOption({ title: children, value });
+    const { onSelectOption, selected } = useSelectContext();
+    const handleSelectOption = (): void => onSelectOption({ title, value });
 
     useEffect(() => {
         !disabled && defaultSelected && handleSelectOption();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [defaultSelected]);
 
     return (
         <MenuItem
-            title={children}
             onSelect={handleSelectOption}
             disabled={disabled}
-        />
+            active={selected?.value === value}
+        >
+            {children ?? title}
+        </MenuItem>
     );
 };

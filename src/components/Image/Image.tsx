@@ -11,8 +11,8 @@ import React, {
     useState,
     Fragment,
 } from 'react';
-import { Placeholder } from '../Placeholder';
 import clsx from 'clsx';
+import { Placeholder } from '../Placeholder';
 
 /**
  * Props.

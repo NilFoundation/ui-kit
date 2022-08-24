@@ -9,7 +9,13 @@ import React, { ReactElement, ReactNode } from 'react';
  * Props.
  */
 type PageHeaderProps = {
+    /**
+     * Component children.
+     */
     children: ReactNode;
+    /**
+     * Provide className to customize appearance.
+     */
     className?: string;
 };
 

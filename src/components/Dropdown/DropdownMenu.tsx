@@ -25,16 +25,13 @@ export const DropdownMenu = ({ children, className }: DropdownProps): ReactEleme
     const { dropdownId, visible, onDropdownToggle } = useContext(DropdownContext);
 
     return (
-        <>
-            {visible && (
-                <Menu
-                    onSetVisible={onDropdownToggle}
-                    labeledBy={dropdownId}
-                    className={className}
-                >
-                    {children}
-                </Menu>
-            )}
-        </>
+        <Menu
+            onCloseMenu={() => onDropdownToggle(false)}
+            visible={visible}
+            labeledBy={dropdownId}
+            className={className}
+        >
+            {children}
+        </Menu>
     );
 };

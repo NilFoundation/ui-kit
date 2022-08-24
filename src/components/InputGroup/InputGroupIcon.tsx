@@ -4,8 +4,8 @@
  */
 
 import React, { ReactElement } from 'react';
-import { Icon, IconProps } from '../Icon';
 import clsx from 'clsx';
+import { Icon, IconProps } from '../Icon';
 
 /**
  * Props.

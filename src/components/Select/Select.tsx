@@ -12,7 +12,9 @@ import { Menu } from '../Menu';
 import { SelectOption, SelectOptionProps } from './SelectOption';
 import { SelectOptionModel } from './SelectOptionModel';
 import { uniqueId } from '../../helpers';
-import { createSelectContext } from './SelectContext';
+import { SelectContext } from './SelectContext';
+import { Icon } from '../Icon';
+import './Select.scss';
 
 /**
  * Props.
@@ -50,6 +52,10 @@ export interface SelectProps<T> {
      * Id.
      */
     id?: string;
+    /**
+     * Allows to clear selected value and adds clear icon.
+     */
+    clearable?: boolean;
 }
 
 /**
@@ -67,19 +73,23 @@ export const Select = <T,>({
     placeholder = 'No items selected',
     disabled,
     id,
+    clearable,
 }: SelectProps<T>): ReactElement => {
     const ref = useRef<HTMLInputElement>(null);
-    const selectId = id ?? uniqueId('select-');
+    const refId = useRef(uniqueId('select-'));
+    const selectId = id ?? refId.current;
     const selectClassName = clsx('select', className && className);
 
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [selected, setSelected] = useState<SelectOptionModel<T>>();
-    const iconName = `caret-${dropdownVisible ? 'up' : 'down'}`;
-
-    const SelectContext = createSelectContext<T>();
+    const iconName = `angle-${dropdownVisible ? 'up' : 'down'}`;
 
     const clearSelect = (): void => {
         if (!ref.current) {
+            return;
+        }
+
+        if (clearable) {
             return;
         }
 
@@ -107,32 +117,31 @@ export const Select = <T,>({
                 <InputGroup size={size}>
                     <Input
                         role="listbox"
+                        readOnly
                         ref={ref}
                         id={selectId}
-                        value={selected?.title}
+                        value={selected?.title ?? ''}
                         disabled={disabled}
                         placeholder={placeholder}
                     />
-                    {selected && (
+                    {clearable && selected && (
                         <InputGroup.Icon
                             iconName="times"
                             onClick={clearSelect}
                         />
                     )}
-                    <InputGroup.Icon
-                        iconName={iconName}
-                        onClick={(): void => setDropdownVisible(!dropdownVisible)}
-                    />
+                    <InputGroup.Button onClick={(): void => setDropdownVisible(!dropdownVisible)}>
+                        <Icon iconName={iconName} />
+                    </InputGroup.Button>
                 </InputGroup>
-                {dropdownVisible && (
-                    <Menu
-                        onSetVisible={(): void => setDropdownVisible(false)}
-                        labeledBy={selectId}
-                    >
-                        {!children && noItemsMessage}
-                        {children}
-                    </Menu>
-                )}
+                <Menu
+                    visible={dropdownVisible}
+                    onCloseMenu={(): void => setDropdownVisible(false)}
+                    labeledBy={selectId}
+                >
+                    {!children && noItemsMessage}
+                    {children}
+                </Menu>
             </div>
         </SelectContext.Provider>
     );

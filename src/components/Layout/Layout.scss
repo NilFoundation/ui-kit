@@ -2,9 +2,16 @@
   display: flex;
   flex-flow: column nowrap;
   height: 100%;
+  min-height: 100vh;
+  background-color: var(--c-primary-dark);
+  color: var(--c-primary-light);
+
+  &__body, &__footer {
+    display: flex;
+    flex-flow: column nowrap;
+  }
 
   &__body {
-    display: flex;
     flex-grow: 1;
   }
 }

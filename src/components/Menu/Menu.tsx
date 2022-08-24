@@ -3,9 +3,9 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode, useRef, useEffect } from 'react';
+import React, { ReactElement, ReactNode, useRef } from 'react';
+import clsx from 'clsx';
 import { useClickOutsideCallback, useEventListener } from '../../hooks';
-import { Portal } from '../Portal';
 import { MenuGroup } from './MenuGroup';
 import { MenuItem } from './MenuItem';
 
@@ -14,10 +14,10 @@ import { MenuItem } from './MenuItem';
  */
 export type MenuProps = {
     children: ReactNode;
-    onSetVisible: () => void;
+    visible: boolean;
+    onCloseMenu: () => void;
     className?: string;
     labeledBy?: string;
-    autoFocus?: boolean;
 };
 
 /**
@@ -29,35 +29,36 @@ export type MenuProps = {
 export const Menu = ({
     children,
     className,
-    onSetVisible,
+    onCloseMenu,
     labeledBy,
-    autoFocus = true,
+    visible,
 }: MenuProps): ReactElement => {
     const ref = useRef<HTMLUListElement>(null);
 
-    useEffect(() => {
-        autoFocus && ref.current && ref.current.focus();
-    }, [ref]);
+    const menuClassName = clsx('dropdown-menu', className && className, !visible && 'notVisible');
 
-    useClickOutsideCallback(ref, onSetVisible);
+    const onCloseHandler = (): void => {
+        visible && onCloseMenu();
+    };
+
+    useClickOutsideCallback(ref, onCloseHandler, visible);
+
     useEventListener({
         eventType: 'scroll',
         ref,
         throttled: true,
-        callback: onSetVisible,
+        callback: onCloseHandler,
     });
 
     return (
-        <Portal>
-            <ul
-                className={`dropdown-menu ${className ? className : ''}`}
-                role="menu"
-                aria-labelledby={labeledBy}
-                ref={ref}
-            >
-                {children}
-            </ul>
-        </Portal>
+        <ul
+            className={menuClassName}
+            role="menu"
+            aria-labelledby={labeledBy}
+            ref={ref}
+        >
+            {children}
+        </ul>
     );
 };
 

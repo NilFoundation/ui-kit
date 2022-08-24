@@ -11,10 +11,10 @@ import { createContext } from 'react';
 type DropdownContextModel = {
     dropdownId: string;
     visible: boolean;
-    onDropdownToggle: () => void;
+    onDropdownToggle: (isVisible: boolean) => void;
 };
 
 /**
- * Panel internal state context.
+ * Dropdown internal state context.
  */
 export const DropdownContext = createContext<DropdownContextModel>({} as DropdownContextModel);

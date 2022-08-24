@@ -4,8 +4,8 @@
  */
 
 import React, { ReactElement } from 'react';
-import { Button, ButtonProps } from '../Button';
 import clsx from 'clsx';
+import { Button, ButtonProps } from '../Button';
 
 /**
  * Props.

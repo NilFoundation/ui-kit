@@ -30,12 +30,7 @@ export const NavList = ({
     onToggle,
     vertical = true,
 }: NavListProps): ReactElement => {
-    const navListClassName = clsx(
-        'nav',
-        'nav-pills',
-        className && className,
-        vertical && 'nav-stacked',
-    );
+    const navListClassName = clsx('nav', className && className, vertical && 'nav-stacked');
 
     return (
         <NavListContext.Provider value={{ onToggle }}>
