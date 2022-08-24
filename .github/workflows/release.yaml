@@ -6,53 +6,68 @@ on:
     branches: [ master ]
     #Runs only when package.json file changes
     paths:
-      - "./package.json"
+      - "package.json"
 
 jobs:
   check_version_changed:
     name: Check if version was changed
     runs-on: [ubuntu-latest]
+    outputs:
+      version: ${{ steps.check_version.outputs.version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Check if version was changed
+        id: check_version
+        run: |
+          NEW_PACKAGE_VERSION=$(node -pe 'require("./package.json").version')
+          git checkout ${{ github.event.before }}
+          OLD_PACKAGE_VERSION=$(node -pe 'require("./package.json").version')
+
+          if [ $NEW_PACKAGE_VERSION != $OLD_PACKAGE_VERSION ]; then
+            echo "::set-output name=version::$NEW_PACKAGE_VERSION"
+          fi
 
   test:
-    name: Test release code
-    runs-on: [ubuntu-latest]
+    uses: ./.github/workflows/test.yaml
+    with:
+      package_version: ${{ needs.check_version_changed.outputs.version }}
+    name: Test
     needs: [check_version_changed]
     if: ${{ needs.check_version_changed.outputs.version }}
-    uses: NilFoundation/react-components/.github/workflows/${{ env.TEST_WORKFLOW }}@master
-    with:
-      pre_release: true
-      version: ${{ needs.check_version_changed.outputs.version }}
 
   release:
-    name: Tag version and create release
+    name: Create release
     runs-on: [ubuntu-latest]
     needs: [check_version_changed, test]
     if: ${{ needs.check_version_changed.outputs.version }}
     steps:
-      - uses: dawidd6/action-download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
-          workflow: ${{ env.TEST_WORKFLOW }}
-          workflow_conclusion: completed
-          search_artifacts: true
           name: nilfoundation-react-components-${{ needs.check_version_changed.outputs.version }}
-
-      - name: Tag new version
-        run: git tag v${{ needs.check_version_changed.outputs.version }}
-
-      - name: Push tags
-        uses: ad-m/github-push-action@master
-        with:
-          tags: true
 
       - name: Publish
         run: |
           npm config set registry https://npm.pkg.github.com/NilFoundation
           npm config set "//npm.pkg.github.com/:_authToken" ${{ secrets.PUBLISH_TOKEN }}
-          npm publish \
-            nilfoundation-react-components-${{ needs.check_version_changed.outputs.version }} \
-            --tag ${{ needs.check_version_changed.outputs.version }}
+          npm publish nilfoundation-react-components-${{ needs.check_version_changed.outputs.version }}.tgz
+
+  tag:
+    name: Tag version
+    runs-on: [ubuntu-latest]
+    needs: [check_version_changed, test, release]
+    if: ${{ needs.check_version_changed.outputs.version }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Tag new version
+      run: git tag v${{ needs.check_version_changed.outputs.version }}
+
+    - name: Push tags
+      uses: ad-m/github-push-action@master
+      with:
+        tags: true

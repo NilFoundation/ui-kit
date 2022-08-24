@@ -10,10 +10,7 @@ on:
   # Allows to call from another workflow
   workflow_call:
     inputs:
-      # Set to true when testing pre-release code to store build results
-      pre_release:
-        required: false
-        type: boolean
+      # Set when testing pre-release code to store build results
       package_version:
         required: false
         type: string
@@ -21,13 +18,7 @@ on:
 jobs:
   test:
     runs-on: [ubuntu-latest]
-    strategy:
-      matrix:
-        node_version:
-          - 14.x
-          - 16.x
-          - 18.x
-    name: Test on Nodejs v.${{ matrix.node_version }}
+    name: Test
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -35,7 +26,7 @@ jobs:
       - name: Setup nodejs
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node_version }}
+          node-version: 16.x
 
       - name: Cache dependencies
         id: cache-node-modules
@@ -44,10 +35,9 @@ jobs:
           CACHE_NAME: cache-node-modules
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.CACHE_NAME }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.CACHE_NAME }}-
-            ${{ runner.os }}-build-
+            ${{ runner.os }}-npm-cache-
             ${{ runner.os }}-
 
       - name: Install dependencies
@@ -64,11 +54,11 @@ jobs:
 
         # Store build results if pre-release
       - name: Pack build results
-        if: ${{ inputs.pre_release }}
+        if: ${{ inputs.package_version }}
         run: npm pack
 
       - name: Upload workflow artifacts
-        if: ${{ inputs.pre_release }}
+        if: ${{ inputs.package_version }}
         uses: actions/upload-artifact@v3
         with:
           name: nilfoundation-react-components-${{ inputs.package_version }}
