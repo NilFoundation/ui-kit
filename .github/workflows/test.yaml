@@ -7,6 +7,12 @@ on:
   pull_request:
   # Allows to trigger workflow manually
   workflow_dispatch:
+  # Allows to call from another workflow
+  workflow_call:
+
+env:
+  ARTIFACT_PREFIX: "build-"
+  BUILD_FOLDER: "build"
 
 jobs:
   test:
@@ -16,6 +22,7 @@ jobs:
         node_version:
           - 14
           - 16
+          - 18
     name: Test on Nodejs v.${{ matrix.node_version }}
     steps:
       - name: Checkout
@@ -32,6 +39,17 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Test
-        run: npm run test
+      # - name: Test
+      #   run: npm run test
 
+      - name: Build
+        run: npm run build
+
+      - name: Archive build results
+        run: tar -czf ${{ env.ARTIFACT_PREFIX }}${{ github.sha }}.tar.gz -C ${{ env.BUILD_FOLDER }} .
+
+      - name: Upload workflow artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.ARTIFACT_PREFIX }}${{ github.sha }}
+          path: ${{ env.ARTIFACT_PREFIX }}${{ github.sha }}.tar.gz
