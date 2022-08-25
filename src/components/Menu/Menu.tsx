@@ -35,7 +35,7 @@ export const Menu = ({
 }: MenuProps): ReactElement => {
     const ref = useRef<HTMLUListElement>(null);
 
-    const menuClassName = clsx('dropdown-menu', className && className, !visible && 'notVisible');
+    const menuClassName = clsx('dropdown-menu', className && className, !visible && 'hidden');
 
     const onCloseHandler = (): void => {
         visible && onCloseMenu();
