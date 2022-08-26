@@ -12,7 +12,13 @@ import './Icon.scss';
  * Props.
  */
 export type IconProps = {
+    /**
+     * Icon name.
+     */
     iconName: string;
+    /**
+     * Size of icon.
+     */
     size?: Size;
 } & HTMLAttributes<HTMLElement>;
 
@@ -26,6 +32,7 @@ export const Icon = ({
     iconName,
     size = Size.md,
     className,
+    'aria-hidden': ariaHidden = true,
     ...other
 }: IconProps): ReactElement => {
     const iconClassName = clsx('fa', `fa-${iconName}`, `icon-${size}`, className && className);
@@ -33,6 +40,7 @@ export const Icon = ({
     return (
         <i
             className={iconClassName}
+            aria-hidden={ariaHidden}
             {...other}
         />
     );
