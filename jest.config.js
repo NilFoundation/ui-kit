@@ -5,6 +5,12 @@ const config = {
   moduleNameMapper: {
     ".scss": "identity-obj-proxy",
   },
+  testMatch: [
+    "<rootDir>/src/**/__tests__/**/*.test.tsx"
+  ],
+  setupFilesAfterEnv: [
+    '@testing-library/jest-dom/extend-expect',
+  ],
 };
 
 module.exports = config;
