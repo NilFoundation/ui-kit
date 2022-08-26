@@ -11,10 +11,25 @@ import { useSelectContext } from './SelectContext';
  * Props.
  */
 export interface SelectOptionProps<T> {
+    /**
+     * Component children.
+     */
     children?: ReactNode;
+    /**
+     * Value of select option.
+     */
     value: T;
+    /**
+     * Title displaying when option was selected.
+     */
     title: string;
+    /**
+     * Disable state.
+     */
     disabled?: boolean;
+    /**
+     * Select this option by default.
+     */
     defaultSelected?: boolean;
 }
 
