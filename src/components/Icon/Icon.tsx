@@ -20,6 +20,10 @@ export type IconProps = {
      * Size of icon.
      */
     size?: Size;
+    /**
+     * Text, availiable only for screen readers.
+     */
+    srOnlyText?: string;
 } & HTMLAttributes<HTMLElement>;
 
 /**
@@ -32,16 +36,20 @@ export const Icon = ({
     iconName,
     size = Size.md,
     className,
+    srOnlyText,
     'aria-hidden': ariaHidden = true,
     ...other
 }: IconProps): ReactElement => {
     const iconClassName = clsx('fa', `fa-${iconName}`, `icon-${size}`, className && className);
 
     return (
-        <i
-            className={iconClassName}
-            aria-hidden={ariaHidden}
-            {...other}
-        />
+        <>
+            <i
+                className={iconClassName}
+                aria-hidden={ariaHidden}
+                {...other}
+            />
+            {srOnlyText && <span className="sr-only">{srOnlyText}</span>}
+        </>
     );
 };
