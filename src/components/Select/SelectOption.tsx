@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode, useEffect } from 'react';
+import React, { ReactElement, ReactNode, useEffect, useCallback } from 'react';
 import { MenuItem } from '../Menu';
 import { useSelectContext } from './SelectContext';
 
@@ -47,12 +47,14 @@ export const SelectOption = <T,>({
     defaultSelected,
 }: SelectOptionProps<T>): ReactElement<SelectOptionProps<T>> => {
     const { onSelectOption, selected } = useSelectContext();
-    const handleSelectOption = (): void => onSelectOption({ title, value });
+
+    const handleSelectOption = useCallback(() => {
+        onSelectOption({ title, value });
+    }, [title, value, onSelectOption]);
 
     useEffect(() => {
-        !disabled && defaultSelected && handleSelectOption();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [defaultSelected]);
+        defaultSelected && !disabled && handleSelectOption();
+    }, [defaultSelected, disabled, handleSelectOption]);
 
     return (
         <MenuItem
