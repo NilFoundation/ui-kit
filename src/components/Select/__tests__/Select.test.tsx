@@ -15,7 +15,11 @@ describe('select', () => {
      * Component renders.
      */
     it('renders', () => {
-        const { getByRole } = render(<Select></Select>);
+        const { getByRole } = render(
+            <Select>
+                <div />
+            </Select>,
+        );
 
         expect(getByRole('listbox')).toBeInTheDocument();
     });
