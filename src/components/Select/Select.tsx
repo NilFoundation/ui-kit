@@ -89,7 +89,7 @@ export const Select = <T,>({
             return;
         }
 
-        if (clearable) {
+        if (!clearable) {
             return;
         }
 
