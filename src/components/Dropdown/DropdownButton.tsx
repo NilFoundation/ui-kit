@@ -43,6 +43,8 @@ export const DropdownButton = ({
             active={visible}
             className={`dropdown-toggle ${className ? className : ''}`}
             onClick={(): void => onDropdownToggle(!visible)}
+            aria-haspopup={true}
+            aria-expanded={visible}
         >
             {children}
             <Icon iconName={iconName} />
