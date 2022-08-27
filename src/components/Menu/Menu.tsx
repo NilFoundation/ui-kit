@@ -3,14 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, {
-    ReactElement,
-    ReactNode,
-    useRef,
-    HTMLAttributes,
-    AriaRole,
-    KeyboardEvent,
-} from 'react';
+import React, { ReactElement, ReactNode, useRef, HTMLAttributes, AriaRole } from 'react';
 import clsx from 'clsx';
 import { useClickOutsideCallback, useEventListener, useKeyPress } from '../../hooks';
 import { MenuGroup } from './MenuGroup';

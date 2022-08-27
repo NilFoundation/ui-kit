@@ -9,11 +9,11 @@ import { throttle } from '../helpers';
 /**
  * Props.
  */
-export type UseEventListenerProps = {
+export type UseEventListenerProps<T extends keyof DocumentEventMap> = {
     /**
      * Browser event.
      */
-    eventType: Event['type'];
+    eventType: T;
     /**
      * Tagret DOM element ref to add event listener.
      */
@@ -21,7 +21,7 @@ export type UseEventListenerProps = {
     /**
      * Callback to fire on browser event.
      */
-    callback: () => void;
+    callback: (e: DocumentEventMap[T]) => void;
     /**
      * Throttles callback execution.
      */
@@ -41,16 +41,18 @@ export type UseEventListenerProps = {
  *
  * @param {UseEventListenerProps} props - Props.
  */
-export const useEventListener = ({
+export const useEventListener = <T extends keyof DocumentEventMap>({
     eventType,
     ref,
     callback,
     throttled = false,
     wait = 200,
     shouldCapture = false,
-}: UseEventListenerProps): void => {
+}: UseEventListenerProps<T>): void => {
     useEffect(() => {
-        const cb = throttled ? throttle((): void => callback(), wait) : callback;
+        const cb = throttled
+            ? throttle((e: DocumentEventMap[T]): void => callback(e), wait)
+            : callback;
 
         document.addEventListener(eventType, cb, { capture: shouldCapture });
 

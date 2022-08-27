@@ -3,7 +3,6 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import { KeyboardEvent } from 'react';
 import { KeyboardEventKey } from '../enums';
 
 /**
@@ -14,11 +13,11 @@ import { KeyboardEventKey } from '../enums';
  * @param [preventDefault = true] - Prevent default browser events.
  * @returns - Key event listener.
  */
-export const useKeyPress = <T extends HTMLElement>(
+export const useKeyPress = (
     callback: () => void,
     allowedKeys: KeyboardEventKey[],
     preventDefault = true,
-): [onKeyPress: (e: KeyboardEvent<T>) => void] => {
+): [onKeyPress: (e: KeyboardEvent) => void] => {
     const onKeyPress = (e: KeyboardEvent) => {
         if (preventDefault) {
             e.preventDefault();
