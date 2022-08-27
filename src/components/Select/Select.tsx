@@ -14,7 +14,6 @@ import { SelectOptionModel } from './SelectOptionModel';
 import { uniqueId } from '../../helpers';
 import { SelectContext } from './SelectContext';
 import { Icon } from '../Icon';
-import './Select.scss';
 
 /**
  * Props.
@@ -116,7 +115,6 @@ export const Select = <T,>({
             <div className={selectClassName}>
                 <InputGroup size={size}>
                     <Input
-                        role="listbox"
                         readOnly
                         ref={ref}
                         id={selectId}
@@ -124,20 +122,25 @@ export const Select = <T,>({
                         disabled={disabled}
                         placeholder={placeholder}
                     />
-                    {clearable && selected && (
+                    {clearable && !!selected && (
                         <InputGroup.Icon
                             iconName="times"
                             onClick={clearSelect}
                         />
                     )}
-                    <InputGroup.Button onClick={(): void => setDropdownVisible(!dropdownVisible)}>
+                    <InputGroup.Button
+                        onClick={(): void => setDropdownVisible(!dropdownVisible)}
+                        disabled={disabled}
+                        aria-haspopup={true}
+                        aria-expanded={dropdownVisible}
+                    >
                         <Icon iconName={iconName} />
                     </InputGroup.Button>
                 </InputGroup>
                 <Menu
                     visible={dropdownVisible}
                     onCloseMenu={(): void => setDropdownVisible(false)}
-                    labeledBy={selectId}
+                    role="listbox"
                 >
                     {!children && noItemsMessage}
                     {children}

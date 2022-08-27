@@ -16,11 +16,6 @@ type NavbarProps = {
 };
 
 /**
- * Props.
- */
-export type NavbarType = typeof Navbar;
-
-/**
  * Navbar.
  *
  * @param {NavbarProps} props - Props.

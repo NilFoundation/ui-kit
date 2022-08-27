@@ -3,11 +3,19 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode, useRef } from 'react';
+import React, {
+    ReactElement,
+    ReactNode,
+    useRef,
+    HTMLAttributes,
+    AriaRole,
+    KeyboardEvent,
+} from 'react';
 import clsx from 'clsx';
-import { useClickOutsideCallback, useEventListener } from '../../hooks';
+import { useClickOutsideCallback, useEventListener, useKeyPress } from '../../hooks';
 import { MenuGroup } from './MenuGroup';
 import { MenuItem } from './MenuItem';
+import { KeyboardEventKey } from '../../enums';
 
 /**
  * Props.
@@ -16,9 +24,8 @@ export type MenuProps = {
     children: ReactNode;
     visible: boolean;
     onCloseMenu: () => void;
-    className?: string;
-    labeledBy?: string;
-};
+    role?: AriaRole;
+} & HTMLAttributes<HTMLUListElement>;
 
 /**
  * Menu component.
@@ -30,8 +37,9 @@ export const Menu = ({
     children,
     className,
     onCloseMenu,
-    labeledBy,
     visible,
+    role = 'menu',
+    ...rest
 }: MenuProps): ReactElement => {
     const ref = useRef<HTMLUListElement>(null);
 
@@ -41,21 +49,23 @@ export const Menu = ({
         visible && onCloseMenu();
     };
 
-    useClickOutsideCallback(ref, onCloseHandler, visible);
+    const [onEscapePress] = useKeyPress(onCloseHandler, [KeyboardEventKey.escape]);
 
+    useClickOutsideCallback(ref, onCloseHandler, visible);
     useEventListener({
         eventType: 'scroll',
         ref,
         throttled: true,
         callback: onCloseHandler,
     });
+    useEventListener({ eventType: 'keydown', ref, callback: onEscapePress });
 
     return (
         <ul
             className={menuClassName}
-            role="menu"
-            aria-labelledby={labeledBy}
+            role={role}
             ref={ref}
+            {...rest}
         >
             {children}
         </ul>
