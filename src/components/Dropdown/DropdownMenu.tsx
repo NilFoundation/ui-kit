@@ -28,7 +28,7 @@ export const DropdownMenu = ({ children, className }: DropdownProps): ReactEleme
         <Menu
             onCloseMenu={() => onDropdownToggle(false)}
             visible={visible}
-            labeledBy={dropdownId}
+            aria-labelledby={dropdownId}
             className={className}
         >
             {children}

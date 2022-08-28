@@ -3,26 +3,30 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, {
-    ReactElement,
-    DetailedHTMLProps,
-    ImgHTMLAttributes,
-    ReactNode,
-    useState,
-    Fragment,
-} from 'react';
+import React, { ReactElement, DetailedHTMLProps, ImgHTMLAttributes } from 'react';
 import clsx from 'clsx';
-import { Placeholder } from '../Placeholder';
 
 /**
  * Props.
  */
 export type ImageProps = {
+    /**
+     * Image source.
+     */
     source: string;
-    placeholder?: ReactNode;
+    /**
+     * Shapes the image to a thumbnail.
+     */
     thumbnail?: boolean;
-    fluid?: boolean;
-} & DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>;
+    /**
+     * Applies max-width: 100%, height: auto, and display:block to the image.
+     */
+    responsive?: boolean;
+    /**
+     * Adds border-radius to image.
+     */
+    rounded?: boolean;
+} & Omit<DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>, 'src'>;
 
 /**
  * Image component.
@@ -33,31 +37,23 @@ export type ImageProps = {
 export const Image = ({
     source,
     alt = '',
-    placeholder,
+    rounded,
     thumbnail,
-    fluid,
+    responsive,
     className,
     ...rest
 }: ImageProps): ReactElement => {
-    const [loaded, setLoaded] = useState(false);
-    const onLoad = (): void => setLoaded(true);
-
     const imgClassName = clsx(
         className && className,
         thumbnail && 'img-thumbnail',
-        fluid && 'img-fluid',
+        responsive && 'img-responsive',
+        rounded && 'img-rounded',
     );
-
-    if (!loaded) {
-        return <Fragment>{placeholder ? placeholder : <Placeholder />}</Fragment>;
-    }
 
     return (
         <img
             alt={alt}
             src={source}
-            loading="lazy"
-            onLoad={onLoad}
             className={imgClassName}
             {...rest}
         />

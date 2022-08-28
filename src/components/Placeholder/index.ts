@@ -4,3 +4,4 @@
  */
 
 export * from './Placeholder';
+export * from './PlaceholderAnimation';
