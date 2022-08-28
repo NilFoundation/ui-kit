@@ -14,7 +14,13 @@ import { uniqueId } from '../../helpers';
  * Props.
  */
 type NotificationProviderProps = {
+    /**
+     * Components children.
+     */
     children: ReactNode;
+    /**
+     * Maximum count of notifications on screen.
+     */
     maxNotificationsToShow?: number;
 };
 
@@ -27,7 +33,7 @@ type NotificationActions = {
 } | null;
 
 /**
- * Export notification actions object outside component to better performance.
+ * Export notification actions object outside component to prevent update on every render.
  */
 export let notificationActions: NotificationActions = null;
 
