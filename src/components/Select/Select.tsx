@@ -11,7 +11,6 @@ import { Input } from '../Input';
 import { Menu } from '../Menu';
 import { SelectOption, SelectOptionProps } from './SelectOption';
 import { SelectOptionModel } from './SelectOptionModel';
-import { uniqueId } from '../../helpers';
 import { SelectContext } from './SelectContext';
 import { Icon } from '../Icon';
 
@@ -75,8 +74,6 @@ export const Select = <T,>({
     clearable,
 }: SelectProps<T>): ReactElement => {
     const ref = useRef<HTMLInputElement>(null);
-    const refId = useRef(uniqueId('select-'));
-    const selectId = id ?? refId.current;
     const selectClassName = clsx('select', className && className);
 
     const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -117,7 +114,7 @@ export const Select = <T,>({
                     <Input
                         readOnly
                         ref={ref}
-                        id={selectId}
+                        id={id}
                         value={selected?.title ?? ''}
                         disabled={disabled}
                         placeholder={placeholder}
