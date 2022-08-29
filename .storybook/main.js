@@ -8,6 +8,7 @@ module.exports = {
     "@storybook/addon-interactions"
   ],
   "framework": "@storybook/react",
-  "titlePrefix": "react-components",
-  "features": { postcss: false }
+  "core": {
+    "builder": "@storybook/builder-webpack5"
+  }
 }
