@@ -3,29 +3,30 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
+import { KeyboardEvent as ElementKeyboardEvent } from 'react';
 import { KeyboardEventKey } from '../enums';
 
 /**
- * Returns callback with key pressed checking. Set allowedKeys empty to execute on every key press.
+ * Returns callback with key pressed checking.
+ * If allowedKeys are empty, no callback execution will happen.
  *
  * @param callback - Callback.
  * @param allowedKeys - Array of allowed keys.
  * @param [preventDefault = true] - Prevent default browser events.
  * @returns - Key event listener.
  */
-export const useKeyPress = (
+export const useKeyPress = <T extends KeyboardEvent | ElementKeyboardEvent>(
     callback: () => void,
     allowedKeys: KeyboardEventKey[],
     preventDefault = true,
-): [onKeyPress: (e: KeyboardEvent) => void] => {
-    const onKeyPress = (e: KeyboardEvent) => {
+): [onKeyPress: (e: T) => void] => {
+    const onKeyPress = (e: T) => {
         if (preventDefault) {
             e.preventDefault();
             e.stopPropagation();
         }
 
         if (allowedKeys.length === 0) {
-            callback();
             return;
         }
 

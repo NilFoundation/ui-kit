@@ -6,7 +6,7 @@
 import React, { ReactElement, ReactNode, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import { Variant, KeyboardEventKey } from '../../enums';
-import { useKeyPress } from '../../hooks';
+import { useEventListener, useKeyPress } from '../../hooks';
 import { Icon } from '../Icon';
 import './Toast-BS-5.scss';
 
@@ -64,10 +64,10 @@ export const Toast = ({
         close && close();
     }, [KeyboardEventKey.escape]);
 
+    useEventListener({ eventType: 'keydown', ref, callback: onKeyPress });
+
     return (
-        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
         <div
-            onKeyPress={onKeyPress}
             className={toastClassName}
             role={role}
             aria-live={ariaLive}

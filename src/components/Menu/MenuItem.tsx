@@ -58,7 +58,7 @@ export const MenuItem = ({
         onSelect && !disabled && onSelect();
     };
 
-    const [onSelectWithKey] = useKeyPress(onSelectHandler, [
+    const [onSelectWithKey] = useKeyPress<KeyboardEvent<HTMLLIElement>>(onSelectHandler, [
         KeyboardEventKey.enter,
         KeyboardEventKey.space,
     ]);
