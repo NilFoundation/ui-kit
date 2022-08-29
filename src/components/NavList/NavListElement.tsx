@@ -13,11 +13,30 @@ import { KeyboardEventKey } from '../../enums';
  * Props.
  */
 type NavListElementProps = {
+    /**
+     * Component children.
+     */
     children: ReactNode;
+    /**
+     * Applies active state.
+     */
     active?: boolean;
+    /**
+     * Applies disabled state.
+     */
     disabled?: boolean;
-    onSelect?: () => void;
+    /**
+     * Action to fire on click.
+     */
+    onClick?: () => void;
+    /**
+     * Provide className to customize appearance.
+     */
     className?: string;
+    /**
+     * Adds anchor behaviour.
+     */
+    href?: string;
 };
 
 /**
@@ -28,20 +47,23 @@ type NavListElementProps = {
  */
 export const NavListElement = ({
     children,
-    onSelect,
+    onClick,
     active,
     disabled,
     className,
+    href,
 }: NavListElementProps): ReactElement => {
     const { onToggle } = useContext(NavListContext);
 
     const handleSelectElement = (): void => {
-        onSelect && onSelect();
+        onClick && onClick();
         onToggle && onToggle();
     };
 
     const onClickHandler = (): void => handleSelectElement();
-    const [onEnterKeyPress] = useKeyPress(handleSelectElement, [KeyboardEventKey.enter]);
+    const [onEnterKeyPress] = useKeyPress(handleSelectElement, [KeyboardEventKey.enter], {
+        preventDefault: false,
+    });
 
     const elementClassName = clsx(
         active && 'active',
@@ -56,7 +78,7 @@ export const NavListElement = ({
             onKeyPress={onEnterKeyPress}
             role="presentation"
         >
-            <a href="#">{children}</a>
+            <a href={href}>{children}</a>
         </li>
     );
 };
