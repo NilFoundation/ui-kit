@@ -52,6 +52,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Build storybook
+        run: npm run build-storybook
+
         # Store build results if pre-release
       - name: Pack build results
         if: ${{ inputs.package_version }}
