@@ -4,7 +4,8 @@ export default create({
   // colors
   base: 'dark',
   colorPrimary: '#222222',
-  colorSecondary: '#3C3C3C',
+  colorSecondary: '#776475',
+  appContentBg: '#3C3C3C',
   // brand
   brandTitle: '=nil; Foundation',
   brandUrl: 'https://nil.foundation',
@@ -12,5 +13,5 @@ export default create({
   textColor: '#F5F2F1',
   appBorderRadius: 4,
   // bar
-  barSelectedColor: '#CAC0C9'
+  barSelectedColor: '#CAC0C9',
 });
