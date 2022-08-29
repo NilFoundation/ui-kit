@@ -4,15 +4,35 @@
  */
 
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, Story } from '@storybook/react';
 import { Button } from './Button';
-import { Variant } from '../../enums';
+import { Size, Variant } from '../../enums';
 
 export default {
     component: Button,
+    argTypes: {
+        text: {
+            type: 'string',
+        },
+        children: {
+            table: {
+                disable: true,
+            },
+        },
+        disabled: {
+            type: 'boolean',
+        },
+        size: {
+            control: 'select',
+        },
+    },
 } as ComponentMeta<typeof Button>;
 
-export const DefaultButton: ComponentStory<typeof Button> = () => <Button>Button</Button>;
-export const PrimaryButton: ComponentStory<typeof Button> = () => (
-    <Button variant={Variant.primary}>Button</Button>
-);
+const Template: Story = args => <Button {...args}>{args.text}</Button>;
+
+export const DefaultButton = Template.bind({});
+DefaultButton.args = {
+    text: 'Button',
+    size: Size.md,
+    variant: Variant.default,
+};

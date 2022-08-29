@@ -24,10 +24,6 @@ export type ButtonProps = {
      */
     size?: Size;
     /**
-     * Applies outline styles.
-     */
-    outline?: boolean;
-    /**
      * Makes button to span the entire width of the parent element.
      */
     block?: boolean;
@@ -47,7 +43,6 @@ export const Button = ({
     className,
     variant = Variant.default,
     size = Size.md,
-    outline,
     disabled,
     children,
     block,
@@ -57,7 +52,6 @@ export const Button = ({
     const buttonClassName = clsx(
         'btn',
         `btn-${variant}`,
-        outline && 'btn-outline',
         className && className,
         size !== Size.md && `btn-${size}`,
         block && 'btn-block',
