@@ -4,9 +4,6 @@ on:
   # Triggers the workflow on push to master branch
   push:
     branches: [ master ]
-    # Runs only when package.json file changes
-    paths:
-      - "package.json"
 
 jobs:
   check_version_changed:
@@ -24,7 +21,11 @@ jobs:
         id: check_version
         run: |
           NEW_PACKAGE_VERSION=$(node -pe 'require("./package.json").version')
-          git checkout ${{ github.event.before }}
+
+          latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+
+          git checkout $latestTag
+
           OLD_PACKAGE_VERSION=$(node -pe 'require("./package.json").version')
 
           if [ $NEW_PACKAGE_VERSION != $OLD_PACKAGE_VERSION ]; then
