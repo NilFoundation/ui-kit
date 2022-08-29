@@ -49,11 +49,11 @@ jobs:
       - name: Test
         run: npm run test
 
-      - name: Build
-        run: npm run build
-
       - name: Build storybook
         run: npm run build-storybook
+
+      - name: Build
+        run: npm run build
 
         # Store build results if pre-release
       - name: Pack build results
