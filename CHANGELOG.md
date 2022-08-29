@@ -1,15 +1,30 @@
 # Changelog
 
+## [[0.0.3](https://github.com/NilFoundation/react-components/compare/v0.0.2...v0.0.3)] - 2022-08-29
+### Features
+- Storybook added
+- Jest added
+- LazyImage added
+
+### Refactor
+- Select
+- Dropdown menu
+- useKeyPress generic
+- useEventListener typings
+
+### Fixes
+- Select clear icon display
+
 ## [0.0.2] - 2022-08-25
-### Added
+### Features
 - Dropdown menu item component
 - Export SelectOption alongside with Select to use like HOC
 - Linter and formatter
 - Precommit hook
 
-### Changed
+### Refactor
 - Add footer to Layout component as props
 - Delete Navbar.Brand component
 
-### Fixed
+### Fixes
 - onClickOutside hook
