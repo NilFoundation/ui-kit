@@ -16,7 +16,7 @@ export type ButtonProps = {
      */
     children?: ReactNode;
     /**
-     * Button color sheme.
+     * Button color scheme.
      */
     variant?: Variant;
     /**
