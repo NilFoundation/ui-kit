@@ -6,7 +6,6 @@
 import React, { HTMLAttributes, ReactElement } from 'react';
 import clsx from 'clsx';
 import { Size } from '../../enums';
-import './Icon.scss';
 
 /**
  * Props.
