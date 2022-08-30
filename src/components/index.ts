@@ -27,3 +27,5 @@ export * from './TextArea';
 export * from './FormChecks';
 export * from './Grid';
 export * from './Layout';
+export * from './Badge';
+export * from './Spinner';
