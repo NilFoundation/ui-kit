@@ -9,13 +9,27 @@ import { Variant } from '../../enums';
 import { Icon } from '../Icon';
 import { AlertLink } from './AlertLink';
 
+type AlertVariant = Variant.danger | Variant.info | Variant.success | Variant.warning;
+
 /**
  * Props.
  */
 export type AlertProps = {
+    /**
+     * Component children.
+     */
     children: ReactNode;
-    variant?: Variant;
+    /**
+     * Color scheme.
+     */
+    variant?: AlertVariant;
+    /**
+     * Provide className to customize appearance.
+     */
     className?: string;
+    /**
+     * Callback to fire on alert close. Adds close icon when provided.
+     */
     onClose?: () => void;
 };
 
@@ -27,14 +41,18 @@ export type AlertProps = {
  */
 export const Alert = ({
     className,
-    variant = Variant.default,
+    variant = Variant.info,
     children,
     onClose,
 }: AlertProps): ReactElement => {
     const alertClassName = clsx('alert', `alert-${variant}`, className && className);
+    const role = variant === Variant.danger ? 'alert' : 'status';
 
     return (
-        <div className={alertClassName}>
+        <div
+            className={alertClassName}
+            role={role}
+        >
             {children && children}
             {onClose && (
                 <Icon
