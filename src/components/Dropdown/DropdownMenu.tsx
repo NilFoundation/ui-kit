@@ -10,18 +10,24 @@ import { Menu } from '../Menu';
 /**
  * Props.
  */
-export type DropdownProps = {
+export type DropdownMenuProps = {
+    /**
+     * Component children.
+     */
     children: ReactNode;
+    /**
+     * Provide className to customize appearance.
+     */
     className?: string;
 };
 
 /**
  * Dropdown menu component.
  *
- * @param {DropdownProps} props - Props.
+ * @param {DropdownMenuProps} props - Props.
  * @returns React component.
  */
-export const DropdownMenu = ({ children, className }: DropdownProps): ReactElement => {
+export const DropdownMenu = ({ children, className }: DropdownMenuProps): ReactElement => {
     const { dropdownId, visible, onDropdownToggle } = useContext(DropdownContext);
 
     return (
