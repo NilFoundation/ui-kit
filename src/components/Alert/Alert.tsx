@@ -6,7 +6,7 @@
 import React, { ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { Variant } from '../../enums';
-import { Button } from '../Button';
+import { CloseButton } from '../Button';
 import { AlertLink } from './AlertLink';
 
 type AlertVariant = Variant.danger | Variant.info | Variant.success | Variant.warning;
@@ -54,15 +54,7 @@ export const Alert = ({
             role={role}
         >
             {children && children}
-            {onClose && (
-                <Button
-                    className="close"
-                    aria-label="Close"
-                    onClick={onClose}
-                >
-                    <span aria-hidden="true">&times;</span>
-                </Button>
-            )}
+            {onClose && <CloseButton onClick={onClose} />}
         </div>
     );
 };

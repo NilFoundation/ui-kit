@@ -7,7 +7,7 @@ import React, { ReactElement, ReactNode, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import { Variant, KeyboardEventKey } from '../../enums';
 import { useEventListener, useKeyPress } from '../../hooks';
-import { Icon } from '../Icon';
+import { CloseButton } from '../Button';
 import './Toast-BS-5.scss';
 
 /**
@@ -76,7 +76,7 @@ export const Toast = ({
         >
             <div className="toast-header">
                 <strong>{title}</strong>
-                {close && <Icon iconName="close" />}
+                {close && <CloseButton onClick={close} />}
             </div>
             <div className="toast-body">{children}</div>
         </div>
