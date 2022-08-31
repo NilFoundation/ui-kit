@@ -29,3 +29,4 @@ export * from './Grid';
 export * from './Layout';
 export * from './Label';
 export * from './Spinner';
+export * from './Menu';
