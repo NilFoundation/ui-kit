@@ -10,7 +10,13 @@ import { BreadcrumbsItem } from './BreadcrumbsItem';
  * Props.
  */
 export type BreadcrumbsProps = {
+    /**
+     * Component children.
+     */
     children: ReactNode;
+    /**
+     * Provide className to customize appearance.
+     */
     className?: string;
 };
 

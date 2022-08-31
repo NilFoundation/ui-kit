@@ -11,9 +11,21 @@ import { Link } from '../Link';
  * Props.
  */
 export type BreadcrumbsItemProps = {
-    active: boolean;
+    /**
+     * Text to display.
+     */
     text: string;
+    /**
+     * Applies active state.
+     */
+    active?: boolean;
+    /**
+     * Provide className to customize appearance.
+     */
     className?: string;
+    /**
+     * Adds href attribute. Defaults to #.
+     */
     href?: string;
 };
 
@@ -34,9 +46,9 @@ export const BreadcrumbsItem = ({
     return (
         <li
             className={itemClassName}
-            aria-current={active && 'page'}
+            aria-current={active}
         >
-            <Link href={href ?? '#'}>{text}</Link>
+            {active ? text : <Link href={href ?? '#'}>{text}</Link>}
         </li>
     );
 };
