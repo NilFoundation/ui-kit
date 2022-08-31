@@ -1,7 +1,8 @@
 .btn {
   &:focus,
   &:active:focus,
-  &:focus-visible {
+  &:focus-visible,
+  &.active:focus {
     outline: 0;
   }
 }
@@ -13,7 +14,8 @@
 
   &:hover,
   &:focus,
-  &:active:focus {
+  &:active:focus,
+  &.active:focus {
     &:disabled {
       background: 0 0;
 
