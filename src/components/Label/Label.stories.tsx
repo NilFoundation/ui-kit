@@ -10,6 +10,7 @@ import { Variant } from '../../enums';
 
 export default {
     component: Label,
+    title: 'components/Label',
     argTypes: {
         text: {
             type: 'string',

@@ -10,6 +10,7 @@ import { Size, Variant } from '../../enums';
 
 export default {
     component: Button,
+    title: 'components/Button',
     argTypes: {
         text: {
             type: 'string',
