@@ -6,6 +6,7 @@
 import React, { ButtonHTMLAttributes, DetailedHTMLProps, ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { Size, Variant } from '../../enums';
+import './Button.scss';
 
 /**
  * Props.
@@ -31,6 +32,14 @@ export type ButtonProps = {
      * Applies active state to button.
      */
     active?: boolean;
+    /**
+     * Removes button background.
+     */
+    outlined?: boolean;
+    /**
+     * Gives button shape of a circle.
+     */
+    rounded?: boolean;
 } & Omit<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, 'type'>;
 
 /**
@@ -48,6 +57,8 @@ export const Button = ({
     block,
     onClick,
     active,
+    outlined,
+    rounded,
 }: ButtonProps): ReactElement => {
     const buttonClassName = clsx(
         'btn',
@@ -56,6 +67,8 @@ export const Button = ({
         size !== Size.md && `btn-${size}`,
         block && 'btn-block',
         active && 'active',
+        outlined && 'btn-outline',
+        rounded && 'btn-rounded',
     );
 
     return (
