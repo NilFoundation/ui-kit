@@ -9,6 +9,7 @@ import { useClickOutsideCallback, useEventListener, useKeyPress } from '../../ho
 import { MenuGroup } from './MenuGroup';
 import { MenuItem } from './MenuItem';
 import { KeyboardEventKey } from '../../enums';
+import './Menu.scss';
 
 /**
  * Props.
