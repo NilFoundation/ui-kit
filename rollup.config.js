@@ -33,7 +33,8 @@ export default [
             }),
             typescript({
                 tsconfig: "./tsconfig.json",
-                exclude: ["**/__tests__", "**/*.test.tsx", "**/*.stories.**"]
+                exclude: ["**/__tests__", "**/*.test.tsx", "**/*.stories.**"],
+                noEmitOnError: true,
             }),
             terser(),
         ],
