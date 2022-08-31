@@ -6,6 +6,7 @@
 import React, { ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { Variant } from '../../enums';
+import { Link } from '../Link';
 import './Label.scss';
 
 /**
@@ -32,6 +33,10 @@ export type LabelProps = {
      * Makes label to span the entire width of the parent element.
      */
     block?: boolean;
+    /**
+     * Wraps label into a link with provided herf.
+     */
+    href?: string;
 };
 
 /**
@@ -46,6 +51,7 @@ export const Label = ({
     children,
     rounded,
     block,
+    href,
 }: LabelProps): ReactElement => {
     const labelClassName = clsx(
         className && className,
@@ -55,5 +61,7 @@ export const Label = ({
         block && 'label-block',
     );
 
-    return <span className={labelClassName}>{children && children}</span>;
+    const renderLabel = () => <span className={labelClassName}>{children && children}</span>;
+
+    return href ? <Link href={href}>{renderLabel()}</Link> : renderLabel();
 };
