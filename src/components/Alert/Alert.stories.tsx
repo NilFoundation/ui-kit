@@ -10,6 +10,7 @@ import { Variant } from '../../enums';
 
 export default {
     component: Alert,
+    title: 'components/Alert',
     argTypes: {
         text: {
             type: 'string',
