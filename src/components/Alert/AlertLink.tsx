@@ -17,6 +17,11 @@ export type AlertLinkProps = LinkProps;
  * @param {AlertLinkProps} props - Props.
  * @returns React component.
  */
-export const AlertLink = ({ children }: AlertLinkProps): ReactElement => (
-    <Link className="alert-link">{children}</Link>
+export const AlertLink = ({ children, className, ...rest }: AlertLinkProps): ReactElement => (
+    <Link
+        className={`alert-link ${className ? className : ''}`}
+        {...rest}
+    >
+        {children}
+    </Link>
 );
