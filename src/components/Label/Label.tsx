@@ -6,12 +6,12 @@
 import React, { ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { Variant } from '../../enums';
-import './Badge.scss';
+import './Label.scss';
 
 /**
  * Props.
  */
-export type BadgeProps = {
+export type LabelProps = {
     /**
      * Component children.
      */
@@ -28,26 +28,32 @@ export type BadgeProps = {
      * Increases border radius.
      */
     rounded?: boolean;
+    /**
+     * Makes label to span the entire width of the parent element.
+     */
+    block?: boolean;
 };
 
 /**
- * Badge component.
+ * Label component.
  *
- * @param {BadgeProps} props - Props.
+ * @param {LabelProps} props - Props.
  * @returns React component.
  */
-export const Badge = ({
+export const Label = ({
     className,
     variant = Variant.default,
     children,
     rounded,
-}: BadgeProps): ReactElement => {
-    const badgeClassName = clsx(
+    block,
+}: LabelProps): ReactElement => {
+    const labelClassName = clsx(
         className && className,
         'label',
         `label-${variant}`,
-        rounded && 'rounded',
+        rounded && 'label-rounded',
+        block && 'label-block',
     );
 
-    return <span className={badgeClassName}>{children && children}</span>;
+    return <span className={labelClassName}>{children && children}</span>;
 };
