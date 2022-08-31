@@ -20,15 +20,9 @@ export type LinkProps = {
  * @param {LinkProps} props - Props.
  * @returns React component.
  */
-export const Link = ({
-    className,
-    target = '_blank',
-    children,
-    ...rest
-}: LinkProps): ReactElement => (
+export const Link = ({ className, children, ...rest }: LinkProps): ReactElement => (
     <a
         className={`link ${className ? className : ''}`}
-        target={target}
         rel="noreferrer"
         {...rest}
     >
