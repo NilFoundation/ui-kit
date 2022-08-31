@@ -6,7 +6,7 @@
 import React, { ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { Variant } from '../../enums';
-import { Icon } from '../Icon';
+import { Button } from '../Button';
 import { AlertLink } from './AlertLink';
 
 type AlertVariant = Variant.danger | Variant.info | Variant.success | Variant.warning;
@@ -55,10 +55,13 @@ export const Alert = ({
         >
             {children && children}
             {onClose && (
-                <Icon
+                <Button
+                    className="close"
+                    aria-label="Close"
                     onClick={onClose}
-                    iconName="close"
-                />
+                >
+                    <span aria-hidden="true">&times;</span>
+                </Button>
             )}
         </div>
     );
