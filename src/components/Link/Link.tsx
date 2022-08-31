@@ -4,6 +4,7 @@
  */
 
 import React, { AnchorHTMLAttributes, ReactElement, ReactNode } from 'react';
+import './Link.scss';
 
 /**
  * Props.
