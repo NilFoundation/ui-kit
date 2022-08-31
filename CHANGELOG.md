@@ -1,5 +1,14 @@
 # Changelog
 
+## [[0.0.5](https://github.com/NilFoundation/react-components/compare/v0.0.4...v0.0.5)] - 2022-08-31
+### Features
+- Add CloseButton component
+- Breadcrumbs, Dropdown, Alert stories
+
+### Refactor
+- Rename Badge to Label
+- Remove Icon size prop
+
 ## [[0.0.4](https://github.com/NilFoundation/react-components/compare/v0.0.3...v0.0.4)] - 2022-08-30
 ### Features
 - Badge component added
