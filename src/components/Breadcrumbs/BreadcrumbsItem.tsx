@@ -14,7 +14,7 @@ export type BreadcrumbsItemProps = {
     /**
      * Text to display.
      */
-    text: string;
+    children: string;
     /**
      * Applies active state.
      */
@@ -38,7 +38,7 @@ export type BreadcrumbsItemProps = {
 export const BreadcrumbsItem = ({
     active,
     className,
-    text,
+    children,
     href,
 }: BreadcrumbsItemProps): ReactElement => {
     const itemClassName = clsx('breadcrumb-item', className && className, active && 'active');
@@ -48,7 +48,7 @@ export const BreadcrumbsItem = ({
             className={itemClassName}
             aria-current={active}
         >
-            {active ? text : <Link href={href ?? '#'}>{text}</Link>}
+            {active ? children : <Link href={href ?? '#'}>{children}</Link>}
         </li>
     );
 };
