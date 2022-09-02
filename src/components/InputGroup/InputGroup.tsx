@@ -8,13 +8,14 @@ import clsx from 'clsx';
 import { Size } from '../../enums';
 import { InputGroupIcon } from './InputGroupIcon';
 import { InputGroupButton } from './InputGroupButton';
+import { InputSize } from '../../models';
 
 /**
  * Props.
  */
 export interface InputGroupProps {
     children: ReactNode;
-    size?: Size;
+    size?: InputSize;
     className?: string;
 }
 

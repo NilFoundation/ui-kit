@@ -5,6 +5,7 @@
 
 import React, { ReactElement, useRef, useState } from 'react';
 import clsx from 'clsx';
+import { InputSize } from '../../models';
 import { Size } from '../../enums';
 import { InputGroup } from '../InputGroup';
 import { Input } from '../Input';
@@ -29,7 +30,7 @@ export interface SelectProps<T> {
     /**
      * Component size.
      */
-    size?: Size;
+    size?: InputSize;
     /**
      * Provide className to customize appearance.
      */

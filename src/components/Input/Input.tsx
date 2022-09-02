@@ -7,12 +7,13 @@ import React, { forwardRef, InputHTMLAttributes } from 'react';
 import clsx from 'clsx';
 import { Size } from '../../enums';
 import './Input.scss';
+import { InputSize } from '../../models';
 
 /**
  * Props.
  */
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-    size?: Size;
+    size?: InputSize;
 }
 
 /**
