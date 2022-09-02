@@ -5,11 +5,11 @@
 
 import React, { useState } from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
-import { Alert } from './Alert';
-import { Variant } from '../../enums';
+import { Alert as AlertComponent } from '../Alert';
+import { Variant } from '../../../enums';
 
 export default {
-    component: Alert,
+    component: AlertComponent,
     title: 'components/Alert',
     argTypes: {
         text: {
@@ -39,15 +39,16 @@ export default {
         variant: Variant.info,
         onClose: undefined,
     },
-} as ComponentMeta<typeof Alert>;
+} as ComponentMeta<typeof AlertComponent>;
 
 const Template: Story = args => (
-    <Alert {...args}>
-        {args.text} {args.link && <Alert.Link href={args.link}>{args.link}</Alert.Link>}
-    </Alert>
+    <AlertComponent {...args}>
+        {args.text}{' '}
+        {args.link && <AlertComponent.Link href={args.link}>{args.link}</AlertComponent.Link>}
+    </AlertComponent>
 );
 
-export const DefaultAlert = Template.bind({});
+export const Alert = Template.bind({});
 
 export const AlertWithLink = Template.bind({});
 AlertWithLink.args = {
@@ -58,12 +59,12 @@ export const ClosableAlert: Story = args => {
     const [visible, setVisible] = useState(true);
 
     return visible ? (
-        <Alert
+        <AlertComponent
             {...args}
             onClose={() => setVisible(false)}
         >
             {args.text}
-        </Alert>
+        </AlertComponent>
     ) : (
         <></>
     );

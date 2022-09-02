@@ -5,11 +5,11 @@
 
 import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
-import { Button } from './Button';
-import { Size, Variant } from '../../enums';
+import { Button as ButtonComponent } from '../Button';
+import { Size, Variant } from '../../../enums';
 
 export default {
-    component: Button,
+    component: ButtonComponent,
     title: 'components/Button',
     argTypes: {
         text: {
@@ -27,12 +27,10 @@ export default {
             control: 'select',
         },
     },
-} as ComponentMeta<typeof Button>;
+} as ComponentMeta<typeof ButtonComponent>;
 
-const Template: Story = args => <Button {...args}>{args.text}</Button>;
-
-export const DefaultButton = Template.bind({});
-DefaultButton.args = {
+export const Button: Story = args => <ButtonComponent {...args}>{args.text}</ButtonComponent>;
+Button.args = {
     text: 'Button',
     size: Size.md,
     variant: Variant.default,
