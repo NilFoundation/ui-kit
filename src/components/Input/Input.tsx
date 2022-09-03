@@ -6,8 +6,8 @@
 import React, { forwardRef, InputHTMLAttributes } from 'react';
 import clsx from 'clsx';
 import { Size } from '../../enums';
-import './Input.scss';
 import { InputSize } from '../../models';
+import './Input.scss';
 
 /**
  * Props.
@@ -24,7 +24,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     ref,
 ) {
     const inputClassName = clsx(
-        'input',
         'form-control',
         className && className,
         disabled && 'input-disabled',
