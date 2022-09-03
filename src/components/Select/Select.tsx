@@ -133,6 +133,7 @@ export const Select = <T,>({
                             <Button
                                 onClick={clearSelect}
                                 disabled={disabled}
+                                aria-label="Clear selected value"
                             >
                                 <Icon iconName={clearIcon} />
                             </Button>
@@ -142,6 +143,7 @@ export const Select = <T,>({
                             disabled={disabled}
                             aria-haspopup={true}
                             aria-expanded={dropdownVisible}
+                            aria-label="Toggle select menu"
                         >
                             <Icon iconName={iconName} />
                         </Button>
