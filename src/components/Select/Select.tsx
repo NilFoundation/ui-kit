@@ -14,13 +14,15 @@ import { SelectOption, SelectOptionProps } from './SelectOption';
 import { SelectOptionModel } from './SelectOptionModel';
 import { SelectContext } from './SelectContext';
 import { Icon } from '../Icon';
+import { Button } from '../Button';
+import './Select.scss';
 
 /**
  * Props.
  */
 export interface SelectProps<T> {
     /**
-     * Component children. Expected to contain {@link ../SelectOption}
+     * Component children.
      */
     children: ReactElement<SelectOptionProps<T>>[] | ReactElement<SelectOptionProps<T>>;
     /**
@@ -55,6 +57,10 @@ export interface SelectProps<T> {
      * Allows to clear selected value and adds clear icon.
      */
     clearable?: boolean;
+    /**
+     * Clear icon name.
+     */
+    clearIcon?: string;
 }
 
 /**
@@ -73,13 +79,14 @@ export const Select = <T,>({
     disabled,
     id,
     clearable,
+    clearIcon = 'glyphicon glyphicon-remove',
 }: SelectProps<T>): ReactElement => {
     const ref = useRef<HTMLInputElement>(null);
     const selectClassName = clsx('select', className && className);
 
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [selected, setSelected] = useState<SelectOptionModel<T>>();
-    const iconName = `angle-${dropdownVisible ? 'up' : 'down'}`;
+    const iconName = `glyphicon glyphicon-triangle-${dropdownVisible ? 'top' : 'bottom'}`;
 
     const clearSelect = (): void => {
         if (!ref.current) {
@@ -119,26 +126,32 @@ export const Select = <T,>({
                         value={selected?.title ?? ''}
                         disabled={disabled}
                         placeholder={placeholder}
-                    />
-                    {clearable && !!selected && (
-                        <InputGroup.Icon
-                            iconName="times"
-                            onClick={clearSelect}
-                        />
-                    )}
-                    <InputGroup.Button
                         onClick={(): void => setDropdownVisible(!dropdownVisible)}
-                        disabled={disabled}
-                        aria-haspopup={true}
-                        aria-expanded={dropdownVisible}
-                    >
-                        <Icon iconName={iconName} />
-                    </InputGroup.Button>
+                    />
+                    <InputGroup.Buttons>
+                        {clearable && !!selected && (
+                            <Button
+                                onClick={clearSelect}
+                                disabled={disabled}
+                            >
+                                <Icon iconName={clearIcon} />
+                            </Button>
+                        )}
+                        <Button
+                            onClick={(): void => setDropdownVisible(!dropdownVisible)}
+                            disabled={disabled}
+                            aria-haspopup={true}
+                            aria-expanded={dropdownVisible}
+                        >
+                            <Icon iconName={iconName} />
+                        </Button>
+                    </InputGroup.Buttons>
                 </InputGroup>
                 <Menu
                     visible={dropdownVisible}
                     onCloseMenu={(): void => setDropdownVisible(false)}
                     role="listbox"
+                    className="selectMenu"
                 >
                     {!children && noItemsMessage}
                     {children}
