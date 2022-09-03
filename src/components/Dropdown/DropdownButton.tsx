@@ -31,15 +31,14 @@ export type DropdownButtonProps = {
 export const DropdownButton = ({
     children,
     className,
-    iconNameDropdownOpend = 'caret-up',
-    iconNameDropdownClosed = 'caret-down',
+    iconNameDropdownOpend = 'glyphicon glyphicon-triangle-top',
+    iconNameDropdownClosed = 'glyphicon glyphicon-triangle-bottom',
 }: DropdownButtonProps): ReactElement => {
-    const { dropdownId, visible, onDropdownToggle } = useContext(DropdownContext);
+    const { visible, onDropdownToggle } = useContext(DropdownContext);
     const iconName = visible ? iconNameDropdownOpend : iconNameDropdownClosed;
 
     return (
         <Button
-            id={dropdownId}
             active={visible}
             className={`dropdown-toggle ${className ? className : ''}`}
             onClick={(): void => onDropdownToggle(!visible)}
@@ -47,7 +46,11 @@ export const DropdownButton = ({
             aria-expanded={visible}
         >
             {children}
-            <Icon iconName={iconName} />
+            {'  '}
+            <Icon
+                iconName={iconName}
+                srOnlyText="Toggle dropdown menu"
+            />
         </Button>
     );
 };

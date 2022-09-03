@@ -21,6 +21,11 @@ export default {
                 disable: true,
             },
         },
+        'aria-labeledby': {
+            table: {
+                disable: true,
+            },
+        },
     },
 } as ComponentMeta<typeof DropdownComponent>;
 

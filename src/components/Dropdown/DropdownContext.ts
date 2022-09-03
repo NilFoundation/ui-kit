@@ -9,7 +9,6 @@ import { createContext } from 'react';
  * Context type.
  */
 type DropdownContextModel = {
-    dropdownId: string;
     visible: boolean;
     onDropdownToggle: (isVisible: boolean) => void;
 };

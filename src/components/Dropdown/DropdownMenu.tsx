@@ -16,6 +16,10 @@ export type DropdownMenuProps = {
      */
     children: ReactNode;
     /**
+     * Provide aria-labelledby to improve accessibility.
+     */
+    'aria-labelledby'?: string;
+    /**
      * Provide className to customize appearance.
      */
     className?: string;
@@ -27,14 +31,18 @@ export type DropdownMenuProps = {
  * @param {DropdownMenuProps} props - Props.
  * @returns React component.
  */
-export const DropdownMenu = ({ children, className }: DropdownMenuProps): ReactElement => {
-    const { dropdownId, visible, onDropdownToggle } = useContext(DropdownContext);
+export const DropdownMenu = ({
+    children,
+    className,
+    'aria-labelledby': ariaLabeledBy,
+}: DropdownMenuProps): ReactElement => {
+    const { visible, onDropdownToggle } = useContext(DropdownContext);
 
     return (
         <Menu
             onCloseMenu={() => onDropdownToggle(false)}
             visible={visible}
-            aria-labelledby={dropdownId}
+            aria-labelledby={ariaLabeledBy}
             className={className}
         >
             {children}

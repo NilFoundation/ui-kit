@@ -38,6 +38,7 @@ export const DropdownItem = ({
     return (
         <MenuItem
             onSelect={dropdownItemSelectHandler}
+            disabled={disabled}
             {...rest}
         >
             {children}
