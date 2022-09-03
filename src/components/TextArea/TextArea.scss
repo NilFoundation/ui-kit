@@ -1,4 +1,10 @@
 textarea.form-control {
+  resize: vertical;
+  
+  &:focus {
+    box-shadow: none;
+  }
+
   &.fixedHeight {
     resize:none;
   }
