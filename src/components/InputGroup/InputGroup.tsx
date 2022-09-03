@@ -6,16 +6,25 @@
 import React, { ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { Size } from '../../enums';
-import { InputGroupIcon } from './InputGroupIcon';
-import { InputGroupButton } from './InputGroupButton';
+import { InputGroupAddon } from './InputGroupAddon';
+import { InputGroupButtons } from './InputGroupButtons';
 import { InputSize } from '../../models';
 
 /**
  * Props.
  */
 export interface InputGroupProps {
+    /**
+     * Component children.
+     */
     children: ReactNode;
+    /**
+     * Component size.
+     */
     size?: InputSize;
+    /**
+     * Provide className to customize appearance.
+     */
     className?: string;
 }
 
@@ -42,5 +51,5 @@ export const InputGroup = ({
 /**
  * Component extensions.
  */
-InputGroup.Icon = InputGroupIcon;
-InputGroup.Button = InputGroupButton;
+InputGroup.Addon = InputGroupAddon;
+InputGroup.Buttons = InputGroupButtons;
