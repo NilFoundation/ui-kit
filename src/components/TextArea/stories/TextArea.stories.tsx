@@ -6,7 +6,6 @@
 import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
 import { TextArea as TextAreaComponent } from '../TextArea';
-import { Size } from '../../../enums';
 
 export default {
     component: TextAreaComponent,

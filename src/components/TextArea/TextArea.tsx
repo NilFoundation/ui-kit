@@ -21,7 +21,7 @@ export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
  * Basic textArea component.
  */
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function TextArea(
-    { className, disabled = false, fixedHeight, ...restProps }: TextAreaProps,
+    { className, disabled, fixedHeight, ...restProps }: TextAreaProps,
     ref,
 ) {
     const inputClassName = clsx(
