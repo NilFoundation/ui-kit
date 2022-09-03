@@ -1,5 +1,20 @@
 # Changelog
 
+## [[0.1.0](https://github.com/NilFoundation/react-components/compare/v0.0.5...v0.1.0)] - 2022-09-04
+### Features
+- Update InputGroup API (InputGroup.Addon, InputGroup.Buttons)
+- Use 'i' element as icon default element
+- Use glyphicons as default icon set
+- Remove Size.xs from allowed form-control sizes
+- Add Select 'clearIcon' prop
+- Remove dropdown internal context id and add aria-labeledby prop to DropdownMenu
+
+### Refactor
+- Toggle select menu on input click
+
+### Fixes
+- Dropdown disabled item appearance
+
 ## [[0.0.5](https://github.com/NilFoundation/react-components/compare/v0.0.4...v0.0.5)] - 2022-08-31
 ### Features
 - Add CloseButton component
