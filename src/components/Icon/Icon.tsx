@@ -25,7 +25,7 @@ export type IconProps = {
     /**
      * Icon html element.
      *
-     * @default span
+     * @default i
      */
     as?: ElementType;
 } & HTMLAttributes<HTMLElement>;
@@ -41,7 +41,7 @@ export const Icon = ({
     className,
     srOnlyText,
     'aria-hidden': ariaHidden = true,
-    as: Component = 'span',
+    as: Component = 'i',
     ...other
 }: IconProps): ReactElement => {
     const iconClassName = clsx(iconName && iconName, className && className);
