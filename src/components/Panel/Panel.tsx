@@ -51,3 +51,4 @@ Panel.Footer = PanelFooter;
 Panel.Content = PanelContent;
 Panel.Image = PanelImage;
 Panel.Header = PanelHeader;
+Panel.Title = PanelTitle;
