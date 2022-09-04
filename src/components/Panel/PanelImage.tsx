@@ -9,7 +9,7 @@ import { Image, ImageProps } from '../Images';
 /**
  * Props.
  */
-export type PanelImageProps = ImageProps;
+export type PanelImageProps = Omit<ImageProps, 'responsive'>;
 
 /**
  * Panel image component.
@@ -17,9 +17,9 @@ export type PanelImageProps = ImageProps;
  * @param {PanelImageProps} props - Props.
  * @returns React component.
  */
-export const PanelImage = ({ className, ...rest }: PanelImageProps): ReactElement => (
+export const PanelImage = ({ ...rest }: PanelImageProps): ReactElement => (
     <Image
+        responsive
         {...rest}
-        className={`panel__image ${className ? className : ''}`}
     />
 );
