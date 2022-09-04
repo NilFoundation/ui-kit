@@ -14,5 +14,5 @@ export const MenuDivider = (): ReactElement => (
     <li
         role="separator"
         className="divider"
-    ></li>
+    />
 );
