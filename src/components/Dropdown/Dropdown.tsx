@@ -8,6 +8,7 @@ import { DropdownButton } from './DropdownButton';
 import { DropdownContext } from './DropdownContext';
 import { DropdownMenu } from './DropdownMenu';
 import { DropdownItem } from './DropdownItem';
+import { MenuDivider } from '../Menu';
 
 /**
  * Props.
@@ -48,3 +49,4 @@ export const Dropdown = ({ children, className }: DropdownProps): ReactElement =
 Dropdown.Menu = DropdownMenu;
 Dropdown.Button = DropdownButton;
 Dropdown.Item = DropdownItem;
+Dropdown.Divider = MenuDivider;

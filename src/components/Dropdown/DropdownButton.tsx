@@ -45,8 +45,7 @@ export const DropdownButton = ({
             aria-haspopup={true}
             aria-expanded={visible}
         >
-            {children}
-            {'  '}
+            {children}{' '}
             <Icon
                 iconName={iconName}
                 srOnlyText="Toggle dropdown menu"

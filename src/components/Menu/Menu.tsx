@@ -6,19 +6,28 @@
 import React, { ReactElement, ReactNode, useRef, HTMLAttributes, AriaRole } from 'react';
 import clsx from 'clsx';
 import { useClickOutsideCallback, useEventListener, useKeyPress } from '../../hooks';
-import { MenuGroup } from './MenuGroup';
+import { MenuHeader } from './MenuHeader';
 import { MenuItem } from './MenuItem';
 import { KeyboardEventKey } from '../../enums';
+import { MenuDivider } from './MenuDivider';
 import './Menu.scss';
 
 /**
  * Props.
  */
 export type MenuProps = {
+    /**
+     * Component children.
+     */
     children: ReactNode;
+    /**
+     * Menu visibility.
+     */
     visible: boolean;
-    onCloseMenu: () => void;
-    role?: AriaRole;
+    /**
+     * Callback on menu close.
+     */
+    onCloseMenu?: () => void;
 } & HTMLAttributes<HTMLUListElement>;
 
 /**
@@ -40,7 +49,7 @@ export const Menu = ({
     const menuClassName = clsx('dropdown-menu', className && className, !visible && 'hidden');
 
     const onCloseHandler = (): void => {
-        visible && onCloseMenu();
+        visible && onCloseMenu && onCloseMenu();
     };
 
     const [onEscapePress] = useKeyPress(onCloseHandler, [KeyboardEventKey.escape]);
@@ -69,5 +78,6 @@ export const Menu = ({
 /**
  * Component extensions.
  */
-Menu.ItemGroup = MenuGroup;
+Menu.Header = MenuHeader;
 Menu.Item = MenuItem;
+Menu.Divider = MenuDivider;
