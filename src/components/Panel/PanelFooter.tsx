@@ -9,7 +9,13 @@ import React, { ReactElement, ReactNode } from 'react';
  * Props.
  */
 export type PanelFooterProps = {
+    /**
+     * Provide className to customize appearance.
+     */
     className?: string;
+    /**
+     * Component children.
+     */
     children: ReactNode;
 };
 

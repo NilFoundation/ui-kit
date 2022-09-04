@@ -4,21 +4,29 @@
  */
 
 import React, { ReactElement, ReactNode } from 'react';
-import { PanelContext } from './PanelContext';
 import { Variant } from '../../enums';
 import { PanelFooter } from './PanelFooter';
 import { PanelContent } from './PanelContent';
 import { PanelImage } from './PanelImage';
 import { PanelHeader } from './PanelHeader';
+import { PanelTitle } from './PanelTitle';
+import './Panel.scss';
 
 /**
  * Props.
  */
 export type PanelProps = {
+    /**
+     * Component children.
+     */
     children: ReactNode;
-    loading?: boolean;
-    disabled?: boolean;
+    /**
+     * Changes panel color scheme.
+     */
     variant?: Variant;
+    /**
+     * Provide className to customize appearance.
+     */
     className?: string;
 };
 
@@ -30,14 +38,10 @@ export type PanelProps = {
  */
 export const Panel = ({
     children,
-    loading = false,
-    disabled = false,
     variant = Variant.default,
     className,
 }: PanelProps): ReactElement => (
-    <article className={`panel panel-${variant} ${className ? className : ''}`}>
-        <PanelContext.Provider value={{ disabled, loading }}>{children}</PanelContext.Provider>
-    </article>
+    <div className={`panel panel-${variant} ${className ? className : ''}`}>{children}</div>
 );
 
 /**
