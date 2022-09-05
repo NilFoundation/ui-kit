@@ -31,8 +31,8 @@ export type DropdownButtonProps = {
 export const DropdownButton = ({
     children,
     className,
-    iconNameDropdownOpend = 'glyphicon glyphicon-triangle-top',
-    iconNameDropdownClosed = 'glyphicon glyphicon-triangle-bottom',
+    iconNameDropdownOpend = 'caret',
+    iconNameDropdownClosed = 'caret',
 }: DropdownButtonProps): ReactElement => {
     const { visible, onDropdownToggle } = useContext(DropdownContext);
     const iconName = visible ? iconNameDropdownOpend : iconNameDropdownClosed;
