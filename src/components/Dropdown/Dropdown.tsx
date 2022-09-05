@@ -4,6 +4,7 @@
  */
 
 import React, { ReactElement, ReactNode, useState } from 'react';
+import clsx from 'clsx';
 import { DropdownButton } from './DropdownButton';
 import { DropdownContext } from './DropdownContext';
 import { DropdownMenu } from './DropdownMenu';
@@ -22,6 +23,10 @@ export type DropdownProps = {
      * Provide className to customize appearance.
      */
     className?: string;
+    /**
+     * Expand dropdown menu upwards.
+     */
+    dropup?: boolean;
 };
 
 /**
@@ -30,12 +35,13 @@ export type DropdownProps = {
  * @param {DropdownProps} props - Props.
  * @returns React component.
  */
-export const Dropdown = ({ children, className }: DropdownProps): ReactElement => {
+export const Dropdown = ({ children, className, dropup }: DropdownProps): ReactElement => {
     const [visible, setVisible] = useState(false);
     const onDropdownToggle = (isVisible: boolean): void => setVisible(isVisible);
+    const dropdownClassName = clsx(className && className, dropup ? 'dropup' : 'dropdown');
 
     return (
-        <div className={`dropdown ${className ? className : ''}`}>
+        <div className={dropdownClassName}>
             <DropdownContext.Provider value={{ visible, onDropdownToggle }}>
                 {children}
             </DropdownContext.Provider>
