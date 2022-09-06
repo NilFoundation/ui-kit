@@ -1,6 +1,6 @@
 # Changelog
 
-## [[0.1.1](https://github.com/NilFoundation/react-components/compare/v0.1.1...v0.1.2)] - 2022-09-06
+## [[0.1.2](https://github.com/NilFoundation/react-components/compare/v0.1.1...v0.1.2)] - 2022-09-06
 ### Refactor
 - Provide className prop to Navbar
 - Set 'vertical' NavList prop to false by default
