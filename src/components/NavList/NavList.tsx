@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, { HTMLAttributes, ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { NavListElement } from './NavListElement';
 import { NavListContext } from './NavListContext';
@@ -12,11 +12,23 @@ import { NavListContext } from './NavListContext';
  * Props.
  */
 export type NavListProps = {
+    /**
+     * Component children.
+     */
     children: ReactNode;
+    /**
+     * Provide className to customize appearance.
+     */
     className?: string;
+    /**
+     * On toggle active navlist element.
+     */
     onToggle?: () => void;
+    /**
+     * Provides vertical styling.
+     */
     vertical?: boolean;
-};
+} & HTMLAttributes<HTMLUListElement>;
 
 /**
  * Panel image component.
@@ -28,7 +40,7 @@ export const NavList = ({
     children,
     className,
     onToggle,
-    vertical = true,
+    vertical = false,
 }: NavListProps): ReactElement => {
     const navListClassName = clsx('nav', className && className, vertical && 'nav-stacked');
 
@@ -37,7 +49,6 @@ export const NavList = ({
             <ul
                 className={navListClassName}
                 role="navigation"
-                aria-label="Dbms navigation"
             >
                 {children}
             </ul>
