@@ -1,5 +1,17 @@
 # Changelog
 
+## [[0.1.1](https://github.com/NilFoundation/react-components/compare/v0.1.0...v0.1.1)] - 2022-09-06
+### Features
+- Embed component added
+- ButtonGroup component added
+- Menu.Divider, Menu.Header added
+- Panel.Title added
+
+### Refactor
+- DropdownButton default icon
+- Remove Panel component context
+- Dropdown dropup prop added
+
 ## [[0.1.0](https://github.com/NilFoundation/react-components/compare/v0.0.5...v0.1.0)] - 2022-09-04
 ### Features
 - Update InputGroup API (InputGroup.Addon, InputGroup.Buttons)
