@@ -1,5 +1,13 @@
 # Changelog
 
+## [[0.1.1](https://github.com/NilFoundation/react-components/compare/v0.1.1...v0.1.2)] - 2022-09-06
+### Refactor
+- Provide className prop to Navbar
+- Set 'vertical' NavList prop to false by default
+
+### Fixes
+- Reexport ButtonGroup and Embed
+
 ## [[0.1.1](https://github.com/NilFoundation/react-components/compare/v0.1.0...v0.1.1)] - 2022-09-06
 ### Features
 - Embed component added
