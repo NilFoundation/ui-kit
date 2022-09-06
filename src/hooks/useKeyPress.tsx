@@ -35,15 +35,15 @@ export const useKeyPress = <T extends KeyboardEvent | ElementKeyboardEvent>(
             return;
         }
 
-        if (preventDefault) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-
         const { key } = e;
 
         if (!allowedKeys.some(k => k === key)) {
             return;
+        }
+
+        if (preventDefault) {
+            e.preventDefault();
+            e.stopPropagation();
         }
 
         callback();
