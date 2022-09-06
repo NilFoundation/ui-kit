@@ -30,3 +30,5 @@ export * from './Layout';
 export * from './Label';
 export * from './Spinner';
 export * from './Menu';
+export * from './ButtonGroup';
+export * from './Embed';
