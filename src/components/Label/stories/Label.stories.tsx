@@ -5,11 +5,11 @@
 
 import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
-import { Label } from './Label';
-import { Variant } from '../../enums';
+import { Label as LabelComponent } from '../Label';
+import { Variant } from '../../../enums';
 
 export default {
-    component: Label,
+    component: LabelComponent,
     title: 'components/Label',
     argTypes: {
         text: {
@@ -26,10 +26,10 @@ export default {
             },
         },
     },
-} as ComponentMeta<typeof Label>;
+} as ComponentMeta<typeof LabelComponent>;
 
-export const DefaultLabel: Story = args => <Label {...args}>{args.text}</Label>;
-DefaultLabel.args = {
+export const Label: Story = args => <LabelComponent {...args}>{args.text}</LabelComponent>;
+Label.args = {
     text: 'Label text',
     variant: Variant.default,
 };
