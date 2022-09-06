@@ -1,5 +1,10 @@
 # Changelog
 
+## [[0.1.3](https://github.com/NilFoundation/react-components/compare/v0.1.2...v0.1.3)] - 2022-09-07
+### Fixes
+- Disabled default keyboard keys action in useKeyPress hook
+- Endless selection on default selected option in Select component
+
 ## [[0.1.2](https://github.com/NilFoundation/react-components/compare/v0.1.1...v0.1.2)] - 2022-09-06
 ### Refactor
 - Provide className prop to Navbar
