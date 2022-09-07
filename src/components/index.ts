@@ -33,3 +33,6 @@ export * from './Menu';
 export * from './ButtonGroup';
 export * from './Embed';
 export * from './Collapse';
+export * from './NotificationProvider';
+export * from './Alert';
+export * from './Toast';
