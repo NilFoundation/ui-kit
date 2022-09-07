@@ -81,6 +81,11 @@
             "pattern": "react",
             "group": "external",
             "position": "before"
+          },
+          {
+            "pattern": "./*.scss",
+            "group": "type",
+            "position": "after"
           }
         ],
         "pathGroupsExcludedImportTypes": ["react"],
