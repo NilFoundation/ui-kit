@@ -16,11 +16,6 @@ export default {
                 disable: true,
             },
         },
-        onSelect: {
-            table: {
-                disable: true,
-            },
-        },
         disabled: {
             control: 'boolean',
         },
