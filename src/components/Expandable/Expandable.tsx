@@ -9,10 +9,25 @@ import React, { ReactElement, ReactNode } from 'react';
  * Props.
  */
 export type ExpandableProps = {
+    /**
+     * Component children.
+     */
     children: ReactNode;
+    /**
+     * Provide className to customize appearance.
+     */
     className?: string;
+    /**
+     * Is content visible.
+     */
     isOpen?: boolean;
+    /**
+     * Destroy children components when close.
+     */
     unmountOnCollapse?: boolean;
+    /**
+     * Component id.
+     */
     id?: string;
 };
 
@@ -29,14 +44,14 @@ export const Expandable = ({
     unmountOnCollapse = true,
     id,
 }: ExpandableProps): ReactElement => (
-    <div className={className}>
+    <>
         {(!unmountOnCollapse || isOpen) && (
             <div
                 id={id}
-                className={`collapse ${!isOpen ? 'hidden' : ''}`}
+                className={`${className} ${!isOpen ? 'collapse' : ''}`}
             >
                 {children}
             </div>
         )}
-    </div>
+    </>
 );
