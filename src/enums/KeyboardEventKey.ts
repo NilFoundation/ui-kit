@@ -11,5 +11,5 @@ export enum KeyboardEventKey {
     enter = 'Enter',
     arrowUp = 'ArrowUp',
     arrowDown = 'ArrowDown',
-    space = 'Space',
+    space = ' ',
 }
