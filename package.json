@@ -28,6 +28,7 @@
   "scripts": {
     "lint": "eslint --ext=ts,tsx src --max-warnings=0",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "prettier": "prettier --write",
     "build": "rollup -c",
     "prepare": "husky install",

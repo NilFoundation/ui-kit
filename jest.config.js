@@ -11,6 +11,10 @@ const config = {
   setupFilesAfterEnv: [
     '@testing-library/jest-dom/extend-expect',
   ],
+  collectCoverageFrom: [
+    "<rootDir>/src/components/**/*.tsx",
+    "!<rootDir>/src/**/stories/*"
+  ],
 };
 
 module.exports = config;
