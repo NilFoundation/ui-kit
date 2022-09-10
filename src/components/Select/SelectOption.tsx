@@ -53,8 +53,9 @@ export const SelectOption = <T,>({
     }, [title, value, onSelectOption]);
 
     useEffect(() => {
-        defaultSelected && !disabled && !selected && handleSelectOption();
-    }, [defaultSelected, disabled, handleSelectOption, selected]);
+        defaultSelected && !disabled && handleSelectOption();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [defaultSelected]);
 
     return (
         <MenuItem
