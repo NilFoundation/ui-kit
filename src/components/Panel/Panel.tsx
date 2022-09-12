@@ -3,7 +3,13 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, {
+    ReactNode,
+    forwardRef,
+    ForwardRefExoticComponent,
+    RefAttributes,
+    HTMLAttributes,
+} from 'react';
 import { Variant } from '../../enums';
 import { PanelFooter } from './PanelFooter';
 import { PanelContent } from './PanelContent';
@@ -24,11 +30,18 @@ export type PanelProps = {
      * Changes panel color scheme.
      */
     variant?: Variant;
-    /**
-     * Provide className to customize appearance.
-     */
-    className?: string;
-};
+} & HTMLAttributes<HTMLDivElement>;
+
+/**
+ * Compounded component type.
+ */
+type CompoundedPanelComponent = {
+    Content: typeof PanelContent;
+    Footer: typeof PanelFooter;
+    Image: typeof PanelImage;
+    Header: typeof PanelHeader;
+    Title: typeof PanelTitle;
+} & ForwardRefExoticComponent<PanelProps & RefAttributes<HTMLDivElement>>;
 
 /**
  * Base panel component.
@@ -36,13 +49,20 @@ export type PanelProps = {
  * @param {PanelProps} props - Props.
  * @returns React component.
  */
-export const Panel = ({
-    children,
-    variant = Variant.default,
-    className,
-}: PanelProps): ReactElement => (
-    <div className={`panel panel-${variant} ${className ? className : ''}`}>{children}</div>
-);
+export const Panel = forwardRef<HTMLDivElement, PanelProps>(function Panel(
+    { children, variant = Variant.default, className, ...rest }: PanelProps,
+    ref,
+) {
+    return (
+        <div
+            className={`panel panel-${variant} ${className ? className : ''}`}
+            ref={ref}
+            {...rest}
+        >
+            {children}
+        </div>
+    );
+}) as CompoundedPanelComponent;
 
 /**
  * Component extensions.
