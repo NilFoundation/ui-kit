@@ -8,19 +8,46 @@ import clsx from 'clsx';
 import { Variant, KeyboardEventKey } from '../../enums';
 import { useEventListener, useKeyPress } from '../../hooks';
 import { CloseButton } from '../Button';
-import './Toast-BS-5.scss';
+import { Panel } from '../Panel';
+import './Toast.scss';
 
 /**
  * Props.
  */
 export type ToastProps = {
+    /**
+     * Component children.
+     */
     children?: ReactNode;
+    /**
+     * Title.
+     */
     title: string;
+    /**
+     * Provide color schema.
+     */
     variant?: Variant;
+    /**
+     * Provide className to customize appearance.
+     */
     className?: string;
-    timeout?: number;
+    /**
+     * Time before removing component. Takes effect only if autoClose equals true.
+     *
+     * @default 3000
+     */
+    lifeTime?: number;
+    /**
+     * Close toast after timeout.
+     */
     autoClose?: boolean;
+    /**
+     * Callback to close toast.
+     */
     close?: () => void;
+    /**
+     * Autofocus on toast when it renders.
+     */
     autoFocus?: boolean;
 };
 
@@ -35,30 +62,30 @@ export const Toast = ({
     title,
     className,
     variant = Variant.default,
-    timeout = 3000,
-    autoClose = variant === Variant.danger,
+    lifeTime = 3000,
+    autoClose = variant !== Variant.danger,
     close,
-    autoFocus = true,
+    autoFocus,
 }: ToastProps): ReactElement => {
     const role = variant === Variant.danger ? 'alert' : 'status';
     const ariaLive = variant === Variant.danger ? 'assertive' : 'polite';
     const ref = useRef<HTMLDivElement>(null);
 
-    const toastClassName = clsx('toast', className && className, `bg-${variant}`);
+    const toastClassName = clsx('toast', className && className);
 
     useEffect(() => {
         autoFocus && ref.current && ref.current.focus();
     }, [ref, autoFocus]);
 
     useEffect(() => {
-        const id = autoClose && setTimeout(() => close && close(), timeout);
+        const id = autoClose && setTimeout(() => close && close(), lifeTime);
 
         return (): void => {
             if (id) {
                 clearTimeout(id);
             }
         };
-    }, [autoClose, timeout, close]);
+    }, [autoClose, lifeTime, close]);
 
     const [onKeyPress] = useKeyPress(() => {
         close && close();
@@ -67,18 +94,19 @@ export const Toast = ({
     useEventListener({ eventType: 'keydown', ref, callback: onKeyPress });
 
     return (
-        <div
+        <Panel
             className={toastClassName}
+            ref={ref}
+            variant={variant}
             role={role}
             aria-live={ariaLive}
             aria-atomic="true"
-            ref={ref}
         >
-            <div className="toast-header">
-                <strong>{title}</strong>
+            <Panel.Header>
+                {title}
                 {close && <CloseButton onClick={close} />}
-            </div>
-            <div className="toast-body">{children}</div>
-        </div>
+            </Panel.Header>
+            <Panel.Content>{children}</Panel.Content>
+        </Panel>
     );
 };
