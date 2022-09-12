@@ -5,3 +5,4 @@
 
 export * from './BreakpointValue';
 export * from './InputSize';
+export * from './TransitionName';
