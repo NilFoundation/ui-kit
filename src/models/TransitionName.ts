@@ -6,4 +6,4 @@
 /**
  * Transition name.
  */
-export type TransitionName = 'fade' | 'alert';
+export type TransitionName = 'fade' | 'alert' | 'slide';
