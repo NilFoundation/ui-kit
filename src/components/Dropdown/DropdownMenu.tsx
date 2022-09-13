@@ -6,6 +6,7 @@
 import React, { ReactElement, ReactNode, useContext } from 'react';
 import { DropdownContext } from './DropdownContext';
 import { Menu } from '../Menu';
+import { Transition } from '../Transition';
 
 /**
  * Props.
@@ -39,13 +40,18 @@ export const DropdownMenu = ({
     const { visible, onDropdownToggle } = useContext(DropdownContext);
 
     return (
-        <Menu
-            onCloseMenu={() => onDropdownToggle(false)}
-            visible={visible}
-            aria-labelledby={ariaLabeledBy}
-            className={className}
+        <Transition
+            name="fade"
+            in={visible}
         >
-            {children}
-        </Menu>
+            <Menu
+                onCloseMenu={() => onDropdownToggle(false)}
+                visible
+                aria-labelledby={ariaLabeledBy}
+                className={className}
+            >
+                {children}
+            </Menu>
+        </Transition>
     );
 };
