@@ -5,3 +5,16 @@
 .label-block {
   display: block;
 }
+
+.label-closable {
+  display: inline-flex;
+  align-items: center;
+
+  > button.close {
+    margin-left: 6px;
+  }
+
+  &.label-block {
+    width: 100%;
+  }
+}

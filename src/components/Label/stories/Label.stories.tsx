@@ -20,11 +20,19 @@ export default {
                 disable: true,
             },
         },
+        onClose: {
+            table: {
+                disable: true,
+            },
+        },
         className: {
             table: {
                 disable: true,
             },
         },
+    },
+    args: {
+        onClose: undefined,
     },
 } as ComponentMeta<typeof LabelComponent>;
 
