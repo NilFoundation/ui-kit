@@ -6,3 +6,4 @@
 export * from './useClickOutsideCallback';
 export * from './useEventListener';
 export * from './useKeyPress';
+export * from './useHover';
