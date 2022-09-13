@@ -1,6 +1,10 @@
 # Changelog
 
-## [[0.1.4](https://github.com/NilFoundation/react-components/compare/v0.1.3...v0.1.4)] - 2022-09-07
+## [[0.1.5](https://github.com/NilFoundation/react-components/compare/v0.1.4...v0.1.5)] - 2022-09-13
+### Fixes
+- Can't resolve dynamic css imports from build
+
+## [[0.1.4](https://github.com/NilFoundation/react-components/compare/v0.1.3...v0.1.4)] - 2022-09-12
 ### Features
 - Transition component added
 - Panel as React.forwardRef
