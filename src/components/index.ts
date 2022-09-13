@@ -36,4 +36,4 @@ export * from './Collapse';
 export * from './NotificationProvider';
 export * from './Alert';
 export * from './Toast';
-export * from './Transitions';
+export * from './Transition';
