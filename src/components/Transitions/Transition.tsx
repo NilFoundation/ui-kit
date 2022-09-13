@@ -37,9 +37,8 @@ export const Transition = ({ name, children, ...rest }: TransitionProps): ReactE
     const getTimeout = () => {
         switch (name) {
             case 'alert':
-                return 300;
             case 'fade':
-                return 500;
+                return 300;
             case 'slide':
                 return 400;
         }
