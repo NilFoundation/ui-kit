@@ -30,23 +30,22 @@ describe('dropdown', () => {
      * Component renders.
      */
     it('renders', () => {
-        const { getByRole } = render(renderDropdown());
+        render(renderDropdown());
 
-        expect(getByRole('menu')).toBeInTheDocument();
+        expect(document.querySelector('.dropdown-toggle')).toBeInTheDocument();
     });
 
     /**
      * Visibility toggles.
      */
     it('visibility toggles', () => {
-        const { getByRole, getByText } = render(renderDropdown());
-        const menu = getByRole('menu');
-        expect(menu).toHaveClass('hidden');
+        const { queryByRole, getByText } = render(renderDropdown());
+        expect(queryByRole('menu')).toBeNull();
 
         const dropdownButton = getByText(new RegExp(dropdownButtonText, 'i'));
         fireEvent.click(dropdownButton);
 
-        expect(menu).not.toHaveClass('hidden');
+        expect(queryByRole('menu')).toBeInTheDocument();
     });
 });
 
@@ -65,26 +64,28 @@ describe('dropdown items', () => {
     /**
      * Closes and fires onSelect callback, when selecting an item.
      */
-    it('select item', () => {
+    it('select item', async () => {
         const menu = screen.getByRole('menu');
 
         const activeItem = screen.getByText(new RegExp(activeItemText, 'i'));
         fireEvent.click(activeItem);
+        await new Promise(r => setTimeout(r, 300));
 
         expect(onSelect).toHaveBeenCalledTimes(1);
-        expect(menu).toHaveClass('hidden');
+        expect(menu).not.toBeInTheDocument();
     });
 
     /**
      * Coudn't select disabled element
      */
-    it('select disabled item', () => {
+    it('select disabled item', async () => {
         const menu = screen.getByRole('menu');
 
         const disabledItem = screen.getByText(new RegExp(disabledItemText, 'i'));
         fireEvent.click(disabledItem);
+        await new Promise(r => setTimeout(r, 300));
 
         expect(onSelect).not.toHaveBeenCalled();
-        expect(menu).not.toHaveClass('hidden');
+        expect(menu).toBeInTheDocument();
     });
 });
