@@ -3,10 +3,11 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { TransitionChildren } from 'react-transition-group/Transition';
 import { TransitionName } from '../../models';
+import './Transition.scss';
 
 /**
  * Props.
@@ -33,10 +34,6 @@ export type TransitionProps = {
  * @returns React component.
  */
 export const Transition = ({ name, children, ...rest }: TransitionProps): ReactElement => {
-    useEffect(() => {
-        import(`./Styles/${name.charAt(0).toUpperCase()}${name.slice(1)}.scss`);
-    }, [name]);
-
     const getTimeout = () => {
         switch (name) {
             case 'alert':
