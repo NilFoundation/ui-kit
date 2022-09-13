@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ButtonHTMLAttributes, DetailedHTMLProps, ReactElement, ReactNode } from 'react';
+import React, { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode, forwardRef } from 'react';
 import clsx from 'clsx';
 import { Size, Variant } from '../../enums';
 import './Button.scss';
@@ -48,18 +48,21 @@ export type ButtonProps = {
  * @param {ButtonProps} props - Props.
  * @returns React component.
  */
-export const Button = ({
-    className,
-    variant = Variant.default,
-    size = Size.md,
-    disabled,
-    children,
-    block,
-    onClick,
-    active,
-    outlined,
-    rounded,
-}: ButtonProps): ReactElement => {
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+    {
+        className,
+        variant = Variant.default,
+        size = Size.md,
+        disabled,
+        children,
+        block,
+        onClick,
+        active,
+        outlined,
+        rounded,
+    }: ButtonProps,
+    ref,
+) {
     const buttonClassName = clsx(
         'btn',
         `btn-${variant}`,
@@ -77,8 +80,9 @@ export const Button = ({
             disabled={disabled}
             onClick={onClick}
             className={buttonClassName}
+            ref={ref}
         >
             {children}
         </button>
     );
-};
+});
