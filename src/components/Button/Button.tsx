@@ -3,7 +3,14 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode, forwardRef } from 'react';
+import React, {
+    ReactNode,
+    forwardRef,
+    AnchorHTMLAttributes,
+    ButtonHTMLAttributes,
+    ForwardedRef,
+    ElementType,
+} from 'react';
 import clsx from 'clsx';
 import { Size, Variant } from '../../enums';
 import './Button.scss';
@@ -11,7 +18,7 @@ import './Button.scss';
 /**
  * Props.
  */
-export type ButtonProps = {
+export type ButtonProps<T extends HTMLAnchorElement | HTMLButtonElement> = {
     /**
      * Component children.
      */
@@ -44,10 +51,13 @@ export type ButtonProps = {
      * Provide href to render anchor, styled as button.
      */
     href?: string;
-} & DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
-    HTMLButtonElement
->;
+    /**
+     * Disables button.
+     */
+    disabled?: boolean;
+} & (T extends HTMLButtonElement
+    ? ButtonHTMLAttributes<HTMLElement>
+    : AnchorHTMLAttributes<HTMLElement>);
 
 /**
  * Base button component.
@@ -55,51 +65,51 @@ export type ButtonProps = {
  * @param {ButtonProps} props - Props.
  * @returns React component.
  */
-export const Button = forwardRef<HTMLAnchorElement & HTMLButtonElement, ButtonProps>(
-    function Button(
-        {
-            className,
-            variant = Variant.default,
-            size = Size.md,
-            disabled,
-            children,
-            block,
-            onClick,
-            active,
-            outlined,
-            rounded,
-            role,
-            href,
-            type,
-        }: ButtonProps,
-        ref,
-    ) {
-        const Component = href ? 'a' : 'button';
-        const computedRole = href ? role ?? 'button' : role;
-        const computedType = href ? undefined : type ?? 'button';
-        const buttonClassName = clsx(
-            'btn',
-            `btn-${variant}`,
-            className && className,
-            size !== Size.md && `btn-${size}`,
-            block && 'btn-block',
-            active && 'active',
-            outlined && 'btn-outline',
-            rounded && 'btn-rounded',
-        );
+export const Button = forwardRef(function Button<T extends HTMLButtonElement | HTMLAnchorElement>(
+    {
+        className,
+        variant = Variant.default,
+        size = Size.md,
+        disabled,
+        children,
+        block,
+        onClick,
+        active,
+        outlined,
+        rounded,
+        role,
+        href,
+        type,
+        ...rest
+    }: ButtonProps<T>,
+    ref: ForwardedRef<T>,
+) {
+    const Component = href ? 'a' : ('button' as ElementType);
+    const computedRole = href ? role ?? 'button' : role;
+    const computedType = href ? undefined : type ?? 'button';
+    const buttonClassName = clsx(
+        'btn',
+        `btn-${variant}`,
+        className && className,
+        size !== Size.md && `btn-${size}`,
+        block && 'btn-block',
+        active && 'active',
+        outlined && 'btn-outline',
+        rounded && 'btn-rounded',
+    );
 
-        return (
-            <Component
-                href={href}
-                type={computedType}
-                disabled={disabled}
-                onClick={onClick}
-                className={buttonClassName}
-                ref={ref}
-                role={computedRole}
-            >
-                {children}
-            </Component>
-        );
-    },
-);
+    return (
+        <Component
+            href={href}
+            type={computedType}
+            disabled={disabled}
+            onClick={onClick}
+            className={buttonClassName}
+            ref={ref}
+            role={computedRole}
+            {...rest}
+        >
+            {children}
+        </Component>
+    );
+});

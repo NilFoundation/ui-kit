@@ -12,7 +12,7 @@ import { CollapseContext } from './CollapseContext';
 /**
  * Props.
  */
-export type CollapseButtonProps = ButtonProps;
+export type CollapseButtonProps = ButtonProps<HTMLButtonElement>;
 
 /**
  * Collapse button component.

@@ -20,7 +20,7 @@ export type DropdownButtonProps = {
      * Icon to display when dropdown is closed.
      */
     iconNameDropdownClosed?: string;
-} & ButtonProps;
+} & ButtonProps<HTMLButtonElement>;
 
 /**
  * Dropdown button component.
