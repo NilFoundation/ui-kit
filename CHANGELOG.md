@@ -6,6 +6,9 @@
 - useHover hook added
 - Href button prop added to render HTML anchor element
 
+### Refactor
+- Layout markup and API
+
 ## [[0.1.5](https://github.com/NilFoundation/react-components/compare/v0.1.4...v0.1.5)] - 2022-09-13
 ### Fixes
 - Can't resolve dynamic css imports from build

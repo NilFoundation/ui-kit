@@ -4,7 +4,6 @@
  */
 
 import React, { ReactElement, ReactNode } from 'react';
-import { PageContainer } from '../PageContainer';
 import './Layout.scss';
 
 /**
@@ -12,7 +11,11 @@ import './Layout.scss';
  */
 type LayoutProps = {
     /**
-     * Component children. Will take free space between other layout elements.
+     * Provide className to customize appearance.
+     */
+    className?: string;
+    /**
+     * Component children.
      */
     children: ReactNode;
     /**
@@ -20,13 +23,17 @@ type LayoutProps = {
      */
     sidebar?: ReactNode;
     /**
-     * Navbar.
+     * Header.
      */
-    navbar?: ReactNode;
+    header?: ReactNode;
     /**
      * Footer.
      */
     footer?: ReactNode;
+    /**
+     * Makes navabr sticky.
+     */
+    stickyHeader?: boolean;
 };
 
 /**
@@ -35,15 +42,24 @@ type LayoutProps = {
  * @param {LayoutProps} props - Props.
  * @returns React component.
  */
-export const Layout = ({ children, sidebar, navbar, footer }: LayoutProps): ReactElement => (
-    <PageContainer>
-        <div className="layout">
-            <div className="layout__navbar">{navbar && navbar}</div>
-            <div className="layout__body">
-                {sidebar && sidebar}
-                {children}
-            </div>
-            <div className="layout__footer">{footer && footer}</div>
+export const Layout = ({
+    children,
+    sidebar,
+    header,
+    footer,
+    stickyHeader,
+    className,
+}: LayoutProps): ReactElement => (
+    <div className={`layout ${className ?? ''}`}>
+        {header && (
+            <header className={`layout__header ${stickyHeader ? 'layout__header-sticky' : ''}`}>
+                {header}
+            </header>
+        )}
+        <div className="layout__body">
+            {sidebar && <aside>{sidebar}</aside>}
+            <main>{children}</main>
         </div>
-    </PageContainer>
+        {footer && <footer className="layout__footer">{footer}</footer>}
+    </div>
 );

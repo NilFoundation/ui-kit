@@ -2,9 +2,8 @@
   display: flex;
   flex-flow: column nowrap;
   height: 100%;
+  width: 100%;
   min-height: 100vh;
-  background-color: var(--c-primary-dark);
-  color: var(--c-primary-light);
 
   &__body, &__footer {
     display: flex;
@@ -13,5 +12,12 @@
 
   &__body {
     flex-grow: 1;
+  }
+
+  &__header {
+    &-sticky {
+      position: sticky;
+      top: 0;
+    }
   }
 }
