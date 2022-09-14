@@ -40,7 +40,14 @@ export type ButtonProps = {
      * Gives button shape of a circle.
      */
     rounded?: boolean;
-} & Omit<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, 'type'>;
+    /**
+     * Provide href to render anchor, styled as button.
+     */
+    href?: string;
+} & DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
+    HTMLButtonElement
+>;
 
 /**
  * Base button component.
@@ -48,41 +55,51 @@ export type ButtonProps = {
  * @param {ButtonProps} props - Props.
  * @returns React component.
  */
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-    {
-        className,
-        variant = Variant.default,
-        size = Size.md,
-        disabled,
-        children,
-        block,
-        onClick,
-        active,
-        outlined,
-        rounded,
-    }: ButtonProps,
-    ref,
-) {
-    const buttonClassName = clsx(
-        'btn',
-        `btn-${variant}`,
-        className && className,
-        size !== Size.md && `btn-${size}`,
-        block && 'btn-block',
-        active && 'active',
-        outlined && 'btn-outline',
-        rounded && 'btn-rounded',
-    );
+export const Button = forwardRef<HTMLAnchorElement & HTMLButtonElement, ButtonProps>(
+    function Button(
+        {
+            className,
+            variant = Variant.default,
+            size = Size.md,
+            disabled,
+            children,
+            block,
+            onClick,
+            active,
+            outlined,
+            rounded,
+            role,
+            href,
+            type,
+        }: ButtonProps,
+        ref,
+    ) {
+        const Component = href ? 'a' : 'button';
+        const computedRole = href ? role ?? 'button' : role;
+        const computedType = href ? undefined : type ?? 'button';
+        const buttonClassName = clsx(
+            'btn',
+            `btn-${variant}`,
+            className && className,
+            size !== Size.md && `btn-${size}`,
+            block && 'btn-block',
+            active && 'active',
+            outlined && 'btn-outline',
+            rounded && 'btn-rounded',
+        );
 
-    return (
-        <button
-            type="button"
-            disabled={disabled}
-            onClick={onClick}
-            className={buttonClassName}
-            ref={ref}
-        >
-            {children}
-        </button>
-    );
-});
+        return (
+            <Component
+                href={href}
+                type={computedType}
+                disabled={disabled}
+                onClick={onClick}
+                className={buttonClassName}
+                ref={ref}
+                role={computedRole}
+            >
+                {children}
+            </Component>
+        );
+    },
+);
