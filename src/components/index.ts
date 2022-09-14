@@ -9,7 +9,6 @@ export * from './Icon';
 export * from './Link';
 export * from './Button';
 export * from './Panel';
-export * from './Sidebar';
 export * from './InputGroup';
 export * from './Images';
 export * from './Placeholder';

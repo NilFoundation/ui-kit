@@ -5,6 +5,7 @@
 - Closable label component
 - useHover hook added
 - Href button prop added to render HTML anchor element
+- Sidebar component removed
 
 ### Refactor
 - Layout markup and API
