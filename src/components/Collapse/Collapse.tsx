@@ -17,7 +17,7 @@ export interface CollapseProps {
      */
     children: ReactNode;
     /**
-     * Disclosure content is vivible by default.
+     * Collapse content is vivible by default.
      */
     defaultOpen?: boolean;
     /**
