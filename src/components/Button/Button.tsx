@@ -40,10 +40,6 @@ export type ButtonProps<T extends HTMLAnchorElement | HTMLButtonElement> = {
      */
     active?: boolean;
     /**
-     * Removes button background.
-     */
-    outlined?: boolean;
-    /**
      * Gives button shape of a circle.
      */
     rounded?: boolean;
@@ -75,7 +71,6 @@ export const Button = forwardRef(function Button<T extends HTMLButtonElement | H
         block,
         onClick,
         active,
-        outlined,
         rounded,
         role,
         href,
@@ -94,7 +89,6 @@ export const Button = forwardRef(function Button<T extends HTMLButtonElement | H
         size !== Size.md && `btn-${size}`,
         block && 'btn-block',
         active && 'active',
-        outlined && 'btn-outline',
         rounded && 'btn-rounded',
     );
 
