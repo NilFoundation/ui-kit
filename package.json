@@ -26,7 +26,8 @@
     "build"
   ],
   "scripts": {
-    "lint": "eslint --ext=ts,tsx src --max-warnings=0",
+    "lint:ts": "eslint --ext=ts,tsx src --max-warnings=0",
+    "lint:editorconfig": "npx editorconfig-checker",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "prettier": "prettier --write",
