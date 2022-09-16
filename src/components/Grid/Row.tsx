@@ -3,16 +3,29 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ElementType, ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 
 /**
  * Props.
  */
 type RowProps = {
+    /**
+     * Component children.
+     */
     children: ReactNode;
+    /**
+     * Remove the gutters from a row and it's columns.
+     */
     noGutters?: boolean;
+    /**
+     * Provide classname to customize appearance.
+     */
     className?: string;
+    /**
+     * HTML element type used to create row.
+     */
+    as?: ElementType;
 };
 
 /**
@@ -21,8 +34,13 @@ type RowProps = {
  * @param {RowProps} props - Props.
  * @returns React component.
  */
-export const Row = ({ children, noGutters = false, className }: RowProps): ReactElement => {
+export const Row = ({
+    children,
+    noGutters = false,
+    className,
+    as: Component = 'div',
+}: RowProps): ReactElement => {
     const rowClassName = clsx('row', noGutters && 'row-no-gutters', className && className);
 
-    return <div className={rowClassName}>{children}</div>;
+    return <Component className={rowClassName}>{children}</Component>;
 };

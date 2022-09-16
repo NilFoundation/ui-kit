@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ElementType, ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { Breakpoint } from '../../enums';
 import { BreakpointValue } from '../../models';
@@ -31,8 +31,18 @@ type ColModificators = Breakpoints & Offset;
  * Props.
  */
 type ColProps = {
+    /**
+     * Component children.
+     */
     children: ReactNode;
+    /**
+     * Provide className to customize appearance.
+     */
     className?: string;
+    /**
+     * HTML element type used to create column.
+     */
+    as?: ElementType;
 } & ColModificators;
 
 /**
@@ -41,7 +51,12 @@ type ColProps = {
  * @param {ColProps} props - Props.
  * @returns React component.
  */
-export const Col = ({ children, className, ...restProps }: ColProps): ReactElement => {
+export const Col = ({
+    children,
+    className,
+    as: Component = 'div',
+    ...restProps
+}: ColProps): ReactElement => {
     const getColClassName = () => {
         const keys = Object.keys(restProps) as Array<keyof ColModificators>;
 
@@ -58,5 +73,5 @@ export const Col = ({ children, className, ...restProps }: ColProps): ReactEleme
 
     const colClassName = clsx(className && className, getColClassName());
 
-    return <div className={colClassName}>{children}</div>;
+    return <Component className={colClassName}>{children}</Component>;
 };
