@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { Link } from '../Link';
 
@@ -14,7 +14,7 @@ export type BreadcrumbsItemProps = {
     /**
      * Text to display.
      */
-    children: string;
+    children: ReactNode;
     /**
      * Applies active state.
      */

@@ -27,12 +27,12 @@ export type BreadcrumbsProps = {
  * @returns React component.
  */
 export const Breadcrumbs = ({ children, className = '' }: BreadcrumbsProps): ReactElement => (
-    <nav
-        className={className}
+    <ol
+        className={`breadcrumb ${className ?? ''}`}
         aria-label="breadcrumb navigation"
     >
-        <ol className="breadcrumb">{children}</ol>
-    </nav>
+        {children}
+    </ol>
 );
 
 /**
