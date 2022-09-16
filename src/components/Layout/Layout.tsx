@@ -4,6 +4,7 @@
  */
 
 import React, { ReactElement, ReactNode } from 'react';
+import { PageContainer } from '../PageContainer';
 import './Layout.scss';
 
 /**
@@ -50,7 +51,7 @@ export const Layout = ({
     stickyHeader,
     className,
 }: LayoutProps): ReactElement => (
-    <div className={`layout ${className ?? ''}`}>
+    <PageContainer className={`layout ${className ?? ''}`}>
         {header && (
             <header className={`layout__header ${stickyHeader ? 'layout__header-sticky' : ''}`}>
                 {header}
@@ -61,5 +62,5 @@ export const Layout = ({
             <main>{children}</main>
         </div>
         {footer && <footer className="layout__footer">{footer}</footer>}
-    </div>
+    </PageContainer>
 );

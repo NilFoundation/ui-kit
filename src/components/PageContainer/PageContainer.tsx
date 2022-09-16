@@ -11,7 +11,14 @@ import './PageContainer.scss';
  * Props.
  */
 type PageContainerProps = {
+    /**
+     * Component children.
+     */
     children: ReactNode;
+    /**
+     * Provide className to customize appearance.
+     */
+    className?: string;
 };
 
 /**
@@ -20,9 +27,9 @@ type PageContainerProps = {
  * @param {PageContainerProps} props - Props.
  * @returns React component.
  */
-export const PageContainer = ({ children }: PageContainerProps): ReactElement => (
+export const PageContainer = ({ children, className }: PageContainerProps): ReactElement => (
     <Container
-        className="pageContainer"
+        className={`pageContainer ${className ?? ''}`}
         fluid
     >
         {children}

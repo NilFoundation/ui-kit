@@ -1,7 +1,6 @@
-.pageСontainer {
-  display: flex;
-  overflow: {
-    x: hidden;
-    y: hidden;
-  };
+.pageContainer {
+  padding: {
+    left: 0;
+    right: 0;
+  }
 }
