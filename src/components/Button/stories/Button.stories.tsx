@@ -7,6 +7,7 @@ import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
 import { Button as ButtonComponent } from '../Button';
 import { Size, Variant } from '../../../enums';
+import { Icon } from '../../Icon';
 
 export default {
     component: ButtonComponent,
@@ -29,9 +30,14 @@ export default {
     },
 } as ComponentMeta<typeof ButtonComponent>;
 
-export const Button: Story = args => <ButtonComponent {...args}>{args.text}</ButtonComponent>;
+export const Button: Story = args => (
+    <ButtonComponent {...args}>
+        {args.text} <Icon iconName={`glyphicon glyphicon-${args.glyphicon}`} />
+    </ButtonComponent>
+);
 Button.args = {
     text: 'Button',
     size: Size.md,
     variant: Variant.default,
+    glyphicon: '',
 };

@@ -13,7 +13,6 @@ import React, {
 } from 'react';
 import clsx from 'clsx';
 import { Size, Variant } from '../../enums';
-import './Button.scss';
 
 /**
  * Props.
@@ -39,10 +38,6 @@ export type ButtonProps<T extends HTMLAnchorElement | HTMLButtonElement> = {
      * Applies active state to button.
      */
     active?: boolean;
-    /**
-     * Gives button shape of a circle.
-     */
-    rounded?: boolean;
     /**
      * Provide href to render anchor, styled as button.
      */
@@ -71,7 +66,6 @@ export const Button = forwardRef(function Button<T extends HTMLButtonElement | H
         block,
         onClick,
         active,
-        rounded,
         role,
         href,
         type,
@@ -89,7 +83,6 @@ export const Button = forwardRef(function Button<T extends HTMLButtonElement | H
         size !== Size.md && `btn-${size}`,
         block && 'btn-block',
         active && 'active',
-        rounded && 'btn-rounded',
     );
 
     return (
