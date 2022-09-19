@@ -16,10 +16,15 @@ type Breakpoints = {
 };
 
 /**
+ * Offset value.
+ */
+type OffsetValue = BreakpointValue | 0;
+
+/**
  * Offset.
  */
 type Offset = {
-    [Property in keyof typeof Breakpoint as `${Property}-offset`]?: BreakpointValue;
+    [Property in keyof typeof Breakpoint as `${Property}-offset`]?: OffsetValue;
 };
 
 /**
@@ -67,7 +72,7 @@ export const Col = ({
         return keys.map(key => {
             const value = restProps[key];
 
-            return value ? `col-${key}-${value}` : '';
+            return value !== undefined ? `col-${key}-${value}` : '';
         });
     };
 
