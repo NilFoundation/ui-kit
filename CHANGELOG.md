@@ -1,5 +1,25 @@
 # Changelog
 
+## [[0.2.0](https://github.com/NilFoundation/react-components/compare/v0.1.6...v0.2.0)] - 2022-09-20
+### Breaking changes
+- Layout
+- Placeholder
+- Breadcrumbs
+- Image, LazyImage
+- Rounded and outlined buttons no longer exist
+- Remove PageContainer component
+
+### Features
+- Add 'as' prop to Grid elements
+- Add lint:editorconfig script
+
+### Refactor
+- Specify bootstrap version as 3.4.*
+
+### Fixes
+- Grid breakpoints
+- Grid *-offset props
+
 ## [[0.1.6](https://github.com/NilFoundation/react-components/compare/v0.1.5...v0.1.6)] - 2022-09-14
 ### Features
 - Closable label component
