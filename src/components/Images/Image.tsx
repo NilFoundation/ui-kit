@@ -26,6 +26,10 @@ export type ImageProps = {
      * Adds border-radius to image.
      */
     rounded?: boolean;
+    /**
+     * Makes the image a circle.
+     */
+    circle?: boolean;
 } & Omit<DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>, 'src'>;
 
 /**
@@ -41,6 +45,7 @@ export const Image = ({
     thumbnail,
     responsive,
     className,
+    circle,
     ...rest
 }: ImageProps): ReactElement => {
     const imgClassName = clsx(
@@ -48,6 +53,7 @@ export const Image = ({
         thumbnail && 'img-thumbnail',
         responsive && 'img-responsive',
         rounded && 'img-rounded',
+        circle && 'img-circle',
     );
 
     return (
