@@ -6,8 +6,8 @@
 import React, { ReactElement, CSSProperties, HTMLAttributes, DetailedHTMLProps } from 'react';
 import clsx from 'clsx';
 import { PlaceholderAnimation } from './PlaceholderAnimation';
-import './Placeholder.scss';
 import { Variant } from '../../enums';
+import './Placeholder.scss';
 
 /**
  * Props.
