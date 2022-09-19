@@ -7,8 +7,8 @@
  * Breakpoint type.
  */
 export enum Breakpoint {
-    sm = 'xs',
-    md = 'sm',
-    lg = 'md',
-    xl = 'lg',
+    xs = 'xs',
+    sm = 'sm',
+    md = 'md',
+    lg = 'lg',
 }
