@@ -55,7 +55,6 @@ export const Placeholder = ({
         className && className,
         `bg-${variant}`,
     );
-    const waveClassName = `wave`;
 
     return (
         <div
@@ -68,7 +67,7 @@ export const Placeholder = ({
             }
             {...rest}
         >
-            {animation === PlaceholderAnimation.wave && <div className={waveClassName} />}
+            {animation === PlaceholderAnimation.wave && <div className="wave" />}
         </div>
     );
 };
