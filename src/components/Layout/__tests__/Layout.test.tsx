@@ -17,7 +17,7 @@ describe('layout', () => {
     it('renders', () => {
         const { getByRole } = render(
             <Layout>
-                <div />
+                <main />
             </Layout>,
         );
 
