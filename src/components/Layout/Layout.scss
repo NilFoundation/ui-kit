@@ -1,14 +1,7 @@
 .layout {
   display: flex;
   flex-flow: column nowrap;
-  height: 100%;
-  width: 100%;
   min-height: 100vh;
-
-  &__body, &__footer {
-    display: flex;
-    flex-flow: column nowrap;
-  }
 
   &__body {
     flex-grow: 1;
