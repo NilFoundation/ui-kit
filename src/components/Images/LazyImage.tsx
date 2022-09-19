@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode, SyntheticEvent, useState } from 'react';
+import React, { ReactElement, ReactNode, SyntheticEvent, useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { Image, ImageProps } from './Image';
 import { Placeholder, PlaceholderAnimation } from '../Placeholder';
@@ -13,7 +13,7 @@ import { Placeholder, PlaceholderAnimation } from '../Placeholder';
  */
 export type LazyImageProps = {
     /**
-     * Displays, while image is not loaded jet.
+     * Displays, while image is not loaded yet.
      */
     placeholder?: ReactNode;
     /**
@@ -24,7 +24,11 @@ export type LazyImageProps = {
      * Placeholder animation. Takes effect only with default placeholder.
      */
     placeholderAnimation?: PlaceholderAnimation;
-} & ImageProps;
+    /**
+     * Fires right after image is loaded and rendered.
+     */
+    onAfterRender?: () => void;
+} & Omit<ImageProps, 'placeholder'>;
 
 /**
  * Image component with lazy loading and placeholder.
@@ -34,34 +38,64 @@ export type LazyImageProps = {
  */
 export const LazyImage = ({
     className,
-    source,
     placeholder,
     placeholderSrc,
     onLoad,
     placeholderAnimation,
+    onAfterRender,
+    responsive,
+    width,
+    height,
     ...rest
 }: LazyImageProps): ReactElement => {
     const [loaded, setLoaded] = useState(false);
-    const src = !!placeholderSrc && !loaded ? placeholderSrc : source;
 
     const lazyImgClassName = clsx(className && className, !loaded && 'hidden');
 
-    const renderPlaceholderElement = (): ReactNode =>
-        !!placeholder ? placeholder : <Placeholder animation={placeholderAnimation} />;
+    const renderPlaceholderElement = (): ReactNode => {
+        if (placeholderSrc) {
+            return (
+                <Image
+                    source={placeholderSrc}
+                    responsive={responsive}
+                    width={width}
+                    height={height}
+                />
+            );
+        }
+
+        if (placeholder) {
+            return placeholder;
+        }
+
+        return (
+            <Placeholder
+                style={{ width: `${width}px`, height: `${height}px` }}
+                animation={placeholderAnimation}
+            />
+        );
+    };
 
     const onLazyImageLoad = (e: SyntheticEvent<HTMLImageElement>): void => {
-        setLoaded(true);
         onLoad && onLoad(e);
+        setLoaded(true);
     };
+
+    useEffect(() => {
+        loaded && onAfterRender && onAfterRender();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [loaded]);
 
     return (
         <>
-            {!loaded && !placeholderSrc && renderPlaceholderElement()}
+            {!loaded && renderPlaceholderElement()}
             <Image
                 loading="lazy"
-                source={src}
                 onLoad={onLazyImageLoad}
                 className={lazyImgClassName}
+                responsive={responsive}
+                width={width}
+                height={height}
                 {...rest}
             />
         </>
