@@ -36,19 +36,22 @@ export default {
     },
     args: {
         source: 'https://cdn.pixabay.com/photo/2022/08/06/12/34/corsac-fox-7368515_960_720.jpg',
+        alt: 'alternative text',
     },
 };
 
-export const Image: Story = ({ source, ...rest }: Args) => (
+export const Image: Story = ({ source, alt, ...rest }: Args) => (
     <ImageComponent
         source={source}
+        alt={alt}
         {...rest}
     />
 );
 
-export const LazyImage: Story = ({ source, ...rest }: Args) => (
+export const LazyImage: Story = ({ source, alt, ...rest }: Args) => (
     <LazyImageComponent
         source={source}
+        alt={alt}
         {...rest}
     />
 );

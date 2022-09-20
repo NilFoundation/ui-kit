@@ -5,6 +5,7 @@
 
 import React, { ReactElement, DetailedHTMLProps, ImgHTMLAttributes } from 'react';
 import clsx from 'clsx';
+import './Image.scss';
 
 /**
  * Props.
@@ -30,7 +31,11 @@ export type ImageProps = {
      * Makes the image a circle.
      */
     circle?: boolean;
-} & Omit<DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>, 'src'>;
+    /**
+     * Provides alternate text.
+     */
+    alt: string;
+} & Omit<DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>, 'src' | 'alt'>;
 
 /**
  * Image component.
@@ -40,7 +45,7 @@ export type ImageProps = {
  */
 export const Image = ({
     source,
-    alt = '',
+    alt,
     rounded,
     thumbnail,
     responsive,
