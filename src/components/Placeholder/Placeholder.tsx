@@ -56,15 +56,15 @@ export const Placeholder = ({
         `bg-${variant}`,
     );
 
+    const style = {
+        '--animation-duration': `${duration}ms`,
+        '--min-opacity': minOpacity,
+    } as CSSProperties;
+
     return (
         <div
             className={placeholderClassName}
-            style={
-                {
-                    '--animation-duration': `${duration}ms`,
-                    '--min-opacity': minOpacity,
-                } as CSSProperties
-            }
+            style={style}
             {...rest}
         >
             {animation === PlaceholderAnimation.wave && <div className="wave" />}
