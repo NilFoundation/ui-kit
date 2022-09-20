@@ -40,6 +40,10 @@
   ],
   "rules": {
     "react/display-name": 1,
+    "react/jsx-first-prop-new-line": [
+      "warn",
+      "multiline"
+    ],
     "jsx-a11y/anchor-is-valid": 0,
     "jsdoc/require-param-type": 0,
     "jsdoc/require-returns-type": 0,
