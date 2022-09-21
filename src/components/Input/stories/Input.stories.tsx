@@ -19,11 +19,18 @@ export default {
         },
         size: {
             control: 'select',
-            defaultValue: Size.md,
         },
         disabled: {
             control: 'boolean',
         },
+        type: {
+            control: 'select',
+            options: ['text', 'number'],
+        },
+    },
+    args: {
+        size: Size.md,
+        type: 'text',
     },
 } as ComponentMeta<typeof InputComponent>;
 
