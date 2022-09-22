@@ -4,4 +4,8 @@
   .selectMenu {
     width: 100%;
   }
+
+  input:read-only {
+    background-color: #fff;
+  }
 }
