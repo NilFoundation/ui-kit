@@ -60,6 +60,7 @@ export const LazyImage = ({
                     responsive={responsive}
                     width={width}
                     height={height}
+                    alt="Placeholder image"
                 />
             );
         }
