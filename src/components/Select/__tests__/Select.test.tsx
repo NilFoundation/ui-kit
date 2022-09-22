@@ -21,6 +21,6 @@ describe('select', () => {
             </Select>,
         );
 
-        expect(getByRole('listbox')).toBeInTheDocument();
+        expect(getByRole('textbox')).toBeInTheDocument();
     });
 });

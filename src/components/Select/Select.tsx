@@ -25,7 +25,7 @@ export interface SelectProps<T> {
     /**
      * Component children.
      */
-    children: ReactElement<SelectOptionProps<T>>[];
+    children: ReactElement<SelectOptionProps<T>> | ReactElement<SelectOptionProps<T>>[];
     /**
      * Callback on select option.
      */
