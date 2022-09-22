@@ -10,7 +10,13 @@ import { SelectOptionModel } from './SelectOptionModel';
  * Context type.
  */
 type SelectContextModel<T> = {
-    selected?: SelectOptionModel<T>;
+    /**
+     * Selected option.
+     */
+    selectedOption?: SelectOptionModel<T>;
+    /**
+     * On select option.
+     */
     onSelectOption: (option: SelectOptionModel<T>) => void;
 };
 

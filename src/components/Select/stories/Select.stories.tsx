@@ -22,7 +22,7 @@ export default {
                 disable: true,
             },
         },
-        onSelect: {
+        onChange: {
             table: {
                 disable: true,
             },

@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, useRef, useState } from 'react';
+import React, { ReactElement, Ref, useState } from 'react';
 import clsx from 'clsx';
 import { InputSize } from '../../models';
 import { Size } from '../../enums';
@@ -24,11 +24,11 @@ export interface SelectProps<T> {
     /**
      * Component children.
      */
-    children: ReactElement<SelectOptionProps<T>>[] | ReactElement<SelectOptionProps<T>>;
+    children: ReactElement<SelectOptionProps<T>>[];
     /**
      * Callback on select option.
      */
-    onSelect?: (value: T) => void;
+    onChange?: (value: T) => void;
     /**
      * Component size.
      */
@@ -61,6 +61,10 @@ export interface SelectProps<T> {
      * Clear icon name.
      */
     clearIcon?: string;
+    /**
+     * Forward ref for root input element.
+     */
+    ref?: Ref<HTMLInputElement>;
 }
 
 /**
@@ -71,7 +75,7 @@ export interface SelectProps<T> {
  */
 export const Select = <T,>({
     className,
-    onSelect,
+    onChange,
     size = Size.md,
     children,
     noItemsMessage = 'No items to select',
@@ -80,16 +84,15 @@ export const Select = <T,>({
     id,
     clearable,
     clearIcon = 'glyphicon glyphicon-remove',
-}: SelectProps<T>): ReactElement => {
-    const ref = useRef<HTMLInputElement>(null);
+    ref,
+}: SelectProps<T>) => {
     const selectClassName = clsx('select', className && className);
-
     const [dropdownVisible, setDropdownVisible] = useState(false);
-    const [selected, setSelected] = useState<SelectOptionModel<T>>();
+    const [selectedOption, setSelectedOption] = useState<SelectOptionModel<T>>();
     const iconName = `glyphicon glyphicon-triangle-${dropdownVisible ? 'top' : 'bottom'}`;
 
     const clearSelect = (): void => {
-        if (!ref.current) {
+        if (!ref) {
             return;
         }
 
@@ -102,7 +105,7 @@ export const Select = <T,>({
         }
 
         setDropdownVisible(false);
-        setSelected(undefined);
+        setSelectedOption(undefined);
     };
 
     const onSelectOption = (selectOption: SelectOptionModel<T>): void => {
@@ -110,26 +113,26 @@ export const Select = <T,>({
             return;
         }
 
-        setSelected(selectOption);
-        onSelect && onSelect(selectOption.value);
+        setSelectedOption(selectOption);
+        onChange && onChange(selectOption.value);
         setDropdownVisible(false);
     };
 
     return (
-        <SelectContext.Provider value={{ selected, onSelectOption }}>
+        <SelectContext.Provider value={{ selectedOption, onSelectOption }}>
             <div className={selectClassName}>
                 <InputGroup size={size}>
                     <Input
                         readOnly
                         ref={ref}
                         id={id}
-                        value={selected?.title ?? ''}
+                        value={selectedOption?.title ?? ''}
                         disabled={disabled}
                         placeholder={placeholder}
                         onClick={(): void => setDropdownVisible(!dropdownVisible)}
                     />
                     <InputGroup.Buttons>
-                        {clearable && !!selected && (
+                        {clearable && !!selectedOption?.value && (
                             <Button
                                 onClick={clearSelect}
                                 disabled={disabled}

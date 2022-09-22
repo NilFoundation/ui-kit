@@ -46,7 +46,7 @@ export const SelectOption = <T,>({
     disabled,
     defaultSelected,
 }: SelectOptionProps<T>): ReactElement<SelectOptionProps<T>> => {
-    const { onSelectOption, selected } = useSelectContext<T>();
+    const { onSelectOption, selectedOption } = useSelectContext<T>();
 
     const handleSelectOption = useCallback(() => {
         onSelectOption({ title, value });
@@ -61,7 +61,7 @@ export const SelectOption = <T,>({
         <MenuItem
             onSelect={handleSelectOption}
             disabled={disabled}
-            active={selected?.value === value}
+            active={selectedOption?.value === value}
         >
             {children ?? title}
         </MenuItem>
