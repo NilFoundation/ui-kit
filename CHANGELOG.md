@@ -1,5 +1,19 @@
 # Changelog
 
+## [[0.2.1](https://github.com/NilFoundation/react-components/compare/v0.2.0...v0.3.0)] - 2022-09-23
+### Breaking changes
+- Make Image **alt** prop required
+- UseEventListener now listens only to global (document) events
+
+### Features
+- Form component
+- FloatingLabel component
+- Broken images styling
+- Select **ref** prop
+- Select dropdown with transition
+- UseOnScreen hook
+- UseCombinedRef hook
+
 ## [[0.2.0](https://github.com/NilFoundation/react-components/compare/v0.1.6...v0.2.0)] - 2022-09-20
 ### Breaking changes
 - Layout
