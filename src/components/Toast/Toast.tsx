@@ -91,7 +91,7 @@ export const Toast = ({
         close && close();
     }, [KeyboardEventKey.escape]);
 
-    useEventListener({ eventType: 'keydown', ref, callback: onKeyPress });
+    useEventListener({ eventType: 'keydown', callback: onKeyPress });
 
     return (
         <Panel

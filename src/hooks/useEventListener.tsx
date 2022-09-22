@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import { useEffect, RefObject } from 'react';
+import { useEffect } from 'react';
 import { throttle } from '../helpers';
 
 /**
@@ -14,10 +14,6 @@ export type UseEventListenerProps<T extends keyof DocumentEventMap> = {
      * Browser event.
      */
     eventType: T;
-    /**
-     * Tagret DOM element ref to add event listener.
-     */
-    ref: RefObject<HTMLElement>;
     /**
      * Callback to fire on browser event.
      */
@@ -43,7 +39,6 @@ export type UseEventListenerProps<T extends keyof DocumentEventMap> = {
  */
 export const useEventListener = <T extends keyof DocumentEventMap>({
     eventType,
-    ref,
     callback,
     throttled = false,
     wait = 200,
@@ -61,5 +56,5 @@ export const useEventListener = <T extends keyof DocumentEventMap>({
                 capture: shouldCapture,
             });
         };
-    }, [eventType, ref, callback, throttled, wait, shouldCapture]);
+    }, [eventType, callback, throttled, wait, shouldCapture]);
 };

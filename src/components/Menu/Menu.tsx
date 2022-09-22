@@ -57,11 +57,10 @@ export const Menu = ({
     useClickOutsideCallback(ref, onCloseHandler, visible);
     useEventListener({
         eventType: 'scroll',
-        ref,
         throttled: true,
         callback: onCloseHandler,
     });
-    useEventListener({ eventType: 'keydown', ref, callback: onEscapePress });
+    useEventListener({ eventType: 'keydown', callback: onEscapePress });
 
     return (
         <ul
