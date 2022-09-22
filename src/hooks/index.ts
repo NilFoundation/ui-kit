@@ -8,3 +8,4 @@ export * from './useEventListener';
 export * from './useKeyPress';
 export * from './useHover';
 export * from './useOnScreen';
+export * from './useCombinedRef';
