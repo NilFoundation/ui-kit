@@ -18,6 +18,10 @@ type SelectContextModel<T> = {
      * On select option.
      */
     onSelectOption: (option: SelectOptionModel<T>) => void;
+    /**
+     * Allows to select multiply options.
+     */
+    multiple: boolean;
 };
 
 /**

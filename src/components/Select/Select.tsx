@@ -66,6 +66,10 @@ export interface SelectProps<T> {
      * Forward ref for root input element.
      */
     ref?: Ref<HTMLInputElement>;
+    /**
+     * Allows to select multiply options.
+     */
+    multiple?: boolean;
 }
 
 /**
@@ -86,6 +90,7 @@ export const Select = <T,>({
     clearable,
     clearIcon = 'glyphicon glyphicon-remove',
     ref,
+    multiple = false,
 }: SelectProps<T>) => {
     const selectClassName = clsx('select', className && className);
     const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -105,7 +110,7 @@ export const Select = <T,>({
             return;
         }
 
-        setDropdownVisible(false);
+        !multiple && setDropdownVisible(false);
         setSelectedOption(undefined);
     };
 
@@ -116,11 +121,11 @@ export const Select = <T,>({
 
         setSelectedOption(selectOption);
         onChange && onChange(selectOption.value);
-        setDropdownVisible(false);
+        !multiple && setDropdownVisible(false);
     };
 
     return (
-        <SelectContext.Provider value={{ selectedOption, onSelectOption }}>
+        <SelectContext.Provider value={{ multiple, selectedOption, onSelectOption }}>
             <div className={selectClassName}>
                 <InputGroup size={size}>
                     <Input
