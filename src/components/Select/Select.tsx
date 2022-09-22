@@ -15,6 +15,7 @@ import { SelectOptionModel } from './SelectOptionModel';
 import { SelectContext } from './SelectContext';
 import { Icon } from '../Icon';
 import { Button } from '../Button';
+import { Transition } from '../Transition';
 import './Select.scss';
 
 /**
@@ -152,15 +153,20 @@ export const Select = <T,>({
                         </Button>
                     </InputGroup.Buttons>
                 </InputGroup>
-                <Menu
-                    visible={dropdownVisible}
-                    onCloseMenu={(): void => setDropdownVisible(false)}
-                    role="listbox"
-                    className="selectMenu"
+                <Transition
+                    name="fade"
+                    in={dropdownVisible}
                 >
-                    {!children && noItemsMessage}
-                    {children}
-                </Menu>
+                    <Menu
+                        visible
+                        onCloseMenu={(): void => setDropdownVisible(false)}
+                        role="listbox"
+                        className="selectMenu"
+                    >
+                        {!children && noItemsMessage}
+                        {children}
+                    </Menu>
+                </Transition>
             </div>
         </SelectContext.Provider>
     );
