@@ -1,0 +1,25 @@
+.anchor {
+  display: inline-flex;
+  align-items: center;
+
+  > i {
+    opacity: 0;
+    transition: opacity 0.1s ease-out;
+
+    &:first-child {
+      padding-right: 0.25em;
+    }
+
+    &:last-child {
+      padding-left: 0.25em;
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    i {
+      opacity: 1;
+    }
+  }
+}

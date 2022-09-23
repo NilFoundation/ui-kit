@@ -37,3 +37,4 @@ export * from './Toast';
 export * from './Transition';
 export * from './Form';
 export * from './FloatingLabel';
+export * from './Anchor';
