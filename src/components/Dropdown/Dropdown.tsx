@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode, useState } from 'react';
+import React, { ReactElement, ReactNode, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { DropdownButton } from './DropdownButton';
 import { DropdownContext } from './DropdownContext';
@@ -39,9 +39,24 @@ export const Dropdown = ({ children, className, dropup }: DropdownProps): ReactE
     const [visible, setVisible] = useState(false);
     const onDropdownToggle = (isVisible: boolean): void => setVisible(isVisible);
     const dropdownClassName = clsx(className && className, dropup ? 'dropup' : 'dropdown');
+    const timeOutIdRef = useRef<NodeJS.Timeout>();
+
+    const onBlurHandler = () => {
+        timeOutIdRef.current = setTimeout(() => {
+            onDropdownToggle(false);
+        });
+    };
+
+    const onFocusHandler = () => {
+        clearTimeout(timeOutIdRef.current);
+    };
 
     return (
-        <div className={dropdownClassName}>
+        <div
+            className={dropdownClassName}
+            onBlur={onBlurHandler}
+            onFocus={onFocusHandler}
+        >
             <DropdownContext.Provider value={{ visible, onDropdownToggle }}>
                 {children}
             </DropdownContext.Provider>
