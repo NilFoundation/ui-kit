@@ -5,7 +5,7 @@
 
 import React, { ChangeEvent, ChangeEventHandler, ReactElement, useState } from 'react';
 import clsx from 'clsx';
-import { FormLabel, FormLabelProps } from '../Form';
+import { FormLabel, FormLabelProps } from '../Form/FormLabel';
 import './FloatingLabel.scss';
 
 /**
