@@ -3,9 +3,9 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, KeyboardEvent, ReactNode } from 'react';
+import React, { ReactElement, KeyboardEvent, ReactNode, forwardRef, useEffect } from 'react';
 import clsx from 'clsx';
-import { useKeyPress } from '../../hooks';
+import { useCombinedRef, useKeyPress } from '../../hooks';
 import { KeyboardEventKey } from '../../enums';
 
 /**
@@ -44,15 +44,17 @@ export type MenuItemProps = {
  * @param {MenuItemProps} props - Props.
  * @returns React component.
  */
-export const MenuItem = ({
-    children,
-    className,
-    disabled,
-    active,
-    onSelect,
-    href,
-}: MenuItemProps): ReactElement => {
+export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(function MenuItem(
+    { children, className, disabled, active, onSelect, href }: MenuItemProps,
+    ref,
+): ReactElement {
     const itemClassName = clsx(active && 'active', className && className, disabled && 'disabled');
+    const { localRef, forwardedRef } = useCombinedRef(ref);
+
+    useEffect(() => {
+        active && localRef.current && localRef.current.focus();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const onSelectHandler = (): void => {
         onSelect && !disabled && onSelect();
@@ -74,8 +76,9 @@ export const MenuItem = ({
             onClick={onSelectHandler}
             onKeyPress={onKeyPressHandler}
             tabIndex={disabled ? -1 : 0}
+            ref={forwardedRef}
         >
             <a href={href}>{children}</a>
         </li>
     );
-};
+});

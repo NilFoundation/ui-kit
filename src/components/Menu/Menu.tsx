@@ -21,6 +21,7 @@ import { MenuHeader } from './MenuHeader';
 import { MenuItem } from './MenuItem';
 import { KeyboardEventKey } from '../../enums';
 import { MenuDivider } from './MenuDivider';
+import { useMenuKeyboardNavigation } from '../../hooks/_useMenuKeyboardNavigation';
 import './Menu.scss';
 
 /**
@@ -77,6 +78,7 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(function Menu(
         callback: onCloseHandler,
     });
     useEventListener({ eventType: 'keydown', callback: onEscapePress });
+    useMenuKeyboardNavigation(localRef);
 
     return (
         <ul
