@@ -3,7 +3,9 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, useContext } from 'react';
+import React, { KeyboardEvent, ReactElement, useContext } from 'react';
+import { KeyboardEventKey } from '../../enums';
+import { useKeyPress } from '../../hooks';
 import { Button, ButtonProps } from '../Button';
 import { Icon } from '../Icon';
 import { DropdownContext } from './DropdownContext';
@@ -33,15 +35,26 @@ export const DropdownButton = ({
     className,
     iconNameDropdownOpend = 'caret',
     iconNameDropdownClosed = 'caret',
+    onKeyDown,
 }: DropdownButtonProps): ReactElement => {
     const { visible, onDropdownToggle } = useContext(DropdownContext);
     const iconName = visible ? iconNameDropdownOpend : iconNameDropdownClosed;
+
+    const [onKeyDownPress] = useKeyPress(() => {
+        !visible && onDropdownToggle(true);
+    }, [KeyboardEventKey.arrowDown]);
+
+    const onKeyDownHandler = (e: KeyboardEvent<HTMLButtonElement>): void => {
+        onKeyDownPress(e);
+        onKeyDown && onKeyDown(e);
+    };
 
     return (
         <Button
             active={visible}
             className={`dropdown-toggle ${className ? className : ''}`}
             onClick={(): void => onDropdownToggle(!visible)}
+            onKeyDown={onKeyDownHandler}
             aria-haspopup={true}
             aria-expanded={visible}
         >
