@@ -14,7 +14,7 @@ import './Transition.scss';
  */
 export type TransitionProps = {
     /**
-     * Component children;
+     * Component children.
      */
     children: TransitionChildren;
     /**

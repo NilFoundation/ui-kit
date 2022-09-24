@@ -7,7 +7,7 @@ import { useEffect, useState, useRef, RefObject } from 'react';
 import { debounce } from '../helpers';
 
 /**
- * useHover hook return type.
+ * UseHover hook return type.
  */
 export type UseHoverReturnType<T extends HTMLElement> = [RefObject<T>, boolean];
 
@@ -33,7 +33,7 @@ export type UseHoverSettings = {
  * Detect whether the mouse is hovering an element.
  *
  * @param {UseHoverSettings} settings - Settings.
- * @returns {UseHoverReturnType} ref and hover state.
+ * @returns {UseHoverReturnType} - Ref and hover state.
  */
 export const useHover = <T extends HTMLElement>({
     hoverInDelay = 100,

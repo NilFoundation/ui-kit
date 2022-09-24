@@ -14,7 +14,7 @@ type CollapseContextContextModel = {
      */
     isOpen: boolean;
     /**
-     * Visibility setter;
+     * Visibility setter.
      */
     toggleIsOpen: () => void;
 };

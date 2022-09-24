@@ -76,7 +76,7 @@ describe('dropdown items', () => {
     });
 
     /**
-     * Coudn't select disabled element
+     * Coudn't select disabled element.
      */
     it('select disabled item', async () => {
         const menu = screen.getByRole('menu');
