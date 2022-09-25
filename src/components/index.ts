@@ -11,7 +11,7 @@ export * from './Panel';
 export * from './InputGroup';
 export * from './Images';
 export * from './Placeholder';
-export * from './NavList';
+export * from './Nav';
 export * from './Navbar';
 export * from './Dropdown';
 export * from './Portal';
