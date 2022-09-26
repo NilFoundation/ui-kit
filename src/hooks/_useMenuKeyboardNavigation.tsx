@@ -27,9 +27,19 @@ export const useMenuKeyboardNavigation = <T extends HTMLElement>(ref: RefObject<
             const activeElement = menuChildren.find(x => x === document.activeElement);
             const getNextFocus =
                 key === KeyboardEventKey.arrowDown ? getNextChild : getPreviousChild;
-            const nextFocus = getNextFocus(ref.current, activeElement);
 
-            nextFocus && nextFocus instanceof HTMLElement && nextFocus.focus();
+            let i = 0;
+            let nextFocus = getNextFocus(ref.current, activeElement);
+
+            while (i < menuChildren.length) {
+                if (!!nextFocus && nextFocus instanceof HTMLElement && nextFocus.tabIndex >= 0) {
+                    nextFocus.focus();
+                    break;
+                }
+
+                nextFocus = getNextFocus(ref.current, nextFocus);
+                i++;
+            }
         };
 
         document.addEventListener('keydown', onKeyPress);
@@ -46,7 +56,10 @@ export const useMenuKeyboardNavigation = <T extends HTMLElement>(ref: RefObject<
  * @param item - Current item.
  * @returns - Preceding current item parent's child.
  */
-const getPreviousChild = <T extends HTMLElement>(parent: T, item?: Element): ChildNode | null => {
+const getPreviousChild = <T extends HTMLElement>(
+    parent: T,
+    item?: Element | null,
+): Element | null => {
     if (!item || parent.isSameNode(item)) {
         return parent.lastElementChild;
     }
@@ -60,7 +73,7 @@ const getPreviousChild = <T extends HTMLElement>(parent: T, item?: Element): Chi
  * @param item - Current item.
  * @returns - Next to current item parent's child.
  */
-const getNextChild = <T extends HTMLElement>(parent: T, item?: Element): ChildNode | null => {
+const getNextChild = <T extends HTMLElement>(parent: T, item?: Element | null): Element | null => {
     if (!item || parent.isSameNode(item)) {
         return parent.firstElementChild;
     }
