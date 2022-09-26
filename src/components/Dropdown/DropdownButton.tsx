@@ -45,7 +45,7 @@ export const DropdownButton = ({
     }, [KeyboardEventKey.arrowDown]);
 
     const onKeyDownHandler = (e: KeyboardEvent<HTMLButtonElement>): void => {
-        onKeyDownPress(e);
+        !visible && onKeyDownPress(e);
         onKeyDown && onKeyDown(e);
     };
 

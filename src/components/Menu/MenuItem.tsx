@@ -52,7 +52,7 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(function MenuIt
     const { localRef, forwardedRef } = useCombinedRef(ref);
 
     useEffect(() => {
-        active && localRef.current && localRef.current.focus();
+        active && !disabled && localRef.current && localRef.current.focus();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -75,8 +75,9 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(function MenuIt
             role="menuitem"
             onClick={onSelectHandler}
             onKeyPress={onKeyPressHandler}
-            tabIndex={disabled ? -1 : 0}
+            tabIndex={0}
             ref={forwardedRef}
+            aria-disabled={disabled}
         >
             <a href={href}>{children}</a>
         </li>
