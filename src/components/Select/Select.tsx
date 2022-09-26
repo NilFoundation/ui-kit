@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, Ref, useState } from 'react';
+import React, { ReactElement, Ref, useState, useRef } from 'react';
 import clsx from 'clsx';
 import { InputSize } from '../../models';
 import { Size } from '../../enums';
@@ -96,6 +96,7 @@ export const Select = <T,>({
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [selectedOption, setSelectedOption] = useState<SelectOptionModel<T>>();
     const iconName = `glyphicon glyphicon-triangle-${dropdownVisible ? 'top' : 'bottom'}`;
+    const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
     const clearSelect = (): void => {
         if (!ref) {
@@ -124,6 +125,12 @@ export const Select = <T,>({
         !multiple && setDropdownVisible(false);
     };
 
+    const onCloseMenuHandler = () => {
+        setDropdownVisible(false);
+        const { current } = toggleButtonRef;
+        current && current.focus();
+    };
+
     return (
         <SelectContext.Provider value={{ multiple, selectedOption, onSelectOption }}>
             <div className={selectClassName}>
@@ -136,6 +143,7 @@ export const Select = <T,>({
                         disabled={disabled}
                         placeholder={placeholder}
                         onClick={(): void => setDropdownVisible(!dropdownVisible)}
+                        tabIndex={-1}
                     />
                     <InputGroup.Buttons>
                         {clearable && !!selectedOption?.value && (
@@ -153,6 +161,7 @@ export const Select = <T,>({
                             aria-haspopup={true}
                             aria-expanded={dropdownVisible}
                             aria-label="Toggle select menu"
+                            ref={toggleButtonRef}
                         >
                             <Icon iconName={iconName} />
                         </Button>
@@ -164,7 +173,7 @@ export const Select = <T,>({
                 >
                     <Menu
                         visible
-                        onCloseMenu={(): void => setDropdownVisible(false)}
+                        onCloseMenu={onCloseMenuHandler}
                         role="listbox"
                         className="selectMenu"
                     >
