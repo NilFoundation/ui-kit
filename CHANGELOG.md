@@ -1,5 +1,17 @@
 # Changelog
 
+## [[0.4.0](https://github.com/NilFoundation/react-components/compare/v0.3.2...v0.4.0)] - 2022-09-27
+### Breaking changes
+- Nav instead of NavList
+
+### Features
+- Add WAI-ARIA **role** attribute to Grid components
+- Menu keyboard navigation
+
+### Fixes
+- Layout sticky header z-index is lower than content's
+- Anchor extra styling
+
 ## [[0.3.2](https://github.com/NilFoundation/react-components/compare/v0.3.1...v0.3.2)] - 2022-09-23
 ### Features
 - Anchor component added
