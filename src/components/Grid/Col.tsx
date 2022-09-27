@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ElementType, ReactElement, ReactNode } from 'react';
+import React, { AriaRole, ElementType, ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { Breakpoint } from '../../enums';
 import { BreakpointValue } from '../../models';
@@ -48,6 +48,10 @@ type ColProps = {
      * HTML element type used to create column.
      */
     as?: ElementType;
+    /**
+     * WAI-ARIA role attribute.
+     */
+    role?: AriaRole;
 } & ColModificators;
 
 /**
@@ -60,6 +64,7 @@ export const Col = ({
     children,
     className,
     as: Component = 'div',
+    role,
     ...restProps
 }: ColProps): ReactElement => {
     const getColClassName = () => {
@@ -78,5 +83,12 @@ export const Col = ({
 
     const colClassName = clsx(className && className, getColClassName());
 
-    return <Component className={colClassName}>{children}</Component>;
+    return (
+        <Component
+            className={colClassName}
+            role={role}
+        >
+            {children}
+        </Component>
+    );
 };

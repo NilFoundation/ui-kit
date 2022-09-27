@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ElementType, ReactElement, ReactNode } from 'react';
+import React, { ElementType, ReactElement, ReactNode, AriaRole } from 'react';
 import clsx from 'clsx';
 import { Breakpoint } from '../../enums';
 
@@ -27,6 +27,10 @@ type ContainerProps = {
      * HTML element type used to create container.
      */
     as?: ElementType;
+    /**
+     * WAI-ARIA role attribute.
+     */
+    role?: AriaRole;
 };
 
 /**
@@ -40,6 +44,7 @@ export const Container = ({
     className,
     fluid,
     as: Component = 'div',
+    ...rest
 }: ContainerProps): ReactElement => {
     const getFluidClassName = () => {
         if (!fluid) {
@@ -55,5 +60,12 @@ export const Container = ({
 
     const containerClassName = clsx(className && className, getFluidClassName());
 
-    return <Component className={containerClassName}>{children}</Component>;
+    return (
+        <Component
+            className={containerClassName}
+            {...rest}
+        >
+            {children}
+        </Component>
+    );
 };
