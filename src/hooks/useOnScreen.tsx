@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import { RefObject, useEffect, useState, useMemo } from 'react';
+import { RefObject, useEffect, useState } from 'react';
 
 /**
  * Hook detects wether element is on screen or not.
@@ -18,24 +18,24 @@ export const useOnScreen = <T extends HTMLElement>(
 ): boolean => {
     const [isIntersecting, setIntersecting] = useState(false);
 
-    const observer = useMemo(
-        () =>
-            new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting), {
-                threshold: Number(detectFullVisibility),
-            }),
-        [detectFullVisibility],
-    );
-
     useEffect(() => {
         if (!ref.current) {
             return;
         }
+
+        const observer = new IntersectionObserver(
+            ([entry]) => setIntersecting(entry.isIntersecting),
+            {
+                threshold: Number(detectFullVisibility),
+            },
+        );
+
         observer.observe(ref.current);
 
         return () => {
             observer.disconnect();
         };
-    }, [observer, ref]);
+    }, [ref, detectFullVisibility]);
 
     return isIntersecting;
 };
