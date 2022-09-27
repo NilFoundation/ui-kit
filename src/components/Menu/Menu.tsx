@@ -63,6 +63,8 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(function Menu(
     { children, className, onCloseMenu, visible, role = 'menu', ...rest }: MenuProps,
     ref,
 ) {
+    const { localRef, forwardedRef } = useCombinedRef(ref);
+    const menuFullyVisible = useOnScreen(localRef, true);
     const menuClassName = clsx('dropdown-menu', className && className, !visible && 'hidden');
 
     const onCloseHandler = (): void => {
@@ -71,16 +73,17 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(function Menu(
 
     const [onEscapePress] = useKeyPress(onCloseHandler, [KeyboardEventKey.escape]);
 
-    const { localRef, forwardedRef } = useCombinedRef(ref);
-
     useClickOutsideCallback(localRef, onCloseHandler, visible);
     useEventListener({
         eventType: 'scroll',
         throttled: true,
-        callback: onCloseHandler,
+        callback: () => {
+            menuFullyVisible && onCloseHandler();
+        },
     });
     useEventListener({ eventType: 'keydown', callback: onEscapePress });
     useMenuKeyboardNavigation(localRef);
+    useAutoScrollIntoView(localRef);
 
     return (
         <ul
