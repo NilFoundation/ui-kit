@@ -3,6 +3,22 @@
 [![Test](https://github.com/NilFoundation/react-components/actions/workflows/test.yaml/badge.svg)](https://github.com/NilFoundation/react-components/actions/workflows/test.yaml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
+## Quick Start
+
+- Configure npm registry:
+
+```
+@nilfoundation:registry=https://npm.pkg.github.com/
+```
+
+- Install:
+
+```bash
+$ npm i @nilfoundation/react-components
+# or
+$ yarn add @nilfoundation/react-components
+```
+
 ## Bootstrap, Icons and fonts
 
 This package assumes that you are importing in your project
