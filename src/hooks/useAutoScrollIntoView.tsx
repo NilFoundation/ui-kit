@@ -28,8 +28,6 @@ export const useAutoScrollIntoView = <T extends HTMLElement>(
             return;
         }
 
-        console.log('here');
-
         !elementFullyVisible &&
             ref.current.scrollIntoView({
                 ...scrollIntoViewOptions,

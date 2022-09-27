@@ -10,6 +10,7 @@ const config = {
   ],
   setupFilesAfterEnv: [
     '@testing-library/jest-dom/extend-expect',
+    '<rootDir>/jest.setup.js'
   ],
   collectCoverageFrom: [
     "<rootDir>/src/components/**/*.tsx",
