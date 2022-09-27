@@ -1,5 +1,15 @@
 # Changelog
 
+## [[0.4.1](https://github.com/NilFoundation/react-components/compare/v0.4.0...v0.4.1)] - 2022-09-28
+### Features
+- UseAutoScrollIntoView hook
+- AutoScrollIntoView Menu component
+- Export helpers functions
+
+### Fixes
+- SSR support useOnScreen hook
+- Don't close Menu on scroll, when it's not fully visible
+
 ## [[0.4.0](https://github.com/NilFoundation/react-components/compare/v0.3.2...v0.4.0)] - 2022-09-27
 ### Breaking changes
 - Nav instead of NavList
