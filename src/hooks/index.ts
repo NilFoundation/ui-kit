@@ -9,3 +9,4 @@ export * from './useKeyPress';
 export * from './useHover';
 export * from './useOnScreen';
 export * from './useCombinedRef';
+export * from './useAutoScrollIntoView';

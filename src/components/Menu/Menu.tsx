@@ -12,10 +12,12 @@ import React, {
 } from 'react';
 import clsx from 'clsx';
 import {
+    useAutoScrollIntoView,
     useClickOutsideCallback,
     useCombinedRef,
     useEventListener,
     useKeyPress,
+    useOnScreen,
 } from '../../hooks';
 import { MenuHeader } from './MenuHeader';
 import { MenuItem } from './MenuItem';
