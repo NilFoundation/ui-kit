@@ -11,8 +11,14 @@ import { ListGroupItem } from './ListGroupItem';
  * Props.
  */
 export interface ListGroupProps {
+    /**
+     * Component children.
+     */
     children: ReactNode;
-    flush?: boolean;
+    /**
+     * Provide className to customize appearance.
+     */
+    className?: string;
 }
 
 /**
@@ -21,8 +27,8 @@ export interface ListGroupProps {
  * @param {ListGroupProps} props - Props.
  * @returns - React component.
  */
-export const ListGroup = ({ children, flush = false }: ListGroupProps): ReactElement => {
-    const listClassName = clsx('list-group', flush && 'list-group-flush');
+export const ListGroup = ({ children, className }: ListGroupProps): ReactElement => {
+    const listClassName = clsx('list-group', className && className);
 
     return (
         <div

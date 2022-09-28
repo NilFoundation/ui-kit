@@ -11,11 +11,29 @@ import { Variant } from '../../enums';
  * Props.
  */
 export interface ListGroupItemProps {
+    /**
+     * Component children.
+     */
     children?: ReactNode;
+    /**
+     * Provide active state.
+     */
     active?: boolean;
+    /**
+     * Disable item.
+     */
     disabled?: boolean;
+    /**
+     * Provide color scheme.
+     */
     variant?: Variant;
+    /**
+     * Href.
+     */
     href?: string;
+    /**
+     * OnClick callback.
+     */
     onClick?: () => void;
 }
 
@@ -45,6 +63,7 @@ export const ListGroupItem = ({
     const props: AnchorHTMLAttributes<HTMLElement> = {
         className: listItemClassName,
         role: 'listitem',
+        'aria-current': active ? 'true' : undefined,
     };
 
     const handleNativeAnchorElementClick = (e: MouseEvent) => {
