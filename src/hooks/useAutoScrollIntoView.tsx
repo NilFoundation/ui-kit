@@ -7,8 +7,6 @@ import { RefObject, useEffect } from 'react';
 import { polyfill } from 'smoothscroll-polyfill';
 import { useOnScreen } from './useOnScreen';
 
-polyfill();
-
 /**
  * Hook scrolls element into view if it it not visible after rendering. Fires only once.
  *
@@ -22,6 +20,10 @@ export const useAutoScrollIntoView = <T extends HTMLElement>(
     scrollIntoViewOptions?: ScrollIntoViewOptions,
 ) => {
     const elementFullyVisible = useOnScreen(ref, detectFullVisibility);
+
+    useEffect(() => {
+        polyfill();
+    }, []);
 
     useEffect(() => {
         if (!ref.current) {
