@@ -1,5 +1,9 @@
 # Changelog
 
+## [[0.4.3](https://github.com/NilFoundation/react-components/compare/v0.4.2...v0.4.3)] - 2022-09-29
+### Features
+- ListGroup component
+
 ## [[0.4.2](https://github.com/NilFoundation/react-components/compare/v0.4.1...v0.4.2)] - 2022-09-28
 ### Fixes
 - SSR useAutoScrollIntoView pilyfill() error
