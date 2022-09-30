@@ -5,7 +5,10 @@
 
 import { RefObject, useEffect } from 'react';
 import { polyfill } from 'smoothscroll-polyfill';
+import { prefersReduceMotion } from '../helpers';
 import { useOnScreen } from './useOnScreen';
+
+typeof window !== 'undefined' && polyfill();
 
 /**
  * Hook scrolls element into view if it it not visible after rendering. Fires only once.
@@ -22,18 +25,19 @@ export const useAutoScrollIntoView = <T extends HTMLElement>(
     const elementFullyVisible = useOnScreen(ref, detectFullVisibility);
 
     useEffect(() => {
-        polyfill();
-    }, []);
-
-    useEffect(() => {
         if (!ref.current) {
             return;
         }
 
+        const reduceMotion = prefersReduceMotion();
+        const scrollBehaviour: ScrollIntoViewOptions['behavior'] = reduceMotion
+            ? 'auto'
+            : scrollIntoViewOptions?.behavior ?? 'smooth';
+
         !elementFullyVisible &&
             ref.current.scrollIntoView({
                 ...scrollIntoViewOptions,
-                behavior: scrollIntoViewOptions?.behavior ?? 'smooth',
+                behavior: scrollBehaviour,
             });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

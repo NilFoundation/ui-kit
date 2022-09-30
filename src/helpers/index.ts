@@ -6,3 +6,4 @@
 export * from './uniqueId';
 export * from './debounce';
 export * from './throttle';
+export * from './prefersReduceMotion';
