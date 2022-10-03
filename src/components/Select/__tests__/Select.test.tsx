@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { Select } from '../Select';
 
 /**
@@ -22,5 +22,27 @@ describe('select', () => {
         );
 
         expect(getByRole('textbox')).toBeInTheDocument();
+    });
+
+    /**
+     * Component open and close menu.
+     */
+    it('open/close menu', () => {
+        const { getByRole } = render(
+            <Select>
+                <Select.Option
+                    title="title"
+                    value="value"
+                />
+            </Select>,
+        );
+
+        const select = getByRole('textbox');
+
+        expect(getByRole('listbox')).toHaveClass('hidden');
+
+        fireEvent.click(select);
+
+        expect(getByRole('listbox')).not.toHaveClass('hidden');
     });
 });
