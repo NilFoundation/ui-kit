@@ -22,7 +22,7 @@ $ yarn add @nilfoundation/react-components
 ## Bootstrap, Icons and fonts
 
 This package already includes
-- [Bootstrap 3.4.*](https://getbootstrap.com/docs/3.4/getting-started/#download)
+- [Bootstrap 3.4.1](https://getbootstrap.com/docs/3.4/getting-started/#download)
 - [Roboto Font](https://fonts.google.com/specimen/Roboto)
 
 We use [Glyphicons](https://getbootstrap.com/docs/3.3/components/#glyphicons), delivered by default with Bootstrap 3. Feel free to use in your project any other icon sets with [Icon](./src/components/Icon/Icon.tsx) component.
