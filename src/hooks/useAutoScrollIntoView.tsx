@@ -14,11 +14,13 @@ typeof window !== 'undefined' && polyfill();
  * Hook scrolls element into view if it it not visible after rendering. Fires only once.
  *
  * @param ref - Ref.
+ * @param scrollTrigger - Triggers scroll when equals true.
  * @param [detectFullVisibility = true] - Scrolls to element even if it partially viewed.
  * @param scrollIntoViewOptions - ScrollIntoView options. Behaivour defaults to smooth.
  */
 export const useAutoScrollIntoView = <T extends HTMLElement>(
     ref: RefObject<T>,
+    scrollTrigger?: boolean,
     detectFullVisibility = true,
     scrollIntoViewOptions?: ScrollIntoViewOptions,
 ) => {
@@ -26,6 +28,10 @@ export const useAutoScrollIntoView = <T extends HTMLElement>(
 
     useEffect(() => {
         if (!ref.current) {
+            return;
+        }
+
+        if (!scrollTrigger) {
             return;
         }
 
@@ -40,5 +46,5 @@ export const useAutoScrollIntoView = <T extends HTMLElement>(
                 behavior: scrollBehaviour,
             });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [elementFullyVisible, scrollTrigger]);
 };

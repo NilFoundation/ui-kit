@@ -83,7 +83,7 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(function Menu(
     });
     useEventListener({ eventType: 'keydown', callback: onEscapePress });
     useMenuKeyboardNavigation(localRef);
-    useAutoScrollIntoView(localRef);
+    useAutoScrollIntoView(localRef, visible);
 
     return (
         <ul
