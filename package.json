@@ -29,6 +29,7 @@
     "lint:ts": "eslint --ext=ts,tsx src --max-warnings=0",
     "lint:editorconfig": "npx editorconfig-checker",
     "test": "jest",
+    "test:dev": "jest --watch",
     "test:coverage": "jest --coverage",
     "prettier": "prettier --write",
     "build": "rollup -c",
