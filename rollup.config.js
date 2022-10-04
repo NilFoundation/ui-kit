@@ -4,6 +4,7 @@ import typescript from "@rollup/plugin-typescript";
 import { terser } from "rollup-plugin-terser";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from "rollup-plugin-postcss";
+import filesize from 'rollup-plugin-filesize';
 
 const packageJson = require("./package.json");
 
@@ -36,7 +37,12 @@ export default [
                 exclude: ["**/__tests__", "**/*.test.tsx", "**/*.stories.**"],
                 noEmitOnError: true,
             }),
-            terser(),
+            terser({
+                format: {
+                    comments: false
+                },
+            }),
+            filesize(),
         ],
         external: ['react', 'react-dom']
     }
