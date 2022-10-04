@@ -1,5 +1,10 @@
 # Changelog
 
+## [[0.5.0](https://github.com/NilFoundation/react-components/compare/v0.4.4...v0.5.0)] - 2022-10-05
+### Breaking changes
+- Include all bootstrap styles and style overrides in package
+- Download Roboto font by default
+
 ## [[0.4.4](https://github.com/NilFoundation/react-components/compare/v0.4.3...v0.4.4)] - 2022-10-04
 ### Fixes
 - Menu autoScroll into view behaviour
