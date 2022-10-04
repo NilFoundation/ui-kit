@@ -21,7 +21,7 @@ $ yarn add @nilfoundation/react-components
 
 ## Bootstrap, Icons and fonts
 
-This package assumes that you are importing in your project
+This package already includes
 - [Bootstrap 3.4.*](https://getbootstrap.com/docs/3.4/getting-started/#download)
 - [Roboto Font](https://fonts.google.com/specimen/Roboto)
 
