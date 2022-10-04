@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import { Select } from '../Select';
 
 /**
@@ -44,5 +44,22 @@ describe('select', () => {
         fireEvent.click(select);
 
         expect(getByRole('listbox')).not.toHaveClass('hidden');
+    });
+
+    /**
+     * Selects defaultSelected option.
+     */
+    it('default seleted option', async () => {
+        const { getByRole } = render(
+            <Select>
+                <Select.Option
+                    title="title"
+                    value="value"
+                    defaultSelected
+                />
+            </Select>,
+        );
+
+        await waitFor(() => expect(getByRole('textbox')).toHaveValue('title'));
     });
 });
