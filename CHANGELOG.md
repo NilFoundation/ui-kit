@@ -1,5 +1,13 @@
 # Changelog
 
+## [[0.5.1](https://github.com/NilFoundation/react-components/compare/v0.5.0...v0.5.1)] - 2022-10-05
+### Features
+- Select customizable icons
+- Include variables.scss into build to provide color schema usage
+
+### Fixes
+- Menu is always scrolling into view when opens
+
 ## [[0.5.0](https://github.com/NilFoundation/react-components/compare/v0.4.4...v0.5.0)] - 2022-10-05
 ### Breaking changes
 - Include all bootstrap styles and style overrides in package
