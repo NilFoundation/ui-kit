@@ -1,5 +1,9 @@
 # Changelog
 
+## [[0.5.2](https://github.com/NilFoundation/react-components/compare/v0.5.1...v0.5.2)] - 2022-10-05
+### Features
+- Navbar component styling
+
 ## [[0.5.1](https://github.com/NilFoundation/react-components/compare/v0.5.0...v0.5.1)] - 2022-10-05
 ### Features
 - Select customizable icons
