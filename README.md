@@ -19,6 +19,14 @@ $ npm i @nilfoundation/react-components
 $ yarn add @nilfoundation/react-components
 ```
 
+## Color scheme
+
+- We provide set of scss color variables. For usage consider to include this code in any of your scss files.
+
+```scss
+@import '~@nilfoundation/react-components/build/variables';
+```
+
 ## Bootstrap, Icons and fonts
 
 This package already includes
