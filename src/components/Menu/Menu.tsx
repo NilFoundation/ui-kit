@@ -12,7 +12,7 @@ import React, {
 } from 'react';
 import clsx from 'clsx';
 import {
-    useAutoScrollIntoView,
+    // useAutoScrollIntoView,
     useClickOutsideCallback,
     useCombinedRef,
     useEventListener,
@@ -83,7 +83,7 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(function Menu(
     });
     useEventListener({ eventType: 'keydown', callback: onEscapePress });
     useMenuKeyboardNavigation(localRef);
-    useAutoScrollIntoView(localRef, visible);
+    // useAutoScrollIntoView(localRef, visible);
 
     return (
         <ul
