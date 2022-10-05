@@ -36,7 +36,9 @@ export const Grid: Story = ({ fluid, noGutters }: Args) => (
                 sm={9}
                 xs={12}
             >
-                <div style={{ backgroundColor: 'darkorchid' }}>lg=4 / md=6 / sm=9 / xs=12</div>
+                <div style={{ backgroundColor: 'darkorchid', padding: '10px' }}>
+                    lg=4 / md=6 / sm=9 / xs=12
+                </div>
             </Col>
             <Col
                 lg={4}
@@ -44,7 +46,9 @@ export const Grid: Story = ({ fluid, noGutters }: Args) => (
                 sm={12}
                 xs={6}
             >
-                <div style={{ backgroundColor: 'darkgray' }}>lg=4 / md=3 / sm=12 / xs=6</div>
+                <div style={{ backgroundColor: 'darkgray', padding: '10px' }}>
+                    lg=4 / md=3 / sm=12 / xs=6
+                </div>
             </Col>
             <Col
                 lg={4}
@@ -54,7 +58,7 @@ export const Grid: Story = ({ fluid, noGutters }: Args) => (
                 xs-offset={3}
                 sm-offset={0}
             >
-                <div style={{ backgroundColor: 'darkmagenta' }}>
+                <div style={{ backgroundColor: 'darkmagenta', padding: '10px' }}>
                     lg=4 / md=2 / sm=4 / xs=8 / xs-offset=3
                 </div>
             </Col>
