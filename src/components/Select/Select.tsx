@@ -70,6 +70,14 @@ export interface SelectProps<T> {
      * Allows to select multiply options.
      */
     multiple?: boolean;
+    /**
+     * Icon, displaying when select menu is open.
+     */
+    menuOpendIcon?: string;
+    /**
+     * Icon, displaying when select menu is closed.
+     */
+    menuClosedIcon?: string;
 }
 
 /**
@@ -91,11 +99,13 @@ export const Select = <T,>({
     clearIcon = 'glyphicon glyphicon-remove',
     ref,
     multiple = false,
+    menuOpendIcon = 'glyphicon glyphicon-triangle-top',
+    menuClosedIcon = 'glyphicon glyphicon-triangle-bottom',
 }: SelectProps<T>) => {
     const selectClassName = clsx('select', className && className);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [selectedOption, setSelectedOption] = useState<SelectOptionModel<T>>();
-    const iconName = `glyphicon glyphicon-triangle-${dropdownVisible ? 'top' : 'bottom'}`;
+    const iconName = dropdownVisible ? menuOpendIcon : menuClosedIcon;
     const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
     const clearSelect = (): void => {
