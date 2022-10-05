@@ -4,6 +4,7 @@
  */
 
 import React, { ReactElement, ReactNode } from 'react';
+import './Navbar.scss';
 
 /**
  * Props.
