@@ -21,4 +21,22 @@ $code-color: $c-secondary;
 $code-bg: transparent;
 $font-family-monospace: 'Courier New', monospace;
 
+$jumbotron-bg: $c-base-darker;
+
+$dropdown-bg: $c-base-lighter;
+$dropdown-link-color: $c-secondary;
+$dropdown-link-hover-bg: $c-base-light;
+$dropdown-link-hover-color: $c-secondary;
+
+$navbar-default-bg: $c-base;
+
+$breadcrumb-bg: $c-base;
+
+$input-bg: $c-base;
+$input-border: $c-base-light;
+$input-color: $c-secondary;
+$input-border-focus: $c-secondary-darker;
+
+$input-group-addon-bg: $c-base;
+
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
