@@ -8,6 +8,16 @@ $brand-primary: $c-primary;
 $brand-success: $c-success;
 $brand-warning: $c-warning;
 $brand-danger: $c-danger;
+$brand-info: $c-info;
+$state-info-bg: $c-info;
+$state-success-bg: $c-success;
+$state-warning-bg: $c-warning;
+$state-danger-bg: $c-danger;
+
+$state-success-text: $c-secondary;
+$state-info-text: $c-secondary;
+$state-warning-text: $c-secondary;
+$state-danger-text: $c-secondary;
 
 $link-color: $c-secondary-darker;
 $link-hover-color: $c-secondary;
@@ -37,10 +47,18 @@ $navbar-border-radius: 0;
 $breadcrumb-bg: $c-base;
 
 $input-bg: $c-base;
-$input-border: $c-base-light;
+$input-border: $c-secondary-darker;
 $input-color: $c-secondary;
 $input-border-focus: $c-secondary-darker;
 
 $input-group-addon-bg: $c-base;
+
+$list-group-hover-bg: $c-base-light;
+$list-group-bg: $c-base;
+$list-group-link-color: $c-secondary-darker;
+$list-group-link-hover-color: $c-secondary;
+$list-group-disabled-color: $c-secondary-darker;
+$list-group-disabled-bg: $c-base-lighter;
+$list-group-border: $c-base-light;
 
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
