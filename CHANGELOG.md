@@ -1,5 +1,11 @@
 # Changelog
 
+## [[0.5.3](https://github.com/NilFoundation/react-components/compare/v0.5.2...v0.5.3)] - 2022-10-06
+### Features
+- ListGroup component styling
+- ErrorBoundary component
+- ListGroup forwardRef
+
 ## [[0.5.2](https://github.com/NilFoundation/react-components/compare/v0.5.1...v0.5.2)] - 2022-10-05
 ### Features
 - Navbar component styling
