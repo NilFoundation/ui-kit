@@ -60,12 +60,6 @@ export const ListGroupItem = ({
         disabled && 'disabled',
     );
 
-    const props: AnchorHTMLAttributes<HTMLElement> = {
-        className: listItemClassName,
-        role: 'listitem',
-        'aria-current': active ? 'true' : undefined,
-    };
-
     const handleNativeAnchorElementClick = (e: MouseEvent) => {
         if (disabled) {
             e.stopPropagation();
@@ -76,16 +70,16 @@ export const ListGroupItem = ({
         onClick && onClick();
     };
 
-    if (onClick) {
-        props.onClick = handleNativeAnchorElementClick;
-        props.href = '#';
-    } else if (href) {
-        props.href = href;
-    }
+    const props: AnchorHTMLAttributes<HTMLElement> = {
+        className: listItemClassName,
+        role: 'listitem',
+        'aria-current': active ? 'true' : undefined,
+        onClick: href || onClick ? handleNativeAnchorElementClick : undefined,
+        href: onClick ? href ?? '#' : href,
+    };
 
     if (disabled) {
         props['aria-disabled'] = true;
-        props.tabIndex = -1;
     }
 
     return <Component {...props}>{children}</Component>;
