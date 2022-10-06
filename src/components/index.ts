@@ -39,3 +39,5 @@ export * from './Form';
 export * from './FloatingLabel';
 export * from './Anchor';
 export * from './ListGroup';
+export * from './Media';
+export * from './ErrorBoundary';
