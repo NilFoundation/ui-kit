@@ -11,7 +11,7 @@ $spinner-vertical-align:  -.125em;
 $spinner-border-width:    .25em;
 $spinner-animation-speed: .75s;
 
-$spinner-width-sm:        1rem;
+$spinner-width-sm:        1.5rem;
 $spinner-height-sm:       $spinner-width-sm;
 $spinner-border-width-sm: .2em;
 
@@ -69,5 +69,13 @@ $spinner-border-width-lg: .2em;
   clip: rect(0,0,0,0)!important;
   white-space: nowrap!important;
   border: 0!important;
+}
+
+.spinner-grow-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 

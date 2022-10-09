@@ -5,15 +5,25 @@
 
 import React, { ReactElement } from 'react';
 import clsx from 'clsx';
-import { Variant, Size } from '../../enums';
+import { Size } from '../../enums';
 import './Spinner-BS-5.scss'; // TODO - remove after migrating to BS5.
 
 /**
  * Props.
  */
 export type SpinnerProps = {
-    variant?: Variant;
-    size?: Size;
+    /**
+     * Provide size.
+     */
+    size?: Exclude<Size, Size.xs>;
+    /**
+     * Place Spinner in the center of all avialiable space.
+     */
+    grow?: boolean;
+    /**
+     * Provide className to customize appearance.
+     */
+    className?: string;
 };
 
 /**
@@ -22,16 +32,14 @@ export type SpinnerProps = {
  * @param {SpinnerProps} props - Props.
  * @returns React component.
  */
-export const Spinner = ({
-    variant = Variant.default,
-    size = Size.md,
-}: SpinnerProps): ReactElement => {
+export const Spinner = ({ className, size = Size.md, grow }: SpinnerProps): ReactElement => {
     const spinnerClassName = clsx(
-        `spinner-border${size !== Size.md ? `-${size}` : ''}`,
-        variant !== Variant.default && `text-${variant}`,
+        className && className,
+        'spinner-border',
+        size !== Size.md && `spinner-border-${size}`,
     );
 
-    return (
+    const renderSpinner = () => (
         <div
             className={spinnerClassName}
             role="status"
@@ -39,4 +47,6 @@ export const Spinner = ({
             <span className="visually-hidden">Loading...</span>
         </div>
     );
+
+    return grow ? <div className="spinner-grow-container">{renderSpinner()}</div> : renderSpinner();
 };
