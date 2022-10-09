@@ -10,10 +10,16 @@ import { KeyboardEventKey } from '../enums';
  * Provides keyboard (arrowUp and arrowDown) menu interactions.
  *
  * @param ref - Menu ref.
+ * @param [isVisible] - Is visible.
  */
-export const useMenuKeyboardNavigation = <T extends HTMLElement>(ref: RefObject<T>) => {
+export const useMenuKeyboardNavigation = <T extends HTMLElement>(
+    ref: RefObject<T>,
+    isVisible?: boolean,
+) => {
     useEffect(() => {
         const onKeyPress = (e: KeyboardEvent) => {
+            isVisible && e.preventDefault();
+
             const { key } = e;
             if (key !== KeyboardEventKey.arrowDown && key !== KeyboardEventKey.arrowUp) {
                 return;
@@ -47,7 +53,7 @@ export const useMenuKeyboardNavigation = <T extends HTMLElement>(ref: RefObject<
         return () => {
             document.removeEventListener('keydown', onKeyPress);
         };
-    }, [ref]);
+    }, [ref, isVisible]);
 };
 
 /**
