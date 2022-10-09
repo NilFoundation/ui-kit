@@ -1,5 +1,14 @@
 # Changelog
 
+## [[0.5.4](https://github.com/NilFoundation/react-components/compare/v0.5.3...v0.5.4)] - 2022-10-09
+### Features
+- **Grow** Spinner prop
+
+### Fixes
+- Spinner minor issues
+- Dropdown menu unexpected close on interacting menu with keyboard
+- Disabled ListGroup item href issue
+
 ## [[0.5.3](https://github.com/NilFoundation/react-components/compare/v0.5.2...v0.5.3)] - 2022-10-06
 ### Features
 - ListGroup component styling
