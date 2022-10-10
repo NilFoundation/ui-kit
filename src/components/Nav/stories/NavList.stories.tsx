@@ -24,5 +24,6 @@ export const Nav: Story = args => (
         <NavComponent.Item>First</NavComponent.Item>
         <NavComponent.Item>Second</NavComponent.Item>
         <NavComponent.Item disabled>Third</NavComponent.Item>
+        <NavComponent.Item active>Forth</NavComponent.Item>
     </NavComponent>
 );

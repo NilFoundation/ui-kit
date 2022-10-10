@@ -18,12 +18,12 @@ export const useMenuKeyboardNavigation = <T extends HTMLElement>(
 ) => {
     useEffect(() => {
         const onKeyPress = (e: KeyboardEvent) => {
-            isVisible && e.preventDefault();
-
             const { key } = e;
             if (key !== KeyboardEventKey.arrowDown && key !== KeyboardEventKey.arrowUp) {
                 return;
             }
+
+            isVisible && e.preventDefault();
 
             if (!ref || !ref.current) {
                 return;
