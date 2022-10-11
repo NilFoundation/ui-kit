@@ -15,6 +15,10 @@ import { DropdownContext } from './DropdownContext';
  */
 export type DropdownButtonProps = {
     /**
+     * Display dropdown icon.
+     */
+    displayIcon?: boolean;
+    /**
      * Icon to display when dropdown is opend.
      */
     iconNameDropdownOpend?: string;
@@ -36,6 +40,7 @@ export const DropdownButton = ({
     iconNameDropdownOpend = 'caret',
     iconNameDropdownClosed = 'caret',
     onKeyDown,
+    displayIcon = true,
 }: DropdownButtonProps): ReactElement => {
     const { visible, onDropdownToggle } = useContext(DropdownContext);
     const iconName = visible ? iconNameDropdownOpend : iconNameDropdownClosed;
@@ -59,10 +64,12 @@ export const DropdownButton = ({
             aria-expanded={visible}
         >
             {children}{' '}
-            <Icon
-                iconName={iconName}
-                srOnlyText="Toggle dropdown menu"
-            />
+            {displayIcon && (
+                <Icon
+                    iconName={iconName}
+                    srOnlyText="Toggle dropdown menu"
+                />
+            )}
         </Button>
     );
 };
