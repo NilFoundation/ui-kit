@@ -3,12 +3,15 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode, useState } from 'react';
+import React, { createRef, ReactElement, ReactNode, useState } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Toast } from '../Toast';
 import { CreateNotificationData } from './CreateNotificationData';
 import { NotificationContainerContext } from './NotificationContext';
 import { RenderNotificationData } from './RenderNotificationData';
 import { uniqueId } from '../../helpers';
+import { Portal } from '../Portal';
+import './NotificationProvider.scss';
 
 /**
  * Props.
@@ -51,24 +54,45 @@ export const NotificationProvider = ({
     const [queue, setQueue] = useState<RenderNotificationData[]>([]);
 
     notificationActions = {
-        create: (newNotification: CreateNotificationData): void =>
-            setQueue([...queue, { ...newNotification, id: uniqueId('notification-') }]),
+        create: ({ message, ...rest }: CreateNotificationData): void =>
+            setQueue([
+                ...queue,
+                {
+                    ...rest,
+                    children: message,
+                    id: uniqueId('notification-'),
+                    nodeRef: createRef(),
+                },
+            ]),
 
         remove: (id: string) => setQueue(queue.filter(x => x.id !== id)),
     };
 
     return (
-        <NotificationContainerContext.Provider value={{ queue }}>
-            {children}
-            <div className="notificationContainer">
-                {queue.slice(0, maxNotificationsToShow).map(({ id, ...rest }) => (
-                    <Toast
-                        key={id}
-                        close={(): void => notificationActions?.remove(id)}
-                        {...rest}
-                    />
-                ))}
-            </div>
-        </NotificationContainerContext.Provider>
+        <Portal>
+            <NotificationContainerContext.Provider value={{ queue }}>
+                {children}
+                <TransitionGroup className="notificationContainer">
+                    {queue
+                        .slice(0, maxNotificationsToShow)
+                        .map(({ id, nodeRef, children, ...rest }) => (
+                            <CSSTransition
+                                key={id}
+                                nodeRef={nodeRef}
+                                timeout={300}
+                                classNames="alert"
+                            >
+                                <Toast
+                                    ref={nodeRef}
+                                    close={(): void => notificationActions?.remove(id)}
+                                    {...rest}
+                                >
+                                    {children}
+                                </Toast>
+                            </CSSTransition>
+                        ))}
+                </TransitionGroup>
+            </NotificationContainerContext.Provider>
+        </Portal>
     );
 };

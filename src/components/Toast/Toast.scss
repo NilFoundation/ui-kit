@@ -1,7 +1,13 @@
 .toast {
-  max-width: 350px;
+  min-width: 250px;
+  max-width: 550px;
   word-wrap: break-word;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 30%);
+  margin: 20px;
+
+  @media screen and (min-width: 768px) {
+    min-width: 350px;
+  }
 }

@@ -1,14 +1,7 @@
 .notificationContainer {
-  height: 100vh;
-  width: 100vw;
   z-index: 1000;
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: flex-end;
-  padding: var(--spacing-toast);
-  gap: var(--spacing-toast);
 }

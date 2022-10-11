@@ -3,10 +3,10 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode, useEffect, useRef } from 'react';
+import React, { forwardRef, ReactElement, ReactNode, useEffect } from 'react';
 import clsx from 'clsx';
 import { Variant, KeyboardEventKey } from '../../enums';
-import { useEventListener, useKeyPress } from '../../hooks';
+import { useCombinedRef, useEventListener, useKeyPress } from '../../hooks';
 import { CloseButton } from '../Button';
 import { Panel } from '../Panel';
 import './Toast.scss';
@@ -57,25 +57,28 @@ export type ToastProps = {
  * @param {ToastProps} props - Props.
  * @returns React component.
  */
-export const Toast = ({
-    children,
-    title,
-    className,
-    variant = Variant.default,
-    lifeTime = 3000,
-    autoClose = variant !== Variant.danger,
-    close,
-    autoFocus,
-}: ToastProps): ReactElement => {
+export const Toast = forwardRef<HTMLDivElement, ToastProps>(function Toast(
+    {
+        children,
+        title,
+        className,
+        variant = Variant.default,
+        lifeTime = 3000,
+        autoClose = variant !== Variant.danger,
+        close,
+        autoFocus,
+    }: ToastProps,
+    ref,
+): ReactElement {
     const role = variant === Variant.danger ? 'alert' : 'status';
     const ariaLive = variant === Variant.danger ? 'assertive' : 'polite';
-    const ref = useRef<HTMLDivElement>(null);
+    const { localRef, forwardedRef } = useCombinedRef(ref);
 
     const toastClassName = clsx('toast', className && className);
 
     useEffect(() => {
-        autoFocus && ref.current && ref.current.focus();
-    }, [ref, autoFocus]);
+        autoFocus && localRef.current && localRef.current.focus();
+    }, [localRef, autoFocus]);
 
     useEffect(() => {
         const id = autoClose && setTimeout(() => close && close(), lifeTime);
@@ -96,7 +99,7 @@ export const Toast = ({
     return (
         <Panel
             className={toastClassName}
-            ref={ref}
+            ref={forwardedRef}
             variant={variant}
             role={role}
             aria-live={ariaLive}
@@ -109,4 +112,4 @@ export const Toast = ({
             <Panel.Content>{children}</Panel.Content>
         </Panel>
     );
-};
+});

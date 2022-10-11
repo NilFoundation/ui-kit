@@ -15,7 +15,6 @@ import { SelectOptionModel } from './SelectOptionModel';
 import { SelectContext } from './SelectContext';
 import { Icon } from '../Icon';
 import { Button } from '../Button';
-// import { Transition } from '../Transition';
 import './Select.scss';
 
 /**

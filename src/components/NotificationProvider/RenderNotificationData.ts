@@ -3,6 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
+import { RefObject } from 'react';
 import { ToastProps } from '../Toast';
 
 /**
@@ -10,4 +11,5 @@ import { ToastProps } from '../Toast';
  */
 export type RenderNotificationData = {
     id: string;
+    nodeRef: RefObject<HTMLDivElement>;
 } & ToastProps;
