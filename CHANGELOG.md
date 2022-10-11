@@ -1,5 +1,13 @@
 # Changelog
 
+## [[0.6.0](https://github.com/NilFoundation/react-components/compare/v0.5.4...v0.6.0)] - 2022-10-12
+### Breaking changes
+- Remove Transition component
+
+### Features
+- **displayIcon** Dropdown prop
+- Notification container
+
 ## [[0.5.4](https://github.com/NilFoundation/react-components/compare/v0.5.3...v0.5.4)] - 2022-10-09
 ### Features
 - **Grow** Spinner prop
