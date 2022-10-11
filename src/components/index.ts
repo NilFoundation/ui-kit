@@ -34,7 +34,6 @@ export * from './Collapse';
 export * from './NotificationProvider';
 export * from './Alert';
 export * from './Toast';
-export * from './Transition';
 export * from './Form';
 export * from './FloatingLabel';
 export * from './Anchor';
