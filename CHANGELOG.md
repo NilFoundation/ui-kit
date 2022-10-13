@@ -1,5 +1,9 @@
 # Changelog
 
+## [[0.6.1](https://github.com/NilFoundation/react-components/compare/v0.6.0...v0.6.1)] - 2022-10-13
+### Features
+- **onClick** NavItem prop
+
 ## [[0.6.0](https://github.com/NilFoundation/react-components/compare/v0.5.4...v0.6.0)] - 2022-10-12
 ### Breaking changes
 - Remove Transition component
