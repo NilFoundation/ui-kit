@@ -33,3 +33,11 @@
 
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/utilities";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";
+
+// form states overrides;
+.has-warning {
+  @include form-control-validation($c-warning, $c-warning, $state-warning-bg);
+}
+.has-error {
+  @include form-control-validation($c-danger, $c-danger, $state-danger-bg);
+}
