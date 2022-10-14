@@ -5,13 +5,17 @@
 
 import React, { ReactElement, useContext, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import clsx from 'clsx';
 import { DropdownContext } from './DropdownContext';
 import { Menu, MenuProps } from '../Menu';
+import { HorizontalPosition } from '../../enums';
 
 /**
  * Props.
  */
-export type DropdownMenuProps = Omit<MenuProps, 'visible' | 'onCloseMenu'>;
+export type DropdownMenuProps = Omit<MenuProps, 'visible' | 'onCloseMenu'> & {
+    align?: HorizontalPosition;
+};
 
 /**
  * Dropdown menu component.
@@ -19,8 +23,14 @@ export type DropdownMenuProps = Omit<MenuProps, 'visible' | 'onCloseMenu'>;
  * @param {DropdownMenuProps} props - Props.
  * @returns React component.
  */
-export const DropdownMenu = ({ children, ...rest }: DropdownMenuProps): ReactElement => {
+export const DropdownMenu = ({
+    children,
+    className,
+    align = 'left',
+    ...rest
+}: DropdownMenuProps): ReactElement => {
     const { visible, onDropdownToggle } = useContext(DropdownContext);
+    const menuClassName = clsx(className && className, align === 'right' && 'dropdown-menu-right');
     const nodeRef = useRef(null);
 
     return (
@@ -35,6 +45,7 @@ export const DropdownMenu = ({ children, ...rest }: DropdownMenuProps): ReactEle
                 onCloseMenu={() => onDropdownToggle(false)}
                 visible
                 ref={nodeRef}
+                className={menuClassName}
                 {...rest}
             >
                 {children}
