@@ -1,5 +1,12 @@
 # Changelog
 
+## [[0.6.4](https://github.com/NilFoundation/react-components/compare/v0.6.3...v0.6.4)] - 2022-10-17
+### Features
+- **children** NavItem and BreadcrumbsItem prop not required
+
+### Fixes
+- Portal SSR support
+
 ## [[0.6.3](https://github.com/NilFoundation/react-components/compare/v0.6.2...v0.6.3)] - 2022-10-17
 ### Features
 - **renderLink** navItem prop
