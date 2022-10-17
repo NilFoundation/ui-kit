@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import { ReactNode, ReactElement } from 'react';
+import React, { ReactNode, ReactElement } from 'react';
 import { createPortal } from 'react-dom';
 
 /**
@@ -22,5 +22,10 @@ export type PortalProps = {
  * @param {PortalProps} props - Props.
  * @returns React component.
  */
-export const Portal = ({ children }: PortalProps): ReactElement =>
-    createPortal(children, document.getElementById('popup') || document.body);
+export const Portal = ({ children }: PortalProps): ReactElement => {
+    if (typeof window === 'undefined' || !window.document) {
+        return <></>;
+    }
+
+    return createPortal(children, document.getElementById('popup') || document.body);
+};

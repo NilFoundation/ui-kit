@@ -12,4 +12,5 @@ export type CreateNotificationData = {
     title: string;
     message?: string;
     variant?: Variant;
+    lifeTime?: number;
 };

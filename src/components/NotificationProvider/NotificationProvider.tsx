@@ -69,9 +69,9 @@ export const NotificationProvider = ({
     };
 
     return (
-        <Portal>
-            <NotificationContainerContext.Provider value={{ queue }}>
-                {children}
+        <NotificationContainerContext.Provider value={{ queue }}>
+            {children}
+            <Portal>
                 <TransitionGroup className="notificationContainer">
                     {queue
                         .slice(0, maxNotificationsToShow)
@@ -92,7 +92,7 @@ export const NotificationProvider = ({
                             </CSSTransition>
                         ))}
                 </TransitionGroup>
-            </NotificationContainerContext.Provider>
-        </Portal>
+            </Portal>
+        </NotificationContainerContext.Provider>
     );
 };
