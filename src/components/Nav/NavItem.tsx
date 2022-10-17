@@ -3,15 +3,41 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { KeyboardEvent, MouseEventHandler, ReactElement, ReactNode } from 'react';
+import React, {
+    KeyboardEvent,
+    KeyboardEventHandler,
+    MouseEventHandler,
+    ReactElement,
+    ReactNode,
+} from 'react';
 import clsx from 'clsx';
 import { useKeyPress } from '../../hooks';
 import { KeyboardEventKey } from '../../enums';
 
 /**
+ * Render link.
+ */
+type RenderLink = ({
+    href,
+    disabled,
+    active,
+    onKeyDown,
+    onClick,
+    tabIndex,
+}: {
+    href?: string;
+    disabled?: boolean;
+    active?: boolean;
+    onKeyDown?: KeyboardEventHandler<HTMLAnchorElement>;
+    onClick?: MouseEventHandler<HTMLAnchorElement>;
+    ariaDisabled?: boolean;
+    tabIndex?: number;
+}) => ReactElement;
+
+/**
  * Props.
  */
-type NavItemProps = {
+export type NavItemProps = {
     /**
      * Component children.
      */
@@ -36,6 +62,10 @@ type NavItemProps = {
      * On click.
      */
     onClick?: () => void;
+    /**
+     * Render router link or any other custom link.
+     */
+    renderLink?: RenderLink;
 };
 
 /**
@@ -51,6 +81,7 @@ export const NavItem = ({
     className,
     href,
     onClick,
+    renderLink,
 }: NavItemProps): ReactElement => {
     const computedHref = disabled ? undefined : href ?? '#';
     const itemClassName = clsx(active && 'active', className && className, disabled && 'disabled');
@@ -76,15 +107,26 @@ export const NavItem = ({
 
     return (
         <li className={itemClassName}>
-            <a
-                href={computedHref}
-                aria-disabled={disabled}
-                onClick={onClick ? onClickHandler : undefined}
-                onKeyDown={onClick ? onKeyPressHandler : undefined}
-                tabIndex={tabIndex}
-            >
-                {children}
-            </a>
+            {renderLink ? (
+                renderLink({
+                    href: computedHref,
+                    disabled,
+                    active,
+                    onKeyDown: onClick ? onKeyPressHandler : undefined,
+                    onClick: onClick ? onClickHandler : undefined,
+                    tabIndex,
+                })
+            ) : (
+                <a
+                    href={computedHref}
+                    aria-disabled={disabled}
+                    onClick={onClick ? onClickHandler : undefined}
+                    onKeyDown={onClick ? onKeyPressHandler : undefined}
+                    tabIndex={tabIndex}
+                >
+                    {children}
+                </a>
+            )}
         </li>
     );
 };
