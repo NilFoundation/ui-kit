@@ -1,5 +1,10 @@
 # Changelog
 
+## [[0.6.3](https://github.com/NilFoundation/react-components/compare/v0.6.2...v0.6.3)] - 2022-10-17
+### Features
+- **renderLink** navItem prop
+- **renderLink** breadcrumbsItem prop
+
 ## [[0.6.2](https://github.com/NilFoundation/react-components/compare/v0.6.1...v0.6.2)] - 2022-10-14
 ### Features
 - **align** DropdownMenu prop
