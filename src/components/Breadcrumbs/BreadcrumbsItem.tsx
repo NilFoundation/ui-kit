@@ -13,7 +13,7 @@ export type BreadcrumbsItemProps = {
     /**
      * Text to display.
      */
-    children: ReactNode;
+    children?: ReactNode;
     /**
      * Applies active state.
      */

@@ -41,7 +41,7 @@ export type NavItemProps = {
     /**
      * Component children.
      */
-    children: ReactNode;
+    children?: ReactNode;
     /**
      * Applies active state.
      */
