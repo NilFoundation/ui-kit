@@ -5,7 +5,6 @@
 
 import React, { ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
-import { Link } from '../Link';
 
 /**
  * Props.
@@ -27,6 +26,10 @@ export type BreadcrumbsItemProps = {
      * Adds href attribute. Defaults to #.
      */
     href?: string;
+    /**
+     * Render router link or any other custom link.
+     */
+    renderLink?: ({ href }: { href?: string }) => ReactElement;
 };
 
 /**
@@ -40,15 +43,18 @@ export const BreadcrumbsItem = ({
     className,
     children,
     href,
+    renderLink,
 }: BreadcrumbsItemProps): ReactElement => {
     const itemClassName = clsx('breadcrumb-item', className && className, active && 'active');
+    const childrenWithLink = () =>
+        renderLink ? renderLink({ href }) : <a href={href ?? '#'}>{children}</a>;
 
     return (
         <li
             className={itemClassName}
             aria-current={active}
         >
-            {active ? children : <Link href={href ?? '#'}>{children}</Link>}
+            {active ? children : childrenWithLink()}
         </li>
     );
 };
