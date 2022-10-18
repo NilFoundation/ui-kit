@@ -1,5 +1,12 @@
 # Changelog
 
+## [[0.6.5](https://github.com/NilFoundation/react-components/compare/v0.6.4...v0.6.5)] - 2022-10-19
+### Features
+- **selector** Portal prop
+
+### Fixes
+- Same Portal content during SSR and hydration (return null on first render)
+
 ## [[0.6.4](https://github.com/NilFoundation/react-components/compare/v0.6.3...v0.6.4)] - 2022-10-17
 ### Features
 - **children** NavItem and BreadcrumbsItem prop not required

@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactNode, ReactElement } from 'react';
+import { ReactNode, ReactElement, useRef, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 /**
@@ -14,6 +14,10 @@ export type PortalProps = {
      * Component children.
      */
     children: ReactNode;
+    /**
+     * Dom element selector to mount portal.
+     */
+    selector?: string;
 };
 
 /**
@@ -22,10 +26,15 @@ export type PortalProps = {
  * @param {PortalProps} props - Props.
  * @returns React component.
  */
-export const Portal = ({ children }: PortalProps): ReactElement => {
-    if (typeof window === 'undefined' || !window.document) {
-        return <></>;
-    }
+export const Portal = ({ children, selector = 'popup' }: PortalProps): ReactElement | null => {
+    const [mounted, setMounted] = useState(false);
+    const ref = useRef<Element | null>(null);
 
-    return createPortal(children, document.getElementById('popup') || document.body);
+    useEffect(() => {
+        ref.current = document.querySelector(selector) || document.body;
+        setMounted(true);
+    }, [selector]);
+
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return mounted ? createPortal(children, ref.current!) : null;
 };
