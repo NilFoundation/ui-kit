@@ -41,6 +41,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install dependencies
+        if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
         run : npm ci --ignore-scripts
 
       - name: Lint:ts
