@@ -1,5 +1,9 @@
 # Changelog
 
+## [[0.6.6](https://github.com/NilFoundation/react-components/compare/v0.6.5...v0.6.6)] - 2022-10-22
+### Features
+- **useBreakpoints** hook
+
 ## [[0.6.5](https://github.com/NilFoundation/react-components/compare/v0.6.4...v0.6.5)] - 2022-10-19
 ### Features
 - **selector** Portal prop

@@ -10,3 +10,4 @@ export * from './useHover';
 export * from './useOnScreen';
 export * from './useCombinedRef';
 export * from './useAutoScrollIntoView';
+export * from './useBreakpoints';
