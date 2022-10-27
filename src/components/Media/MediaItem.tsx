@@ -4,6 +4,7 @@
  */
 
 import React, { ReactElement, ReactNode } from 'react';
+import { HorizontalPosition } from '../../enums';
 
 /**
  * Alignment variations type.
@@ -25,7 +26,13 @@ export type MediaItemProps = {
     /**
      * Item alignment.
      */
-    align?: MediaItemAlign;
+    verticalAlign?: MediaItemAlign;
+    /**
+     * Position. Right aligned should be placed after the media body.
+     *
+     * @default left
+     */
+    position?: HorizontalPosition;
 };
 
 /**
@@ -37,7 +44,8 @@ export type MediaItemProps = {
 export const MediaItem = ({
     className,
     children,
-    align = 'middle',
+    verticalAlign = 'middle',
+    position = 'left',
 }: MediaItemProps): ReactElement => (
-    <h4 className={`media-left media-${align} ${className ?? ''}`}>{children}</h4>
+    <div className={`media-${position} media-${verticalAlign} ${className ?? ''}`}>{children}</div>
 );

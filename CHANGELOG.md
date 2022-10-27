@@ -1,5 +1,12 @@
 # Changelog
 
+## [[0.6.7](https://github.com/NilFoundation/react-components/compare/v0.6.6...v0.6.7)] - 2022-10-27
+### Features
+- **position** Media prop
+
+### Refactor
+- **align** ---> **verticalAlign**
+
 ## [[0.6.6](https://github.com/NilFoundation/react-components/compare/v0.6.5...v0.6.6)] - 2022-10-22
 ### Features
 - **useBreakpoints** hook

@@ -31,7 +31,7 @@ export default {
                 disable: true,
             },
         },
-        alignItem: {
+        verticalAlign: {
             control: 'select',
             options: ['top', 'middle', 'bottom'],
             defaultValue: 'middle',
@@ -47,7 +47,7 @@ export const Media: Story = args => {
         <Panel>
             <Panel.Content>
                 <MediaComponent {...args}>
-                    <MediaComponent.Item align={args.alignItem}>
+                    <MediaComponent.Item verticalAlign={args.alignItem}>
                         <Image
                             source={imgSrc}
                             height={100}
