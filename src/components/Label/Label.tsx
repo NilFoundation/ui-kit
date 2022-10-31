@@ -6,7 +6,6 @@
 import React, { ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { Variant } from '../../enums';
-import { Link } from '../Link';
 import { CloseButton } from '../Button';
 import './Label.scss';
 
@@ -39,6 +38,10 @@ export type LabelProps = {
      */
     href?: string;
     /**
+     * Specify target for link wrapper.
+     */
+    target?: string;
+    /**
      * Close callback.
      */
     onClose?: () => void;
@@ -57,6 +60,7 @@ export const Label = ({
     rounded,
     block,
     href,
+    target,
     onClose,
 }: LabelProps): ReactElement => {
     const labelClassName = clsx(
@@ -75,5 +79,14 @@ export const Label = ({
         </span>
     );
 
-    return href ? <Link href={href}>{renderLabel()}</Link> : renderLabel();
+    return href ? (
+        <a
+            href={href}
+            target={target}
+        >
+            {renderLabel()}
+        </a>
+    ) : (
+        renderLabel()
+    );
 };
