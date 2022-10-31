@@ -1,5 +1,12 @@
 # Changelog
 
+## [[0.7.0](https://github.com/NilFoundation/react-components/compare/v0.6.7...v0.7.0)] - 2022-10-31
+### Breaking changes
+- Remove Link component
+
+### Features
+- **target** Label prop
+
 ## [[0.6.7](https://github.com/NilFoundation/react-components/compare/v0.6.6...v0.6.7)] - 2022-10-27
 ### Features
 - **position** Media prop

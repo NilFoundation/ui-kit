@@ -3,13 +3,15 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement } from 'react';
-import { Link, LinkProps } from '../Link';
+import React, { AnchorHTMLAttributes, DetailedHTMLProps, ReactElement } from 'react';
 
 /**
  * Props.
  */
-export type AlertLinkProps = LinkProps;
+export type AlertLinkProps = DetailedHTMLProps<
+    AnchorHTMLAttributes<HTMLAnchorElement>,
+    HTMLAnchorElement
+>;
 
 /**
  * Alert link component.
@@ -18,10 +20,10 @@ export type AlertLinkProps = LinkProps;
  * @returns React component.
  */
 export const AlertLink = ({ children, className, ...rest }: AlertLinkProps): ReactElement => (
-    <Link
+    <a
         className={`alert-link ${className ? className : ''}`}
         {...rest}
     >
         {children}
-    </Link>
+    </a>
 );
