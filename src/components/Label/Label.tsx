@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, { HTMLAttributeAnchorTarget, ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { Variant } from '../../enums';
 import { CloseButton } from '../Button';
@@ -40,7 +40,7 @@ export type LabelProps = {
     /**
      * Specify target for link wrapper.
      */
-    target?: string;
+    target?: HTMLAttributeAnchorTarget;
     /**
      * Close callback.
      */
