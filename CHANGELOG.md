@@ -1,5 +1,9 @@
 # Changelog
 
+## [[0.7.1](https://github.com/NilFoundation/react-components/compare/v0.7.0...v0.7.1)] - 2022-11-07
+### Fixes
+- Don't render Toast content element with undefined children
+
 ## [[0.7.0](https://github.com/NilFoundation/react-components/compare/v0.6.7...v0.7.0)] - 2022-10-31
 ### Breaking changes
 - Remove Link component

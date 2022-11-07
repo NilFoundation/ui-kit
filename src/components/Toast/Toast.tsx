@@ -109,7 +109,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(function Toast(
                 {title}
                 {close && <CloseButton onClick={close} />}
             </Panel.Header>
-            <Panel.Content>{children}</Panel.Content>
+            {children && <Panel.Content>{children}</Panel.Content>}
         </Panel>
     );
 });
