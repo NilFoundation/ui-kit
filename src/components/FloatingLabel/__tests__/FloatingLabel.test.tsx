@@ -17,10 +17,9 @@ describe('floatingLabel', () => {
      */
     it('renders', () => {
         const { getByRole } = render(
-            <FloatingLabel
-                text="Label"
-                render={({ onChange }) => <Input onChange={onChange} />}
-            />,
+            <FloatingLabel text="Label">
+                {propsGetter => <Input {...propsGetter()} />}
+            </FloatingLabel>,
         );
 
         expect(getByRole('textbox')).toBeInTheDocument();
