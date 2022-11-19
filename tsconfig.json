@@ -1,11 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "ESNext",
     "lib": [
       "dom",
-      "es2015",
-      "es2016",
-      "es2017"
+      "es2019",
     ],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -20,15 +18,10 @@
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "declaration": true,
-    "declarationDir": "types",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
     "allowJs": false,
   },
   "include": ["src"],
-  "exclude": [
-    "node_modules",
-    "build",
-  ]
 }
