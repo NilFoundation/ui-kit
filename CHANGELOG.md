@@ -1,5 +1,9 @@
 # Changelog
 
+## [[0.8.2](https://github.com/NilFoundation/react-components/compare/v0.8.1...v0.8.2)] - 2022-11-19
+### Fixes
+- Downgrade tscompiler target to es2016
+
 ## [[0.8.1](https://github.com/NilFoundation/react-components/compare/v0.8.0...v0.8.1)] - 2022-11-19
 ### Fixes
 - Fix form hint html tag and override text color
