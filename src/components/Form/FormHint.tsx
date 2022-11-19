@@ -29,5 +29,5 @@ export interface FormHintProps {
 export const FormHint = ({ className, children }: FormHintProps): ReactElement => {
     const formHintClassName = clsx('help-block', className && className);
 
-    return <p className={formHintClassName}>{children}</p>;
+    return <div className={formHintClassName}>{children}</div>;
 };
