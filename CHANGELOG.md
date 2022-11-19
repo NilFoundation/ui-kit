@@ -1,5 +1,17 @@
 # Changelog
 
+## [[0.8.1](https://github.com/NilFoundation/react-components/compare/v0.8.0...v0.8.1)] - 2022-11-19
+### Fixes
+- Fix form hint html tag and override text color
+
+## [[0.8.0](https://github.com/NilFoundation/react-components/compare/v0.7.1...v0.8.0)] - 2022-11-15
+### Breaking changes
+- FloatingLabel children are render function with props getter
+
+### Refactor
+- Update typescript config
+- Add useCallback to useKeyPress hook
+
 ## [[0.7.1](https://github.com/NilFoundation/react-components/compare/v0.7.0...v0.7.1)] - 2022-11-07
 ### Fixes
 - Don't render Toast content element with undefined children
