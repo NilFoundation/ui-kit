@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import { KeyboardEvent as ElementKeyboardEvent } from 'react';
+import { KeyboardEvent as ElementKeyboardEvent, useCallback } from 'react';
 import { KeyboardEventKey } from '../enums';
 
 /**
@@ -30,24 +30,27 @@ export const useKeyPress = <T extends KeyboardEvent | ElementKeyboardEvent>(
     allowedKeys: KeyboardEventKey[],
     { preventDefault }: UseKeyPressSettings = { preventDefault: true },
 ): [onKeyPress: (e: T) => void] => {
-    const onKeyPress = (e: T) => {
-        if (allowedKeys.length === 0) {
-            return;
-        }
+    const onKeyPress = useCallback(
+        (e: T) => {
+            if (allowedKeys.length === 0) {
+                return;
+            }
 
-        const { key } = e;
+            const { key } = e;
 
-        if (!allowedKeys.some(k => k === key)) {
-            return;
-        }
+            if (!allowedKeys.some(k => k === key)) {
+                return;
+            }
 
-        if (preventDefault) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
+            if (preventDefault) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
 
-        callback();
-    };
+            callback();
+        },
+        [allowedKeys, preventDefault, callback],
+    );
 
     return [onKeyPress];
 };

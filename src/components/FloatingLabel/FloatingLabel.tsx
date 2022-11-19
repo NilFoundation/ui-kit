@@ -3,15 +3,17 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ChangeEvent, ChangeEventHandler, ReactElement, useState } from 'react';
+import React, { ChangeEvent, ChangeEventHandler, ReactElement, useCallback, useState } from 'react';
 import clsx from 'clsx';
 import { FormLabel, FormLabelProps } from '../Form/FormLabel';
 import './FloatingLabel.scss';
 
 /**
- * Render control.
+ * Props getter.
  */
-export type RenderFunction = ({ onChange }: { onChange: ChangeEventHandler }) => ReactElement;
+type PropsGetter = <T extends object>(
+    props?: T,
+) => T & { onChange: ChangeEventHandler<HTMLInputElement> };
 
 /**
  * Props.
@@ -24,8 +26,8 @@ export type FloatingLabelProps = {
     /**
      * Component children.
      */
-    render: RenderFunction;
-} & FormLabelProps;
+    children: (propsGetter: PropsGetter) => ReactElement;
+} & Omit<FormLabelProps, 'children'>;
 
 /**
  * Form label component.
@@ -34,25 +36,37 @@ export type FloatingLabelProps = {
  * @returns - React component.
  */
 export const FloatingLabel = ({
-    render,
+    children,
     className,
     text,
     ...rest
 }: FloatingLabelProps): ReactElement => {
     const [controlHasValue, setControlHasValue] = useState(false);
+
     const floatingLabelClassName = clsx(
         className && className,
         'floating-label',
         controlHasValue && 'floating-label-active',
     );
-    const onChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
-        setControlHasValue(!!value);
-    };
+
+    const propsGetter = useCallback(
+        (baseProps?: Record<string, unknown>) => ({
+            ...baseProps,
+            onChange: (e: ChangeEvent<HTMLInputElement>) => {
+                if (typeof baseProps?.onChange === 'function') {
+                    baseProps.onChange(e);
+                }
+
+                setControlHasValue(!!e.target?.value);
+            },
+        }),
+        [],
+    );
 
     return (
         <div className={floatingLabelClassName}>
             <FormLabel {...rest}>{text}</FormLabel>
-            {render({ onChange })}
+            {children(propsGetter as never)}
         </div>
     );
 };

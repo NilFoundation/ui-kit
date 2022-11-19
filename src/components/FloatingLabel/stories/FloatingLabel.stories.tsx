@@ -33,12 +33,17 @@ export const FloatingLabel: Story = args => (
     <FloatingLabelComponent
         text={args.text}
         htmlFor="some-input"
-        render={({ onChange }) => (
+    >
+        {propsGetter => (
             <Input
-                size={Size.lg}
-                onChange={onChange}
-                id="some-input"
+                {...propsGetter({
+                    size: Size.lg,
+                    id: 'some-input',
+                    onChange: () => {
+                        // Some action
+                    },
+                })}
             />
         )}
-    />
+    </FloatingLabelComponent>
 );
