@@ -6,6 +6,7 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from "rollup-plugin-postcss";
 import filesize from 'rollup-plugin-filesize';
 import copy from 'rollup-plugin-copy';
+import dts from 'rollup-plugin-dts';
 
 const packageJson = require("./package.json");
 
@@ -35,6 +36,7 @@ export default [
             }),
             typescript({
                 tsconfig: "./tsconfig.json",
+                declaration: false,
                 exclude: ["**/__tests__", "**/*.test.tsx", "**/*.stories.**"],
                 noEmitOnError: true,
             }),
@@ -54,5 +56,11 @@ export default [
             filesize(),
         ],
         external: ['react', 'react-dom']
-    }
+    },
+    {
+        input: "src/index.ts",
+        output: [{ file: "build/index.d.ts", format: "es" }],
+        plugins: [dts()],
+        external: [/\.scss$/],
+    },
 ];
