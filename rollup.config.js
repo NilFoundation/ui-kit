@@ -48,7 +48,7 @@ export default [
             copy({
                 targets: [
                     {
-                        src: 'src/styles/_variables.scss',
+                        src: 'src/styles',
                         dest: 'build',
                     },
                 ]
