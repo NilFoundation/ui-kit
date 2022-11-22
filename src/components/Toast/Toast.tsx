@@ -9,7 +9,6 @@ import { Variant, KeyboardEventKey } from '../../enums';
 import { useCombinedRef, useEventListener, useKeyPress } from '../../hooks';
 import { CloseButton } from '../Button';
 import { Panel } from '../Panel';
-import './Toast.scss';
 
 /**
  * Props.

@@ -6,7 +6,6 @@
 import React, { ReactElement } from 'react';
 import clsx from 'clsx';
 import { Size } from '../../enums';
-import './Spinner-BS-5.scss'; // TODO - remove after migrating to BS5.
 
 /**
  * Props.

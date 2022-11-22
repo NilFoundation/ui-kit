@@ -6,7 +6,6 @@
 import React, { AnchorHTMLAttributes, DetailedHTMLProps, ReactElement } from 'react';
 import { HorizontalPosition } from '../../enums';
 import { Icon } from '../Icon';
-import './Anchor.scss';
 
 /**
  * Props.

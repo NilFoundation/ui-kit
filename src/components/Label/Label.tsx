@@ -7,7 +7,6 @@ import React, { HTMLAttributeAnchorTarget, ReactElement, ReactNode } from 'react
 import clsx from 'clsx';
 import { Variant } from '../../enums';
 import { CloseButton } from '../Button';
-import './Label.scss';
 
 /**
  * Props.

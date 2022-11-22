@@ -11,7 +11,6 @@ import { NotificationContainerContext } from './NotificationContext';
 import { RenderNotificationData } from './RenderNotificationData';
 import { uniqueId } from '../../helpers';
 import { Portal } from '../Portal';
-import './NotificationProvider.scss';
 
 /**
  * Props.

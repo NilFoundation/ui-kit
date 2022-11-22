@@ -5,7 +5,6 @@
 
 import React, { ReactElement, DetailedHTMLProps, ImgHTMLAttributes } from 'react';
 import clsx from 'clsx';
-import './Image.scss';
 
 /**
  * Props.
@@ -54,6 +53,7 @@ export const Image = ({
     ...rest
 }: ImageProps): ReactElement => {
     const imgClassName = clsx(
+        'img',
         className && className,
         thumbnail && 'img-thumbnail',
         responsive && 'img-responsive',

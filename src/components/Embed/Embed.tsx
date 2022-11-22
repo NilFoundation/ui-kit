@@ -6,7 +6,6 @@
 import React, { HTMLAttributes, ReactElement, SyntheticEvent, useState } from 'react';
 import clsx from 'clsx';
 import { Spinner } from '../Spinner';
-import './Embed.scss';
 
 type EmbedRatio = '16by9' | '4by3';
 

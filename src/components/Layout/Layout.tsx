@@ -5,7 +5,6 @@
 
 import React, { ReactElement, ReactNode } from 'react';
 import { Container, Row, Col } from '../Grid';
-import './Layout.scss';
 
 /**
  * Props.

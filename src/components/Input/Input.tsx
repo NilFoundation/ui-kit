@@ -7,7 +7,6 @@ import React, { forwardRef, InputHTMLAttributes } from 'react';
 import clsx from 'clsx';
 import { Size } from '../../enums';
 import { InputSize } from '../../models';
-import './Input.scss';
 
 /**
  * Props.

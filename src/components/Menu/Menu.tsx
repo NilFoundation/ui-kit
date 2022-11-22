@@ -24,7 +24,6 @@ import { MenuItem } from './MenuItem';
 import { KeyboardEventKey } from '../../enums';
 import { MenuDivider } from './MenuDivider';
 import { useMenuKeyboardNavigation } from '../../hooks/_useMenuKeyboardNavigation';
-import './Menu.scss';
 
 /**
  * Props.

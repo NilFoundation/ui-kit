@@ -16,7 +16,6 @@ import { PanelContent } from './PanelContent';
 import { PanelImage } from './PanelImage';
 import { PanelHeader } from './PanelHeader';
 import { PanelTitle } from './PanelTitle';
-import './Panel.scss';
 
 /**
  * Props.
