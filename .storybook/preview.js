@@ -1,6 +1,5 @@
 import { themes } from '@storybook/theming';
-import '../node_modules/bootstrap/scss/bootstrap.scss';
-import '../src/styles/_all.scss';
+import './styles.scss';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
