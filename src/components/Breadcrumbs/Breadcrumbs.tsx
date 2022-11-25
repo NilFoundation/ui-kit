@@ -3,22 +3,30 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, {
+    DetailedHTMLProps,
+    forwardRef,
+    ForwardRefExoticComponent,
+    OlHTMLAttributes,
+    ReactElement,
+    RefAttributes,
+} from 'react';
 import { BreadcrumbsItem } from './BreadcrumbsItem';
 
 /**
- * Props.
+ * Breadcrumbs component props.
  */
-export type BreadcrumbsProps = {
-    /**
-     * Component children.
-     */
-    children: ReactNode;
-    /**
-     * Provide className to customize appearance.
-     */
-    className?: string;
-};
+export type BreadcrumbsProps = DetailedHTMLProps<
+    OlHTMLAttributes<HTMLOListElement>,
+    HTMLOListElement
+>;
+
+/**
+ * Compounded Breadcrumbs component type.
+ */
+type CompoundedBreadcrumbsComponent = {
+    Item: typeof BreadcrumbsItem;
+} & ForwardRefExoticComponent<BreadcrumbsProps & RefAttributes<HTMLOListElement>>;
 
 /**
  * Breadcrumbs component.
@@ -26,16 +34,23 @@ export type BreadcrumbsProps = {
  * @param {BreadcrumbsProps} props - Props.
  * @returns React component.
  */
-export const Breadcrumbs = ({ children, className = '' }: BreadcrumbsProps): ReactElement => (
-    <ol
-        className={`breadcrumb ${className ?? ''}`}
-        aria-label="breadcrumb navigation"
-    >
-        {children}
-    </ol>
-);
+export const Breadcrumbs = forwardRef<HTMLOListElement, BreadcrumbsProps>(function Breadcrumbs(
+    { children, className = '', 'aria-label': ariaLabel = 'breadcrumb navigation', ...rest },
+    ref,
+): ReactElement {
+    return (
+        <ol
+            className={`breadcrumb ${className ?? ''}`}
+            aria-label={ariaLabel}
+            ref={ref}
+            {...rest}
+        >
+            {children}
+        </ol>
+    );
+}) as CompoundedBreadcrumbsComponent;
 
 /**
- * Component extensions.
+ * Breadcrumbs component extensions.
  */
 Breadcrumbs.Item = BreadcrumbsItem;

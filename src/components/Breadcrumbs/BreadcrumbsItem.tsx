@@ -3,58 +3,59 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, {
+    DetailedHTMLProps,
+    forwardRef,
+    LiHTMLAttributes,
+    ReactElement,
+    useCallback,
+} from 'react';
 import clsx from 'clsx';
 
 /**
- * Props.
+ * Breadcrumbs item props.
  */
 export type BreadcrumbsItemProps = {
-    /**
-     * Text to display.
-     */
-    children?: ReactNode;
     /**
      * Applies active state.
      */
     active?: boolean;
     /**
-     * Provide className to customize appearance.
-     */
-    className?: string;
-    /**
      * Adds href attribute. Defaults to #.
      */
     href?: string;
     /**
-     * Render router link or any other custom link.
+     * Render custom link.
      */
-    renderLink?: ({ href }: { href?: string }) => ReactElement;
-};
+    renderLink?: ({ href, active }: { href?: string; active?: boolean }) => ReactElement;
+} & DetailedHTMLProps<LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>;
 
 /**
- * Breadcrumbs component.
+ * Breadcrumbs item component.
  *
  * @param {BreadcrumbsItemProps} props - Props.
  * @returns React component.
  */
-export const BreadcrumbsItem = ({
-    active,
-    className,
-    children,
-    href,
-    renderLink,
-}: BreadcrumbsItemProps): ReactElement => {
-    const itemClassName = clsx('breadcrumb-item', className && className, active && 'active');
-    const childrenWithLink = () =>
-        renderLink ? renderLink({ href }) : <a href={href ?? '#'}>{children}</a>;
+export const BreadcrumbsItem = forwardRef<HTMLLIElement, BreadcrumbsItemProps>(
+    function BreadcrumbsItem(
+        { active, className, children, href, renderLink, ...rest },
+        ref,
+    ): ReactElement {
+        const itemClassName = clsx('breadcrumb-item', className && className, active && 'active');
+        const renderDefaultLink = useCallback(
+            () => (active ? children : <a href={href ?? '#'}>{children}</a>),
+            [active, children, href],
+        );
 
-    return (
-        <li
-            className={itemClassName}
-            aria-current={active}
-        >
-            {active ? children : childrenWithLink()}
-        </li>
-    );
-};
+        return (
+            <li
+                className={itemClassName}
+                aria-current={active}
+                ref={ref}
+                {...rest}
+            >
+                {renderLink ? renderLink({ href, active }) : renderDefaultLink()}
+            </li>
+        );
+    },
+);
