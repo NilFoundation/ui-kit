@@ -6,7 +6,6 @@
 import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
 import { Button as ButtonComponent } from '../Button';
-import { Size, Variant } from '../../../enums';
 import { Icon } from '../../Icon';
 
 export default {
@@ -37,7 +36,7 @@ export const Button: Story = args => (
 );
 Button.args = {
     text: 'Button',
-    size: Size.md,
-    variant: Variant.default,
+    size: 'md',
+    variant: 'primary',
     glyphicon: '',
 };

@@ -4,7 +4,7 @@
  */
 
 import React, { ReactElement } from 'react';
-import { Button } from './Button';
+import { Button, ButtonProps } from './Button';
 
 /**
  * Props.
@@ -14,7 +14,7 @@ export type CloseButtonProps = {
      * Callback to fire on button click.
      */
     onClick?: () => void;
-};
+} & ButtonProps;
 
 /**
  * Close button component.
@@ -24,10 +24,8 @@ export type CloseButtonProps = {
  */
 export const CloseButton = ({ onClick }: CloseButtonProps): ReactElement => (
     <Button
-        className="close"
+        className="btn-close"
         aria-label="Close"
         onClick={onClick}
-    >
-        <span aria-hidden="true">&times;</span>
-    </Button>
+    />
 );

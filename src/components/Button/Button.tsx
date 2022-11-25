@@ -4,36 +4,28 @@
  */
 
 import React, {
-    ReactNode,
     forwardRef,
     AnchorHTMLAttributes,
     ButtonHTMLAttributes,
     ForwardedRef,
     ElementType,
+    DetailedHTMLProps,
 } from 'react';
 import clsx from 'clsx';
 import { Size, Variant } from '../../enums';
 
 /**
- * Props.
+ * Button component props.
  */
-export type ButtonProps<T extends HTMLAnchorElement | HTMLButtonElement> = {
-    /**
-     * Component children.
-     */
-    children?: ReactNode;
+export type ButtonProps<T extends HTMLAnchorElement | HTMLButtonElement = HTMLButtonElement> = {
     /**
      * Button color scheme.
      */
-    variant?: Variant;
+    variant?: keyof typeof Variant;
     /**
      * Button size.
      */
-    size?: Size;
-    /**
-     * Makes button to span the entire width of the parent element.
-     */
-    block?: boolean;
+    size?: keyof typeof Size;
     /**
      * Applies active state to button.
      */
@@ -46,12 +38,16 @@ export type ButtonProps<T extends HTMLAnchorElement | HTMLButtonElement> = {
      * Disables button.
      */
     disabled?: boolean;
+    /**
+     * Applies outline styling.
+     */
+    outline?: boolean;
 } & (T extends HTMLButtonElement
-    ? ButtonHTMLAttributes<HTMLElement>
-    : AnchorHTMLAttributes<HTMLElement>);
+    ? DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+    : DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>);
 
 /**
- * Base button component.
+ * Button component.
  *
  * @param {ButtonProps} props - Props.
  * @returns React component.
@@ -59,16 +55,16 @@ export type ButtonProps<T extends HTMLAnchorElement | HTMLButtonElement> = {
 export const Button = forwardRef(function Button<T extends HTMLButtonElement | HTMLAnchorElement>(
     {
         className,
-        variant = Variant.default,
-        size = Size.md,
+        variant = 'primary',
+        size = 'md',
         disabled,
         children,
-        block,
         onClick,
         active,
         role,
         href,
         type,
+        outline,
         ...rest
     }: ButtonProps<T>,
     ref: ForwardedRef<T>,
@@ -78,10 +74,9 @@ export const Button = forwardRef(function Button<T extends HTMLButtonElement | H
     const computedType = href ? undefined : type ?? 'button';
     const buttonClassName = clsx(
         'btn',
-        `btn-${variant}`,
+        outline ? `btn-outline-${variant}` : `btn-${variant}`,
         className && className,
         size !== Size.md && `btn-${size}`,
-        block && 'btn-block',
         active && 'active',
     );
 
@@ -94,6 +89,7 @@ export const Button = forwardRef(function Button<T extends HTMLButtonElement | H
             className={buttonClassName}
             ref={ref}
             role={computedRole}
+            aria-pressed={active}
             {...rest}
         >
             {children}
