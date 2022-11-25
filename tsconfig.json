@@ -22,7 +22,6 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
     "allowJs": false,
-    "baseUrl": "./src",
   },
   "include": ["src"],
 }

@@ -110,8 +110,7 @@
     "import/resolver": {
       "typescript": {
         "alwaysTryTypes": true,
-        "project": "./tsconfig.json",
-        "baseUrl": "./src"
+        "project": "./tsconfig.json"
       }
     },
     "react": {
