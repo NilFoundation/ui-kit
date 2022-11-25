@@ -23,7 +23,7 @@ export type AlertProps = {
     /**
      * Color scheme.
      */
-    variant?: Variant;
+    variant?: keyof typeof Variant;
     /**
      * Callback to fire on alert close. Adds close icon when provided.
      */
@@ -69,6 +69,6 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
 }) as CompoundedAlertComponent;
 
 /**
- * Component extensions.
+ * Alert component extensions.
  */
 Alert.Link = AlertLink;

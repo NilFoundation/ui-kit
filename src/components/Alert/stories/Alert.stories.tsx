@@ -6,7 +6,6 @@
 import React, { useState } from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
 import { Alert as AlertComponent } from '../Alert';
-import { Variant } from '../../../enums';
 
 export default {
     component: AlertComponent,
@@ -36,7 +35,7 @@ export default {
     },
     args: {
         text: 'This is Alert story',
-        variant: Variant.info,
+        variant: 'info',
         onClose: undefined,
     },
 } as ComponentMeta<typeof AlertComponent>;
