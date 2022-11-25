@@ -3,35 +3,39 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, {
+    DetailedHTMLProps,
+    forwardRef,
+    ForwardRefExoticComponent,
+    HTMLAttributes,
+    ReactElement,
+    RefAttributes,
+} from 'react';
 import clsx from 'clsx';
 import { Variant } from '../../enums';
 import { CloseButton } from '../Button';
 import { AlertLink } from './AlertLink';
-
-type AlertVariant = Variant.danger | Variant.info | Variant.success | Variant.warning;
 
 /**
  * Props.
  */
 export type AlertProps = {
     /**
-     * Component children.
-     */
-    children: ReactNode;
-    /**
      * Color scheme.
      */
-    variant?: AlertVariant;
-    /**
-     * Provide className to customize appearance.
-     */
-    className?: string;
+    variant?: Variant;
     /**
      * Callback to fire on alert close. Adds close icon when provided.
      */
     onClose?: () => void;
-};
+} & DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+
+/**
+ * Compounded Alert component type.
+ */
+type CompoundedAlertComponent = {
+    Link: typeof AlertLink;
+} & ForwardRefExoticComponent<AlertProps & RefAttributes<HTMLDivElement>>;
 
 /**
  * Alert component.
@@ -39,25 +43,30 @@ export type AlertProps = {
  * @param {AlertProps} props - Props.
  * @returns React component.
  */
-export const Alert = ({
-    className,
-    variant = Variant.info,
-    children,
-    onClose,
-}: AlertProps): ReactElement => {
-    const alertClassName = clsx('alert', `alert-${variant}`, className && className);
-    const role = variant === Variant.danger ? 'alert' : 'status';
+export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
+    { className, variant = Variant.info, children, onClose, role, ...rest },
+    ref,
+): ReactElement {
+    const alertClassName = clsx(
+        'alert',
+        `alert-${variant}`,
+        className && className,
+        onClose && 'alert-dismissible',
+    );
+    const computedRole = role ?? variant === Variant.danger ? 'alert' : 'status';
 
     return (
         <div
             className={alertClassName}
-            role={role}
+            role={computedRole}
+            ref={ref}
+            {...rest}
         >
-            {children && children}
+            {children}
             {onClose && <CloseButton onClick={onClose} />}
         </div>
     );
-};
+}) as CompoundedAlertComponent;
 
 /**
  * Component extensions.

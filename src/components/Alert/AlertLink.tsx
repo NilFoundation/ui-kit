@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { AnchorHTMLAttributes, DetailedHTMLProps, ReactElement } from 'react';
+import React, { AnchorHTMLAttributes, DetailedHTMLProps, forwardRef, ReactElement } from 'react';
 
 /**
  * Props.
@@ -19,11 +19,17 @@ export type AlertLinkProps = DetailedHTMLProps<
  * @param {AlertLinkProps} props - Props.
  * @returns React component.
  */
-export const AlertLink = ({ children, className, ...rest }: AlertLinkProps): ReactElement => (
-    <a
-        className={`alert-link ${className ? className : ''}`}
-        {...rest}
-    >
-        {children}
-    </a>
-);
+export const AlertLink = forwardRef(function AlertLink({
+    children,
+    className,
+    ...rest
+}: AlertLinkProps): ReactElement {
+    return (
+        <a
+            className={`alert-link ${className ?? ''}`}
+            {...rest}
+        >
+            {children}
+        </a>
+    );
+});
