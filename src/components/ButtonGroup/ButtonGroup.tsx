@@ -3,27 +3,23 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { HTMLAttributes, ReactElement, ReactNode } from 'react';
+import React, { DetailedHTMLProps, forwardRef, HTMLAttributes, ReactElement } from 'react';
 import clsx from 'clsx';
 import { Size } from '../../enums';
 
 /**
- * Props.
+ * Button group props.
  */
 export type ButtonGroupProps = {
     /**
-     * Component children.
-     */
-    children?: ReactNode;
-    /**
      * Component size.
      */
-    size?: Size;
+    size?: keyof typeof Size;
     /**
      * Make a set of buttons appear vertically.
      */
     vertical?: boolean;
-} & HTMLAttributes<HTMLDivElement>;
+} & DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
 /**
  * Button group component.
@@ -31,24 +27,23 @@ export type ButtonGroupProps = {
  * @param {ButtonGroupProps} props - Props.
  * @returns React component.
  */
-export const ButtonGroup = ({
-    className,
-    size = Size.md,
-    children,
-    vertical,
-}: ButtonGroupProps): ReactElement => {
+export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(function ButtonGroup(
+    { className, size = 'md', children, vertical },
+    ref,
+): ReactElement {
     const buttonGroupClassName = clsx(
         `btn-group${vertical ? '-vertical' : ''}`,
         className && className,
-        size !== Size.md && `btn-group-${size}`,
+        size !== 'md' && `btn-group-${size}`,
     );
 
     return (
         <div
             role="group"
             className={buttonGroupClassName}
+            ref={ref}
         >
             {children}
         </div>
     );
-};
+});
