@@ -17,7 +17,7 @@ import { CloseButton } from '../Button';
 import { AlertLink } from './AlertLink';
 
 /**
- * Props.
+ * Alert component props.
  */
 export type AlertProps = {
     /**
@@ -44,7 +44,7 @@ type CompoundedAlertComponent = {
  * @returns React component.
  */
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
-    { className, variant = Variant.info, children, onClose, role, ...rest },
+    { className, variant = 'primary', children, onClose, role, ...rest },
     ref,
 ): ReactElement {
     const alertClassName = clsx(
