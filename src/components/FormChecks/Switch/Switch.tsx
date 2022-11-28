@@ -3,24 +3,31 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement } from 'react';
+import React, { forwardRef, ReactElement } from 'react';
 import { FormCheckBase, FormCheckBaseProps } from '../FormCheckBase';
 
 /**
- * Props.
+ * Switch props.
  */
-type SwitchProps = Omit<FormCheckBaseProps, 'type'>;
+type SwitchProps = Omit<FormCheckBaseProps, 'type' | 'role'>;
 
 /**
- * Switch.
+ * Switch component.
  *
  * @param {SwitchProps} props - Props.
  * @returns React component.
  */
-export const Switch = ({ className, ...props }: SwitchProps): ReactElement => (
-    <FormCheckBase
-        className={`form-switch ${className ? className : ''}`}
-        type="checkbox"
-        {...props}
-    />
-);
+export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
+    { className, ...props },
+    ref,
+): ReactElement {
+    return (
+        <FormCheckBase
+            className={`form-switch ${className ?? ''}`}
+            type="checkbox"
+            role="switch"
+            ref={ref}
+            {...props}
+        />
+    );
+});

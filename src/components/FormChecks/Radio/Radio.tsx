@@ -3,23 +3,29 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement } from 'react';
+import React, { forwardRef, ReactElement } from 'react';
 import { FormCheckBase, FormCheckBaseProps } from '../FormCheckBase';
 
 /**
- * Props.
+ * Radio component props.
  */
 type RadioProps = Omit<FormCheckBaseProps, 'type'>;
 
 /**
- * Radio.
+ * Radio component.
  *
  * @param {RadioProps} props - Props.
  * @returns React component.
  */
-export const Radio = ({ ...props }: RadioProps): ReactElement => (
-    <FormCheckBase
-        type="radio"
-        {...props}
-    />
-);
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
+    { ...props },
+    ref,
+): ReactElement {
+    return (
+        <FormCheckBase
+            type="radio"
+            ref={ref}
+            {...props}
+        />
+    );
+});

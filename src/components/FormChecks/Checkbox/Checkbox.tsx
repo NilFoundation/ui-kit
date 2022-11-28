@@ -3,27 +3,26 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ChangeEvent, ReactElement, useEffect, useState } from 'react';
+import React, { ChangeEvent, forwardRef, ReactElement, useEffect, useState } from 'react';
 import { FormCheckBase, FormCheckBaseProps } from '../FormCheckBase';
 
 /**
- * Props.
+ * Checkbox props.
  */
 type CheckboxProps = {
     indeterminate?: boolean;
 } & Omit<FormCheckBaseProps, 'type'>;
 
 /**
- * Checkbox.
+ * Checkbox component.
  *
  * @param {CheckboxProps} props - Props.
  * @returns React component.
  */
-export const Checkbox = ({
-    indeterminate = false,
-    onChange,
-    ...rest
-}: CheckboxProps): ReactElement => {
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(
+    { indeterminate = false, onChange, ...rest },
+    ref,
+): ReactElement {
     const [indeterminateState, setIndeterminateState] = useState(indeterminate);
 
     useEffect(() => {
@@ -40,9 +39,15 @@ export const Checkbox = ({
         onChange && onChange(e);
     };
 
-    const getInputRef = (input: HTMLInputElement | null): void => {
+    const getInputRef = (input: HTMLInputElement | null) => {
         if (input) {
             input.indeterminate = indeterminateState;
+        }
+
+        if (typeof ref === 'function') {
+            ref(input);
+        } else if (ref) {
+            ref.current = input;
         }
     };
 
@@ -54,4 +59,4 @@ export const Checkbox = ({
             {...rest}
         />
     );
-};
+});

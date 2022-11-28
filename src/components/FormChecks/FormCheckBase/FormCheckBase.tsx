@@ -13,7 +13,6 @@ import React, {
     ChangeEvent,
 } from 'react';
 import uniqueId from 'lodash/uniqueId';
-import './FormCheck.scss';
 
 /**
  * Form check input type.
@@ -21,7 +20,7 @@ import './FormCheck.scss';
 type FormCheckBaseType = 'checkbox' | 'radio';
 
 /**
- * Props.
+ * FormCheckBase props.
  */
 export type FormCheckBaseProps = {
     label?: string;
