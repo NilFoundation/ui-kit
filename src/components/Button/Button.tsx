@@ -43,8 +43,8 @@ export type ButtonProps<T extends HTMLAnchorElement | HTMLButtonElement = HTMLBu
      */
     outline?: boolean;
 } & (T extends HTMLButtonElement
-    ? DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
-    : DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>);
+    ? Omit<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, 'ref'>
+    : Omit<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>, 'ref'>);
 
 /**
  * Button component.
