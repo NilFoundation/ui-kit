@@ -4,7 +4,7 @@
  */
 
 import { useEffect } from 'react';
-import { throttle } from '../helpers';
+import throttle from 'lodash/throttle';
 
 /**
  * Props.

@@ -5,7 +5,7 @@
 
 import { RefObject, useEffect } from 'react';
 import { polyfill } from 'smoothscroll-polyfill';
-import { prefersReduceMotion } from '../helpers';
+import { prefersReduceMotion } from '../_helpers';
 import { useOnScreen } from './useOnScreen';
 
 typeof window !== 'undefined' && polyfill();

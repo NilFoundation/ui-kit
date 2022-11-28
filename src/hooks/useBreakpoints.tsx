@@ -4,7 +4,7 @@
  */
 
 import { useState, useCallback, useEffect } from 'react';
-import { throttle } from '../helpers';
+import throttle from 'lodash/throttle';
 
 /**
  * Hook return type.

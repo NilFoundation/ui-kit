@@ -54,7 +54,7 @@ export type LabelProps = {
  */
 export const Label = ({
     className,
-    variant = Variant.default,
+    variant = Variant.primary,
     children,
     rounded,
     block,

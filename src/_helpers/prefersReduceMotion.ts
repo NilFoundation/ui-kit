@@ -4,7 +4,7 @@
  */
 
 /**
- * Returens true when user prefers reduce motion.
+ * Returns true when user prefers reduce motion.
  *
  * @returns - Is user prefering reduce motion.
  */

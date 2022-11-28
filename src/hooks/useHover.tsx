@@ -4,7 +4,7 @@
  */
 
 import { useEffect, useState, useRef, RefObject } from 'react';
-import { debounce } from '../helpers';
+import debounce from 'lodash/debounce';
 
 /**
  * UseHover hook return type.

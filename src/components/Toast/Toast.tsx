@@ -61,7 +61,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(function Toast(
         children,
         title,
         className,
-        variant = Variant.default,
+        variant = Variant.primary,
         lifeTime = 3000,
         autoClose = variant !== Variant.danger,
         close,

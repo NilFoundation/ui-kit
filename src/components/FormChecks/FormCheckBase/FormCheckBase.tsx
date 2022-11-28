@@ -12,7 +12,7 @@ import React, {
     forwardRef,
     ChangeEvent,
 } from 'react';
-import { uniqueId } from '../../../helpers';
+import uniqueId from 'lodash/uniqueId';
 import './FormCheck.scss';
 
 /**

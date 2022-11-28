@@ -5,11 +5,11 @@
 
 import React, { createRef, ReactElement, ReactNode, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import uniqueId from 'lodash/uniqueId';
 import { Toast } from '../Toast';
 import { CreateNotificationData } from './CreateNotificationData';
 import { NotificationContainerContext } from './NotificationContext';
 import { RenderNotificationData } from './RenderNotificationData';
-import { uniqueId } from '../../helpers';
 import { Portal } from '../Portal';
 
 /**

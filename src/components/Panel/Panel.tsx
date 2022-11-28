@@ -49,7 +49,7 @@ type CompoundedPanelComponent = {
  * @returns React component.
  */
 export const Panel = forwardRef<HTMLDivElement, PanelProps>(function Panel(
-    { children, variant = Variant.default, className, ...rest }: PanelProps,
+    { children, variant = Variant.primary, className, ...rest }: PanelProps,
     ref,
 ) {
     return (

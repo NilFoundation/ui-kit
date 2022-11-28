@@ -47,7 +47,7 @@ export const ListGroupItem = ({
     children,
     active,
     disabled,
-    variant = Variant.default,
+    variant = Variant.primary,
     href,
     onClick,
 }: ListGroupItemProps): ReactElement => {

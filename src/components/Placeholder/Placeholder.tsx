@@ -45,7 +45,7 @@ export const Placeholder = ({
     className,
     duration = 1000,
     minOpacity = 0.6,
-    variant = Variant.default,
+    variant = Variant.primary,
     ...rest
 }: PlaceholderProps): ReactElement => {
     const placeholderClassName = clsx(
