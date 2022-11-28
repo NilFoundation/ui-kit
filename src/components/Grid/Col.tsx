@@ -3,72 +3,60 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { AriaRole, ElementType, ReactElement, ReactNode } from 'react';
+import React, { ElementType, ForwardedRef, forwardRef, HTMLAttributes, ReactElement } from 'react';
 import clsx from 'clsx';
 import { Breakpoint } from '../../enums';
 import { BreakpointValue } from '../../models';
 
 /**
- * Breakpoints.
+ * Column breakpoints props.
+ *
+ * @example
+ * ```tsx
+ * xs={12}
+ * ```
  */
 type Breakpoints = {
     [Property in keyof typeof Breakpoint]?: BreakpointValue;
 };
 
 /**
- * Offset value.
- */
-type OffsetValue = BreakpointValue | 0;
-
-/**
- * Offset.
+ * Column offset props.
  */
 type Offset = {
-    [Property in keyof typeof Breakpoint as `${Property}-offset`]?: OffsetValue;
+    [Property in keyof typeof Breakpoint as `${Property}-offset`]?: BreakpointValue | 0;
 };
 
 /**
- * ColModificators.
+ * Col modificators props.
  */
 type ColModificators = Breakpoints & Offset;
 
 /**
- * Props.
+ * Col props.
  */
-type ColProps = {
-    /**
-     * Component children.
-     */
-    children: ReactNode;
-    /**
-     * Provide className to customize appearance.
-     */
-    className?: string;
+type ColProps<T extends ElementType> = {
     /**
      * HTML element type used to create column.
      */
     as?: ElementType;
-    /**
-     * WAI-ARIA role attribute.
-     */
-    role?: AriaRole;
-} & ColModificators;
+} & ColModificators &
+    HTMLAttributes<T>;
 
 /**
- * Container.
+ * Column component.
  *
  * @param {ColProps} props - Props.
  * @returns React component.
  */
-export const Col = ({
-    children,
-    className,
-    as: Component = 'div',
-    role,
-    ...restProps
-}: ColProps): ReactElement => {
+export const Col = forwardRef(function Col<T extends ElementType>(
+    { children, className, as: Component = 'div', ...restProps }: ColProps<T>,
+    ref: ForwardedRef<T>,
+): ReactElement {
     const getColClassName = () => {
-        const keys = Object.keys(restProps) as Array<keyof ColModificators>;
+        const keys = Object.keys(restProps).filter(x => x.startsWith('col-')) as Array<
+            keyof ColModificators
+        >;
 
         if (!keys.length) {
             return 'col';
@@ -86,9 +74,9 @@ export const Col = ({
     return (
         <Component
             className={colClassName}
-            role={role}
+            ref={ref}
         >
             {children}
         </Component>
     );
-};
+});

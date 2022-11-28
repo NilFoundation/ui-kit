@@ -3,50 +3,42 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ElementType, ReactElement, ReactNode, AriaRole } from 'react';
+import React, {
+    ElementType,
+    ReactElement,
+    useCallback,
+    forwardRef,
+    ForwardedRef,
+    HTMLAttributes,
+} from 'react';
 import clsx from 'clsx';
 import { Breakpoint } from '../../enums';
 
 /**
- * Props.
+ * Container props.
  */
-type ContainerProps = {
-    /**
-     * Component children.
-     */
-    children: ReactNode;
-    /**
-     * Provide className to customize appearance.
-     */
-    className?: string;
-    /**
-     * Allow container to take all avialiable space.
-     */
-    fluid?: boolean | Breakpoint;
+type ContainerProps<T extends ElementType> = {
     /**
      * HTML element type used to create container.
      */
     as?: ElementType;
     /**
-     * WAI-ARIA role attribute.
+     * Allow container to take all avialiable space.
      */
-    role?: AriaRole;
-};
+    fluid?: boolean | Breakpoint;
+} & HTMLAttributes<T>;
 
 /**
- * Container.
+ * Container component.
  *
  * @param {ContainerProps} props - Props.
  * @returns React component.
  */
-export const Container = ({
-    children,
-    className,
-    fluid,
-    as: Component = 'div',
-    ...rest
-}: ContainerProps): ReactElement => {
-    const getFluidClassName = () => {
+export const Container = forwardRef(function Container<T extends ElementType>(
+    { children, className, fluid, as: Component = 'div', ...rest }: ContainerProps<T>,
+    ref: ForwardedRef<T>,
+): ReactElement {
+    const getFluidClassName = useCallback(() => {
         if (!fluid) {
             return 'container';
         }
@@ -56,16 +48,17 @@ export const Container = ({
         }
 
         return `container-${fluid}`;
-    };
+    }, [fluid]);
 
     const containerClassName = clsx(className && className, getFluidClassName());
 
     return (
         <Component
             className={containerClassName}
+            ref={ref}
             {...rest}
         >
             {children}
         </Component>
     );
-};
+});
