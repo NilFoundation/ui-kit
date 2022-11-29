@@ -6,7 +6,7 @@
 import { createContext } from 'react';
 
 /**
- * Context type.
+ * Collapse context type.
  */
 type CollapseContextContextModel = {
     /**

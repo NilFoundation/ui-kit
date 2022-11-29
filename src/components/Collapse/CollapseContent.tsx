@@ -3,30 +3,33 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, useContext } from 'react';
+import React, { forwardRef, ReactElement, useContext } from 'react';
 import { Expandable, ExpandableProps } from '../Expandable';
 import { CollapseContext } from './CollapseContext';
 
 /**
- * Props.
+ * Collapse content props.
  */
 export type CollapseContentProps = ExpandableProps;
 
 /**
- * Disclosure content component.
+ * Collapse content component.
  *
  * @param {CollapseContentProps} props - Props.
  * @returns - React component.
  */
-export const CollapseContent = ({ children, ...rest }: CollapseContentProps): ReactElement => {
-    const { isOpen } = useContext(CollapseContext);
+export const CollapseContent = forwardRef<HTMLDivElement, CollapseContentProps>(
+    function CollapseContent({ children, ...rest }, ref): ReactElement {
+        const { isOpen } = useContext(CollapseContext);
 
-    return (
-        <Expandable
-            isOpen={isOpen}
-            {...rest}
-        >
-            {children}
-        </Expandable>
-    );
-};
+        return (
+            <Expandable
+                isOpen={isOpen}
+                ref={ref}
+                {...rest}
+            >
+                {children}
+            </Expandable>
+        );
+    },
+);

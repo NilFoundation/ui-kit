@@ -9,7 +9,7 @@ import { CollapseButton } from './CollapseButton';
 import { CollapseContent } from './CollapseContent';
 
 /**
- * Props.
+ * Collapse props.
  */
 export interface CollapseProps {
     /**
@@ -20,10 +20,6 @@ export interface CollapseProps {
      * Collapse content is vivible by default.
      */
     defaultOpen?: boolean;
-    /**
-     * Provide className to customize appearance.
-     */
-    className?: string;
 }
 
 /**
@@ -32,11 +28,7 @@ export interface CollapseProps {
  * @param {CollapseProps} props - Props.
  * @returns - React component.
  */
-export const Collapse = ({
-    children,
-    defaultOpen = false,
-    className,
-}: CollapseProps): ReactElement => {
+export const Collapse = ({ children, defaultOpen = false }: CollapseProps): ReactElement => {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
@@ -49,7 +41,7 @@ export const Collapse = ({
 
     return (
         <CollapseContext.Provider value={{ isOpen, toggleIsOpen }}>
-            <div className={className}>{children}</div>
+            {children}
         </CollapseContext.Provider>
     );
 };

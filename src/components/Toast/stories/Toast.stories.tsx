@@ -6,7 +6,6 @@
 import React, { useState } from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
 import { Toast as ToastComponent } from '../Toast';
-import { Variant } from '../../../enums';
 
 export default {
     component: ToastComponent,

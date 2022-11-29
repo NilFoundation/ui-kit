@@ -3,20 +3,12 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, { DetailedHTMLProps, forwardRef, HTMLAttributes, ReactElement } from 'react';
 
 /**
- * Props.
+ * Expandable props.
  */
 export type ExpandableProps = {
-    /**
-     * Component children.
-     */
-    children: ReactNode;
-    /**
-     * Provide className to customize appearance.
-     */
-    className?: string;
     /**
      * Is content visible.
      */
@@ -25,11 +17,7 @@ export type ExpandableProps = {
      * Destroy children components when close.
      */
     unmountOnCollapse?: boolean;
-    /**
-     * Component id.
-     */
-    id?: string;
-};
+} & Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'ref'>;
 
 /**
  * Expandable component.
@@ -37,21 +25,21 @@ export type ExpandableProps = {
  * @param {ExpandableProps} props - Props.
  * @returns React component.
  */
-export const Expandable = ({
-    children,
-    className = '',
-    isOpen,
-    unmountOnCollapse = true,
-    id,
-}: ExpandableProps): ReactElement => (
-    <>
-        {(!unmountOnCollapse || isOpen) && (
-            <div
-                id={id}
-                className={`${className} ${!isOpen ? 'collapse' : ''}`}
-            >
-                {children}
-            </div>
-        )}
-    </>
-);
+export const Expandable = forwardRef<HTMLDivElement, ExpandableProps>(function Expandable(
+    { children, className = '', isOpen, unmountOnCollapse = true, ...rest },
+    ref,
+): ReactElement {
+    return (
+        <>
+            {(!unmountOnCollapse || isOpen) && (
+                <div
+                    className={`${className}${!isOpen ? ' collapse' : ''}`}
+                    ref={ref}
+                    {...rest}
+                >
+                    {children}
+                </div>
+            )}
+        </>
+    );
+});

@@ -26,7 +26,7 @@ type UseKeyPressSettings = {
  * @returns - Key event listener.
  */
 export const useKeyPress = <T extends KeyboardEvent | ElementKeyboardEvent>(
-    callback: () => void,
+    callback: (e: T) => void,
     allowedKeys: KeyboardEventKey[],
     { preventDefault }: UseKeyPressSettings = { preventDefault: true },
 ): [onKeyPress: (e: T) => void] => {
@@ -47,7 +47,7 @@ export const useKeyPress = <T extends KeyboardEvent | ElementKeyboardEvent>(
                 e.stopPropagation();
             }
 
-            callback();
+            callback(e);
         },
         [allowedKeys, preventDefault, callback],
     );
