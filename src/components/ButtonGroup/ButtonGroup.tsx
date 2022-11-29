@@ -19,7 +19,7 @@ export type ButtonGroupProps = {
      * Make a set of buttons appear vertically.
      */
     vertical?: boolean;
-} & DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+} & Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'ref'>;
 
 /**
  * Button group component.

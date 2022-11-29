@@ -28,7 +28,7 @@ export type AlertProps = {
      * Callback to fire on alert close. Adds close icon when provided.
      */
     onClose?: () => void;
-} & DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+} & Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'ref'>;
 
 /**
  * Compounded Alert component type.

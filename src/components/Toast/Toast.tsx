@@ -3,21 +3,22 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { forwardRef, ReactElement, ReactNode, useEffect } from 'react';
+import React, {
+    DetailedHTMLProps,
+    forwardRef,
+    HTMLAttributes,
+    ReactElement,
+    useEffect,
+} from 'react';
 import clsx from 'clsx';
 import { Variant, KeyboardEventKey } from '../../enums';
 import { useCombinedRef, useEventListener, useKeyPress } from '../../hooks';
 import { CloseButton } from '../Button';
-import { Panel } from '../Panel';
 
 /**
- * Props.
+ * Toast props.
  */
 export type ToastProps = {
-    /**
-     * Component children.
-     */
-    children?: ReactNode;
     /**
      * Title.
      */
@@ -25,11 +26,7 @@ export type ToastProps = {
     /**
      * Provide color schema.
      */
-    variant?: Variant;
-    /**
-     * Provide className to customize appearance.
-     */
-    className?: string;
+    variant?: keyof typeof Variant;
     /**
      * Time before removing component. Takes effect only if autoClose equals true.
      *
@@ -48,7 +45,7 @@ export type ToastProps = {
      * Autofocus on toast when it renders.
      */
     autoFocus?: boolean;
-};
+} & Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'ref'>;
 
 /**
  * Toast component.
@@ -61,11 +58,12 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(function Toast(
         children,
         title,
         className,
-        variant = Variant.primary,
+        variant,
         lifeTime = 3000,
-        autoClose = variant !== Variant.danger,
+        autoClose = variant !== 'danger',
         close,
         autoFocus,
+        ...rest
     }: ToastProps,
     ref,
 ): ReactElement {
@@ -73,7 +71,8 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(function Toast(
     const ariaLive = variant === Variant.danger ? 'assertive' : 'polite';
     const { localRef, forwardedRef } = useCombinedRef(ref);
 
-    const toastClassName = clsx('toast', className && className);
+    const toastClassName = clsx('toast show', className);
+    const toastBodyClassName = clsx('toast-body', variant ? `text-bg-${variant}` : '');
 
     useEffect(() => {
         autoFocus && localRef.current && localRef.current.focus();
@@ -96,19 +95,19 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(function Toast(
     useEventListener({ eventType: 'keydown', callback: onKeyPress });
 
     return (
-        <Panel
+        <div
             className={toastClassName}
             ref={forwardedRef}
-            variant={variant}
             role={role}
             aria-live={ariaLive}
             aria-atomic="true"
+            {...rest}
         >
-            <Panel.Header>
-                {title}
+            <div className="toast-header">
+                <span className="me-auto">{title}</span>
                 {close && <CloseButton onClick={close} />}
-            </Panel.Header>
-            {children && <Panel.Content>{children}</Panel.Content>}
-        </Panel>
+            </div>
+            {children && <div className={toastBodyClassName}>{children}</div>}
+        </div>
     );
 });

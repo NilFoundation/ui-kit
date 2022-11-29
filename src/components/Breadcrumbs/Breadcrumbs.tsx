@@ -16,9 +16,9 @@ import { BreadcrumbsItem } from './BreadcrumbsItem';
 /**
  * Breadcrumbs component props.
  */
-export type BreadcrumbsProps = DetailedHTMLProps<
-    OlHTMLAttributes<HTMLOListElement>,
-    HTMLOListElement
+export type BreadcrumbsProps = Omit<
+    DetailedHTMLProps<OlHTMLAttributes<HTMLOListElement>, HTMLOListElement>,
+    'ref'
 >;
 
 /**

@@ -11,6 +11,6 @@ import { Variant } from '../../enums';
 export type CreateNotificationData = {
     title: string;
     message?: string;
-    variant?: Variant;
+    variant?: keyof typeof Variant;
     lifeTime?: number;
 };

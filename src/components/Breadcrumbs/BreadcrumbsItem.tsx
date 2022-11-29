@@ -28,7 +28,7 @@ export type BreadcrumbsItemProps = {
      * Render custom link.
      */
     renderLink?: ({ href, active }: { href?: string; active?: boolean }) => ReactElement;
-} & DetailedHTMLProps<LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>;
+} & Omit<DetailedHTMLProps<LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>, 'ref'>;
 
 /**
  * Breadcrumbs item component.

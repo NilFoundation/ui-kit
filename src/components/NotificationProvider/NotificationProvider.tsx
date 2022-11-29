@@ -13,7 +13,7 @@ import { RenderNotificationData } from './RenderNotificationData';
 import { Portal } from '../Portal';
 
 /**
- * Props.
+ * Notification provider props.
  */
 type NotificationProviderProps = {
     /**
@@ -27,7 +27,7 @@ type NotificationProviderProps = {
 };
 
 /**
- * Actions.
+ * Notification actions type.
  */
 type NotificationActions = {
     create: (data: CreateNotificationData) => void;
@@ -35,7 +35,7 @@ type NotificationActions = {
 } | null;
 
 /**
- * Export notification actions object outside component to prevent update on every render.
+ * Notification actions.
  */
 export let notificationActions: NotificationActions = null;
 

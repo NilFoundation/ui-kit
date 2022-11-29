@@ -37,7 +37,6 @@ export default {
     args: {
         text: 'This is Toast story',
         title: 'Simple toast',
-        variant: Variant.default,
         autoClose: false,
     },
 } as ComponentMeta<typeof ToastComponent>;

@@ -7,7 +7,7 @@ import { createContext } from 'react';
 import { RenderNotificationData } from './RenderNotificationData';
 
 /**
- * Context type.
+ * Notification сontext type.
  */
 type NotificationContainerContextModel = {
     queue: RenderNotificationData[];

@@ -3,18 +3,16 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement } from 'react';
-import { Button, ButtonProps } from './Button';
+import React, { ButtonHTMLAttributes, DetailedHTMLProps, forwardRef, ReactElement } from 'react';
+import clsx from 'clsx';
 
 /**
- * Props.
+ * Close button props.
  */
-export type CloseButtonProps = {
-    /**
-     * Callback to fire on button click.
-     */
-    onClick?: () => void;
-} & ButtonProps;
+export type CloseButtonProps = Omit<
+    DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
+    'ref'
+>;
 
 /**
  * Close button component.
@@ -22,10 +20,18 @@ export type CloseButtonProps = {
  * @param {CloseButtonProps} props - Props.
  * @returns React component.
  */
-export const CloseButton = ({ onClick }: CloseButtonProps): ReactElement => (
-    <Button
-        className="btn-close"
-        aria-label="Close"
-        onClick={onClick}
-    />
-);
+export const CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>(function CloseButton(
+    { className, ...rest },
+    ref,
+): ReactElement {
+    const btnClassName = clsx('btn-close', className);
+
+    return (
+        <button
+            className={btnClassName}
+            aria-label="Close"
+            ref={ref}
+            {...rest}
+        />
+    );
+});

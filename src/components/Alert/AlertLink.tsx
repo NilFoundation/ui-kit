@@ -8,9 +8,9 @@ import React, { AnchorHTMLAttributes, DetailedHTMLProps, forwardRef, ReactElemen
 /**
  * Alert link component props.
  */
-export type AlertLinkProps = DetailedHTMLProps<
-    AnchorHTMLAttributes<HTMLAnchorElement>,
-    HTMLAnchorElement
+export type AlertLinkProps = Omit<
+    DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>,
+    'ref'
 >;
 
 /**
