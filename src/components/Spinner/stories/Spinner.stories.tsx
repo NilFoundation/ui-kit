@@ -12,17 +12,15 @@ export default {
     component: SpinnerComponent,
     title: 'components/Spinner',
     argTypes: {
-        children: {
-            table: {
-                disable: true,
-            },
-        },
         className: {
             table: {
                 disable: true,
             },
         },
         size: {
+            control: 'select',
+        },
+        type: {
             control: 'select',
         },
     },
@@ -32,4 +30,6 @@ export const Spinner: Story = args => <SpinnerComponent {...args} />;
 
 Spinner.args = {
     size: Size.md,
+    variant: 'light',
+    type: 'border',
 };

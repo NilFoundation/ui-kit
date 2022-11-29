@@ -3,27 +3,35 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement } from 'react';
+import React, { DetailedHTMLProps, forwardRef, HTMLAttributes, ReactElement } from 'react';
 import clsx from 'clsx';
-import { Size } from '../../enums';
+import { Variant } from '../../enums';
 
 /**
- * Props.
+ * Spinner animation type.
+ */
+type SpinnerType = 'grow' | 'border';
+
+/**
+ * Spinner props.
  */
 export type SpinnerProps = {
-    /**
-     * Provide size.
-     */
-    size?: Exclude<Size, Size.xs>;
     /**
      * Place Spinner in the center of all avialiable space.
      */
     grow?: boolean;
     /**
-     * Provide className to customize appearance.
+     * Provide color scheme.
      */
-    className?: string;
-};
+    variant?: keyof typeof Variant;
+    /**
+     * Spinner animation type.
+     */
+    type?: SpinnerType;
+} & Omit<
+    DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+    'children' | 'ref' | 'role'
+>;
 
 /**
  * Spinner component.
@@ -31,21 +39,26 @@ export type SpinnerProps = {
  * @param {SpinnerProps} props - Props.
  * @returns React component.
  */
-export const Spinner = ({ className, size = Size.md, grow }: SpinnerProps): ReactElement => {
+export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(function Spinner(
+    { className, grow, variant, type = 'border', ...rest },
+    ref,
+): ReactElement {
     const spinnerClassName = clsx(
         className && className,
-        'spinner-border',
-        size !== Size.md && `spinner-border-${size}`,
+        `spinner-${type}`,
+        variant && `text-${variant}`,
     );
 
     const renderSpinner = () => (
         <div
             className={spinnerClassName}
             role="status"
+            ref={ref}
+            {...rest}
         >
             <span className="visually-hidden">Loading...</span>
         </div>
     );
 
     return grow ? <div className="spinner-grow-container">{renderSpinner()}</div> : renderSpinner();
-};
+});

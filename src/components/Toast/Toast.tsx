@@ -24,7 +24,7 @@ export type ToastProps = {
      */
     title: string;
     /**
-     * Provide color schema.
+     * Provide color scheme.
      */
     variant?: keyof typeof Variant;
     /**
