@@ -105,7 +105,12 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(function Toast(
         >
             <div className="toast-header">
                 <span className="me-auto">{title}</span>
-                {close && <CloseButton onClick={close} />}
+                {close && (
+                    <CloseButton
+                        light
+                        onClick={close}
+                    />
+                )}
             </div>
             {children && <div className={toastBodyClassName}>{children}</div>}
         </div>

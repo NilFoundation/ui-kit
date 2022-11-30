@@ -3,48 +3,31 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { HTMLAttributeAnchorTarget, ReactElement, ReactNode } from 'react';
+import React, { DetailedHTMLProps, HTMLAttributes, ReactElement, forwardRef } from 'react';
 import clsx from 'clsx';
 import { Variant } from '../../enums';
 import { CloseButton } from '../Button';
+import { getCloseButtonLightProp } from '../../_helpers';
 
 /**
- * Props.
+ * Label props.
  */
 export type LabelProps = {
     /**
-     * Component children.
-     */
-    children: ReactNode;
-    /**
      * Color scheme.
+     *
+     * @default secondary
      */
-    variant?: Variant;
-    /**
-     * Provide className to customize appearance.
-     */
-    className?: string;
+    variant?: keyof typeof Variant;
     /**
      * Increases border radius.
      */
     rounded?: boolean;
     /**
-     * Makes label to span the entire width of the parent element.
-     */
-    block?: boolean;
-    /**
-     * Wraps label into a link with provided herf.
-     */
-    href?: string;
-    /**
-     * Specify target for link wrapper.
-     */
-    target?: HTMLAttributeAnchorTarget;
-    /**
      * Close callback.
      */
     onClose?: () => void;
-};
+} & Omit<DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, 'ref'>;
 
 /**
  * Label component.
@@ -52,40 +35,32 @@ export type LabelProps = {
  * @param {LabelProps} props - Props.
  * @returns React component.
  */
-export const Label = ({
-    className,
-    variant = Variant.primary,
-    children,
-    rounded,
-    block,
-    href,
-    target,
-    onClose,
-}: LabelProps): ReactElement => {
+export const Label = forwardRef<HTMLSpanElement, LabelProps>(function Label(
+    { className, variant = 'secondary', children, rounded, onClose, ...rest },
+    ref,
+): ReactElement {
     const labelClassName = clsx(
-        className && className,
-        'label',
-        `label-${variant}`,
-        rounded && 'label-rounded',
-        block && 'label-block',
-        onClose && 'label-closable',
+        className,
+        'badge',
+        `text-bg-${variant}`,
+        rounded && 'rounded-pill',
+        onClose && 'd-inline-flex align-items-center',
     );
 
-    const renderLabel = () => (
-        <span className={labelClassName}>
+    return (
+        <span
+            className={labelClassName}
+            ref={ref}
+            {...rest}
+        >
             {children && children}
-            {onClose && <CloseButton onClick={onClose} />}
+            {onClose && (
+                <CloseButton
+                    onClick={onClose}
+                    className="ms-1"
+                    light={getCloseButtonLightProp(variant)}
+                />
+            )}
         </span>
     );
-
-    return href ? (
-        <a
-            href={href}
-            target={target}
-        >
-            {renderLabel()}
-        </a>
-    ) : (
-        renderLabel()
-    );
-};
+});

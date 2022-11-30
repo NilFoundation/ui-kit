@@ -6,7 +6,6 @@
 import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
 import { Label as LabelComponent } from '../Label';
-import { Variant } from '../../../enums';
 
 export default {
     component: LabelComponent,
@@ -15,17 +14,7 @@ export default {
         text: {
             type: 'string',
         },
-        children: {
-            table: {
-                disable: true,
-            },
-        },
         onClose: {
-            table: {
-                disable: true,
-            },
-        },
-        className: {
             table: {
                 disable: true,
             },
@@ -36,8 +25,16 @@ export default {
     },
 } as ComponentMeta<typeof LabelComponent>;
 
-export const Label: Story = args => <LabelComponent {...args}>{args.text}</LabelComponent>;
+export const Label: Story = args => (
+    <LabelComponent
+        onClose={() => {
+            console.log();
+        }}
+        {...args}
+    >
+        {args.text}
+    </LabelComponent>
+);
 Label.args = {
     text: 'Label text',
-    variant: Variant.default,
 };
