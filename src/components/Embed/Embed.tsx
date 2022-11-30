@@ -17,7 +17,7 @@ import { Spinner } from '../Spinner';
 /**
  * Embed ratio type.
  */
-type EmbedRatio = '1x1' | '16by9' | '4by3' | '21x9';
+type EmbedRatio = '1x1' | '16x9' | '4x3' | '21x9';
 
 /**
  * Embed props.
@@ -34,7 +34,7 @@ export type EmbedProps = {
     /**
      * Ratio.
      *
-     * @default 16by9
+     * @default 16x9
      */
     ratio?: EmbedRatio;
 } & Omit<
@@ -49,7 +49,7 @@ export type EmbedProps = {
  * @returns React component.
  */
 export const Embed = forwardRef<HTMLIFrameElement, EmbedProps>(function Embed(
-    { source, onLoad, title, ratio = '16by9', className, ...rest },
+    { source, onLoad, title, ratio = '16x09', className, ...rest },
     ref,
 ): ReactElement {
     const [loaded, setLoaded] = useState(false);

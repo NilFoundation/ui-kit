@@ -16,7 +16,6 @@ export * from './Dropdown';
 export * from './Portal';
 export * from './Breadcrumbs';
 export * from './Select';
-export * from './PageHeader';
 export * from './Expandable';
 export * from './Table';
 export * from './TextArea';
