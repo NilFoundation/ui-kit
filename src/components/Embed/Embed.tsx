@@ -3,14 +3,24 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { HTMLAttributes, ReactElement, SyntheticEvent, useState } from 'react';
+import React, {
+    DetailedHTMLProps,
+    forwardRef,
+    IframeHTMLAttributes,
+    ReactElement,
+    SyntheticEvent,
+    useState,
+} from 'react';
 import clsx from 'clsx';
 import { Spinner } from '../Spinner';
 
-type EmbedRatio = '16by9' | '4by3';
+/**
+ * Embed ratio type.
+ */
+type EmbedRatio = '1x1' | '16by9' | '4by3' | '21x9';
 
 /**
- * Props.
+ * Embed props.
  */
 export type EmbedProps = {
     /**
@@ -27,11 +37,10 @@ export type EmbedProps = {
      * @default 16by9
      */
     ratio?: EmbedRatio;
-    /**
-     * Provide className to customize appearance.
-     */
-    className?: string;
-} & Omit<HTMLAttributes<HTMLIFrameElement>, 'title'>;
+} & Omit<
+    DetailedHTMLProps<IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement>,
+    'title' | 'ref'
+>;
 
 /**
  * Embed component.
@@ -39,22 +48,14 @@ export type EmbedProps = {
  * @param {EmbedProps} props - Props.
  * @returns React component.
  */
-export const Embed = ({
-    source,
-    className,
-    onLoad,
-    title,
-    ratio = '16by9',
-    ...rest
-}: EmbedProps): ReactElement => {
+export const Embed = forwardRef<HTMLIFrameElement, EmbedProps>(function Embed(
+    { source, onLoad, title, ratio = '16by9', className, ...rest },
+    ref,
+): ReactElement {
     const [loaded, setLoaded] = useState(false);
 
-    const iframeClassName = clsx('embed-responsive-item', !loaded && 'invisible');
-    const embedContainerClassName = clsx(
-        className && className,
-        'embed-responsive',
-        `embed-responsive-${ratio}`,
-    );
+    const iframeClassName = clsx(className, !loaded && 'invisible');
+    const embedContainerClassName = clsx('ratio', `ratio-${ratio}`);
 
     const onLoadHandler = (e: SyntheticEvent<HTMLIFrameElement, Event>) => {
         setLoaded(true);
@@ -63,18 +64,15 @@ export const Embed = ({
 
     return (
         <div className={embedContainerClassName}>
-            {!loaded && (
-                <div className="embedSpinnerContainer">
-                    <Spinner />
-                </div>
-            )}
+            {!loaded && <Spinner fill />}
             <iframe
-                className={iframeClassName}
                 src={source}
+                className={iframeClassName}
                 onLoad={onLoadHandler}
                 title={title}
+                ref={ref}
                 {...rest}
             />
         </div>
     );
-};
+});

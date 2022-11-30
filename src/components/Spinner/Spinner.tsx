@@ -19,7 +19,7 @@ export type SpinnerProps = {
     /**
      * Place Spinner in the center of all avialiable space.
      */
-    grow?: boolean;
+    fill?: boolean;
     /**
      * Provide color scheme.
      */
@@ -40,7 +40,7 @@ export type SpinnerProps = {
  * @returns React component.
  */
 export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(function Spinner(
-    { className, grow, variant, type = 'border', ...rest },
+    { className, fill, variant, type = 'border', ...rest },
     ref,
 ): ReactElement {
     const spinnerClassName = clsx(
@@ -60,5 +60,5 @@ export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(function Spinner
         </div>
     );
 
-    return grow ? <div className="spinner-grow-container">{renderSpinner()}</div> : renderSpinner();
+    return fill ? <div className="spinner-grow-container">{renderSpinner()}</div> : renderSpinner();
 });
