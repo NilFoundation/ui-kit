@@ -4,3 +4,4 @@
  */
 
 export * from './prefersReduceMotion';
+export * from './getCloseButtonLightProp';
