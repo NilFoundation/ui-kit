@@ -11,8 +11,13 @@ import clsx from 'clsx';
  */
 export type CloseButtonProps = Omit<
     DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
-    'ref'
->;
+    'ref' | 'type'
+> & {
+    /**
+     * Applies light color scheme.
+     */
+    light?: boolean;
+};
 
 /**
  * Close button component.
@@ -21,10 +26,10 @@ export type CloseButtonProps = Omit<
  * @returns React component.
  */
 export const CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>(function CloseButton(
-    { className, ...rest },
+    { className, light, ...rest },
     ref,
 ): ReactElement {
-    const btnClassName = clsx('btn-close', className);
+    const btnClassName = clsx('btn-close', className, light && 'btn-close-white');
 
     return (
         <button
