@@ -4,4 +4,3 @@
  */
 
 export * from './BreakpointValue';
-export * from './InputSize';

@@ -6,13 +6,12 @@
 import React, { forwardRef, InputHTMLAttributes } from 'react';
 import clsx from 'clsx';
 import { Size } from '../../enums';
-import { InputSize } from '../../models';
 
 /**
  * Props.
  */
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-    size?: InputSize;
+    size?: keyof typeof Size;
 }
 
 /**
