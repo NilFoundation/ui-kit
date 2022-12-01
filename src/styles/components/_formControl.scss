@@ -1,0 +1,18 @@
+@import '../variables';
+
+textarea.form-control {
+  resize: vertical;
+
+  &.fixedHeight {
+    resize:none;
+  }
+}
+
+$input-placeholder-color: $c-secondary-darker;
+$input-focus-border-color: $c-base-light;
+$input-border-color: $c-base-light;
+
+
+
+
+

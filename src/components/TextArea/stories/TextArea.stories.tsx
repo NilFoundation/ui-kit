@@ -22,4 +22,9 @@ export default {
     },
 } as ComponentMeta<typeof TextAreaComponent>;
 
-export const TextArea: Story = args => <TextAreaComponent {...args} />;
+export const TextArea: Story = args => (
+    <TextAreaComponent
+        placeholder="cdcdc"
+        {...args}
+    />
+);
