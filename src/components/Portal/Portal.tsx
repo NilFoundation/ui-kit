@@ -7,7 +7,7 @@ import { ReactNode, ReactElement, useRef, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 /**
- * Props.
+ * Portal props.
  */
 export type PortalProps = {
     /**
