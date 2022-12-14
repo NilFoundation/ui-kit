@@ -6,7 +6,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { FloatingLabel } from '../FloatingLabel';
-import { Input } from '../../Input';
+import { FormControl } from '../../FormControl';
 
 /**
  * Floating label component unit testing.
@@ -18,7 +18,7 @@ describe('floatingLabel', () => {
     it('renders', () => {
         const { getByRole } = render(
             <FloatingLabel text="Label">
-                {propsGetter => <Input {...propsGetter()} />}
+                {propsGetter => <FormControl {...propsGetter()} />}
             </FloatingLabel>,
         );
 

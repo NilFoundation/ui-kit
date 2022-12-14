@@ -7,7 +7,7 @@ import React, { ReactElement, Ref, useState, useRef } from 'react';
 import clsx from 'clsx';
 import { Size } from '../../enums';
 import { InputGroup } from '../InputGroup';
-import { Input } from '../Input';
+import { FormControl } from '../FormControl';
 import { Menu } from '../Menu';
 import { SelectOption, SelectOptionProps } from './SelectOption';
 import { SelectOptionModel } from './SelectOptionModel';
@@ -142,7 +142,7 @@ export const Select = <T,>({
         <SelectContext.Provider value={{ multiple, selectedOption, onSelectOption }}>
             <div className={selectClassName}>
                 <InputGroup size={size}>
-                    <Input
+                    <FormControl
                         readOnly
                         ref={ref}
                         id={id}

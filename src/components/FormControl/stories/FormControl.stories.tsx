@@ -5,12 +5,12 @@
 
 import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
-import { Input as InputComponent } from '../Input';
+import { FormControl as FormControlComponent } from '../FormControl';
 import { Size } from '../../../enums';
 
 export default {
-    component: InputComponent,
-    title: 'form controls/Input',
+    component: FormControlComponent,
+    title: 'form controls/FormControl',
     argTypes: {
         className: {
             table: {
@@ -25,13 +25,13 @@ export default {
         },
         type: {
             control: 'select',
-            options: ['text', 'number'],
+            options: ['text', 'number', 'file'],
         },
     },
     args: {
         size: Size.md,
         type: 'text',
     },
-} as ComponentMeta<typeof InputComponent>;
+} as ComponentMeta<typeof FormControlComponent>;
 
-export const Input: Story = args => <InputComponent {...args} />;
+export const FormControl: Story = args => <FormControlComponent {...args} />;

@@ -8,7 +8,6 @@ import clsx from 'clsx';
 import { Size } from '../../enums';
 import { InputGroupAddon } from './InputGroupAddon';
 import { InputGroupButtons } from './InputGroupButtons';
-import { InputSize } from '../../models';
 
 /**
  * Props.
@@ -21,7 +20,7 @@ export interface InputGroupProps {
     /**
      * Component size.
      */
-    size?: InputSize;
+    size?: Size;
     /**
      * Provide className to customize appearance.
      */

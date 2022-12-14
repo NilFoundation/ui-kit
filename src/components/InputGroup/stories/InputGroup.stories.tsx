@@ -6,7 +6,7 @@
 import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
 import { InputGroup as InputGroupComponent } from '../InputGroup';
-import { Input } from '../../Input/Input';
+import { FormControl } from '../../FormControl';
 import { Button } from '../../Button';
 
 export default {
@@ -32,7 +32,7 @@ export default {
 export const InputGroup: Story = args => (
     <InputGroupComponent {...args}>
         <InputGroupComponent.Addon>Addon</InputGroupComponent.Addon>
-        <Input />
+        <FormControl />
         <InputGroupComponent.Buttons>
             <Button>Button</Button>
             <Button>Also a button</Button>

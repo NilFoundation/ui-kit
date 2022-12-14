@@ -8,29 +8,27 @@ import clsx from 'clsx';
 import { Size } from '../../enums';
 
 /**
- * Props.
+ * Form control props.
  */
-export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface FormControlProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     size?: keyof typeof Size;
 }
 
 /**
- * Basic input component.
+ * Form control component.
  */
-export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-    { size = Size.md, className, disabled = false, ...restProps }: InputProps,
+export const FormControl = forwardRef<HTMLInputElement, FormControlProps>(function FormControl(
+    { size = Size.md, className, ...restProps }: FormControlProps,
     ref,
 ) {
     const inputClassName = clsx(
         'form-control',
         className && className,
-        disabled && 'input-disabled',
-        size !== Size.md && `input-${size}`,
+        size !== Size.md && `form-control-${size}`,
     );
 
     return (
         <input
-            disabled={disabled}
             ref={ref}
             {...restProps}
             className={inputClassName}

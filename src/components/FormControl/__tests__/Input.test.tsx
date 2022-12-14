@@ -5,17 +5,17 @@
 
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Input } from '../Input';
+import { FormControl } from '../FormControl';
 
 /**
- * Input component unit testing.
+ * FormControl component unit testing.
  */
-describe('input', () => {
+describe('formControl', () => {
     /**
      * Component renders.
      */
     it('renders', () => {
-        const { getByRole } = render(<Input />);
+        const { getByRole } = render(<FormControl />);
 
         expect(getByRole('textbox')).toBeInTheDocument();
     });

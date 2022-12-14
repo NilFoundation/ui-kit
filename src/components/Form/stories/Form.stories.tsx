@@ -6,7 +6,7 @@
 import React from 'react';
 import { Args, ComponentMeta, Story } from '@storybook/react';
 import { Form as FormComponent } from '../Form';
-import { Input } from '../../Input';
+import { FormControl } from '../../FormControl';
 import { Select } from '../../Select';
 
 export default {
@@ -39,7 +39,7 @@ export const Form: Story = ({ hasError, hasWarning, ...rest }: Args) => (
             hasWarning={hasWarning}
         >
             <FormComponent.Label>Name</FormComponent.Label>
-            <Input />
+            <FormControl />
             <FormComponent.Hint>Useful information</FormComponent.Hint>
         </FormComponent.Group>
         <FormComponent.Group

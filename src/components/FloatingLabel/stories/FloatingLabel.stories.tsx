@@ -6,7 +6,7 @@
 import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
 import { FloatingLabel as FloatingLabelComponent } from '../FloatingLabel';
-import { Input } from '../../Input';
+import { FormControl } from '../../FormControl';
 import { Size } from '../../../enums';
 
 export default {
@@ -35,7 +35,7 @@ export const FloatingLabel: Story = args => (
         htmlFor="some-input"
     >
         {propsGetter => (
-            <Input
+            <FormControl
                 {...propsGetter({
                     size: Size.lg,
                     id: 'some-input',

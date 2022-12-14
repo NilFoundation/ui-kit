@@ -6,7 +6,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { InputGroup } from '../InputGroup';
-import { Input } from '../../Input/Input';
+import { FormControl } from '../../FormControl';
 import { Button } from '../../Button';
 
 /**
@@ -20,7 +20,7 @@ describe('inputGroup', () => {
         const { getByRole } = render(
             <InputGroup>
                 <InputGroup.Addon>Addon</InputGroup.Addon>
-                <Input />
+                <FormControl />
                 <InputGroup.Buttons>
                     <Button>Button</Button>
                 </InputGroup.Buttons>

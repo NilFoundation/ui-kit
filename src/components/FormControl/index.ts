@@ -3,4 +3,4 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-export * from './Input';
+export * from './FormControl';

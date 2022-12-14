@@ -21,7 +21,6 @@ export * from './Table';
 export * from './TextArea';
 export * from './FormChecks';
 export * from './Grid';
-export * from './Layout';
 export * from './Label';
 export * from './Spinner';
 export * from './Menu';
