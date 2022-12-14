@@ -3,7 +3,7 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-export * from './Input';
+export * from './FormControl';
 export * from './Icon';
 export * from './Button';
 export * from './Panel';
@@ -32,6 +32,5 @@ export * from './Alert';
 export * from './Toast';
 export * from './Form';
 export * from './FloatingLabel';
-export * from './Anchor';
 export * from './ListGroup';
 export * from './Media';
