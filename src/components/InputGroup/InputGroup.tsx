@@ -3,29 +3,34 @@
  * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
  */
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, {
+    DetailedHTMLProps,
+    forwardRef,
+    ForwardRefExoticComponent,
+    HTMLAttributes,
+    ReactElement,
+    RefAttributes,
+} from 'react';
 import clsx from 'clsx';
 import { Size } from '../../enums';
 import { InputGroupText } from './InputGroupText';
-import { InputGroupButtons } from './InputGroupButtons';
 
 /**
- * Props.
+ * Input group props.
  */
-export interface InputGroupProps {
-    /**
-     * Component children.
-     */
-    children: ReactNode;
+export type InputGroupProps = {
     /**
      * Component size.
      */
-    size?: Size;
-    /**
-     * Provide className to customize appearance.
-     */
-    className?: string;
-}
+    size?: keyof typeof Size;
+} & Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'ref'>;
+
+/**
+ * Compounded Alert component type.
+ */
+type CompoundedInputGroupComponent = {
+    Text: typeof InputGroupText;
+} & ForwardRefExoticComponent<InputGroupProps & RefAttributes<HTMLDivElement>>;
 
 /**
  * Input group component.
@@ -33,22 +38,28 @@ export interface InputGroupProps {
  * @param {InputGroupProps} props - Props.
  * @returns - React component.
  */
-export const InputGroup = ({
-    className,
-    size = Size.md,
-    children,
-}: InputGroupProps): ReactElement => {
+export const InputGroup = forwardRef<HTMLDivElement, InputGroupProps>(function InputGroup(
+    { className, size = 'md', children, ...rest },
+    ref,
+): ReactElement {
     const inputGroupClassName = clsx(
         'input-group',
         className && className,
-        size !== Size.md && `input-group-${size}`,
+        size !== 'md' && `input-group-${size}`,
     );
 
-    return <div className={inputGroupClassName}>{children}</div>;
-};
+    return (
+        <div
+            ref={ref}
+            className={inputGroupClassName}
+            {...rest}
+        >
+            {children}
+        </div>
+    );
+}) as CompoundedInputGroupComponent;
 
 /**
  * Component extensions.
  */
-InputGroup.Addon = InputGroupText;
-InputGroup.Buttons = InputGroupButtons;
+InputGroup.Text = InputGroupText;

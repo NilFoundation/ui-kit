@@ -31,11 +31,8 @@ export default {
 
 export const InputGroup: Story = args => (
     <InputGroupComponent {...args}>
-        <InputGroupComponent.Addon>Addon</InputGroupComponent.Addon>
+        <InputGroupComponent.Text>Addon</InputGroupComponent.Text>
         <FormControl />
-        <InputGroupComponent.Buttons>
-            <Button>Button</Button>
-            <Button>Also a button</Button>
-        </InputGroupComponent.Buttons>
+        <Button outline>Button</Button>
     </InputGroupComponent>
 );

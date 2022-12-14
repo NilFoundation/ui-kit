@@ -7,7 +7,6 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { InputGroup } from '../InputGroup';
 import { FormControl } from '../../FormControl';
-import { Button } from '../../Button';
 
 /**
  * InputGroup component unit testing.
@@ -19,11 +18,8 @@ describe('inputGroup', () => {
     it('renders', () => {
         const { getByRole } = render(
             <InputGroup>
-                <InputGroup.Addon>Addon</InputGroup.Addon>
+                <InputGroup.Text>Addon</InputGroup.Text>
                 <FormControl />
-                <InputGroup.Buttons>
-                    <Button>Button</Button>
-                </InputGroup.Buttons>
             </InputGroup>,
         );
 
