@@ -6,7 +6,7 @@
 import React, { ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { Size } from '../../enums';
-import { InputGroupAddon } from './InputGroupAddon';
+import { InputGroupText } from './InputGroupText';
 import { InputGroupButtons } from './InputGroupButtons';
 
 /**
@@ -50,5 +50,5 @@ export const InputGroup = ({
 /**
  * Component extensions.
  */
-InputGroup.Addon = InputGroupAddon;
+InputGroup.Addon = InputGroupText;
 InputGroup.Buttons = InputGroupButtons;
