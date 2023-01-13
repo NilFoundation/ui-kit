@@ -1,8 +1,0 @@
-/**
- * @file Index.
- * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
- */
-
-export * from './Menu';
-export * from './MenuItem';
-export * from './MenuDivider';

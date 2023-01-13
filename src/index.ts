@@ -1,9 +1,6 @@
 /**
  * @file Index.
- * @copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
+ * @copyright Yury Korotovskikh <u.korotovskiy@nil.foundation>
  */
 
-export * from './components';
-export * from './enums';
-export * from './hooks';
-export * from './models';
+export { color as default } from './color';

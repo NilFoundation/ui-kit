@@ -1,0 +1,27 @@
+// Color scheme.
+
+$c-base-darker: #151515;
+$c-base: #222;
+$c-base-lighter: #292929;
+$c-base-light: #3c3c3c;
+$c-primary: #776475;
+$c-success: #198754;
+$c-warning: #d58622;
+$c-danger: #dc3545;
+$c-info: #2677f0;
+$c-secondary-dark: #6c757d;
+$c-secondary-darker: #d3d3d3;
+$c-secondary: #f5f2f1;
+
+// For js export
+:export {
+  primary: $c-primary;
+  danger: $c-danger;
+  success: $c-success;
+  baseColor: $c-base;
+  info: $c-info;
+  baseDarker: $c-base-darker;
+  baseLight: $c-base-light;
+  secondary: $c-secondary;
+  secondaryDarker: $c-secondary-darker;
+}

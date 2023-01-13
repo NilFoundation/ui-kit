@@ -19,21 +19,30 @@ $ npm i @nilfoundation/react-components
 $ yarn add @nilfoundation/react-components
 ```
 
-## Color scheme
+## Scss
 
-- We provide set of scss color variables. Consider to include this code in any of your scss files.
+We provide set of scss variables and styles. Consider to include this code in any of your scss files, and then import this into your project.
 
 ```scss
-@import '~@nilfoundation/react-components/build/variables';
+@import '~@nilfoundation/react-components/build/styles/_all.scss';
 ```
 
-## Bootstrap, Icons and fonts
+If you don't need all the styles, you can import only required
+```scss
+@import '~@nilfoundation/react-components/build/styles/components/_alert.scss';
+@import '~@nilfoundation/react-components/build/styles/_theme.scss';
+```
 
-This package already includes
-- [Bootstrap 3.4.1](https://getbootstrap.com/docs/3.4/getting-started/#download)
-- [Roboto Font](https://fonts.google.com/specimen/Roboto)
+### Bootstrap, Icons and fonts
+This package includes only bootstrap style overrides. We assume, that you already have bootstrap in your project. For more information how to override bootstrap styles, visit [official docs](https://getbootstrap.com/docs/5.3/customize/sass/).
 
-We use [Glyphicons](https://getbootstrap.com/docs/3.3/components/#glyphicons), delivered by default with Bootstrap 3. Feel free to use in your project any other icon sets with [Icon](./src/components/Icon/Icon.tsx) component.
+Icons and fonts are also not included here to provide more flexibility in setup. Consider to use Roboto and Roboto mono fonts to follow our styleguide.
+
+## Typescript and javascript.
+To provide css-in-js support, we also export the color scheme object, which contains all styleguide colors.
+```ts
+import colors from '@nilfoundation/TODO';
+```
 
 ## Changelog
 

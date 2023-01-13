@@ -1,11 +1,10 @@
 {
   "name": "@nilfoundation/react-components",
   "version": "1.0.0",
-  "description": "React components library based on Bootstrap",
+  "description": "Typescript and scss styles library based on Bootstrap",
   "keywords": [
-    "react",
     "typescript",
-    "components",
+    "scss",
     "bootstrap"
   ],
   "author": {
@@ -102,11 +101,5 @@
     "sass": "^1.54.3",
     "sass-loader": "^10.1.1",
     "typescript": "^4.7.4"
-  },
-  "dependencies": {
-    "clsx": "^1.2.0",
-    "lodash": "^4.17.21",
-    "react-transition-group": "^4.4.5",
-    "smoothscroll-polyfill": "^0.4.4"
   }
 }
