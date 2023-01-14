@@ -23,5 +23,5 @@
     "emitDeclarationOnly": true,
     "allowJs": false,
   },
-  "include": ["src", "typings.d.ts"],
+  "include": ["src", "src/typings.d.ts"],
 }
