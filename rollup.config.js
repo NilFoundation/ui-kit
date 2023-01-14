@@ -48,7 +48,7 @@ export default [
             copy({
                 targets: [
                     {
-                        src: 'src/styles',
+                        src: 'src/scss',
                         dest: 'build',
                     },
                 ]
