@@ -42,9 +42,9 @@ If you don't need all the styles, you can import only required.
 ```
 
 ### Bootstrap, Icons and fonts
-This package includes only bootstrap style overrides. We assume, that you already have bootstrap in your project, otherwise . For more information how to override bootstrap default styles using sass, see [official docs](https://getbootstrap.com/docs/5.3/customize/sass/).
+This package includes only bootstrap style overrides. We assume, that you already have bootstrap in your project, otherwise importing scss files will make no sence. For more information how to override bootstrap default styles using sass, see [official docs](https://getbootstrap.com/docs/5.3/customize/sass/).
 
-Icons and fonts are also not included in this ui-kit to provide more flexibility in setup. Consider to use 'Roboto'/'Roboto mono' fonts for plain text and 'Menlo'/'Corier'/'monospace' for **=nil; Foundation** logo to follow our styleguide.
+Icons and fonts are also not included in this ui-kit to provide more flexibility in setup. Consider to use Roboto/Roboto mono fonts for plain text and Menlo/Corier/monospace for **=nil; Foundation** logo to follow our styleguide.
 
 ## Typescript and javascript
 To provide css-in-js support, we also export the color scheme object, which contains all styleguide colors.
