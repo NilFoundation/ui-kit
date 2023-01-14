@@ -34,7 +34,7 @@ If you don't need all the styles, you can import only required
 ```
 
 ### Bootstrap, Icons and fonts
-This package includes only bootstrap style overrides. We assume, that you already have bootstrap in your project. For more information how to override bootstrap styles, visit [official docs](https://getbootstrap.com/docs/5.3/customize/sass/).
+This package includes only bootstrap style overrides. We assume, that you already have bootstrap in your project, otherwise . For more information how to override bootstrap styles, visit [official docs](https://getbootstrap.com/docs/5.3/customize/sass/).
 
 Icons and fonts are also not included here to provide more flexibility in setup. Consider to use Roboto and Roboto mono fonts to follow our styleguide.
 

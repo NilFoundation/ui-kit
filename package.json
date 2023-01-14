@@ -1,6 +1,6 @@
 {
-  "name": "@nilfoundation/react-components",
-  "version": "1.0.0",
+  "name": "@nilfoundation/ui-kit",
+  "version": "1.0.0-beta.0",
   "description": "Typescript and scss styles library based on Bootstrap",
   "keywords": [
     "typescript",
@@ -28,9 +28,6 @@
   "scripts": {
     "lint:ts": "eslint --ext=ts,tsx src --max-warnings=0",
     "lint:editorconfig": "npx editorconfig-checker",
-    "test": "jest",
-    "test:dev": "jest --watch",
-    "test:coverage": "jest --coverage",
     "prettier": "prettier --write",
     "build": "rollup -c",
     "prepare": "husky install",
