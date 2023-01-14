@@ -5,7 +5,8 @@
 
 ## Table of contents
   - [Getting started](#quick-start)
-  - [Usage](#scss)
+  - [Scss](#scss)
+  - [Typescript and javascript](#typescript-and-javascript)
   - [Changelog](#changelog)
   - [License](#license)
 
