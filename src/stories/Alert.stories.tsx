@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { Alert, Button } from 'react-bootstrap';
-import { variants } from './variants';
+import { variants } from './utils/variants';
 
 export default {
     title: 'components/Alert',

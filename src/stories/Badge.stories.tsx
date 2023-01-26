@@ -7,7 +7,7 @@ import React from 'react';
 import { Story } from '@storybook/react';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
-import { variants } from './variants';
+import { variants } from './utils/variants';
 
 export default {
     title: 'components/Badge',
