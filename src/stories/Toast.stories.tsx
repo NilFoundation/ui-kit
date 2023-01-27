@@ -17,7 +17,7 @@ export default {
 
 const Template: Story = args => {
     const [show, setShow] = useState(args.show);
-    const onClose = () => setShow(false);
+
     return (
         <>
             <Button
@@ -29,7 +29,7 @@ const Template: Story = args => {
             <Toast
                 autohide={args.autohide}
                 show={show}
-                onClose={onClose}
+                onClose={() => setShow(false)}
                 delay={args.delay}
             >
                 <Toast.Header>

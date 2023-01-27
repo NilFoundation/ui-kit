@@ -1,16 +1,13 @@
-// Contains all component additional styling.
+// Contains all component style overrides.
 
-@import 'embed';
 @import 'floatingLabel';
 @import 'image';
 @import 'layout';
 @import 'menu';
 @import 'navbar';
-@import 'notificationProvider';
 @import 'panel';
 @import 'placeholder';
 @import 'select';
-@import 'spinner';
 @import 'formControl';
 @import 'toast';
 @import 'formChecks';
@@ -18,3 +15,4 @@
 @import 'breadcrumbs';
 @import 'accordion';
 @import 'offcanvas';
+@import 'tabs';
