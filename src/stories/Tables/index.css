@@ -1,0 +1,60 @@
+.table-scroll {
+  overflow-y: auto;
+}
+
+.table-scroll .table-responsive {
+  overflow-x: unset;
+}
+
+.table-scroll .table-responsive table thead {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1;
+}
+
+.tables-item-selected {
+  background-color: #caeaff;
+  --bs-table-accent-bg: #caeaff;
+}
+
+.table-ellipsis {
+  width: 100%;
+}
+
+.table-ellipsis td {
+  max-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.table-container .center {
+  text-align: center;
+}
+
+.table-container .table-paginations {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.table-container .table-paginations .pagination {
+  margin: 0;
+}
+
+.table-container .table-paginations>span {
+  margin-right: 8px;
+}
+
+.table-container .data-not-found {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
