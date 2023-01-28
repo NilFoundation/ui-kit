@@ -31,7 +31,7 @@ type NotificationProviderProps = {
  * Actions.
  */
 type NotificationActions = {
-    create: (data: CreateNotificationData) => void;
+    create: (data: CreateNotificationData) => string;
     remove: (id: string) => void;
 } | null;
 
@@ -54,17 +54,20 @@ export const NotificationProvider = ({
     const [queue, setQueue] = useState<RenderNotificationData[]>([]);
 
     notificationActions = {
-        create: ({ message, ...rest }: CreateNotificationData): void =>
+        create: ({ message, ...rest }: CreateNotificationData): string => {
+            const id = uniqueId('notification-');
             setQueue([
                 ...queue,
                 {
                     ...rest,
                     children: message,
-                    id: uniqueId('notification-'),
+                    id,
                     nodeRef: createRef(),
                 },
-            ]),
+            ]);
 
+            return id;
+        },
         remove: (id: string) => setQueue(queue.filter(x => x.id !== id)),
     };
 
