@@ -1,11 +1,7 @@
 @import '../variables';
 
-textarea.form-control {
-  resize: vertical;
-
-  &.fixedHeight {
-    resize: none;
-  }
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
 
 $input-placeholder-color: $c-secondary-darker;
