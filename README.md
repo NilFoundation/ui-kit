@@ -45,7 +45,7 @@ If you don't need all the styles, you can import only required.
 This package includes only bootstrap style overrides. We assume, that you already have bootstrap in your project, otherwise importing scss files will make no sence. For more information how to override bootstrap default styles using sass, see [official docs](https://getbootstrap.com/docs/5.3/customize/sass/).
 
 ### Modals
-Consider not to use modals and popups. This package does not include any overrides for them. 
+Consider not to use modals and popups. This package does not include any overrides for them.
 
 Icons and fonts are also not included in this ui-kit to provide more flexibility in setup. Consider to use Roboto/Roboto mono fonts for plain text and Menlo/Corier/monospace for **=nil; Foundation** logo to follow our styleguide.
 
