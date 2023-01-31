@@ -1,7 +1,9 @@
-.navbar {
-  border: {
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-}
+@import '../variables';
+
+$navbar-light-color: $c-secondary-darker;
+$navbar-light-hover-color: $c-secondary;
+$navbar-light-active-color: $c-secondary;
+$navbar-light-disabled-color: $disabledColor;
+$navbar-light-toggler-border-color: $c-secondary-darker;
+$navbar-light-brand-color: $c-secondary;
+$navbar-light-brand-hover-color: $c-secondary;

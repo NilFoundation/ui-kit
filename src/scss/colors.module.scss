@@ -13,6 +13,8 @@ $c-secondary-dark: #6c757d;
 $c-secondary-darker: #d3d3d3;
 $c-secondary: #f5f2f1;
 
+$disabledColor: rgba($c-secondary-darker, 0.7);
+
 // For js export
 :export {
   primary: $c-primary;
@@ -24,4 +26,5 @@ $c-secondary: #f5f2f1;
   baseLight: $c-base-light;
   secondary: $c-secondary;
   secondaryDarker: $c-secondary-darker;
+  disabledColor: $disabledColor;
 }
