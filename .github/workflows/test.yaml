@@ -52,6 +52,6 @@ jobs:
         if: ${{ inputs.package_version }}
         uses: actions/upload-artifact@v3
         with:
-          name: nilfoundation-react-components-${{ inputs.package_version }}
-          path: nilfoundation-react-components-${{ inputs.package_version }}.tgz
+          name: nilfoundation-ui-kit-${{ inputs.package_version }}
+          path: nilfoundation-ui-kit-${{ inputs.package_version }}.tgz
           if-no-files-found: error

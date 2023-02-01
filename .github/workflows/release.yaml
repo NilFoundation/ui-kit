@@ -48,13 +48,13 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: nilfoundation-react-components-${{ needs.check_version_changed.outputs.version }}
+          name: nilfoundation-ui-kit-${{ needs.check_version_changed.outputs.version }}
 
       - name: Publish
         run: |
           npm config set registry https://npm.pkg.github.com/NilFoundation
           npm config set "//npm.pkg.github.com/:_authToken" ${{ secrets.PUBLISH_TOKEN }}
-          npm publish nilfoundation-react-components-${{ needs.check_version_changed.outputs.version }}.tgz
+          npm publish nilfoundation-ui-kit-${{ needs.check_version_changed.outputs.version }}.tgz
 
   tag:
     name: Tag version

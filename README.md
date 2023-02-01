@@ -1,7 +1,7 @@
 # =nil; Foundation ui-kit
 Ui-kit system, based on [Bootstrap 5.2](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 
-[![Test](https://github.com/NilFoundation/react-components/actions/workflows/test.yaml/badge.svg)](https://github.com/NilFoundation/react-components/actions/workflows/test.yaml)
+[![Test](https://github.com/NilFoundation/ui-kit/actions/workflows/test.yaml/badge.svg)](https://github.com/NilFoundation/ui-kit/actions/workflows/test.yaml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 ## Table of contents
