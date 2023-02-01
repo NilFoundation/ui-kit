@@ -5,18 +5,20 @@
   "keywords": [
     "typescript",
     "scss",
-    "bootstrap"
+    "bootstrap",
+    "ui kit",
+    "design system"
   ],
   "author": {
     "name": "Yury Korotovskikh",
     "email": "u.korotovskiy@nil.foundation"
   },
   "bugs": {
-    "url": "https://github.com/NilFoundation/react-components/issues"
+    "url": "https://github.com/NilFoundation/ui-kit/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NilFoundation/react-components"
+    "url": "https://github.com/NilFoundation/ui-kit"
   },
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -39,10 +41,6 @@
     "react-dom": ">=16.12.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.13",
-    "@babel/preset-env": "^7.18.10",
-    "@babel/preset-react": "^7.18.6",
-    "@babel/preset-typescript": "^7.18.6",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.4",
@@ -64,16 +62,12 @@
     "eslint": "^8.21.0",
     "eslint-import-resolver-typescript": "^3.4.2",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jest": "^26.8.7",
     "eslint-plugin-jsdoc": "^39.3.4",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.4",
     "husky": "^8.0.1",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^28.1.3",
-    "jest-environment-jsdom": "^29.0.0",
     "lint-staged": "^13.0.3",
     "postcss": "^8.4.16",
     "prettier": "^2.7.1",
