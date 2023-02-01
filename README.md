@@ -35,12 +35,6 @@ We provide set of scss variables and styles. Consider to include this code in an
 @import '~@nilfoundation/ui-kit/build/scss/_all.scss';
 ```
 
-If you don't need all the styles, you can import only required.
-```scss
-@import '~@nilfoundation/ui-kit/build/scss/components/_alert.scss';
-@import '~@nilfoundation/ui-kit/build/scss/_theme.scss';
-```
-
 ### Bootstrap, Icons and fonts
 This package includes only bootstrap style overrides. We assume, that you already have bootstrap in your project, otherwise importing scss files will make no sence. For more information how to override bootstrap default styles using sass, see [official docs](https://getbootstrap.com/docs/5.2/customize/sass/).
 
