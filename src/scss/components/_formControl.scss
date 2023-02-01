@@ -1,0 +1,13 @@
+@import '../variables';
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+$input-placeholder-color: $c-secondary-darker;
+$input-focus-border-color: $c-base-light;
+$input-border-color: $c-base-light;
+$input-disabled-bg: $c-base-light;
+$input-disabled-color: $c-secondary-dark;
+
+$form-file-button-bg: $c-base-lighter;

@@ -1,7 +1,15 @@
-# React components library based on Bootstrap 3
+# =nil; Foundation ui-kit
+Ui-kit system, based on [Bootstrap 5.2](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 
 [![Test](https://github.com/NilFoundation/react-components/actions/workflows/test.yaml/badge.svg)](https://github.com/NilFoundation/react-components/actions/workflows/test.yaml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
+## Table of contents
+  - [Getting started](#quick-start)
+  - [Scss](#scss)
+  - [Typescript and javascript](#typescript-and-javascript)
+  - [Changelog](#changelog)
+  - [License](#license)
 
 ## Quick Start
 
@@ -14,26 +22,32 @@
 - Install:
 
 ```bash
-$ npm i @nilfoundation/react-components
+$ npm i @nilfoundation/ui-kit
 # or
-$ yarn add @nilfoundation/react-components
+$ yarn add @nilfoundation/ui-kit
 ```
 
-## Color scheme
+## Scss
 
-- We provide set of scss color variables. Consider to include this code in any of your scss files.
+We provide set of scss variables and styles. Consider to include this code in any of your scss files, then import it into your project.
 
 ```scss
-@import '~@nilfoundation/react-components/build/variables';
+@import '~@nilfoundation/ui-kit/build/scss/_all.scss';
 ```
 
-## Bootstrap, Icons and fonts
+### Bootstrap, Icons and fonts
+This package includes only bootstrap style overrides. We assume, that you already have bootstrap in your project, otherwise importing scss files will make no sence. For more information how to override bootstrap default styles using sass, see [official docs](https://getbootstrap.com/docs/5.2/customize/sass/).
 
-This package already includes
-- [Bootstrap 3.4.1](https://getbootstrap.com/docs/3.4/getting-started/#download)
-- [Roboto Font](https://fonts.google.com/specimen/Roboto)
+### Modals
+Consider not to use modals, popovers and popups. This package does not include any overrides for them.
 
-We use [Glyphicons](https://getbootstrap.com/docs/3.3/components/#glyphicons), delivered by default with Bootstrap 3. Feel free to use in your project any other icon sets with [Icon](./src/components/Icon/Icon.tsx) component.
+Icons and fonts are also not included in this ui-kit to provide more flexibility in setup. Consider to use Roboto/Roboto mono fonts for plain text and Menlo/Corier/monospace for **=nil; Foundation** logo to follow our styleguide.
+
+## Typescript and javascript
+To provide css-in-js support, we also export the color scheme object, which contains all styleguide colors.
+```ts
+import colors from '@nilfoundation/ui-kit';
+```
 
 ## Changelog
 

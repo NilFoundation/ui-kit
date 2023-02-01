@@ -1,0 +1,28 @@
+// Bootstrap default theme overrides.
+
+@import 'variables';
+
+// Colors
+$primary: $c-primary;
+$info: $c-info;
+$success: $c-success;
+$warning: $c-warning;
+$danger: $c-danger;
+$light: $c-secondary-darker;
+$dark: $c-base-lighter;
+
+$secondary: $c-secondary-dark;
+
+// Fonts
+$font-family-sans-serif: Roboto, 'Helvetica Neue', 'Noto Sans',
+  'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  'Segoe UI Symbol', 'Noto Color Emoji';
+$font-family-monospace: Menlo, 'Courier New', monospace;
+
+// Reboot
+$body-color: $c-secondary-darker;
+$body-bg: $c-base;
+
+$border-color-translucent: $c-base-light;
+
+$component-active-color: $c-secondary;

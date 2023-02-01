@@ -37,7 +37,7 @@ export default [
             typescript({
                 tsconfig: "./tsconfig.json",
                 declaration: false,
-                exclude: ["**/__tests__", "**/*.test.tsx", "**/*.stories.**"],
+                exclude: ["stories"],
                 noEmitOnError: true,
             }),
             terser({
@@ -48,7 +48,7 @@ export default [
             copy({
                 targets: [
                     {
-                        src: 'src/styles/_variables.scss',
+                        src: 'src/scss',
                         dest: 'build',
                     },
                 ]

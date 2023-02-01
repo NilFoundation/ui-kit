@@ -1,5 +1,9 @@
 # Changelog
 
+## [[1.0.0-beta.0](https://github.com/NilFoundation/react-components/compare/v0.8.2...v1.0.0-beta.0)] - 2023-01-31
+### Breaking changes
+- React components are removed. Consider to use [react-bootstrap](hhttps://react-bootstrap.github.io/) or any other react components package to continue using this ui-lit with react.
+
 ## [[0.8.2](https://github.com/NilFoundation/react-components/compare/v0.8.1...v0.8.2)] - 2022-11-19
 ### Fixes
 - Downgrade tscompiler target to es2016

@@ -23,15 +23,6 @@
   ],
   "overrides": [
     {
-      "files": ["*.test.tsx"],
-      "plugins": ["jest"],
-      "extends": ["plugin:jest/all"],
-      "rules": {
-        "jest/prefer-expect-assertions": 0,
-        "jest/no-hooks": 0
-      }
-    },
-    {
       "files": ["*.stories.tsx"],
       "rules": {
         "jsdoc/require-jsdoc": 0
