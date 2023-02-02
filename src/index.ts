@@ -4,3 +4,4 @@
  */
 
 export { color as default } from './color';
+export { ThemeProvider } from './ThemeProvider';
