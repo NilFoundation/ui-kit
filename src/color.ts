@@ -11,7 +11,7 @@ export enum color {
     danger = '#dc3545',
     success = '#198754',
     info = '#2677f0',
-    baseColor = '#222222',
+    base = '#222222',
     baseDarker = '#151515',
     baseLight = '#292929',
     baseLighter = '#3c3c3c',
