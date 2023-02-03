@@ -65,4 +65,11 @@ export const customThemeStyles: CSSProperties = {
     [`--${prefix}nav-tabs-link-active-color`]: color.secondaryDarker,
     [`--${prefix}nav-tabs-link-active-bg`]: color.baseLighter,
     [`--${prefix}nav-tabs-link-active-border-color`]: color.baseLight,
+    // toast
+    [`--${prefix}toast-background-color`]: color.baseLight,
+    [`--${prefix}toast-header-background-color`]: color.baseLighter,
+    [`--${prefix}toast-header-color`]: color.secondary,
+    [`--${prefix}toast-color`]: color.secondaryDarker,
+    [`--${prefix}toast-box-shadow`]: '0 0.25rem 0.75rem rgb(0 0 0 / 30%)',
+    [`--${prefix}toast-header-border-color`]: color.baseLighter,
 };
