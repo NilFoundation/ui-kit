@@ -1,5 +1,9 @@
 # Changelog
 
+## [[1.0.0-beta.1](https://github.com/NilFoundation/react-components/compare/v1.0.0-beta.0...v1.0.0-beta.1)] - 2023-02-03
+### Features
+- Add ThemeProvider react component
+
 ## [[1.0.0-beta.0](https://github.com/NilFoundation/react-components/compare/v0.8.2...v1.0.0-beta.0)] - 2023-01-31
 ### Breaking changes
 - React components are removed. Consider to use [react-bootstrap](hhttps://react-bootstrap.github.io/) or any other react components package to continue using this ui-lit with react.
