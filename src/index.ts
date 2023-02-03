@@ -3,5 +3,5 @@
  * @copyright Yury Korotovskikh <u.korotovskiy@nil.foundation>
  */
 
-export { color as default } from './color';
+export { color } from './color';
 export { ThemeProvider } from './ThemeProvider';
