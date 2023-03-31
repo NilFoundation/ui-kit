@@ -30,15 +30,9 @@
     }
   ],
   "rules": {
-    "@typescript-eslint/no-unused-vars": [
-      1,
-      { "argsIgnorePattern": "^_" }
-    ],
+    "@typescript-eslint/no-unused-vars": [1, { "argsIgnorePattern": "^_" }],
     "react/display-name": 1,
-    "react/jsx-first-prop-new-line": [
-      "warn",
-      "multiline"
-    ],
+    "react/jsx-first-prop-new-line": ["warn", "multiline"],
     "jsx-a11y/anchor-is-valid": 0,
     "jsdoc/require-param-type": 0,
     "jsdoc/require-returns-type": 0,
@@ -49,11 +43,7 @@
       "warn",
       {
         "publicOnly": true,
-        "contexts": [
-          "TSInterfaceDeclaration",
-          "TSTypeAliasDeclaration",
-          "TSEnumDeclaration"
-        ],
+        "contexts": ["TSInterfaceDeclaration", "TSTypeAliasDeclaration", "TSEnumDeclaration"],
         "require": {
           "FunctionExpression": true,
           "ClassDeclaration": true,

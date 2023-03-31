@@ -5,7 +5,7 @@
   "singleQuote": true,
   "arrowParens": "avoid",
   "jsxSingleQuote": false,
-  "endOfLine": "crlf",
+  "endOfLine": "lf",
   "singleAttributePerLine": true,
   "overrides": [
     {

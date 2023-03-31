@@ -16,12 +16,18 @@ export default {
 const Template: Story = () => {
     return (
         <Dropdown>
-            <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
+            <Dropdown.Toggle
+                id="dropdown-button-dark-example1"
+                variant="secondary"
+            >
                 Dropdown Button
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1" active>
+                <Dropdown.Item
+                    href="#/action-1"
+                    active
+                >
                     Action
                 </Dropdown.Item>
                 <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
@@ -34,6 +40,4 @@ const Template: Story = () => {
 };
 
 export const _Dropdown = Template.bind({});
-_Dropdown.args = {
-
-}
+_Dropdown.args = {};

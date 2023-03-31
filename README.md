@@ -1,15 +1,17 @@
 # =nil; Foundation ui-kit
+
 Ui-kit system, based on [Bootstrap 5.2](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 
 [![Test](https://github.com/NilFoundation/ui-kit/actions/workflows/test.yaml/badge.svg)](https://github.com/NilFoundation/ui-kit/actions/workflows/test.yaml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 ## Table of contents
-  - [Getting started](#quick-start)
-  - [Scss](#scss)
-  - [Typescript and javascript](#typescript-and-javascript)
-  - [Changelog](#changelog)
-  - [License](#license)
+
+- [Getting started](#quick-start)
+- [Scss](#scss)
+- [Typescript and javascript](#typescript-and-javascript)
+- [Changelog](#changelog)
+- [License](#license)
 
 ## Quick Start
 
@@ -36,15 +38,19 @@ We provide set of scss variables and styles. Consider to include this code in an
 ```
 
 ### Bootstrap, Icons and fonts
+
 This package includes only bootstrap style overrides. We assume, that you already have bootstrap in your project, otherwise importing scss files will make no sence. For more information how to override bootstrap default styles using sass, see [official docs](https://getbootstrap.com/docs/5.2/customize/sass/).
 
 ### Modals
+
 Consider not to use modals, popovers and popups. This package does not include any overrides for them.
 
 Icons and fonts are also not included in this ui-kit to provide more flexibility in setup. Consider to use Roboto/Roboto mono fonts for plain text and Menlo/Corier/monospace for **=nil; Foundation** logo to follow our styleguide.
 
 ## Typescript and javascript
+
 To provide css-in-js support, we also export the color scheme object, which contains all styleguide colors.
+
 ```ts
 import colors from '@nilfoundation/ui-kit';
 ```
