@@ -51,6 +51,10 @@ export default [
                         src: 'src/scss',
                         dest: 'build',
                     },
+                    {
+                        src: 'src/assets',
+                        dest: 'build',
+                    },
                 ],
             }),
             filesize(),
