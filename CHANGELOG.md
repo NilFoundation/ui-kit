@@ -1,5 +1,11 @@
 # Changelog
 
+## [[1.0.1](https://github.com/NilFoundation/react-components/compare/v1.0.0-beta.1...v1.0.1)] - 2023-04-01
+
+### Features
+
+- Add assets
+
 ## [[1.0.0-beta.1](https://github.com/NilFoundation/react-components/compare/v1.0.0-beta.0...v1.0.0-beta.1)] - 2023-02-03
 
 ### Features

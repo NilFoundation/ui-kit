@@ -10,7 +10,6 @@
     "module": "esnext",
     "jsx": "react",
     "noImplicitReturns": true,
-    "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
