@@ -1,23 +1,25 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "lib": ["dom", "es2016"],
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "target": "ES2016",
+    "useDefineForClassFields": true,
+    "lib": ["ES2016", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
     "skipLibCheck": true,
-    "outDir": "build",
-    "module": "esnext",
-    "jsx": "react",
-    "noImplicitReturns": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "resolveJsonModule": true,
-    "declaration": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true,
-    "allowJs": false
+    "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/typings.d.ts"]
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
