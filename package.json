@@ -1,7 +1,8 @@
 {
   "name": "@nilfoundation/ui-kit",
   "version": "2.0.0",
-  "description": "",
+  "description": "=Nil; Foundation user interface kit",
+  "keywords": ["ui-kit", "react"],
   "main": "dist/ui-kit.js",
   "module": "dist/ui-kit.mjs",
   "types": "dist/index.d.ts",
