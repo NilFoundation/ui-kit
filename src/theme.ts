@@ -1,6 +1,6 @@
 import { createTheme } from "baseui";
 
-// this code is example
+/** this code is example. */
 export const theme = createTheme(
   {},
   {

@@ -1,24 +1,39 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { resolve } from 'path'
-import dts from 'vite-plugin-dts'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
+import dts from 'vite-plugin-dts';
+import { externalizeDeps } from 'vite-plugin-externalize-deps';
 
+const packageJson = require('./package.json');
 
+/** Create banner */
+const createBanner = () => {
+  return `/**!
+ * @nilfoundation/ui-kit v${packageJson.version}
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.md file in the root directory of this source tree.
+ *
+ * @license MIT
+ */`;
+}
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), dts()],
+  plugins: [
+    react(),
+    dts({ staticImport: true, outputDir: './dist/.temp' }),
+    externalizeDeps(),
+  ],
   build: {
     lib: {
-      "name": "@nilfoundation/ui-kit",
-      // Could also be a dictionary or array of multiple entry points
       entry: resolve(__dirname, 'src/index.ts'),
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
-      external: ['react', 'react-dom', 'baseui'],
+      output: {
+        banner: createBanner(),
+        sourcemap: true,
+      },
     },
   },
-})
+});

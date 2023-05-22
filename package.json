@@ -1,16 +1,21 @@
 {
   "name": "@nilfoundation/ui-kit",
   "version": "2.0.0",
-  "description": "",
+  "description": "=Nil; Foundation user interface kit",
+  "keywords": [
+    "ui-kit",
+    "react"
+  ],
   "main": "dist/ui-kit.js",
   "module": "dist/ui-kit.mjs",
-  "types": "dist/index.d.ts",
+  "types": "dist/ui-kit.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "bundle-types": "api-extractor run",
+    "postbuild": "npm run bundle-types && rm -rf ./dist/.temp",
     "preview": "vite preview"
   },
-  "author": "",
   "license": "MIT",
   "peerDependencies": {
     "baseui": ">=12.2.0",
@@ -18,6 +23,7 @@
     "react-dom": ">=17.0.2"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.34.9",
     "@types/node": "^20.1.7",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
@@ -26,8 +32,12 @@
     "styletron-react": "^6.1.0",
     "typescript": "^5.0.4",
     "vite": "^4.3.7",
-    "vite-plugin-dts": "^2.3.0"
+    "vite-plugin-dts": "^2.3.0",
+    "vite-plugin-externalize-deps": "^0.6.0"
   },
   "repository": "https://github.com/NilFoundation/ui-kit",
-  "homepage": "https://github.com/NilFoundation/ui-kit#readme"
+  "homepage": "https://github.com/NilFoundation/ui-kit#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }

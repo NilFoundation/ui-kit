@@ -1,8 +1,7 @@
 import { ButtonOverrides, ButtonProps, Button as OriginButton  } from "baseui/button";
 import { FC } from "react";
 
-// that's test example of what type of overriding do we need
-
+/** that's test example of what type of overriding do we need */
 export const buttonOverrides: ButtonOverrides = {
   BaseButton: {
     style: ({ $theme }) => ({
