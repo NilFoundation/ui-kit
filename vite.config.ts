@@ -3,12 +3,6 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
 import { externalizeDeps } from 'vite-plugin-externalize-deps';
-import {
-  Extractor,
-  ExtractorConfig,
-  ExtractorLogLevel,
-  IExtractorConfigPrepareOptions,
-} from "@microsoft/api-extractor";
 
 const packageJson = require('./package.json');
 
