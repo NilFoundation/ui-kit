@@ -1,0 +1,55 @@
+import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import Input from "./Input";
+import InputStoryWrapper from "./ui/InputStoryWrapper"
+import {Search} from "baseui/icon";
+
+<Meta
+    title="Field/Input"
+    component={Input}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <InputStoryWrapper>
+        <Input {...args} />
+      </InputStoryWrapper>
+    );
+}
+
+# Input
+
+
+<Canvas>
+  <Story name="Base" args={{ placeholder: "Input Field" }}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Disabled" args={{ placeholder: "Disabled Field", disabled: true }}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Error" args={{ placeholder: "Error Field", error: true }}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Positive" args={{ placeholder: "Positive Field", positive: true }}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Password" args={{ placeholder: "Password Field", type: "password" }}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Default Value" args={{ placeholder: "Default Value", value: "Default Text" }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Start Enhancer" args={{ placeholder: "Start Enhancer", startEnhancer: "@" }}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With End Enhancer" args={{ placeholder: "End Enhancer", endEnhancer: <Search size="18px" /> }}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Clearable" args={{ placeholder: "Clearable", clearable: true }}>
+      {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Input} />
+
+### Использование:
+

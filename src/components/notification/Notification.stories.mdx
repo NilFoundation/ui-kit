@@ -1,0 +1,42 @@
+import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import Notification from "./Notification";
+
+<Meta
+    title="Notification"
+    component={Notification}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <Notification {...args}>This is a notification.</Notification>
+    );
+}
+
+# Notification
+
+
+<Canvas>
+  <Story name="Info" args={{kind: "info"}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Positive" args={{kind: "positive"}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Warning" args={{kind: "warning"}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Negative" args={{kind: "negative"}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Closable" args={{closeable: true}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Auto hide after 3000ms" args={{autoHideDuration: 3000}}>
+      {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Notification} />
+
+### Использование:
+

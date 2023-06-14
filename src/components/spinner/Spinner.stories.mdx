@@ -1,0 +1,49 @@
+import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import Spinner from "./Spinner";
+import {SPINNER_SIZE} from "./types"
+
+<Meta
+    title="Spinner"
+    component={Spinner}
+    parameters={{
+      backgrounds: {
+        default: "Dark",
+        values: [{ name: "Dark", value: "#292929" }],
+      },
+    }}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <Spinner {...args} />
+    );
+}
+
+# Spinner
+
+
+<Canvas isColumn>
+  <Story name="XSmall" args={{size: SPINNER_SIZE.xSmall}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Small" args={{size: SPINNER_SIZE.small}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Medium" args={{size: SPINNER_SIZE.medium}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Large" args={{size: SPINNER_SIZE.large}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="XLarge" args={{size: SPINNER_SIZE.xLarge}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Label" args={{label: "Uploading..."}}>
+      {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Spinner} />
+
+### Использование:
+

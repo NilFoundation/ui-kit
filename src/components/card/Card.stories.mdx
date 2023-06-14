@@ -1,0 +1,38 @@
+import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import Card from "./Card";
+import {StyledBody} from "baseui/card";
+
+<Meta
+    title="Card"
+    component={Card}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <Card {...args}>
+        <StyledBody>
+          Proin ut dui sed metus pharetra hend rerit vel non
+          mi. Nulla ornare faucibus ex, non facilisis nisl.
+          Proin ut dui sed metus pharetra hend rerit vel non
+          mi. Nulla ornare faucibus ex, non facilisis nisl.
+        </StyledBody>
+      </Card>
+    );
+}
+
+# Card
+
+
+<Canvas isColumn>
+  <Story name="Base" args={{}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With title" args={{title: "Card title"}}>
+      {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Card} />
+
+### Использование:
+

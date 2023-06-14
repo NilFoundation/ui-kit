@@ -1,21 +1,12 @@
-import ReactDOM from 'react-dom'
-import { Button, theme } from './'
-import { BaseProvider } from 'baseui'
-import { ParagraphMedium } from 'baseui/typography'
-import { Client as Styletron } from 'styletron-engine-atomic';
+import ReactDOM from "react-dom";
+import { ParagraphMedium } from "baseui/typography";
+import { ThemeWrapper } from "./shared";
 
-import { Provider as StyletronProvider } from 'styletron-react';
-
-const engine = new Styletron();
-
-
-
-ReactDOM.render(<div>
-  <StyletronProvider value={engine}>
-    <BaseProvider theme={theme}>
+ReactDOM.render(
+  <div>
+    <ThemeWrapper>
       <ParagraphMedium>Hello World</ParagraphMedium>
-      <Button>Button</Button>
-    </BaseProvider>
-  </StyletronProvider>
-</div>,
-document.getElementById('root') as HTMLElement)
+    </ThemeWrapper>
+  </div>,
+  document.getElementById("root") as HTMLElement
+);

@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
-import { externalizeDeps } from 'vite-plugin-externalize-deps';
+import eslint from 'vite-plugin-eslint';
 
 const packageJson = require('./package.json');
 
@@ -21,8 +21,8 @@ const createBanner = () => {
 export default defineConfig({
   plugins: [
     react(),
+    eslint(),
     dts({ staticImport: true, outputDir: './dist/.temp' }),
-    externalizeDeps(),
   ],
   build: {
     lib: {
@@ -30,10 +30,12 @@ export default defineConfig({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
+      external: ["react", "react-dom", "baseui", "styletron-react"],
       output: {
         banner: createBanner(),
         sourcemap: true,
       },
     },
   },
+  publicDir: "./src/assets/",
 });
