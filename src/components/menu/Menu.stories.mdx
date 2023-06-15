@@ -1,0 +1,121 @@
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import Menu from "./Menu";
+import {MENU_SIZE} from "./types";
+import {Search} from "baseui/icon"
+
+<Meta
+    title="Menu"
+    component={Menu}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <div style={{maxWidth: "420px"}}>
+        <Menu {...args} />
+      </div>
+    );
+}
+
+export const ITEMS = [
+  { label: "Item One" },
+  { label: "Item Two" },
+  { label: "Item Three" },
+  { label: "Item Four" }
+]
+
+export const ITEMS_WITH_DIVIDER = [
+  { label: "Item One" },
+  {divider: true},
+  { label: "Item Two" },
+  { label: "Item Three", disabled: true },
+  {divider: true},
+  { label: "Item Four" }
+]
+
+export const ITEMS_WITH_HEADER = {
+  Blueish: [
+    { label: "AliceBlue", value: "#F0F8FF" },
+    { label: "Aqua", value: "#00FFFF" },
+    { label: "Aquamarine", value: "#7FFFD4" },
+  ],
+  Whiteish: [
+    { label: "AntiqueWhite", value: "#FAEBD7" },
+    { label: "Azure", value: "#F0FFFF" },
+    { label: "Beige", value: "#F5F5DC" },
+  ],
+};
+
+export const CheckboxItem = { label: "Item Fifth", selected: false};
+export const StartEnhancerItem =  { label: "Item Fifth", startEnhancer: <Search />};
+export const EndEnhancerItem =  { label: "Item Fifth", endEnhancer: <Search />};
+export const SuffixTextItem =  { label: "Item Fifth", suffixText: "Text", endEnhancer: <Search />};
+
+# Menu
+
+
+<Canvas isColumn>
+  <Story name="Small" args={{items: ITEMS,  size: MENU_SIZE.small}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Medium" args={{items: ITEMS, size: MENU_SIZE.medium}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Large" args={{items: ITEMS, size: MENU_SIZE.large}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Divider" args={{items: ITEMS_WITH_DIVIDER}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Checkbox" args={{items: [...ITEMS_WITH_DIVIDER, CheckboxItem]}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Start Enhancer" args={{items: [...ITEMS_WITH_DIVIDER, StartEnhancerItem]}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With End Enhancer" args={{items: [...ITEMS_WITH_DIVIDER, EndEnhancerItem]}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Suffix Text" args={{items: [...ITEMS_WITH_DIVIDER, SuffixTextItem]}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Header" args={{items: ITEMS_WITH_HEADER}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Empty State" args={{items: [], size: MENU_SIZE.large}}>
+      {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Menu} />
+
+### Usage:
+
+To use, import the component `Menu` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {Menu, MENU_SIZE, Search} from "@nilfoundation/ui-kit";
+        const ITEMS = [
+          { label: "Item One" },
+          { label: "Item Two" },
+          { label: "Item Three" },
+          { label: "Item Four" }
+        ]
+        ...
+        <Menu items={[ITEMS]} />
+        // To use a checkbox, you must define a selected property with values true or false other than null
+        <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", selected: false}]} />
+        // Disabled item
+        <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", disabled: true}]} />
+        // With start enhancer
+        <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", startEnhancer: <Search />}]} />
+         // With end enhancer
+        <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", endEnhancer: <Search />}]} />
+        // With suffix text
+        <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", suffixText: "Text"}]} />
+  `}
+/>
+
