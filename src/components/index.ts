@@ -13,3 +13,4 @@ export * from "./checkbox";
 export * from "./radio";
 export * from "./skeleton";
 export * from "./file-uploader";
+export * from "./typography";

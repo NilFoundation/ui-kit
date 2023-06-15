@@ -6,7 +6,7 @@ export const decorators = [
     useEffect(() => {
       const storyWrapper = document.querySelector(".docs-story");
       if (storyWrapper) {
-        storyWrapper.style.backgroundColor = "#292929";
+        storyWrapper.style.backgroundColor = "#141414";
       }
     }, []);
 
@@ -28,6 +28,6 @@ export const parameters = {
   },
   backgrounds: {
     default: "Dark",
-    values: [{ name: "Dark", value: "#292929" }],
+    values: [{ name: "Dark", value: "#141414" }],
   },
 };

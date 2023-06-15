@@ -16,6 +16,7 @@ export const PRIMITIVE_COLORS = {
   primary700: "#3D3D3D",
   primary800: "#212121",
   primary900: "#141414",
+  white: "#ffffff",
 };
 
 export const createColors = (): CreateTheme => {
@@ -23,6 +24,7 @@ export const createColors = (): CreateTheme => {
     primitives: {
       ...PRIMITIVE_COLORS,
       primaryA: PRIMITIVE_COLORS.primary200,
+      primaryB: PRIMITIVE_COLORS.primary900,
     },
     overrides: {},
   };
