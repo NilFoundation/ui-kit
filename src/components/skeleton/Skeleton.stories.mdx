@@ -1,5 +1,6 @@
-import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Skeleton from "./Skeleton";
+import {SKELETON_SIZE} from "./types"
 
 <Meta
     title="Skeleton"
@@ -12,25 +13,61 @@ export const Template = ({...args}) => {
     );
 }
 
+export const WIDTH = "414px"
+export const HEIGHT = "414px"
+
 # Skeleton
 
 
 <Canvas isColumn>
-  <Story name="Base" args={{}}>
+  <Story name="Base" args={{width: WIDTH, height: HEIGHT}}>
     {Template.bind({})}
   </Story>
-  <Story name="With Animation" args={{animation: true}}>
+  <Story name="With Animation" args={{width: WIDTH, height: HEIGHT, animation: true}}>
     {Template.bind({})}
   </Story>
-  <Story name="With Rows" args={{animation: true, rows: 3}}>
+  <Story name="XSmall" args={{width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.small}}>
     {Template.bind({})}
   </Story>
-  <Story name="With Custom Dimensions" args={{animation: true, width: "400px", height: "300px"}}>
+  <Story name="Small" args={{width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.small}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Medium" args={{width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.medium}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Large" args={{width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.large}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="XLarge" args={{width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.xLarge}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Rows" args={{width: WIDTH, height: HEIGHT, animation: true, rows: 3}}>
     {Template.bind({})}
   </Story>
 </Canvas>
 
 <ArgsTable of={Skeleton} />
 
-### Использование:
+### Usage:
+
+To use, import the component `Skeleton` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {Skeleton, SKELETON_SIZE} from "@nilfoundation/ui-kit";
+        const WIDTH = "400px";
+        const HEIGHT = "400px";
+        ...
+        <Skeleton width={WIDTH} height={HEIGHT} />
+        // With animation
+        <Skeleton width={WIDTH} height={HEIGHT} animation />
+        // With size
+         <Skeleton width={WIDTH} height={HEIGHT} animation size={SKELETON_SIZE.medium} />
+        // With rows
+        <Skeleton width={WIDTH} height={HEIGHT} animation rows={4} />
+  `}
+/>
 
