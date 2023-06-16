@@ -16,7 +16,19 @@ export const PRIMITIVE_COLORS = {
   primary700: "#3D3D3D",
   primary800: "#212121",
   primary900: "#141414",
-  white: "#ffffff",
+  white: "#FFFFFF",
+  black: "#000000",
+
+  error50: "#FFEFED",
+  error100: "#FED7D2",
+  error200: "#F1998E",
+  error300: "#E85C4A",
+  error400: "#E11900",
+  error500: "#AB1300",
+  error600: "#870F00",
+  error700: "#5A0A00",
+
+  mono600: "#292929",
 };
 
 export const createColors = (): CreateTheme => {
