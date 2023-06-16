@@ -36,6 +36,7 @@ export const createColors = (): CreateTheme => {
     primitives: {
       ...PRIMITIVE_COLORS,
       primaryA: PRIMITIVE_COLORS.primary200,
+      primaryB: PRIMITIVE_COLORS.primary900,
     },
     overrides: {},
   };
