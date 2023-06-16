@@ -18,30 +18,21 @@ export const dotsWrapperStyles: StyleObject = {
   overflow: "hidden",
 };
 
-export const dotStyles: StyleObject = {
-  width: "8px",
-  height: "4px",
-
-  "::before": {
-    content: "''",
-    display: "block",
-    width: "2px",
-    height: "2px",
-    backgroundColor: PRIMITIVE_COLORS.primary900,
-  },
-};
-
 export const rowWrapperStyles: StyleObject = {
-  width: "calc(100% + 4px)",
+  width: "100%",
+  height: "2px",
   display: "flex",
-  paddingLeft: "6px",
   boxSizing: "border-box",
+  backgroundImage: "linear-gradient(to right, #141414 25%, transparent 25%)",
+  backgroundSize: "8px 4px",
+  marginBottom: "2px",
+  marginLeft: "6px",
 
   ":first-child": {
-    paddingTop: "2px",
+    marginTop: "2px",
   },
 
   ":nth-child(even)": {
-    paddingLeft: "2px",
+    marginLeft: "2px",
   },
 };
