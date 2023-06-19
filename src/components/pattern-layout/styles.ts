@@ -1,11 +1,12 @@
 import { PRIMITIVE_COLORS } from "../../shared";
 import { StyleObject } from "styletron-react";
+import { PATTERN_KIND } from "./types";
 
-export const getContainerStyles = (width: string, height: string): StyleObject => ({
+export const getContainerStyles = (width: string, height: string, kind: PATTERN_KIND): StyleObject => ({
   position: "relative",
   width: width,
   height: height,
-  backgroundColor: PRIMITIVE_COLORS.primary700,
+  backgroundColor: kind === PATTERN_KIND.pattern800 ? PRIMITIVE_COLORS.primary800 : PRIMITIVE_COLORS.primary700,
   boxSizing: "border-box",
 });
 
@@ -18,12 +19,14 @@ export const dotsWrapperStyles: StyleObject = {
   overflow: "hidden",
 };
 
-export const rowWrapperStyles: StyleObject = {
+export const getRowWrapperStyles = (kind: PATTERN_KIND): StyleObject => ({
   width: "100%",
   height: "2px",
   display: "flex",
   boxSizing: "border-box",
-  backgroundImage: "linear-gradient(to right, #141414 25%, transparent 25%)",
+  backgroundImage: `linear-gradient(to right, ${
+    kind === PATTERN_KIND.pattern800 ? PRIMITIVE_COLORS.primary700 : PRIMITIVE_COLORS.primary900
+  } 25%, transparent 25%)`,
   backgroundSize: "8px 4px",
   marginBottom: "2px",
   marginLeft: "6px",
@@ -35,4 +38,8 @@ export const rowWrapperStyles: StyleObject = {
   ":nth-child(even)": {
     marginLeft: "2px",
   },
+});
+
+export const contentWrapperStyles: StyleObject = {
+  position: "relative",
 };

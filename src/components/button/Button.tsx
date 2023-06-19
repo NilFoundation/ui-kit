@@ -12,6 +12,7 @@ export enum KIND {
 
 export type ButtonProps = Omit<BaseButtonProps, "kind"> & {
   kind?: KIND;
+  className?: string;
 };
 
 const Button: React.FC<ButtonProps> = ({ kind, ...props }) => {
