@@ -9,6 +9,7 @@ import { spinnerStyles } from "./styles";
 export type InputProps = BaseInputProps & {
   size?: INPUT_SIZE;
   isLoading?: boolean;
+  onValueChange?: (value: string) => void;
 };
 
 type TInputValue = string | number | undefined;
@@ -24,6 +25,7 @@ const Input: React.FC<InputProps> = ({
   endEnhancer,
   size = INPUT_SIZE.medium,
   value: baseValue,
+  onValueChange,
   onChange,
   ...props
 }) => {
@@ -32,15 +34,17 @@ const Input: React.FC<InputProps> = ({
 
   const overrides = getInputOverrides(size);
 
-  const EndEnhancer = endEnhancer ? (
-    <>
-      {endEnhancer}
-      {isLoading && <Spinner className={css(spinnerStyles)} size={spinnerSize[size]} />}
-    </>
-  ) : null;
+  const EndEnhancer =
+    endEnhancer || isLoading ? (
+      <>
+        {endEnhancer}
+        {isLoading && <Spinner className={css(spinnerStyles)} size={spinnerSize[size]} />}
+      </>
+    ) : null;
 
   const onChangeHandler: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (event) => {
     setValue(event.target.value);
+    onValueChange?.(event.target.value);
     onChange?.(event);
   };
 

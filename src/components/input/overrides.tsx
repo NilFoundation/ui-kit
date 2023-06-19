@@ -30,7 +30,10 @@ export const getInputOverrides = (size: INPUT_SIZE): InputOverrides => {
   return {
     Root: {
       style: ({ $disabled }) => ({
-        borderRadius: "2px",
+        borderBottomLeftRadius: "2px",
+        borderBottomRightRadius: "2px",
+        borderTopLeftRadius: "2px",
+        borderTopRightRadius: "2px",
         ...inputContainerModifiedStyles[size],
         ...($disabled ? inputDisabledStyles : {}),
       }),
