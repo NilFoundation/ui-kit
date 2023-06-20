@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import { styled } from "styletron-react";
+import { styled } from "baseui";
 
 type SpinnerBlockProps = {
   children?: ReactNode;

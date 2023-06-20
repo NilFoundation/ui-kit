@@ -1,7 +1,6 @@
 import { FC, memo } from "react";
-import { styled } from "styletron-react";
 import { HeadingXSmall, ParagraphMedium } from "baseui/typography";
-import { useStyletron } from "baseui";
+import { useStyletron, styled } from "baseui";
 import { EmptyStateContainerStyles, emptyStateTextStyles, emptyStateTitleStyles } from "../styles";
 
 const MenuEmptyState: FC = () => {
