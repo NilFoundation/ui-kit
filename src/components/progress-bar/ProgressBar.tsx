@@ -1,5 +1,4 @@
-import { ComponentProps, FC, useCallback, useEffect, useRef, useState } from "react";
-import { styled } from "styletron-react";
+import { ComponentProps, FC, memo, useCallback, useEffect, useRef, useState } from "react";
 import {
   dashedBlockStyles,
   dashedBlockActiveStyles,
@@ -10,7 +9,7 @@ import {
   dashedBlockErrorStyles,
 } from "./styles";
 import { getArrayFromN } from "../../shared/utils/getArrayFromN";
-import { useStyletron } from "baseui";
+import { useStyletron, styled } from "baseui";
 import { debounce } from "../../shared/utils/debounce";
 import { PROGRESS_BAR_SIZE } from "./types";
 import { ProgressBarProps as BaseProgressBarProps } from "baseui/progress-bar";
@@ -106,4 +105,4 @@ const ProgressBar: FC<ProgressBarProps> = ({
   );
 };
 
-export default ProgressBar;
+export default memo(ProgressBar);

@@ -1,5 +1,5 @@
 import { FC, ReactNode, useCallback, useEffect, useRef, useState, memo } from "react";
-import { styled } from "styletron-react";
+import { styled } from "baseui";
 import { contentWrapperStyles, dotsWrapperStyles, getContainerStyles, getRowWrapperStyles } from "./styles";
 import { debounce } from "../../shared/utils/debounce";
 import { getArrayFromN } from "../../shared/utils/getArrayFromN";
