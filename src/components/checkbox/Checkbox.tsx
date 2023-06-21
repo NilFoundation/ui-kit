@@ -5,6 +5,7 @@ import {
   LABEL_PLACEMENT,
   STYLE_TYPE,
 } from "baseui/checkbox";
+import { checkboxOverrides } from "./overrides";
 
 export type CheckboxProps = BaseCheckboxProps;
 
@@ -21,7 +22,15 @@ const Checkbox: FC<CheckboxProps> = ({
     setChecked(event.target.checked);
   };
 
-  return <BaseCheckbox {...props} checked={checked} onChange={onChangeHandler} labelPlacement={labelPlacement} />;
+  return (
+    <BaseCheckbox
+      {...props}
+      overrides={checkboxOverrides}
+      checked={checked}
+      onChange={onChangeHandler}
+      labelPlacement={labelPlacement}
+    />
+  );
 };
 
 export { LABEL_PLACEMENT, STYLE_TYPE };
