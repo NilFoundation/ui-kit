@@ -1,4 +1,4 @@
-import { ThemeWrapper } from "../src";
+import { ThemeWrapper } from "../src/shared/theme";
 import { useEffect } from "react";
 
 export const decorators = [

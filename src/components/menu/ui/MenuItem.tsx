@@ -1,9 +1,8 @@
 import React, { ComponentProps, forwardRef, MouseEventHandler, ReactNode } from "react";
 import { Item } from "baseui/menu";
 import { MENU_SIZE } from "../types";
-import { styled } from "styletron-react";
 import { ParagraphSmall, ParagraphMedium, ParagraphLarge } from "baseui/typography";
-import { useStyletron } from "baseui";
+import { useStyletron, styled } from "baseui";
 import { SPINNER_SIZE } from "../../spinner";
 import { Checkbox } from "../../checkbox";
 import { RenderItemProps } from "baseui/menu/types";
