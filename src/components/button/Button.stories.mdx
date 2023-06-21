@@ -1,21 +1,20 @@
-import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
-import Button from "./Button";
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import Button, { BUTTON_SHAPE, BUTTON_SIZE } from "./Button";
 import StoriesLayout from "../../shared/ui/stories-layout";
-import {SHAPE, SIZE} from "baseui/button";
+import {  Upload } from "baseui/icon";
 
 <Meta
     title="Button"
     component={Button}
 />
 
-export const Template = ({...args}) => {
+export const Template = ({children, ...args}) => {
     return (
-      <StoriesLayout>
-        <Button {...args}>Base Button</Button>
-        <Button shape={SHAPE.pill} {...args}>Pill Button</Button>
-        <Button size={SIZE.large} {...args}>Large Button</Button>
-        <Button size={SIZE.compact} {...args}>Compact Button</Button>
-        <Button size={SIZE.mini} {...args}>Small Button</Button>
+      <StoriesLayout color="#141414">
+        <Button size={BUTTON_SIZE.mini} {...args}>{children ?? "Mini Button"}</Button>
+        <Button size={BUTTON_SIZE.compact} {...args}>{children ?? "Compact Button"}</Button>
+        <Button size={BUTTON_SIZE.default} {...args}>{children ?? "Default Button"}</Button>
+        <Button size={BUTTON_SIZE.large} {...args}>{children ?? "Large Button"}</Button>
       </StoriesLayout>
     );
 }
@@ -33,9 +32,48 @@ export const Template = ({...args}) => {
     <Story name="Tertiary" args={{kind: "tertiary"}}>
         {Template.bind({})}
     </Story>
+    <Story name="Disabled" args={{disabled: true}}>
+        {Template.bind({})}
+    </Story>
+    <Story name="Loading" args={{isLoading: true}}>
+        {Template.bind({})}
+    </Story>
+    <Story name="Shape Square" args={{shape: BUTTON_SHAPE.square, children: <Upload size="24px" />}}>
+        {Template.bind({})}
+    </Story>
+    <Story name="With Start Enhancer" args={{startEnhancer: <Upload size="20px" />}}>
+        {Template.bind({})}
+    </Story>
+  <Story name="With End Enhancer" args={{endEnhancer: <Upload size="20px" />}}>
+        {Template.bind({})}
+    </Story>
 </Canvas>
 
 <ArgsTable of={Button} />
 
-### Использование:
+### Usage:
 
+To use, import the component `Button` and from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {Button, BUTTON_SIZE, BUTTON_SHAPE, Upload} from "@nilfoundation/ui-kit";
+         ...
+        <Button>Button Label</Button>
+        // With size
+        <Button size={BUTTON_SIZE.mini}>Button Label</Button>
+        // With kind
+        <Button kind={"primary"}>Button Label</Button>
+        // With shape
+        <Button shape={BUTTON_SHAPE.square}>Button Label</Button>
+        // Disabled
+        <Button disabled>Button Label</Button>
+        // Loading
+        <Button isLoading>Button Label</Button>
+        // With enhancer
+        <Button startEnhancer={<Upload />} endEnhancer={<Upload />}>Button Label</Button>
+  `}
+/>

@@ -8,6 +8,7 @@ export type SpinnerProps = {
   size?: SPINNER_SIZE;
   label?: React.ReactNode;
   className?: string;
+  color?: any;
 };
 
 const spinnerIconSize = {
@@ -18,10 +19,10 @@ const spinnerIconSize = {
   [SPINNER_SIZE.xLarge]: "32",
 };
 
-const Spinner: React.FC<SpinnerProps> = ({ size = SPINNER_SIZE.medium, label, ...props }) => {
+const Spinner: React.FC<SpinnerProps> = ({ size = SPINNER_SIZE.medium, color, label, ...props }) => {
   return (
     <SpinnerBlock {...props}>
-      <SpinnerIcon size={spinnerIconSize[size]} />
+      <SpinnerIcon size={spinnerIconSize[size]} color={color} />
       {label && <SpinnerLabel size={size}>{label}</SpinnerLabel>}
     </SpinnerBlock>
   );
