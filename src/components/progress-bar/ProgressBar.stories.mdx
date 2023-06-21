@@ -1,0 +1,62 @@
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import ProgressBar from "./ProgressBar"; import {PROGRESS_BAR_SIZE} from "./types";
+
+<Meta
+    title="Progress Bar"
+    component={ProgressBar}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <div style={{width: "226px"}}>
+        <ProgressBar {...args} />
+      </div>
+    );
+}
+
+# ProgressBar
+
+
+<Canvas isColumn>
+  <Story name="Small" args={{size: PROGRESS_BAR_SIZE.small, value: 64}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Medium" args={{size: PROGRESS_BAR_SIZE.medium, value: 48}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Large" args={{size: PROGRESS_BAR_SIZE.large, value: 81}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Label" args={{value: 72, showLabel: true, getProgressLabel: () => `Uploading...` }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Error Message" args={{value: 72, errorMessage: "Error message", showLabel: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={ProgressBar} />
+
+### Usage:
+
+To use, import the component `ProgressBar` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {ProgressBar, PROGRESS_BAR_SIZE} from "@nilfoundation/ui-kit";
+        ...
+        <ProgressBar value={48} />
+        // With size
+        <ProgressBar value={48} size={PROGRESS_BAR_SIZE.large} />
+        // With minValue, maxValue
+        <ProgressBar value={400} minValue={100} maxValue={1000} />
+        // With label
+         <ProgressBar value={48} getProgressLabel={(value, minValue, maxValue) => ''} showLabel />
+        // With error message
+        <ProgressBar value={48} errorMessage="Error message" showLabel />
+  `}
+/>
+

@@ -1,0 +1,41 @@
+import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import Button from "./Button";
+import StoriesLayout from "../../shared/ui/stories-layout";
+import {SHAPE, SIZE} from "baseui/button";
+
+<Meta
+    title="Button"
+    component={Button}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <StoriesLayout>
+        <Button {...args}>Base Button</Button>
+        <Button shape={SHAPE.pill} {...args}>Pill Button</Button>
+        <Button size={SIZE.large} {...args}>Large Button</Button>
+        <Button size={SIZE.compact} {...args}>Compact Button</Button>
+        <Button size={SIZE.mini} {...args}>Small Button</Button>
+      </StoriesLayout>
+    );
+}
+
+# Button
+
+
+<Canvas isColumn>
+    <Story name="Primary" args={{kind: "primary"}}>
+        {Template.bind({})}
+    </Story>
+    <Story name="Secondary" args={{kind: "secondary"}}>
+        {Template.bind({})}
+    </Story>
+    <Story name="Tertiary" args={{kind: "tertiary"}}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+<ArgsTable of={Button} />
+
+### Использование:
+

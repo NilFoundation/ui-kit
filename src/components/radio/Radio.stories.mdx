@@ -1,0 +1,83 @@
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import RadioGroup, {ALIGN} from "./RadioGroup";
+import Radio from "./Radio";
+
+<Meta
+    title="Field/Radio"
+    component={RadioGroup}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <RadioGroup {...args}>
+        <Radio value="1">One</Radio>
+        <Radio
+          value="2"
+          description="This is a radio description"
+        >
+          Two
+        </Radio>
+        <Radio value="3">Three</Radio>
+      </RadioGroup>
+    );
+}
+
+# Radio
+
+
+<Canvas isColumn>
+  <Story name="Horizontal" args={{name: "number", align: ALIGN.horizontal}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Vertical" args={{name: "number", align: ALIGN.vertical}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Disabled" args={{name: "number", disabled: true}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Error" args={{name: "number", error: true}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Default Value" args={{name: "number", value: "2"}}>
+      {Template.bind({})}
+  </Story>
+    <Story name="With Default Value and Disabled" args={{name: "number", value: "2", disabled: true}}>
+      {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={RadioGroup} />
+
+### Usage:
+
+To use, import the component `Radio` and `RadioGroup` from `@nilfoundation/ui-kit`.
+
+<Source
+    language='tsx'
+    dark
+    format={true}
+    code={`
+        import {RadioGroup, Radio} from "@nilfoundation/ui-kit";
+        ...
+        <RadioGroup align={ALIGN.horizontal} name="name">
+          <Radio value="1">One</Radio>
+          <Radio value="2">Two</Radio>
+          <Radio value="3">Three</Radio>
+        </RadioGroup>
+        <RadioGroup value="2" align={ALIGN.horizontal} name="name">
+          <Radio value="1">One</Radio>
+          <Radio value="2">Two</Radio>
+          <Radio value="3">Three</Radio>
+        </RadioGroup>
+        <RadioGroup error align={ALIGN.horizontal} name="name">
+          <Radio value="1">One</Radio>
+          <Radio value="2">Two</Radio>
+          <Radio value="3">Three</Radio>
+        </RadioGroup>
+        <RadioGroup disabled align={ALIGN.horizontal} name="name">
+          <Radio value="1">One</Radio>
+          <Radio value="2">Two</Radio>
+          <Radio value="3">Three</Radio>
+        </RadioGroup>
+    `}
+/>

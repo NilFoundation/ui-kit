@@ -1,0 +1,39 @@
+import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import Table from "./Table";
+
+<Meta
+    title="Table"
+    component={Table}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <div style={{maxWidth: "650px"}}>
+        <Table {...args} />
+      </div>
+    );
+}
+
+export const DATA = [
+  ["Sarah Brown", 31, "100 Broadway st. New York City, New York"],
+  ["Jane Smith", 32, "100 Market st. San Francisco, California"],
+  ["Joe Black", 33, "100 Macquarie st. Sydney, Australia"],
+];
+export const COLUMNS = ["Name", "Age", "Address"];
+
+# Table
+
+
+<Canvas isColumn>
+  <Story name="Base" args={{columns: COLUMNS, data: DATA}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Horizontal Scroll" args={{columns: COLUMNS, data: DATA, horizontalScrollWidth: "750px"}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Table} />
+
+### Использование:
+

@@ -1,0 +1,45 @@
+import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import Checkbox, {LABEL_PLACEMENT, STYLE_TYPE} from "./Checkbox";
+
+<Meta
+    title="Field/Checkbox"
+    component={Checkbox}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <Checkbox {...args} />
+    );
+}
+
+# Checkbox
+
+
+<Canvas isColumn>
+  <Story name="Base" args={{}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Label" args={{children: "Checkbox Label"}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Default Checked" args={{children: "Default Checked", checked: true}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Disabled" args={{children: "Checkbox Disabled", disabled: true}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Error" args={{children: "Checkbox Error", error: true}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Toggle" args={{children: "Checkbox As Toggle", checkmarkType: STYLE_TYPE.toggle}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Label Placement" args={{children: "Label Placement", labelPlacement: LABEL_PLACEMENT.left}}>
+      {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Checkbox} />
+
+### Использование:
+

@@ -1,0 +1,32 @@
+import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import Tooltip from "./Tooltip";
+import {Button} from "../button";
+
+<Meta
+    title="Tooltip"
+    component={Tooltip}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <Tooltip showArrow accessibilityType={'tooltip'} {...args}>
+        <span tabIndex={0}>
+          <Button kind="tertiary" size="compact">Hover me</Button>
+        </span>
+      </Tooltip>
+    );
+}
+
+# Tooltip
+
+
+<Canvas isColumn>
+  <Story name="Base" args={{content: "Base tooltip"}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Tooltip} />
+
+### Использование:
+

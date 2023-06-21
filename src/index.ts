@@ -1,2 +1,2 @@
-export { theme } from "./theme";
-export { Button } from "./ButtonExample";
+export * from "./components";
+export * from "./shared";

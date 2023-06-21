@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
 import { externalizeDeps } from 'vite-plugin-externalize-deps';
+import eslint from 'vite-plugin-eslint';
 
 const packageJson = require('./package.json');
 
@@ -21,8 +22,9 @@ const createBanner = () => {
 export default defineConfig({
   plugins: [
     react(),
-    dts({ staticImport: true, outputDir: './dist/.temp' }),
+    eslint(),
     externalizeDeps(),
+    dts({ staticImport: true, outputDir: './dist/.temp' }),
   ],
   build: {
     lib: {
@@ -36,4 +38,5 @@ export default defineConfig({
       },
     },
   },
+  publicDir: "./src/assets/",
 });
