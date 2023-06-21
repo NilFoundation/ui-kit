@@ -1,0 +1,83 @@
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import Textarea from "./Textarea";
+import {TEXTAREA_SIZE} from "./types";
+
+<Meta
+    title="Field/Textarea"
+    component={Textarea}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <div style={{maxWidth: "400px"}}>
+        <Textarea {...args} />
+      </div>
+    );
+}
+
+# Textarea
+
+
+<Canvas isColumn>
+  <Story name="Small" args={{placeholder: "Textarea Field", size: TEXTAREA_SIZE.small}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Medium" args={{placeholder: "Textarea Field", size: TEXTAREA_SIZE.medium}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Large" args={{placeholder: "Textarea Field", size: TEXTAREA_SIZE.large}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Resizable" args={{placeholder: "Resizable Field", resize: "both"}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Positive" args={{placeholder: "Positive Field", positive: true}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Error" args={{placeholder: "Error Field", error: true}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Default Value" args={{placeholder: "Default Value Field", value: "Default Value"}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Clearable" args={{placeholder: "Clearable Field", clearable: true, size: TEXTAREA_SIZE.large}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Disabled" args={{placeholder: "Disabled Field", disabled: true}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Readonly" args={{placeholder: "Readonly Field", readOnly: true, value: "Textarea Value"}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Loading" args={{placeholder: "Loading Field", isLoading: true,}}>
+      {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Textarea} />
+
+### Usage:
+
+To use, import the component `Textarea` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {Textarea, TEXTAREA_SIZE} from "@nilfoundation/ui-kit";
+        ...
+        <Textarea placeholder="Textarea Field" size={TEXTAREA_SIZE.small} />
+        // Disabled
+        <Textarea placeholder="Textarea Field" disabled />
+        // Readonly
+        <Textarea placeholder="Textarea Field" readOnly />
+        // Loading
+        <Textarea placeholder="Textarea Field" isLoading />
+        // Clearable
+        <Textarea placeholder="Textarea Field" clearable />
+        // Resizable
+        <Textarea placeholder="Textarea Field" resize="both" />
+  `}
+/>
+
