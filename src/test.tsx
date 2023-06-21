@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import { ParagraphMedium } from "baseui/typography";
-import { ThemeWrapper } from "./shared";
+import { ThemeWrapper } from "./shared/theme";
 
 ReactDOM.render(
   <div>

@@ -1,9 +1,8 @@
 import { FC } from "react";
 import { PatternLayout } from "../pattern-layout";
-import { styled } from "styletron-react";
 import { containerStyles, getWrapperStyles, rowItemStyles } from "./styles";
 import { SKELETON_SIZE } from "./types";
-import { useStyletron } from "baseui";
+import { useStyletron, styled } from "baseui";
 import { getArrayFromN } from "../../shared/utils/getArrayFromN";
 
 export type SkeletonProps = {
