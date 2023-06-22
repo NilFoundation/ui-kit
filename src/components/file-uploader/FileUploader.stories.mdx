@@ -1,4 +1,4 @@
-import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import FileUploader from "./FileUploader";
 
 <Meta
@@ -8,35 +8,59 @@ import FileUploader from "./FileUploader";
 
 export const Template = ({...args}) => {
     return (
-      <FileUploader {...args} />
+      <div style={{maxWidth: "375px"}}>
+        <FileUploader {...args} />
+      </div>
     );
 }
 
 # File Uploader
 
 
-<Canvas>
+<Canvas isColumn>
   <Story name="Base" args={{}}>
       {Template.bind({})}
   </Story>
   <Story name="Disabled" args={{disabled: true}}>
       {Template.bind({})}
   </Story>
-  <Story name="Multiple" args={{multiple: false}}>
+  <Story name="Multiple" args={{multiple: true}}>
       {Template.bind({})}
   </Story>
   <Story name="Error" args={{errorMessage: "Upload failed... connection was lost."}}>
       {Template.bind({})}
   </Story>
-  <Story name="Progress" args={{progressAmount: 64, progressMessage: "Uploading... hang tight."}}>
-    {Template.bind({})}
+  <Story name="Error With Progress" args={{progressAmount: 64, errorMessage: "Upload failed... connection was lost."}}>
+      {Template.bind({})}
   </Story>
-  <Story name="With Unknown Progress" args={{progressMessage: "Uploading... hang tight."}}>
+  <Story name="Progress" args={{progressAmount: 64, progressMessage: "Uploading... 64% of 100%"}}>
     {Template.bind({})}
   </Story>
 </Canvas>
 
 <ArgsTable of={FileUploader} />
 
-### Использование:
+### Usage:
+
+To use, import the component `FileUploader` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {FileUploader} from "@nilfoundation/ui-kit";
+        ...
+        <FileUploader />
+        // Disabled
+        <FileUploader disabled />
+        // Multiple
+        <FileUploader multiple />
+        // With error message
+        <FileUploader errorMessage="Upload failed... connection was lost." />
+        // With progress message
+        <FileUploader progressAmount={64} progressMessage="Uploading... 64% of 100%" />
+  `}
+/>
+
 
