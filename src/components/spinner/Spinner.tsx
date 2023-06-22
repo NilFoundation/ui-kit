@@ -7,6 +7,7 @@ import SpinnerLabel from "./ui/SpinnerLabel";
 export type SpinnerProps = {
   size?: SPINNER_SIZE;
   label?: React.ReactNode;
+  animation?: boolean;
   className?: string;
 };
 
@@ -18,10 +19,10 @@ const spinnerIconSize = {
   [SPINNER_SIZE.xLarge]: "32",
 };
 
-const Spinner: React.FC<SpinnerProps> = ({ size = SPINNER_SIZE.medium, label, ...props }) => {
+const Spinner: React.FC<SpinnerProps> = ({ size = SPINNER_SIZE.medium, animation, label, ...props }) => {
   return (
     <SpinnerBlock {...props}>
-      <SpinnerIcon size={spinnerIconSize[size]} />
+      <SpinnerIcon animation={animation} size={spinnerIconSize[size]} />
       {label && <SpinnerLabel size={size}>{label}</SpinnerLabel>}
     </SpinnerBlock>
   );
