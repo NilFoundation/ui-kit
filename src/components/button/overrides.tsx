@@ -1,5 +1,5 @@
 import { ButtonOverrides } from "baseui/button";
-import { BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE } from "./Button";
+import { BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE } from "./types";
 import { PRIMITIVE_COLORS } from "../../shared";
 import { Spinner } from "../spinner";
 import {

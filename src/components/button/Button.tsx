@@ -1,27 +1,7 @@
 import React from "react";
 import { Button as BaseButton, ButtonProps as BaseButtonProps } from "baseui/button";
 import { getButtonOverrides } from "./overrides";
-
-export enum BUTTON_KIND {
-  primary = "primary",
-  secondary = "secondary",
-  tertiary = "tertiary",
-}
-
-export enum BUTTON_SIZE {
-  mini = "mini",
-  default = "default",
-  compact = "compact",
-  large = "large",
-}
-
-export enum BUTTON_SHAPE {
-  default = "default",
-  pill = "pill",
-  round = "round",
-  circle = "circle",
-  square = "square",
-}
+import { BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE } from "./types";
 
 export type ButtonProps = BaseButtonProps & {
   kind?: BUTTON_KIND;

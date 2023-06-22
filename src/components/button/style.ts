@@ -1,6 +1,6 @@
 import { PRIMITIVE_COLORS } from "../../shared";
 import { SPINNER_SIZE } from "../spinner";
-import { BUTTON_SHAPE, BUTTON_SIZE } from "./Button";
+import { BUTTON_SHAPE, BUTTON_SIZE } from "./types";
 
 export const getSpinnerSize = (size: BUTTON_SIZE | undefined) => {
   switch (size) {
