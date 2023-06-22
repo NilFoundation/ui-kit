@@ -38,7 +38,7 @@ const Input: React.FC<InputProps> = ({
     endEnhancer || isLoading ? (
       <>
         {endEnhancer}
-        {isLoading && <Spinner className={css(spinnerStyles)} size={spinnerSize[size]} />}
+        {isLoading && <Spinner animation className={css(spinnerStyles)} size={spinnerSize[size]} />}
       </>
     ) : null;
 
