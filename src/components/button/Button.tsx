@@ -3,7 +3,7 @@ import { Button as BaseButton, ButtonProps as BaseButtonProps } from "baseui/but
 import { getButtonOverrides } from "./overrides";
 import { BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE } from "./types";
 
-export type ButtonProps = BaseButtonProps & {
+export type ButtonProps = Omit<BaseButtonProps, "kind" | "shape" | "size"> & {
   kind?: BUTTON_KIND;
   size?: BUTTON_SIZE;
   shape?: BUTTON_SHAPE;
