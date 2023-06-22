@@ -24,7 +24,7 @@ const TextareaSpinner: FC<TextareaSpinnerProps> = ({ size = TEXTAREA_SIZE.medium
         right: "16px",
       })}
     >
-      <Spinner size={spinnerSize[size]} />
+      <Spinner animation size={spinnerSize[size]} />
     </div>
   );
 };
