@@ -39,7 +39,3 @@ export const getRowWrapperStyles = (kind: PATTERN_KIND): StyleObject => ({
     marginLeft: "2px",
   },
 });
-
-export const contentWrapperStyles: StyleObject = {
-  position: "relative",
-};

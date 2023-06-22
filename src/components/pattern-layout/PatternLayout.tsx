@@ -1,6 +1,6 @@
 import { FC, ReactNode, useCallback, useEffect, useRef, useState, memo } from "react";
 import { styled } from "baseui";
-import { contentWrapperStyles, dotsWrapperStyles, getContainerStyles, getRowWrapperStyles } from "./styles";
+import { dotsWrapperStyles, getContainerStyles, getRowWrapperStyles } from "./styles";
 import { debounce } from "../../shared/utils/debounce";
 import { getArrayFromN } from "../../shared/utils/getArrayFromN";
 import { PATTERN_KIND } from "./types";
@@ -14,7 +14,6 @@ type PatternLayoutProps = {
 };
 
 const DotsWrapper = styled("div", dotsWrapperStyles);
-const ContentWrapper = styled("div", contentWrapperStyles);
 
 const PatternLayout: FC<PatternLayoutProps> = ({
   width = "100%",
@@ -55,7 +54,7 @@ const PatternLayout: FC<PatternLayoutProps> = ({
           <RowWrapper key={rowIndex.toString()} />
         ))}
       </DotsWrapper>
-      <ContentWrapper>{children}</ContentWrapper>
+      {children}
     </Container>
   );
 };

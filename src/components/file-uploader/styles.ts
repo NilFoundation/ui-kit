@@ -8,7 +8,7 @@ export const getUploaderContainerStyles = (isDragActive?: boolean): StyleObject 
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: "370px",
+    width: "100%",
     minHeight: "136px",
     border: `2px solid ${isDragActive ? PRIMITIVE_COLORS.white : PRIMITIVE_COLORS.primary700}`,
     borderRadius: "2px",
