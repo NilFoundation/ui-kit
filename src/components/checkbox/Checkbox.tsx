@@ -1,4 +1,4 @@
-import { FC, ChangeEventHandler, useState } from "react";
+import { FC, ChangeEventHandler, useState, useEffect } from "react";
 import {
   Checkbox as BaseCheckbox,
   CheckboxProps as BaseCheckboxProps,
@@ -21,6 +21,10 @@ const Checkbox: FC<CheckboxProps> = ({
     onChange?.(event);
     setChecked(event.target.checked);
   };
+
+  useEffect(() => {
+    setChecked(baseChecked);
+  }, [baseChecked]);
 
   const overrides = getCheckboxOverrides();
 
