@@ -1,8 +1,8 @@
 import { PRIMITIVE_COLORS } from "../../shared";
 import { SPINNER_SIZE } from "../spinner";
-import { BUTTON_SHAPE, BUTTON_SIZE } from "./types";
+import { BUTTON_SIZE } from "./types";
 
-export const getSpinnerSize = (size: BUTTON_SIZE | undefined) => {
+export const getSpinnerSize = (size: BUTTON_SIZE) => {
   switch (size) {
     case "mini":
       return SPINNER_SIZE.xSmall;
@@ -22,7 +22,7 @@ export const getBackgroundColor = (kind = "primary") => {
     case "secondary":
       return PRIMITIVE_COLORS.primary700;
     case "tertiary":
-      return PRIMITIVE_COLORS.primary900;
+      return "transparent";
     default:
       return PRIMITIVE_COLORS.primary200;
   }
@@ -43,25 +43,22 @@ export const getHoverBackgroundColor = (kind = "primary", disabled = false) => {
   }
 };
 
-export const getSquareButtonPaddings = (size: BUTTON_SIZE | undefined, shape: BUTTON_SHAPE | undefined) => {
-  if (shape === "square") {
-    switch (size) {
-      case "mini":
-        return "8px";
-      case "compact":
-        return "12px";
-      case "large":
-        return "16px";
-      default:
-        return "14px";
-    }
+export const getSquareButtonPaddings = (size: BUTTON_SIZE) => {
+  switch (size) {
+    case "mini":
+      return "8px";
+    case "compact":
+      return "12px";
+    case "large":
+      return "16px";
+    default:
+      return "14px";
   }
 };
 
 export const getSpinnerColor = (kind = "primary", disabled: boolean) => {
   if (!disabled) {
     return kind !== "primary" ? PRIMITIVE_COLORS.white : PRIMITIVE_COLORS.black;
-  } else {
-    return PRIMITIVE_COLORS.white;
   }
+  return PRIMITIVE_COLORS.white;
 };

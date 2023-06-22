@@ -8,7 +8,7 @@ export type SpinnerProps = {
   size?: SPINNER_SIZE;
   label?: React.ReactNode;
   className?: string;
-  color?: any;
+  color?: string;
 };
 
 const spinnerIconSize = {

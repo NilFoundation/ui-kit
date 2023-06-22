@@ -10,11 +10,7 @@ import {
   getSquareButtonPaddings,
 } from "./style";
 
-export const getButtonOverrides = (
-  kind: BUTTON_KIND | undefined,
-  shape: BUTTON_SHAPE | undefined,
-  size: BUTTON_SIZE | undefined
-): ButtonOverrides => {
+export const getButtonOverrides = (kind: BUTTON_KIND, shape: BUTTON_SHAPE, size: BUTTON_SIZE): ButtonOverrides => {
   return {
     Root: {
       style: ({ $disabled }) => ({
@@ -25,7 +21,7 @@ export const getButtonOverrides = (
         borderBottomRightRadius: "2px",
         borderTopRightRadius: "2px",
         backgroundColor: getBackgroundColor(kind),
-        padding: getSquareButtonPaddings(size, shape),
+        padding: shape === BUTTON_SHAPE.square ? getSquareButtonPaddings(size) : "",
         ":disabled": {
           color: PRIMITIVE_COLORS.primary500,
           backgroundColor: PRIMITIVE_COLORS.mono600,

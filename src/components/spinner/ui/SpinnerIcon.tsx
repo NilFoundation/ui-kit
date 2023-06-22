@@ -3,11 +3,11 @@ import { PRIMITIVE_COLORS } from "../../../shared";
 
 type SpinnerIconProps = {
   size?: string;
-  color?: any;
+  color?: string;
 };
 
 const SpinnerIcon = forwardRef<SVGSVGElement, SpinnerIconProps>(
-  ({ size = "12", color = PRIMITIVE_COLORS.black }, ref) => {
+  ({ size = "12", color = PRIMITIVE_COLORS.white }, ref) => {
     return (
       <svg ref={ref} width={size} height={size} viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#clip0_22275_878)">

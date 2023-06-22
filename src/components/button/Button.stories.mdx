@@ -61,13 +61,13 @@ To use, import the component `Button` and from `@nilfoundation/ui-kit`.
   dark
   format={true}
   code={`
-        import {Button, BUTTON_SIZE, BUTTON_SHAPE, Upload} from "@nilfoundation/ui-kit";
+        import {Button, BUTTON_SIZE, BUTTON_SHAPE, BUTTON_KIND Upload} from "@nilfoundation/ui-kit";
          ...
         <Button>Button Label</Button>
         // With size
         <Button size={BUTTON_SIZE.mini}>Button Label</Button>
         // With kind
-        <Button kind={"primary"}>Button Label</Button>
+        <Button kind={BUTTON_KIND.primary}>Button Label</Button>
         // With shape
         <Button shape={BUTTON_SHAPE.square}>Button Label</Button>
         // Disabled
