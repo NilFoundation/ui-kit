@@ -3,6 +3,7 @@ import UploaderWrapper from "./ui/UploaderWrapper";
 import UploaderProgressBar from "./ui/UploaderProgressBar";
 import ActionWrapper from "./ui/ActionWrapper";
 import { getEntityWithoutProperties } from "../../shared/utils/getEntityWithoutProperties";
+import { BUTTON_KIND } from "../button";
 
 export const getFileUploaderOverrides = (isProgress: boolean, isError: boolean): FileUploaderOverrides => {
   return {
@@ -40,6 +41,8 @@ export const getFileUploaderOverrides = (isProgress: boolean, isError: boolean):
             props: ({ $isDragActive, ...props }: any) => ({
               ...props,
               $size: "compact",
+              $kind: BUTTON_KIND.tertiary,
+              kind: BUTTON_KIND.tertiary,
               isDragActive: $isDragActive,
             }),
           },
@@ -54,6 +57,8 @@ export const getFileUploaderOverrides = (isProgress: boolean, isError: boolean):
             props: ({ $isDragActive, ...props }: any) => ({
               ...props,
               $size: "compact",
+              $kind: BUTTON_KIND.tertiary,
+              kind: BUTTON_KIND.tertiary,
               isDragActive: $isDragActive,
             }),
           },
