@@ -42,7 +42,9 @@ export const getButtonOverrides = (kind: BUTTON_KIND, shape: BUTTON_SHAPE, size:
       },
     },
     LoadingSpinner: {
-      component: ({ $disabled }) => <Spinner color={getSpinnerColor(kind, $disabled)} size={getSpinnerSize(size)} />,
+      component: ({ $disabled }) => (
+        <Spinner animation color={getSpinnerColor(kind, $disabled)} size={getSpinnerSize(size)} />
+      ),
     },
     LoadingSpinnerContainer: {
       style: {
