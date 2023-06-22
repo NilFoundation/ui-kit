@@ -47,6 +47,19 @@ export const createColors = (): CreateTheme => {
       primaryA: PRIMITIVE_COLORS.primary200,
       primaryB: PRIMITIVE_COLORS.primary900,
     },
-    overrides: {},
+    overrides: {
+      colors: {
+        gray50: PRIMITIVE_COLORS.primary50,
+        gray100: PRIMITIVE_COLORS.primary100,
+        gray200: PRIMITIVE_COLORS.primary200,
+        gray300: PRIMITIVE_COLORS.primary300,
+        gray400: PRIMITIVE_COLORS.primary400,
+        gray500: PRIMITIVE_COLORS.primary500,
+        gray600: PRIMITIVE_COLORS.primary600,
+        gray700: PRIMITIVE_COLORS.primary700,
+        gray800: PRIMITIVE_COLORS.primary800,
+        gray900: PRIMITIVE_COLORS.primary900,
+      },
+    },
   };
 };
