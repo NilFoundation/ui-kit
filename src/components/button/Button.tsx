@@ -18,10 +18,11 @@ const Button: React.FC<ButtonProps> = ({
   shape = BUTTON_SHAPE.default,
   disabled,
   isLoading,
+  colors,
   className,
   ...props
 }) => {
-  const overrides = getButtonOverrides(kind, shape, size);
+  const overrides = getButtonOverrides(kind, shape, size, colors);
 
   return (
     <BaseButton

@@ -1,4 +1,4 @@
-import { ButtonOverrides } from "baseui/button";
+import { ButtonOverrides, CustomColors } from "baseui/button";
 import { BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE } from "./types";
 import { PRIMITIVE_COLORS } from "../../shared";
 import { Spinner } from "../spinner";
@@ -10,7 +10,12 @@ import {
   getSquareButtonPaddings,
 } from "./style";
 
-export const getButtonOverrides = (kind: BUTTON_KIND, shape: BUTTON_SHAPE, size: BUTTON_SIZE): ButtonOverrides => {
+export const getButtonOverrides = (
+  kind: BUTTON_KIND,
+  shape: BUTTON_SHAPE,
+  size: BUTTON_SIZE,
+  colors?: CustomColors
+): ButtonOverrides => {
   return {
     Root: {
       style: ({ $disabled }) => ({
@@ -22,12 +27,15 @@ export const getButtonOverrides = (kind: BUTTON_KIND, shape: BUTTON_SHAPE, size:
         borderTopRightRadius: "2px",
         backgroundColor: getBackgroundColor(kind),
         padding: shape === BUTTON_SHAPE.square ? getSquareButtonPaddings(size) : "",
+        ...(colors ? colors : {}),
+
         ":disabled": {
           color: PRIMITIVE_COLORS.primary500,
           backgroundColor: PRIMITIVE_COLORS.mono600,
         },
         ":hover": {
           backgroundColor: getHoverBackgroundColor(kind, $disabled),
+          ...(colors ? colors : {}),
         },
       }),
     },
