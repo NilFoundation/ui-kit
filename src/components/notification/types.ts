@@ -8,9 +8,7 @@ export enum NOTIFICATION_KIND {
   negative = "negative",
 }
 
-type BaseNotificationProps = Omit<React.ComponentProps<typeof BaseNotification>, "kind">;
-
-export type NotificationProps = BaseNotificationProps & {
+export type NotificationProps = Omit<React.ComponentProps<typeof BaseNotification>, "kind"> & {
   children: React.ReactNode;
   hideIcon?: boolean;
   kind?: NOTIFICATION_KIND;
