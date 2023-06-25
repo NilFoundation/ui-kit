@@ -1,7 +1,8 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Button as BaseButton, ButtonProps as BaseButtonProps } from "baseui/button";
 import { getButtonOverrides } from "./overrides";
 import { BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE } from "./types";
+import ButtonNode from "./ui/ButtonNode";
 
 export type ButtonProps = Omit<BaseButtonProps, "kind" | "shape" | "size"> & {
   kind?: BUTTON_KIND;
@@ -19,10 +20,13 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   isLoading,
   colors,
+  startEnhancer,
+  endEnhancer,
   className,
+  children,
   ...props
 }) => {
-  const overrides = getButtonOverrides(kind, shape, size, colors);
+  const overrides = getButtonOverrides(kind, size, colors);
 
   return (
     <BaseButton
@@ -33,8 +37,16 @@ const Button: React.FC<ButtonProps> = ({
       kind={kind}
       size={size}
       disabled={disabled}
+      startEnhancer={
+        startEnhancer && <ButtonNode isDisabled={disabled} node={startEnhancer as ReactNode} size={size} kind={kind} />
+      }
+      endEnhancer={
+        endEnhancer && <ButtonNode isDisabled={disabled} node={endEnhancer as ReactNode} size={size} kind={kind} />
+      }
       overrides={overrides}
-    />
+    >
+      <ButtonNode isDisabled={disabled} node={children} size={size} kind={kind} />
+    </BaseButton>
   );
 };
 
