@@ -34,7 +34,7 @@ import TelegramIcon from "./TelegramIcon";
 
 export const Template = (args) => <IconStoryWidget {...args} />
 
-# Иконки
+# Icons
 
 <Canvas isColumn={true}>
   <Story name="Heart" args={{icon: <HeartIcon />}}>
@@ -125,19 +125,21 @@ export const Template = (args) => <IconStoryWidget {...args} />
 
 <ArgsTable of={HeartIcon} />
 
-### Использование:
-Для использования следует импортировать компонент конкретной иконки из `marketplace-ui-kit`.
+### Usage:
+
+To use, import the icon component from `@nilfoundation/ui-kit`.
 
 <Source
   language='tsx'
   dark
   format={true}
   code={`
-        import {StarIcon, EIconSize} from "marketplace-ui-kit";
+        import {SearchIcon} from "@nilfoundation/ui-kit";
         ...
-        <StarIcon size={EIconSize.XSmall} />
-        <StarIcon size={EIconSize.Small} />
-        <StarIcon /> // <StarIcon size={EIconSize.Normal} />
-        <StarIcon size={EIconSize.Large} />
+        <SearchIcon />
+        // With color
+        <SearchIcon color="#000" />
+        // With size
+        <SearchIcon size={32} />
   `}
 />
