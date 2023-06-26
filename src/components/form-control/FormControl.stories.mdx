@@ -1,0 +1,90 @@
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import FormControl from "./FormControl";
+import {Input, INPUT_SIZE} from "../input";
+
+<Meta
+    title="Field/FormControl"
+    component={FormControl}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <div style={{maxWidth: "400px"}}>
+        <FormControl {...args} />
+      </div>
+    );
+}
+
+export const InputFieldProps = {
+  label: () => "Input label",
+  caption: () => "Input caption",
+  children: <Input placeholder="Input Field" />,
+}
+
+# Form Control
+
+
+<Canvas isColumn>
+  <Story name="With Small Input" args={{...InputFieldProps, size: INPUT_SIZE.small}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Medium Input" args={{...InputFieldProps, size: INPUT_SIZE.medium}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Large Input" args={{...InputFieldProps, size: INPUT_SIZE.large}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Disabled" args={{...InputFieldProps, disabled: true, size: INPUT_SIZE.small}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Readonly" args={{...InputFieldProps, readOnly: true, size: INPUT_SIZE.small}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Loading" args={{...InputFieldProps, isLoading: true, size: INPUT_SIZE.small}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Error" args={{...InputFieldProps, error: true, size: INPUT_SIZE.small}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Positive" args={{...InputFieldProps, positive: true, size: INPUT_SIZE.small}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Max Length" args={{...InputFieldProps, maxLength: 100, size: INPUT_SIZE.small}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={FormControl} />
+
+### Usage:
+
+To use, import the component `FormControl` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {FormControl, Input, INPUT_SIZE} from "@nilfoundation/ui-kit";
+        ...
+        <FormControl size={INPUT_SIZE.small}>
+            <Input placeholder="Input Field" />
+        </FormControl>
+        // Disabled
+        <FormControl disabled>
+            <Input placeholder="Input Field" />
+        </FormControl>
+        // Readonly
+        <FormControl readOnly>
+            <Input placeholder="Input Field" />
+        </FormControl>
+        // Loading
+        <FormControl isLoading>
+            <Input placeholder="Input Field" />
+        </FormControl>
+        // With max length
+        <FormControl isLoading  maxLength={100}>
+            <Input placeholder="Input Field" />
+        </FormControl>
+  `}
+/>

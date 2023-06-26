@@ -2,7 +2,7 @@ import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/bloc
 import Button from "./Button";
 import {BUTTON_SHAPE, BUTTON_SIZE} from "./types";
 import StoriesLayout from "../../shared/ui/stories-layout";
-import {  Upload } from "baseui/icon";
+import { HeartIcon } from "../icons";
 
 <Meta
     title="Button"
@@ -36,16 +36,16 @@ export const Template = ({children, ...args}) => {
     <Story name="Disabled" args={{disabled: true}}>
         {Template.bind({})}
     </Story>
-    <Story name="Loading" args={{isLoading: true}}>
+    <Story name="Loading" args={{isLoading: true, children: ""}}>
         {Template.bind({})}
     </Story>
-    <Story name="Shape Square" args={{shape: BUTTON_SHAPE.square, children: <Upload size="24px" />}}>
+    <Story name="Shape Square" args={{shape: BUTTON_SHAPE.square, children: <HeartIcon />}}>
         {Template.bind({})}
     </Story>
-    <Story name="With Start Enhancer" args={{startEnhancer: <Upload size="20px" />}}>
+    <Story name="With Start Enhancer" args={{startEnhancer: <HeartIcon />}}>
         {Template.bind({})}
     </Story>
-  <Story name="With End Enhancer" args={{endEnhancer: <Upload size="20px" />}}>
+  <Story name="With End Enhancer" args={{endEnhancer: <HeartIcon />}}>
         {Template.bind({})}
     </Story>
 </Canvas>
