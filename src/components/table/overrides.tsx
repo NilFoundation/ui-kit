@@ -1,7 +1,7 @@
 import { TableOverrides } from "baseui/table-semantic";
 import { PRIMITIVE_COLORS } from "../../shared";
 import { TABLE_DIVIDER } from "./types";
-import { ChevronDown, ChevronUp } from "../icons";
+import { ChevronDownIcon, ChevronUpIcon } from "../icons";
 
 const getBorderProperties = (color: string) => {
   return {
@@ -70,13 +70,16 @@ export const getTableOverrides = (): TableOverrides => {
       }),
     },
     SortAscIcon: {
-      component: ChevronDown,
+      component: ChevronDownIcon,
       props: {
-        size: "40px",
+        size: "12px",
       },
     },
     SortDescIcon: {
-      component: ChevronUp,
+      component: ChevronUpIcon,
+      props: {
+        size: "12px",
+      },
     },
   };
 };

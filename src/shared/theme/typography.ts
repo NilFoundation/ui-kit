@@ -157,9 +157,9 @@ export const createTypography = (instance: StyletronClient): CreateTheme => {
             },
             DisplaySmall: {
               fontFamily: interSemiBoldFontFamily,
-              fontSize: "44px",
+              fontSize: "22px",
               fontWeight: 600,
-              lineHeight: "52px",
+              lineHeight: "28px",
             },
             DisplayMedium: {
               fontFamily: interSemiBoldFontFamily,
