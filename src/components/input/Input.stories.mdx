@@ -1,8 +1,8 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Input from "./Input";
 import InputStoryWrapper from "./ui/InputStoryWrapper"
-import {Search} from "baseui/icon";
 import {INPUT_SIZE} from "./types";
+import {HeartIcon, SearchIcon} from "../icons";
 
 <Meta
     title="Field/Input"
@@ -45,7 +45,7 @@ export const Template = ({...args}) => {
   <Story name="Password" args={{ placeholder: "Password Field", type: "password", size: INPUT_SIZE.small }}>
       {Template.bind({})}
   </Story>
-  <Story name="Loading" args={{ placeholder: "Loading...", size: INPUT_SIZE.small, isLoading: true, endEnhancer: <Search size="18px" /> }}>
+  <Story name="Loading" args={{ placeholder: "Loading...", size: INPUT_SIZE.small, isLoading: true, endEnhancer: <HeartIcon /> }}>
       {Template.bind({})}
   </Story>
   <Story name="With Default Value" args={{ placeholder: "Default Value", value: "Default Text", size: INPUT_SIZE.small }}>
@@ -54,7 +54,7 @@ export const Template = ({...args}) => {
   <Story name="With Start Enhancer" args={{ placeholder: "Start Enhancer", startEnhancer: "@", size: INPUT_SIZE.small }}>
       {Template.bind({})}
   </Story>
-  <Story name="With End Enhancer" args={{ placeholder: "End Enhancer", endEnhancer: <Search size="18px" />, size: INPUT_SIZE.small }}>
+  <Story name="With End Enhancer" args={{ placeholder: "End Enhancer", endEnhancer: <SearchIcon />, size: INPUT_SIZE.small }}>
       {Template.bind({})}
   </Story>
   <Story name="Clearable" args={{ placeholder: "Clearable", clearable: true, size: INPUT_SIZE.small }}>
