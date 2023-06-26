@@ -1,64 +1,117 @@
 import { PRIMITIVE_COLORS } from "../../shared";
-import { SPINNER_SIZE } from "../spinner";
-import { BUTTON_SIZE } from "./types";
+import { BUTTON_KIND, BUTTON_SIZE } from "./types";
+import { expandProperty } from "inline-style-expand-shorthand";
+import { BorderRadiusStyles } from "../../shared/styles/border";
 
-export const getSpinnerSize = (size: BUTTON_SIZE) => {
-  switch (size) {
-    case "mini":
-      return SPINNER_SIZE.xSmall;
-    case "compact":
-      return SPINNER_SIZE.small;
-    case "large":
-      return SPINNER_SIZE.large;
-    default:
-      return SPINNER_SIZE.medium;
-  }
+const buttonBaseStyles = {
+  ...BorderRadiusStyles,
+  outline: "0",
+  boxShadow: "none",
 };
 
-export const getBackgroundColor = (kind = "primary") => {
-  switch (kind) {
-    case "primary":
-      return PRIMITIVE_COLORS.primary200;
-    case "secondary":
-      return PRIMITIVE_COLORS.primary700;
-    case "tertiary":
-      return "transparent";
-    default:
-      return PRIMITIVE_COLORS.primary200;
-  }
+export const buttonModifiedStyles = {
+  [BUTTON_SIZE.mini]: {
+    ...buttonBaseStyles,
+  },
+  [BUTTON_SIZE.compact]: {
+    ...buttonBaseStyles,
+  },
+  [BUTTON_SIZE.default]: {
+    ...buttonBaseStyles,
+  },
+  [BUTTON_SIZE.large]: {
+    ...buttonBaseStyles,
+  },
 };
 
-export const getHoverBackgroundColor = (kind = "primary", disabled = false) => {
-  if (!disabled) {
-    switch (kind) {
-      case "primary":
-        return PRIMITIVE_COLORS.primary100;
-      case "secondary":
-        return PRIMITIVE_COLORS.primary600;
-      case "tertiary":
-        return PRIMITIVE_COLORS.primary700;
-      default:
-        return PRIMITIVE_COLORS.primary100;
-    }
-  }
+export const buttonKindModifiedStyles = {
+  [BUTTON_KIND.primary]: {
+    backgroundColor: PRIMITIVE_COLORS.white,
+
+    ":hover": {
+      backgroundColor: PRIMITIVE_COLORS.primary100,
+    },
+
+    ":disabled": {
+      backgroundColor: PRIMITIVE_COLORS.mono600,
+      color: PRIMITIVE_COLORS.primary500,
+    },
+  },
+  [BUTTON_KIND.secondary]: {
+    backgroundColor: PRIMITIVE_COLORS.primary700,
+
+    ":hover": {
+      backgroundColor: PRIMITIVE_COLORS.primary600,
+    },
+
+    ":disabled": {
+      backgroundColor: PRIMITIVE_COLORS.mono600,
+      color: PRIMITIVE_COLORS.primary500,
+    },
+  },
+  [BUTTON_KIND.tertiary]: {
+    backgroundColor: "transparent",
+
+    ":hover": {
+      backgroundColor: PRIMITIVE_COLORS.primary700,
+    },
+
+    ":disabled": {
+      backgroundColor: "transparent",
+      color: PRIMITIVE_COLORS.primary500,
+    },
+  },
 };
 
-export const getSquareButtonPaddings = (size: BUTTON_SIZE) => {
-  switch (size) {
-    case "mini":
-      return "8px";
-    case "compact":
-      return "12px";
-    case "large":
-      return "16px";
-    default:
-      return "14px";
-  }
+export const buttonFocusedModifiedStyles = {
+  [BUTTON_KIND.primary]: {
+    backgroundColor: PRIMITIVE_COLORS.primary200,
+  },
+  [BUTTON_KIND.secondary]: {
+    backgroundColor: PRIMITIVE_COLORS.primary200,
+    color: PRIMITIVE_COLORS.black,
+  },
+  [BUTTON_KIND.tertiary]: {
+    backgroundColor: PRIMITIVE_COLORS.primary600,
+  },
 };
 
-export const getSpinnerColor = (kind = "primary", disabled: boolean) => {
-  if (!disabled) {
-    return kind !== "primary" ? PRIMITIVE_COLORS.white : PRIMITIVE_COLORS.black;
-  }
-  return PRIMITIVE_COLORS.white;
+export const buttonDisabledModifiedStyles = {
+  [BUTTON_KIND.primary]: {
+    ":hover": {
+      backgroundColor: PRIMITIVE_COLORS.mono600,
+      color: PRIMITIVE_COLORS.primary500,
+    },
+  },
+  [BUTTON_KIND.secondary]: {
+    ":hover": {
+      backgroundColor: PRIMITIVE_COLORS.mono600,
+      color: PRIMITIVE_COLORS.primary500,
+    },
+  },
+  [BUTTON_KIND.tertiary]: {
+    ":hover": {
+      backgroundColor: "transparent",
+      color: PRIMITIVE_COLORS.primary500,
+    },
+  },
+};
+
+export const spinnerModifiedStyles = {
+  [BUTTON_SIZE.mini]: {
+    ...expandProperty("margin", "0"),
+    ...expandProperty("padding", "0 8px"),
+  },
+  [BUTTON_SIZE.compact]: {
+    ...expandProperty("margin", "0"),
+    ...expandProperty("padding", "0 12px"),
+  },
+  [BUTTON_SIZE.default]: {
+    ...expandProperty("margin", "0"),
+    ...expandProperty("padding", "0 14px"),
+  },
+  [BUTTON_SIZE.large]: {
+    ...expandProperty("margin", "0"),
+    ...expandProperty("padding", "0 16px"),
+  },
 };

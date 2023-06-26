@@ -25,9 +25,9 @@ type MenuItemProps = RenderItemProps & {
 type TypographyProps = ComponentProps<typeof ParagraphSmall>;
 
 const paragraphComponent = {
-  [SPINNER_SIZE.small]: (props: TypographyProps) => <ParagraphSmall color="primary500" as="p" {...props} />,
-  [SPINNER_SIZE.medium]: (props: TypographyProps) => <ParagraphMedium color="primary500" as="p" {...props} />,
-  [SPINNER_SIZE.large]: (props: TypographyProps) => <ParagraphLarge color="primary500" as="p" {...props} />,
+  [SPINNER_SIZE.small]: (props: TypographyProps) => <ParagraphSmall color="primary500" as="div" {...props} />,
+  [SPINNER_SIZE.medium]: (props: TypographyProps) => <ParagraphMedium color="primary500" as="div" {...props} />,
+  [SPINNER_SIZE.large]: (props: TypographyProps) => <ParagraphLarge color="primary500" as="div" {...props} />,
 };
 
 const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
