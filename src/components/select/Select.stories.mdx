@@ -1,6 +1,7 @@
-import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Select from "./Select";
 import SelectStoryWrapper from "./ui/SelectStoryWrapper";
+import {SELECT_SIZE} from "./types";
 
 <Meta
     title="Dropdown/Select"
@@ -27,28 +28,69 @@ export const options = [
 # Select
 
 
-<Canvas>
-  <Story name="Base" args={{ options, placeholder: "Base Select" }}>
+<Canvas isColumn>
+  <Story name="Small" args={{ options, placeholder: "Small Select", size: SELECT_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="Multiple" args={{ options, placeholder: "Multiple Select", multi: true }}>
+  <Story name="Medium" args={{ options, placeholder: "Medium Select", size: SELECT_SIZE.medium }}>
     {Template.bind({})}
   </Story>
-  <Story name="Error" args={{ options, placeholder: "Error Select", error: true }}>
+  <Story name="Large" args={{ options, placeholder: "Large Select", size: SELECT_SIZE.large }}>
     {Template.bind({})}
   </Story>
-  <Story name="Positive" args={{ options, placeholder: "Positive Select", positive: true }}>
+  <Story name="Multiple" args={{ options, placeholder: "Multiple Select", multi: true, size: SELECT_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="Without Searchable" args={{ options, placeholder: "Searchable Select", searchable: false }}>
+  <Story name="Disabled" args={{ options, placeholder: "Disabled Select", disabled: true, size: SELECT_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="Without Default Value" args={{ options, placeholder: "With Default Value", value: [options[0]] }}>
+  <Story name="Error" args={{ options, placeholder: "Error Select", error: true, size: SELECT_SIZE.small }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Positive" args={{ options, placeholder: "Positive Select", positive: true, size: SELECT_SIZE.small }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Loading" args={{ options, placeholder: "Loading Select", isLoading: true, size: SELECT_SIZE.small }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Without Searchable" args={{ options, placeholder: "Searchable Select", searchable: false, size: SELECT_SIZE.small }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Without Default Value" args={{ options, placeholder: "With Default Value", value: [options[0]], size: SELECT_SIZE.small }}>
     {Template.bind({})}
   </Story>
 </Canvas>
 
 <ArgsTable of={Select} />
 
-### Использование:
+### Usage:
+
+To use, import the component `Input` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {Select, SELECT_SIZE} from "@nilfoundation/ui-kit";
+        const OPTIONS = [
+          { label: "AliceBlue", id: "#F0F8FF" },
+          { label: "AntiqueWhite", id: "#FAEBD7" },
+          { label: "Aqua", id: "#00FFFF" },
+          { label: "Aquamarine", id: "#7FFFD4" },
+          { label: "Azure", id: "#F0FFFF" },
+          { label: "Beige", id: "#F5F5DC" }
+        ];
+        ...
+        <Select options={OPTIONS} placeholder="Select" size={SELECT_SIZE.small} />
+        // Disabled
+        <Select options={OPTIONS} placeholder="Select" disabled />
+        // Loading
+        <Select options={OPTIONS} placeholder="Select" isLoading />
+        // Searchable
+        <Select options={OPTIONS} placeholder="Select" searchable />
+        // Multiple
+        <Select options={OPTIONS} placeholder="Select" multi />
+  `}
+/>
 
