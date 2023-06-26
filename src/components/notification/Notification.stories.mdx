@@ -1,5 +1,7 @@
-import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Notification from "./Notification";
+import {NOTIFICATION_KIND} from "./types";
+import {Search} from "baseui/icon";
 
 <Meta
     title="Notification"
@@ -8,35 +10,77 @@ import Notification from "./Notification";
 
 export const Template = ({...args}) => {
     return (
-      <Notification {...args}>This is a notification.</Notification>
+      <Notification {...args} />
     );
 }
 
 # Notification
 
 
-<Canvas>
-  <Story name="Info" args={{kind: "info"}}>
+<Canvas isColumn>
+  <Story name="Info" args={{kind: NOTIFICATION_KIND.info, children: "Info notification."}}>
       {Template.bind({})}
   </Story>
-  <Story name="Positive" args={{kind: "positive"}}>
+  <Story name="Positive" args={{kind: NOTIFICATION_KIND.positive, children: "Positive notification."}}>
       {Template.bind({})}
   </Story>
-  <Story name="Warning" args={{kind: "warning"}}>
+  <Story name="Warning" args={{kind: NOTIFICATION_KIND.warning, children: "Warning notification."}}>
       {Template.bind({})}
   </Story>
-  <Story name="Negative" args={{kind: "negative"}}>
+  <Story name="Negative" args={{kind: NOTIFICATION_KIND.negative, children: "Negative notification."}}>
       {Template.bind({})}
   </Story>
-  <Story name="Closable" args={{closeable: true}}>
+  <Story name="Without Icon" args={{hideIcon: true, children: "Without icon notification."}}>
       {Template.bind({})}
   </Story>
-  <Story name="Auto hide after 3000ms" args={{autoHideDuration: 3000}}>
+  <Story name="Closable" args={{closeable: true, children: "Closable notification."}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Custom Icon" args={{children: "With custom icon.", icon: <Search size={20} />}}>
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="With Dismiss Action"
+    args={{
+      children: "Headline text. Paragraph text",
+      isAction: true,
+      actionLabel: "Close",
+      closeable: true
+  }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Auto hide after 3000ms" args={{autoHideDuration: 3000, children: "Auto hide notification."}}>
       {Template.bind({})}
   </Story>
 </Canvas>
 
 <ArgsTable of={Notification} />
 
-### Использование:
+### Usage:
+
+To use, import the component `Notification` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {Notification, NOTIFICATION_KIND, Search} from "@nilfoundation/ui-kit";
+        ...
+        <Notification>This is a notification.</Notification>
+        // With kind
+        <Notification kind={NOTIFICATION_KIND.positive}>This is a notification.</Notification>
+        // Without icon
+        <Notification hideIcon>This is a notification.</Notification>
+        // Without custom icon
+        <Notification icon={<Search size={20} />}>This is a notification.</Notification>
+        // Closable
+        <Notification closeable>This is a notification.</Notification>
+        // With dismiss action
+        <Notification isAction actionLabel="Close">This is a notification.</Notification>
+        // Auto hide after 3000ms
+        <Notification autoHideDuration={3000}>This is a notification.</Notification>
+  `}
+/>
+
 
