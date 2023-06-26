@@ -1,5 +1,6 @@
 import React from "react";
 import { useStyletron } from "baseui";
+import { PRIMITIVE_COLORS } from "../../../shared";
 
 type IconsWidgetProps = {
   icon: React.ReactNode;
@@ -25,7 +26,7 @@ const IconStoryWidget: React.FC<IconsWidgetProps> = ({ color, size, icon }) => {
         <li key={sizeItem}>
           {React.cloneElement(icon as any, {
             size: size ?? sizeItem,
-            color,
+            color: color || PRIMITIVE_COLORS.white,
           })}
         </li>
       ))}
