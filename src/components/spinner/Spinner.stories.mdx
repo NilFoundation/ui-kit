@@ -1,6 +1,6 @@
-import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Spinner from "./Spinner";
-import {SPINNER_SIZE} from "./types"
+import {SPINNER_SIZE} from "./types";
 
 <Meta
     title="Spinner"
@@ -38,12 +38,33 @@ export const Template = ({...args}) => {
   <Story name="XLarge" args={{size: SPINNER_SIZE.xLarge}}>
       {Template.bind({})}
   </Story>
-  <Story name="With Label" args={{label: "Uploading..."}}>
+  <Story name="Animated" args={{size: SPINNER_SIZE.xLarge, animation: true}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Label" args={{label: "Uploading...", animation: true}}>
       {Template.bind({})}
   </Story>
 </Canvas>
 
 <ArgsTable of={Spinner} />
 
-### Использование:
+### Usage:
 
+To use, import the component `Spinner` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {Spinner, SPINNER_SIZE} from "@nilfoundation/ui-kit";
+        ...
+        <Spinner />
+        // With size
+        <Spinner size={SPINNER_SIZE.large} />
+        // With animation
+        <Spinner animation />
+        // With label
+        <Spinner animation label="Uploading..." />
+  `}
+/>
