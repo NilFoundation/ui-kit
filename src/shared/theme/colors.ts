@@ -28,6 +28,24 @@ export const PRIMITIVE_COLORS = {
   error600: "#870F00",
   error700: "#5A0A00",
 
+  positive50: "#E6F2ED",
+  positive100: "#ADDEC9",
+  positive200: "#66D19E",
+  positive300: "#06C167",
+  positive400: "#048848",
+  positive500: "#03703C",
+  positive600: "#03582F",
+  positive700: "#10462D",
+
+  warning50: "#FFFAF0",
+  warning100: "#FFF2D9",
+  warning200: "#FFE3AC",
+  warning300: "#FFCF70",
+  warning400: "#FFC043",
+  warning500: "#BC8B2C",
+  warning600: "#996F00",
+  warning700: "#674D1B",
+
   mono600: "#292929",
 };
 
