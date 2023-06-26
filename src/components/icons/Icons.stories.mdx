@@ -1,0 +1,145 @@
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
+import IconStoryWidget from "./ui/IconStoryWidget";
+import HeartIcon from "./HeartIcon";
+import SearchIcon from "./SearchIcon";
+import CompleteIcon from "./CompleteIcon";
+import CancelIcon from "./CancelIcon";
+import WarningIcon from "./WarningIcon";
+import InfoIcon from "./InfoIcon";
+import MenuIcon from "./MenuIcon";
+import ProfileIcon from "./ProfileIcon";
+import ResizeIcon from "./ResizeIcon";
+import ChevronDownIcon from "./ChevronDownIcon";
+import ChevronUpIcon from "./ChevronUpIcon";
+import ChevronRightIcon from "./ChevronRightIcon";
+import ChevronLeftIcon from "./ChevronLeftIcon";
+import CaretUpIcon from "./CaretUpIcon";
+import CaretDownIcon from "./CaretDownIcon";
+import PlusIcon from "./PlusIcon";
+import MinusIcon from "./MinusIcon";
+import CloseIcon from "./CloseIcon";
+import LoginIcon from "./LoginIcon";
+import LogoutIcon from "./LogoutIcon";
+import FitToScreenIcon from "./FitToScreenIcon";
+import CodeIcon from "./CodeIcon";
+import ChartIcon from "./ChartIcon";
+import GithubIcon from "./GithubIcon";
+import TwitterIcon from "./TwitterIcon";
+import LinkedinIcon from "./LinkedinIcon";
+import DiscordIcon from "./DiscordIcon";
+import TelegramIcon from "./TelegramIcon";
+
+
+<Meta title="Icons" component={IconStoryWidget} />
+
+export const Template = (args) => <IconStoryWidget {...args} />
+
+# Icons
+
+<Canvas isColumn={true}>
+  <Story name="Heart" args={{icon: <HeartIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Search" args={{icon: <SearchIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Complete" args={{icon: <CompleteIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Cancel" args={{icon: <CancelIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Close" args={{icon: <CloseIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Warning" args={{icon: <WarningIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Info" args={{icon: <InfoIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Menu" args={{icon: <MenuIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Profile" args={{icon: <ProfileIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Resize" args={{icon: <ResizeIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Plus" args={{icon: <PlusIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Minus" args={{icon: <MinusIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Login" args={{icon: <LoginIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Logout" args={{icon: <LogoutIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Fit To Screen" args={{icon: <FitToScreenIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Code" args={{icon: <CodeIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Chart" args={{icon: <ChartIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Chevron Down" args={{icon: <ChevronDownIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Chevron Up" args={{icon: <ChevronUpIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Chevron Right" args={{icon: <ChevronRightIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Chevron Left" args={{icon: <ChevronLeftIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Caret Up" args={{icon: <CaretUpIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Caret Down" args={{icon: <CaretDownIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Github" args={{icon: <GithubIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Twitter" args={{icon: <TwitterIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Linkedin" args={{icon: <LinkedinIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Discord" args={{icon: <DiscordIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Telegram" args={{icon: <TelegramIcon />}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={HeartIcon} />
+
+### Usage:
+
+To use, import the icon component from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {SearchIcon} from "@nilfoundation/ui-kit";
+        ...
+        <SearchIcon />
+        // With color
+        <SearchIcon color="#000" />
+        // With size
+        <SearchIcon size={32} />
+  `}
+/>
