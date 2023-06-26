@@ -1,5 +1,8 @@
-import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Table from "./Table";
+import {TABLE_DIVIDER, TABLE_SIZE} from "./types";
+import TableBuilderStory from "./ui/TableBuilderStory";
+import TableStoryWrapper from "./ui/TableStoryWrapper";
 
 <Meta
     title="Table"
@@ -8,9 +11,17 @@ import Table from "./Table";
 
 export const Template = ({...args}) => {
     return (
-      <div style={{maxWidth: "650px"}}>
+      <TableStoryWrapper>
         <Table {...args} />
-      </div>
+      </TableStoryWrapper>
+    );
+}
+
+export const TableBuilderTemplate = ({...args}) => {
+    return (
+      <TableStoryWrapper>
+        <TableBuilderStory {...args} />
+      </TableStoryWrapper>
     );
 }
 
@@ -25,15 +36,75 @@ export const COLUMNS = ["Name", "Age", "Address"];
 
 
 <Canvas isColumn>
-  <Story name="Base" args={{columns: COLUMNS, data: DATA}}>
+  <Story name="Compact" args={{columns: COLUMNS, data: DATA, size: TABLE_SIZE.compact}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Default" args={{columns: COLUMNS, data: DATA, size: TABLE_SIZE.default}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Spacious" args={{columns: COLUMNS, data: DATA, size: TABLE_SIZE.spacious}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Vertical Divider" args={{columns: COLUMNS, data: DATA, divider: TABLE_DIVIDER.vertical}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Grid Divider" args={{columns: COLUMNS, data: DATA, divider: TABLE_DIVIDER.grid}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Clean Divider" args={{columns: COLUMNS, data: DATA, divider: TABLE_DIVIDER.clean}}>
     {Template.bind({})}
   </Story>
   <Story name="With Horizontal Scroll" args={{columns: COLUMNS, data: DATA, horizontalScrollWidth: "750px"}}>
     {Template.bind({})}
   </Story>
+  <Story name="Empty message" args={{columns: COLUMNS, data: [], emptyMessage: "Custom empty message"}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Table Builder" args={{}}>
+    {TableBuilderTemplate.bind({})}
+  </Story>
 </Canvas>
 
 <ArgsTable of={Table} />
 
-### Использование:
+### Usage:
+
+To use, import the component `Table` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {Table, TABLE_SIZE, TABLE_DIVIDER, TableBuilder, TableBuilderColumn, ...} from "@nilfoundation/ui-kit";
+        export const DATA = [
+          ["Sarah Brown", 31, "100 Broadway st. New York City, New York"],
+          ["Jane Smith", 32, "100 Market st. San Francisco, California"],
+          ["Joe Black", 33, "100 Macquarie st. Sydney, Australia"]
+        ];
+        export const COLUMNS = ["Name", "Age", "Address"];
+        ...
+        <Table columns={COLUMNS} data={DATA} size={TABLE_SIZE.compact} />
+        // With divider
+        <Table columns={COLUMNS} data={DATA} divider={TABLE_DIVIDER.vertical} />
+        // With horizontal scroll
+        <Table columns={COLUMNS} data={DATA} horizontalScrollWidth="750px" />
+        // With custom empty message
+        <Table columns={COLUMNS} data={[]} emptyMessage="Custom empty message" />
+        // With table builder
+        <TableBuilder data={data}>
+          <TableBuilderColumn
+            header={<Checkbox checked={hasAll} isIndeterminate={!hasAll && hasSome} onChange={toggleAll} />}
+          >
+            {(row: Row) => <Checkbox name={"" + row.foo} checked={row.selected} onChange={toggle} />}
+          </TableBuilderColumn>
+          <TableBuilderColumn header="Produce" sortable>
+            {(row: Row) => <Link href={row.url}>{row.bar}</Link>}
+          </TableBuilderColumn>
+          <TableBuilderColumn header="Quantity" numeric>
+            {(row: Row) => row.foo}
+          </TableBuilderColumn>
+        </TableBuilder>
+  `}
+/>
 
