@@ -1,17 +1,13 @@
-import { FC, useState } from "react";
-import { Tabs as BaseTabs, TabsProps as BaseTabsProps, ORIENTATION, OnChangeHandler } from "baseui/tabs";
+import { FC } from "react";
+import { Tabs as BaseTabs, TabsProps as BaseTabsProps, ORIENTATION } from "baseui/tabs";
+import { getTabsOverrides } from "./overrides";
 
 export type TabsProps = BaseTabsProps;
 
-const Tabs: FC<TabsProps> = ({ activeKey: baseActiveKey = "0", onChange, ...props }) => {
-  const [activeKey, setActiveKey] = useState<string | number>(baseActiveKey);
+const Tabs: FC<TabsProps> = ({ ...props }) => {
+  const overrides = getTabsOverrides();
 
-  const onChangeHandler: OnChangeHandler = (currentKey) => {
-    setActiveKey(currentKey.activeKey);
-    onChange?.(currentKey);
-  };
-
-  return <BaseTabs {...props} activeKey={activeKey} onChange={onChangeHandler} />;
+  return <BaseTabs {...props} overrides={overrides} />;
 };
 
 export { ORIENTATION };
