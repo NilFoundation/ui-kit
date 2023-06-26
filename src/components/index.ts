@@ -2,6 +2,7 @@ export * from "./breadcrumbs";
 export * from "./badge";
 export * from "./button";
 export * from "./card";
+export * from "./tag";
 export * from "./input";
 export * from "./notification";
 export * from "./select";
