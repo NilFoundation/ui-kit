@@ -8,10 +8,10 @@ import { Button, BUTTON_KIND, BUTTON_SIZE } from "../button";
 import { PRIMITIVE_COLORS } from "../../shared";
 
 const semanticIcon = {
-  [NOTIFICATION_KIND.info]: ({ ...props }: IconProps) => <InfoIcon {...props} />,
-  [NOTIFICATION_KIND.warning]: ({ ...props }: IconProps) => <WarningIcon {...props} />,
-  [NOTIFICATION_KIND.positive]: ({ ...props }: IconProps) => <CompleteIcon {...props} />,
-  [NOTIFICATION_KIND.negative]: ({ ...props }: IconProps) => <CancelIcon {...props} />,
+  [NOTIFICATION_KIND.info]: ({ ...props }: IconProps) => <InfoIcon size={20} {...props} />,
+  [NOTIFICATION_KIND.warning]: ({ ...props }: IconProps) => <WarningIcon size={20} {...props} />,
+  [NOTIFICATION_KIND.positive]: ({ ...props }: IconProps) => <CompleteIcon size={20} {...props} />,
+  [NOTIFICATION_KIND.negative]: ({ ...props }: IconProps) => <CancelIcon size={20} {...props} />,
 };
 
 const actionColors = {
