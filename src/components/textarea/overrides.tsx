@@ -8,8 +8,12 @@ import {
   inputDisabledStyles,
   rootDisabledStyles,
 } from "./styles";
+import { BorderRadiusStyles } from "../../shared/styles/border";
 
-const getPlaceholderColor = (isError: boolean, isPositive: boolean, isDisabled: boolean): string => {
+const getTextareaColor = (isError: boolean, isPositive: boolean, isDisabled: boolean, isFocused: boolean): string => {
+  if (isFocused) {
+    return PRIMITIVE_COLORS.white;
+  }
   if (isDisabled) {
     return PRIMITIVE_COLORS.primary500;
   }
@@ -29,10 +33,7 @@ export const getTextareaOverrides = (size: TEXTAREA_SIZE, isLoading?: boolean): 
         return {
           position: "relative",
           width: "100%",
-          borderBottomLeftRadius: "2px",
-          borderBottomRightRadius: "2px",
-          borderTopLeftRadius: "2px",
-          borderTopRightRadius: "2px",
+          ...BorderRadiusStyles,
           ...(isLoading || $disabled ? rootDisabledStyles : {}),
         };
       },
@@ -43,13 +44,14 @@ export const getTextareaOverrides = (size: TEXTAREA_SIZE, isLoading?: boolean): 
       }),
     },
     Input: {
-      style: ({ $error, $positive, $isDisabled }) => {
+      style: ({ $error, $positive, $isDisabled, $isFocused }) => {
         return {
           ...inputContainerModifiedStyles[size],
           "-webkit-text-fill-color": "unset",
+          color: getTextareaColor($error, $positive, $isDisabled, $isFocused),
 
           "::placeholder": {
-            color: getPlaceholderColor($error, $positive, $isDisabled),
+            color: getTextareaColor($error, $positive, $isDisabled, $isFocused),
           },
 
           "::-webkit-resizer": {

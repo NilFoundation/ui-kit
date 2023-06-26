@@ -1,30 +1,22 @@
 import { PRIMITIVE_COLORS } from "../../shared";
 import { TEXTAREA_SIZE } from "./types";
+import { expandProperty } from "inline-style-expand-shorthand";
 
 export const inputContainerModifiedStyles = {
   [TEXTAREA_SIZE.small]: {
-    paddingTop: "16px",
-    paddingRight: "12px",
-    paddingBottom: "16px",
-    paddingLeft: "12px",
+    ...expandProperty("padding", "16px 12px"),
     minHeight: "72px",
     fontSize: "14px",
     lineHeight: "20px",
   },
   [TEXTAREA_SIZE.medium]: {
-    paddingTop: "16px",
-    paddingRight: "16px",
-    paddingBottom: "16px",
-    paddingLeft: "16px",
+    ...expandProperty("padding", "16px"),
     minHeight: "80px",
     fontSize: "16px",
     lineHeight: "24px",
   },
   [TEXTAREA_SIZE.large]: {
-    paddingTop: "16px",
-    paddingRight: "16px",
-    paddingBottom: "16px",
-    paddingLeft: "16px",
+    ...expandProperty("padding", "16px"),
     minHeight: "88px",
     fontSize: "18px",
     lineHeight: "28px",
@@ -53,8 +45,8 @@ export const clearIconSize = {
 };
 
 export const rootDisabledStyles = {
+  ...expandProperty("borderColor", PRIMITIVE_COLORS.primary600),
   backgroundColor: "transparent",
-  borderColor: PRIMITIVE_COLORS.primary600,
   color: PRIMITIVE_COLORS.primary500,
 };
 
