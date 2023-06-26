@@ -9,6 +9,9 @@
   "main": "dist/ui-kit.js",
   "module": "dist/ui-kit.mjs",
   "types": "dist/ui-kit.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
