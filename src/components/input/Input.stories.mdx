@@ -1,7 +1,8 @@
-import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Input from "./Input";
 import InputStoryWrapper from "./ui/InputStoryWrapper"
-import {Search} from "baseui/icon";
+import {INPUT_SIZE} from "./types";
+import {HeartIcon, SearchIcon} from "../icons";
 
 <Meta
     title="Field/Input"
@@ -19,37 +20,72 @@ export const Template = ({...args}) => {
 # Input
 
 
-<Canvas>
-  <Story name="Base" args={{ placeholder: "Input Field" }}>
+<Canvas isColumn>
+  <Story name="Small" args={{ placeholder: "Input Field", size: INPUT_SIZE.small }}>
       {Template.bind({})}
   </Story>
-  <Story name="Disabled" args={{ placeholder: "Disabled Field", disabled: true }}>
+  <Story name="Medium" args={{ placeholder: "Input Field", size: INPUT_SIZE.medium }}>
       {Template.bind({})}
   </Story>
-  <Story name="Error" args={{ placeholder: "Error Field", error: true }}>
+  <Story name="Large" args={{ placeholder: "Input Field", size: INPUT_SIZE.large }}>
       {Template.bind({})}
   </Story>
-  <Story name="Positive" args={{ placeholder: "Positive Field", positive: true }}>
+  <Story name="Disabled" args={{ placeholder: "Disabled Field", disabled: true, size: INPUT_SIZE.small }}>
       {Template.bind({})}
   </Story>
-  <Story name="Password" args={{ placeholder: "Password Field", type: "password" }}>
+  <Story name="Readonly" args={{ placeholder: "Readonly Field", readOnly: true, size: INPUT_SIZE.small }}>
       {Template.bind({})}
   </Story>
-  <Story name="With Default Value" args={{ placeholder: "Default Value", value: "Default Text" }}>
+  <Story name="Error" args={{ placeholder: "Error Field", error: true, size: INPUT_SIZE.small }}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Positive" args={{ placeholder: "Positive Field", positive: true, size: INPUT_SIZE.small }}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Password" args={{ placeholder: "Password Field", type: "password", size: INPUT_SIZE.small }}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Loading" args={{ placeholder: "Loading...", size: INPUT_SIZE.small, isLoading: true, endEnhancer: <HeartIcon /> }}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Default Value" args={{ placeholder: "Default Value", value: "Default Text", size: INPUT_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Start Enhancer" args={{ placeholder: "Start Enhancer", startEnhancer: "@" }}>
+  <Story name="With Start Enhancer" args={{ placeholder: "Start Enhancer", startEnhancer: "@", size: INPUT_SIZE.small }}>
       {Template.bind({})}
   </Story>
-  <Story name="With End Enhancer" args={{ placeholder: "End Enhancer", endEnhancer: <Search size="18px" /> }}>
+  <Story name="With End Enhancer" args={{ placeholder: "End Enhancer", endEnhancer: <SearchIcon />, size: INPUT_SIZE.small }}>
       {Template.bind({})}
   </Story>
-  <Story name="Clearable" args={{ placeholder: "Clearable", clearable: true }}>
+  <Story name="Clearable" args={{ placeholder: "Clearable", clearable: true, size: INPUT_SIZE.small }}>
       {Template.bind({})}
   </Story>
 </Canvas>
 
 <ArgsTable of={Input} />
 
-### Использование:
+### Usage:
+
+To use, import the component `Input` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {Input, INPUT_SIZE} from "@nilfoundation/ui-kit";
+        ...
+        <Input placeholder="Input Field" size={INPUT_SIZE.small} />
+        // Disabled
+        <Input placeholder="Input Field" disabled />
+        // Readonly
+        <Input placeholder="Input Field" readOnly />
+        // Loading
+        <Input placeholder="Input Field" isLoading />
+        // Clearable
+        <Input placeholder="Input Field" clearable />
+        // With enhancer
+        <Input placeholder="Input Field" startEnhancer="@" endEnhancer="00.00" />
+  `}
+/>
 

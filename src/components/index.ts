@@ -14,5 +14,6 @@ export * from "./radio";
 export * from "./skeleton";
 export * from "./file-uploader";
 export * from "./typography";
+export * from "./icons";
 export * from "./progress-bar";
 export * from "./accordion";
