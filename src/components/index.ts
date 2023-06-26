@@ -16,3 +16,4 @@ export * from "./file-uploader";
 export * from "./typography";
 export * from "./icons";
 export * from "./progress-bar";
+export * from "./table";
