@@ -52,6 +52,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "inline-style-expand-shorthand": "^1.6.0",
     "pre-commit": "^1.2.2",
     "prettier": "^2.8.8",
     "styletron-engine-atomic": "^1.5.0",
@@ -68,9 +69,9 @@
     "access": "public"
   },
   "dependencies": {
-    "baseui": "^12.2.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "baseui": ">=12.2.0",
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2"
   },
   "pre-commit": [
     "tsc",
