@@ -1,12 +1,22 @@
 import React, { useState } from "react";
 import { Select as BaseSelect, SelectProps as BaseSelectProps, Value, OnChangeParams, SIZE } from "baseui/select";
+import { getSelectOverrides } from "./overrides";
+import { SELECT_SIZE } from "./types";
 
 export type SelectProps = BaseSelectProps & {
   placeholder: React.ReactNode;
   onChange?: (value: Value) => void;
+  size?: SELECT_SIZE;
+  startEnhancer?: React.ReactNode;
 };
 
-const Select: React.FC<SelectProps> = ({ value: baseValue, onChange, ...props }) => {
+const Select: React.FC<SelectProps> = ({
+  value: baseValue,
+  disabled,
+  size = SELECT_SIZE.medium,
+  onChange,
+  ...props
+}) => {
   const [value, setValue] = useState<Value | undefined>(baseValue);
 
   const onChangeHandler = (params: OnChangeParams) => {
@@ -14,7 +24,9 @@ const Select: React.FC<SelectProps> = ({ value: baseValue, onChange, ...props })
     onChange?.(params.value);
   };
 
-  return <BaseSelect {...props} value={value} onChange={onChangeHandler} />;
+  const overrides = getSelectOverrides(size, !!disabled);
+
+  return <BaseSelect {...props} disabled={disabled} value={value} onChange={onChangeHandler} overrides={overrides} />;
 };
 
 export { SIZE };
