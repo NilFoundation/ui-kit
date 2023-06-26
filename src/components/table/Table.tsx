@@ -1,10 +1,12 @@
 import { FC } from "react";
-import { Table as BaseTable, TableProps as BaseTableProps } from "baseui/table";
+import { Table as BaseTable } from "baseui/table-semantic";
+import { getTableOverrides } from "./overrides";
+import { TABLE_DIVIDER, TABLE_SIZE, TableProps } from "./types";
 
-export type TableProps = BaseTableProps;
+const Table: FC<TableProps> = ({ divider = TABLE_DIVIDER.horizontal, size = TABLE_SIZE.default, ...props }) => {
+  const overrides = getTableOverrides();
 
-const Table: FC<TableProps> = ({ ...props }) => {
-  return <BaseTable {...props} />;
+  return <BaseTable {...props} divider={divider} size={size} overrides={overrides} />;
 };
 
 export default Table;
