@@ -1,28 +1,14 @@
-import { FC, ChangeEventHandler, useState } from "react";
-import {
-  Checkbox as BaseCheckbox,
-  CheckboxProps as BaseCheckboxProps,
-  LABEL_PLACEMENT,
-  STYLE_TYPE,
-} from "baseui/checkbox";
+import { FC } from "react";
+import { Checkbox as BaseCheckbox, CheckboxProps as BaseCheckboxProps, LABEL_PLACEMENT } from "baseui/checkbox";
+import { getCheckboxOverrides } from "./overrides";
 
 export type CheckboxProps = BaseCheckboxProps;
 
-const Checkbox: FC<CheckboxProps> = ({
-  checked: baseChecked,
-  onChange,
-  labelPlacement = LABEL_PLACEMENT.right,
-  ...props
-}) => {
-  const [checked, setChecked] = useState<boolean | undefined>(baseChecked);
+const Checkbox: FC<CheckboxProps> = ({ labelPlacement = LABEL_PLACEMENT.right, ...props }) => {
+  const overrides = getCheckboxOverrides();
 
-  const onChangeHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
-    onChange?.(event);
-    setChecked(event.target.checked);
-  };
-
-  return <BaseCheckbox {...props} checked={checked} onChange={onChangeHandler} labelPlacement={labelPlacement} />;
+  return <BaseCheckbox {...props} overrides={overrides} labelPlacement={labelPlacement} />;
 };
 
-export { LABEL_PLACEMENT, STYLE_TYPE };
+export { LABEL_PLACEMENT };
 export default Checkbox;
