@@ -4,6 +4,7 @@ export * from "./button";
 export * from "./card";
 export * from "./tag";
 export * from "./input";
+export * from "./textarea";
 export * from "./notification";
 export * from "./select";
 export * from "./spinner";
