@@ -3,6 +3,7 @@ export * from "./badge";
 export * from "./button";
 export * from "./card";
 export * from "./input";
+export * from "./textarea";
 export * from "./notification";
 export * from "./select";
 export * from "./spinner";
