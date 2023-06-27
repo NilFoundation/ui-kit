@@ -1,0 +1,75 @@
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import Accordion from "./Accordion";
+import Panel from "./Panel";
+import {Filter} from "baseui/icon";
+
+<Meta
+    title="Accordion"
+    component={Accordion}
+/>
+
+export const Template = ({isIcon, isDescription, ...args}) => {
+    const description = "Comment";
+    return (
+      <div style={{maxWidth: "530px"}}>
+        <Accordion {...args}>
+          <Panel title="Panel 1" description={isDescription && description} icon={isIcon && <Filter />}>Content 1</Panel>
+          <Panel title="Panel 2" description={isDescription && description} icon={isIcon && <Filter />}>Content 2</Panel>
+          <Panel title="Panel 3" description={isDescription && description} icon={isIcon && <Filter />}>Content 3</Panel>
+        </Accordion>
+      </div>
+    );
+}
+
+# Accordion
+
+
+<Canvas isColumn>
+  <Story name="Base" args={{}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Without accordion" args={{accordion: false}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With icon" args={{isIcon: true}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With Description" args={{isDescription: true}}>
+      {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Accordion} />
+
+### Usage:
+
+To use, import the component `Accordion` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {Accordion, Panel, Filter} from "@nilfoundation/ui-kit";
+        ...
+        <Accordion>
+            <Panel title="Panel 1">Content 1</Panel>
+            <Panel title="Panel 2">Content 2</Panel>
+            <Panel title="Panel 3">Content 3</Panel>
+        </Accordion>
+        // With icon
+        <Accordion>
+            <Panel title="Panel 1" icon={<Filter />}>Content 1</Panel>
+            <Panel title="Panel 2" icon={<Filter />}>Content 2</Panel>
+            <Panel title="Panel 3" icon={<Filter />}>Content 3</Panel>
+        </Accordion>
+        // With description
+        <Accordion>
+            <Panel title="Panel 1" description="Comment 1">Content 1</Panel>
+            <Panel title="Panel 2" description="Comment 2">Content 2</Panel>
+            <Panel title="Panel 3" description="Comment 3">Content 3</Panel>
+        </Accordion>
+  `}
+/>
+
+
