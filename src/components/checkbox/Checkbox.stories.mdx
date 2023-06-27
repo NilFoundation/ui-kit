@@ -1,15 +1,16 @@
-import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
-import Checkbox, {LABEL_PLACEMENT, STYLE_TYPE} from "./Checkbox";
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import Checkbox, {LABEL_PLACEMENT} from "./Checkbox";
+import CheckboxStoryWidget from "./ui/CheckboxStoryWidget";
 
 <Meta
-    title="Field/Checkbox"
-    component={Checkbox}
+  title="Field/Checkbox"
+  component={Checkbox}
 />
 
 export const Template = ({...args}) => {
-    return (
-      <Checkbox {...args} />
-    );
+  return (
+    <CheckboxStoryWidget {...args} />
+  );
 }
 
 # Checkbox
@@ -17,29 +18,57 @@ export const Template = ({...args}) => {
 
 <Canvas isColumn>
   <Story name="Base" args={{}}>
-      {Template.bind({})}
+    {Template.bind({})}
   </Story>
-  <Story name="With Label" args={{children: "Checkbox Label"}}>
-      {Template.bind({})}
+  <Story name="With Label" args={{children: "Label"}}>
+    {Template.bind({})}
   </Story>
-  <Story name="With Default Checked" args={{children: "Default Checked", checked: true}}>
-      {Template.bind({})}
+  <Story name="With Default Checked" args={{children: "Label", checked: true}}>
+    {Template.bind({})}
   </Story>
-  <Story name="Disabled" args={{children: "Checkbox Disabled", disabled: true}}>
-      {Template.bind({})}
+  <Story name="Disabled" args={{children: "Label", disabled: true, checked: true}}>
+    {Template.bind({})}
   </Story>
-  <Story name="Error" args={{children: "Checkbox Error", error: true}}>
-      {Template.bind({})}
+  <Story name="Error" args={{children: "Label", error: true}}>
+    {Template.bind({})}
   </Story>
-  <Story name="Toggle" args={{children: "Checkbox As Toggle", checkmarkType: STYLE_TYPE.toggle}}>
-      {Template.bind({})}
+  <Story name="Label Placement" args={{children: "Label", labelPlacement: LABEL_PLACEMENT.left}}>
+    {Template.bind({})}
   </Story>
-  <Story name="Label Placement" args={{children: "Label Placement", labelPlacement: LABEL_PLACEMENT.left}}>
-      {Template.bind({})}
+  <Story name="Indeterminate checkbox" args={{children: "Label", isIndeterminate: true}}>
+    {Template.bind({})}
   </Story>
 </Canvas>
 
 <ArgsTable of={Checkbox} />
 
-### Использование:
+### Usage:
+
+To use, import the component `Checkbox` from `@nilfoundation/ui-kit`.
+
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {Checkbox, CHECKBOX_LABEL_PLACEMENT} from "@nilfoundation/ui-kit";
+        ...
+        // Base checkbox
+        <Checkbox />
+        // Checkbox with Label
+        <Checkbox>Some text</Checkbox>
+        // Checkbox with default checked
+        <Checkbox checked>With default checked</Checkbox>
+        // Disabled checkbox
+        <Checkbox disabled>Disabled</Checkbox>
+        // Error checkbox
+        <Checkbox error>Error</Checkbox>
+        // Label placement of checkbox is from the left
+        <Checkbox labelPlacement={CHECKBOX_LABEL_PLACEMENT.left}>Label placement</Checkbox>
+        // Indeterminate checkbox
+        <Checkbox isIndeterminate>Indeterminate checkbox</Checkbox>
+    `}
+/>
+
 
