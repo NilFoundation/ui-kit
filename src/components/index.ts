@@ -19,3 +19,5 @@ export * from "./icons";
 export * from "./progress-bar";
 export * from "./table";
 export * from "./accordion";
+export * from "./brand";
+export * from "./navigation-bar";

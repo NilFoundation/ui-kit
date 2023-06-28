@@ -59,7 +59,7 @@ export const getItemContainerStyles = (size: MENU_SIZE, disabled: boolean, ariaS
   width: "100%",
   boxSizing: "border-box",
   cursor: disabled ? "not-allowed" : "pointer",
-  borderRadius: "2px",
+  borderRadius: "0px",
   gap: "16px",
   ...itemModifiedStyles[size],
   ...(ariaSelected && !disabled ? itemActiveStyles : {}),
@@ -68,7 +68,7 @@ export const getItemContainerStyles = (size: MENU_SIZE, disabled: boolean, ariaS
     backgroundColor: disabled ? "inherit" : PRIMITIVE_COLORS.primary800,
   },
 
-  ":hover > p": {
+  ":hover > div": {
     color: disabled ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.white,
   },
 

@@ -7,6 +7,7 @@ import { SPINNER_SIZE } from "../../spinner";
 import { Checkbox } from "../../checkbox";
 import { RenderItemProps } from "baseui/menu/types";
 import { getItemContainerStyles, ItemEndWrapperStyles, paragraphActiveStyles, svgActiveStyles } from "../styles";
+import { PRIMITIVE_COLORS } from "../../../shared";
 
 type TExpandedItem = Item & {
   selected?: boolean;
@@ -18,6 +19,7 @@ type TExpandedItem = Item & {
 type MenuItemProps = RenderItemProps & {
   item: TExpandedItem;
   size: MENU_SIZE;
+  isLight?: boolean;
   disabled?: boolean;
   ariaSelected?: boolean;
 };
@@ -31,7 +33,7 @@ const paragraphComponent = {
 };
 
 const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
-  ({ size, item, onClick, disabled, ariaSelected, onMouseEnter, id }, ref) => {
+  ({ size, item, isLight, onClick, disabled, ariaSelected, onMouseEnter, id }, ref) => {
     const [css] = useStyletron();
 
     const isAreaSelected = ariaSelected && !disabled;
@@ -54,7 +56,10 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
             color: "primary500",
             className: css(isAreaSelected ? svgActiveStyles : {}),
           })}
-        <TypographyComponent className={css(ariaSelected && !disabled ? paragraphActiveStyles : {})} color="primary500">
+        <TypographyComponent
+          className={css(ariaSelected && !disabled ? paragraphActiveStyles : {})}
+          color={isLight ? PRIMITIVE_COLORS.primary800 : PRIMITIVE_COLORS.primary500}
+        >
           {item.label}
         </TypographyComponent>
         <EndWrapper>

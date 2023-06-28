@@ -39,7 +39,7 @@ export const Template = ({children, ...args}) => {
     <Story name="Loading" args={{isLoading: true, children: ""}}>
         {Template.bind({})}
     </Story>
-    <Story name="Shape Square" args={{shape: BUTTON_SHAPE.square, children: <HeartIcon />}}>
+    <Story name="Shape Square" args={{shape: BUTTON_SHAPE.square, children: <HeartIcon size={20} />}}>
         {Template.bind({})}
     </Story>
     <Story name="With Start Enhancer" args={{startEnhancer: <HeartIcon />}}>

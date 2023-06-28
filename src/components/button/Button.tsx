@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { forwardRef, ReactNode } from "react";
 import { Button as BaseButton, ButtonProps as BaseButtonProps } from "baseui/button";
 import { getButtonOverrides } from "./overrides";
 import { BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE } from "./types";
@@ -13,41 +13,50 @@ export type ButtonProps = Omit<BaseButtonProps, "kind" | "shape" | "size"> & {
   className?: string;
 };
 
-const Button: React.FC<ButtonProps> = ({
-  kind = BUTTON_KIND.primary,
-  size = BUTTON_SIZE.default,
-  shape = BUTTON_SHAPE.default,
-  disabled,
-  isLoading,
-  colors,
-  startEnhancer,
-  endEnhancer,
-  className,
-  children,
-  ...props
-}) => {
-  const overrides = getButtonOverrides(kind, size, colors);
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      kind = BUTTON_KIND.primary,
+      size = BUTTON_SIZE.default,
+      shape = BUTTON_SHAPE.default,
+      disabled,
+      isLoading,
+      colors,
+      startEnhancer,
+      endEnhancer,
+      className,
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    const overrides = getButtonOverrides(kind, size, colors);
 
-  return (
-    <BaseButton
-      {...props}
-      className={className}
-      isLoading={isLoading}
-      shape={shape}
-      kind={kind}
-      size={size}
-      disabled={disabled}
-      startEnhancer={
-        startEnhancer && <ButtonNode isDisabled={disabled} node={startEnhancer as ReactNode} size={size} kind={kind} />
-      }
-      endEnhancer={
-        endEnhancer && <ButtonNode isDisabled={disabled} node={endEnhancer as ReactNode} size={size} kind={kind} />
-      }
-      overrides={overrides}
-    >
-      <ButtonNode isDisabled={disabled} node={children} size={size} kind={kind} />
-    </BaseButton>
-  );
-};
+    return (
+      <BaseButton
+        ref={ref}
+        {...props}
+        className={className}
+        isLoading={isLoading}
+        shape={shape}
+        kind={kind}
+        size={size}
+        disabled={disabled}
+        startEnhancer={
+          startEnhancer && (
+            <ButtonNode isDisabled={disabled} node={startEnhancer as ReactNode} size={size} kind={kind} />
+          )
+        }
+        endEnhancer={
+          endEnhancer && <ButtonNode isDisabled={disabled} node={endEnhancer as ReactNode} size={size} kind={kind} />
+        }
+        overrides={overrides}
+      >
+        {children}
+      </BaseButton>
+    );
+  }
+);
+Button.displayName = "Button";
 
 export default Button;
