@@ -179,9 +179,9 @@ export const createTypography = (instance: StyletronClient): CreateTheme => {
 
         MonoDisplayXSmall: {
           fontFamily: robotoFontFamily,
-          fontSize: "36px",
+          fontSize: "22px",
           fontWeight: 400,
-          lineHeight: "44px",
+          lineHeight: "28px",
         },
       },
     },
