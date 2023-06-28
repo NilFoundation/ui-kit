@@ -11,10 +11,7 @@ export const Template = ({...args}) => {
     return (
       <Card {...args}>
         <StyledBody>
-          Proin ut dui sed metus pharetra hend rerit vel non
-          mi. Nulla ornare faucibus ex, non facilisis nisl.
-          Proin ut dui sed metus pharetra hend rerit vel non
-          mi. Nulla ornare faucibus ex, non facilisis nisl.
+          Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl.
         </StyledBody>
       </Card>
     );
@@ -24,15 +21,47 @@ export const Template = ({...args}) => {
 
 
 <Canvas isColumn>
-  <Story name="Base" args={{}}>
+  <Story name="Basic usage" args={{}}>
       {Template.bind({})}
   </Story>
-  <Story name="With title" args={{title: "Card title"}}>
+  <Story name="Heading and button" args={{title: "Example card", button: "Label", dash: true}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Photo" args={{headerImage: "https://oir.mobi/uploads/posts/2021-05/1622168357_43-oir_mobi-p-yelovii-les-priroda-krasivo-foto-49.jpg", button: "Label", dash: true, title: "Example card"}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Thumbnail" args={{title: "Card title", thumbnail: "https://oir.mobi/uploads/posts/2021-05/1622168357_43-oir_mobi-p-yelovii-les-priroda-krasivo-foto-49.jpg", button: "Label", dash: true}}>
+      {Template.bind({})}
+  </Story>
+    <Story name="Basic with border and without dash" args={{border: true }}>
       {Template.bind({})}
   </Story>
 </Canvas>
 
 <ArgsTable of={Card} />
 
-### Использование:
+### Usage:
 
+To use, import the component `Card` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {Card} from "@nilfoundation/ui-kit";
+        ...
+        // Base card with the description
+        <Card> Description </Card>
+        // Card with the description, border and title
+        <Card border title="Card title"> Description </Card>
+        // Card with the button
+        <Card button="Button text"> Description </Card>
+        // Card with the dash on the card's top
+        <Card dash> Description </Card>
+        // Card with header image
+        <Card headerImage="path to image"> Description </Card>
+        // Card with thumbnail
+        <Card thumbnail="path to image"> Description </Card>
+  `}
+/>
