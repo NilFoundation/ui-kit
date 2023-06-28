@@ -1,6 +1,6 @@
-import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Card from "./Card";
-import {StyledBody} from "baseui/card";
+import CardStoryWidget from "./ui/CardStoryWidget";
 
 <Meta
     title="Card"
@@ -9,13 +9,11 @@ import {StyledBody} from "baseui/card";
 
 export const Template = ({...args}) => {
     return (
-      <Card {...args}>
-        <StyledBody>
-          Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl.
-        </StyledBody>
-      </Card>
+      <CardStoryWidget {...args} />
     );
 }
+
+export const imageUrl = "https://oir.mobi/uploads/posts/2021-05/1622168357_43-oir_mobi-p-yelovii-les-priroda-krasivo-foto-49.jpg"
 
 # Card
 
@@ -24,13 +22,13 @@ export const Template = ({...args}) => {
   <Story name="Basic usage" args={{}}>
       {Template.bind({})}
   </Story>
-  <Story name="Heading and button" args={{title: "Example card", button: "Label", dash: true}}>
+  <Story name="Heading and button" args={{title: "Example card", dash: true}}>
       {Template.bind({})}
   </Story>
-  <Story name="Photo" args={{headerImage: "https://oir.mobi/uploads/posts/2021-05/1622168357_43-oir_mobi-p-yelovii-les-priroda-krasivo-foto-49.jpg", button: "Label", dash: true, title: "Example card"}}>
+  <Story name="Photo" args={{headerImage: imageUrl, button: "Label", dash: true, title: "Example card"}}>
       {Template.bind({})}
   </Story>
-  <Story name="Thumbnail" args={{title: "Card title", thumbnail: "https://oir.mobi/uploads/posts/2021-05/1622168357_43-oir_mobi-p-yelovii-les-priroda-krasivo-foto-49.jpg", button: "Label", dash: true}}>
+  <Story name="Thumbnail" args={{title: "Card title", thumbnail: imageUrl, dash: true}}>
       {Template.bind({})}
   </Story>
     <Story name="Basic with border and without dash" args={{border: true }}>
@@ -49,19 +47,26 @@ To use, import the component `Card` from `@nilfoundation/ui-kit`.
   dark
   format={true}
   code={`
-        import {Card} from "@nilfoundation/ui-kit";
+        import {Card, StyledBody, StyledAction, Button} from "@nilfoundation/ui-kit";
         ...
-        // Base card with the description
-        <Card> Description </Card>
-        // Card with the description, border and title
-        <Card border title="Card title"> Description </Card>
-        // Card with the button
-        <Card button="Button text"> Description </Card>
-        // Card with the dash on the card's top
-        <Card dash> Description </Card>
-        // Card with header image
-        <Card headerImage="path to image"> Description </Card>
-        // Card with thumbnail
-        <Card thumbnail="path to image"> Description </Card>
+        <Card>
+          <StyledBody>
+            Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl.
+          </StyledBody>
+        </Card>
+        // Card border
+        <Card border title="Card title">...</Card>
+        // With action
+        <Card>
+          <StyledAction>
+            <Button>Button label</Button>
+          </StyledAction>
+        </Card>
+        // With dash
+        <Card dash>Description</Card>
+        // With header image
+        <Card headerImage="path">...</Card>
+        // With thumbnail
+        <Card thumbnail="path">...</Card>
   `}
 />
