@@ -53,29 +53,34 @@ export const paragraphActiveStyles: StyleObject = {
   color: PRIMITIVE_COLORS.white,
 };
 
-export const getItemContainerStyles = (size: MENU_SIZE, disabled: boolean, ariaSelected: boolean): StyleObject => ({
-  display: "flex",
-  alignItems: "center",
-  width: "100%",
-  boxSizing: "border-box",
-  cursor: disabled ? "not-allowed" : "pointer",
-  borderRadius: "2px",
-  gap: "16px",
-  ...itemModifiedStyles[size],
-  ...(ariaSelected && !disabled ? itemActiveStyles : {}),
+export const getItemContainerStyles = (size: MENU_SIZE, disabled: boolean, ariaSelected: boolean): StyleObject => {
+  const activeColor = disabled ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.white;
 
-  ":hover": {
-    backgroundColor: disabled ? "inherit" : PRIMITIVE_COLORS.primary800,
-  },
+  return {
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    boxSizing: "border-box",
+    cursor: disabled ? "not-allowed" : "pointer",
+    borderRadius: "2px",
+    gap: "16px",
+    ...itemModifiedStyles[size],
+    ...(ariaSelected && !disabled ? itemActiveStyles : {}),
 
-  ":hover > p": {
-    color: disabled ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.white,
-  },
+    ":hover": {
+      backgroundColor: disabled ? "inherit" : PRIMITIVE_COLORS.primary800,
+      color: activeColor,
+    },
 
-  ":hover > svg": {
-    fill: disabled ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.white,
-  },
-});
+    ":hover > div": {
+      color: activeColor,
+    },
+
+    ":hover > svg": {
+      fill: activeColor,
+    },
+  };
+};
 
 export const ItemEndWrapperStyles: StyleObject = {
   display: "flex",

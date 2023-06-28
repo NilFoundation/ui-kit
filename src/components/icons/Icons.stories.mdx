@@ -28,6 +28,7 @@ import TwitterIcon from "./TwitterIcon";
 import LinkedinIcon from "./LinkedinIcon";
 import DiscordIcon from "./DiscordIcon";
 import TelegramIcon from "./TelegramIcon";
+import SeparatorIcon from "./SeparatorIcon";
 
 
 <Meta title="Icons" component={IconStoryWidget} />
@@ -107,6 +108,9 @@ export const Template = (args) => <IconStoryWidget {...args} />
     {Template.bind({})}
   </Story>
   <Story name="Github" args={{icon: <GithubIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Separator" args={{icon: <SeparatorIcon />}}>
     {Template.bind({})}
   </Story>
   <Story name="Twitter" args={{icon: <TwitterIcon />}}>

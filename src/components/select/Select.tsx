@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Select as BaseSelect, SelectProps as BaseSelectProps, Value, OnChangeParams, SIZE } from "baseui/select";
+import React from "react";
+import { Select as BaseSelect, SelectProps as BaseSelectProps, Value, SIZE } from "baseui/select";
 import { getSelectOverrides } from "./overrides";
 import { SELECT_SIZE } from "./types";
 
@@ -10,23 +10,10 @@ export type SelectProps = BaseSelectProps & {
   startEnhancer?: React.ReactNode;
 };
 
-const Select: React.FC<SelectProps> = ({
-  value: baseValue,
-  disabled,
-  size = SELECT_SIZE.medium,
-  onChange,
-  ...props
-}) => {
-  const [value, setValue] = useState<Value | undefined>(baseValue);
+const Select: React.FC<SelectProps> = ({ value, disabled, size = SELECT_SIZE.medium, valueKey, ...props }) => {
+  const overrides = getSelectOverrides(size, !!disabled, value, valueKey);
 
-  const onChangeHandler = (params: OnChangeParams) => {
-    setValue(params.value);
-    onChange?.(params.value);
-  };
-
-  const overrides = getSelectOverrides(size, !!disabled);
-
-  return <BaseSelect {...props} disabled={disabled} value={value} onChange={onChangeHandler} overrides={overrides} />;
+  return <BaseSelect {...props} valueKey={valueKey} value={value} disabled={disabled} overrides={overrides} />;
 };
 
 export { SIZE };

@@ -7,12 +7,15 @@ import { SPINNER_SIZE } from "../../spinner";
 import { Checkbox } from "../../checkbox";
 import { RenderItemProps } from "baseui/menu/types";
 import { getItemContainerStyles, ItemEndWrapperStyles, paragraphActiveStyles, svgActiveStyles } from "../styles";
+import { SeparatorIcon } from "../../icons";
+import { PRIMITIVE_COLORS } from "../../../shared";
 
 type TExpandedItem = Item & {
   selected?: boolean;
   suffixText?: string;
   startEnhancer?: ReactNode;
   endEnhancer?: ReactNode;
+  isActive?: boolean;
 };
 
 type MenuItemProps = RenderItemProps & {
@@ -73,6 +76,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
               className: css(ariaSelected && !disabled ? svgActiveStyles : {}),
             })}
         </EndWrapper>
+        {item?.isActive && <SeparatorIcon size={20} color={PRIMITIVE_COLORS.primary300} />}
       </Item>
     );
   }

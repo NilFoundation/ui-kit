@@ -1,10 +1,14 @@
-import { SelectOverrides } from "baseui/select";
+import { SelectOverrides, Value } from "baseui/select";
 import SelectArrow from "./ui/SelectArrow";
 import MenuItem from "../menu/ui/MenuItem";
 import { SELECT_SIZE } from "./types";
 import SelectSpinner from "./ui/SelectSpinner";
 import { PRIMITIVE_COLORS } from "../../shared";
 import { controlContainerDisabledStyles, controlContainerModifiedStyles, typographyModifiedStyles } from "./styles";
+import { BorderRadiusStyles } from "../../shared/styles/border";
+import { expandProperty } from "inline-style-expand-shorthand";
+import { Tag, TAG_KIND } from "../tag";
+import { Item } from "baseui/menu";
 
 const getColor = (isError: boolean, isPositive: boolean, isFocused: boolean, isDisabled: boolean): string => {
   if (isDisabled) {
@@ -19,15 +23,39 @@ const getColor = (isError: boolean, isPositive: boolean, isFocused: boolean, isD
   return PRIMITIVE_COLORS.primary500;
 };
 
-export const getSelectOverrides = (size: SELECT_SIZE, isDisabled: boolean): SelectOverrides => {
+const getTagKind = (isPositive: boolean, isError: boolean, isFocused: boolean): TAG_KIND => {
+  if (isFocused) {
+    return TAG_KIND.primary;
+  }
+  if (isError) {
+    return TAG_KIND.negative;
+  }
+  if (isPositive) {
+    return TAG_KIND.positive;
+  }
+  return TAG_KIND.primary;
+};
+
+const isSingleItemActive = (value: Value, item: Item, valueKey?: string): boolean => {
+  if (value?.length !== 1) {
+    return false;
+  }
+  const key = valueKey || "id";
+  const singleItem = value[0];
+  return singleItem?.[key] === item?.[key];
+};
+
+export const getSelectOverrides = (
+  size: SELECT_SIZE,
+  isDisabled: boolean,
+  value?: Value,
+  valueKey?: string
+): SelectOverrides => {
   return {
     ControlContainer: {
       style: ({ $isLoading }) => {
         return {
-          borderBottomLeftRadius: "2px",
-          borderBottomRightRadius: "2px",
-          borderTopLeftRadius: "2px",
-          borderTopRightRadius: "2px",
+          ...BorderRadiusStyles,
           ...(isDisabled || $isLoading ? controlContainerDisabledStyles : {}),
           ...controlContainerModifiedStyles[size],
         };
@@ -35,20 +63,18 @@ export const getSelectOverrides = (size: SELECT_SIZE, isDisabled: boolean): Sele
     },
     DropdownListItem: {
       component: MenuItem,
-      props: ({ children, ...props }) => {
+      props: ({ item, ...props }) => {
+        const isActive = value ? isSingleItemActive(value, item, valueKey) : false;
         return {
           ...props,
-          item: { label: children },
+          item: { ...item, isActive },
           size,
         };
       },
     },
     Dropdown: {
       style: () => ({
-        borderTopLeftRadius: "0",
-        borderTopRightRadius: "0",
-        borderBottomLeftRadius: "0",
-        borderBottomRightRadius: "0",
+        ...BorderRadiusStyles,
       }),
     },
     Popover: {
@@ -85,7 +111,7 @@ export const getSelectOverrides = (size: SELECT_SIZE, isDisabled: boolean): Sele
     ValueContainer: {
       style: ({ $error, $positive, $isFocused, $disabled }) => {
         return {
-          padding: "0",
+          ...expandProperty("padding", "0"),
           color: getColor($error, $positive, $isFocused, $disabled),
           ...typographyModifiedStyles[size],
         };
@@ -95,6 +121,13 @@ export const getSelectOverrides = (size: SELECT_SIZE, isDisabled: boolean): Sele
       props: {
         size: "22px",
       },
+    },
+    Tag: {
+      component: Tag,
+      props: ({ $positive, $error, $isFocused, ...props }) => ({
+        ...props,
+        kind: getTagKind($positive, $error, $isFocused),
+      }),
     },
   };
 };
