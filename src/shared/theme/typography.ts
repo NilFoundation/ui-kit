@@ -17,20 +17,27 @@ const getTypographyOverrides = (overrides: any = {}, monoFontName: string) => {
   return { ...overrides, ...monoOverrides };
 };
 
+const InterRegularUrl =
+  "https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2";
+const InterSemiBoldUrl =
+  "https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZ9hiJ-Ek-_EeA.woff2";
+const RobotoMonoRegularUrl =
+  "https://fonts.gstatic.com/s/robotomono/v22/L0xuDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vq_ROW4AJi8SJQt.woff2";
+
 export const createTypography = (instance: StyletronClient): CreateTheme => {
   const InterRegular = instance.renderFontFace({
-    src: 'url("/fonts/inter/Inter-Regular.ttf")',
+    src: `url("${InterRegularUrl}")`,
     fontStyle: "normal",
     fontWeight: 400,
   });
   const InterSemiBold = instance.renderFontFace({
-    src: 'url("/fonts/inter/Inter-SemiBold.ttf")',
+    src: `url("${InterSemiBoldUrl}")`,
     fontStyle: "normal",
     fontWeight: 600,
   });
 
   const RobotoMonoRegular = instance.renderFontFace({
-    src: 'url("/fonts/roboto-mono/RobotoMono-Regular.ttf")',
+    src: `url("${RobotoMonoRegularUrl}")`,
     fontStyle: "normal",
     fontWeight: 400,
   });
