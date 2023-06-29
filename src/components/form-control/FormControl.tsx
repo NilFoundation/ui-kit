@@ -1,36 +1,33 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { FormControl as BaseFormControl, FormControlProps as BaseFormControlProps } from "baseui/form-control";
 import { INPUT_SIZE } from "../input";
 import { getFormControlOverrides } from "./overrides";
 
-export type FormControlProps = BaseFormControlProps & {
+interface ICounter {
+  maxLength: number;
+  length: number;
+}
+
+export type FormControlProps = Omit<BaseFormControlProps, "counter"> & {
   size?: INPUT_SIZE;
   readOnly?: boolean;
-  maxLength?: number;
   isLoading?: boolean;
+  counter?: ICounter;
 };
 
-const getValueLabel = (value: string, maxLength: number): string => {
-  return `${value.length}/${maxLength}`;
+const getValueLabel = (counter: ICounter): string => {
+  return `${counter.length}/${counter.maxLength}`;
 };
 
 const FormControl: FC<FormControlProps> = ({
   isLoading,
-  maxLength,
   readOnly,
   size = INPUT_SIZE.medium,
   children,
+  counter,
   ...props
 }) => {
-  const [value, setValue] = useState("");
-
-  const onValueChangeHandler = (data: string | any) => {
-    if (typeof data === "string") {
-      setValue(data);
-    }
-  };
-
-  const overrides = getFormControlOverrides(size, !!readOnly, maxLength ? getValueLabel(value, maxLength) : undefined);
+  const overrides = getFormControlOverrides(size, !!readOnly, counter ? getValueLabel(counter) : undefined);
 
   return (
     <BaseFormControl {...props} overrides={overrides}>
@@ -38,9 +35,8 @@ const FormControl: FC<FormControlProps> = ({
       {React.cloneElement(children, {
         size,
         readOnly,
-        maxLength,
         isLoading,
-        onValueChange: onValueChangeHandler,
+        maxLength: counter ? counter.maxLength : undefined,
       })}
     </BaseFormControl>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Input as BaseInput, InputProps as BaseInputProps, SIZE } from "baseui/input";
 import { getInputOverrides } from "./overrides";
 import { INPUT_SIZE } from "./types";
@@ -9,10 +9,7 @@ import { spinnerStyles } from "./styles";
 export type InputProps = BaseInputProps & {
   size?: INPUT_SIZE;
   isLoading?: boolean;
-  onValueChange?: (value: string) => void;
 };
-
-type TInputValue = string | number | undefined;
 
 const spinnerSize = {
   [INPUT_SIZE.small]: SPINNER_SIZE.small,
@@ -20,17 +17,8 @@ const spinnerSize = {
   [INPUT_SIZE.large]: SPINNER_SIZE.large,
 };
 
-const Input: React.FC<InputProps> = ({
-  isLoading,
-  endEnhancer,
-  size = INPUT_SIZE.medium,
-  value: baseValue,
-  onValueChange,
-  onChange,
-  ...props
-}) => {
+const Input: React.FC<InputProps> = ({ isLoading, endEnhancer, size = INPUT_SIZE.medium, ...props }) => {
   const [css] = useStyletron();
-  const [value, setValue] = useState<TInputValue>(baseValue);
 
   const overrides = getInputOverrides(size);
 
@@ -42,15 +30,7 @@ const Input: React.FC<InputProps> = ({
       </>
     ) : null;
 
-  const onChangeHandler: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (event) => {
-    setValue(event.target.value);
-    onValueChange?.(event.target.value);
-    onChange?.(event);
-  };
-
-  return (
-    <BaseInput {...props} value={value} onChange={onChangeHandler} overrides={overrides} endEnhancer={EndEnhancer} />
-  );
+  return <BaseInput {...props} overrides={overrides} endEnhancer={EndEnhancer} />;
 };
 
 export { SIZE };
