@@ -5,6 +5,7 @@ import { TEXTAREA_SIZE } from "./types";
 import TextareaResizeIcon from "./ui/TextareaResizeIcon";
 import { useStyletron } from "baseui";
 import TextareaSpinner from "./ui/TextareaSpinner";
+import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
 export type TextareaProps = BaseTextareaProps & {
   size?: TEXTAREA_SIZE;
@@ -17,12 +18,14 @@ const Textarea: FC<TextareaProps> = ({
   resize,
   isLoading,
   onChange,
+  overrides: baseOverrides,
   ...props
 }) => {
   const [value, setValue] = useState<string | number>(baseValue ?? "");
   const [css] = useStyletron();
 
-  const overrides = getTextareaOverrides(size, isLoading);
+  const textareaOverrides = getTextareaOverrides(size, isLoading);
+  const overrides = getMergedOverrides(textareaOverrides, baseOverrides);
   const isResizable = resize && ["both", "horizontal", "vertical"].includes(resize);
 
   const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
