@@ -5,6 +5,7 @@ import { INPUT_SIZE } from "./types";
 import { Spinner, SPINNER_SIZE } from "../spinner";
 import { useStyletron } from "baseui";
 import { spinnerStyles } from "./styles";
+import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
 export type InputProps = BaseInputProps & {
   size?: INPUT_SIZE;
@@ -17,10 +18,17 @@ const spinnerSize = {
   [INPUT_SIZE.large]: SPINNER_SIZE.large,
 };
 
-const Input: React.FC<InputProps> = ({ isLoading, endEnhancer, size = INPUT_SIZE.medium, ...props }) => {
+const Input: React.FC<InputProps> = ({
+  isLoading,
+  endEnhancer,
+  size = INPUT_SIZE.medium,
+  overrides: baseOverrides,
+  ...props
+}) => {
   const [css] = useStyletron();
 
-  const overrides = getInputOverrides(size);
+  const inputOverrides = getInputOverrides(size);
+  const overrides = getMergedOverrides(inputOverrides, baseOverrides);
 
   const EndEnhancer =
     endEnhancer || isLoading ? (

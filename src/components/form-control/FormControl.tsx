@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { FormControl as BaseFormControl, FormControlProps as BaseFormControlProps } from "baseui/form-control";
 import { INPUT_SIZE } from "../input";
 import { getFormControlOverrides } from "./overrides";
+import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
 interface ICounter {
   maxLength: number;
@@ -25,9 +26,11 @@ const FormControl: FC<FormControlProps> = ({
   size = INPUT_SIZE.medium,
   children,
   counter,
+  overrides: baseOverrides,
   ...props
 }) => {
-  const overrides = getFormControlOverrides(size, !!readOnly, counter ? getValueLabel(counter) : undefined);
+  const formControlOverrides = getFormControlOverrides(size, !!readOnly, counter ? getValueLabel(counter) : undefined);
+  const overrides = getMergedOverrides(formControlOverrides, baseOverrides);
 
   return (
     <BaseFormControl {...props} overrides={overrides}>
