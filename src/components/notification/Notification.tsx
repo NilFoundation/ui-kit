@@ -6,6 +6,7 @@ import NotificationContent from "./ui/NotificationContent";
 import { CancelIcon, CompleteIcon, IconProps, InfoIcon, WarningIcon } from "../icons";
 import { Button, BUTTON_KIND, BUTTON_SIZE } from "../button";
 import { PRIMITIVE_COLORS } from "../../shared";
+import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
 const semanticIcon = {
   [NOTIFICATION_KIND.info]: ({ ...props }: IconProps) => <InfoIcon size={20} {...props} />,
@@ -37,9 +38,11 @@ const Notification: React.FC<NotificationProps> = ({
   icon,
   isAction,
   actionLabel = "Close",
+  overrides: baseOverrides,
   ...props
 }) => {
-  const overrides = getNotificationOverrides();
+  const getMainNotificationOverrides = getNotificationOverrides();
+  const overrides = getMergedOverrides(getMainNotificationOverrides, baseOverrides);
 
   const Icon = semanticIcon[kind];
 
