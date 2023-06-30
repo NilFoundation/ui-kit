@@ -132,15 +132,15 @@ export const createTypography = (defaultFonts?: DefaultFonts): DefaultTheme => {
           {
             DisplayXSmall: {
               ...defaultSemiBoldFontProperty,
-              fontSize: "24px",
-              fontWeight: 600,
-              lineHeight: "32px",
-            },
-            DisplaySmall: {
-              ...defaultSemiBoldFontProperty,
               fontSize: "22px",
               fontWeight: 600,
               lineHeight: "28px",
+            },
+            DisplaySmall: {
+              ...defaultSemiBoldFontProperty,
+              fontSize: "44px",
+              fontWeight: 600,
+              lineHeight: "52px",
             },
             DisplayMedium: {
               ...defaultSemiBoldFontProperty,
@@ -160,9 +160,9 @@ export const createTypography = (defaultFonts?: DefaultFonts): DefaultTheme => {
 
         MonoDisplayXSmall: {
           ...defaultMonoRegularFontProperty,
-          fontSize: "36px",
+          fontSize: "22px",
           fontWeight: 400,
-          lineHeight: "44px",
+          lineHeight: "28px",
         },
       },
     },
