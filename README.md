@@ -17,11 +17,11 @@ UI components library to build React applications using `=nil;` pre-designed sty
 ## Getting started
 ### npm
 ```bash
-npm install @nilfoundation/ui-kit@1.0.1 baseui styletron-engine-atomic styletron-react
+npm install @nilfoundation/ui-kit baseui styletron-engine-atomic styletron-react
 ```
 ### yarn
 ```bash
-yarn add @nilfoundation/ui-kit@1.0.1 baseui styletron-engine-atomic styletron-react
+yarn add @nilfoundation/ui-kit baseui styletron-engine-atomic styletron-react
 ```
 
 ## Usage
