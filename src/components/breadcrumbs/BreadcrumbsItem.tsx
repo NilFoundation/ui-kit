@@ -36,6 +36,10 @@ const BreadcrumbsItem: FC<BreadcrumbsItemProps> = ({ isActive, disabled, href, c
     ":hover": {
       color: `${getLinkHoverColor(isActive, disabled)} !important`,
     },
+
+    ":focus": {
+      color: `${PRIMITIVE_COLORS.primary300} !important`,
+    },
   });
 
   return <Link href={!disabled && href}>{children}</Link>;
