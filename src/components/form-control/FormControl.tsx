@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import { FormControl as BaseFormControl, FormControlProps as BaseFormControlProps } from "baseui/form-control";
 import { INPUT_SIZE } from "../input";
 import { getFormControlOverrides } from "./overrides";
+import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
 export type FormControlProps = BaseFormControlProps & {
   size?: INPUT_SIZE;
@@ -20,6 +21,7 @@ const FormControl: FC<FormControlProps> = ({
   readOnly,
   size = INPUT_SIZE.medium,
   children,
+  overrides: baseOverrides,
   ...props
 }) => {
   const [value, setValue] = useState("");
@@ -30,7 +32,12 @@ const FormControl: FC<FormControlProps> = ({
     }
   };
 
-  const overrides = getFormControlOverrides(size, !!readOnly, maxLength ? getValueLabel(value, maxLength) : undefined);
+  const formControlOverrides = getFormControlOverrides(
+    size,
+    !!readOnly,
+    maxLength ? getValueLabel(value, maxLength) : undefined
+  );
+  const overrides = getMergedOverrides(formControlOverrides, baseOverrides);
 
   return (
     <BaseFormControl {...props} overrides={overrides}>
