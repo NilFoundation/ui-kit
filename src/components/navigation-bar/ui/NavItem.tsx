@@ -12,6 +12,25 @@ type NavItemProps = {
   onItemClick?: (item: NavigationItem) => void;
 };
 
+const getButtonStyles = (isSelected: boolean) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  border: "none",
+  background: "none",
+  outline: "none",
+  color: isSelected ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.primary800,
+  cursor: "pointer",
+
+  ":hover": {
+    color: PRIMITIVE_COLORS.primary600,
+  },
+
+  ":focus": {
+    color: PRIMITIVE_COLORS.primary500,
+  },
+});
+
 const NavItem: FC<NavItemProps> = ({ item, onItemClick }) => {
   const [css] = useStyletron();
   const [isOpen, setOpen] = useState(false);
@@ -36,16 +55,9 @@ const NavItem: FC<NavItemProps> = ({ item, onItemClick }) => {
 
   return (
     <li
-      onClick={onClickHandler}
       className={css({
         display: "flex",
         alignItems: "center",
-        color: item?.isSelected ? PRIMITIVE_COLORS.primary600 : PRIMITIVE_COLORS.primary800,
-        cursor: "pointer",
-
-        ":hover": {
-          color: PRIMITIVE_COLORS.primary600,
-        },
       })}
     >
       {children.length > 0 ? (
@@ -55,22 +67,19 @@ const NavItem: FC<NavItemProps> = ({ item, onItemClick }) => {
           popoverMargin={20}
           content={<Menu isLight items={children} onItemSelect={(data) => onItemClick?.(data?.item)} />}
         >
-          <div
-            className={css({
-              display: "flex",
-              alignItems: "center",
-            })}
-          >
+          <button className={css(getButtonStyles(!!item?.isSelected))} tabIndex={0}>
             <LabelSmall as="span" color="inherit">
               {label}
             </LabelSmall>
             {isOpen ? <CaretUpIcon {...iconProps} /> : <CaretDownIcon {...iconProps} />}
-          </div>
+          </button>
         </NavPopover>
       ) : (
-        <LabelSmall as="span" color="inherit">
-          {label}
-        </LabelSmall>
+        <button className={css(getButtonStyles(!!item?.isSelected))} onClick={onClickHandler} tabIndex={0}>
+          <LabelSmall as="span" color="inherit">
+            {label}
+          </LabelSmall>
+        </button>
       )}
     </li>
   );
