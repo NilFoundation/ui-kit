@@ -3,6 +3,7 @@ import { Tab as BaseTab, TabProps as BaseTabProps } from "baseui/tabs";
 import { getTabOverrides } from "./overrides";
 import { useStyletron } from "baseui";
 import { contentWrapperStyles } from "./styles";
+import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
 export type TabProps = BaseTabProps & {
   startEnhancer?: ReactNode;
@@ -18,10 +19,11 @@ const getEnhancer = (node: ReactNode) => {
   return node;
 };
 
-const Tab: FC<TabProps> = ({ startEnhancer, endEnhancer, children, ...props }) => {
+const Tab: FC<TabProps> = ({ startEnhancer, endEnhancer, children, overrides: baseOverrides, ...props }) => {
   const [css] = useStyletron();
 
-  const overrides = getTabOverrides();
+  const tabOverrides = getTabOverrides();
+  const overrides = getMergedOverrides(tabOverrides, baseOverrides);
 
   return (
     <BaseTab {...props} overrides={overrides}>
