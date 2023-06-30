@@ -3,6 +3,7 @@ import { Button as BaseButton, ButtonProps as BaseButtonProps } from "baseui/but
 import { getButtonOverrides } from "./overrides";
 import { BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE } from "./types";
 import ButtonNode from "./ui/ButtonNode";
+import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
 export type ButtonProps = Omit<BaseButtonProps, "kind" | "shape" | "size"> & {
   kind?: BUTTON_KIND;
@@ -24,9 +25,11 @@ const Button: React.FC<ButtonProps> = ({
   endEnhancer,
   className,
   children,
+  overrides: baseOverrides,
   ...props
 }) => {
-  const overrides = getButtonOverrides(kind, size, colors);
+  const buttonOverrides = getButtonOverrides(kind, size, colors);
+  const overrides = getMergedOverrides(buttonOverrides, baseOverrides);
 
   return (
     <BaseButton
