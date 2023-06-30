@@ -1,0 +1,16 @@
+name: Release
+on:
+  push:
+    tags:
+    - 'v*'
+jobs:
+  release:
+    if: ${{ github.ref == 'refs/heads/master' }} # run only after push tags to master branch
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ncipollo/release-action@v1
+      with:
+        generateReleaseNotes: true

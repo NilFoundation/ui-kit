@@ -1,21 +1,12 @@
 import { ThemeWrapper } from "../src/shared/theme";
-import { useEffect } from "react";
+import theme from './theme';
 
 export const decorators = [
-  (Story) => {
-    useEffect(() => {
-      const storyWrapper = document.querySelector(".docs-story");
-      if (storyWrapper) {
-        storyWrapper.style.backgroundColor = "#141414";
-      }
-    }, []);
-
-    return (
-      <ThemeWrapper>
-        <Story />
-      </ThemeWrapper>
-    );
-  },
+  (Story) => (
+    <ThemeWrapper>
+      <Story />
+    </ThemeWrapper>
+  ),
 ];
 
 export const parameters = {
@@ -26,8 +17,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  backgrounds: {
-    default: "Dark",
-    values: [{ name: "Dark", value: "#141414" }],
-  },
+  docs: {
+    theme
+  }
 };
