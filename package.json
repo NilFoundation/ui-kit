@@ -23,7 +23,8 @@
     "lint": "eslint 'src/**/**/*.{js,ts,tsx}'",
     "tsc": "tsc --noEmit",
     "storybook": "start-storybook -s ./src/assets -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "postversion": "git push --tags"
   },
   "license": "MIT",
   "peerDependencies": {
@@ -42,6 +43,7 @@
     "@storybook/manager-webpack5": "^6.5.14",
     "@storybook/react": "^6.5.14",
     "@storybook/testing-library": "^0.0.13",
+    "@storybook/theming": "^6.5.14",
     "@types/node": "^20.1.7",
     "@types/react": "^18.2.8",
     "@types/react-dom": "^18.2.4",
