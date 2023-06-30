@@ -151,15 +151,15 @@ export const createTypography = (instance: StyletronClient): CreateTheme => {
           {
             DisplayXSmall: {
               fontFamily: interSemiBoldFontFamily,
-              fontSize: "24px",
-              fontWeight: 600,
-              lineHeight: "32px",
-            },
-            DisplaySmall: {
-              fontFamily: interSemiBoldFontFamily,
               fontSize: "22px",
               fontWeight: 600,
               lineHeight: "28px",
+            },
+            DisplaySmall: {
+              fontFamily: interSemiBoldFontFamily,
+              fontSize: "44px",
+              fontWeight: 600,
+              lineHeight: "52px",
             },
             DisplayMedium: {
               fontFamily: interSemiBoldFontFamily,
@@ -179,9 +179,9 @@ export const createTypography = (instance: StyletronClient): CreateTheme => {
 
         MonoDisplayXSmall: {
           fontFamily: robotoFontFamily,
-          fontSize: "36px",
+          fontSize: "22px",
           fontWeight: 400,
-          lineHeight: "44px",
+          lineHeight: "28px",
         },
       },
     },
