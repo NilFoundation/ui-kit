@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { ListItem as BaseListItem, ListProps as BaseListProps } from "baseui/list";
 import { getListItemOverrides } from "./overrides";
+import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
 export type ListItemProps = BaseListProps & {
   isActive?: boolean;
@@ -16,8 +17,9 @@ const getChildrenNode = (node: React.ReactNode, disabled: boolean) => {
   return node;
 };
 
-const ListItem: FC<ListItemProps> = ({ isActive, disabled, children, ...props }) => {
-  const overrides = getListItemOverrides(!!isActive, !!disabled);
+const ListItem: FC<ListItemProps> = ({ isActive, disabled, children, overrides: baseOverrides, ...props }) => {
+  const listItemOverrides = getListItemOverrides(!!isActive, !!disabled);
+  const overrides = getMergedOverrides(listItemOverrides, baseOverrides);
 
   return (
     <BaseListItem {...props} overrides={overrides}>
