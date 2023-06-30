@@ -5,11 +5,9 @@ import { getRadioOverrides } from "./overrides";
 export type RadioProps = BaseRadioProps;
 
 const Radio: FC<RadioProps> = ({ ...props }) => {
-  const { checked, error, disabled } = props;
+  const overrides = getRadioOverrides();
 
-  const overrides = getRadioOverrides(checked, disabled, error);
-
-  return <BaseRadio overrides={overrides} {...props} />;
+  return <BaseRadio {...props} overrides={overrides} />;
 };
 
 export default Radio;

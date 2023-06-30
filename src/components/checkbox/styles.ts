@@ -1,24 +1,16 @@
 import { PRIMITIVE_COLORS } from "../../shared";
+import { expandProperty } from "inline-style-expand-shorthand";
 
 const getBorderColorProperties = (color: string) => ({
-  borderLeftColor: color,
-  borderRightColor: color,
-  borderTopColor: color,
-  borderBottomColor: color,
+  ...expandProperty("borderColor", color),
 });
 
 export const getCheckmarkBaseStyles = (isIndeterminate: boolean) => ({
   width: "15px",
   height: "15px",
   boxSizing: "border-box",
-  borderLeftWidth: "1px",
-  borderRightWidth: "1px",
-  borderTopWidth: "1px",
-  borderBottomWidth: "1px",
-  marginTop: "",
-  marginBottom: "",
-  marginRight: "",
-  marginLeft: "",
+  ...expandProperty("borderWidth", "1px"),
+  ...expandProperty("margin", 0),
   backgroundSize: isIndeterminate ? "8px" : "9px",
   outline: "none",
   backgroundPositionY: isIndeterminate ? "center" : "2px",
