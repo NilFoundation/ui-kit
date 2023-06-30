@@ -5,10 +5,8 @@ import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
 export type RadioProps = BaseRadioProps;
 
-const Radio: FC<RadioProps> = ({ ...props }) => {
-  const { checked, error, disabled, overrides: baseOverrides } = props;
-
-  const radioOverrides = getRadioOverrides(checked, disabled, error);
+const Radio: FC<RadioProps> = ({ overrides: baseOverrides, ...props }) => {
+  const radioOverrides = getRadioOverrides();
   const overrides = getMergedOverrides(radioOverrides, baseOverrides);
 
   return <BaseRadio overrides={overrides} {...props} />;
