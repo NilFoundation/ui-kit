@@ -1,6 +1,8 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
-import NavigationBar from "./NavigationBar"; import AuthDropdownContainer from "./ui/auth/AuthDropdownContainer"; import AuthBalance
-  from "./ui/auth/AuthBalance"; import {Brand} from "../brand";
+import NavigationBar from "./NavigationBar";
+import AuthDropdownContainer from "./AuthDropdownContainer";
+import AuthItem from "./AuthItem";
+import {Brand} from "../brand";
 
 <Meta
     title="NavigationBar"
@@ -49,7 +51,7 @@ export const items = [
 
 export const authDropdownContainer = (
   <AuthDropdownContainer username="John">
-    <AuthBalance amount="1069" coin="34" currency="USD" />
+    <AuthItem amount="1069" cents="34" currency="USD" />
   </AuthDropdownContainer>
 )
 
@@ -76,7 +78,7 @@ To use, import the component `NavigationBar` and from `@nilfoundation/ui-kit`.
   dark
   format={true}
   code={`
-        import {NavigationBar, Brand, AuthDropdownContainer, AuthBalance} from "@nilfoundation/ui-kit";
+        import {NavigationBar, Brand, AuthDropdownContainer, AuthItem} from "@nilfoundation/ui-kit";
         ...
         export const items = [
           {
@@ -103,7 +105,7 @@ To use, import the component `NavigationBar` and from `@nilfoundation/ui-kit`.
             brand={<Brand />}
             authDropdownContainer={() => (
               <AuthDropdownContainer username="John">
-                <AuthBalance amount="1069" coin="34" currency="USD" />
+                <AuthItem amount="1069" cents="34" currency="USD" />
               </AuthDropdownContainer>
             )}
         />

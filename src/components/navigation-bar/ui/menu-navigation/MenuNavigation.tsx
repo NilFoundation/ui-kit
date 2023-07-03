@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { getNavigationBurgerStyles, getNavigationListStyles, navigationNavWrapperStyles } from "../../styles";
 import NavItem from "./NavItem";
-import AuthItem from "../auth/AuthItem";
+import AuthBlock from "../auth/AuthBlock";
 import { Button, BUTTON_SHAPE, BUTTON_SIZE } from "../../../button";
 import { MenuIcon } from "../../../icons";
 import { NavigationBarProps } from "../../types";
@@ -31,7 +31,7 @@ const MenuNavigation: FC<MenuNavigationProps> = ({
           <NavItem key={item.id} item={item} onItemClick={onItemClick} />
         ))}
         <li>
-          <AuthItem
+          <AuthBlock
             username={username}
             isAuth={isAuth}
             onLogin={onLogin}

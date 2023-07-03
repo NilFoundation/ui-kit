@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { useStyletron } from "baseui";
-import { PRIMITIVE_COLORS } from "../../../../shared";
 import { LabelSmall } from "baseui/typography";
 import { expandProperty } from "inline-style-expand-shorthand";
+import { PRIMITIVE_COLORS } from "../../shared";
 
-export type AuthBalanceProps = {
+export type AuthItemProps = {
   amount: string;
-  coin?: string;
+  cents?: string;
   currency: string;
 };
 
@@ -23,7 +23,7 @@ const labelStyles = {
   marginRight: "4px",
 };
 
-const AuthBalance: FC<AuthBalanceProps> = ({ amount, coin, currency }) => {
+const AuthItem: FC<AuthItemProps> = ({ amount, cents, currency }) => {
   const [css] = useStyletron();
 
   return (
@@ -33,9 +33,9 @@ const AuthBalance: FC<AuthBalanceProps> = ({ amount, coin, currency }) => {
         <LabelSmall className={css(labelStyles)} as="span" color={PRIMITIVE_COLORS.primary800}>
           {amount}
         </LabelSmall>
-        {coin && (
+        {cents && (
           <LabelSmall className={css(labelStyles)} as="span" color={PRIMITIVE_COLORS.primary500}>
-            {coin}
+            {cents}
           </LabelSmall>
         )}
         <LabelSmall as="span" color={PRIMITIVE_COLORS.primary800}>
@@ -46,4 +46,4 @@ const AuthBalance: FC<AuthBalanceProps> = ({ amount, coin, currency }) => {
   );
 };
 
-export default AuthBalance;
+export default AuthItem;

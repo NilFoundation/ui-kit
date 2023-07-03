@@ -1,10 +1,10 @@
 import { FC, ReactNode } from "react";
 import { useStyletron } from "baseui";
-import AuthAvatar from "./AuthAvatar";
+import AuthAvatar from "./ui/auth/AuthAvatar";
 import { LabelSmall } from "baseui/typography";
-import { PRIMITIVE_COLORS } from "../../../../shared";
-import { LogoutIcon } from "../../../icons";
-import { Button, BUTTON_SIZE } from "../../../button";
+import { PRIMITIVE_COLORS } from "../../shared";
+import { LogoutIcon } from "../icons";
+import { Button, BUTTON_SIZE } from "../button";
 
 export type AuthDropdownContainerProps = {
   username: string;
