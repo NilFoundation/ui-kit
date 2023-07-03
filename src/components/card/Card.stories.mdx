@@ -22,10 +22,10 @@ export const imageUrl = "https://oir.mobi/uploads/posts/2021-05/1622168357_43-oi
   <Story name="Basic usage" args={{}}>
       {Template.bind({})}
   </Story>
-  <Story name="Heading and button" args={{title: "Example card", dash: true}}>
+  <Story name="Heading and button" args={{title: "Example card", headline: true}}>
       {Template.bind({})}
   </Story>
-  <Story name="Photo" args={{headerImage: imageUrl, isButton: true, dash: true, title: "Example card"}}>
+  <Story name="Photo" args={{headerImage: imageUrl, isButton: true, headline: true, title: "Example card"}}>
       {Template.bind({})}
   </Story>
   <Story name="Thumbnail" args={{title: "Card title", thumbnail: imageUrl, dash: true}}>
@@ -63,7 +63,7 @@ To use, import the component `Card` from `@nilfoundation/ui-kit`.
           </StyledAction>
         </Card>
         // With dash
-        <Card dash>Description</Card>
+        <Card headline>Description</Card>
         // With header image
         <Card headerImage="path">...</Card>
         // With thumbnail

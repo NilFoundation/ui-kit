@@ -1,7 +1,7 @@
 import { StyleObject } from "styletron-react";
 import { PRIMITIVE_COLORS } from "../../shared";
 
-export const styledWhiteDash: StyleObject = {
+export const styledWhiteHeadline: StyleObject = {
   position: "absolute",
   top: 0,
   left: 0,

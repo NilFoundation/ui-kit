@@ -6,7 +6,7 @@ import { expandProperty } from "inline-style-expand-shorthand";
 
 export const BorderStyle = expandProperty("border", "none");
 
-export const getCardOverrides = (dash: boolean, border: boolean): CardOverrides => {
+export const getCardOverrides = (headline: boolean, border: boolean): CardOverrides => {
   return {
     Root: {
       style: {
@@ -14,7 +14,7 @@ export const getCardOverrides = (dash: boolean, border: boolean): CardOverrides 
         position: "relative",
         paddingRight: "16px",
         paddingLeft: "16px",
-        paddingTop: dash ? "24px" : "16px",
+        paddingTop: headline ? "24px" : "16px",
         paddingBottom: "0px",
         boxSizing: "border-box",
         maxWidth: "328px",
