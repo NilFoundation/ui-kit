@@ -71,7 +71,11 @@ const NavItem: FC<NavItemProps> = ({ item, onItemClick }) => {
           popoverMargin={20}
           content={<Menu isLight items={children} onItemSelect={(data) => onItemClick?.(data?.item)} />}
         >
-          <button className={css(getButtonStyles(!!item?.isSelected, !!item?.disabled))} tabIndex={0}>
+          <button
+            disabled={item?.disabled}
+            className={css(getButtonStyles(!!item?.isSelected, !!item?.disabled))}
+            tabIndex={0}
+          >
             <LabelSmall as="span" color="inherit">
               {label}
             </LabelSmall>
@@ -83,6 +87,7 @@ const NavItem: FC<NavItemProps> = ({ item, onItemClick }) => {
           className={css(getButtonStyles(!!item?.isSelected, !!item?.disabled))}
           onClick={onClickHandler}
           tabIndex={0}
+          disabled={item?.disabled}
         >
           <LabelSmall as="span" color="inherit">
             {label}
