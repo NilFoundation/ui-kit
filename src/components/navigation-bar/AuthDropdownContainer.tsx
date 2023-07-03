@@ -7,7 +7,7 @@ import { LogoutIcon } from "../icons";
 import { Button, BUTTON_SIZE } from "../button";
 
 export type AuthDropdownContainerProps = {
-  username: string;
+  username?: string;
   children?: ReactNode;
   onLogout?: () => void;
 };
@@ -37,20 +37,22 @@ const AuthDropdownContainer: FC<AuthDropdownContainerProps> = ({ username, child
 
   return (
     <div className={css(containerStyles)}>
-      <div className={css(wrapperStyles)}>
-        <div className={css(authWrapperStyles)}>
-          <AuthAvatar username={username} />
-          <LabelSmall className={css(labelStyles)} color={PRIMITIVE_COLORS.primary800}>
-            {username}
-          </LabelSmall>
+      {username && (
+        <div className={css(wrapperStyles)}>
+          <div className={css(authWrapperStyles)}>
+            <AuthAvatar username={username} />
+            <LabelSmall className={css(labelStyles)} color={PRIMITIVE_COLORS.primary800}>
+              {username}
+            </LabelSmall>
+          </div>
+          <Button onClick={onLogout} size={BUTTON_SIZE.mini}>
+            <LogoutIcon color={PRIMITIVE_COLORS.primary800} />
+            <LabelSmall className={css(labelStyles)} color={PRIMITIVE_COLORS.primary800}>
+              Log Out
+            </LabelSmall>
+          </Button>
         </div>
-        <Button onClick={onLogout} size={BUTTON_SIZE.mini}>
-          <LogoutIcon color={PRIMITIVE_COLORS.primary800} />
-          <LabelSmall className={css(labelStyles)} color={PRIMITIVE_COLORS.primary800}>
-            Log Out
-          </LabelSmall>
-        </Button>
-      </div>
+      )}
       {children}
     </div>
   );

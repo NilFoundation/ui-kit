@@ -9,13 +9,21 @@ const NavigationBar: FC<NavigationBarProps> = ({ brand, className, ...props }) =
   const [css] = useStyletron();
   const [isDrawerOpen, setDrawerOpen] = useState<boolean>(false);
 
+  const isAuthVisible = Boolean(!props?.noLogin && (!props?.isAuth || props?.username));
+
   return (
     <header className={[css(getNavigationContainerStyles()), className].join(" ")}>
       <div className={css(navigationWrapperStyles)}>
         {brand}
-        <MenuNavigation {...props} onDrawerButtonClick={() => setDrawerOpen(true)} />
+        <MenuNavigation {...props} isAuthVisible={isAuthVisible} onDrawerButtonClick={() => setDrawerOpen(true)} />
       </div>
-      <NavigationDrawer {...props} isOpen={isDrawerOpen} brand={brand} onClose={() => setDrawerOpen(false)} />
+      <NavigationDrawer
+        {...props}
+        isAuthVisible={isAuthVisible}
+        isOpen={isDrawerOpen}
+        brand={brand}
+        onClose={() => setDrawerOpen(false)}
+      />
     </header>
   );
 };

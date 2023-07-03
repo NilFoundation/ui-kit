@@ -1,8 +1,7 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import NavigationBar from "./NavigationBar";
-import AuthDropdownContainer from "./AuthDropdownContainer";
-import AuthItem from "./AuthItem";
 import {Brand} from "../brand";
+import NavigationBarStoryWidget from "./ui/NavigationBarStoryWidget";
 
 <Meta
     title="NavigationBar"
@@ -11,9 +10,7 @@ import {Brand} from "../brand";
 
 export const Template = ({...args}) => {
     return (
-      <div style={{width: "100%", height: "240px", transform: "scale(1)"}}>
-        <NavigationBar {...args} />
-      </div>
+      <NavigationBarStoryWidget {...args} />
     );
 }
 
@@ -49,20 +46,40 @@ export const items = [
   },
 ]
 
-export const authDropdownContainer = (
-  <AuthDropdownContainer username="John">
-    <AuthItem amount="1069" cents="34" currency="USD" />
-  </AuthDropdownContainer>
-)
-
 # NavigationBar
 
 
 <Canvas isColumn>
-  <Story name="Base" args={{items, username: "John", isAuth: false, authDropdownContainer, brand: <Brand />}}>
+  <Story
+    name="Base"
+    args={{
+      items, username: "John", isAuth: false, brand: <Brand />
+    }}
+  >
     {Template.bind({})}
   </Story>
-  <Story name="Auth" args={{items, username: "John", isAuth: true, authDropdownContainer, brand: <Brand />}}>
+  <Story
+    name="Auth"
+    args={{
+      items, username: "John", isAuth: true, brand: <Brand />
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Without Username"
+    args={{
+      items, isAuth: true, brand: <Brand />
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Without Auth Widget"
+    args={{
+      items, username: "John", noLogin: true, brand: <Brand />
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>

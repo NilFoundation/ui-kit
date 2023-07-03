@@ -15,6 +15,7 @@ type NavigationDrawerProps = {
   onItemClick?: (item: NavigationItem) => void;
   onLogin?: () => void;
   brand?: ReactNode;
+  isAuthVisible?: ReactNode;
   items?: Array<NavigationItem>;
   authDropdownContainer?: ReactNode;
 };
@@ -25,6 +26,7 @@ const NavigationDrawer: FC<NavigationDrawerProps> = ({
   onItemClick,
   isAuth,
   onClose,
+  isAuthVisible,
   onLogin,
   isOpen,
   authDropdownContainer,
@@ -63,7 +65,9 @@ const NavigationDrawer: FC<NavigationDrawerProps> = ({
       >
         <SideNavigationHeader brand={brand} onClose={onClose} />
         {items && <SideNavigationList items={items} onItemClick={onItemClick} />}
-        <SideNavigationFooter isAuth={isAuth} onLogin={onLogin} authDropdownContainer={authDropdownContainer} />
+        {isAuthVisible && (
+          <SideNavigationFooter isAuth={isAuth} onLogin={onLogin} authDropdownContainer={authDropdownContainer} />
+        )}
       </div>
     </Drawer>
   );

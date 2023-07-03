@@ -16,5 +16,6 @@ export type NavigationBarProps = {
   authDropdownContainer?: ReactNode;
   brand?: ReactNode;
   username?: string;
+  noLogin?: boolean;
   className?: string;
 };
