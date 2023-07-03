@@ -46,7 +46,7 @@ const NavItem: FC<NavItemProps> = ({ item, onItemClick }) => {
     className: css({
       marginLeft: "4px",
     }),
-    color: PRIMITIVE_COLORS.primary800,
+    color: item?.disabled ? PRIMITIVE_COLORS.primary300 : PRIMITIVE_COLORS.primary800,
     size: 16,
   };
 
