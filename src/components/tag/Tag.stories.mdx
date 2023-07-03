@@ -1,0 +1,63 @@
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import Tag from "./Tag";
+import {TAG_KIND, TAG_VARIANT} from "./types";
+
+<Meta
+    title="Tag"
+    component={Tag}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <Tag {...args}>Tag label</Tag>
+    );
+}
+
+# Tag
+
+
+<Canvas isColumn>
+  <Story name="Primary" args={{kind: TAG_KIND.primary}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Positive" args={{kind: TAG_KIND.positive}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Warning" args={{kind: TAG_KIND.warning}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Negative" args={{kind: TAG_KIND.negative}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Disabled" args={{disabled: true}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Variant Light" args={{variant: TAG_VARIANT.light}}>
+      {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Tag} />
+
+### Usage:
+
+To use, import the component `Tag` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {Tag, TAG_KIND, TAG_VARIANT} from "@nilfoundation/ui-kit";
+        ...
+         <Tag>Tag label</Tag>
+        // Disabled
+         <Tag disabled>Tag label</Tag>
+        // With kind
+        <Tag kind={TAG_KIND.positive}>Tag label</Tag>
+        // With variant
+        <Tag variant={TAG_VARIANT.light}>Tag label</Tag>
+  `}
+/>
+
+
