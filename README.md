@@ -17,14 +17,34 @@ UI components library to build React applications using `=nil;` pre-designed sty
 ## Getting started
 ### npm
 ```bash
-$ npm i @nilfoundation/ui-kit
+npm install @nilfoundation/ui-kit baseui styletron-engine-atomic styletron-react
 ```
 ### yarn
 ```bash
-yarn add @nilfoundation/ui-kit
+yarn add @nilfoundation/ui-kit baseui styletron-engine-atomic styletron-react
 ```
 
 ## Usage
+```tsx
+  import { BaseProvider } from "baseui";
+  import { Client as Styletron } from "styletron-engine-atomic";
+  import { Provider as StyletronProvider } from "styletron-react";
+  import { createTheme, Button } from "@nilfoundation/ui-kit"
+
+  const engine = new Styletron();
+  const theme = createTheme(engine);
+
+  function App() {
+
+  return (
+    <StyletronProvider value={engine}>
+        <BaseProvider theme={theme}>
+            <Button>Button Label</Button>
+        </BaseProvider>
+    </StyletronProvider>
+  )
+}
+```
 
 
 ## License
