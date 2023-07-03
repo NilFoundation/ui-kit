@@ -54,10 +54,10 @@ export const options = [
   <Story name="Loading" args={{ options, placeholder: "Loading Select", isLoading: true, size: SELECT_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="Without Searchable" args={{ options, placeholder: "Searchable Select", searchable: false, size: SELECT_SIZE.small }}>
+  <Story name="Without Searchable" args={{ options, placeholder: "Select", searchable: false, size: SELECT_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="Without Default Value" args={{ options, placeholder: "With Default Value", value: [options[0]], size: SELECT_SIZE.small }}>
+  <Story name="With Default Value" args={{ options, placeholder: "With Default Value", value: [options[0]], size: SELECT_SIZE.small }}>
     {Template.bind({})}
   </Story>
 </Canvas>

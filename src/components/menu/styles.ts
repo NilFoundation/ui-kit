@@ -41,19 +41,25 @@ const itemModifiedStyles = {
   },
 };
 
-const itemActiveStyles: StyleObject = {
+const itemSelectedStyles: StyleObject = {
   backgroundColor: PRIMITIVE_COLORS.primary800,
+};
+
+const itemHighlightedStyles: StyleObject = {
+  backgroundColor: PRIMITIVE_COLORS.primary800,
+  color: PRIMITIVE_COLORS.white,
 };
 
 export const svgActiveStyles: StyleObject = {
   fill: PRIMITIVE_COLORS.white,
 };
 
-export const paragraphActiveStyles: StyleObject = {
-  color: PRIMITIVE_COLORS.white,
-};
-
-export const getItemContainerStyles = (size: MENU_SIZE, disabled: boolean, ariaSelected: boolean): StyleObject => {
+export const getItemContainerStyles = (
+  size: MENU_SIZE,
+  disabled: boolean,
+  isHighlighted: boolean,
+  ariaSelected: boolean
+): StyleObject => {
   const activeColor = disabled ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.white;
 
   return {
@@ -65,10 +71,11 @@ export const getItemContainerStyles = (size: MENU_SIZE, disabled: boolean, ariaS
     borderRadius: "2px",
     gap: "16px",
     ...itemModifiedStyles[size],
-    ...(ariaSelected && !disabled ? itemActiveStyles : {}),
+    ...(ariaSelected && !disabled ? itemSelectedStyles : {}),
+    ...(isHighlighted && !disabled ? itemHighlightedStyles : {}),
 
     ":hover": {
-      backgroundColor: disabled ? "inherit" : PRIMITIVE_COLORS.primary800,
+      backgroundColor: disabled ? "transparent" : PRIMITIVE_COLORS.primary800,
       color: activeColor,
     },
 

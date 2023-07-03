@@ -64,11 +64,13 @@ export const getSelectOverrides = (
     DropdownListItem: {
       component: MenuItem,
       props: ({ item, ...props }) => {
+        const isHighlighted = props?.$isHighlighted;
         const isActive = value ? isSingleItemActive(value, item, valueKey) : false;
         return {
           ...props,
           item: { ...item, isActive },
           size,
+          isHighlighted,
         };
       },
     },
