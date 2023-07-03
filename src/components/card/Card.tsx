@@ -5,7 +5,9 @@ import WhiteHeadline from "./ui/WhiteHeadline";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
 export type CardProps = BaseCardProps & {
+  /** This property set white headline at the top of the card */
   headline?: boolean;
+  /** This property set 1px solid grey border to card */
   border?: boolean;
   children: ReactNode;
 };
