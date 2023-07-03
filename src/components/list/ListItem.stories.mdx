@@ -1,0 +1,87 @@
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import ListItem from "./ListItem";
+import ListItemLabel from "./ListItemLabel";
+import {HeartIcon} from "../icons";
+import {LIST_ARTWORK_SIZES} from "./types";
+import {Button, BUTTON_KIND} from "../button";
+
+<Meta
+    title="List/List Item"
+    component={ListItem}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <div style={{maxWidth: "440px"}}>
+        <ListItem {...args}>
+          <ListItemLabel description="Description">Label</ListItemLabel>
+        </ListItem>
+      </div>
+    );
+}
+
+# List Item
+
+
+<Canvas isColumn>
+  <Story name="Base" args={{}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="With End Enhancer" args={{endEnhancer: (props) => <Button {...props} size="compact" kind={BUTTON_KIND.secondary}>Action</Button>}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Active" args={{isActive: true}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Disabled" args={{disabled: true}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Artwork" args={{artwork: (props) => <HeartIcon {...props} />}}>
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Artwork Size"
+    args={{
+      artwork: ({...props}) => <HeartIcon {...props} />,
+      artworkSize: LIST_ARTWORK_SIZES.SMALL
+    }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={ListItem} />
+
+### Usage:
+
+To use, import the component `ListItem` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {ListItem, ListItemLabel, LIST_ARTWORK_SIZES, Button, HeartIcon} from "@nilfoundation/ui-kit";
+        ...
+        <ListItem>
+          <ListItemLabel description="Description">Label</ListItemLabel>
+        </ListItem>
+        // Active
+        <ListItem isActive>
+          <ListItemLabel description="Description">Label</ListItemLabel>
+        </ListItem>
+        // Disabled
+        <ListItem disabled>
+          <ListItemLabel description="Description">Label</ListItemLabel>
+        </ListItem>
+         // With end enhancer
+        <ListItem endEnhancer={(props) => <Button {...props}>Action</Button>}>
+          <ListItemLabel description="Description">Label</ListItemLabel>
+        </ListItem>
+         // With artwork
+        <ListItem artwork={(props) => <HeartIcon {...props} />} artworkSize={LIST_ARTWORK_SIZES.SMALL}>
+          <ListItemLabel description="Description">Label</ListItemLabel>
+        </ListItem>
+  `}
+/>
+
+
