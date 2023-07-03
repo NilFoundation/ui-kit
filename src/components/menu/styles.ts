@@ -41,41 +41,53 @@ const itemModifiedStyles = {
   },
 };
 
-const itemActiveStyles: StyleObject = {
+const itemSelectedStyles: StyleObject = {
   backgroundColor: PRIMITIVE_COLORS.primary800,
+};
+
+const itemHighlightedStyles: StyleObject = {
+  backgroundColor: PRIMITIVE_COLORS.primary800,
+  color: PRIMITIVE_COLORS.white,
 };
 
 export const svgActiveStyles: StyleObject = {
   fill: PRIMITIVE_COLORS.white,
 };
 
-export const paragraphActiveStyles: StyleObject = {
-  color: PRIMITIVE_COLORS.white,
+export const getItemContainerStyles = (
+  size: MENU_SIZE,
+  disabled: boolean,
+  isHighlighted: boolean,
+  ariaSelected: boolean
+): StyleObject => {
+  const activeColor = disabled ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.white;
+
+  return {
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    boxSizing: "border-box",
+    cursor: disabled ? "not-allowed" : "pointer",
+    borderRadius: "2px",
+    gap: "16px",
+    ...itemModifiedStyles[size],
+    ...(ariaSelected && !disabled ? itemSelectedStyles : {}),
+    ...(isHighlighted && !disabled ? itemHighlightedStyles : {}),
+
+    ":hover": {
+      backgroundColor: disabled ? "transparent" : PRIMITIVE_COLORS.primary800,
+      color: activeColor,
+    },
+
+    ":hover > div": {
+      color: activeColor,
+    },
+
+    ":hover > svg": {
+      fill: activeColor,
+    },
+  };
 };
-
-export const getItemContainerStyles = (size: MENU_SIZE, disabled: boolean, ariaSelected: boolean): StyleObject => ({
-  display: "flex",
-  alignItems: "center",
-  width: "100%",
-  boxSizing: "border-box",
-  cursor: disabled ? "not-allowed" : "pointer",
-  borderRadius: "0px",
-  gap: "16px",
-  ...itemModifiedStyles[size],
-  ...(ariaSelected && !disabled ? itemActiveStyles : {}),
-
-  ":hover": {
-    backgroundColor: disabled ? "transparent" : PRIMITIVE_COLORS.primary800,
-  },
-
-  ":hover > div": {
-    color: disabled ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.white,
-  },
-
-  ":hover > svg": {
-    fill: disabled ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.white,
-  },
-});
 
 export const ItemEndWrapperStyles: StyleObject = {
   display: "flex",
