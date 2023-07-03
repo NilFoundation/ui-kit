@@ -1,17 +1,17 @@
 import { FC } from "react";
-import Tooltip, { TooltipProps } from "../Tooltip";
+import StatefulTooltip, { StatefulTooltipProps } from "../StatefulTooltip";
 import { useStyletron } from "baseui";
 import { Button, BUTTON_KIND, BUTTON_SIZE } from "../../button";
 
-const TooltipComponent: FC<Omit<TooltipProps, "children">> = ({ triggerType, ...props }) => {
+const TooltipComponent: FC<Omit<StatefulTooltipProps, "children">> = ({ triggerType, ...props }) => {
   return (
-    <Tooltip {...props} triggerType={triggerType} showArrow>
+    <StatefulTooltip {...props} triggerType={triggerType} showArrow>
       <span tabIndex={0}>
         <Button kind={BUTTON_KIND.tertiary} size={BUTTON_SIZE.compact}>
           {triggerType === "click" ? "Click me" : "Hover me"}
         </Button>
       </span>
-    </Tooltip>
+    </StatefulTooltip>
   );
 };
 
@@ -31,10 +31,10 @@ const TooltipStoryWidget: FC = ({ ...props }) => {
       })}
     >
       <li>
-        <TooltipComponent {...props} content="Tooltip placement is left" placement="left" />
+        <TooltipComponent {...props} content="StatefulTooltip placement is left" placement="left" />
       </li>
       <li>
-        <TooltipComponent {...props} content="Tooltip on click" placement="top" triggerType="click" />
+        <TooltipComponent {...props} content="StatefulTooltip on click" placement="top" triggerType="click" />
       </li>
       <li>
         <TooltipComponent
@@ -44,13 +44,13 @@ const TooltipStoryWidget: FC = ({ ...props }) => {
         />
       </li>
       <li>
-        <TooltipComponent {...props} content="Tooltip placement is bottom" placement="bottom" />
+        <TooltipComponent {...props} content="StatefulTooltip placement is bottom" placement="bottom" />
       </li>
       <li>
-        <TooltipComponent {...props} content="Tooltip placement is top" placement="top" />
+        <TooltipComponent {...props} content="StatefulTooltip placement is top" placement="top" />
       </li>
       <li>
-        <TooltipComponent {...props} content="Tooltip placement is right" placement="right" />
+        <TooltipComponent {...props} content="StatefulTooltip placement is right" placement="right" />
       </li>
     </ul>
   );
