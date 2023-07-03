@@ -65,7 +65,7 @@ export const getItemContainerStyles = (size: MENU_SIZE, disabled: boolean, ariaS
   ...(ariaSelected && !disabled ? itemActiveStyles : {}),
 
   ":hover": {
-    backgroundColor: disabled ? "inherit" : PRIMITIVE_COLORS.primary800,
+    backgroundColor: disabled ? "transparent" : PRIMITIVE_COLORS.primary800,
   },
 
   ":hover > div": {

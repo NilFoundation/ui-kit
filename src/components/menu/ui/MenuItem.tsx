@@ -58,7 +58,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
           })}
         <TypographyComponent
           className={css(ariaSelected && !disabled ? paragraphActiveStyles : {})}
-          color={isLight ? PRIMITIVE_COLORS.primary800 : PRIMITIVE_COLORS.primary500}
+          color={!disabled && isLight ? PRIMITIVE_COLORS.primary800 : PRIMITIVE_COLORS.primary500}
         >
           {item.label}
         </TypographyComponent>

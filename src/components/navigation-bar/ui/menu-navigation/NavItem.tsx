@@ -12,18 +12,22 @@ type NavItemProps = {
   onItemClick?: (item: NavigationItem) => void;
 };
 
-const getButtonStyles = (isSelected: boolean) => ({
+const getButtonStyles = (isSelected: boolean, isDisabled: boolean) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   border: "none",
   background: "none",
   outline: "none",
-  color: isSelected ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.primary800,
-  cursor: "pointer",
+  color: isDisabled
+    ? PRIMITIVE_COLORS.primary300
+    : isSelected
+    ? PRIMITIVE_COLORS.primary500
+    : PRIMITIVE_COLORS.primary800,
+  cursor: isDisabled ? "not-allowed" : "pointer",
 
   ":hover": {
-    color: PRIMITIVE_COLORS.primary600,
+    color: isDisabled ? PRIMITIVE_COLORS.primary300 : PRIMITIVE_COLORS.primary600,
   },
 
   ":focus": {
@@ -67,7 +71,7 @@ const NavItem: FC<NavItemProps> = ({ item, onItemClick }) => {
           popoverMargin={20}
           content={<Menu isLight items={children} onItemSelect={(data) => onItemClick?.(data?.item)} />}
         >
-          <button className={css(getButtonStyles(!!item?.isSelected))} tabIndex={0}>
+          <button className={css(getButtonStyles(!!item?.isSelected, !!item?.disabled))} tabIndex={0}>
             <LabelSmall as="span" color="inherit">
               {label}
             </LabelSmall>
@@ -75,7 +79,11 @@ const NavItem: FC<NavItemProps> = ({ item, onItemClick }) => {
           </button>
         </NavPopover>
       ) : (
-        <button className={css(getButtonStyles(!!item?.isSelected))} onClick={onClickHandler} tabIndex={0}>
+        <button
+          className={css(getButtonStyles(!!item?.isSelected, !!item?.disabled))}
+          onClick={onClickHandler}
+          tabIndex={0}
+        >
           <LabelSmall as="span" color="inherit">
             {label}
           </LabelSmall>

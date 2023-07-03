@@ -4,6 +4,7 @@ export type NavigationItem<T = unknown> = T & {
   id: string;
   label: ReactNode;
   isSelected?: boolean;
+  disabled?: boolean;
   children?: Array<NavigationItem<T>>;
 };
 
