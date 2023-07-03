@@ -1,6 +1,7 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import StatefulTooltip from "./StatefulTooltip";
 import TooltipStoryWidget from "./ui/TooltipStoryWidget";
+import Tooltip from "./Tooltip";
 
 <Meta
     title="Tooltip"
@@ -22,18 +23,24 @@ export const Template = ({...args}) => {
   </Story>
 </Canvas>
 
+### StatefulTooltip props
 <ArgsTable of={StatefulTooltip} />
+
+### Tooltip props
+<ArgsTable of={Tooltip} />
+
+
 
 ### Usage:
 
-To use, import the component `StatefulTooltip` from `@nilfoundation/ui-kit`.
+To use, import the component `Tooltip` or `StatefulTooltip` from `@nilfoundation/ui-kit`.
 
 <Source
   language='tsx'
   dark
   format={true}
   code={`
-        import {StatefulTooltip} from "@nilfoundation/ui-kit";
+        import {StatefulTooltip, Tooltip} from "@nilfoundation/ui-kit";
         ...
         <StatefulTooltip content="StatefulTooltip content" showArrow>
           <span>
@@ -48,6 +55,10 @@ To use, import the component `StatefulTooltip` from `@nilfoundation/ui-kit`.
         <StatefulTooltip content="StatefulTooltip content" triggerType="click" showArrow>
             ...
         </StatefulTooltip>
+        // Tooltip usage
+        <Tooltip content="Tooltip content" showArrow isOpen>
+            ...
+        </Tooltip>
       `}
 />
 
