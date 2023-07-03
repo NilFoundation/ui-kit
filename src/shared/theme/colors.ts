@@ -1,9 +1,4 @@
-import { Primitives } from "baseui/themes/types";
-
-type CreateTheme = {
-  primitives?: Partial<Primitives>;
-  overrides?: any;
-};
+import { DefaultTheme } from "./types";
 
 export const PRIMITIVE_COLORS = {
   primary50: "#FFFFFF",
@@ -49,7 +44,7 @@ export const PRIMITIVE_COLORS = {
   mono600: "#292929",
 };
 
-export const createColors = (): CreateTheme => {
+export const createColors = (): DefaultTheme => {
   return {
     primitives: {
       ...PRIMITIVE_COLORS,
