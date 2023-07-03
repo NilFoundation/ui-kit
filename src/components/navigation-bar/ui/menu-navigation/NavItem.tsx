@@ -1,11 +1,11 @@
 import { FC, useState } from "react";
 import { LabelSmall } from "baseui/typography";
-import { PRIMITIVE_COLORS } from "../../../shared";
+import { PRIMITIVE_COLORS } from "../../../../shared";
 import { useStyletron } from "baseui";
-import NavPopover from "./NavPopover";
-import { Menu } from "../../menu";
-import { CaretDownIcon, CaretUpIcon } from "../../icons";
-import { NavigationItem } from "../types";
+import NavPopover from "../NavPopover";
+import { Menu } from "../../../menu";
+import { CaretDownIcon, CaretUpIcon } from "../../../icons";
+import { NavigationItem } from "../../types";
 
 type NavItemProps = {
   item: NavigationItem;
