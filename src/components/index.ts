@@ -21,3 +21,4 @@ export * from "./progress-bar";
 export * from "./table";
 export * from "./accordion";
 export * from "./list";
+export * from "./drawer";

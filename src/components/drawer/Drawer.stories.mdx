@@ -1,0 +1,67 @@
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import Drawer from "./Drawer";
+import DrawerStoryWidget from "./ui/DrawerStoryWidget"; import {HeadingSmall, ParagraphSmall} from "baseui/typography"; import {
+  ANCHOR, SIZE
+} from "baseui/drawer";
+
+<Meta
+    title="Drawer"
+    component={Drawer}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <DrawerStoryWidget {...args}>
+        <HeadingSmall margin={0}>Drawer content</HeadingSmall>
+        <ParagraphSmall>
+          Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl. Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl. Maecenas aliquet mauris ut tempus. Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl. Maecenas aliquet mauris ut tempus.
+        </ParagraphSmall>
+      </DrawerStoryWidget>
+    );
+}
+
+# Drawer
+
+
+<Canvas isColumn>
+  <Story name="Base" args={{anchor: ANCHOR.left, buttonLabel: "Open Drawer"}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Anchor" args={{anchor: ANCHOR.top, buttonLabel: "Open Anchor Top"}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Full Size" args={{size: SIZE.full, buttonLabel: "Open Full Drawer"}}>
+      {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Drawer} />
+
+### Usage:
+
+To use, import the component `Drawer` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        ...
+        import {Drawer, DRAWER_ANCHOR, DRAWER_SIZE} from "@nilfoundation/ui-kit";
+        ...
+        const [isOpen, setOpen] = useState(false);
+        ...
+        <Drawer isOpen={isOpen} onClose={() => setOpen(false)}>
+            <p>Drawer content</p>
+        </Drawer>
+        // Anchor
+        <Drawer anchor={DRAWER_ANCHOR.top} isOpen={isOpen} onClose={() => setOpen(false)}>
+            <p>Drawer content</p>
+        </Drawer>
+        // Size
+        <Drawer anchor={DRAWER_SIZE.full} isOpen={isOpen} onClose={() => setOpen(false)}>
+            <p>Drawer content</p>
+        </Drawer>
+    `}
+/>
+
