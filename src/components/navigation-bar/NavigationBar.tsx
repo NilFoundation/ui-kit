@@ -30,7 +30,7 @@ const NavigationBar: FC<NavigationBarProps> = ({
   const { mediaQuery } = theme;
 
   return (
-    <div className={[css(getNavigationContainerStyles()), className].join(" ")}>
+    <header className={[css(getNavigationContainerStyles()), className].join(" ")}>
       <div className={css(navigationWrapperStyles)}>
         {brand}
         <nav className={css(navigationNavWrapperStyles)}>
@@ -64,7 +64,7 @@ const NavigationBar: FC<NavigationBarProps> = ({
         brand={brand}
         onClose={() => setDrawerOpen(false)}
       />
-    </div>
+    </header>
   );
 };
 
