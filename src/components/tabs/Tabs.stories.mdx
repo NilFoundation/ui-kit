@@ -1,16 +1,17 @@
-import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Tabs, {ORIENTATION} from "./Tabs";
 import Tab from "./Tab"
+import TabsStoryWidget from "./ui/TabsStoryWidget"; import {HeartIcon} from "../icons";
 
 <Meta
     title="Control/Tabs"
     component={Tabs}
 />
 
-export const Template = ({...args}) => {
+export const Template = ({startEnhancer, endEnhancer, ...args}) => {
     return (
-      <Tabs {...args}>
-        <Tab title="Tab Link 1">
+      <TabsStoryWidget {...args}>
+        <Tab title="Tab Link 1" startEnhancer={startEnhancer} endEnhancer={endEnhancer}>
           <span>Tab Content 1</span>
         </Tab>
         <Tab title="Tab Link 2">
@@ -19,7 +20,7 @@ export const Template = ({...args}) => {
         <Tab title="Tab Link 3">
           <span>Tab Content 3</span>
         </Tab>
-      </Tabs>
+      </TabsStoryWidget>
     );
 }
 
@@ -39,9 +40,55 @@ export const Template = ({...args}) => {
   <Story name="Vertical" args={{orientation: ORIENTATION.vertical}}>
     {Template.bind({})}
   </Story>
+  <Story name="With Start Enhancer" args={{startEnhancer: <HeartIcon />}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With End Enhancer" args={{endEnhancer: <HeartIcon />}}>
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
+### Tabs props
 <ArgsTable of={Tabs} />
 
-### Использование:
+### Tab props
+<ArgsTable of={Tab} />
+
+### Usage:
+
+To use, import the components `Tabs` and `Tab` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {Tabs, Tab, TABS_ORIENTATION, SearchIcon} from "@nilfoundation/ui-kit";
+        ...
+        <Tabs>
+          <Tab title="Tab Link 1" startEnhancer={<SearchIcon />} endEnhancer={<SearchIcon />}>
+            <span>Tab Content 1</span>
+          </Tab>
+          <Tab title="Tab Link 2">
+            <span>Tab Content 2</span>
+          </Tab>
+          <Tab title="Tab Link 3">
+            <span>Tab Content 3</span>
+          </Tab>
+        </Tabs>
+        // Disabled
+        <Tabs disabled>
+          ...
+        </Tabs>
+        // With initial active key
+        <Tabs activeKey="2">
+          ...
+        </Tabs>
+        // Vertical
+        <Tabs orientation={TABS_ORIENTATION.vertical}>
+          ...
+        </Tabs>
+  `}
+/>
+
 

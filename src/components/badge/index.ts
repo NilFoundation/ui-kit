@@ -1,2 +1,4 @@
-export { default as Badge, SHAPE as BADGE_SHAPE, COLOR as BADGE_COLOR } from "./Badge";
-export type { BadgeProps, Hierarchy as BadgeHierarchy } from "./Badge";
+export { default as Badge } from "./Badge";
+export type { BadgeProps } from "./Badge";
+
+export { BADGE_COLOR, BADGE_HIERARCHY, BADGE_PLACEMENT } from "./types";
