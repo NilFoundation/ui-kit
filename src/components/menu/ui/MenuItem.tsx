@@ -24,6 +24,7 @@ type MenuItemProps = RenderItemProps & {
   disabled?: boolean;
   ariaSelected?: boolean;
   isHighlighted?: boolean;
+  isLight?: boolean;
 };
 
 type TypographyProps = ComponentProps<typeof ParagraphSmall>;
@@ -34,21 +35,24 @@ const paragraphComponent = {
   [SPINNER_SIZE.large]: (props: TypographyProps) => <ParagraphLarge color="primary500" as="div" {...props} />,
 };
 
-const getParagraphColor = (isActive: boolean) => {
+const getParagraphColor = (isActive: boolean, isDisabled: boolean, isLight: boolean) => {
+  if (isDisabled) {
+    return isLight ? PRIMITIVE_COLORS.primary300 : PRIMITIVE_COLORS.primary600;
+  }
   if (isActive) {
     return PRIMITIVE_COLORS.white;
   }
-  return PRIMITIVE_COLORS.primary500;
+  return isLight ? PRIMITIVE_COLORS.primary800 : PRIMITIVE_COLORS.primary500;
 };
 
 const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
-  ({ size, item, onClick, disabled, ariaSelected, isHighlighted, onMouseEnter, id }, ref) => {
+  ({ size, item, onClick, disabled, ariaSelected, isHighlighted, isLight, onMouseEnter, id }, ref) => {
     const [css] = useStyletron();
 
     const isAreaSelected = ariaSelected && !disabled;
-    const paragraphColor = getParagraphColor(isAreaSelected || !!isHighlighted);
+    const paragraphColor = getParagraphColor(isAreaSelected || !!isHighlighted, !!disabled, !!isLight);
 
-    const Item = styled("li", getItemContainerStyles(size, !!disabled, !!isHighlighted, !!ariaSelected));
+    const Item = styled("li", getItemContainerStyles(size, !!disabled, !!isHighlighted, !!ariaSelected, !!isLight));
     const EndWrapper = styled("span", ItemEndWrapperStyles);
     const TypographyComponent = paragraphComponent[size];
 
@@ -63,7 +67,6 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
         {item?.startEnhancer &&
           React.cloneElement(item.startEnhancer, {
             size: 20,
-            color: "primary500",
             className: css(isAreaSelected ? svgActiveStyles : {}),
           })}
         <TypographyComponent color={paragraphColor}>{item.label}</TypographyComponent>
@@ -72,7 +75,6 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
           {item?.endEnhancer &&
             React.cloneElement(item.endEnhancer, {
               size: 20,
-              color: "primary500",
               className: css(isAreaSelected ? svgActiveStyles : {}),
             })}
         </EndWrapper>
