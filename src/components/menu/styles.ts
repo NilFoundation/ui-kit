@@ -1,6 +1,7 @@
 import { StyleObject } from "styletron-react";
 import { MENU_SIZE } from "./types";
 import { PRIMITIVE_COLORS } from "../../shared";
+import { BorderRadiusStyles } from "../../shared/styles/border";
 
 export const headerBaseStyles: StyleObject = {
   display: "flex",
@@ -45,6 +46,29 @@ const itemSelectedStyles: StyleObject = {
   backgroundColor: PRIMITIVE_COLORS.primary800,
 };
 
+const getItemDisabledStyles = (isLight: boolean) => {
+  const color = isLight ? PRIMITIVE_COLORS.primary300 : PRIMITIVE_COLORS.primary600;
+
+  return {
+    backgroundColor: "transparent",
+    color: PRIMITIVE_COLORS.primary600,
+    cursor: "not-allowed",
+
+    ":hover": {
+      backgroundColor: "transparent",
+      color,
+    },
+
+    ":hover > div": {
+      color,
+    },
+
+    ":hover > svg": {
+      fill: color,
+    },
+  };
+};
+
 const itemHighlightedStyles: StyleObject = {
   backgroundColor: PRIMITIVE_COLORS.primary800,
   color: PRIMITIVE_COLORS.white,
@@ -58,34 +82,36 @@ export const getItemContainerStyles = (
   size: MENU_SIZE,
   disabled: boolean,
   isHighlighted: boolean,
-  ariaSelected: boolean
+  ariaSelected: boolean,
+  isLight: boolean
 ): StyleObject => {
-  const activeColor = disabled ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.white;
-
   return {
     display: "flex",
     alignItems: "center",
     width: "100%",
     boxSizing: "border-box",
-    cursor: disabled ? "not-allowed" : "pointer",
-    borderRadius: "2px",
+    cursor: "pointer",
     gap: "16px",
-    ...itemModifiedStyles[size],
-    ...(ariaSelected && !disabled ? itemSelectedStyles : {}),
-    ...(isHighlighted && !disabled ? itemHighlightedStyles : {}),
+    color: PRIMITIVE_COLORS.primary500,
+    ...BorderRadiusStyles,
 
     ":hover": {
-      backgroundColor: disabled ? "transparent" : PRIMITIVE_COLORS.primary800,
-      color: activeColor,
+      backgroundColor: PRIMITIVE_COLORS.primary800,
+      color: PRIMITIVE_COLORS.white,
     },
 
     ":hover > div": {
-      color: activeColor,
+      color: PRIMITIVE_COLORS.white,
     },
 
     ":hover > svg": {
-      fill: activeColor,
+      fill: PRIMITIVE_COLORS.white,
     },
+
+    ...itemModifiedStyles[size],
+    ...(ariaSelected ? itemSelectedStyles : {}),
+    ...(isHighlighted ? itemHighlightedStyles : {}),
+    ...(disabled ? getItemDisabledStyles(isLight) : {}),
   };
 };
 

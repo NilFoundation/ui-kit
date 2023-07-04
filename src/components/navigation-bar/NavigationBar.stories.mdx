@@ -1,0 +1,130 @@
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import NavigationBar from "./NavigationBar";
+import {Brand} from "../brand";
+import NavigationBarStoryWidget from "./ui/NavigationBarStoryWidget";
+
+<Meta
+    title="NavigationBar"
+    component={NavigationBar}
+/>
+
+export const Template = ({...args}) => {
+    return (
+      <NavigationBarStoryWidget {...args} />
+    );
+}
+
+export const items = [
+  {
+    id: "1",
+    label: "Menu item 1",
+    isSelected: true
+  },
+  {
+    id: "2",
+    label: "Menu item 2",
+    children: [
+      {
+        id: "4",
+        label: "Menu subitem 1",
+        disabled: true,
+      },
+      {
+        id: "5",
+        label: "Menu subitem 2",
+      },
+      {
+        id: "6",
+        label: "Menu subitem 3",
+      }
+    ]
+  },
+  {
+    id: "3",
+    label: "Menu item 3",
+    disabled: true,
+  },
+]
+
+# NavigationBar
+
+
+<Canvas isColumn>
+  <Story
+    name="Base"
+    args={{
+      items, username: "John", isAuth: false, brand: <Brand />
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Auth"
+    args={{
+      items, username: "John", isAuth: true, brand: <Brand />
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Without Username"
+    args={{
+      items, isAuth: true, brand: <Brand />
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Without Auth Widget"
+    args={{
+      items, username: "John", noLogin: true, brand: <Brand />
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={NavigationBar} />
+
+### Usage:
+
+To use, import the component `NavigationBar` and from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {NavigationBar, Brand, AuthDropdownContainer, AuthItem} from "@nilfoundation/ui-kit";
+        ...
+        export const items = [
+          {
+            id: "1",
+            label: "Menu item 1",
+            isSelected: true
+          },
+          {
+          id: "2",
+          label: "Menu item 2",
+          children: [
+              {
+              id: "3",
+              label: "Menu subitem 1"
+              }
+            ]
+          }
+        ]
+        ...
+        <NavigationBar
+            items={items}
+            username="John"
+            isAuth
+            brand={<Brand />}
+            authDropdownContainer={() => (
+              <AuthDropdownContainer username="John">
+                <AuthItem amount="1069" cents="34" currency="USD" />
+              </AuthDropdownContainer>
+            )}
+        />
+  `}
+/>

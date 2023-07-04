@@ -4,7 +4,7 @@ import { getSelectOverrides } from "./overrides";
 import { SELECT_SIZE } from "./types";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
-export type SelectProps = BaseSelectProps & {
+export type SelectProps = Omit<BaseSelectProps, "size"> & {
   placeholder: React.ReactNode;
   onChange?: (value: Value) => void;
   size?: SELECT_SIZE;
