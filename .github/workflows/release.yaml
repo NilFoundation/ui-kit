@@ -3,6 +3,7 @@ on:
   push:
     tags:
     - 'v*'
+  workflow_dispatch:
 jobs:
   release:
     if: ${{ github.ref == 'refs/heads/master' }} # run only after push tags to master branch
