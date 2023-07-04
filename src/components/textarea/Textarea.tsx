@@ -1,4 +1,4 @@
-import { ChangeEventHandler, FC, useState } from "react";
+import { FC } from "react";
 import { Textarea as BaseTextarea, TextareaProps as BaseTextareaProps } from "baseui/textarea";
 import { getTextareaOverrides } from "./overrides";
 import { TEXTAREA_SIZE } from "./types";
@@ -13,29 +13,22 @@ export type TextareaProps = BaseTextareaProps & {
 };
 
 const Textarea: FC<TextareaProps> = ({
-  value: baseValue,
   size = TEXTAREA_SIZE.medium,
   resize,
   isLoading,
-  onChange,
   overrides: baseOverrides,
   ...props
 }) => {
-  const [value, setValue] = useState<string | number>(baseValue ?? "");
   const [css] = useStyletron();
 
   const textareaOverrides = getTextareaOverrides(size, isLoading);
   const overrides = getMergedOverrides(textareaOverrides, baseOverrides);
-  const isResizable = resize && ["both", "horizontal", "vertical"].includes(resize);
 
-  const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
-    setValue(event.target.value);
-    onChange?.(event);
-  };
+  const isResizable = resize && ["both", "horizontal", "vertical"].includes(resize);
 
   return (
     <div className={css({ position: "relative" })}>
-      <BaseTextarea {...props} overrides={overrides} resize={resize} value={value} onChange={onChangeHandler} />
+      <BaseTextarea {...props} overrides={overrides} resize={resize} />
       {isResizable && <TextareaResizeIcon />}
       {isLoading && <TextareaSpinner size={size} />}
     </div>

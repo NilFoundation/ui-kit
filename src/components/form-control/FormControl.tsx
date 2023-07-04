@@ -1,42 +1,35 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { FormControl as BaseFormControl, FormControlProps as BaseFormControlProps } from "baseui/form-control";
 import { INPUT_SIZE } from "../input";
 import { getFormControlOverrides } from "./overrides";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
-export type FormControlProps = BaseFormControlProps & {
+interface ICounter {
+  maxLength: number;
+  length: number;
+}
+
+export type FormControlProps = Omit<BaseFormControlProps, "counter"> & {
   size?: INPUT_SIZE;
   readOnly?: boolean;
-  maxLength?: number;
   isLoading?: boolean;
+  counter?: ICounter;
 };
 
-const getValueLabel = (value: string, maxLength: number): string => {
-  return `${value.length}/${maxLength}`;
+const getValueLabel = (counter: ICounter): string => {
+  return `${counter.length}/${counter.maxLength}`;
 };
 
 const FormControl: FC<FormControlProps> = ({
   isLoading,
-  maxLength,
   readOnly,
   size = INPUT_SIZE.medium,
   children,
+  counter,
   overrides: baseOverrides,
   ...props
 }) => {
-  const [value, setValue] = useState("");
-
-  const onValueChangeHandler = (data: string | any) => {
-    if (typeof data === "string") {
-      setValue(data);
-    }
-  };
-
-  const formControlOverrides = getFormControlOverrides(
-    size,
-    !!readOnly,
-    maxLength ? getValueLabel(value, maxLength) : undefined
-  );
+  const formControlOverrides = getFormControlOverrides(size, !!readOnly, counter ? getValueLabel(counter) : undefined);
   const overrides = getMergedOverrides(formControlOverrides, baseOverrides);
 
   return (
@@ -45,9 +38,8 @@ const FormControl: FC<FormControlProps> = ({
       {React.cloneElement(children, {
         size,
         readOnly,
-        maxLength,
         isLoading,
-        onValueChange: onValueChangeHandler,
+        maxLength: counter ? counter.maxLength : undefined,
       })}
     </BaseFormControl>
   );
