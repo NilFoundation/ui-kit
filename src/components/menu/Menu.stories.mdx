@@ -1,10 +1,10 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Menu from "./Menu";
 import {MENU_SIZE} from "./types";
-import {Search} from "baseui/icon"
+import {SearchIcon} from "../icons"
 
 <Meta
-    title="Menu"
+    title="Dropdown/Menu"
     component={Menu}
 />
 
@@ -46,9 +46,10 @@ export const ITEMS_WITH_HEADER = {
 };
 
 export const CheckboxItem = { label: "Item Fifth", selected: false};
-export const StartEnhancerItem =  { label: "Item Fifth", startEnhancer: <Search />};
-export const EndEnhancerItem =  { label: "Item Fifth", endEnhancer: <Search />};
-export const SuffixTextItem =  { label: "Item Fifth", suffixText: "Text", endEnhancer: <Search />};
+export const StartEnhancerItem =  { label: "Item Fifth", startEnhancer: <SearchIcon />};
+export const EndEnhancerItem =  { label: "Item Fifth", endEnhancer: <SearchIcon />};
+export const SuffixTextItem =  { label: "Item Fifth", suffixText: "Text", endEnhancer: <SearchIcon />};
+export const ActiveItem =  { label: "Item Active", isActive: true };
 
 # Menu
 
@@ -61,6 +62,9 @@ export const SuffixTextItem =  { label: "Item Fifth", suffixText: "Text", endEnh
       {Template.bind({})}
   </Story>
   <Story name="Large" args={{items: ITEMS, size: MENU_SIZE.large}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Active" args={{items: [...ITEMS_WITH_DIVIDER, ActiveItem]}}>
       {Template.bind({})}
   </Story>
   <Story name="With Divider" args={{items: ITEMS_WITH_DIVIDER}}>
@@ -97,7 +101,7 @@ To use, import the component `Menu` from `@nilfoundation/ui-kit`.
   dark
   format={true}
   code={`
-        import {Menu, MENU_SIZE, Search} from "@nilfoundation/ui-kit";
+        import {Menu, MENU_SIZE, SearchIcon} from "@nilfoundation/ui-kit";
         const ITEMS = [
           { label: "Item One" },
           { label: "Item Two" },
@@ -111,9 +115,9 @@ To use, import the component `Menu` from `@nilfoundation/ui-kit`.
         // Disabled item
         <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", disabled: true}]} />
         // With start enhancer
-        <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", startEnhancer: <Search />}]} />
+        <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", startEnhancer: <SearchIcon />}]} />
          // With end enhancer
-        <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", endEnhancer: <Search />}]} />
+        <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", endEnhancer: <SearchIcon />}]} />
         // With suffix text
         <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", suffixText: "Text"}]} />
   `}
