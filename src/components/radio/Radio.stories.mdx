@@ -1,6 +1,7 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import RadioGroup, {ALIGN} from "./RadioGroup";
 import Radio from "./Radio";
+import RadioGroupStoryWidget from "./ui/RadioGroupStoryWidget";
 
 <Meta
     title="Field/Radio"
@@ -9,7 +10,7 @@ import Radio from "./Radio";
 
 export const Template = ({...args}) => {
     return (
-      <RadioGroup {...args}>
+      <RadioGroupStoryWidget {...args}>
         <Radio value="1">One</Radio>
         <Radio
           value="2"
@@ -18,7 +19,7 @@ export const Template = ({...args}) => {
           Two
         </Radio>
         <Radio value="3">Three</Radio>
-      </RadioGroup>
+      </RadioGroupStoryWidget>
     );
 }
 
@@ -46,7 +47,12 @@ export const Template = ({...args}) => {
   </Story>
 </Canvas>
 
+
+### RadioGroup props
 <ArgsTable of={RadioGroup} />
+
+### Radio props
+<ArgsTable of={Radio} />
 
 ### Usage:
 

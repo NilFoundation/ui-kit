@@ -1,6 +1,6 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Input from "./Input";
-import InputStoryWrapper from "./ui/InputStoryWrapper"
+import InputStoryWidget from "./ui/InputStoryWidget"
 import {INPUT_SIZE} from "./types";
 import {HeartIcon, SearchIcon} from "../icons";
 
@@ -11,9 +11,7 @@ import {HeartIcon, SearchIcon} from "../icons";
 
 export const Template = ({...args}) => {
     return (
-      <InputStoryWrapper>
-        <Input {...args} />
-      </InputStoryWrapper>
+      <InputStoryWidget {...args} />
     );
 }
 

@@ -1,6 +1,7 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import FormControl from "./FormControl";
-import {Input, INPUT_SIZE} from "../input";
+import {INPUT_SIZE} from "../input";
+import FormControlStoryWidget from "./ui/FormControlStoryWidget";
 
 <Meta
     title="Field/FormControl"
@@ -9,16 +10,13 @@ import {Input, INPUT_SIZE} from "../input";
 
 export const Template = ({...args}) => {
     return (
-      <div style={{maxWidth: "400px"}}>
-        <FormControl {...args} />
-      </div>
+      <FormControlStoryWidget {...args} />
     );
 }
 
 export const InputFieldProps = {
   label: () => "Input label",
   caption: () => "Input caption",
-  children: <Input placeholder="Input Field" />,
 }
 
 # Form Control
@@ -49,7 +47,7 @@ export const InputFieldProps = {
   <Story name="Positive" args={{...InputFieldProps, positive: true, size: INPUT_SIZE.small}}>
     {Template.bind({})}
   </Story>
-  <Story name="With Max Length" args={{...InputFieldProps, maxLength: 100, size: INPUT_SIZE.small}}>
+  <Story name="With Max Length" args={{...InputFieldProps, isCounter: true, size: INPUT_SIZE.small}}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -82,8 +80,8 @@ To use, import the component `FormControl` from `@nilfoundation/ui-kit`.
         <FormControl isLoading>
             <Input placeholder="Input Field" />
         </FormControl>
-        // With max length
-        <FormControl isLoading  maxLength={100}>
+        // With counter
+        <FormControl counter={{maxLength: 100, length: 44}}>
             <Input placeholder="Input Field" />
         </FormControl>
   `}
