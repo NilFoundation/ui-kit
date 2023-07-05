@@ -1,17 +1,29 @@
 name: Release
 on:
   push:
-    tags:
-    - 'v*'
+    branches: [ master ]
   workflow_dispatch:
 jobs:
   release:
-    if: ${{ github.event.base_ref == 'refs/heads/master' }} # run only after push tags to master branch
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
     - uses: actions/checkout@v3
+    - uses: oprypin/find-latest-tag@v1
+      name: Find latest release
+      with:
+        repository: ${{ github.repository }}
+        releases-only: true
+      id: latest-release
+    - uses: oprypin/find-latest-tag@v1
+      name: Find latest tag
+      with:
+        repository: ${{ github.repository }}
+        releases-only: false
+      id: latest-tag
     - uses: ncipollo/release-action@v1
+      if: ${{ steps.latest-release.outputs.tag != steps.latest-tag.outputs.tag && startsWith(steps.latest-tag.outputs.tag, 'v') }}
       with:
         generateReleaseNotes: true
+        tag: ${{ steps.latest-tag.outputs.tag }}
