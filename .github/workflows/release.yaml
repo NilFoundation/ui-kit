@@ -1,8 +1,8 @@
 name: Release
 on:
   push:
-    branches: [ master ]
-  workflow_dispatch:
+    tags:
+    - 'v*'
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -10,20 +10,7 @@ jobs:
       contents: write
     steps:
     - uses: actions/checkout@v3
-    - uses: oprypin/find-latest-tag@v1
-      name: Find latest release
-      with:
-        repository: ${{ github.repository }}
-        releases-only: true
-      id: latest-release
-    - uses: oprypin/find-latest-tag@v1
-      name: Find latest tag
-      with:
-        repository: ${{ github.repository }}
-        releases-only: false
-      id: latest-tag
     - uses: ncipollo/release-action@v1
-      if: ${{ steps.latest-release.outputs.tag != steps.latest-tag.outputs.tag && startsWith(steps.latest-tag.outputs.tag, 'v') }}
       with:
         generateReleaseNotes: true
-        tag: ${{ steps.latest-tag.outputs.tag }}
+        token: ${{ secrets.CREATE_RELEASE_TOKEN }}
