@@ -1,15 +1,22 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Checkbox, {LABEL_PLACEMENT} from "./Checkbox";
-import CheckboxStoryWidget from "./ui/CheckboxStoryWidget";
+import { useState, ChangeEventHandler, useEffect } from "react";
 
 <Meta
   title="Field/Checkbox"
   component={Checkbox}
 />
 
-export const Template = ({...args}) => {
+export const Template = ({checked: baseChecked, ...args}) => {
+  const [checked, setChecked] = useState(baseChecked);
+  const onChangeHandler = (event) => {
+    setChecked(event.target.checked);
+  };
+  useEffect(() => {
+    setChecked(baseChecked);
+  }, [baseChecked]);
   return (
-    <CheckboxStoryWidget {...args} />
+    <Checkbox  {...args} checked={checked} onChange={onChangeHandler} />
   );
 }
 
