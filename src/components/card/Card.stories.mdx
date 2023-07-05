@@ -1,16 +1,28 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Card from "./Card";
-import CardStoryWidget from "./ui/CardStoryWidget";
+import { Button } from "../button";
+import { useStyletron } from "baseui";
+import { StyledBody, StyledAction } from "baseui/card";
 
 <Meta
     title="Card"
     component={Card}
 />
 
-export const Template = ({...args}) => {
-    return (
-      <CardStoryWidget {...args} />
-    );
+export const Template = ({isButton = false, ...args}) => {
+  const [css] = useStyletron();
+  return (
+    <Card {...args}>
+      <StyledBody>
+        Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl.
+      </StyledBody>
+      {isButton && (
+        <StyledAction>
+          <Button className={css({ width: "100%" })}>Label</Button>
+        </StyledAction>
+      )}
+    </Card>
+  );
 }
 
 export const imageUrl = "https://oir.mobi/uploads/posts/2021-05/1622168357_43-oir_mobi-p-yelovii-les-priroda-krasivo-foto-49.jpg"
