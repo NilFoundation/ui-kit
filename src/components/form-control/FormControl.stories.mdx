@@ -1,8 +1,7 @@
-import { ChangeEventHandler, useState } from "react";
+import { useState } from "react";
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
-import FormControl, { FormControlProps } from "./FormControl";
+import FormControl from "./FormControl";
 import {INPUT_SIZE, Input} from "../input";
-import { StyleObject } from "styletron-react";
 import { useStyletron } from "baseui";
 
 <Meta
@@ -33,7 +32,7 @@ export const Template = ({isCounter, ...args}) => {
             : undefined
         }
       >
-      <Input placeholder="Input Field" value={value} onChange={onChangeHandler} />
+        <Input placeholder="Input Field" value={value} onChange={onChangeHandler} />
       </FormControl>
     </div>
   );

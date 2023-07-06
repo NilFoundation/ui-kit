@@ -1,6 +1,6 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
-import Drawer, { DrawerProps } from "./Drawer";
-import {HeadingSmall, ParagraphSmall} from "baseui/typography"; 
+import Drawer from "./Drawer";
+import {HeadingSmall, ParagraphSmall} from "baseui/typography";
 import {ANCHOR, SIZE} from "baseui/drawer";
 import { useState } from "react";
 import { Button, BUTTON_KIND, BUTTON_SIZE } from "../button";
@@ -13,18 +13,18 @@ import { Button, BUTTON_KIND, BUTTON_SIZE } from "../button";
 export const Template = ({buttonLabel, ...args}) => {
     const [isOpen, setOpen] = useState(false);
     return (
-       <>
-        <Button onClick={() => setOpen(true)} size={BUTTON_SIZE.compact} kind=        {BUTTON_KIND.tertiary}>
+      <div>
+        <Button onClick={() => setOpen(true)} size={BUTTON_SIZE.compact} kind={BUTTON_KIND.tertiary}>
           {buttonLabel}
         </Button>
         <Drawer {...args} isOpen={isOpen} onClose={() => setOpen(false)}>
           <HeadingSmall margin={0}>Drawer content</HeadingSmall>
           <ParagraphSmall>
           Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl. Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl. Maecenas aliquet mauris ut tempus. Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl. Maecenas aliquet mauris ut tempus.
-        </ParagraphSmall>
-      </Drawer>
-    </>
-  );
+          </ParagraphSmall>
+        </Drawer>
+      </div>
+    );
 }
 
 # Drawer

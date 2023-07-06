@@ -1,14 +1,39 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import {useState} from "react";
 import Table from "./Table";
 import {TABLE_DIVIDER, TABLE_SIZE} from "./types";
-import TableBuilderStory from "./ui/TableBuilderStory";
 import { useStyletron } from "baseui";
 import { PRIMITIVE_COLORS } from "../../shared";
+import TableBuilder from "./TableBuilder";
+import TableBuilderColumn from "./TableBuilderColumn";
+import { Checkbox } from "../checkbox";
+import { Link } from "baseui/link/styled-components";
 
 <Meta
     title="Table"
     component={Table}
 />
+
+export const TABLE_BUILDER_DATA = [
+  {
+    foo: 10,
+    bar: "banana",
+    url: "https://example.com/b",
+    selected: true,
+  },
+  {
+    foo: 1,
+    bar: "carrot",
+    url: "https://example.com/c",
+    selected: false,
+  },
+  {
+    foo: 2,
+    bar: "apple",
+    url: "https://example.com/a",
+    selected: false,
+  },
+];
 
 export const Template = ({...args}) => {
   const [css] = useStyletron();
@@ -28,6 +53,28 @@ export const Template = ({...args}) => {
 
 export const TableBuilderTemplate = ({...args}) => {
   const [css] = useStyletron();
+  const [data, setData] = useState(TABLE_BUILDER_DATA);
+  const [sortAsc, setSortAsc] = useState(true);
+  const hasAny = Boolean(data.length);
+  const hasAll = hasAny && data.every((x) => x.selected);
+  const hasSome = hasAny && data.some((x) => x.selected);
+  function toggleAll() {
+    setData((data) =>
+      data.map((row) => ({
+        ...row,
+        selected: !hasAll,
+      }))
+    );
+  }
+  function toggle(event) {
+    const { name, checked } = event.currentTarget;
+    setData((data) =>
+      data.map((row) => ({
+        ...row,
+        selected: String(row.foo) === name ? checked : row.selected,
+      }))
+    );
+  }
   return (
     <div
       className={css({
@@ -37,7 +84,19 @@ export const TableBuilderTemplate = ({...args}) => {
         borderRadius: "8px",
       })}
     >
-      <TableBuilderStory {...args}/>
+      <TableBuilder {...args} data={data} sortOrder={sortAsc ? "ASC" : "DESC"} onSort={() => setSortAsc(!sortAsc)}>
+        <TableBuilderColumn
+          header={<Checkbox checked={hasAll} isIndeterminate={!hasAll && hasSome} onChange={toggleAll} />}
+        >
+          {(row) => <Checkbox name={"" + row.foo} checked={row.selected} onChange={toggle} />}
+        </TableBuilderColumn>
+        <TableBuilderColumn header="Produce" sortable>
+          {(row) => <Link href={row.url}>{row.bar}</Link>}
+        </TableBuilderColumn>
+        <TableBuilderColumn header="Quantity" numeric>
+          {(row) => row.foo}
+        </TableBuilderColumn>
+      </TableBuilder>
     </div>
   );
 }
