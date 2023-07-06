@@ -1,17 +1,35 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import NavigationBar from "./NavigationBar";
 import {Brand} from "../brand";
-import NavigationBarStoryWidget from "./ui/NavigationBarStoryWidget";
+import AuthDropdownContainer from "./AuthDropdownContainer";
+import AuthItem from "./AuthItem";
+import { useStyletron } from "baseui";
 
 <Meta
     title="NavigationBar"
     component={NavigationBar}
 />
 
-export const Template = ({...args}) => {
+export const Template = ({username, ...args}) => {
+    const [css] = useStyletron();
+    const container = {
+      width: "100%",
+      height: "240px",
+      transform: "scale(1)",
+    };
     return (
-      <NavigationBarStoryWidget {...args} />
-    );
+    <div className={css(container)}>
+      <NavigationBar
+        {...args}
+        username={username}
+        authDropdownContainer={
+          <AuthDropdownContainer username={username}>
+            <AuthItem amount="1069" cents="34" currency="USD" />
+          </AuthDropdownContainer>
+        }
+      />
+    </div>
+  );
 }
 
 export const items = [
