@@ -1,17 +1,29 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Select from "./Select";
-import SelectStoryWidget from "./ui/SelectStoryWidget";
 import {SELECT_SIZE} from "./types";
+import { useState } from "react";
+import { useStyletron } from "baseui";
 
 <Meta
     title="Dropdown/Select"
     component={Select}
 />
 
-export const Template = ({...args}) => {
-    return (
-      <SelectStoryWidget {...args} />
-    );
+export const Template = ({value: baseValue, onChange, ...args}) => {
+  const [css] = useStyletron();
+  const [value, setValue] = useState(baseValue);
+  const onChangeHandler = (params) => {
+    setValue(params.value);
+    onChange?.(params.value);
+  };
+  const containerStyles = {
+    width: "400px",
+  };
+  return (
+    <div className={css(containerStyles)}>
+      <Select {...args} value={value} onChange={onChangeHandler} />
+    </div>
+  );
 }
 
 export const options = [
