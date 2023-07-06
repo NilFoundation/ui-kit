@@ -1,17 +1,25 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Textarea from "./Textarea";
 import {TEXTAREA_SIZE} from "./types";
-import TextareaStoryWidget from "./ui/TextareaStoryWidget";
+import { useState } from "react";
+import { useStyletron } from "baseui";
 
 <Meta
     title="Field/Textarea"
     component={Textarea}
 />
 
-export const Template = ({...args}) => {
-    return (
-      <TextareaStoryWidget {...args} />
-    );
+export const Template = ({value: baseValue, ...args}) => {
+  const [value, setValue] = useState(baseValue);
+  const [css] = useStyletron();
+  const onChangeHandler = (event) => {
+    setValue(event.target.value);
+  };
+  return (
+    <div className={css({ maxWidth: "400px" })}>
+      <Textarea {...args} value={value} onChange={onChangeHandler} />
+    </div>
+  );
 }
 
 # Textarea
