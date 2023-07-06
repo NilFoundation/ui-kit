@@ -19,5 +19,10 @@ export const parameters = {
   },
   docs: {
     theme
+  },
+  options: {
+    storySort: {
+      order: ['Documentation'],
+    },
   }
 };

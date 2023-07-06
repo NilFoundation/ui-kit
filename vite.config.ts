@@ -23,7 +23,9 @@ export default defineConfig({
   plugins: [
     react(),
     eslint(),
-    externalizeDeps(),
+    externalizeDeps({
+      devDeps: true
+    }),
     dts({ staticImport: true, outputDir: './dist/.temp' }),
   ],
   build: {
