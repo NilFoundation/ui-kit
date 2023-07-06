@@ -1,6 +1,7 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Input from "./Input";
-import InputStoryWidget from "./ui/InputStoryWidget"
+import { useState } from "react";
+import { useStyletron } from "baseui";
 import {INPUT_SIZE} from "./types";
 import {HeartIcon, SearchIcon} from "../icons";
 
@@ -9,10 +10,20 @@ import {HeartIcon, SearchIcon} from "../icons";
     component={Input}
 />
 
-export const Template = ({...args}) => {
-    return (
-      <InputStoryWidget {...args} />
-    );
+export const Template = ({value: baseValue, ...args}) => {
+  const [value, setValue] = useState(baseValue);
+  const [css] = useStyletron();
+  const containerStyles = {
+    width: "400px",
+    };
+  const onChangeHandler = (event) => {
+    setValue(event.target.value);
+  };
+  return (
+    <div className={css(containerStyles)}>
+      <Input {...args} value={value} onChange={onChangeHandler} />
+    </div>
+  );
 }
 
 # Input
