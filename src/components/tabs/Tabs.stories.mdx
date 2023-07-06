@@ -1,27 +1,32 @@
 import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
 import Tabs, {ORIENTATION} from "./Tabs";
 import Tab from "./Tab"
-import TabsStoryWidget from "./ui/TabsStoryWidget"; import {HeartIcon} from "../icons";
+import {HeartIcon} from "../icons";
+import { useState } from "react";
 
 <Meta
     title="Control/Tabs"
     component={Tabs}
 />
 
-export const Template = ({startEnhancer, endEnhancer, ...args}) => {
-    return (
-      <TabsStoryWidget {...args}>
-        <Tab title="Tab Link 1" startEnhancer={startEnhancer} endEnhancer={endEnhancer}>
-          <span>Tab Content 1</span>
-        </Tab>
-        <Tab title="Tab Link 2">
-          <span>Tab Content 2</span>
-        </Tab>
-        <Tab title="Tab Link 3">
-          <span>Tab Content 3</span>
-        </Tab>
-      </TabsStoryWidget>
-    );
+export const Template = ({startEnhancer, endEnhancer, activeKey: baseActiveKey = "0", ...args}) => {
+  const [activeKey, setActiveKey] = useState(baseActiveKey);
+  const onChangeHandler = (currentKey) => {
+    setActiveKey(currentKey.activeKey);
+  };
+  return (
+    <Tabs {...args} activeKey={activeKey} onChange={onChangeHandler}>
+      <Tab title="Tab Link 1" startEnhancer={startEnhancer} endEnhancer={endEnhancer}>
+        <span>Tab Content 1</span>
+      </Tab>
+      <Tab title="Tab Link 2">
+        <span>Tab Content 2</span>
+      </Tab>
+      <Tab title="Tab Link 3">
+        <span>Tab Content 3</span>
+      </Tab>
+  </Tabs>
+  );
 }
 
 # Tabs
