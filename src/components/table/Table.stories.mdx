@@ -2,7 +2,8 @@ import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/bloc
 import Table from "./Table";
 import {TABLE_DIVIDER, TABLE_SIZE} from "./types";
 import TableBuilderStory from "./ui/TableBuilderStory";
-import TableStoryWrapper from "./ui/TableStoryWrapper";
+import { useStyletron } from "baseui";
+import { PRIMITIVE_COLORS } from "../../shared";
 
 <Meta
     title="Table"
@@ -10,19 +11,35 @@ import TableStoryWrapper from "./ui/TableStoryWrapper";
 />
 
 export const Template = ({...args}) => {
-    return (
-      <TableStoryWrapper>
-        <Table {...args} />
-      </TableStoryWrapper>
-    );
+  const [css] = useStyletron();
+  return (
+    <div
+      className={css({
+        maxWidth: "650px",
+        backgroundColor: PRIMITIVE_COLORS.primary700,
+        padding: "24px",
+        borderRadius: "8px",
+      })}
+    >
+      <Table {...args} />
+    </div>
+  );
 }
 
 export const TableBuilderTemplate = ({...args}) => {
-    return (
-      <TableStoryWrapper>
-        <TableBuilderStory {...args} />
-      </TableStoryWrapper>
-    );
+  const [css] = useStyletron();
+  return (
+    <div
+      className={css({
+        maxWidth: "650px",
+        backgroundColor: PRIMITIVE_COLORS.primary700,
+        padding: "24px",
+        borderRadius: "8px",
+      })}
+    >
+      <TableBuilderStory {...args}/>
+    </div>
+  );
 }
 
 export const DATA = [
