@@ -4,7 +4,7 @@ import { INPUT_SIZE } from "../input";
 import { getFormControlOverrides } from "./overrides";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
-interface ICounter {
+export interface ICounter {
   maxLength: number;
   length: number;
 }
