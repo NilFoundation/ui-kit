@@ -29,9 +29,9 @@
   "license": "MIT",
   "peerDependencies": {
     "baseui": ">=12.2.0",
-    "styletron-react": ">=6.1.0 < 7",
     "react": ">=17.0.2",
-    "react-dom": ">=17.0.2"
+    "react-dom": ">=17.0.2",
+    "styletron-react": ">=6.1.0 < 7"
   },
   "devDependencies": {
     "@babel/core": "^7.22.1",
@@ -73,7 +73,8 @@
     "access": "public"
   },
   "dependencies": {
-    "inline-style-expand-shorthand": "^1.6.0"
+    "inline-style-expand-shorthand": "^1.6.0",
+    "styletron-standard": "^3.1.0"
   },
   "pre-commit": [
     "tsc",

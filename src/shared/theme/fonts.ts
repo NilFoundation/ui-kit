@@ -1,4 +1,4 @@
-import { StandardEngine } from "styletron-standard";
+import type { StandardEngine } from "styletron-standard";
 import { DefaultFonts } from "./types";
 
 const InterRegularUrl =

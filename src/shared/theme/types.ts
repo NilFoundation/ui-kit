@@ -1,6 +1,6 @@
 import { Primitives } from "baseui/themes/types";
 import { Theme } from "baseui";
-import { StandardEngine } from "styletron-standard";
+import type { StandardEngine } from "styletron-standard";
 
 export type DefaultTheme = {
   primitives?: Partial<Primitives>;
