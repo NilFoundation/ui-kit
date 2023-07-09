@@ -25,3 +25,4 @@ export * from "./navigation-bar";
 export * from "./list";
 export * from "./drawer";
 export * from "./form-control";
+export * from "./modal";

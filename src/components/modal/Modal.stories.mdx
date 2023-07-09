@@ -1,0 +1,140 @@
+import { useState } from "react";
+import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import Modal from "./Modal";
+import { BUTTON_KIND, BUTTON_SIZE, Button } from "../button";
+import { scrolledModalContent } from "./scrolledModalContent";
+import ModalHeader from "./ui/ModalHeader";
+import ModalBody from "./ui/ModalBody";
+import ModalFooter from "./ui/ModalFooter";
+import ModalButton from "./ui/ModalButton";
+
+
+<Meta
+  title="Overlay/Modal"
+  component={Modal}
+/>
+
+export const Template = ({...args}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>
+        Open modal
+      </Button>
+      <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <ModalHeader>Great job!</ModalHeader>
+        <ModalBody>We’ve got enough game data. Let’s order a zk proof for your round speedrun to add it to the Ethereum leaderboard.
+        </ModalBody>
+        <ModalFooter>
+          <ModalButton>Let’s do it!</ModalButton>
+          <ModalButton kind={BUTTON_KIND.secondary}>Let’s do it!</ModalButton>
+        </ModalFooter>
+      </Modal>
+    </>
+  );
+}
+
+export const ScrolledTemplate = ({...args}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>
+        Open scrolled modal
+      </Button>
+      <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <ModalHeader>Great job!</ModalHeader>
+        <ModalBody>{scrolledModalContent}</ModalBody>
+      </Modal>
+    </>
+  );
+}
+
+export const NestedTemplate = ({...args}) => {
+  const [isFirstOpen, setIsFirstOpen] = useState(false);
+  const [isSecondOpen, setIsSecondOpen] = useState(false);
+  const openSecondModal = () => {
+    setIsFirstOpen(false);
+    setIsSecondOpen(true);
+  }
+  return (
+    <>
+      <Button onClick={() => setIsFirstOpen(true)}>
+        Open nested modals
+      </Button>
+      <Modal {...args} isOpen={isFirstOpen} onClose={() => setIsFirstOpen(false)}>
+        <ModalHeader>First modal</ModalHeader>
+        <ModalBody>We’ve got enough game data. Let’s order a zk proof for your round speedrun to add it to the Ethereum leaderboard.</ModalBody>
+        <ModalFooter>
+          <ModalButton onClick={openSecondModal}>Let’s do it!</ModalButton>
+          <ModalButton kind={BUTTON_KIND.secondary}>Let’s do it!</ModalButton>
+        </ModalFooter>
+      </Modal>
+      <Modal {...args} isOpen={isSecondOpen} onClose={() => setIsSecondOpen(false)}>
+        <ModalHeader>Second modal</ModalHeader>
+        <ModalBody>We’ve got enough game data. Let’s order a zk proof for your round speedrun to add it to the Ethereum leaderboard.</ModalBody>
+        <ModalFooter>
+          <ModalButton>Let’s do it!</ModalButton>
+          <ModalButton kind={BUTTON_KIND.secondary}>Let’s do it!</ModalButton>
+        </ModalFooter>
+      </Modal>
+    </>
+  );
+}
+
+
+# Modal
+
+
+<Canvas isColumn>
+  <Story name="Base" args={{}}>
+      {Template.bind({})}
+  </Story>
+  <Story name="Scrolled modal" args={{}}>
+      {ScrolledTemplate.bind({})}
+  </Story>
+  <Story name="Nested modals" args={{}}>
+      {NestedTemplate.bind({})}
+  </Story>
+</Canvas>
+
+
+### Usage:
+
+To use, import the component `Modal, ModalHeader, ModalBody, ModalFooter, ModalButton` from `@nilfoundation/ui-kit`.
+
+<Source
+  language='tsx'
+  dark
+  format={true}
+  code={`
+        import {Modal, ModalHeader, ModalBody, ModalFooter, ModalButton} from "@nilfoundation/ui-kit";
+        ...
+        // Main usage of modal
+        const [isOpen, setOpen] = useState(false);
+        <Modal isOpen={isOpen} onClose={() => setOpen(false)}>
+          <ModalHeader>Modal header</ModalHeader>
+          <ModalBody>Modal content</ModalBody>
+          <ModalFooter>
+            <ModalButton>Modal button 1</ModalButton>
+            <ModalButton kind={BUTTON_KIND.secondary}>Modal button 2</ModalButton>
+          </ModalFooter>
+        </Modal>
+        ...
+        // Usage of nested modals
+        const [isFirstOpen, setIsFirstOpen] = useState(false);
+        const [isSecondOpen, setIsSecondOpen] = useState(false);
+        const openSecondModal = () => {
+          setIsFirstOpen(false);
+          setIsSecondOpen(true);
+        }
+        <Modal {...args} isOpen={isFirstOpen} onClose={() => setIsFirstOpen(false)}>
+          The content of the first modal
+          <ModalFooter>
+            <ModalButton onClick={openSecondModal}>Open second modal</ModalButton>
+          </ModalFooter>
+        </ModalFooter>
+        <Modal {...args} isOpen={isSecondOpen} onClose={() => setIsSecondOpen(false)}>
+          The content of the second modal
+        </Modal>
+  `}
+/>
