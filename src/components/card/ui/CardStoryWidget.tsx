@@ -1,8 +1,9 @@
 import { FC } from "react";
-import Card, { CardProps } from "../Card";
+import Card from "../Card";
 import { StyledBody, StyledAction } from "baseui/card";
 import { Button } from "../../button";
 import { useStyletron } from "baseui";
+import { CardProps } from "../types";
 
 type CardStoryWidgetProps = CardProps & {
   isButton?: boolean;
