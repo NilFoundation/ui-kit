@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { ParagraphSmall } from "baseui/typography";
 import { useStyletron } from "baseui";
 import { modalBodyStyles } from "../styles";
 import { PRIMITIVE_COLORS } from "../../../shared";
 
 export type ModalBodyProps = {
-  children?: any;
+  children?: ReactNode;
 };
 
 const ModalBody: FC<ModalBodyProps> = ({ children }) => {

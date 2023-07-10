@@ -14,7 +14,7 @@ const ModalButton: FC<ModalButtonProps> = ({
 }) => {
   const [css] = useStyletron();
   return (
-    <Button className={css(modalButtonStyles)} kind={kind} size={size} shape={shape} {...props}>
+    <Button {...props} className={css(modalButtonStyles)} kind={kind} size={size} shape={shape}>
       {children}
     </Button>
   );

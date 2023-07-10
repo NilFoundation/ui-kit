@@ -1,10 +1,10 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { HeadingSmall } from "baseui/typography";
 import { useStyletron } from "baseui";
 import { modalHeaderStyles } from "../styles";
 
 export type ModalHeaderProps = {
-  children?: any;
+  children?: ReactNode;
 };
 
 const ModalHeader: FC<ModalHeaderProps> = ({ children }) => {
