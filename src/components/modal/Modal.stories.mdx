@@ -68,14 +68,7 @@ export const NestedTemplate = ({ ...args }) => {
       </Modal>
       <Modal {...args} isOpen={isSecondOpen} onClose={() => setIsSecondOpen(false)}>
         <ModalHeader>Second modal</ModalHeader>
-        <ModalBody>
-          We’ve got enough game data. Let’s order a zk proof for your round speedrun to add it to the Ethereum
-          leaderboard.
-        </ModalBody>
-        <ModalFooter>
-          <ModalButton>Let’s do it!</ModalButton>
-          <ModalButton kind={BUTTON_KIND.secondary}>Let’s do it!</ModalButton>
-        </ModalFooter>
+        <ModalBody>Nested Modal</ModalBody>
       </Modal>
     </>
   );
@@ -85,6 +78,12 @@ export const NestedTemplate = ({ ...args }) => {
 
 <Canvas isColumn>
   <Story name="Base" args={{}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Full Size" args={{ size: "full" }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Auto Size" args={{ size: "auto" }}>
     {Template.bind({})}
   </Story>
   <Story name="Scrolled modal" args={{}}>
@@ -99,7 +98,7 @@ export const NestedTemplate = ({ ...args }) => {
 
 ### Usage:
 
-To use, import the component `Modal, ModalHeader, ModalBody, ModalFooter, ModalButton, BUTTON_KIND` from `@nilfoundation/ui-kit`.
+To use, import the component `Modal, ModalHeader, ModalBody, ModalFooter, ModalButton` from `@nilfoundation/ui-kit`.
 
 <Source
   language="tsx"
@@ -133,19 +132,15 @@ To use, import the component `Modal, ModalHeader, ModalBody, ModalFooter, ModalB
           </ModalFooter>
         </Modal>
         <Modal isOpen={isSecondOpen} onClose={() => setIsSecondOpen(false)}>
-          The content of the second modal
+          ...
         </Modal>
         // Fullscreen modal window
         <Modal isOpen={isOpen} onClose={() => setOpen(false)} size="full">
-          Modal content
+          ...
         </Modal>
         // Modal's width and height is auto
         <Modal isOpen={isOpen} onClose={() => setOpen(false)} size="auto">
-          Modal content
-        </Modal>
-        // Max modal's width is 500px
-        <Modal isOpen={isOpen} onClose={() => setOpen(false)} size="default">
-          Modal content
+          ...
         </Modal>
   `}
 />

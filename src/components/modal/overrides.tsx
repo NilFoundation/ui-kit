@@ -8,7 +8,6 @@ export const getModalOverrides = (): ModalOverrides => ({
   Root: {
     style: {
       backgroundColor: "rgba(0, 0, 0, 0.5)",
-      zIndex: 100,
     },
   },
   Dialog: {
