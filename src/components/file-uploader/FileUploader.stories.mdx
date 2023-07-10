@@ -1,39 +1,38 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import FileUploader from "./FileUploader";
 
-<Meta
-    title="Form/FileUploader"
-    component={FileUploader}
-/>
+<Meta title="Form/FileUploader" component={FileUploader} />
 
-export const Template = ({...args}) => {
-    return (
-      <div style={{maxWidth: "375px"}}>
-        <FileUploader {...args} />
-      </div>
-    );
-}
+export const Template = ({ ...args }) => {
+  return (
+    <div style={{ maxWidth: "375px" }}>
+      <FileUploader {...args} />
+    </div>
+  );
+};
 
 # File Uploader
 
-
 <Canvas isColumn>
   <Story name="Base" args={{}}>
-      {Template.bind({})}
+    {Template.bind({})}
   </Story>
-  <Story name="Disabled" args={{disabled: true}}>
-      {Template.bind({})}
+  <Story name="Disabled" args={{ disabled: true }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Multiple" args={{multiple: true}}>
-      {Template.bind({})}
+  <Story name="Multiple" args={{ multiple: true }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Error" args={{errorMessage: "Upload failed... connection was lost."}}>
-      {Template.bind({})}
+  <Story name="Error" args={{ errorMessage: "Upload failed... connection was lost." }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Error With Progress" args={{progressAmount: 64, errorMessage: "Upload failed... connection was lost."}}>
-      {Template.bind({})}
+  <Story
+    name="Error With Progress"
+    args={{ progressAmount: 64, errorMessage: "Upload failed... connection was lost." }}
+  >
+    {Template.bind({})}
   </Story>
-  <Story name="Progress" args={{progressAmount: 64, progressMessage: "Uploading... 64% of 100%"}}>
+  <Story name="Progress" args={{ progressAmount: 64, progressMessage: "Uploading... 64% of 100%" }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -45,7 +44,7 @@ export const Template = ({...args}) => {
 To use, import the component `FileUploader` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
@@ -62,5 +61,3 @@ To use, import the component `FileUploader` from `@nilfoundation/ui-kit`.
         <FileUploader progressAmount={64} progressMessage="Uploading... 64% of 100%" />
   `}
 />
-
-

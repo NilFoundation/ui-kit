@@ -1,53 +1,72 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { useState } from "react";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import FormControl from "./FormControl";
-import {INPUT_SIZE} from "../input";
-import FormControlStoryWidget from "./ui/FormControlStoryWidget";
+import { INPUT_SIZE, Input } from "../input";
+import { useStyletron } from "baseui";
 
-<Meta
-    title="Form/FormControl"
-    component={FormControl}
-/>
+<Meta title="Form/FormControl" component={FormControl} />
 
-export const Template = ({...args}) => {
-    return (
-      <FormControlStoryWidget {...args} />
-    );
-}
+export const Template = ({ isCounter, ...args }) => {
+  const [css] = useStyletron();
+  const [value, setValue] = useState("");
+  const onChangeHandler = (event) => {
+    setValue(event.target.value);
+  };
+  const containerStyles = {
+    width: "400px",
+  };
+  return (
+    <div className={css(containerStyles)}>
+      <FormControl
+        {...args}
+        counter={
+          isCounter
+            ? {
+                maxLength: 100,
+                length: value.length,
+              }
+            : undefined
+        }
+      >
+        <Input placeholder="Input Field" value={value} onChange={onChangeHandler} />
+      </FormControl>
+    </div>
+  );
+};
 
 export const InputFieldProps = {
   label: () => "Input label",
   caption: () => "Input caption",
-}
+};
 
 # Form Control
 
-
 <Canvas isColumn>
-  <Story name="With Small Input" args={{...InputFieldProps, size: INPUT_SIZE.small}}>
-      {Template.bind({})}
-  </Story>
-  <Story name="With Medium Input" args={{...InputFieldProps, size: INPUT_SIZE.medium}}>
-      {Template.bind({})}
-  </Story>
-  <Story name="With Large Input" args={{...InputFieldProps, size: INPUT_SIZE.large}}>
-      {Template.bind({})}
-  </Story>
-  <Story name="Disabled" args={{...InputFieldProps, disabled: true, size: INPUT_SIZE.small}}>
+  <Story name="With Small Input" args={{ ...InputFieldProps, size: INPUT_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="Readonly" args={{...InputFieldProps, readOnly: true, size: INPUT_SIZE.small}}>
+  <Story name="With Medium Input" args={{ ...InputFieldProps, size: INPUT_SIZE.medium }}>
     {Template.bind({})}
   </Story>
-  <Story name="Loading" args={{...InputFieldProps, isLoading: true, size: INPUT_SIZE.small}}>
+  <Story name="With Large Input" args={{ ...InputFieldProps, size: INPUT_SIZE.large }}>
     {Template.bind({})}
   </Story>
-  <Story name="Error" args={{...InputFieldProps, error: true, size: INPUT_SIZE.small}}>
+  <Story name="Disabled" args={{ ...InputFieldProps, disabled: true, size: INPUT_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="Positive" args={{...InputFieldProps, positive: true, size: INPUT_SIZE.small}}>
+  <Story name="Readonly" args={{ ...InputFieldProps, readOnly: true, size: INPUT_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Max Length" args={{...InputFieldProps, isCounter: true, size: INPUT_SIZE.small}}>
+  <Story name="Loading" args={{ ...InputFieldProps, isLoading: true, size: INPUT_SIZE.small }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Error" args={{ ...InputFieldProps, error: true, size: INPUT_SIZE.small }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Positive" args={{ ...InputFieldProps, positive: true, size: INPUT_SIZE.small }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Max Length" args={{ ...InputFieldProps, isCounter: true, size: INPUT_SIZE.small }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -59,7 +78,7 @@ export const InputFieldProps = {
 To use, import the component `FormControl` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`

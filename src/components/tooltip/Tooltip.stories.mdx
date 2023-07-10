@@ -1,21 +1,89 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import StatefulTooltip from "./StatefulTooltip";
-import TooltipStoryWidget from "./ui/TooltipStoryWidget";
 import Tooltip from "./Tooltip";
+import { useStyletron } from "baseui";
+import { Button, BUTTON_KIND, BUTTON_SIZE } from "../button";
 
-<Meta
-    title="Overlay/Tooltip"
-    component={StatefulTooltip}
-/>
+<Meta title="Overlay/Tooltip" component={StatefulTooltip} />
 
-export const Template = ({...args}) => {
-    return (
-      <TooltipStoryWidget {...args} />
-    );
-}
+export const Template = ({ ...args }) => {
+  const [css] = useStyletron();
+  return (
+    <ul
+      className={css({
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        minHeight: "240px",
+        listStyle: "none",
+        padding: "0",
+      })}
+    >
+      <li>
+        <StatefulTooltip {...args} showArrow content="StatefulTooltip placement is left" placement="left">
+          <span tabIndex={0}>
+            <Button kind={BUTTON_KIND.tertiary} size={BUTTON_SIZE.compact}>
+              Hover me
+            </Button>
+          </span>
+        </StatefulTooltip>
+      </li>
+      <li>
+        <StatefulTooltip {...args} showArrow content="StatefulTooltip on click" placement="top" triggerType="click">
+          <span tabIndex={0}>
+            <Button kind={BUTTON_KIND.tertiary} size={BUTTON_SIZE.compact}>
+              Click me
+            </Button>
+          </span>
+        </StatefulTooltip>
+      </li>
+      <li>
+        <StatefulTooltip
+          {...args}
+          showArrow
+          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          placement="bottom"
+        >
+          <span tabIndex={0}>
+            <Button kind={BUTTON_KIND.tertiary} size={BUTTON_SIZE.compact}>
+              Hover me
+            </Button>
+          </span>
+        </StatefulTooltip>
+      </li>
+      <li>
+        <StatefulTooltip {...args} showArrow content="StatefulTooltip placement is bottom" placement="bottom">
+          <span tabIndex={0}>
+            <Button kind={BUTTON_KIND.tertiary} size={BUTTON_SIZE.compact}>
+              Hover me
+            </Button>
+          </span>
+        </StatefulTooltip>
+      </li>
+      <li>
+        <StatefulTooltip {...args} showArrow content="StatefulTooltip placement is top" placement="top">
+          <span tabIndex={0}>
+            <Button kind={BUTTON_KIND.tertiary} size={BUTTON_SIZE.compact}>
+              Hover me
+            </Button>
+          </span>
+        </StatefulTooltip>
+      </li>
+      <li>
+        <StatefulTooltip {...args} showArrow content="StatefulTooltip placement is right" placement="right">
+          <span tabIndex={0}>
+            <Button kind={BUTTON_KIND.tertiary} size={BUTTON_SIZE.compact}>
+              Hover me
+            </Button>
+          </span>
+        </StatefulTooltip>
+      </li>
+    </ul>
+  );
+};
 
 # Tooltip
-
 
 <Canvas isColumn>
   <Story name="Base" args={{}}>
@@ -24,19 +92,19 @@ export const Template = ({...args}) => {
 </Canvas>
 
 ### StatefulTooltip props
+
 <ArgsTable of={StatefulTooltip} />
 
 ### Tooltip props
+
 <ArgsTable of={Tooltip} />
-
-
 
 ### Usage:
 
 To use, import the component `Tooltip` or `StatefulTooltip` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
@@ -61,4 +129,3 @@ To use, import the component `Tooltip` or `StatefulTooltip` from `@nilfoundation
         </Tooltip>
       `}
 />
-
