@@ -1,47 +1,41 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import Badge from "./Badge";
-import {Skeleton} from "../skeleton";
-import {BADGE_COLOR, BADGE_HIERARCHY, BADGE_PLACEMENT} from "./types";
+import { Skeleton } from "../skeleton";
+import { BADGE_COLOR, BADGE_HIERARCHY, BADGE_PLACEMENT } from "./types";
 
-<Meta
-    title="Data display/Badge"
-    component={Badge}
-/>
+<Meta title="Data display/Badge" component={Badge} />
 
-export const Template = ({...args}) => {
-    return (
-      <Badge {...args} />
-    );
-}
+export const Template = ({ ...args }) => {
+  return <Badge {...args} />;
+};
 
-
-export const content = "Badge"
+export const content = "Badge";
 
 # Badge
 
-
 <Canvas isColumn>
-  <Story name="Accent" args={{content, color: BADGE_COLOR.accent}}>
+  <Story name="Accent" args={{ content, color: BADGE_COLOR.accent }}>
     {Template.bind({})}
   </Story>
-  <Story name="Positive" args={{content, color: BADGE_COLOR.positive}}>
+  <Story name="Positive" args={{ content, color: BADGE_COLOR.positive }}>
     {Template.bind({})}
   </Story>
-  <Story name="Warning" args={{content, color: BADGE_COLOR.warning}}>
+  <Story name="Warning" args={{ content, color: BADGE_COLOR.warning }}>
     {Template.bind({})}
   </Story>
-  <Story name="Negative" args={{content, color: BADGE_COLOR.negative}}>
+  <Story name="Negative" args={{ content, color: BADGE_COLOR.negative }}>
     {Template.bind({})}
   </Story>
-  <Story name="Hierarchy Low" args={{content, hierarchy: BADGE_HIERARCHY.low}}>
+  <Story name="Hierarchy Low" args={{ content, hierarchy: BADGE_HIERARCHY.low }}>
     {Template.bind({})}
   </Story>
   <Story
     name="With Children"
     args={{
       content,
-      children: <Skeleton animation width="180px" height="120px" />
-    }}>
+      children: <Skeleton animation width="180px" height="120px" />,
+    }}
+  >
     {Template.bind({})}
   </Story>
   <Story
@@ -49,8 +43,9 @@ export const content = "Badge"
     args={{
       content,
       placement: BADGE_PLACEMENT.bottomLeft,
-      children: <Skeleton animation width="180px" height="120px" />
-    }}>
+      children: <Skeleton animation width="180px" height="120px" />,
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -62,7 +57,7 @@ export const content = "Badge"
 To use, import the component `Badge` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
@@ -83,4 +78,3 @@ To use, import the component `Badge` from `@nilfoundation/ui-kit`.
         </Badge>
   `}
 />
-

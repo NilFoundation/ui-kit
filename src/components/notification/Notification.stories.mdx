@@ -1,42 +1,36 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import Notification from "./Notification";
-import {NOTIFICATION_KIND} from "./types";
-import {Search} from "baseui/icon";
+import { NOTIFICATION_KIND } from "./types";
+import { Search } from "baseui/icon";
 
-<Meta
-    title="Feedback/Notification"
-    component={Notification}
-/>
+<Meta title="Feedback/Notification" component={Notification} />
 
-export const Template = ({...args}) => {
-    return (
-      <Notification {...args} />
-    );
-}
+export const Template = ({ ...args }) => {
+  return <Notification {...args} />;
+};
 
 # Notification
 
-
 <Canvas isColumn>
-  <Story name="Info" args={{kind: NOTIFICATION_KIND.info, children: "Info notification."}}>
-      {Template.bind({})}
+  <Story name="Info" args={{ kind: NOTIFICATION_KIND.info, children: "Info notification." }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Positive" args={{kind: NOTIFICATION_KIND.positive, children: "Positive notification."}}>
-      {Template.bind({})}
+  <Story name="Positive" args={{ kind: NOTIFICATION_KIND.positive, children: "Positive notification." }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Warning" args={{kind: NOTIFICATION_KIND.warning, children: "Warning notification."}}>
-      {Template.bind({})}
+  <Story name="Warning" args={{ kind: NOTIFICATION_KIND.warning, children: "Warning notification." }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Negative" args={{kind: NOTIFICATION_KIND.negative, children: "Negative notification."}}>
-      {Template.bind({})}
+  <Story name="Negative" args={{ kind: NOTIFICATION_KIND.negative, children: "Negative notification." }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Without Icon" args={{hideIcon: true, children: "Without icon notification."}}>
-      {Template.bind({})}
+  <Story name="Without Icon" args={{ hideIcon: true, children: "Without icon notification." }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Closable" args={{closeable: true, children: "Closable notification."}}>
-      {Template.bind({})}
+  <Story name="Closable" args={{ closeable: true, children: "Closable notification." }}>
+    {Template.bind({})}
   </Story>
-  <Story name="With Custom Icon" args={{children: "With custom icon.", icon: <Search size={20} />}}>
+  <Story name="With Custom Icon" args={{ children: "With custom icon.", icon: <Search size={20} /> }}>
     {Template.bind({})}
   </Story>
   <Story
@@ -45,12 +39,13 @@ export const Template = ({...args}) => {
       children: "Headline text. Paragraph text",
       isAction: true,
       actionLabel: "Close",
-      closeable: true
-  }}>
+      closeable: true,
+    }}
+  >
     {Template.bind({})}
   </Story>
-  <Story name="Auto hide after 3000ms" args={{autoHideDuration: 3000, children: "Auto hide notification."}}>
-      {Template.bind({})}
+  <Story name="Auto hide after 3000ms" args={{ autoHideDuration: 3000, children: "Auto hide notification." }}>
+    {Template.bind({})}
   </Story>
 </Canvas>
 
@@ -61,7 +56,7 @@ export const Template = ({...args}) => {
 To use, import the component `Notification` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
@@ -82,5 +77,3 @@ To use, import the component `Notification` from `@nilfoundation/ui-kit`.
         <Notification autoHideDuration={3000}>This is a notification.</Notification>
   `}
 />
-
-

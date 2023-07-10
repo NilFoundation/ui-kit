@@ -1,39 +1,33 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import Tag from "./Tag";
-import {TAG_KIND, TAG_VARIANT} from "./types";
+import { TAG_KIND, TAG_VARIANT } from "./types";
 
-<Meta
-    title="Data display/Tag"
-    component={Tag}
-/>
+<Meta title="Data display/Tag" component={Tag} />
 
-export const Template = ({...args}) => {
-    return (
-      <Tag {...args}>Tag label</Tag>
-    );
-}
+export const Template = ({ ...args }) => {
+  return <Tag {...args}>Tag label</Tag>;
+};
 
 # Tag
 
-
 <Canvas isColumn>
-  <Story name="Primary" args={{kind: TAG_KIND.primary}}>
-      {Template.bind({})}
+  <Story name="Primary" args={{ kind: TAG_KIND.primary }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Positive" args={{kind: TAG_KIND.positive}}>
-      {Template.bind({})}
+  <Story name="Positive" args={{ kind: TAG_KIND.positive }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Warning" args={{kind: TAG_KIND.warning}}>
-      {Template.bind({})}
+  <Story name="Warning" args={{ kind: TAG_KIND.warning }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Negative" args={{kind: TAG_KIND.negative}}>
-      {Template.bind({})}
+  <Story name="Negative" args={{ kind: TAG_KIND.negative }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Disabled" args={{disabled: true}}>
-      {Template.bind({})}
+  <Story name="Disabled" args={{ disabled: true }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Variant Light" args={{variant: TAG_VARIANT.light}}>
-      {Template.bind({})}
+  <Story name="Variant Light" args={{ variant: TAG_VARIANT.light }}>
+    {Template.bind({})}
   </Story>
 </Canvas>
 
@@ -44,7 +38,7 @@ export const Template = ({...args}) => {
 To use, import the component `Tag` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
@@ -59,5 +53,3 @@ To use, import the component `Tag` from `@nilfoundation/ui-kit`.
         <Tag variant={TAG_VARIANT.light}>Tag label</Tag>
   `}
 />
-
-

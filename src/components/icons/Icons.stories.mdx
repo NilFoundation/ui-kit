@@ -1,5 +1,5 @@
+import { cloneElement } from "react";
 import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
-import IconStoryWidget from "./ui/IconStoryWidget";
 import HeartIcon from "./HeartIcon";
 import SearchIcon from "./SearchIcon";
 import CompleteIcon from "./CompleteIcon";
@@ -29,100 +29,122 @@ import LinkedinIcon from "./LinkedinIcon";
 import DiscordIcon from "./DiscordIcon";
 import TelegramIcon from "./TelegramIcon";
 import SeparatorIcon from "./SeparatorIcon";
+import { useStyletron } from "baseui";
 
+<Meta title="Media/Icons" component={HeartIcon} />
 
-<Meta title="Media/Icons" component={IconStoryWidget} />
-
-export const Template = (args) => <IconStoryWidget {...args} />
+export const Template = ({ color, size, icon }) => {
+  const [css] = useStyletron();
+  const listStyles = {
+    display: "flex",
+    alignItems: "center",
+    gridGap: "12px",
+    margin: "0",
+    padding: "0",
+    listStyle: "none",
+  };
+  return (
+    <ul className={css(listStyles)}>
+      {["16px", "20px", "24px", "32px"].map((sizeItem) => (
+        <li key={sizeItem}>
+          {cloneElement(icon, {
+            size: size ?? sizeItem,
+            color: color || "#fff",
+          })}
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 # Icons
 
 <Canvas isColumn={true}>
-  <Story name="Heart" args={{icon: <HeartIcon />}}>
+  <Story name="Heart" args={{ icon: <HeartIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Search" args={{icon: <SearchIcon />}}>
+  <Story name="Search" args={{ icon: <SearchIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Complete" args={{icon: <CompleteIcon />}}>
+  <Story name="Complete" args={{ icon: <CompleteIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Cancel" args={{icon: <CancelIcon />}}>
+  <Story name="Cancel" args={{ icon: <CancelIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Close" args={{icon: <CloseIcon />}}>
+  <Story name="Close" args={{ icon: <CloseIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Warning" args={{icon: <WarningIcon />}}>
+  <Story name="Warning" args={{ icon: <WarningIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Info" args={{icon: <InfoIcon />}}>
+  <Story name="Info" args={{ icon: <InfoIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Menu" args={{icon: <MenuIcon />}}>
+  <Story name="Menu" args={{ icon: <MenuIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Profile" args={{icon: <ProfileIcon />}}>
+  <Story name="Profile" args={{ icon: <ProfileIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Resize" args={{icon: <ResizeIcon />}}>
+  <Story name="Resize" args={{ icon: <ResizeIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Plus" args={{icon: <PlusIcon />}}>
+  <Story name="Plus" args={{ icon: <PlusIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Minus" args={{icon: <MinusIcon />}}>
+  <Story name="Minus" args={{ icon: <MinusIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Login" args={{icon: <LoginIcon />}}>
+  <Story name="Login" args={{ icon: <LoginIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Logout" args={{icon: <LogoutIcon />}}>
+  <Story name="Logout" args={{ icon: <LogoutIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Fit To Screen" args={{icon: <FitToScreenIcon />}}>
+  <Story name="Fit To Screen" args={{ icon: <FitToScreenIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Code" args={{icon: <CodeIcon />}}>
+  <Story name="Code" args={{ icon: <CodeIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Chart" args={{icon: <ChartIcon />}}>
+  <Story name="Chart" args={{ icon: <ChartIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Chevron Down" args={{icon: <ChevronDownIcon />}}>
+  <Story name="Chevron Down" args={{ icon: <ChevronDownIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Chevron Up" args={{icon: <ChevronUpIcon />}}>
+  <Story name="Chevron Up" args={{ icon: <ChevronUpIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Chevron Right" args={{icon: <ChevronRightIcon />}}>
+  <Story name="Chevron Right" args={{ icon: <ChevronRightIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Chevron Left" args={{icon: <ChevronLeftIcon />}}>
+  <Story name="Chevron Left" args={{ icon: <ChevronLeftIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Caret Up" args={{icon: <CaretUpIcon />}}>
+  <Story name="Caret Up" args={{ icon: <CaretUpIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Caret Down" args={{icon: <CaretDownIcon />}}>
+  <Story name="Caret Down" args={{ icon: <CaretDownIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Github" args={{icon: <GithubIcon />}}>
+  <Story name="Github" args={{ icon: <GithubIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Separator" args={{icon: <SeparatorIcon />}}>
+  <Story name="Separator" args={{ icon: <SeparatorIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Twitter" args={{icon: <TwitterIcon />}}>
+  <Story name="Twitter" args={{ icon: <TwitterIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Linkedin" args={{icon: <LinkedinIcon />}}>
+  <Story name="Linkedin" args={{ icon: <LinkedinIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Discord" args={{icon: <DiscordIcon />}}>
+  <Story name="Discord" args={{ icon: <DiscordIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="Telegram" args={{icon: <TelegramIcon />}}>
+  <Story name="Telegram" args={{ icon: <TelegramIcon /> }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -134,7 +156,7 @@ export const Template = (args) => <IconStoryWidget {...args} />
 To use, import the icon component from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
