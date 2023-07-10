@@ -12,12 +12,14 @@ export const getModalOverrides = (): ModalOverrides => ({
     },
   },
   Dialog: {
-    style: {
-      ...BorderRadiusStyles,
-      ...expandProperty("padding", "32px 24px 16px"),
-      backgroundColor: PRIMITIVE_COLORS.primary800,
-      width: "500px",
-      boxSizing: "border-box",
+    style: ({ $size }) => {
+      return {
+        ...BorderRadiusStyles,
+        ...expandProperty("padding", "32px 24px 16px"),
+        ...($size === "default" ? { width: "500px" } : {}),
+        backgroundColor: PRIMITIVE_COLORS.primary800,
+        boxSizing: "border-box",
+      };
     },
   },
   Close: {

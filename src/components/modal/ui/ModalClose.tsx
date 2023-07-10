@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { useStyletron } from "baseui";
 import { CloseIcon } from "../../icons";
 import { PRIMITIVE_COLORS } from "../../../shared";
+import { StyleObject } from "styletron-react";
 
 type DrawerCloseProps = {
   onBlur?: React.FocusEventHandler;
@@ -9,7 +10,7 @@ type DrawerCloseProps = {
   onClick?: React.MouseEventHandler;
 };
 
-const buttonStyles = {
+const buttonStyles: StyleObject = {
   position: "absolute",
   top: "8px",
   right: "8px",
@@ -25,12 +26,11 @@ const buttonStyles = {
   cursor: "pointer",
 };
 
-const ModalClose: FC<DrawerCloseProps> = ({ onClick, onFocus, onBlur }) => {
+const ModalClose: FC<DrawerCloseProps> = ({ ...props }) => {
   const [css] = useStyletron();
 
   return (
-    // @ts-ignore
-    <button onClick={onClick} onFocus={onFocus} onBlur={onBlur} className={css(buttonStyles)}>
+    <button {...props} className={css(buttonStyles)}>
       <CloseIcon size={24} color={PRIMITIVE_COLORS.white} />
     </button>
   );
