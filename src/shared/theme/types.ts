@@ -1,6 +1,6 @@
 import { Primitives } from "baseui/themes/types";
-import StyletronClient from "styletron-engine-atomic/lib/client/client";
 import { Theme } from "baseui";
+import type { StandardEngine } from "styletron-standard";
 
 export type DefaultTheme = {
   primitives?: Partial<Primitives>;
@@ -18,4 +18,4 @@ export type CreateThemeOptions = {
   overrides?: any;
 };
 
-export type CreateTheme = (instance: StyletronClient, options?: CreateThemeOptions) => Theme;
+export type CreateTheme = (instance: StandardEngine, options?: CreateThemeOptions) => Theme;
