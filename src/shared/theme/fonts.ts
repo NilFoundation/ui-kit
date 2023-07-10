@@ -1,4 +1,4 @@
-import StyletronClient from "styletron-engine-atomic/lib/client/client";
+import type { StandardEngine } from "styletron-standard";
 import { DefaultFonts } from "./types";
 
 const InterRegularUrl =
@@ -8,12 +8,13 @@ const InterSemiBoldUrl =
 const RobotoMonoRegularUrl =
   "https://fonts.gstatic.com/s/robotomono/v22/L0xuDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vq_ROW4AJi8SJQt.woff2";
 
-export const getDefaultFonts = (instance: StyletronClient): DefaultFonts => {
+export const getDefaultFonts = (instance: StandardEngine): DefaultFonts => {
   const InterRegular = instance.renderFontFace({
     src: `url("${InterRegularUrl}")`,
     fontStyle: "normal",
     fontWeight: 400,
   });
+
   const InterSemiBold = instance.renderFontFace({
     src: `url("${InterSemiBoldUrl}")`,
     fontStyle: "normal",
