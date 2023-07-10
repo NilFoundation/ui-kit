@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { ModalBody as BaseModalBody } from "baseui/modal";
 import { ParagraphSmall } from "baseui/typography";
 import { useStyletron } from "baseui";
 import { modalBodyStyles } from "../styles";
@@ -12,11 +11,11 @@ export type ModalBodyProps = {
 const ModalBody: FC<ModalBodyProps> = ({ children }) => {
   const [css] = useStyletron();
   return (
-    <BaseModalBody className={css(modalBodyStyles)}>
-      <ParagraphSmall margin={0} color={PRIMITIVE_COLORS.primary300}>
+    <div className={css(modalBodyStyles)}>
+      <ParagraphSmall as="div" margin={0} color={PRIMITIVE_COLORS.primary300}>
         {children}
       </ParagraphSmall>
-    </BaseModalBody>
+    </div>
   );
 };
 

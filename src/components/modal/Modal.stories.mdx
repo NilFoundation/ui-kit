@@ -99,7 +99,7 @@ export const NestedTemplate = ({ ...args }) => {
 
 ### Usage:
 
-To use, import the component `Modal, ModalHeader, ModalBody, ModalFooter, ModalButton` from `@nilfoundation/ui-kit`.
+To use, import the component `Modal, ModalHeader, ModalBody, ModalFooter, ModalButton, BUTTON_KIND` from `@nilfoundation/ui-kit`.
 
 <Source
   language="tsx"
@@ -131,9 +131,21 @@ To use, import the component `Modal, ModalHeader, ModalBody, ModalFooter, ModalB
           <ModalFooter>
             <ModalButton onClick={openSecondModal}>Open second modal</ModalButton>
           </ModalFooter>
-        </ModalFooter>
+        </Modal>
         <Modal isOpen={isSecondOpen} onClose={() => setIsSecondOpen(false)}>
           The content of the second modal
+        </Modal>
+        // Fullscreen modal window
+        <Modal isOpen={isOpen} onClose={() => setOpen(false)} size="full">
+          Modal content
+        </Modal>
+        // Modal's width and height is auto
+        <Modal isOpen={isOpen} onClose={() => setOpen(false)} size="auto">
+          Modal content
+        </Modal>
+        // Max modal's width is 500px
+        <Modal isOpen={isOpen} onClose={() => setOpen(false)} size="default">
+          Modal content
         </Modal>
   `}
 />
