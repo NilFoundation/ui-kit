@@ -42,7 +42,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={className}
         isLoading={isLoading}
         shape={shape}
-        kind={kind}
+        kind={kind === BUTTON_KIND.danger ? BUTTON_KIND.secondary : kind}
         size={size}
         disabled={disabled}
         startEnhancer={

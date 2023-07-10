@@ -61,6 +61,19 @@ export const buttonKindModifiedStyles = {
       color: PRIMITIVE_COLORS.primary500,
     },
   },
+  [BUTTON_KIND.danger]: {
+    backgroundColor: PRIMITIVE_COLORS.error400,
+    color: PRIMITIVE_COLORS.white,
+
+    ":hover": {
+      backgroundColor: PRIMITIVE_COLORS.error500,
+    },
+
+    ":disabled": {
+      backgroundColor: PRIMITIVE_COLORS.mono600,
+      color: PRIMITIVE_COLORS.primary500,
+    },
+  },
 };
 
 export const buttonFocusedModifiedStyles = {
@@ -73,6 +86,9 @@ export const buttonFocusedModifiedStyles = {
   },
   [BUTTON_KIND.tertiary]: {
     backgroundColor: PRIMITIVE_COLORS.primary600,
+  },
+  [BUTTON_KIND.danger]: {
+    backgroundColor: PRIMITIVE_COLORS.error600,
   },
 };
 
@@ -92,6 +108,12 @@ export const buttonDisabledModifiedStyles = {
   [BUTTON_KIND.tertiary]: {
     ":hover": {
       backgroundColor: "transparent",
+      color: PRIMITIVE_COLORS.primary500,
+    },
+  },
+  [BUTTON_KIND.danger]: {
+    ":hover": {
+      backgroundColor: PRIMITIVE_COLORS.mono600,
       color: PRIMITIVE_COLORS.primary500,
     },
   },

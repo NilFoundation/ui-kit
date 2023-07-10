@@ -2,6 +2,7 @@ export enum BUTTON_KIND {
   primary = "primary",
   secondary = "secondary",
   tertiary = "tertiary",
+  danger = "danger",
 }
 
 export enum BUTTON_SIZE {

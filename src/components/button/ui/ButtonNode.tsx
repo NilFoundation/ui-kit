@@ -20,6 +20,7 @@ const iconColor = {
   [BUTTON_KIND.primary]: PRIMITIVE_COLORS.black,
   [BUTTON_KIND.secondary]: PRIMITIVE_COLORS.white,
   [BUTTON_KIND.tertiary]: PRIMITIVE_COLORS.white,
+  [BUTTON_KIND.danger]: PRIMITIVE_COLORS.white,
 };
 
 const ButtonNode: FC<ButtonNodeProps> = ({ node, isDisabled, size, kind }) => {
