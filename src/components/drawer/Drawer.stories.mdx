@@ -1,37 +1,43 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import Drawer from "./Drawer";
-import DrawerStoryWidget from "./ui/DrawerStoryWidget"; import {HeadingSmall, ParagraphSmall} from "baseui/typography"; import {
-  ANCHOR, SIZE
-} from "baseui/drawer";
+import { HeadingSmall, ParagraphSmall } from "baseui/typography";
+import { ANCHOR, SIZE } from "baseui/drawer";
+import { useState } from "react";
+import { Button, BUTTON_KIND, BUTTON_SIZE } from "../button";
 
-<Meta
-    title="Overlay/Drawer"
-    component={Drawer}
-/>
+<Meta title="Overlay/Drawer" component={Drawer} />
 
-export const Template = ({...args}) => {
-    return (
-      <DrawerStoryWidget {...args}>
+export const Template = ({ buttonLabel, ...args }) => {
+  const [isOpen, setOpen] = useState(false);
+  return (
+    <div>
+      <Button onClick={() => setOpen(true)} size={BUTTON_SIZE.compact} kind={BUTTON_KIND.tertiary}>
+        {buttonLabel}
+      </Button>
+      <Drawer {...args} isOpen={isOpen} onClose={() => setOpen(false)}>
         <HeadingSmall margin={0}>Drawer content</HeadingSmall>
         <ParagraphSmall>
-          Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl. Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl. Maecenas aliquet mauris ut tempus. Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl. Maecenas aliquet mauris ut tempus.
+          Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl. Proin ut
+          dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl. Maecenas aliquet
+          mauris ut tempus. Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non
+          facilisis nisl. Maecenas aliquet mauris ut tempus.
         </ParagraphSmall>
-      </DrawerStoryWidget>
-    );
-}
+      </Drawer>
+    </div>
+  );
+};
 
 # Drawer
 
-
 <Canvas isColumn>
-  <Story name="Base" args={{anchor: ANCHOR.left, buttonLabel: "Open Drawer"}}>
-      {Template.bind({})}
+  <Story name="Base" args={{ anchor: ANCHOR.left, buttonLabel: "Open Drawer" }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Anchor" args={{anchor: ANCHOR.top, buttonLabel: "Open Anchor Top"}}>
-      {Template.bind({})}
+  <Story name="Anchor" args={{ anchor: ANCHOR.top, buttonLabel: "Open Anchor Top" }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Full Size" args={{size: SIZE.full, buttonLabel: "Open Full Drawer"}}>
-      {Template.bind({})}
+  <Story name="Full Size" args={{ size: SIZE.full, buttonLabel: "Open Full Drawer" }}>
+    {Template.bind({})}
   </Story>
 </Canvas>
 
@@ -42,7 +48,7 @@ export const Template = ({...args}) => {
 To use, import the component `Drawer` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
@@ -64,4 +70,3 @@ To use, import the component `Drawer` from `@nilfoundation/ui-kit`.
         </Drawer>
     `}
 />
-

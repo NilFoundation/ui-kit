@@ -1,53 +1,57 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import Button from "./Button";
-import {BUTTON_SHAPE, BUTTON_SIZE} from "./types";
+import { BUTTON_SHAPE, BUTTON_SIZE } from "./types";
 import StoriesLayout from "../../shared/ui/stories-layout";
 import { HeartIcon } from "../icons";
 
-<Meta
-    title="Form/Button"
-    component={Button}
-/>
+<Meta title="Form/Button" component={Button} />
 
-export const Template = ({children, ...args}) => {
-    return (
-      <StoriesLayout color="#141414">
-        <Button size={BUTTON_SIZE.mini} {...args}>{children ?? "Mini Button"}</Button>
-        <Button size={BUTTON_SIZE.compact} {...args}>{children ?? "Compact Button"}</Button>
-        <Button size={BUTTON_SIZE.default} {...args}>{children ?? "Default Button"}</Button>
-        <Button size={BUTTON_SIZE.large} {...args}>{children ?? "Large Button"}</Button>
-      </StoriesLayout>
-    );
-}
+export const Template = ({ children, ...args }) => {
+  return (
+    <StoriesLayout color="#141414">
+      <Button size={BUTTON_SIZE.mini} {...args}>
+        {children ?? "Mini Button"}
+      </Button>
+      <Button size={BUTTON_SIZE.compact} {...args}>
+        {children ?? "Compact Button"}
+      </Button>
+      <Button size={BUTTON_SIZE.default} {...args}>
+        {children ?? "Default Button"}
+      </Button>
+      <Button size={BUTTON_SIZE.large} {...args}>
+        {children ?? "Large Button"}
+      </Button>
+    </StoriesLayout>
+  );
+};
 
 # Button
 
-
 <Canvas isColumn>
-    <Story name="Primary" args={{kind: "primary"}}>
-        {Template.bind({})}
-    </Story>
-    <Story name="Secondary" args={{kind: "secondary"}}>
-        {Template.bind({})}
-    </Story>
-    <Story name="Tertiary" args={{kind: "tertiary"}}>
-        {Template.bind({})}
-    </Story>
-    <Story name="Disabled" args={{disabled: true}}>
-        {Template.bind({})}
-    </Story>
-    <Story name="Loading" args={{isLoading: true, children: ""}}>
-        {Template.bind({})}
-    </Story>
-    <Story name="Shape Square" args={{shape: BUTTON_SHAPE.square, children: <HeartIcon size={20} />}}>
-        {Template.bind({})}
-    </Story>
-    <Story name="With Start Enhancer" args={{startEnhancer: <HeartIcon />}}>
-        {Template.bind({})}
-    </Story>
-  <Story name="With End Enhancer" args={{endEnhancer: <HeartIcon />}}>
-        {Template.bind({})}
-    </Story>
+  <Story name="Primary" args={{ kind: "primary" }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Secondary" args={{ kind: "secondary" }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Tertiary" args={{ kind: "tertiary" }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Disabled" args={{ disabled: true }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Loading" args={{ isLoading: true, children: "" }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Shape Square" args={{ shape: BUTTON_SHAPE.square, children: <HeartIcon size={20} /> }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Start Enhancer" args={{ startEnhancer: <HeartIcon /> }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With End Enhancer" args={{ endEnhancer: <HeartIcon /> }}>
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 <ArgsTable of={Button} />
@@ -57,7 +61,7 @@ export const Template = ({children, ...args}) => {
 To use, import the component `Button` and from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`

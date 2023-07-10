@@ -1,18 +1,27 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import Select from "./Select";
-import SelectStoryWidget from "./ui/SelectStoryWidget";
-import {SELECT_SIZE} from "./types";
+import { SELECT_SIZE } from "./types";
+import { useState } from "react";
+import { useStyletron } from "baseui";
 
-<Meta
-    title="Form/Select"
-    component={Select}
-/>
+<Meta title="Form/Select" component={Select} />
 
-export const Template = ({...args}) => {
-    return (
-      <SelectStoryWidget {...args} />
-    );
-}
+export const Template = ({ value: baseValue, onChange, ...args }) => {
+  const [css] = useStyletron();
+  const [value, setValue] = useState(baseValue);
+  const onChangeHandler = (params) => {
+    setValue(params.value);
+    onChange?.(params.value);
+  };
+  const containerStyles = {
+    width: "400px",
+  };
+  return (
+    <div className={css(containerStyles)}>
+      <Select {...args} value={value} onChange={onChangeHandler} />
+    </div>
+  );
+};
 
 export const options = [
   { label: "AliceBlue", id: "#F0F8FF" },
@@ -24,7 +33,6 @@ export const options = [
 ];
 
 # Select
-
 
 <Canvas isColumn>
   <Story name="Small" args={{ options, placeholder: "Small Select", size: SELECT_SIZE.small }}>
@@ -39,7 +47,17 @@ export const options = [
   <Story name="Multiple" args={{ options, placeholder: "Multiple Select", multi: true, size: SELECT_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="Multiple Disabled" args={{ options, placeholder: "Multiple Select", multi: true, size: SELECT_SIZE.small, value: [options[0], options[1]], disabled: true, }}>
+  <Story
+    name="Multiple Disabled"
+    args={{
+      options,
+      placeholder: "Multiple Select",
+      multi: true,
+      size: SELECT_SIZE.small,
+      value: [options[0], options[1]],
+      disabled: true,
+    }}
+  >
     {Template.bind({})}
   </Story>
   <Story name="Disabled" args={{ options, placeholder: "Disabled Select", disabled: true, size: SELECT_SIZE.small }}>
@@ -54,10 +72,16 @@ export const options = [
   <Story name="Loading" args={{ options, placeholder: "Loading Select", isLoading: true, size: SELECT_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="Without Searchable" args={{ options, placeholder: "Select", searchable: false, size: SELECT_SIZE.small }}>
+  <Story
+    name="Without Searchable"
+    args={{ options, placeholder: "Select", searchable: false, size: SELECT_SIZE.small }}
+  >
     {Template.bind({})}
   </Story>
-  <Story name="With Default Value" args={{ options, placeholder: "With Default Value", value: [options[0]], size: SELECT_SIZE.small }}>
+  <Story
+    name="With Default Value"
+    args={{ options, placeholder: "With Default Value", value: [options[0]], size: SELECT_SIZE.small }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -69,7 +93,7 @@ export const options = [
 To use, import the component `Select` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
@@ -94,4 +118,3 @@ To use, import the component `Select` from `@nilfoundation/ui-kit`.
         <Select options={OPTIONS} placeholder="Select" multi />
   `}
 />
-

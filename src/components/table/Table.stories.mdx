@@ -1,29 +1,102 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
+import { useState } from "react";
 import Table from "./Table";
-import {TABLE_DIVIDER, TABLE_SIZE} from "./types";
-import TableBuilderStory from "./ui/TableBuilderStory";
-import TableStoryWrapper from "./ui/TableStoryWrapper";
+import { TABLE_DIVIDER, TABLE_SIZE } from "./types";
+import { useStyletron } from "baseui";
+import { PRIMITIVE_COLORS } from "../../shared";
+import TableBuilder from "./TableBuilder";
+import TableBuilderColumn from "./TableBuilderColumn";
+import { Checkbox } from "../checkbox";
+import { Link } from "baseui/link/styled-components";
 
-<Meta
-    title="Data display/Table"
-    component={Table}
-/>
+<Meta title="Data display/Table" component={Table} />
 
-export const Template = ({...args}) => {
-    return (
-      <TableStoryWrapper>
-        <Table {...args} />
-      </TableStoryWrapper>
+export const TABLE_BUILDER_DATA = [
+  {
+    foo: 10,
+    bar: "banana",
+    url: "https://example.com/b",
+    selected: true,
+  },
+  {
+    foo: 1,
+    bar: "carrot",
+    url: "https://example.com/c",
+    selected: false,
+  },
+  {
+    foo: 2,
+    bar: "apple",
+    url: "https://example.com/a",
+    selected: false,
+  },
+];
+
+export const Template = ({ ...args }) => {
+  const [css] = useStyletron();
+  return (
+    <div
+      className={css({
+        maxWidth: "650px",
+        backgroundColor: PRIMITIVE_COLORS.primary700,
+        padding: "24px",
+        borderRadius: "8px",
+      })}
+    >
+      <Table {...args} />
+    </div>
+  );
+};
+
+export const TableBuilderTemplate = ({ ...args }) => {
+  const [css] = useStyletron();
+  const [data, setData] = useState(TABLE_BUILDER_DATA);
+  const [sortAsc, setSortAsc] = useState(true);
+  const hasAny = Boolean(data.length);
+  const hasAll = hasAny && data.every((x) => x.selected);
+  const hasSome = hasAny && data.some((x) => x.selected);
+  function toggleAll() {
+    setData((data) =>
+      data.map((row) => ({
+        ...row,
+        selected: !hasAll,
+      }))
     );
-}
-
-export const TableBuilderTemplate = ({...args}) => {
-    return (
-      <TableStoryWrapper>
-        <TableBuilderStory {...args} />
-      </TableStoryWrapper>
+  }
+  function toggle(event) {
+    const { name, checked } = event.currentTarget;
+    setData((data) =>
+      data.map((row) => ({
+        ...row,
+        selected: String(row.foo) === name ? checked : row.selected,
+      }))
     );
-}
+  }
+  return (
+    <div
+      className={css({
+        maxWidth: "650px",
+        backgroundColor: PRIMITIVE_COLORS.primary700,
+        padding: "24px",
+        borderRadius: "8px",
+      })}
+    >
+      <TableBuilder {...args} data={data} sortOrder={sortAsc ? "ASC" : "DESC"} onSort={() => setSortAsc(!sortAsc)}>
+        <TableBuilderColumn
+          header={<Checkbox checked={hasAll} isIndeterminate={!hasAll && hasSome} onChange={toggleAll} />}
+        >
+          {(row) => <Checkbox name={"" + row.foo} checked={row.selected} onChange={toggle} />}
+        </TableBuilderColumn>
+        <TableBuilderColumn header="Produce" sortable>
+          {(row) => <Link href={row.url}>{row.bar}</Link>}
+        </TableBuilderColumn>
+        <TableBuilderColumn header="Quantity" numeric>
+          {(row) => row.foo}
+        </TableBuilderColumn>
+      </TableBuilder>
+    </div>
+  );
+};
 
 export const DATA = [
   ["Sarah Brown", 31, "100 Broadway st. New York City, New York"],
@@ -34,30 +107,29 @@ export const COLUMNS = ["Name", "Age", "Address"];
 
 # Table
 
-
 <Canvas isColumn>
-  <Story name="Compact" args={{columns: COLUMNS, data: DATA, size: TABLE_SIZE.compact}}>
+  <Story name="Compact" args={{ columns: COLUMNS, data: DATA, size: TABLE_SIZE.compact }}>
     {Template.bind({})}
   </Story>
-  <Story name="Default" args={{columns: COLUMNS, data: DATA, size: TABLE_SIZE.default}}>
+  <Story name="Default" args={{ columns: COLUMNS, data: DATA, size: TABLE_SIZE.default }}>
     {Template.bind({})}
   </Story>
-  <Story name="Spacious" args={{columns: COLUMNS, data: DATA, size: TABLE_SIZE.spacious}}>
+  <Story name="Spacious" args={{ columns: COLUMNS, data: DATA, size: TABLE_SIZE.spacious }}>
     {Template.bind({})}
   </Story>
-  <Story name="Vertical Divider" args={{columns: COLUMNS, data: DATA, divider: TABLE_DIVIDER.vertical}}>
+  <Story name="Vertical Divider" args={{ columns: COLUMNS, data: DATA, divider: TABLE_DIVIDER.vertical }}>
     {Template.bind({})}
   </Story>
-  <Story name="Grid Divider" args={{columns: COLUMNS, data: DATA, divider: TABLE_DIVIDER.grid}}>
+  <Story name="Grid Divider" args={{ columns: COLUMNS, data: DATA, divider: TABLE_DIVIDER.grid }}>
     {Template.bind({})}
   </Story>
-  <Story name="Clean Divider" args={{columns: COLUMNS, data: DATA, divider: TABLE_DIVIDER.clean}}>
+  <Story name="Clean Divider" args={{ columns: COLUMNS, data: DATA, divider: TABLE_DIVIDER.clean }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Horizontal Scroll" args={{columns: COLUMNS, data: DATA, horizontalScrollWidth: "750px"}}>
+  <Story name="With Horizontal Scroll" args={{ columns: COLUMNS, data: DATA, horizontalScrollWidth: "750px" }}>
     {Template.bind({})}
   </Story>
-  <Story name="Empty message" args={{columns: COLUMNS, data: [], emptyMessage: "Custom empty message"}}>
+  <Story name="Empty message" args={{ columns: COLUMNS, data: [], emptyMessage: "Custom empty message" }}>
     {Template.bind({})}
   </Story>
   <Story name="Table Builder" args={{}}>
@@ -72,7 +144,7 @@ export const COLUMNS = ["Name", "Age", "Address"];
 To use, import the component `Table` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
@@ -107,4 +179,3 @@ To use, import the component `Table` from `@nilfoundation/ui-kit`.
         </TableBuilder>
   `}
 />
-

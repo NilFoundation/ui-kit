@@ -1,48 +1,36 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import Spinner from "./Spinner";
-import {SPINNER_SIZE} from "./types";
+import { SPINNER_SIZE } from "./types";
 
-<Meta
-    title="Feedback/Spinner"
-    component={Spinner}
-    parameters={{
-      backgrounds: {
-        default: "Dark",
-        values: [{ name: "Dark", value: "#292929" }],
-      },
-    }}
-/>
+<Meta title="Feedback/Spinner" component={Spinner} />
 
-export const Template = ({...args}) => {
-    return (
-      <Spinner {...args} />
-    );
-}
+export const Template = ({ ...args }) => {
+  return <Spinner {...args} />;
+};
 
 # Spinner
 
-
 <Canvas isColumn>
-  <Story name="XSmall" args={{size: SPINNER_SIZE.xSmall}}>
+  <Story name="XSmall" args={{ size: SPINNER_SIZE.xSmall }}>
     {Template.bind({})}
   </Story>
-  <Story name="Small" args={{size: SPINNER_SIZE.small}}>
+  <Story name="Small" args={{ size: SPINNER_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="Medium" args={{size: SPINNER_SIZE.medium}}>
-      {Template.bind({})}
+  <Story name="Medium" args={{ size: SPINNER_SIZE.medium }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Large" args={{size: SPINNER_SIZE.large}}>
-      {Template.bind({})}
+  <Story name="Large" args={{ size: SPINNER_SIZE.large }}>
+    {Template.bind({})}
   </Story>
-  <Story name="XLarge" args={{size: SPINNER_SIZE.xLarge}}>
-      {Template.bind({})}
+  <Story name="XLarge" args={{ size: SPINNER_SIZE.xLarge }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Animated" args={{size: SPINNER_SIZE.xLarge, animation: true}}>
-      {Template.bind({})}
+  <Story name="Animated" args={{ size: SPINNER_SIZE.xLarge, animation: true }}>
+    {Template.bind({})}
   </Story>
-  <Story name="With Label" args={{label: "Uploading...", animation: true}}>
-      {Template.bind({})}
+  <Story name="With Label" args={{ label: "Uploading...", animation: true }}>
+    {Template.bind({})}
   </Story>
 </Canvas>
 
@@ -53,7 +41,7 @@ export const Template = ({...args}) => {
 To use, import the component `Spinner` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
