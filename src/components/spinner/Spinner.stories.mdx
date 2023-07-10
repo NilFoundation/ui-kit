@@ -2,16 +2,7 @@ import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/bl
 import Spinner from "./Spinner";
 import { SPINNER_SIZE } from "./types";
 
-<Meta
-  title="Feedback/Spinner"
-  component={Spinner}
-  parameters={{
-    backgrounds: {
-      default: "Dark",
-      values: [{ name: "Dark", value: "#292929" }],
-    },
-  }}
-/>
+<Meta title="Feedback/Spinner" component={Spinner} />
 
 export const Template = ({ ...args }) => {
   return <Spinner {...args} />;
