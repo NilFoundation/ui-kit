@@ -1,49 +1,45 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import ListHeading from "./ListHeading";
-import {Button, BUTTON_KIND, BUTTON_SIZE} from "../button";
+import { Button, BUTTON_KIND, BUTTON_SIZE } from "../button";
 import ListItemLabel from "./ListItemLabel";
 
+<Meta title="Data display/List/List Heading" component={ListHeading} />
 
-<Meta
-    title="Data display/List/List Heading"
-    component={ListHeading}
-/>
-
-export const Template = ({...args}) => {
-    return (
-      <div style={{maxWidth: "440px"}}>
-        <ListHeading {...args} />
-      </div>
-    );
-}
+export const Template = ({ ...args }) => {
+  return (
+    <div style={{ maxWidth: "440px" }}>
+      <ListHeading {...args} />
+    </div>
+  );
+};
 
 export const endEnhancer = () => (
   <Button kind={BUTTON_KIND.secondary} size={BUTTON_SIZE.compact}>
     Action
   </Button>
-)
+);
 
-export const labelEndEnhancer = () => (
-  <ListItemLabel description="Description">Label</ListItemLabel>
-)
+export const labelEndEnhancer = () => <ListItemLabel description="Description">Label</ListItemLabel>;
 
 # List Heading
 
-
 <Canvas isColumn>
-  <Story name="Base" args={{ heading: "Heading"}}>
-      {Template.bind({})}
+  <Story name="Base" args={{ heading: "Heading" }}>
+    {Template.bind({})}
   </Story>
   <Story name="With End Enhancer" args={{ heading: "Heading", endEnhancer }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Sub Heading" args={{ heading: "Heading", subHeading: "Sub-heading"}}>
+  <Story name="With Sub Heading" args={{ heading: "Heading", subHeading: "Sub-heading" }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Sub Heading And End Enhancer" args={{ heading: "Heading", subHeading: "Sub-heading", endEnhancer}}>
+  <Story name="With Sub Heading And End Enhancer" args={{ heading: "Heading", subHeading: "Sub-heading", endEnhancer }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Sub Heading And Label End Enhancer" args={{ heading: "Heading", subHeading: "Sub-heading", endEnhancer: labelEndEnhancer}}>
+  <Story
+    name="With Sub Heading And Label End Enhancer"
+    args={{ heading: "Heading", subHeading: "Sub-heading", endEnhancer: labelEndEnhancer }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -55,7 +51,7 @@ export const labelEndEnhancer = () => (
 To use, import the component `ListHeading` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
@@ -66,4 +62,3 @@ To use, import the component `ListHeading` from `@nilfoundation/ui-kit`.
         <ListHeading heading="Heading" subHeading="Sub-heading" endEnhancer={() => <Button>Action</Button>} />
   `}
 />
-

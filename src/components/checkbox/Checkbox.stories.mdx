@@ -1,13 +1,10 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
-import Checkbox, {LABEL_PLACEMENT} from "./Checkbox";
-import { useState, ChangeEventHandler, useEffect } from "react";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
+import Checkbox, { LABEL_PLACEMENT } from "./Checkbox";
+import { useState, useEffect } from "react";
 
-<Meta
-  title="Form/Checkbox"
-  component={Checkbox}
-/>
+<Meta title="Form/Checkbox" component={Checkbox} />
 
-export const Template = ({checked: baseChecked, ...args}) => {
+export const Template = ({ checked: baseChecked, ...args }) => {
   const [checked, setChecked] = useState(baseChecked);
   const onChangeHandler = (event) => {
     setChecked(event.target.checked);
@@ -15,34 +12,31 @@ export const Template = ({checked: baseChecked, ...args}) => {
   useEffect(() => {
     setChecked(baseChecked);
   }, [baseChecked]);
-  return (
-    <Checkbox  {...args} checked={checked} onChange={onChangeHandler} />
-  );
-}
+  return <Checkbox {...args} checked={checked} onChange={onChangeHandler} />;
+};
 
 # Checkbox
-
 
 <Canvas isColumn>
   <Story name="Base" args={{}}>
     {Template.bind({})}
   </Story>
-  <Story name="With Label" args={{children: "Label"}}>
+  <Story name="With Label" args={{ children: "Label" }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Default Checked" args={{children: "Label", checked: true}}>
+  <Story name="With Default Checked" args={{ children: "Label", checked: true }}>
     {Template.bind({})}
   </Story>
-  <Story name="Disabled" args={{children: "Label", disabled: true, checked: true}}>
+  <Story name="Disabled" args={{ children: "Label", disabled: true, checked: true }}>
     {Template.bind({})}
   </Story>
-  <Story name="Error" args={{children: "Label", error: true}}>
+  <Story name="Error" args={{ children: "Label", error: true }}>
     {Template.bind({})}
   </Story>
-  <Story name="Label Placement" args={{children: "Label", labelPlacement: LABEL_PLACEMENT.left}}>
+  <Story name="Label Placement" args={{ children: "Label", labelPlacement: LABEL_PLACEMENT.left }}>
     {Template.bind({})}
   </Story>
-  <Story name="Indeterminate checkbox" args={{children: "Label", isIndeterminate: true}}>
+  <Story name="Indeterminate checkbox" args={{ children: "Label", isIndeterminate: true }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -53,9 +47,8 @@ export const Template = ({checked: baseChecked, ...args}) => {
 
 To use, import the component `Checkbox` from `@nilfoundation/ui-kit`.
 
-
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
@@ -77,5 +70,3 @@ To use, import the component `Checkbox` from `@nilfoundation/ui-kit`.
         <Checkbox isIndeterminate>Indeterminate checkbox</Checkbox>
     `}
 />
-
-

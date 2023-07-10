@@ -1,47 +1,41 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import Skeleton from "./Skeleton";
-import {SKELETON_SIZE} from "./types"
+import { SKELETON_SIZE } from "./types";
 
-<Meta
-    title="Feedback/Skeleton"
-    component={Skeleton}
-/>
+<Meta title="Feedback/Skeleton" component={Skeleton} />
 
-export const Template = ({...args}) => {
-    return (
-      <Skeleton {...args} />
-    );
-}
+export const Template = ({ ...args }) => {
+  return <Skeleton {...args} />;
+};
 
-export const WIDTH = "414px"
-export const HEIGHT = "414px"
+export const WIDTH = "414px";
+export const HEIGHT = "414px";
 
 # Skeleton
 
-
 <Canvas isColumn>
-  <Story name="Base" args={{width: WIDTH, height: HEIGHT}}>
+  <Story name="Base" args={{ width: WIDTH, height: HEIGHT }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Animation" args={{width: WIDTH, height: HEIGHT, animation: true}}>
+  <Story name="With Animation" args={{ width: WIDTH, height: HEIGHT, animation: true }}>
     {Template.bind({})}
   </Story>
-  <Story name="XSmall" args={{width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.small}}>
+  <Story name="XSmall" args={{ width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="Small" args={{width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.small}}>
+  <Story name="Small" args={{ width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="Medium" args={{width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.medium}}>
+  <Story name="Medium" args={{ width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.medium }}>
     {Template.bind({})}
   </Story>
-  <Story name="Large" args={{width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.large}}>
+  <Story name="Large" args={{ width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.large }}>
     {Template.bind({})}
   </Story>
-  <Story name="XLarge" args={{width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.xLarge}}>
+  <Story name="XLarge" args={{ width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.xLarge }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Rows" args={{width: WIDTH, height: HEIGHT, animation: true, rows: 3}}>
+  <Story name="With Rows" args={{ width: WIDTH, height: HEIGHT, animation: true, rows: 3 }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -53,7 +47,7 @@ export const HEIGHT = "414px"
 To use, import the component `Skeleton` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
@@ -70,4 +64,3 @@ To use, import the component `Skeleton` from `@nilfoundation/ui-kit`.
         <Skeleton width={WIDTH} height={HEIGHT} animation rows={4} />
   `}
 />
-

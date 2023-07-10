@@ -1,61 +1,55 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import { useState } from "react";
-import RadioGroup, {ALIGN} from "./RadioGroup";
+import RadioGroup, { ALIGN } from "./RadioGroup";
 import Radio from "./Radio";
 
-<Meta
-    title="Form/Radio"
-    component={RadioGroup}
-/>
+<Meta title="Form/Radio" component={RadioGroup} />
 
-export const Template = ({value: baseValue, ...args}) => {
+export const Template = ({ value: baseValue, ...args }) => {
   const [value, setValue] = useState(baseValue);
   const onChangeHandler = (event) => {
     setValue(event.target.value);
   };
-    return (
-      <RadioGroup {...args} value={value} onChange={onChangeHandler}>
-        <Radio value="1">One</Radio>
-        <Radio
-          value="2"
-          description="This is a radio description"
-        >
-          Two
-        </Radio>
-        <Radio value="3">Three</Radio>
-      </RadioGroup>
-    );
-}
+  return (
+    <RadioGroup {...args} value={value} onChange={onChangeHandler}>
+      <Radio value="1">One</Radio>
+      <Radio value="2" description="This is a radio description">
+        Two
+      </Radio>
+      <Radio value="3">Three</Radio>
+    </RadioGroup>
+  );
+};
 
 # Radio
 
-
 <Canvas isColumn>
-  <Story name="Horizontal" args={{name: "number", align: ALIGN.horizontal}}>
-      {Template.bind({})}
+  <Story name="Horizontal" args={{ name: "number", align: ALIGN.horizontal }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Vertical" args={{name: "number", align: ALIGN.vertical}}>
-      {Template.bind({})}
+  <Story name="Vertical" args={{ name: "number", align: ALIGN.vertical }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Disabled" args={{name: "number", disabled: true}}>
-      {Template.bind({})}
+  <Story name="Disabled" args={{ name: "number", disabled: true }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Error" args={{name: "number", error: true}}>
-      {Template.bind({})}
+  <Story name="Error" args={{ name: "number", error: true }}>
+    {Template.bind({})}
   </Story>
-  <Story name="With Default Value" args={{name: "number", value: "2"}}>
-      {Template.bind({})}
+  <Story name="With Default Value" args={{ name: "number", value: "2" }}>
+    {Template.bind({})}
   </Story>
-    <Story name="With Default Value and Disabled" args={{name: "number", value: "2", disabled: true}}>
-      {Template.bind({})}
+  <Story name="With Default Value and Disabled" args={{ name: "number", value: "2", disabled: true }}>
+    {Template.bind({})}
   </Story>
 </Canvas>
 
-
 ### RadioGroup props
+
 <ArgsTable of={RadioGroup} />
 
 ### Radio props
+
 <ArgsTable of={Radio} />
 
 ### Usage:
@@ -63,10 +57,10 @@ export const Template = ({value: baseValue, ...args}) => {
 To use, import the component `Radio` and `RadioGroup` from `@nilfoundation/ui-kit`.
 
 <Source
-    language='tsx'
-    dark
-    format={true}
-    code={`
+  language="tsx"
+  dark
+  format={true}
+  code={`
         import {RadioGroup, Radio} from "@nilfoundation/ui-kit";
         ...
         <RadioGroup align={ALIGN.horizontal} name="name">

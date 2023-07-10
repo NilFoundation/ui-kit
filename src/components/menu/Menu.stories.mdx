@@ -1,36 +1,28 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import Menu from "./Menu";
-import {MENU_SIZE} from "./types";
-import {SearchIcon} from "../icons"
+import { MENU_SIZE } from "./types";
+import { SearchIcon } from "../icons";
 
-<Meta
-    title="Overlay/Menu"
-    component={Menu}
-/>
+<Meta title="Overlay/Menu" component={Menu} />
 
-export const Template = ({...args}) => {
-    return (
-      <div style={{maxWidth: "420px"}}>
-        <Menu {...args} />
-      </div>
-    );
-}
+export const Template = ({ ...args }) => {
+  return (
+    <div style={{ maxWidth: "420px" }}>
+      <Menu {...args} />
+    </div>
+  );
+};
 
-export const ITEMS = [
-  { label: "Item One" },
-  { label: "Item Two" },
-  { label: "Item Three" },
-  { label: "Item Four" }
-]
+export const ITEMS = [{ label: "Item One" }, { label: "Item Two" }, { label: "Item Three" }, { label: "Item Four" }];
 
 export const ITEMS_WITH_DIVIDER = [
   { label: "Item One" },
-  {divider: true},
+  { divider: true },
   { label: "Item Two" },
   { label: "Item Three", disabled: true },
-  {divider: true},
-  { label: "Item Four" }
-]
+  { divider: true },
+  { label: "Item Four" },
+];
 
 export const ITEMS_WITH_HEADER = {
   Blueish: [
@@ -45,48 +37,47 @@ export const ITEMS_WITH_HEADER = {
   ],
 };
 
-export const CheckboxItem = { label: "Item Fifth", selected: false};
-export const StartEnhancerItem =  { label: "Item Fifth", startEnhancer: <SearchIcon />};
-export const EndEnhancerItem =  { label: "Item Fifth", endEnhancer: <SearchIcon />};
-export const SuffixTextItem =  { label: "Item Fifth", suffixText: "Text", endEnhancer: <SearchIcon />};
-export const ActiveItem =  { label: "Item Active", isActive: true };
+export const CheckboxItem = { label: "Item Fifth", selected: false };
+export const StartEnhancerItem = { label: "Item Fifth", startEnhancer: <SearchIcon /> };
+export const EndEnhancerItem = { label: "Item Fifth", endEnhancer: <SearchIcon /> };
+export const SuffixTextItem = { label: "Item Fifth", suffixText: "Text", endEnhancer: <SearchIcon /> };
+export const ActiveItem = { label: "Item Active", isActive: true };
 
 # Menu
 
-
 <Canvas isColumn>
-  <Story name="Small" args={{items: ITEMS,  size: MENU_SIZE.small}}>
-      {Template.bind({})}
+  <Story name="Small" args={{ items: ITEMS, size: MENU_SIZE.small }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Medium" args={{items: ITEMS, size: MENU_SIZE.medium}}>
-      {Template.bind({})}
+  <Story name="Medium" args={{ items: ITEMS, size: MENU_SIZE.medium }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Large" args={{items: ITEMS, size: MENU_SIZE.large}}>
-      {Template.bind({})}
+  <Story name="Large" args={{ items: ITEMS, size: MENU_SIZE.large }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Active" args={{items: [...ITEMS_WITH_DIVIDER, ActiveItem]}}>
-      {Template.bind({})}
+  <Story name="Active" args={{ items: [...ITEMS_WITH_DIVIDER, ActiveItem] }}>
+    {Template.bind({})}
   </Story>
-  <Story name="With Divider" args={{items: ITEMS_WITH_DIVIDER}}>
-      {Template.bind({})}
+  <Story name="With Divider" args={{ items: ITEMS_WITH_DIVIDER }}>
+    {Template.bind({})}
   </Story>
-  <Story name="With Checkbox" args={{items: [...ITEMS_WITH_DIVIDER, CheckboxItem]}}>
-      {Template.bind({})}
+  <Story name="With Checkbox" args={{ items: [...ITEMS_WITH_DIVIDER, CheckboxItem] }}>
+    {Template.bind({})}
   </Story>
-  <Story name="With Start Enhancer" args={{items: [...ITEMS_WITH_DIVIDER, StartEnhancerItem]}}>
-      {Template.bind({})}
+  <Story name="With Start Enhancer" args={{ items: [...ITEMS_WITH_DIVIDER, StartEnhancerItem] }}>
+    {Template.bind({})}
   </Story>
-  <Story name="With End Enhancer" args={{items: [...ITEMS_WITH_DIVIDER, EndEnhancerItem]}}>
-      {Template.bind({})}
+  <Story name="With End Enhancer" args={{ items: [...ITEMS_WITH_DIVIDER, EndEnhancerItem] }}>
+    {Template.bind({})}
   </Story>
-  <Story name="With Suffix Text" args={{items: [...ITEMS_WITH_DIVIDER, SuffixTextItem]}}>
-      {Template.bind({})}
+  <Story name="With Suffix Text" args={{ items: [...ITEMS_WITH_DIVIDER, SuffixTextItem] }}>
+    {Template.bind({})}
   </Story>
-  <Story name="With Header" args={{items: ITEMS_WITH_HEADER}}>
-      {Template.bind({})}
+  <Story name="With Header" args={{ items: ITEMS_WITH_HEADER }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Empty State" args={{items: [], size: MENU_SIZE.large}}>
-      {Template.bind({})}
+  <Story name="Empty State" args={{ items: [], size: MENU_SIZE.large }}>
+    {Template.bind({})}
   </Story>
 </Canvas>
 
@@ -97,7 +88,7 @@ export const ActiveItem =  { label: "Item Active", isActive: true };
 To use, import the component `Menu` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
@@ -122,4 +113,3 @@ To use, import the component `Menu` from `@nilfoundation/ui-kit`.
         <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", suffixText: "Text"}]} />
   `}
 />
-

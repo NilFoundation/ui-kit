@@ -1,15 +1,12 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
-import Tabs, {ORIENTATION} from "./Tabs";
-import Tab from "./Tab"
-import {HeartIcon} from "../icons";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
+import Tabs, { ORIENTATION } from "./Tabs";
+import Tab from "./Tab";
+import { HeartIcon } from "../icons";
 import { useState } from "react";
 
-<Meta
-    title="Disclosure/Tabs"
-    component={Tabs}
-/>
+<Meta title="Disclosure/Tabs" component={Tabs} />
 
-export const Template = ({startEnhancer, endEnhancer, activeKey: baseActiveKey = "0", ...args}) => {
+export const Template = ({ startEnhancer, endEnhancer, activeKey: baseActiveKey = "0", ...args }) => {
   const [activeKey, setActiveKey] = useState(baseActiveKey);
   const onChangeHandler = (currentKey) => {
     setActiveKey(currentKey.activeKey);
@@ -25,38 +22,39 @@ export const Template = ({startEnhancer, endEnhancer, activeKey: baseActiveKey =
       <Tab title="Tab Link 3">
         <span>Tab Content 3</span>
       </Tab>
-  </Tabs>
+    </Tabs>
   );
-}
+};
 
 # Tabs
-
 
 <Canvas isColumn>
   <Story name="Base" args={{}}>
     {Template.bind({})}
   </Story>
-  <Story name="Disabled" args={{disabled: true}}>
+  <Story name="Disabled" args={{ disabled: true }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Initial Active Key" args={{activeKey: "2"}}>
+  <Story name="With Initial Active Key" args={{ activeKey: "2" }}>
     {Template.bind({})}
   </Story>
-  <Story name="Vertical" args={{orientation: ORIENTATION.vertical}}>
+  <Story name="Vertical" args={{ orientation: ORIENTATION.vertical }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Start Enhancer" args={{startEnhancer: <HeartIcon />}}>
+  <Story name="With Start Enhancer" args={{ startEnhancer: <HeartIcon /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="With End Enhancer" args={{endEnhancer: <HeartIcon />}}>
+  <Story name="With End Enhancer" args={{ endEnhancer: <HeartIcon /> }}>
     {Template.bind({})}
   </Story>
 </Canvas>
 
 ### Tabs props
+
 <ArgsTable of={Tabs} />
 
 ### Tab props
+
 <ArgsTable of={Tab} />
 
 ### Usage:
@@ -64,7 +62,7 @@ export const Template = ({startEnhancer, endEnhancer, activeKey: baseActiveKey =
 To use, import the components `Tabs` and `Tab` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
@@ -95,5 +93,3 @@ To use, import the components `Tabs` and `Tab` from `@nilfoundation/ui-kit`.
         </Tabs>
   `}
 />
-
-
