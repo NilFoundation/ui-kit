@@ -69,6 +69,10 @@ export const buttonKindModifiedStyles = {
       backgroundColor: PRIMITIVE_COLORS.error500,
     },
 
+    ":active": {
+      backgroundColor: PRIMITIVE_COLORS.error600,
+    },
+
     ":disabled": {
       backgroundColor: PRIMITIVE_COLORS.mono600,
       color: PRIMITIVE_COLORS.primary500,
