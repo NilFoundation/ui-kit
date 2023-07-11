@@ -1,0 +1,146 @@
+import { useState } from "react";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
+import Modal from "./Modal";
+import { BUTTON_KIND, Button } from "../button";
+import ModalHeader from "./ui/ModalHeader";
+import ModalBody from "./ui/ModalBody";
+import ModalFooter from "./ui/ModalFooter";
+import ModalButton from "./ui/ModalButton";
+
+<Meta title="Overlay/Modal" component={Modal} />
+
+export const scrolledModalContent =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quam nisl, tempor ut varius sit amet, sodales sit amet mauris. Aliquam vitae sapien quis eros finibus aliquet. Fusce et quam lobortis, viverra eros eget, finibus leo. Integer elementum lacus et lorem suscipit tincidunt. Proin malesuada turpis id mi placerat maximus a et diam. Sed elementum cursus metus, in imperdiet sapien commodo non. Pellentesque ultricies lorem nulla, a finibus eros fermentum viverra. Cras nulla lacus, porttitor quis euismod sed, varius sit amet magna. Ut aliquam odio sed ultricies eleifend. Etiam quis velit odio. Aenean fermentum dolor sit amet pellentesque facilisis. Aliquam porta in risus nec faucibus. Proin rhoncus pharetra purus. Aliquam sapien est, ultrices vitae velit ac, dictum volutpat sem. Morbi blandit venenatis volutpat. Sed finibus bibendum justo faucibus tempor. Nunc commodo condimentum magna et auctor. Nunc consequat turpis eget rutrum aliquet. Mauris fringilla libero non urna volutpat lacinia. Sed facilisis finibus lobortis. Etiam ipsum erat, euismod eget purus id, dignissim faucibus velit. Fusce rutrum urna felis, consequat ullamcorper dolor porttitor vitae. Nulla non velit eget urna congue congue ac vitae lorem. Sed ac lorem eu justo consectetur varius placerat sit amet enim. Curabitur eu placerat augue, ut porttitor quam. Vivamus vitae elit eu nisl rutrum sodales ut eu nisl. Praesent elementum orci sed metus vulputate blandit. Proin rhoncus pharetra purus. Aliquam sapien est, ultrices vitae velit ac, dictum volutpat sem. Morbi blandit venenatis volutpat. Sed finibus bibendum justo faucibus tempor. Nunc commodo condimentum magna et auctor. Nunc consequat turpis eget rutrum aliquet. Mauris fringilla libero non urna volutpat lacinia. Sed facilisis finibus lobortis. Etiam ipsum erat, euismod eget purus id, dignissim faucibus velit. Fusce rutrum urna felis, consequat ullamcorper dolor porttitor vitae. Nulla non velit eget urna congue congue ac vitae lorem. Sed ac lorem eu justo consectetur varius placerat sit amet enim. Curabitur eu placerat augue, ut porttitor quam. Vivamus vitae elit eu nisl rutrum sodales ut eu nisl. Praesent elementum orci sed metus vulputate blandit. In vel condimentum quam, eget dignissim velit. Pellentesque volutpat urna in eros tempor, vestibulum accumsan enim suscipit. Morbi condimentum placerat dolor, et ultrices elit accumsan quis. Nam laoreet auctor felis at lobortis. Nulla fringilla, elit ut sollicitudin fermentum, velit metus porta massa, nec pharetra justo leo a purus. Duis pharetra est interdum neque viverra, eget ultrices dui efficitur. In sed orci dolor. In hac habitasse platea dictumst. Proin aliquam facilisis eros, a mollis ante consequat vitae. Fusce quis viverra est. Sed tristique accumsan magna, vel dictum lectus posuere at. Suspendisse at scelerisque diam.";
+
+export const Template = ({ ...args }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>Open modal</Button>
+      <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <ModalHeader>Great job!</ModalHeader>
+        <ModalBody>
+          We’ve got enough game data. Let’s order a zk proof for your round speedrun to add it to the Ethereum
+          leaderboard.
+        </ModalBody>
+        <ModalFooter>
+          <ModalButton>Let’s do it!</ModalButton>
+          <ModalButton kind={BUTTON_KIND.secondary}>Let’s do it!</ModalButton>
+        </ModalFooter>
+      </Modal>
+    </>
+  );
+};
+
+export const ScrolledTemplate = ({ ...args }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>Open scrolled modal</Button>
+      <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <ModalHeader>Great job!</ModalHeader>
+        <ModalBody>{scrolledModalContent}</ModalBody>
+      </Modal>
+    </>
+  );
+};
+
+export const NestedTemplate = ({ ...args }) => {
+  const [isFirstOpen, setIsFirstOpen] = useState(false);
+  const [isSecondOpen, setIsSecondOpen] = useState(false);
+  const openSecondModal = () => {
+    setIsFirstOpen(false);
+    setIsSecondOpen(true);
+  };
+  return (
+    <>
+      <Button onClick={() => setIsFirstOpen(true)}>Open nested modals</Button>
+      <Modal {...args} isOpen={isFirstOpen} onClose={() => setIsFirstOpen(false)}>
+        <ModalHeader>First modal</ModalHeader>
+        <ModalBody>
+          We’ve got enough game data. Let’s order a zk proof for your round speedrun to add it to the Ethereum
+          leaderboard.
+        </ModalBody>
+        <ModalFooter>
+          <ModalButton onClick={openSecondModal}>Let’s do it!</ModalButton>
+          <ModalButton kind={BUTTON_KIND.secondary}>Let’s do it!</ModalButton>
+        </ModalFooter>
+      </Modal>
+      <Modal {...args} isOpen={isSecondOpen} onClose={() => setIsSecondOpen(false)}>
+        <ModalHeader>Second modal</ModalHeader>
+        <ModalBody>Nested Modal</ModalBody>
+      </Modal>
+    </>
+  );
+};
+
+# Modal
+
+<Canvas isColumn>
+  <Story name="Base" args={{}}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Full Size" args={{ size: "full" }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Auto Size" args={{ size: "auto" }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Scrolled modal" args={{}}>
+    {ScrolledTemplate.bind({})}
+  </Story>
+  <Story name="Nested modals" args={{}}>
+    {NestedTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Modal} />
+
+### Usage:
+
+To use, import the component `Modal, ModalHeader, ModalBody, ModalFooter, ModalButton` from `@nilfoundation/ui-kit`.
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+        import {Modal, ModalHeader, ModalBody, ModalFooter, ModalButton, BUTTON_KIND} from "@nilfoundation/ui-kit";
+        ...
+        // Main usage of modal
+        const [isOpen, setOpen] = useState(false);
+        <Modal isOpen={isOpen} onClose={() => setOpen(false)}>
+          <ModalHeader>Modal header</ModalHeader>
+          <ModalBody>Modal content</ModalBody>
+          <ModalFooter>
+            <ModalButton>Modal button 1</ModalButton>
+            <ModalButton kind={BUTTON_KIND.secondary}>Modal button 2</ModalButton>
+          </ModalFooter>
+        </Modal>
+        ...
+        // Usage of nested modals
+        const [isFirstOpen, setIsFirstOpen] = useState(false);
+        const [isSecondOpen, setIsSecondOpen] = useState(false);
+        const openSecondModal = () => {
+          setIsFirstOpen(false);
+          setIsSecondOpen(true);
+        }
+        <Modal isOpen={isFirstOpen} onClose={() => setIsFirstOpen(false)}>
+          The content of the first modal
+          <ModalFooter>
+            <ModalButton onClick={openSecondModal}>Open second modal</ModalButton>
+          </ModalFooter>
+        </Modal>
+        <Modal isOpen={isSecondOpen} onClose={() => setIsSecondOpen(false)}>
+          ...
+        </Modal>
+        // Fullscreen modal window
+        <Modal isOpen={isOpen} onClose={() => setOpen(false)} size="full">
+          ...
+        </Modal>
+        // Modal's width and height is auto
+        <Modal isOpen={isOpen} onClose={() => setOpen(false)} size="auto">
+          ...
+        </Modal>
+  `}
+/>
