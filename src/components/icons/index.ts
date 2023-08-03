@@ -27,5 +27,6 @@ export { default as LinkedinIcon } from "./LinkedinIcon";
 export { default as DiscordIcon } from "./DiscordIcon";
 export { default as TelegramIcon } from "./TelegramIcon";
 export { default as SeparatorIcon } from "./SeparatorIcon";
+export { default as ArrowUpIcon } from "./ArrowUpIcon";
 
 export type { IconProps } from "./types";
