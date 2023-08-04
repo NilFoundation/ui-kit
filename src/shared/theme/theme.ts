@@ -6,15 +6,20 @@ import { getMergedOverrides } from "../utils/getMergedOverrides";
 import { CreateTheme } from "./types";
 
 export const createTheme: CreateTheme = (instance, { enableDefaultFonts = true, overrides = {} } = {}) => {
+  const defaultFonts = getDefaultFonts(instance);
+
   const { primitives: typographyPrimitives, overrides: typographyOverrides } = createTypography(
-    enableDefaultFonts ? getDefaultFonts(instance) : undefined
+    enableDefaultFonts ? defaultFonts : undefined
   );
   const { primitives: colorsPrimitives, overrides: colorsOverrides } = createColors();
 
   const themeOverrides = { ...typographyOverrides, ...colorsOverrides };
 
-  return baseCreateTheme(
-    { ...typographyPrimitives, ...colorsPrimitives },
-    getMergedOverrides(themeOverrides, overrides)
-  );
+  return {
+    theme: baseCreateTheme(
+      { ...typographyPrimitives, ...colorsPrimitives },
+      getMergedOverrides(themeOverrides, overrides)
+    ),
+    fonts: defaultFonts,
+  };
 };

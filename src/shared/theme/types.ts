@@ -18,4 +18,9 @@ export type CreateThemeOptions = {
   overrides?: any;
 };
 
-export type CreateTheme = (instance: StandardEngine, options?: CreateThemeOptions) => Theme;
+export type CreateThemeReturnType = {
+  theme: Theme;
+  fonts: DefaultFonts;
+};
+
+export type CreateTheme = (instance: StandardEngine, options?: CreateThemeOptions) => CreateThemeReturnType;
