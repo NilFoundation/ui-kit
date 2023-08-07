@@ -32,7 +32,7 @@ yarn add @nilfoundation/ui-kit baseui styletron-engine-atomic styletron-react
   import { createTheme, Button } from "@nilfoundation/ui-kit"
 
   const engine = new Styletron();
-  const theme = createTheme(engine);
+  const {theme} = createTheme(engine);
 
   function App() {
 

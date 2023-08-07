@@ -20,7 +20,7 @@ export type CreateThemeOptions = {
 
 export type CreateThemeReturnType = {
   theme: Theme;
-  fonts: DefaultFonts;
+  fonts?: DefaultFonts;
 };
 
 export type CreateTheme = (instance: StandardEngine, options?: CreateThemeOptions) => CreateThemeReturnType;

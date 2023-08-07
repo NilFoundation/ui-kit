@@ -20,6 +20,6 @@ export const createTheme: CreateTheme = (instance, { enableDefaultFonts = true, 
       { ...typographyPrimitives, ...colorsPrimitives },
       getMergedOverrides(themeOverrides, overrides)
     ),
-    fonts: defaultFonts,
+    fonts: enableDefaultFonts ? defaultFonts : undefined,
   };
 };
