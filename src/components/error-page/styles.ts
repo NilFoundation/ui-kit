@@ -33,50 +33,15 @@ const whiteRectangleStyles = {
   background: PRIMITIVE_COLORS.white,
 };
 
+const errorDescriptionStyles = {
+  letterSpacing: "-0.01em",
+};
+
 export const styles = {
   containerStyles,
   errorCodeStyles,
   iconStyles,
   btnStyles,
   whiteRectangleStyles,
-};
-
-const symbols = /[\r\n"%#()<>?[\\\]^`{|}]/g;
-
-function addNameSpace(data: any) {
-  if (data.indexOf("http://www.w3.org/2000/svg") < 0) {
-    data = data.replace(/<svg/g, "<svg xmlns='http://www.w3.org/2000/svg'");
-  }
-
-  return data;
-}
-
-function encodeSVG(data: any) {
-  // Use single quotes instead of double to avoid encoding.
-  if (data.indexOf('"') >= 0) {
-    data = data.replace(/"/g, "'");
-  }
-
-  data = data.replace(/>\s{1,}</g, "><");
-  data = data.replace(/\s{2,}/g, " ");
-
-  return data.replace(symbols, encodeURIComponent);
-}
-
-const encode = function (svg: any, fill: any) {
-  if (fill) {
-    svg = svg.replace(/<svg/g, `<svg fill="${fill}"`);
-  }
-  const namespaced = addNameSpace(svg);
-  const dimensionsRemoved = namespaced
-    .replace(/height="\w*" /g, "")
-    .replace(/width="\w*" /g, "")
-    .replace(/height='\w*' /g, "")
-    .replace(/width='\w*' /g, "");
-  const encoded = encodeSVG(dimensionsRemoved);
-
-  const header = "data:image/svg+xml,";
-  const dataUrl = header + encoded;
-
-  return `url("${dataUrl}")`;
+  errorDescriptionStyles,
 };

@@ -3,6 +3,8 @@ import { useStyletron } from "baseui";
 import { styles as s } from "./styles";
 import { BUTTON_KIND, Button } from "../button";
 import { ArrowUpIcon } from "../icons";
+import { Grid } from "baseui/layout-grid";
+import { ParagraphMedium } from "baseui/typography";
 
 export type ErrorPageProps = {
   errorCode?: number;
@@ -30,6 +32,11 @@ const ErrorPage: React.FC<ErrorPageProps> = ({
       <div>
         <h1 className={css(s.errorCodeStyles)}>{errorCode}</h1>
       </div>
+      <Grid>
+        <div className={css(s.errorDescriptionStyles)}>
+          <ParagraphMedium>{errorDescription}</ParagraphMedium>
+        </div>
+      </Grid>
     </div>
   );
 };
