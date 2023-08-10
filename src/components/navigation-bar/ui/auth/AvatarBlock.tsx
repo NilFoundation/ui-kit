@@ -5,6 +5,7 @@ import { CaretDownIcon, CaretUpIcon } from "../../../icons";
 import AuthAvatar from "./AuthAvatar";
 import NavPopover from "../NavPopover";
 import { expandProperty } from "inline-style-expand-shorthand";
+import { navbarPadding } from "../../styles";
 
 type AvatarBlockProps = {
   authDropdownContainer?: ReactNode;
@@ -27,7 +28,7 @@ const AvatarBlock: FC<AvatarBlockProps> = ({ username, authDropdownContainer }) 
       overrides={{
         Body: {
           style: {
-            marginRight: "16px",
+            marginRight: `${navbarPadding + 16}px`,
             boxShadow: "0px 4px 16px 0px rgba(0, 0, 0, 0.12)",
           },
         },
