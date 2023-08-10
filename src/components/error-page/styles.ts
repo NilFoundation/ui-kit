@@ -1,4 +1,6 @@
 import { PRIMITIVE_COLORS } from "../../shared";
+import { svgInlineDotsPattern } from "../../shared/theme/pattern";
+import { StyleObject } from "styletron-standard";
 
 const containerStyles = {
   width: "100%",
@@ -8,15 +10,25 @@ const containerStyles = {
   gridTemplateColumns: "repeat(5, 1fr)",
 };
 
+const colStyles = {
+  display: "flex",
+  flexDirection: "column" as StyleObject["flexDirection"],
+};
+
 const btnStyles = {
   display: "flex",
   alignItems: "center",
 };
 
 const errorCodeStyles = {
-  fontSize: "330px",
-  lineHeight: "340px",
-  letterSpacing: "-0.04em",
+  gridColumnStart: "2",
+  gridColumnEnd: "4",
+};
+
+const patternStyles = {
+  width: "100%",
+  height: "100%",
+  background: `url(${svgInlineDotsPattern}), repeat`,
 };
 
 const iconStyles = {
@@ -31,10 +43,12 @@ const whiteRectangleStyles = {
   height: "30px",
   flexShrink: 0,
   background: PRIMITIVE_COLORS.white,
+  marginTop: "auto",
 };
 
 const errorDescriptionStyles = {
-  letterSpacing: "-0.01em",
+  gridColumnStart: "4",
+  gridColumnEnd: "5",
 };
 
 export const styles = {
@@ -44,4 +58,6 @@ export const styles = {
   btnStyles,
   whiteRectangleStyles,
   errorDescriptionStyles,
+  colStyles,
+  patternStyles,
 };
