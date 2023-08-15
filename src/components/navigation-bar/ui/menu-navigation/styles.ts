@@ -13,9 +13,9 @@ export const getListItemStyles = (isSelected: boolean, isDisabled: boolean): Sty
   const color = getColor(isSelected, isDisabled);
 
   return {
-    color: `${color}`,
+    color: `${color} !important`,
     cursor: isDisabled ? "not-allowed" : "pointer",
-    textDecoration: "none",
+    textDecoration: "none !important",
 
     ":hover": {
       color: `${isDisabled ? PRIMITIVE_COLORS.primary300 : PRIMITIVE_COLORS.primary600} !important`,

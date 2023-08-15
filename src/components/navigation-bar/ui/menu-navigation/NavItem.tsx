@@ -7,6 +7,7 @@ import { Menu } from "../../../menu";
 import { CaretDownIcon, CaretUpIcon } from "../../../icons";
 import { NavigationItem } from "../../types";
 import { getListItemStyles, getButtonStyles } from "./styles";
+import { StyledLink } from "baseui/link";
 
 type NavItemProps = {
   item: NavigationItem;
@@ -77,12 +78,20 @@ const NavItem: FC<NavItemProps> = ({ item, onItemClick, itemAs }) => {
           }
         >
           <button disabled={disabled} className={css(getButtonStyles(isSelected, disabled))} tabIndex={0}>
-            {itemAs ? getItemAsValue(itemAs, item) : label}
+            {label}
             {isOpen ? <CaretUpIcon {...iconProps} /> : <CaretDownIcon {...iconProps} />}
           </button>
         </NavPopover>
       ) : (
-        <>{label}</>
+        <>
+          {item?.href ? (
+            <StyledLink className={css(listItemStyles)} href={!item?.disabled ? item.href : undefined}>
+              {label}
+            </StyledLink>
+          ) : (
+            label
+          )}
+        </>
       )}
     </LabelSmall>
   );

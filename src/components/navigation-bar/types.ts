@@ -6,6 +6,7 @@ export type NavigationItem<T = unknown> = T & {
   isSelected?: boolean;
   disabled?: boolean;
   children?: Array<NavigationItem<T>>;
+  href?: string;
 };
 
 export type NavigationBarProps = {

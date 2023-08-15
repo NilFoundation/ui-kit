@@ -6,6 +6,7 @@ import { expandProperty } from "inline-style-expand-shorthand";
 import { useStyletron } from "baseui";
 import { getTreeLabelStyles } from "../../styles";
 import { NavigationItem } from "../../types";
+import { StyledLink } from "baseui/link";
 
 type ExpandedTreeNodeData = TreeNodeData & {
   disabled?: boolean;
@@ -23,12 +24,26 @@ type NavTreeLabelProps = Omit<TreeLabelProps, "node"> & {
   itemAs?: (item: NavigationItem) => ReactNode;
 };
 
+const getLabelValue = (item: NavigationItem, styles: string, itemAs?: (item: NavigationItem) => ReactNode) => {
+  if (itemAs) {
+    return <>{typeof itemAs === "function" ? itemAs(item) : itemAs}</>;
+  }
+  if (item?.href) {
+    return (
+      <StyledLink className={styles} href={!item.disabled ? item.href : undefined}>
+        {item.label}
+      </StyledLink>
+    );
+  }
+  return item.label;
+};
+
 const NavTreeLabel: FC<NavTreeLabelProps> = ({ node, onClick, isSelected, itemAs, ...props }) => {
   const [css] = useStyletron();
 
   const treeLabelStyles = getTreeLabelStyles(!!isSelected, !!node?.disabled);
 
-  const labelValue = itemAs ? (typeof itemAs === "function" ? itemAs(node as NavigationItem) : itemAs) : node.label;
+  const labelValue = getLabelValue(node as NavigationItem, css(treeLabelStyles), itemAs);
 
   return (
     <div className={css(treeLabelStyles)}>
