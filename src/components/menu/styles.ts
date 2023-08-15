@@ -115,6 +115,11 @@ export const getItemContainerStyles = (
   };
 };
 
+export const itemTypographyStyles = {
+  textDecoration: "none",
+  width: "100%",
+};
+
 export const ItemEndWrapperStyles: StyleObject = {
   display: "flex",
   alignItems: "center",

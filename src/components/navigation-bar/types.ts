@@ -11,6 +11,7 @@ export type NavigationItem<T = unknown> = T & {
 export type NavigationBarProps = {
   items: NavigationItem[];
   onItemClick?: (item: NavigationItem) => void;
+  itemAs?: (item: NavigationItem) => ReactNode;
   onLogin?: () => void;
   isAuth?: boolean;
   authDropdownContainer?: ReactNode;

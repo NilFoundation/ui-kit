@@ -1,10 +1,11 @@
-import { FC, useState } from "react";
+import { FC, ReactNode, useState } from "react";
 import { TreeView, toggleIsExpanded, TreeNodeData, TreeLabel, TreeLabelProps } from "baseui/tree-view";
 import { PRIMITIVE_COLORS } from "../../../../shared";
 import { CaretDownIcon, CaretUpIcon } from "../../../icons";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { useStyletron } from "baseui";
 import { getTreeLabelStyles } from "../../styles";
+import { NavigationItem } from "../../types";
 
 type ExpandedTreeNodeData = TreeNodeData & {
   disabled?: boolean;
@@ -13,25 +14,31 @@ type ExpandedTreeNodeData = TreeNodeData & {
 type SideNavigationListProps = {
   items: Array<any>;
   onItemClick?: (item: any) => void;
+  itemAs?: (item: NavigationItem) => ReactNode;
 };
 
 type NavTreeLabelProps = Omit<TreeLabelProps, "node"> & {
   node: ExpandedTreeNodeData;
   onClick?: () => void;
+  itemAs?: (item: NavigationItem) => ReactNode;
 };
 
-const NavTreeLabel: FC<NavTreeLabelProps> = ({ node, onClick, isSelected, ...props }) => {
+const NavTreeLabel: FC<NavTreeLabelProps> = ({ node, onClick, isSelected, itemAs, ...props }) => {
   const [css] = useStyletron();
 
+  const treeLabelStyles = getTreeLabelStyles(!!isSelected, !!node?.disabled);
+
+  const labelValue = itemAs ? (typeof itemAs === "function" ? itemAs(node as NavigationItem) : itemAs) : node.label;
+
   return (
-    <div className={css(getTreeLabelStyles(!!isSelected, !!node?.disabled))}>
+    <div className={css(treeLabelStyles)}>
       {/*@ts-ignore*/}
-      <TreeLabel {...props} node={node} onClick={!node?.disabled && onClick} />
+      <TreeLabel {...props} label={labelValue} node={node} onClick={!node?.disabled ? onClick : undefined} />
     </div>
   );
 };
 
-const SideNavigationList: FC<SideNavigationListProps> = ({ onItemClick, items }) => {
+const SideNavigationList: FC<SideNavigationListProps> = ({ onItemClick, items, itemAs }) => {
   const [data, setData] = useState<TreeNodeData[]>(items);
 
   const onToggleHandler = (node: TreeNodeData) => {
@@ -58,7 +65,7 @@ const SideNavigationList: FC<SideNavigationListProps> = ({ onItemClick, items })
             },
           },
           TreeLabel: {
-            component: NavTreeLabel,
+            component: ({ ...props }) => <NavTreeLabel {...props} itemAs={itemAs} />,
             style: ({ $hasChildren }) => {
               return {
                 ...expandProperty("padding", "16px 8px"),

@@ -3,8 +3,6 @@ import { StyleObject } from "styletron-react";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { MediaQuery } from "baseui/theme";
 
-export const navbarPadding = 24;
-
 export const getNavigationContainerStyles = (): StyleObject => {
   return {
     position: "fixed",
@@ -13,7 +11,7 @@ export const getNavigationContainerStyles = (): StyleObject => {
     width: "100%",
     minHeight: "44px",
     boxSizing: "border-box",
-    ...expandProperty("padding", `0 ${navbarPadding}px`),
+    ...expandProperty("padding", "0 24px"),
   };
 };
 
