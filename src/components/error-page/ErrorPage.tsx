@@ -2,26 +2,17 @@ import React from "react";
 import { useStyletron } from "baseui";
 import { styles as s } from "./styles";
 import Block from "./ui/Block";
-import { HeadingXXLarge, ParagraphMedium, ParagraphSmall } from "baseui/typography";
-import { getErrorCodeOverrides, getErrorDescriptionOverrides, getRedirectOverrides } from "./overrides";
-import { ArrowUpIcon } from "../icons";
+import { HeadingXXLarge, ParagraphMedium } from "baseui/typography";
+import { getErrorCodeOverrides, getErrorDescriptionOverrides } from "./overrides";
 import WhiteRect from "./ui/WhiteRect";
-
-export type ErrorPageProps<T extends React.ElementType = React.ElementType> = {
-  errorCode?: number;
-  errorDescription?: string;
-  redirectPath?: string;
-  redirectElement?: T;
-  redirectElementProps?: Omit<React.ComponentProps<T>, "href">;
-  redirectTitle?: string;
-};
+import { ErrorPageProps } from "./types";
+import Redirect from "./ui/Redirect";
 
 const ErrorPage: React.FC<ErrorPageProps> = ({
-  errorCode = 404,
-  errorDescription = "Something went wrong, page not found",
-  redirectTitle = "Home",
-  redirectElement: Redirect = "a",
-  redirectElementProps,
+  errorCode,
+  errorDescription,
+  redirectTitle,
+  actionElement,
   redirectPath,
 }) => {
   const [css] = useStyletron();
@@ -30,12 +21,12 @@ const ErrorPage: React.FC<ErrorPageProps> = ({
     <div className={css(s.containerStyles)}>
       <div className={css(s.columnsStyles["col-0"])}>
         <Block>
-          <Redirect href={redirectPath} {...redirectElementProps}>
-            <ParagraphSmall overrides={getRedirectOverrides()}>
-              <ArrowUpIcon className={css(s.iconStyles)} />
-              {redirectTitle}
-            </ParagraphSmall>
-          </Redirect>
+          {actionElement !== undefined ? (
+            actionElement
+          ) : (
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            <Redirect redirectPath={redirectPath!} redirectTitle={redirectTitle!} />
+          )}
           <WhiteRect $style={{ marginTop: "auto" }} />
         </Block>
       </div>
