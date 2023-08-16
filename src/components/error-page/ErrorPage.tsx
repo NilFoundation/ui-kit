@@ -29,7 +29,7 @@ const ErrorPage: React.FC<ErrorPageProps> = ({
   return (
     <div className={css(s.containerStyles)}>
       <div className={css(s.columnsStyles["col-0"])}>
-        <Block $style={{ height: "100%" }}>
+        <Block>
           <Redirect href={redirectPath} {...redirectElementProps}>
             <ParagraphSmall overrides={getRedirectOverrides()}>
               <ArrowUpIcon className={css(s.iconStyles)} />
@@ -40,7 +40,7 @@ const ErrorPage: React.FC<ErrorPageProps> = ({
         </Block>
       </div>
       <div className={css(s.columnsStyles["col-1"])}>
-        <Block>
+        <Block $style={{ flexGrow: "0" }}>
           <HeadingXXLarge overrides={getErrorCodeOverrides()}>{errorCode}</HeadingXXLarge>
         </Block>
         <div className={css(s.errorContainerStyles)}>
@@ -54,12 +54,12 @@ const ErrorPage: React.FC<ErrorPageProps> = ({
         </div>
       </div>
       <div className={css(s.columnsStyles["col-2"])}>
-        <Block $style={{ flexGrow: "1", marginTop: "250px" }}>
+        <Block $style={{ marginTop: "250px" }}>
           <WhiteRect $style={{ marginBottom: "auto" }} />
         </Block>
       </div>
       <div className={css(s.columnsStyles["col-3"])}>
-        <Block $style={{ flexGrow: "1", marginTop: "calc(100% + 250px)" }}>
+        <Block $style={{ marginTop: "calc(250px - 30px)" }}>
           <WhiteRect $style={{ marginBottom: "auto" }} />
         </Block>
       </div>
