@@ -5,7 +5,7 @@ import ErrorPage from "./ErrorPage";
 
 export const Template = ({ ...args }) => {
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div style={{ width: "100%", height: "100vh" }}>
       <ErrorPage {...args} />
     </div>
   );
@@ -14,7 +14,7 @@ export const Template = ({ ...args }) => {
 # Error Page
 
 <Canvas>
-  <Story name="Default">
+  <Story name="Default" parameters={{ layout: "fullscreen" }}>
     {Template.bind({})}
   </Story>
 </Canvas>

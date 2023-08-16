@@ -1,5 +1,4 @@
-import { PRIMITIVE_COLORS } from "../../shared";
-import { svgInlineDotsPattern } from "../../shared/theme/pattern";
+import { PRIMITIVE_COLORS, svgInlineDotsPattern } from "../../shared";
 import { StyleObject } from "styletron-standard";
 
 const containerStyles = {
@@ -8,28 +7,28 @@ const containerStyles = {
   color: PRIMITIVE_COLORS.white,
   display: "grid",
   gridTemplateColumns: "repeat(5, 1fr)",
-};
-
-const colStyles = {
-  display: "flex",
-  flexDirection: "column" as StyleObject["flexDirection"],
-};
-
-const btnStyles = {
-  display: "flex",
-  alignItems: "center",
-};
-
-const errorCodeStyles = {
-  gridColumnStart: "2",
-  gridColumnEnd: "4",
-};
-
-const patternStyles = {
-  width: "100%",
-  height: "100%",
   background: `url(${svgInlineDotsPattern}), repeat`,
 };
+
+const colBaseStyles = {
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+} as const;
+
+const columnsStyles = [...Array(4).keys()].reduce((acc, curr) => {
+  const colStart = curr === 0 || curr === 1 ? curr + 1 : curr + 2;
+  const colEnd = curr === 0 ? curr + 2 : curr + 3;
+
+  return {
+    ...acc,
+    [`col-${curr}`]: {
+      ...colBaseStyles,
+      gridColumnStart: colStart.toString(),
+      gridColumnEnd: colEnd.toString(),
+    },
+  };
+}, {} as Record<`col-${number}`, StyleObject>);
 
 const iconStyles = {
   width: "18px",
@@ -38,26 +37,24 @@ const iconStyles = {
   transform: "rotate(270deg)",
 };
 
-const whiteRectangleStyles = {
-  width: "100%",
-  height: "30px",
-  flexShrink: 0,
-  background: PRIMITIVE_COLORS.white,
-  marginTop: "auto",
+const errorContainerStyles = {
+  display: "grid",
+  gridTemplateColumns: "repeat(2, 1fr)",
+  gridTemplateRows: "repeat(2, 1fr)",
+  flexGrow: "1",
 };
 
-const errorDescriptionStyles = {
-  gridColumnStart: "4",
-  gridColumnEnd: "5",
-};
+const errorDescrStyles = {
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "end",
+} as const;
 
 export const styles = {
   containerStyles,
-  errorCodeStyles,
   iconStyles,
-  btnStyles,
-  whiteRectangleStyles,
-  errorDescriptionStyles,
-  colStyles,
-  patternStyles,
+  errorContainerStyles,
+  columnsStyles,
+  errorDescrStyles,
 };
