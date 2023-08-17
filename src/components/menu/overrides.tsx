@@ -26,7 +26,7 @@ export const getMenuOverrides = (size: MENU_SIZE, isLight: boolean): MenuOverrid
         size,
       }),
     },
-    Option: {
+    ListItem: {
       component: MenuItem,
       props: ({ item, id, $disabled, $isFocused, ...props }) => ({
         ...props,

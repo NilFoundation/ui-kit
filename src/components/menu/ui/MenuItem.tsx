@@ -6,7 +6,7 @@ import { useStyletron, styled } from "baseui";
 import { SPINNER_SIZE } from "../../spinner";
 import { Checkbox } from "../../checkbox";
 import { RenderItemProps } from "baseui/menu/types";
-import { getItemContainerStyles, ItemEndWrapperStyles, svgActiveStyles } from "../styles";
+import { getItemContainerStyles, ItemEndWrapperStyles, itemTypographyStyles, svgActiveStyles } from "../styles";
 import { SeparatorIcon } from "../../icons";
 import { PRIMITIVE_COLORS } from "../../../shared";
 
@@ -25,6 +25,7 @@ type MenuItemProps = RenderItemProps & {
   ariaSelected?: boolean;
   isHighlighted?: boolean;
   isLight?: boolean;
+  children?: ReactNode;
 };
 
 type TypographyProps = ComponentProps<typeof ParagraphSmall>;
@@ -69,7 +70,14 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
             size: 20,
             className: css(isAreaSelected ? svgActiveStyles : {}),
           })}
-        <TypographyComponent color={paragraphColor}>{item.label}</TypographyComponent>
+        <TypographyComponent
+          className={css(itemTypographyStyles)}
+          as={item?.href ? "a" : "div"}
+          href={item?.href}
+          color={paragraphColor}
+        >
+          {item.label}
+        </TypographyComponent>
         <EndWrapper>
           {item?.suffixText && <TypographyComponent color={paragraphColor}>{item.suffixText}</TypographyComponent>}
           {item?.endEnhancer &&

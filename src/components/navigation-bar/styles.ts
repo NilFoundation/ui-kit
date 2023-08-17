@@ -3,8 +3,6 @@ import { StyleObject } from "styletron-react";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { MediaQuery } from "baseui/theme";
 
-export const navbarPadding = 24;
-
 export const getNavigationContainerStyles = (): StyleObject => {
   return {
     position: "fixed",
@@ -13,7 +11,7 @@ export const getNavigationContainerStyles = (): StyleObject => {
     width: "100%",
     minHeight: "44px",
     boxSizing: "border-box",
-    ...expandProperty("padding", `0 ${navbarPadding}px`),
+    ...expandProperty("padding", "0 24px"),
   };
 };
 
@@ -62,19 +60,20 @@ export const getNavigationBurgerStyles = (media: MediaQuery): StyleObject => ({
 
 const treeLabelDisabledStyles: StyleObject = {
   cursor: "not-allowed",
-  color: PRIMITIVE_COLORS.primary300,
+  color: `${PRIMITIVE_COLORS.primary300} !important`,
 
   ":hover": {
-    color: PRIMITIVE_COLORS.primary300,
+    color: `${PRIMITIVE_COLORS.primary300} !important`,
   },
 };
 
 export const getTreeLabelStyles = (isSelected: boolean, disabled: boolean): StyleObject => {
   return {
-    color: isSelected ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.primary800,
+    color: `${isSelected ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.primary800} !important`,
+    textDecoration: "none !important",
 
     ":hover": {
-      color: isSelected ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.primary600,
+      color: `${isSelected ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.primary600} !important`,
     },
 
     ...(disabled ? treeLabelDisabledStyles : {}),
