@@ -22,11 +22,11 @@ export const getListItemStyles = (isSelected: boolean, isDisabled: boolean): Sty
     },
 
     ":focus": {
-      color: `${PRIMITIVE_COLORS.primary500} !important`,
+      color: `${isDisabled ? PRIMITIVE_COLORS.primary300 : PRIMITIVE_COLORS.primary500} !important`,
     },
 
     ":active": {
-      color: `${PRIMITIVE_COLORS.primary500} !important`,
+      color: `${isDisabled ? PRIMITIVE_COLORS.primary300 : PRIMITIVE_COLORS.primary500} !important`,
     },
   };
 };

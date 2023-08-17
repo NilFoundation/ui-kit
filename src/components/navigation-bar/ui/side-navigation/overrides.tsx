@@ -5,6 +5,26 @@ import { CaretDownIcon, CaretUpIcon } from "../../../icons";
 import NavTreeLabel from "./NavTreeLabel";
 import { NavigationItem } from "../../types";
 import { ReactNode } from "react";
+import { DrawerOverrides } from "baseui/drawer";
+
+export const getDrawerOverrides = (): DrawerOverrides => {
+  return {
+    DrawerContainer: {
+      style: {
+        backgroundColor: PRIMITIVE_COLORS.white,
+      },
+    },
+    DrawerBody: {
+      style: {
+        ...expandProperty("margin", "0"),
+        ...expandProperty("padding", "0 16px 16px 16px"),
+      },
+    },
+    Close: {
+      component: () => <></>,
+    },
+  };
+};
 
 export const getTreeViewOverrides = (itemAs?: (item: NavigationItem) => ReactNode): TreeViewOverrides => {
   return {
