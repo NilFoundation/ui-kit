@@ -25,3 +25,4 @@ jobs:
         major-wording:  'MAJOR,cut-major'
         patch-wording:  'changes,fixes,fix'
         default: patch
+        check-last-commit-only: true
