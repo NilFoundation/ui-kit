@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, ReactNode, useState } from "react";
 import { LabelSmall } from "baseui/typography";
 import { PRIMITIVE_COLORS } from "../../../../shared";
 import { useStyletron } from "baseui";
@@ -6,95 +6,94 @@ import NavPopover from "../NavPopover";
 import { Menu } from "../../../menu";
 import { CaretDownIcon, CaretUpIcon } from "../../../icons";
 import { NavigationItem } from "../../types";
+import { getListItemStyles, getButtonStyles } from "./styles";
+import { StyledLink } from "baseui/link";
 
 type NavItemProps = {
   item: NavigationItem;
   onItemClick?: (item: NavigationItem) => void;
+  itemAs?: (item: NavigationItem) => ReactNode;
 };
 
-const getButtonStyles = (isSelected: boolean, isDisabled: boolean) => ({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  border: "none",
-  background: "none",
-  outline: "none",
-  color: isDisabled
-    ? PRIMITIVE_COLORS.primary300
-    : isSelected
-    ? PRIMITIVE_COLORS.primary500
-    : PRIMITIVE_COLORS.primary800,
-  cursor: isDisabled ? "not-allowed" : "pointer",
+const getItemAsValue = (itemAs: (item: NavigationItem) => ReactNode, item: NavigationItem) => {
+  return typeof itemAs === "function" ? itemAs(item) : itemAs;
+};
 
-  ":hover": {
-    color: isDisabled ? PRIMITIVE_COLORS.primary300 : PRIMITIVE_COLORS.primary600,
-  },
-
-  ":focus": {
-    color: PRIMITIVE_COLORS.primary500,
-  },
-});
-
-const NavItem: FC<NavItemProps> = ({ item, onItemClick }) => {
+const NavItem: FC<NavItemProps> = ({ item, onItemClick, itemAs }) => {
   const [css] = useStyletron();
   const [isOpen, setOpen] = useState(false);
 
   const { label } = item;
+  const isSelected = !!item?.isSelected;
+  const disabled = !!item?.disabled;
   const children = item?.children ?? [];
 
-  const iconProps = {
-    className: css({
-      marginLeft: "4px",
-    }),
-    color: item?.disabled ? PRIMITIVE_COLORS.primary300 : PRIMITIVE_COLORS.primary800,
-    size: 16,
-  };
+  const listItemStyles = getListItemStyles(isSelected, disabled);
 
   const onClickHandler = () => {
-    if (children.length > 0) {
+    if (children.length > 0 || disabled) {
       return;
     }
     onItemClick?.(item);
   };
 
+  const listItemProps = {
+    className: css(listItemStyles),
+    color: listItemStyles.color,
+    onClick: onClickHandler,
+  };
+
+  const iconProps = {
+    className: css({
+      marginLeft: "4px",
+    }),
+    color: disabled ? PRIMITIVE_COLORS.primary300 : PRIMITIVE_COLORS.primary800,
+    size: 16,
+  };
+
+  if (itemAs && children.length === 0) {
+    return (
+      <LabelSmall {...listItemProps} as="li">
+        {getItemAsValue(itemAs, item)}
+      </LabelSmall>
+    );
+  }
+
   return (
-    <li
-      className={css({
-        display: "flex",
-        alignItems: "center",
-      })}
-    >
+    <LabelSmall {...listItemProps} as="li">
       {children.length > 0 ? (
         <NavPopover
           onOpen={() => setOpen(true)}
           onClose={() => setOpen(false)}
           popoverMargin={20}
-          content={<Menu isLight items={children} onItemSelect={(data) => onItemClick?.(data?.item)} />}
+          content={
+            <Menu
+              isLight
+              items={children.map((menuItem) => ({
+                ...menuItem,
+                label: itemAs ? getItemAsValue(itemAs, menuItem) : menuItem.label,
+              }))}
+              onItemSelect={(data) => onItemClick?.(data?.item)}
+            />
+          }
         >
-          <button
-            disabled={item?.disabled}
-            className={css(getButtonStyles(!!item?.isSelected, !!item?.disabled))}
-            tabIndex={0}
-          >
-            <LabelSmall as="span" color="inherit">
-              {label}
-            </LabelSmall>
+          <button disabled={disabled} className={css(getButtonStyles(isSelected, disabled))} tabIndex={0}>
+            {label}
             {isOpen ? <CaretUpIcon {...iconProps} /> : <CaretDownIcon {...iconProps} />}
           </button>
         </NavPopover>
       ) : (
-        <button
-          className={css(getButtonStyles(!!item?.isSelected, !!item?.disabled))}
-          onClick={onClickHandler}
-          tabIndex={0}
-          disabled={item?.disabled}
-        >
-          <LabelSmall as="span" color="inherit">
-            {label}
-          </LabelSmall>
-        </button>
+        <>
+          {item?.href ? (
+            <StyledLink className={css(listItemStyles)} href={!item?.disabled ? item.href : undefined}>
+              {label}
+            </StyledLink>
+          ) : (
+            label
+          )}
+        </>
       )}
-    </li>
+    </LabelSmall>
   );
 };
 

@@ -21,6 +21,7 @@ const MenuNavigation: FC<MenuNavigationProps> = ({
   authDropdownContainer,
   onItemClick,
   onDrawerButtonClick,
+  itemAs,
 }) => {
   const [css, theme] = useStyletron();
 
@@ -30,7 +31,7 @@ const MenuNavigation: FC<MenuNavigationProps> = ({
     <nav className={css(navigationNavWrapperStyles)}>
       <ul className={css(getNavigationListStyles(mediaQuery))}>
         {items.map((item) => (
-          <NavItem key={item.id} item={item} onItemClick={onItemClick} />
+          <NavItem key={item.id} item={item} onItemClick={onItemClick} itemAs={itemAs} />
         ))}
         {isAuthVisible && (
           <li>

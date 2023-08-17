@@ -1,12 +1,11 @@
 import { FC, ReactNode } from "react";
 import { Drawer } from "baseui/drawer";
-import { PRIMITIVE_COLORS } from "../../../../shared";
 import { useStyletron } from "baseui";
 import SideNavigationHeader from "./SideNavigationHeader";
 import SideNavigationFooter from "./SideNavigationFooter";
 import SideNavigationList from "./SideNavigationList";
 import { NavigationItem } from "../../types";
-import { expandProperty } from "inline-style-expand-shorthand";
+import { getDrawerOverrides } from "./overrides";
 
 type NavigationDrawerProps = {
   onClose?: ((a: { closeSource?: "closeButton" | "backdrop" | "escape" | undefined }) => unknown) | undefined;
@@ -18,6 +17,7 @@ type NavigationDrawerProps = {
   isAuthVisible?: ReactNode;
   items?: Array<NavigationItem>;
   authDropdownContainer?: ReactNode;
+  itemAs?: (item: NavigationItem) => ReactNode;
 };
 
 const NavigationDrawer: FC<NavigationDrawerProps> = ({
@@ -30,31 +30,14 @@ const NavigationDrawer: FC<NavigationDrawerProps> = ({
   onLogin,
   isOpen,
   authDropdownContainer,
+  itemAs,
 }) => {
   const [css] = useStyletron();
 
+  const drawerOverrides = getDrawerOverrides();
+
   return (
-    <Drawer
-      isOpen={isOpen}
-      onClose={onClose}
-      size="full"
-      overrides={{
-        DrawerContainer: {
-          style: {
-            backgroundColor: PRIMITIVE_COLORS.white,
-          },
-        },
-        DrawerBody: {
-          style: {
-            ...expandProperty("margin", "0"),
-            ...expandProperty("padding", "0 16px 16px 16px"),
-          },
-        },
-        Close: {
-          component: () => <></>,
-        },
-      }}
-    >
+    <Drawer isOpen={isOpen} onClose={onClose} size="full" overrides={drawerOverrides}>
       <div
         className={css({
           display: "flex",
@@ -64,7 +47,7 @@ const NavigationDrawer: FC<NavigationDrawerProps> = ({
         })}
       >
         <SideNavigationHeader brand={brand} onClose={onClose} />
-        {items && <SideNavigationList items={items} onItemClick={onItemClick} />}
+        {items && <SideNavigationList items={items} onItemClick={onItemClick} itemAs={itemAs} />}
         {isAuthVisible && (
           <SideNavigationFooter isAuth={isAuth} onLogin={onLogin} authDropdownContainer={authDropdownContainer} />
         )}
