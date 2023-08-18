@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useRef } from "react";
 import { StatefulMenu, StatefulMenuProps } from "baseui/menu";
 import { getMenuOverrides } from "./overrides";
 import { MENU_SIZE } from "./types";
@@ -10,11 +10,20 @@ export type MenuProps = StatefulMenuProps & {
 };
 
 const Menu: FC<MenuProps> = ({ size = MENU_SIZE.medium, overrides: baseOverrides, isLight, ...props }) => {
+  const rootRef = useRef<HTMLUListElement | null>(null);
+
   const menuOverrides = getMenuOverrides(size, !!isLight);
   const overrides = getMergedOverrides(menuOverrides, baseOverrides);
 
-  // @ts-ignore
-  return <StatefulMenu {...props} overrides={overrides} />;
+  useEffect(() => {
+    const menuElement = rootRef.current;
+
+    if (menuElement) {
+      menuElement.removeAttribute("tabindex");
+    }
+  }, [rootRef]);
+
+  return <StatefulMenu {...props} overrides={overrides} rootRef={rootRef} />;
 };
 
 export default Menu;
