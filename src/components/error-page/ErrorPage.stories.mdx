@@ -1,0 +1,41 @@
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
+import ErrorPage from "./ErrorPage";
+
+<Meta title="Feedback/Error Page" component={ErrorPage} />
+
+export const Template = ({ ...args }) => {
+  return (
+    <div style={{ width: "100%", height: "100vh" }}>
+      <ErrorPage {...args} />
+    </div>
+  );
+};
+
+# Error Page
+
+<Canvas>
+  <Story name="Default" parameters={{ layout: "fullscreen" }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={ErrorPage} />
+
+### Usage:
+
+To use, import the component `ErrorPage` from `@nilfoundation/ui-kit`.
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+    import {ErrorPage} from "@nilfoundation/ui-kit";
+    ...
+    <ErrorPage
+      errorCode="500"
+      errorTitle="Server error"
+      errorDescription="Something went wrong on our end. Please try again later."
+    />
+  `}
+/>
