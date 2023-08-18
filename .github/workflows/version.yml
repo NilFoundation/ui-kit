@@ -1,0 +1,28 @@
+name: Version
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "src/**"
+      - "package.json"
+      - "package-lock.json"
+jobs:
+  build:
+    name: Version
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Bump version
+      uses:  'phips28/gh-action-bump-version@master'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Safe because workflow only runs on push to master, not pull-request
+      with:
+        minor-wording:  'add,adds,new'
+        major-wording:  'MAJOR,cut-major'
+        patch-wording:  'changes,fixes,fix'
+        default: patch
+        check-last-commit-only: true
