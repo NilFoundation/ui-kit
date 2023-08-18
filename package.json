@@ -1,6 +1,6 @@
 {
   "name": "@nilfoundation/ui-kit",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "=Nil; Foundation user interface kit",
   "keywords": [
     "ui-kit",
@@ -23,8 +23,7 @@
     "lint": "eslint 'src/**/**/*.{js,ts,mdx}'",
     "tsc": "tsc --noEmit",
     "storybook": "start-storybook -s ./src/assets -p 6006",
-    "build-storybook": "build-storybook",
-    "postversion": "git push --tags"
+    "build-storybook": "build-storybook"
   },
   "license": "MIT",
   "peerDependencies": {
