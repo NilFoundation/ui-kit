@@ -45,12 +45,12 @@ const ErrorPage: React.FC<ErrorPageProps> = ({
         </div>
       </div>
       <div className={css(s.columnsStyles["col-2"])}>
-        <Block $style={{ marginTop: "250px" }}>
+        <Block $style={{ marginTop: "calc(100vh / 2.25)" }}>
           <WhiteRect $style={{ marginBottom: "auto" }} />
         </Block>
       </div>
       <div className={css(s.columnsStyles["col-3"])}>
-        <Block $style={{ marginTop: "calc(250px - 30px)" }}>
+        <Block $style={{ marginTop: "calc(100vh / 2.25 + (100vh - (100vh / 2.25)) / 2 - 30px)" }}>
           <WhiteRect $style={{ marginBottom: "auto" }} />
         </Block>
       </div>

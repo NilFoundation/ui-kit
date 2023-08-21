@@ -14,7 +14,12 @@ export const Template = ({ ...args }) => {
 # Error Page
 
 <Canvas>
-  <Story name="Default" parameters={{ layout: "fullscreen" }}>
+  <Story name="Default" parameters={{ layout: "fullscreen" }} args={{
+    redirectPath: "#redirect",
+    redirectTitle: "Home",
+    errorCode: "404",
+    errorDescription: "The page you are looking for does not exist.",
+  }}>
     {Template.bind({})}
   </Story>
 </Canvas>

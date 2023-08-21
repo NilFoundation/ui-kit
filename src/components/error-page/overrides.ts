@@ -5,8 +5,9 @@ import { expandProperty } from "inline-style-expand-shorthand";
 export const getErrorCodeOverrides = (): BlockOverrides => ({
   Block: {
     style: {
-      fontSize: "250px",
-      lineHeight: "250px",
+      height: "calc(100vh / 2.25)",
+      fontSize: "calc(100vw / 5)",
+      lineHeight: "calc(100vh / 2.25)",
       letterSpacing: "-0.08em",
       ...expandProperty("margin", "0"),
       background: PRIMITIVE_COLORS.primary800,
