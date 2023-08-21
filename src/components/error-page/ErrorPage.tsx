@@ -7,6 +7,7 @@ import { getErrorCodeOverrides, getErrorDescriptionOverrides } from "./overrides
 import WhiteRect from "./ui/WhiteRect";
 import { ErrorPageProps } from "./types";
 import Redirect from "./ui/Redirect";
+import { useIsMobile } from "./useIsMobile";
 
 const ErrorPage: React.FC<ErrorPageProps> = ({
   errorCode,
@@ -16,6 +17,7 @@ const ErrorPage: React.FC<ErrorPageProps> = ({
   redirectPath,
 }) => {
   const [css] = useStyletron();
+  const isMobile = useIsMobile();
 
   return (
     <div className={css(s.containerStyles)}>
@@ -27,7 +29,7 @@ const ErrorPage: React.FC<ErrorPageProps> = ({
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             <Redirect redirectPath={redirectPath!} redirectTitle={redirectTitle!} />
           )}
-          <WhiteRect $style={{ marginTop: "auto" }} />
+          {!isMobile && <WhiteRect $style={{ marginTop: "auto" }} />}
         </Block>
       </div>
       <div className={css(s.columnsStyles["col-1"])}>
@@ -44,16 +46,20 @@ const ErrorPage: React.FC<ErrorPageProps> = ({
           </Block>
         </div>
       </div>
-      <div className={css(s.columnsStyles["col-2"])}>
-        <Block $style={{ marginTop: "calc(100vh / 2.25)" }}>
-          <WhiteRect $style={{ marginBottom: "auto" }} />
-        </Block>
-      </div>
-      <div className={css(s.columnsStyles["col-3"])}>
-        <Block $style={{ marginTop: "calc(100vh / 2.25 + (100vh - (100vh / 2.25)) / 2 - 30px)" }}>
-          <WhiteRect $style={{ marginBottom: "auto" }} />
-        </Block>
-      </div>
+      {!isMobile && (
+        <>
+          <div className={css(s.columnsStyles["col-2"])}>
+            <Block $style={{ marginTop: "calc(100vh / 2.25)" }}>
+              <WhiteRect $style={{ marginBottom: "auto" }} />
+            </Block>
+          </div>
+          <div className={css(s.columnsStyles["col-3"])}>
+            <Block $style={{ marginTop: "calc(100vh / 2.25 + (100vh - (100vh / 2.25)) / 2 - 30px)" }}>
+              <WhiteRect $style={{ marginBottom: "auto" }} />
+            </Block>
+          </div>
+        </>
+      )}
     </div>
   );
 };
