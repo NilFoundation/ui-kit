@@ -33,10 +33,10 @@ jobs:
         node-version: 18
     - name: Update version
       run: |
-        npm version ${{ inputs.release_type }}
+        npm version ${{ inputs.release_type || 'patch' }}
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.PUSH_TOKEN }}
         branch: master
         tags: true
