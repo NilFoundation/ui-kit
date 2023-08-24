@@ -28,7 +28,7 @@ jobs:
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'bot@nil.foundation'
-    - uses: actions/setup-node@3
+    - uses: actions/setup-node@v3
       with:
         node-version: 18
     - name: Update version
