@@ -1,12 +1,20 @@
 name: Version
 on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Release type'
+        type: choice
+        default: 'patch'
+        options:
+          - 'patch'
+          - 'minor'
+          - 'major'
   push:
     branches:
       - master
     paths:
       - "src/**"
-      - "package.json"
-      - "package-lock.json"
 jobs:
   build:
     name: Version
@@ -16,13 +24,19 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Bump version
-      uses:  'phips28/gh-action-bump-version@master'
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Safe because workflow only runs on push to master, not pull-request
+    - name: Set git user
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'bot@nil.foundation'
+    - uses: actions/setup-node@3
       with:
-        minor-wording:  'add,adds,new'
-        major-wording:  'MAJOR,cut-major'
-        patch-wording:  'changes,fixes,fix'
-        default: patch
-        check-last-commit-only: true
+        node-version: 18
+    - name: Update version
+      run: |
+        npm version ${{ inputs.release_type }}
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: master
+        tags: true
