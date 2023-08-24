@@ -12,7 +12,8 @@ export const useIsMobile = () => {
 
   useEffect(() => {
     const resize = () => {
-      setIsMobile(getisMobile());
+      const newIsMobileValue = getisMobile();
+      isMobile !== newIsMobileValue && setIsMobile(newIsMobileValue);
     };
 
     window.addEventListener("resize", resize);
@@ -20,7 +21,7 @@ export const useIsMobile = () => {
     return () => {
       window.removeEventListener("resize", resize);
     };
-  }, []);
+  }, [isMobile]);
 
   return isMobile;
 };
