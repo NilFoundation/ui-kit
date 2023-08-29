@@ -3,6 +3,7 @@ import Button from "./Button";
 import { BUTTON_SHAPE, BUTTON_SIZE } from "./types";
 import StoriesLayout from "../../shared/ui/stories-layout";
 import { HeartIcon } from "../icons";
+import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
 
 <Meta title="Form/Button" component={Button} />
 
@@ -28,7 +29,13 @@ export const Template = ({ children, ...args }) => {
 # Button
 
 <Canvas isColumn>
-  <Story name="Primary" args={{ kind: "primary" }}>
+  <Story
+    name="Primary"
+    args={{ kind: "primary" }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=79-10388&mode=design&t=kLdyIW7BuHCLfy8i-4"
+    )}
+  >
     {Template.bind({})}
   </Story>
   <Story name="Secondary" args={{ kind: "secondary" }}>
