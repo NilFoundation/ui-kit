@@ -24,5 +24,6 @@ export const parameters = {
     storySort: {
       order: ['Documentation'],
     },
+    panelPosition: 'right',
   }
 };
