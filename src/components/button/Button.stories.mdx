@@ -33,18 +33,24 @@ export const Template = ({ children, ...args }) => {
     name="Primary"
     args={{ kind: "primary" }}
     parameters={getFigmaParameters(
-      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=79-10388&mode=design&t=kLdyIW7BuHCLfy8i-4"
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=99-19984&mode=design&t=g655DrIEKA1td3Rn-0"
     )}
   >
     {Template.bind({})}
   </Story>
-  <Story name="Secondary" args={{ kind: "secondary" }}>
+  <Story name="Secondary" args={{ kind: "secondary" }} parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=99-20213&mode=design&t=g655DrIEKA1td3Rn-0"
+    )}>
     {Template.bind({})}
   </Story>
-  <Story name="Tertiary" args={{ kind: "tertiary" }}>
+  <Story name="Tertiary" args={{ kind: "tertiary" }} parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=99-20442&mode=design&t=vdSasKmpFl6EHyXE-0"
+    )}>
     {Template.bind({})}
   </Story>
-  <Story name="Danger" args={{ kind: "danger" }}>
+  <Story name="Danger" args={{ kind: "danger" }} parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=99-20865&mode=design&t=vdSasKmpFl6EHyXE-0"
+    )}>
     {Template.bind({})}
   </Story>
   <Story name="Disabled" args={{ disabled: true }}>
