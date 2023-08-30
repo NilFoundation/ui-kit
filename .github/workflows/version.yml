@@ -15,6 +15,7 @@ on:
       - master
     paths:
       - "src/**"
+      - "!src/**/*.stories.mdx"
 jobs:
   build:
     name: Version
