@@ -12,9 +12,9 @@ type MenuHeader = {
 type TypographyProps = ComponentProps<typeof ParagraphSmall>;
 
 const paragraphComponent = {
-  [MENU_SIZE.small]: (props: TypographyProps) => <LabelSmall color="primary300" as="li" {...props} />,
-  [MENU_SIZE.medium]: (props: TypographyProps) => <LabelMedium color="primary300" as="li" {...props} />,
-  [MENU_SIZE.large]: (props: TypographyProps) => <LabelLarge color="primary300" as="li" {...props} />,
+  [MENU_SIZE.small]: (props: TypographyProps) => <LabelSmall color="gray300" as="li" {...props} />,
+  [MENU_SIZE.medium]: (props: TypographyProps) => <LabelMedium color="gray300" as="li" {...props} />,
+  [MENU_SIZE.large]: (props: TypographyProps) => <LabelLarge color="gray300" as="li" {...props} />,
 };
 
 const MenuHeader: FC<MenuHeader> = ({ size, children }) => {

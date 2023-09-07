@@ -25,7 +25,7 @@ const SideNavigationHeader: FC<SideNavigationHeaderProps> = ({ brand, onClose })
     >
       {brand}
       <Button size={BUTTON_SIZE.mini} onClick={() => onClose?.({ closeSource: "closeButton" })}>
-        <CloseIcon color={PRIMITIVE_COLORS.primary800} size={24} />
+        <CloseIcon color={PRIMITIVE_COLORS.gray800} size={24} />
       </Button>
     </div>
   );

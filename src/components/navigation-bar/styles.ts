@@ -60,20 +60,20 @@ export const getNavigationBurgerStyles = (media: MediaQuery): StyleObject => ({
 
 const treeLabelDisabledStyles: StyleObject = {
   cursor: "not-allowed",
-  color: `${PRIMITIVE_COLORS.primary300} !important`,
+  color: `${PRIMITIVE_COLORS.gray300} !important`,
 
   ":hover": {
-    color: `${PRIMITIVE_COLORS.primary300} !important`,
+    color: `${PRIMITIVE_COLORS.gray300} !important`,
   },
 };
 
 export const getTreeLabelStyles = (isSelected: boolean, disabled: boolean): StyleObject => {
   return {
-    color: `${isSelected ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.primary800} !important`,
+    color: `${isSelected ? PRIMITIVE_COLORS.gray500 : PRIMITIVE_COLORS.gray800} !important`,
     textDecoration: "none !important",
 
     ":hover": {
-      color: `${isSelected ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.primary600} !important`,
+      color: `${isSelected ? PRIMITIVE_COLORS.gray500 : PRIMITIVE_COLORS.gray600} !important`,
     },
 
     ...(disabled ? treeLabelDisabledStyles : {}),

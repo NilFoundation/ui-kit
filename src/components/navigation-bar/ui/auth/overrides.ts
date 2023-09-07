@@ -7,7 +7,7 @@ export const getAvatarOverrides = (): AvatarOverrides => {
   return {
     Root: {
       style: {
-        backgroundColor: PRIMITIVE_COLORS.primary100,
+        backgroundColor: PRIMITIVE_COLORS.gray100,
         marginRight: "4px",
       },
     },
@@ -15,7 +15,7 @@ export const getAvatarOverrides = (): AvatarOverrides => {
       style: {
         fontSize: "14px",
         lineHeight: "16px",
-        color: PRIMITIVE_COLORS.primary800,
+        color: PRIMITIVE_COLORS.gray800,
       },
     },
   };

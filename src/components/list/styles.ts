@@ -6,15 +6,15 @@ export const listItemContentStyles = {
   ...expandProperty("borderBottom", "none"),
   marginLeft: "0",
   boxSizing: "border-box",
-  backgroundImage: `linear-gradient(to right, ${PRIMITIVE_COLORS.primary600} 36%, rgba(255,255,255,0) 0%)`,
+  backgroundImage: `linear-gradient(to right, ${PRIMITIVE_COLORS.gray600} 36%, rgba(255,255,255,0) 0%)`,
   backgroundPosition: `bottom`,
   backgroundSize: `10px 4px`,
   backgroundRepeat: `repeat-x`,
-  color: PRIMITIVE_COLORS.primary500,
+  color: PRIMITIVE_COLORS.gray500,
 
   ":hover": {
-    backgroundImage: `linear-gradient(to right, ${PRIMITIVE_COLORS.primary600} 100%, rgba(255,255,255,0) 0%)`,
-    color: PRIMITIVE_COLORS.primary300,
+    backgroundImage: `linear-gradient(to right, ${PRIMITIVE_COLORS.gray600} 100%, rgba(255,255,255,0) 0%)`,
+    color: PRIMITIVE_COLORS.gray300,
   },
 };
 
@@ -29,13 +29,13 @@ export const listItemContentActiveStyles = {
 };
 
 export const listItemContentDisabledStyles = {
-  backgroundImage: `linear-gradient(to right, ${PRIMITIVE_COLORS.primary600} 36%, rgba(255,255,255,0) 0%)`,
-  color: PRIMITIVE_COLORS.primary600,
+  backgroundImage: `linear-gradient(to right, ${PRIMITIVE_COLORS.gray600} 36%, rgba(255,255,255,0) 0%)`,
+  color: PRIMITIVE_COLORS.gray600,
   cursor: "not-allowed",
 
   ":hover": {
-    backgroundImage: `linear-gradient(to right, ${PRIMITIVE_COLORS.primary600} 36%, rgba(255,255,255,0) 0%)`,
-    color: PRIMITIVE_COLORS.primary600,
+    backgroundImage: `linear-gradient(to right, ${PRIMITIVE_COLORS.gray600} 36%, rgba(255,255,255,0) 0%)`,
+    color: PRIMITIVE_COLORS.gray600,
   },
 };
 

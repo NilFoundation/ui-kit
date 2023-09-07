@@ -31,7 +31,7 @@ export const Template = ({ children, ...args }) => {
 <Canvas isColumn>
   <Story
     name="Primary"
-    args={{ kind: "primary" }}
+    args={{ kind: "gray" }}
     parameters={getFigmaParameters(
       "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=99-19984&mode=design&t=g655DrIEKA1td3Rn-0"
     )}
@@ -87,7 +87,7 @@ To use, import the component `Button` and from `@nilfoundation/ui-kit`.
         // With size
         <Button size={BUTTON_SIZE.mini}>Button Label</Button>
         // With kind
-        <Button kind={BUTTON_KIND.primary}>Button Label</Button>
+        <Button kind={BUTTON_KIND.gray}>Button Label</Button>
         // With shape
         <Button shape={BUTTON_SHAPE.square}>Button Label</Button>
         // Disabled

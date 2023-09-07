@@ -43,7 +43,7 @@ export const getListItemLabelOverrides = (isDisabled: boolean): LabelOverrides =
     LabelDescription: {
       style: () => {
         return {
-          color: isDisabled ? PRIMITIVE_COLORS.primary600 : PRIMITIVE_COLORS.primary500,
+          color: isDisabled ? PRIMITIVE_COLORS.gray600 : PRIMITIVE_COLORS.gray500,
         };
       },
     },

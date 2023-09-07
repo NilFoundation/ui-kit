@@ -43,15 +43,15 @@ const itemModifiedStyles = {
 };
 
 const itemSelectedStyles: StyleObject = {
-  backgroundColor: PRIMITIVE_COLORS.primary800,
+  backgroundColor: PRIMITIVE_COLORS.gray800,
 };
 
 const getItemDisabledStyles = (isLight: boolean) => {
-  const color = isLight ? PRIMITIVE_COLORS.primary300 : PRIMITIVE_COLORS.primary600;
+  const color = isLight ? PRIMITIVE_COLORS.gray300 : PRIMITIVE_COLORS.gray600;
 
   return {
     backgroundColor: "transparent",
-    color: PRIMITIVE_COLORS.primary600,
+    color: PRIMITIVE_COLORS.gray600,
     cursor: "not-allowed",
 
     ":hover": {
@@ -70,7 +70,7 @@ const getItemDisabledStyles = (isLight: boolean) => {
 };
 
 const itemHighlightedStyles: StyleObject = {
-  backgroundColor: PRIMITIVE_COLORS.primary800,
+  backgroundColor: PRIMITIVE_COLORS.gray800,
   color: PRIMITIVE_COLORS.white,
 };
 
@@ -92,11 +92,11 @@ export const getItemContainerStyles = (
     boxSizing: "border-box",
     cursor: "pointer",
     gap: "16px",
-    color: PRIMITIVE_COLORS.primary500,
+    color: PRIMITIVE_COLORS.gray500,
     ...BorderRadiusStyles,
 
     ":hover": {
-      backgroundColor: PRIMITIVE_COLORS.primary800,
+      backgroundColor: PRIMITIVE_COLORS.gray800,
       color: PRIMITIVE_COLORS.white,
     },
 

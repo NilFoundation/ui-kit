@@ -1,7 +1,7 @@
 import { TagProps as BasTagProps } from "baseui/tag";
 
 export enum TAG_KIND {
-  primary = "primary",
+  gray = "gray",
   positive = "positive",
   negative = "negative",
   warning = "warning",

@@ -8,7 +8,7 @@ const TextareaResizeIcon: FC = () => {
 
   return (
     <div className={css({ position: "absolute", bottom: "0", right: "4px", pointerEvents: "none" })}>
-      <ResizeIcon size={20} color={PRIMITIVE_COLORS.primary500} />
+      <ResizeIcon size={20} color={PRIMITIVE_COLORS.gray500} />
     </div>
   );
 };

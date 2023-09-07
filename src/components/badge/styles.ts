@@ -16,34 +16,34 @@ export const badgeColorModifiedStyles = {
     color: PRIMITIVE_COLORS.black,
   },
   [BADGE_COLOR.positive]: {
-    backgroundColor: PRIMITIVE_COLORS.positive500,
+    backgroundColor: PRIMITIVE_COLORS.green500,
     color: PRIMITIVE_COLORS.white,
   },
   [BADGE_COLOR.warning]: {
-    backgroundColor: PRIMITIVE_COLORS.warning500,
+    backgroundColor: PRIMITIVE_COLORS.yellow500,
     color: PRIMITIVE_COLORS.black,
   },
   [BADGE_COLOR.negative]: {
-    backgroundColor: PRIMITIVE_COLORS.error500,
+    backgroundColor: PRIMITIVE_COLORS.red500,
     color: PRIMITIVE_COLORS.white,
   },
 };
 
 export const badgeLowStyles = {
   [BADGE_COLOR.accent]: {
-    backgroundColor: PRIMITIVE_COLORS.primary700,
-    color: PRIMITIVE_COLORS.primary200,
+    backgroundColor: PRIMITIVE_COLORS.gray700,
+    color: PRIMITIVE_COLORS.gray200,
   },
   [BADGE_COLOR.positive]: {
-    backgroundColor: PRIMITIVE_COLORS.positive700,
-    color: PRIMITIVE_COLORS.positive300,
+    backgroundColor: PRIMITIVE_COLORS.green700,
+    color: PRIMITIVE_COLORS.green300,
   },
   [BADGE_COLOR.warning]: {
-    backgroundColor: PRIMITIVE_COLORS.warning700,
-    color: PRIMITIVE_COLORS.warning300,
+    backgroundColor: PRIMITIVE_COLORS.yellow700,
+    color: PRIMITIVE_COLORS.yellow300,
   },
   [BADGE_COLOR.negative]: {
-    backgroundColor: PRIMITIVE_COLORS.error700,
-    color: PRIMITIVE_COLORS.error300,
+    backgroundColor: PRIMITIVE_COLORS.red700,
+    color: PRIMITIVE_COLORS.red300,
   },
 };

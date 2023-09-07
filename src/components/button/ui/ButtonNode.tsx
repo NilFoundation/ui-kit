@@ -27,7 +27,7 @@ const ButtonNode: FC<ButtonNodeProps> = ({ node, isDisabled, size, kind }) => {
   if (React.isValidElement(node)) {
     return React.cloneElement(node as any, {
       size: iconSize[size],
-      color: isDisabled ? PRIMITIVE_COLORS.primary500 : iconColor[kind],
+      color: isDisabled ? PRIMITIVE_COLORS.gray500 : iconColor[kind],
     });
   }
   return <>{node}</>;

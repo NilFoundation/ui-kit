@@ -12,20 +12,20 @@ import { Item } from "baseui/menu";
 
 const getColor = (isError: boolean, isPositive: boolean, isFocused: boolean, isDisabled: boolean): string => {
   if (isDisabled) {
-    return PRIMITIVE_COLORS.primary600;
+    return PRIMITIVE_COLORS.gray600;
   }
   if (isPositive || isFocused) {
     return PRIMITIVE_COLORS.white;
   }
   if (isError) {
-    return PRIMITIVE_COLORS.error400;
+    return PRIMITIVE_COLORS.red400;
   }
-  return PRIMITIVE_COLORS.primary500;
+  return PRIMITIVE_COLORS.gray500;
 };
 
 const getTagKind = (isPositive: boolean, isError: boolean, isFocused: boolean): TAG_KIND => {
   if (isFocused) {
-    return TAG_KIND.primary;
+    return TAG_KIND.gray;
   }
   if (isError) {
     return TAG_KIND.negative;
@@ -33,7 +33,7 @@ const getTagKind = (isPositive: boolean, isError: boolean, isFocused: boolean): 
   if (isPositive) {
     return TAG_KIND.positive;
   }
-  return TAG_KIND.primary;
+  return TAG_KIND.gray;
 };
 
 const isSingleItemActive = (value: Value, item: Item, valueKey?: string): boolean => {
@@ -95,7 +95,7 @@ export const getSelectOverrides = (
       props: ({ $isOpen, $isFocused, $isLoading, ...props }) => ({
         ...props,
         isRotated: $isOpen,
-        color: (isDisabled || $isLoading) && !$isFocused ? PRIMITIVE_COLORS.primary600 : undefined,
+        color: (isDisabled || $isLoading) && !$isFocused ? PRIMITIVE_COLORS.gray600 : undefined,
       }),
     },
     LoadingIndicator: {

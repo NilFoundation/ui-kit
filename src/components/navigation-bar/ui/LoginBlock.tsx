@@ -14,12 +14,12 @@ const LoginBlock: FC<LoginBlockProps> = ({ onClick }) => {
 
   return (
     <Button onClick={onClick} size={BUTTON_SIZE.mini}>
-      <LoginIcon color={PRIMITIVE_COLORS.primary800} />
+      <LoginIcon color={PRIMITIVE_COLORS.gray800} />
       <LabelSmall
         className={css({
           marginLeft: "8px",
         })}
-        color={PRIMITIVE_COLORS.primary800}
+        color={PRIMITIVE_COLORS.gray800}
       >
         Sign in
       </LabelSmall>

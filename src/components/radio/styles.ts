@@ -3,13 +3,13 @@ import { PRIMITIVE_COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
 
 export const getRadioMarkOuterStyles = (isChecked: boolean, isFocused: boolean): StyleObject => {
-  const backgroundColor = isChecked ? PRIMITIVE_COLORS.white : PRIMITIVE_COLORS.primary500;
-  const backgroundColorHover = isChecked ? PRIMITIVE_COLORS.primary50 : PRIMITIVE_COLORS.primary500;
+  const backgroundColor = isChecked ? PRIMITIVE_COLORS.white : PRIMITIVE_COLORS.gray500;
+  const backgroundColorHover = isChecked ? PRIMITIVE_COLORS.gray50 : PRIMITIVE_COLORS.gray500;
 
   return {
     width: "19px",
     height: "19px",
-    backgroundColor: isFocused ? PRIMITIVE_COLORS.primary100 : backgroundColor,
+    backgroundColor: isFocused ? PRIMITIVE_COLORS.gray100 : backgroundColor,
     ...expandProperty("margin", "1px"),
 
     ":hover": {
@@ -19,11 +19,11 @@ export const getRadioMarkOuterStyles = (isChecked: boolean, isFocused: boolean):
 };
 
 export const getRadioMarkOuterErrorStyles = (isChecked: boolean, isFocused: boolean): StyleObject => {
-  const backgroundColor = isChecked ? PRIMITIVE_COLORS.error500 : PRIMITIVE_COLORS.error400;
-  const backgroundColorHover = isChecked ? PRIMITIVE_COLORS.error600 : PRIMITIVE_COLORS.error400;
+  const backgroundColor = isChecked ? PRIMITIVE_COLORS.red500 : PRIMITIVE_COLORS.red400;
+  const backgroundColorHover = isChecked ? PRIMITIVE_COLORS.red600 : PRIMITIVE_COLORS.red400;
 
   return {
-    backgroundColor: isFocused ? PRIMITIVE_COLORS.error700 : backgroundColor,
+    backgroundColor: isFocused ? PRIMITIVE_COLORS.red700 : backgroundColor,
 
     ":hover": {
       backgroundColor: backgroundColorHover,
@@ -32,10 +32,10 @@ export const getRadioMarkOuterErrorStyles = (isChecked: boolean, isFocused: bool
 };
 
 export const radioMarkOuterDisabledStyles = {
-  backgroundColor: PRIMITIVE_COLORS.primary700,
+  backgroundColor: PRIMITIVE_COLORS.gray700,
 
   ":hover": {
-    backgroundColor: PRIMITIVE_COLORS.primary700,
+    backgroundColor: PRIMITIVE_COLORS.gray700,
   },
 };
 
@@ -47,17 +47,17 @@ export const getRadioMarkInnerStyles = (isChecked: boolean): StyleObject => {
     ...expandProperty("borderRadius", isChecked ? "0" : "50%"),
 
     ":hover": {
-      backgroundColor: PRIMITIVE_COLORS.primary800,
+      backgroundColor: PRIMITIVE_COLORS.gray800,
     },
   };
 };
 
 export const getRadioMarkInnerErrorStyles = (isChecked: boolean): StyleObject => {
   return {
-    backgroundColor: isChecked ? PRIMITIVE_COLORS.black : PRIMITIVE_COLORS.error700,
+    backgroundColor: isChecked ? PRIMITIVE_COLORS.black : PRIMITIVE_COLORS.red700,
 
     ":hover": {
-      backgroundColor: PRIMITIVE_COLORS.error600,
+      backgroundColor: PRIMITIVE_COLORS.red600,
     },
   };
 };

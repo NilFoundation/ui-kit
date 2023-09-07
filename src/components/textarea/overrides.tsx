@@ -15,15 +15,15 @@ const getTextareaColor = (isError: boolean, isPositive: boolean, isDisabled: boo
     return PRIMITIVE_COLORS.white;
   }
   if (isDisabled) {
-    return PRIMITIVE_COLORS.primary500;
+    return PRIMITIVE_COLORS.gray500;
   }
   if (isPositive) {
     return PRIMITIVE_COLORS.white;
   }
   if (isError) {
-    return PRIMITIVE_COLORS.error400;
+    return PRIMITIVE_COLORS.red400;
   }
-  return PRIMITIVE_COLORS.primary500;
+  return PRIMITIVE_COLORS.gray500;
 };
 
 export const getTextareaOverrides = (size: TEXTAREA_SIZE, isLoading?: boolean): TextareaOverrides => {

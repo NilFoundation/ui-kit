@@ -31,14 +31,14 @@ const FormControlLabel: FC<FormControlLabelProps> = ({ valueLabel, isDisabled, s
   const [css] = useStyletron();
   const LabelComponent = labelComponent[size];
 
-  const labelColor = isDisabled ? PRIMITIVE_COLORS.primary300 : PRIMITIVE_COLORS.white;
+  const labelColor = isDisabled ? PRIMITIVE_COLORS.gray300 : PRIMITIVE_COLORS.white;
 
   return (
     <div className={css(containerStyles)}>
       <LabelComponent color={labelColor} {...props}>
         {children}
       </LabelComponent>
-      {valueLabel && <LabelComponent color={PRIMITIVE_COLORS.primary300}>{valueLabel}</LabelComponent>}
+      {valueLabel && <LabelComponent color={PRIMITIVE_COLORS.gray300}>{valueLabel}</LabelComponent>}
     </div>
   );
 };

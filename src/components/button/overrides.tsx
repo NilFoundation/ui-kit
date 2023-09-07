@@ -17,9 +17,9 @@ const spinnerSize = {
   [BUTTON_SIZE.large]: SPINNER_SIZE.large,
 };
 
-const getSpinnerColor = (kind = "primary", disabled: boolean) => {
+const getSpinnerColor = (kind = "gray", disabled: boolean) => {
   if (!disabled) {
-    return kind !== "primary" ? PRIMITIVE_COLORS.white : PRIMITIVE_COLORS.black;
+    return kind !== "gray" ? PRIMITIVE_COLORS.white : PRIMITIVE_COLORS.black;
   }
   return PRIMITIVE_COLORS.white;
 };

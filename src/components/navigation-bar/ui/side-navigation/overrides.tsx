@@ -43,7 +43,7 @@ export const getTreeViewOverrides = (itemAs?: (item: NavigationItem) => ReactNod
       style: ({ $hasChildren }) => {
         return {
           ...expandProperty("padding", "16px 8px"),
-          ...expandProperty("borderBottom", `1px solid ${PRIMITIVE_COLORS.primary100}`),
+          ...expandProperty("borderBottom", `1px solid ${PRIMITIVE_COLORS.gray100}`),
           color: "inherit",
           marginLeft: !$hasChildren ? "-20px" : "0",
           backgroundColor: PRIMITIVE_COLORS.white,

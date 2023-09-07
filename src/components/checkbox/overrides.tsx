@@ -34,7 +34,7 @@ export const getCheckboxOverrides = (): CheckboxOverrides => {
         paddingTop: $labelPlacement === "bottom" ? "10px" : null,
         paddingRight: $labelPlacement === "left" ? "10px" : null,
         paddingLeft: $labelPlacement === "right" ? "10px" : null,
-        color: $disabled ? PRIMITIVE_COLORS.primary600 : PRIMITIVE_COLORS.white,
+        color: $disabled ? PRIMITIVE_COLORS.gray600 : PRIMITIVE_COLORS.white,
       }),
     },
     Checkmark: {

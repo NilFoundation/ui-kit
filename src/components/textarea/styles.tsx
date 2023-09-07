@@ -45,9 +45,9 @@ export const clearIconSize = {
 };
 
 export const rootDisabledStyles = {
-  ...expandProperty("borderColor", PRIMITIVE_COLORS.primary600),
+  ...expandProperty("borderColor", PRIMITIVE_COLORS.gray600),
   backgroundColor: "transparent",
-  color: PRIMITIVE_COLORS.primary500,
+  color: PRIMITIVE_COLORS.gray500,
 };
 
 export const inputDisabledStyles = {

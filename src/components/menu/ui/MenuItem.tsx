@@ -31,19 +31,19 @@ type MenuItemProps = RenderItemProps & {
 type TypographyProps = ComponentProps<typeof ParagraphSmall>;
 
 const paragraphComponent = {
-  [SPINNER_SIZE.small]: (props: TypographyProps) => <ParagraphSmall color="primary500" as="div" {...props} />,
-  [SPINNER_SIZE.medium]: (props: TypographyProps) => <ParagraphMedium color="primary500" as="div" {...props} />,
-  [SPINNER_SIZE.large]: (props: TypographyProps) => <ParagraphLarge color="primary500" as="div" {...props} />,
+  [SPINNER_SIZE.small]: (props: TypographyProps) => <ParagraphSmall color="gray500" as="div" {...props} />,
+  [SPINNER_SIZE.medium]: (props: TypographyProps) => <ParagraphMedium color="gray500" as="div" {...props} />,
+  [SPINNER_SIZE.large]: (props: TypographyProps) => <ParagraphLarge color="gray500" as="div" {...props} />,
 };
 
 const getParagraphColor = (isActive: boolean, isDisabled: boolean, isLight: boolean) => {
   if (isDisabled) {
-    return isLight ? PRIMITIVE_COLORS.primary300 : PRIMITIVE_COLORS.primary600;
+    return isLight ? PRIMITIVE_COLORS.gray300 : PRIMITIVE_COLORS.gray600;
   }
   if (isActive) {
     return PRIMITIVE_COLORS.white;
   }
-  return isLight ? PRIMITIVE_COLORS.primary800 : PRIMITIVE_COLORS.primary500;
+  return isLight ? PRIMITIVE_COLORS.gray800 : PRIMITIVE_COLORS.gray500;
 };
 
 const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
@@ -86,7 +86,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
               className: css(isAreaSelected ? svgActiveStyles : {}),
             })}
         </EndWrapper>
-        {item?.isActive && <SeparatorIcon size={20} color={PRIMITIVE_COLORS.primary300} />}
+        {item?.isActive && <SeparatorIcon size={20} color={PRIMITIVE_COLORS.gray300} />}
       </Item>
     );
   }

@@ -9,25 +9,25 @@ const getInputColor = (isError: boolean, isPositive: boolean, isFocused: boolean
     return PRIMITIVE_COLORS.white;
   }
   if (isError) {
-    return PRIMITIVE_COLORS.error400;
+    return PRIMITIVE_COLORS.red400;
   }
   if (isPositive) {
     return PRIMITIVE_COLORS.white;
   }
-  return PRIMITIVE_COLORS.primary500;
+  return PRIMITIVE_COLORS.gray500;
 };
 
 const getIconColor = (isError: boolean, isPositive: boolean, isFocused: boolean): string => {
   if (isFocused) {
-    return PRIMITIVE_COLORS.primary500;
+    return PRIMITIVE_COLORS.gray500;
   }
   if (isError) {
-    return PRIMITIVE_COLORS.error400;
+    return PRIMITIVE_COLORS.red400;
   }
   if (isPositive) {
-    return PRIMITIVE_COLORS.positive400;
+    return PRIMITIVE_COLORS.green400;
   }
-  return PRIMITIVE_COLORS.primary500;
+  return PRIMITIVE_COLORS.gray500;
 };
 
 export const getInputOverrides = (size: INPUT_SIZE): InputOverrides => {
@@ -73,7 +73,7 @@ export const getInputOverrides = (size: INPUT_SIZE): InputOverrides => {
     },
     MaskToggleButton: {
       style: {
-        color: PRIMITIVE_COLORS.primary500,
+        color: PRIMITIVE_COLORS.gray500,
       },
     },
   };

@@ -6,7 +6,7 @@ export const getContainerStyles = (width: string, height: string, kind: PATTERN_
   position: "relative",
   width: width,
   height: height,
-  backgroundColor: kind === PATTERN_KIND.pattern800 ? PRIMITIVE_COLORS.primary800 : PRIMITIVE_COLORS.primary700,
+  backgroundColor: kind === PATTERN_KIND.pattern800 ? PRIMITIVE_COLORS.gray800 : PRIMITIVE_COLORS.gray700,
   boxSizing: "border-box",
 });
 
@@ -25,7 +25,7 @@ export const getRowWrapperStyles = (kind: PATTERN_KIND): StyleObject => ({
   display: "flex",
   boxSizing: "border-box",
   backgroundImage: `linear-gradient(to right, ${
-    kind === PATTERN_KIND.pattern800 ? PRIMITIVE_COLORS.primary700 : PRIMITIVE_COLORS.primary900
+    kind === PATTERN_KIND.pattern800 ? PRIMITIVE_COLORS.gray700 : PRIMITIVE_COLORS.gray900
   } 25%, transparent 25%)`,
   backgroundSize: "8px 4px",
   marginBottom: "2px",
