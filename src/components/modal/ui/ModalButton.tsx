@@ -7,7 +7,7 @@ export type ModalButtonProps = ButtonProps;
 
 const ModalButton: FC<ModalButtonProps> = ({
   children,
-  kind = BUTTON_KIND.gray,
+  kind = BUTTON_KIND.primary,
   size = BUTTON_SIZE.default,
   shape = BUTTON_SHAPE.default,
   ...props
