@@ -3,7 +3,7 @@ import { ANCHOR, SIZE, Drawer as BaseDrawer, DrawerProps as BaseDrawerProps, Dra
 import { getDrawerOverrides } from "./overrides";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
-type DrawerOwnProps = {
+export type DrawerOwnProps = {
   animate?: boolean;
   closeable?: boolean;
   overrides?: DrawerOverrides;
