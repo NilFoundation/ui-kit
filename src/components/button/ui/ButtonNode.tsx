@@ -17,7 +17,7 @@ const iconSize = {
 };
 
 const iconColor = {
-  [BUTTON_KIND.primary]: PRIMITIVE_COLORS.black,
+  [BUTTON_KIND.gray]: PRIMITIVE_COLORS.black,
   [BUTTON_KIND.secondary]: PRIMITIVE_COLORS.white,
   [BUTTON_KIND.tertiary]: PRIMITIVE_COLORS.white,
   [BUTTON_KIND.danger]: PRIMITIVE_COLORS.white,
@@ -27,7 +27,7 @@ const ButtonNode: FC<ButtonNodeProps> = ({ node, isDisabled, size, kind }) => {
   if (React.isValidElement(node)) {
     return React.cloneElement(node as any, {
       size: iconSize[size],
-      color: isDisabled ? PRIMITIVE_COLORS.primary500 : iconColor[kind],
+      color: isDisabled ? PRIMITIVE_COLORS.gray500 : iconColor[kind],
     });
   }
   return <>{node}</>;

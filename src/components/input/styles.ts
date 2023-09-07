@@ -41,8 +41,8 @@ export const inputModifiedStyles = {
 
 export const inputDisabledStyles = {
   backgroundColor: "transparent",
-  ...expandProperty("borderColor", PRIMITIVE_COLORS.primary600),
-  color: PRIMITIVE_COLORS.primary500,
+  ...expandProperty("borderColor", PRIMITIVE_COLORS.gray600),
+  color: PRIMITIVE_COLORS.gray500,
 };
 
 export const spinnerStyles = {

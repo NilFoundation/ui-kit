@@ -16,10 +16,10 @@ export const getTableOverrides = (): TableOverrides => {
   return {
     TableHeadRow: {
       style: () => ({
-        backgroundColor: PRIMITIVE_COLORS.primary900,
+        backgroundColor: PRIMITIVE_COLORS.gray900,
 
         ":hover": {
-          backgroundColor: PRIMITIVE_COLORS.primary800,
+          backgroundColor: PRIMITIVE_COLORS.gray800,
         },
 
         ":hover > th": {
@@ -32,7 +32,7 @@ export const getTableOverrides = (): TableOverrides => {
       style: ({ $divider }: any) => {
         return {
           backgroundColor: "transparent",
-          color: PRIMITIVE_COLORS.primary300,
+          color: PRIMITIVE_COLORS.gray300,
           borderBottom: $divider !== TABLE_DIVIDER.clean ? `1px solid ${PRIMITIVE_COLORS.white}` : "none",
           fontSize: "14px",
           lineHeight: "16px",
@@ -43,7 +43,7 @@ export const getTableOverrides = (): TableOverrides => {
       style: ({ $divider }) => {
         return {
           backgroundColor: "transparent",
-          color: PRIMITIVE_COLORS.primary300,
+          color: PRIMITIVE_COLORS.gray300,
           borderBottom: $divider !== TABLE_DIVIDER.clean ? `1px solid ${PRIMITIVE_COLORS.white}` : "none",
           fontSize: "14px",
           lineHeight: "16px",
@@ -60,7 +60,7 @@ export const getTableOverrides = (): TableOverrides => {
         fontSize: "14px",
         lineHeight: "16px",
         color: PRIMITIVE_COLORS.white,
-        ...getBorderProperties(PRIMITIVE_COLORS.primary700),
+        ...getBorderProperties(PRIMITIVE_COLORS.gray700),
       }),
     },
     TableEmptyMessage: {

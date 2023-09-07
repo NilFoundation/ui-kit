@@ -16,11 +16,11 @@ const labelStyles: StyleObject = {
 };
 
 const spinnerLabelComponent = {
-  [SPINNER_SIZE.xSmall]: (props: TypographyProps) => <LabelXSmall color="primary500" as="span" {...props} />,
-  [SPINNER_SIZE.small]: (props: TypographyProps) => <LabelSmall color="primary500" as="span" {...props} />,
-  [SPINNER_SIZE.medium]: (props: TypographyProps) => <LabelMedium color="primary500" as="span" {...props} />,
-  [SPINNER_SIZE.large]: (props: TypographyProps) => <LabelLarge color="primary500" as="span" {...props} />,
-  [SPINNER_SIZE.xLarge]: (props: TypographyProps) => <HeadingXSmall color="primary500" as="span" {...props} />,
+  [SPINNER_SIZE.xSmall]: (props: TypographyProps) => <LabelXSmall color="gray500" as="span" {...props} />,
+  [SPINNER_SIZE.small]: (props: TypographyProps) => <LabelSmall color="gray500" as="span" {...props} />,
+  [SPINNER_SIZE.medium]: (props: TypographyProps) => <LabelMedium color="gray500" as="span" {...props} />,
+  [SPINNER_SIZE.large]: (props: TypographyProps) => <LabelLarge color="gray500" as="span" {...props} />,
+  [SPINNER_SIZE.xLarge]: (props: TypographyProps) => <HeadingXSmall color="gray500" as="span" {...props} />,
 };
 
 const SpinnerLabel: FC<SpinnerLabelProps> = ({ size = SPINNER_SIZE.medium, children }) => {

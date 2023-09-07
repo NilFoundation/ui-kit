@@ -6,7 +6,7 @@ export type BrandProps = {
   className?: string;
 };
 
-export const Brand: FC<BrandProps> = ({ color = PRIMITIVE_COLORS.primary800, className }) => {
+export const Brand: FC<BrandProps> = ({ color = PRIMITIVE_COLORS.gray800, className }) => {
   return (
     <svg
       className={className}

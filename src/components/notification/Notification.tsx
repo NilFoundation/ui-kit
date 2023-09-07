@@ -18,15 +18,15 @@ const semanticIcon = {
 const actionColors = {
   [NOTIFICATION_KIND.info]: undefined,
   [NOTIFICATION_KIND.warning]: {
-    backgroundColor: PRIMITIVE_COLORS.warning600,
+    backgroundColor: PRIMITIVE_COLORS.yellow600,
     color: PRIMITIVE_COLORS.white,
   },
   [NOTIFICATION_KIND.negative]: {
-    backgroundColor: PRIMITIVE_COLORS.error600,
+    backgroundColor: PRIMITIVE_COLORS.red600,
     color: PRIMITIVE_COLORS.white,
   },
   [NOTIFICATION_KIND.positive]: {
-    backgroundColor: PRIMITIVE_COLORS.positive600,
+    backgroundColor: PRIMITIVE_COLORS.green600,
     color: PRIMITIVE_COLORS.white,
   },
 };

@@ -13,7 +13,7 @@ type AvatarBlockProps = {
 
 const iconProps = {
   size: 16,
-  color: PRIMITIVE_COLORS.primary800,
+  color: PRIMITIVE_COLORS.gray800,
 };
 
 const AvatarBlock: FC<AvatarBlockProps> = ({ username, authDropdownContainer }) => {

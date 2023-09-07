@@ -12,7 +12,7 @@ export type AuthItemProps = {
 
 const containerStyles = {
   ...expandProperty("padding", "16px"),
-  ...expandProperty("borderTop", `1px solid ${PRIMITIVE_COLORS.primary100}`),
+  ...expandProperty("borderTop", `1px solid ${PRIMITIVE_COLORS.gray100}`),
 };
 
 const wrapperStyles = {
@@ -28,17 +28,17 @@ const AuthItem: FC<AuthItemProps> = ({ amount, cents, currency }) => {
 
   return (
     <div className={css(containerStyles)}>
-      <LabelSmall color={PRIMITIVE_COLORS.primary500}>Current balance</LabelSmall>
+      <LabelSmall color={PRIMITIVE_COLORS.gray500}>Current balance</LabelSmall>
       <div className={css(wrapperStyles)}>
-        <LabelSmall className={css(labelStyles)} as="span" color={PRIMITIVE_COLORS.primary800}>
+        <LabelSmall className={css(labelStyles)} as="span" color={PRIMITIVE_COLORS.gray800}>
           {amount}
         </LabelSmall>
         {cents && (
-          <LabelSmall className={css(labelStyles)} as="span" color={PRIMITIVE_COLORS.primary500}>
+          <LabelSmall className={css(labelStyles)} as="span" color={PRIMITIVE_COLORS.gray500}>
             {cents}
           </LabelSmall>
         )}
-        <LabelSmall as="span" color={PRIMITIVE_COLORS.primary800}>
+        <LabelSmall as="span" color={PRIMITIVE_COLORS.gray800}>
           {currency}
         </LabelSmall>
       </div>

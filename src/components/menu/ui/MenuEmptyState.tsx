@@ -11,7 +11,7 @@ const MenuEmptyState: FC = () => {
   return (
     <Wrapper>
       <HeadingXSmall className={css(emptyStateTitleStyles)}>No results found</HeadingXSmall>
-      <ParagraphMedium color="primary300" className={css(emptyStateTextStyles)}>
+      <ParagraphMedium color="gray300" className={css(emptyStateTextStyles)}>
         Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus.
       </ParagraphMedium>
     </Wrapper>

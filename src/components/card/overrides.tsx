@@ -18,8 +18,8 @@ export const getCardOverrides = (headline: boolean, border: boolean): CardOverri
         paddingBottom: "0px",
         boxSizing: "border-box",
         maxWidth: "328px",
-        backgroundColor: PRIMITIVE_COLORS.primary800,
-        border: border ? `1px solid ${PRIMITIVE_COLORS.primary700}` : `1px solid transparent`,
+        backgroundColor: PRIMITIVE_COLORS.gray800,
+        border: border ? `1px solid ${PRIMITIVE_COLORS.gray700}` : `1px solid transparent`,
       },
     },
     HeaderImage: {

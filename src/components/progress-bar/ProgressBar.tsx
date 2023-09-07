@@ -92,7 +92,7 @@ const ProgressBar: FC<ProgressBarProps> = ({
         ))}
       </ProgressWrapper>
       {showLabel && (
-        <TypographyComponent className={css(labelStyles)} color={errorMessage ? "error500" : "primary500"}>
+        <TypographyComponent className={css(labelStyles)} color={errorMessage ? "error500" : "gray500"}>
           {errorMessage
             ? errorMessage
             : getProgressLabel

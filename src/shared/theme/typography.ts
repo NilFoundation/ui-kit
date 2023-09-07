@@ -22,7 +22,7 @@ export const createTypography = (defaultFonts?: DefaultFonts): DefaultTheme => {
 
   return {
     primitives: {
-      primaryFontFamily: defaultRegularFont || undefined,
+      grayFontFamily: defaultRegularFont || undefined,
     },
     overrides: {
       typography: {

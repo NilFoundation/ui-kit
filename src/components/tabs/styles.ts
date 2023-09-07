@@ -9,19 +9,19 @@ export const tabBaseStyles = {
   color: PRIMITIVE_COLORS.white,
 
   ":hover": {
-    borderColor: PRIMITIVE_COLORS.primary700,
-    backgroundColor: PRIMITIVE_COLORS.primary800,
+    borderColor: PRIMITIVE_COLORS.gray700,
+    backgroundColor: PRIMITIVE_COLORS.gray800,
   },
 };
 
 export const tabStyles = {
   ...tabBaseStyles,
-  borderBottom: `4px solid ${PRIMITIVE_COLORS.primary500}`,
+  borderBottom: `4px solid ${PRIMITIVE_COLORS.gray500}`,
 };
 
 export const tabVerticalStyles = {
   ...tabBaseStyles,
-  borderRight: `4px solid ${PRIMITIVE_COLORS.primary500}`,
+  borderRight: `4px solid ${PRIMITIVE_COLORS.gray500}`,
   borderBottom: "none",
 };
 
@@ -34,11 +34,11 @@ export const tabActiveStyles = {
 };
 
 export const tabDisabledStyles = {
-  borderColor: PRIMITIVE_COLORS.primary500,
-  color: PRIMITIVE_COLORS.primary600,
+  borderColor: PRIMITIVE_COLORS.gray500,
+  color: PRIMITIVE_COLORS.gray600,
 
   ":hover": {
-    borderColor: PRIMITIVE_COLORS.primary500,
+    borderColor: PRIMITIVE_COLORS.gray500,
     backgroundColor: "transparent",
   },
 };

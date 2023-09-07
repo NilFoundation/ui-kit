@@ -6,13 +6,13 @@ export const notificationBodyModifiedStyles = {
     backgroundColor: PRIMITIVE_COLORS.mono600,
   },
   [NOTIFICATION_KIND.warning]: {
-    backgroundColor: PRIMITIVE_COLORS.warning700,
+    backgroundColor: PRIMITIVE_COLORS.yellow700,
   },
   [NOTIFICATION_KIND.positive]: {
-    backgroundColor: PRIMITIVE_COLORS.positive700,
+    backgroundColor: PRIMITIVE_COLORS.green700,
   },
   [NOTIFICATION_KIND.negative]: {
-    backgroundColor: PRIMITIVE_COLORS.error700,
+    backgroundColor: PRIMITIVE_COLORS.red700,
   },
 };
 

@@ -19,26 +19,26 @@ export const getCheckmarkBaseStyles = (isIndeterminate: boolean) => ({
 
 export const getCheckmarkBaseModifiedStyles = (isFocused: boolean) => ({
   backgroundColor: isFocused ? PRIMITIVE_COLORS.mono600 : PRIMITIVE_COLORS.black,
-  ...getBorderColorProperties(PRIMITIVE_COLORS.primary500),
+  ...getBorderColorProperties(PRIMITIVE_COLORS.gray500),
 
   ":hover": {
-    backgroundColor: PRIMITIVE_COLORS.primary800,
+    backgroundColor: PRIMITIVE_COLORS.gray800,
   },
 });
 
 export const getCheckmarkErrorModifiedStyles = (isFocused: boolean) => ({
-  backgroundColor: isFocused ? PRIMITIVE_COLORS.error500 : PRIMITIVE_COLORS.error700,
-  ...getBorderColorProperties(PRIMITIVE_COLORS.error400),
+  backgroundColor: isFocused ? PRIMITIVE_COLORS.red500 : PRIMITIVE_COLORS.red700,
+  ...getBorderColorProperties(PRIMITIVE_COLORS.red400),
 
   ":hover": {
-    backgroundColor: PRIMITIVE_COLORS.error600,
+    backgroundColor: PRIMITIVE_COLORS.red600,
   },
 });
 
 export const getCheckmarkCheckedModifiedStyles = (isFocused: boolean, isError: boolean) => {
-  const backgroundColor = isError ? PRIMITIVE_COLORS.error500 : PRIMITIVE_COLORS.white;
-  const backgroundColorHover = isError ? PRIMITIVE_COLORS.error600 : PRIMITIVE_COLORS.primary50;
-  const backgroundColorFocused = isError ? PRIMITIVE_COLORS.error700 : PRIMITIVE_COLORS.primary100;
+  const backgroundColor = isError ? PRIMITIVE_COLORS.red500 : PRIMITIVE_COLORS.white;
+  const backgroundColorHover = isError ? PRIMITIVE_COLORS.red600 : PRIMITIVE_COLORS.gray50;
+  const backgroundColorFocused = isError ? PRIMITIVE_COLORS.red700 : PRIMITIVE_COLORS.gray100;
   return {
     backgroundColor: isFocused ? backgroundColorFocused : backgroundColor,
     ...getBorderColorProperties("transparent"),
@@ -50,8 +50,8 @@ export const getCheckmarkCheckedModifiedStyles = (isFocused: boolean, isError: b
 };
 
 export const getCheckmarkDisabledModifiedStyles = (isChecked: boolean) => {
-  const backgroundColor = isChecked ? PRIMITIVE_COLORS.primary600 : PRIMITIVE_COLORS.primary900;
-  const borderColor = isChecked ? "transparent" : PRIMITIVE_COLORS.primary600;
+  const backgroundColor = isChecked ? PRIMITIVE_COLORS.gray600 : PRIMITIVE_COLORS.gray900;
+  const borderColor = isChecked ? "transparent" : PRIMITIVE_COLORS.gray600;
   return {
     backgroundColor,
     ...getBorderColorProperties(borderColor),

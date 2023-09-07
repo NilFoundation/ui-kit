@@ -13,9 +13,9 @@ export const getUploaderContainerStyles = (isDragActive?: boolean): StyleObject 
     width: "100%",
     minHeight: "136px",
     boxSizing: "border-box",
-    backgroundColor: PRIMITIVE_COLORS.primary800,
+    backgroundColor: PRIMITIVE_COLORS.gray800,
     ...BorderRadiusStyles,
-    ...expandProperty("border", `2px solid ${isDragActive ? PRIMITIVE_COLORS.white : PRIMITIVE_COLORS.primary700}`),
+    ...expandProperty("border", `2px solid ${isDragActive ? PRIMITIVE_COLORS.white : PRIMITIVE_COLORS.gray700}`),
     ...expandProperty("padding", `${isDragActive ? 0 : "32px 32px 22px 32px"}`),
   };
 };

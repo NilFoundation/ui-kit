@@ -5,7 +5,7 @@ import { getTagOverrides } from "./overrides";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
 const Tag: FC<TagProps> = ({
-  kind = TAG_KIND.primary,
+  kind = TAG_KIND.gray,
   variant = TAG_VARIANT.solid,
   overrides: baseOverrides,
   ...props

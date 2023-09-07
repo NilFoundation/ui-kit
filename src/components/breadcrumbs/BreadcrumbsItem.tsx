@@ -12,10 +12,10 @@ export type BreadcrumbsItemProps = {
 
 const getLinkColor = (isActive?: boolean, isDisabled?: boolean): string => {
   if (isDisabled) {
-    return PRIMITIVE_COLORS.primary500;
+    return PRIMITIVE_COLORS.gray500;
   }
   if (isActive) {
-    return PRIMITIVE_COLORS.primary300;
+    return PRIMITIVE_COLORS.gray300;
   }
   return PRIMITIVE_COLORS.white;
 };
@@ -24,7 +24,7 @@ const getLinkHoverColor = (isActive?: boolean, isDisabled?: boolean): string => 
   if (isDisabled || isActive) {
     return getLinkColor(isActive, isDisabled);
   }
-  return PRIMITIVE_COLORS.primary200;
+  return PRIMITIVE_COLORS.gray200;
 };
 
 const BreadcrumbsItem: FC<BreadcrumbsItemProps> = ({ isActive, disabled, href, children }) => {
@@ -38,7 +38,7 @@ const BreadcrumbsItem: FC<BreadcrumbsItemProps> = ({ isActive, disabled, href, c
     },
 
     ":focus": {
-      color: `${PRIMITIVE_COLORS.primary300} !important`,
+      color: `${PRIMITIVE_COLORS.gray300} !important`,
     },
   });
 

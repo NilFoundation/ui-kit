@@ -17,7 +17,7 @@ export type ButtonProps = Omit<BaseButtonProps, "kind" | "shape" | "size"> & {
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      kind = BUTTON_KIND.primary,
+      kind = BUTTON_KIND.gray,
       size = BUTTON_SIZE.default,
       shape = BUTTON_SHAPE.default,
       disabled,

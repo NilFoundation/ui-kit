@@ -12,7 +12,7 @@ const ModalBody: FC<ModalBodyProps> = ({ children }) => {
   const [css] = useStyletron();
   return (
     <div className={css(modalBodyStyles)}>
-      <ParagraphSmall as="div" margin={0} color={PRIMITIVE_COLORS.primary300}>
+      <ParagraphSmall as="div" margin={0} color={PRIMITIVE_COLORS.gray300}>
         {children}
       </ParagraphSmall>
     </div>

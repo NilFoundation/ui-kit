@@ -6,7 +6,7 @@ export const getDrawerOverrides = (): DrawerOverrides => {
   return {
     DrawerContainer: {
       style: () => ({
-        backgroundColor: PRIMITIVE_COLORS.primary800,
+        backgroundColor: PRIMITIVE_COLORS.gray800,
       }),
     },
     Backdrop: {

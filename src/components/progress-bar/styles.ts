@@ -35,11 +35,11 @@ export const dashedBlockActiveStyles: StyleObject = {
 };
 
 export const dashedBlockErrorStyles: StyleObject = {
-  backgroundImage: `linear-gradient(to right, ${PRIMITIVE_COLORS.error400} 50%, transparent 50%)`,
+  backgroundImage: `linear-gradient(to right, ${PRIMITIVE_COLORS.red400} 50%, transparent 50%)`,
 };
 
 export const dashedBlockNotActiveStyles: StyleObject = {
-  backgroundImage: `linear-gradient(to right, ${PRIMITIVE_COLORS.primary700} 50%, transparent 50%)`,
+  backgroundImage: `linear-gradient(to right, ${PRIMITIVE_COLORS.gray700} 50%, transparent 50%)`,
 };
 
 export const labelStyles: StyleObject = {

@@ -16,7 +16,7 @@ export const getModalOverrides = (): ModalOverrides => ({
         ...BorderRadiusStyles,
         ...expandProperty("padding", "32px 24px 16px"),
         ...($size === "default" ? { width: "500px" } : {}),
-        backgroundColor: PRIMITIVE_COLORS.primary800,
+        backgroundColor: PRIMITIVE_COLORS.gray800,
         boxSizing: "border-box",
       };
     },

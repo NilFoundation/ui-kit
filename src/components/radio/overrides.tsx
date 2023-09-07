@@ -30,12 +30,12 @@ export const getRadioOverrides = (): RadioOverrides => ({
   },
   Label: {
     style: ({ $disabled }) => ({
-      color: $disabled ? PRIMITIVE_COLORS.primary300 : PRIMITIVE_COLORS.white,
+      color: $disabled ? PRIMITIVE_COLORS.gray300 : PRIMITIVE_COLORS.white,
     }),
   },
   Description: {
     style: ({ $disabled }) => ({
-      color: $disabled ? PRIMITIVE_COLORS.primary300 : PRIMITIVE_COLORS.white,
+      color: $disabled ? PRIMITIVE_COLORS.gray300 : PRIMITIVE_COLORS.white,
     }),
   },
 });
