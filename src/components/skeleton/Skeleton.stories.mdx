@@ -1,6 +1,5 @@
 import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import Skeleton from "./Skeleton";
-import { SKELETON_SIZE } from "./types";
 
 <Meta title="Feedback/Skeleton" component={Skeleton} />
 
@@ -20,21 +19,6 @@ export const HEIGHT = "414px";
   <Story name="With Animation" args={{ width: WIDTH, height: HEIGHT, animation: true }}>
     {Template.bind({})}
   </Story>
-  <Story name="XSmall" args={{ width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.small }}>
-    {Template.bind({})}
-  </Story>
-  <Story name="Small" args={{ width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.small }}>
-    {Template.bind({})}
-  </Story>
-  <Story name="Medium" args={{ width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.medium }}>
-    {Template.bind({})}
-  </Story>
-  <Story name="Large" args={{ width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.large }}>
-    {Template.bind({})}
-  </Story>
-  <Story name="XLarge" args={{ width: WIDTH, height: HEIGHT, animation: true, size: SKELETON_SIZE.xLarge }}>
-    {Template.bind({})}
-  </Story>
   <Story name="With Rows" args={{ width: WIDTH, height: HEIGHT, animation: true, rows: 3 }}>
     {Template.bind({})}
   </Story>
@@ -51,15 +35,13 @@ To use, import the component `Skeleton` from `@nilfoundation/ui-kit`.
   dark
   format={true}
   code={`
-        import {Skeleton, SKELETON_SIZE} from "@nilfoundation/ui-kit";
+        import {Skeleton} from "@nilfoundation/ui-kit";
         const WIDTH = "400px";
         const HEIGHT = "400px";
         ...
         <Skeleton width={WIDTH} height={HEIGHT} />
         // With animation
         <Skeleton width={WIDTH} height={HEIGHT} animation />
-        // With size
-         <Skeleton width={WIDTH} height={HEIGHT} animation size={SKELETON_SIZE.medium} />
         // With rows
         <Skeleton width={WIDTH} height={HEIGHT} animation rows={4} />
   `}
