@@ -62,7 +62,7 @@ export const Template = ({ children, ...args }) => {
   <Story name="Shape Square" args={{ shape: BUTTON_SHAPE.square, children: <HeartIcon size={20} /> }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Start Enhancer" args={{ startEnhancer: <HeartIcon /> }}>
+  <Story name="With Start Enhancer" args={{ startEnhancer: () => <HeartIcon /> }}>
     {Template.bind({})}
   </Story>
   <Story name="With End Enhancer" args={{ endEnhancer: <HeartIcon /> }}>

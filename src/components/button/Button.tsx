@@ -1,8 +1,7 @@
-import { forwardRef, ReactNode } from "react";
+import { forwardRef } from "react";
 import { Button as BaseButton, ButtonProps as BaseButtonProps } from "baseui/button";
 import { getButtonOverrides } from "./overrides";
 import { BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE } from "./types";
-import ButtonNode from "./ui/ButtonNode";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
 export type ButtonProps = Omit<BaseButtonProps, "kind" | "shape" | "size"> & {
@@ -45,14 +44,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         kind={kind === BUTTON_KIND.danger ? BUTTON_KIND.secondary : kind}
         size={size}
         disabled={disabled}
-        startEnhancer={
-          startEnhancer && (
-            <ButtonNode isDisabled={disabled} node={startEnhancer as ReactNode} size={size} kind={kind} />
-          )
-        }
-        endEnhancer={
-          endEnhancer && <ButtonNode isDisabled={disabled} node={endEnhancer as ReactNode} size={size} kind={kind} />
-        }
+        startEnhancer={startEnhancer}
+        endEnhancer={endEnhancer}
         overrides={overrides}
       >
         {children}
