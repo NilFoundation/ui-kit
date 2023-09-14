@@ -1,6 +1,5 @@
 import { ForwardRefRenderFunction, forwardRef } from "react";
 import CodeMirror from "@uiw/react-codemirror";
-import { useForwardedRef } from "./useForwardedRef";
 import { CopyIcon } from "../icons";
 import { Button } from "../button";
 import { useCopyToClipboard } from "./useCopyToClipboard";
@@ -17,11 +16,10 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
   { code, lang, displayCopy = true, onCopy, beforeCopy },
   ref
 ) => {
-  const computedRef = useForwardedRef(ref);
   const onCopyIconClick = useCopyToClipboard(code, onCopy, beforeCopy);
 
   return (
-    <div className="code-field" ref={computedRef}>
+    <div className="code-field" ref={ref}>
       {displayCopy && <Button onClick={onCopyIconClick} startEnhancer={<CopyIcon />}></Button>}
       <CodeMirror value={code} />
     </div>
