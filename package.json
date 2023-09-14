@@ -75,6 +75,8 @@
     "access": "public"
   },
   "dependencies": {
+    "@uiw/react-codemirror": "^4.21.13",
+    "copy-to-clipboard": "^3.3.3",
     "inline-style-expand-shorthand": "^1.6.0",
     "styletron-standard": "^3.1.0"
   },
