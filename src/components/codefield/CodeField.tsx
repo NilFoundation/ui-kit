@@ -8,17 +8,18 @@ import { codeMirrorTheme } from "./codeMirrorTheme";
 import { useStyletron } from "styletron-react";
 import { styles as s } from "./styles";
 import { codeMirrorBasicSetup } from "./codeMirrorBasicSetup";
+import { getCopyButtonOverrides } from "./overrides";
 
 export type CodeFieldProps = {
   code: string;
-  synthax: Extension[];
+  extensions?: Extension[];
   displayCopy?: boolean;
   onCopy?: (code: string, isCopied: boolean) => void;
   transformOnCopy?: (code: string) => string;
 };
 
 const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFieldProps> = (
-  { code, synthax, displayCopy = true, onCopy, transformOnCopy },
+  { code, extensions, displayCopy = true, onCopy, transformOnCopy },
   ref
 ) => {
   const onCopyIconClick = useCopyToClipboard(code, onCopy, transformOnCopy);
@@ -30,12 +31,12 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
         value={code}
         readOnly
         editable={false}
-        extensions={synthax}
+        extensions={extensions}
         theme={codeMirrorTheme}
         basicSetup={codeMirrorBasicSetup}
       />
       {displayCopy && (
-        <Button onClick={onCopyIconClick} kind={BUTTON_KIND.tertiary}>
+        <Button onClick={onCopyIconClick} kind={BUTTON_KIND.secondary} overrides={getCopyButtonOverrides()}>
           <CopyIcon />
         </Button>
       )}

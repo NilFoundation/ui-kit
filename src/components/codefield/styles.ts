@@ -9,6 +9,8 @@ const containerStyles: StyleObject = {
   ...expandProperty("borderRaduis", "4px"),
   ...expandProperty("padding", "24px"),
   display: "flex",
+  justifyContent: "space-between",
+  alignItems: "flex-start",
   gap: "12px",
 };
 
