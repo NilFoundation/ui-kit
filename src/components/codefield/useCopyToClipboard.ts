@@ -4,10 +4,10 @@ import copy from "copy-to-clipboard";
 export const useCopyToClipboard = (
   code: string,
   onCopy?: CodeFieldProps["onCopy"],
-  beforeCopy?: CodeFieldProps["beforeCopy"]
+  transformOnCopy?: CodeFieldProps["transformOnCopy"]
 ) => {
   const onClick = () => {
-    const codeToCopy = beforeCopy ? beforeCopy(code) : code;
+    const codeToCopy = transformOnCopy ? transformOnCopy(code) : code;
     const result = copy(codeToCopy);
 
     if (onCopy) {

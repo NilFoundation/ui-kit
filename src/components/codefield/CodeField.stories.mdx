@@ -1,81 +1,56 @@
 import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
-import Card from "./Card";
+import CodeField from "./CodeField";
 import { Button } from "../button";
-import { useStyletron } from "baseui";
 import { StyledBody, StyledAction } from "baseui/card";
+import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
 
-<Meta title="Data display/Code Field" component={Card} />
+<Meta title="Data display/Code Field" component={CodeField} />
 
-export const Template = ({ isButton = false, ...args }) => {
-  const [css] = useStyletron();
-  return (
-    <Card {...args}>
-      <StyledBody>
-        Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl.
-      </StyledBody>
-      {isButton && (
-        <StyledAction>
-          <Button className={css({ width: "100%" })}>Label</Button>
-        </StyledAction>
-      )}
-    </Card>
-  );
+export const Template = (args) => {
+  return <CodeField {...args} />;
 };
 
-export const imageUrl =
-  "https://oir.mobi/uploads/posts/2021-05/1622168357_43-oir_mobi-p-yelovii-les-priroda-krasivo-foto-49.jpg";
-
-# Card
+# Code Field
 
 <Canvas isColumn>
-  <Story name="Basic usage" args={{}}>
+  <Story
+    name="Basic usage"
+    args={{ code: `--cost <cost of the request> \\` }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=223-8049&mode=design&t=P3rN3pHdOl7FkE44-0"
+    )}
+  >
     {Template.bind({})}
   </Story>
-  <Story name="Heading and button" args={{ title: "Example card", headline: true }}>
-    {Template.bind({})}
-  </Story>
-  <Story name="Photo" args={{ headerImage: imageUrl, isButton: true, headline: true, title: "Example card" }}>
-    {Template.bind({})}
-  </Story>
-  <Story name="Thumbnail" args={{ title: "Card title", thumbnail: imageUrl, headline: true }}>
-    {Template.bind({})}
-  </Story>
-  <Story name="Basic with border and without headline" args={{ border: true }}>
+  <Story
+    name="Without copy button"
+    args={{ code: `--cost <cost of the request> \\`, displayCopy: false }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=223-8049&mode=design&t=P3rN3pHdOl7FkE44-0"
+    )}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable of={Card} />
+<ArgsTable of={CodeField} />
 
 ### Usage:
 
-To use, import the component `Card` from `@nilfoundation/ui-kit`.
+To use, import the component `CodeField` from `@nilfoundation/ui-kit`.
 
 <Source
   language="tsx"
   dark
   format={true}
   code={`
-        import {Card, StyledBody, StyledAction, Button} from "@nilfoundation/ui-kit";
+        import {CodeField} from "@nilfoundation/ui-kit";
         ...
-        <Card>
-          <StyledBody>
-            Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus ex, non facilisis nisl.
-          </StyledBody>
-        </Card>
-        // Card border
-        <Card border title="Card title">...</Card>
-        // With action
-        <Card>
-          <StyledAction>
-            <Button>Button label</Button>
-          </StyledAction>
-        </Card>
-        // With headline
-        <Card headline>Description</Card>
-        // With header image
-        <Card headerImage="path">...</Card>
-        // With thumbnail
-        <Card thumbnail="path">...</Card>
+        <CodeField
+          code="console.log("Hello World")"
+          displayCopy={false}
+          onBeforeCopy={str => "Copied message: " + str}
+          onCopy={() => console.log("Copied!")}
+        />
   `}
 />
