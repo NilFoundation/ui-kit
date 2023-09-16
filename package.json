@@ -75,6 +75,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@uiw/codemirror-themes": "^4.21.13",
     "@uiw/react-codemirror": "^4.21.13",
     "copy-to-clipboard": "^3.3.3",
     "inline-style-expand-shorthand": "^1.6.0",
