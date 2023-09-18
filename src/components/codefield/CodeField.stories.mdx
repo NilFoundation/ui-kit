@@ -13,13 +13,7 @@ export const Template = (args) => {
 <Canvas isColumn>
   <Story
     name="Basic usage"
-    args={{
-      code:
-      `#include <iostream>
-      
-      using namespace std;
-      `,
-    }}
+    args={{ code: `const { useState } = require("react");` }}
     parameters={getFigmaParameters(
       "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=223-8049&mode=design&t=P3rN3pHdOl7FkE44-0"
     )}
@@ -51,7 +45,7 @@ To use, import the component `CodeField` from `@nilfoundation/ui-kit`.
         import {CodeField} from "@nilfoundation/ui-kit";
         ...
         <CodeField
-          code="console.log("Hello World")"
+          code="console.log('Hello World')"
           displayCopy={false}
           onBeforeCopy={str => "Copied message: " + str}
           onCopy={() => console.log("Copied!")}
