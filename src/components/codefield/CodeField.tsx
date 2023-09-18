@@ -1,25 +1,26 @@
 import { ForwardRefRenderFunction, forwardRef } from "react";
-import CodeMirror from "@uiw/react-codemirror";
+import CodeMirror, { Extension } from "@uiw/react-codemirror";
 import { CopyIcon } from "../icons";
 import { BUTTON_KIND, Button } from "../button";
 import { useCopyToClipboard } from "./useCopyToClipboard";
-import { Extension } from "@uiw/react-codemirror";
-import { codeMirrorTheme } from "./codeMirrorTheme";
+import { getCodeMirrorTheme } from "./codeMirrorTheme";
 import { useStyletron } from "styletron-react";
 import { styles as s } from "./styles";
 import { codeMirrorBasicSetup } from "./codeMirrorBasicSetup";
 import { getCopyButtonOverrides } from "./overrides";
+import { CreateThemeOptions } from "@uiw/codemirror-themes";
 
 export type CodeFieldProps = {
   code: string;
   extensions?: Extension[];
+  themeOverrides?: Partial<CreateThemeOptions>;
   displayCopy?: boolean;
   onCopy?: (code: string, isCopied: boolean) => void;
   transformOnCopy?: (code: string) => string;
 };
 
 const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFieldProps> = (
-  { code, extensions, displayCopy = true, onCopy, transformOnCopy },
+  { code, extensions, themeOverrides, displayCopy = true, onCopy, transformOnCopy },
   ref
 ) => {
   const onCopyIconClick = useCopyToClipboard(code, onCopy, transformOnCopy);
@@ -32,7 +33,7 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
         readOnly
         editable={false}
         extensions={extensions}
-        theme={codeMirrorTheme}
+        theme={getCodeMirrorTheme(themeOverrides)}
         basicSetup={codeMirrorBasicSetup}
       />
       {displayCopy && (

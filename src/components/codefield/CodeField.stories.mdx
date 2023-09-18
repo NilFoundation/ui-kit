@@ -13,7 +13,13 @@ export const Template = (args) => {
 <Canvas isColumn>
   <Story
     name="Basic usage"
-    args={{ code: `--cost <cost of the request> \\` }}
+    args={{
+      code:
+      `#include <iostream>
+      
+      using namespace std;
+      `,
+    }}
     parameters={getFigmaParameters(
       "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=223-8049&mode=design&t=P3rN3pHdOl7FkE44-0"
     )}
