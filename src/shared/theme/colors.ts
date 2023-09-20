@@ -39,7 +39,7 @@ export const PRIMITIVE_COLORS = {
   yellow50: "#FCF2E2",
   yellow100: "#f7e3c8",
   yellow200: "#f5b447",
-  yellow300: "E79301",
+  yellow300: "#E79301",
   yellow400: "#bc8932",
   yellow500: "#9d7229",
   yellow600: "#855400",

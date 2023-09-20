@@ -29,5 +29,6 @@ export { default as TelegramIcon } from "./TelegramIcon";
 export { default as SeparatorIcon } from "./SeparatorIcon";
 export { default as ArrowUpIcon } from "./ArrowUpIcon";
 export { default as DotsIcon } from "./DotsIcon";
+export { default as CopyIcon } from "./CopyIcon";
 
 export type { IconProps } from "./types";
