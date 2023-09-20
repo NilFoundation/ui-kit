@@ -11,10 +11,16 @@ const containerStyles: StyleObject = {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "flex-start",
+  flexWrap: "nowrap",
   gap: "12px",
   color: PRIMITIVE_COLORS.gray100,
 };
 
+const codemirrorStyles: StyleObject = {
+  minWidth: 0,
+};
+
 export const styles = {
   containerStyles,
+  codemirrorStyles,
 };

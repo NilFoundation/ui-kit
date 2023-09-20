@@ -35,6 +35,7 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
         extensions={extensions}
         theme={getCodeMirrorTheme(themeOverrides)}
         basicSetup={codeMirrorBasicSetup}
+        className={css(s.codemirrorStyles)}
       />
       {displayCopy && (
         <Button onClick={onCopyIconClick} kind={BUTTON_KIND.secondary} overrides={getCopyButtonOverrides()}>
