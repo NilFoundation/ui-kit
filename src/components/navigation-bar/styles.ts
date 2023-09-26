@@ -3,9 +3,9 @@ import { StyleObject } from "styletron-react";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { MediaQuery } from "baseui/theme";
 
-export const getNavigationContainerStyles = (): StyleObject => {
+export const getNavigationContainerStyles = (fixed?: boolean): StyleObject => {
   return {
-    position: "fixed",
+    position: fixed ? "fixed" : "relative",
     left: "0",
     top: "0",
     width: "100%",

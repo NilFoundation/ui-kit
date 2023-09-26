@@ -5,14 +5,14 @@ import NavigationDrawer from "./ui/side-navigation/NavigationDrawer";
 import { NavigationBarProps } from "./types";
 import MenuNavigation from "./ui/menu-navigation/MenuNavigation";
 
-const NavigationBar: FC<NavigationBarProps> = ({ brand, className, ...props }) => {
+const NavigationBar: FC<NavigationBarProps> = ({ brand, className, fixed, ...props }) => {
   const [css] = useStyletron();
   const [isDrawerOpen, setDrawerOpen] = useState<boolean>(false);
 
   const isAuthVisible = Boolean(!props?.noLogin && (!props?.isAuth || props?.username));
 
   return (
-    <header className={[css(getNavigationContainerStyles()), className].join(" ")}>
+    <header className={[css(getNavigationContainerStyles(fixed)), className].join(" ")}>
       <div className={css(navigationWrapperStyles)}>
         {brand}
         <MenuNavigation {...props} isAuthVisible={isAuthVisible} onDrawerButtonClick={() => setDrawerOpen(true)} />
