@@ -20,4 +20,5 @@ export type NavigationBarProps = {
   username?: string;
   noLogin?: boolean;
   className?: string;
+  fixed?: boolean;
 };
