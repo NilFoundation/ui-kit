@@ -1,5 +1,5 @@
 import { ForwardRefRenderFunction, forwardRef } from "react";
-import CodeMirror, { Extension, ReactCodeMirrorProps } from "@uiw/react-codemirror";
+import CodeMirror, { ReactCodeMirrorProps } from "@uiw/react-codemirror";
 import { CopyIcon } from "../icons";
 import { BUTTON_KIND, Button } from "../button";
 import { useCopyToClipboard } from "./useCopyToClipboard";
@@ -12,7 +12,7 @@ import { CreateThemeOptions } from "@uiw/codemirror-themes";
 
 export type CodeFieldProps = {
   code: string;
-  extensions?: Extension[];
+  extensions?: ReactCodeMirrorProps["extensions"];
   themeOverrides?: Partial<CreateThemeOptions>;
   displayCopy?: boolean;
   onCopy?: (code: string, isCopied: boolean) => void;
@@ -20,6 +20,7 @@ export type CodeFieldProps = {
   showLineNumbers?: boolean;
   editable?: boolean;
   onChange?: ReactCodeMirrorProps["onChange"];
+  initialState?: ReactCodeMirrorProps["initialState"];
 };
 
 const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFieldProps> = (
@@ -33,6 +34,7 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
     showLineNumbers = false,
     editable = false,
     onChange,
+    initialState,
   },
   ref
 ) => {
@@ -50,6 +52,7 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
         basicSetup={getCodeMirrorBasicSetup(showLineNumbers)}
         className={css(s.codemirrorStyles)}
         onChange={onChange}
+        initialState={initialState}
       />
       {displayCopy && (
         <Button onClick={onCopyIconClick} kind={BUTTON_KIND.secondary} overrides={getCopyButtonOverrides()}>
