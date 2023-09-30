@@ -29,6 +29,15 @@ export const Template = (args) => {
   >
     {Template.bind({})}
   </Story>
+  <Story
+    name="Editable"
+    args={{ code: `--cost <cost of the request> \\`, editable: true }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=223-8049&mode=design&t=P3rN3pHdOl7FkE44-0"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 <ArgsTable of={CodeField} />
