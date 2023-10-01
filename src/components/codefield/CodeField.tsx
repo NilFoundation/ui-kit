@@ -9,6 +9,7 @@ import { styles as s } from "./styles";
 import { getCodeMirrorBasicSetup } from "./codeMirrorBasicSetup";
 import { getCopyButtonOverrides } from "./overrides";
 import { CreateThemeOptions } from "@uiw/codemirror-themes";
+import { prefixLineNumberExtension } from "./prefixLineNumberExtension";
 
 export type CodeFieldProps = {
   code: string;
@@ -26,7 +27,7 @@ export type CodeFieldProps = {
 const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFieldProps> = (
   {
     code,
-    extensions,
+    extensions = [],
     themeOverrides,
     displayCopy = true,
     onCopy,
@@ -40,6 +41,7 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
 ) => {
   const onCopyIconClick = useCopyToClipboard(code, onCopy, transformOnCopy);
   const [css] = useStyletron();
+  const mergedExtensions = [prefixLineNumberExtension, ...extensions];
 
   return (
     <div ref={ref} className={css(s.containerStyles)}>
@@ -47,7 +49,7 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
         value={code}
         readOnly={!editable}
         editable={editable}
-        extensions={extensions}
+        extensions={mergedExtensions}
         theme={getCodeMirrorTheme(themeOverrides)}
         basicSetup={getCodeMirrorBasicSetup(showLineNumbers)}
         className={css(s.codemirrorStyles)}
