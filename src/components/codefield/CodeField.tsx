@@ -10,6 +10,7 @@ import { getCodeMirrorBasicSetup } from "./codeMirrorBasicSetup";
 import { getCopyButtonOverrides } from "./overrides";
 import { CreateThemeOptions } from "@uiw/codemirror-themes";
 import { prefixLineNumberExtension } from "./prefixLineNumberExtension";
+import { styleOverridesExtension } from "./styleOverridesExtension";
 
 export type CodeFieldProps = {
   code: string;
@@ -41,7 +42,7 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
 ) => {
   const onCopyIconClick = useCopyToClipboard(code, onCopy, transformOnCopy);
   const [css] = useStyletron();
-  const mergedExtensions = [prefixLineNumberExtension, ...extensions];
+  const mergedExtensions = [prefixLineNumberExtension, styleOverridesExtension, ...extensions];
 
   return (
     <div ref={ref} className={css(s.containerStyles)}>
