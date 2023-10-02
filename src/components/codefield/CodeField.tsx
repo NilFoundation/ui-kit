@@ -10,7 +10,6 @@ import { getCodeMirrorBasicSetup } from "./codeMirrorBasicSetup";
 import { getCopyButtonOverrides } from "./overrides";
 import { CreateThemeOptions } from "@uiw/codemirror-themes";
 import { prefixLineNumberExtension } from "./prefixLineNumberExtension";
-import { styleOverridesExtension } from "./styleOverridesExtension";
 
 export type CodeFieldProps = {
   code: string;
@@ -20,42 +19,30 @@ export type CodeFieldProps = {
   onCopy?: (code: string, isCopied: boolean) => void;
   transformOnCopy?: (code: string) => string;
   showLineNumbers?: boolean;
-  editable?: boolean;
-  onChange?: ReactCodeMirrorProps["onChange"];
-  initialState?: ReactCodeMirrorProps["initialState"];
 };
 
 const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFieldProps> = (
-  {
-    code,
-    extensions = [],
-    themeOverrides,
-    displayCopy = true,
-    onCopy,
-    transformOnCopy,
-    showLineNumbers = false,
-    editable = false,
-    onChange,
-    initialState,
-  },
+  { code, extensions = [], themeOverrides, displayCopy = true, onCopy, transformOnCopy, showLineNumbers = false },
   ref
 ) => {
   const onCopyIconClick = useCopyToClipboard(code, onCopy, transformOnCopy);
   const [css] = useStyletron();
-  const mergedExtensions = [prefixLineNumberExtension, styleOverridesExtension, ...extensions];
+  const mergedExtensions = [...extensions];
+
+  if (showLineNumbers) {
+    mergedExtensions.push(prefixLineNumberExtension);
+  }
 
   return (
     <div ref={ref} className={css(s.containerStyles)}>
       <CodeMirror
         value={code}
-        readOnly={!editable}
-        editable={editable}
+        readOnly
+        editable={false}
         extensions={mergedExtensions}
         theme={getCodeMirrorTheme(themeOverrides)}
         basicSetup={getCodeMirrorBasicSetup(showLineNumbers)}
         className={css(s.codemirrorStyles)}
-        onChange={onChange}
-        initialState={initialState}
       />
       {displayCopy && (
         <Button onClick={onCopyIconClick} kind={BUTTON_KIND.secondary} overrides={getCopyButtonOverrides()}>

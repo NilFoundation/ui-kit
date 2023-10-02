@@ -62,8 +62,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
     };
 
     return (
-      // @ts-ignore
-      <Item ref={ref} onMouseEnter={onMouseEnter} id={id} onClick={onClickHandler}>
+      <Item ref={ref} onMouseEnter={onMouseEnter} id={id ?? undefined} onClick={onClickHandler}>
         {item?.selected != null && <Checkbox checked={item.selected} />}
         {item?.startEnhancer &&
           React.cloneElement(item.startEnhancer, {
