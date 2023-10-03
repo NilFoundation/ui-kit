@@ -1,4 +1,4 @@
-import { forwardRef, memo } from "react";
+import { FC, memo } from "react";
 import { useStyletron } from "baseui";
 import { PRIMITIVE_COLORS } from "../../../shared";
 import { ChevronDownIcon } from "../../icons";
@@ -8,7 +8,7 @@ type SelectArrowProps = {
   color?: string;
 };
 
-const SelectArrow = forwardRef<HTMLDivElement, SelectArrowProps>(({ color = PRIMITIVE_COLORS.white, isRotated }) => {
+const SelectArrow: FC<SelectArrowProps> = ({ color = PRIMITIVE_COLORS.white, isRotated }) => {
   const [css] = useStyletron();
 
   return (
@@ -21,7 +21,6 @@ const SelectArrow = forwardRef<HTMLDivElement, SelectArrowProps>(({ color = PRIM
       })}
     />
   );
-});
-SelectArrow.displayName = "SelectArrow";
+};
 
 export default memo(SelectArrow);

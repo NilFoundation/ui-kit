@@ -4,11 +4,14 @@ import { PRIMITIVE_COLORS } from "../../shared";
 import { tags as t } from "@lezer/highlight";
 
 const defaultSettings = {
-  background: PRIMITIVE_COLORS.gray900,
-  lineHighlight: PRIMITIVE_COLORS.gray900,
-  selection: PRIMITIVE_COLORS.gray700,
-  selectionMatch: PRIMITIVE_COLORS.gray700,
+  background: "transparent",
+  foreground: PRIMITIVE_COLORS.gray100,
+  lineHighlight: "transparent",
+  selection: PRIMITIVE_COLORS.gray600,
+  selectionMatch: PRIMITIVE_COLORS.gray600,
   fontFamily: "Roboto Mono, monospace",
+  caret: PRIMITIVE_COLORS.gray100,
+  gutterBackground: "transparent",
 } satisfies CreateThemeOptions["settings"];
 
 const defaultStyles = [

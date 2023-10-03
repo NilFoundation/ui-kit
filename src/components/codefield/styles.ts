@@ -14,6 +14,10 @@ const containerStyles: StyleObject = {
   flexWrap: "nowrap",
   gap: "12px",
   color: PRIMITIVE_COLORS.gray100,
+  transition: "background 0.15s",
+  ":hover": {
+    background: PRIMITIVE_COLORS.gray800,
+  },
 };
 
 const codemirrorStyles: StyleObject = {
