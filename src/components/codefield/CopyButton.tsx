@@ -23,6 +23,7 @@ const CopyButton = ({ copyHandler }: CopyButtonProps) => {
       placement={PLACEMENT.bottom}
       overrides={getTooltipOverrides(copied)}
       onMouseLeave={() => setCopied(false)}
+      onBlur={() => setCopied(false)}
     >
       <Button onClick={onClick} kind={BUTTON_KIND.secondary} overrides={getCopyButtonOverrides()}>
         <CopyIcon />
