@@ -1,15 +1,13 @@
 import { ForwardRefRenderFunction, forwardRef } from "react";
 import CodeMirror, { ReactCodeMirrorProps } from "@uiw/react-codemirror";
-import { CopyIcon } from "../icons";
-import { BUTTON_KIND, Button } from "../button";
-import { useCopyToClipboard } from "./useCopyToClipboard";
 import { getCodeMirrorTheme } from "./codeMirrorTheme";
 import { useStyletron } from "styletron-react";
 import { styles as s } from "./styles";
 import { getCodeMirrorBasicSetup } from "./codeMirrorBasicSetup";
-import { getCopyButtonOverrides } from "./overrides";
 import { CreateThemeOptions } from "@uiw/codemirror-themes";
 import { prefixLineNumberExtension } from "./prefixLineNumberExtension";
+import { MemoizedCopyButton } from "./CopyButton";
+import { useCopyToClipboard } from "./useCopyToClipboard";
 
 export type CodeFieldProps = {
   code: string;
@@ -25,8 +23,8 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
   { code, extensions = [], themeOverrides, displayCopy = true, onCopy, transformOnCopy, showLineNumbers = false },
   ref
 ) => {
-  const onCopyIconClick = useCopyToClipboard(code, onCopy, transformOnCopy);
   const [css] = useStyletron();
+  const copyHandler = useCopyToClipboard(code, onCopy, transformOnCopy);
   const mergedExtensions = [...extensions];
 
   if (showLineNumbers) {
@@ -44,11 +42,7 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
         basicSetup={getCodeMirrorBasicSetup(showLineNumbers)}
         className={css(s.codemirrorStyles)}
       />
-      {displayCopy && (
-        <Button onClick={onCopyIconClick} kind={BUTTON_KIND.secondary} overrides={getCopyButtonOverrides()}>
-          <CopyIcon />
-        </Button>
-      )}
+      {displayCopy && <MemoizedCopyButton copyHandler={copyHandler} />}
     </div>
   );
 };
