@@ -1,0 +1,6 @@
+[
+  {
+    "path": "dist/ui-kit.js",
+    "limit": "1 s"
+  }
+]
