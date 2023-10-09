@@ -2,8 +2,6 @@ name: Storybook Staging
 on:
   push:
     branches: [ storybook-staging ]
-  pull_request:
-    branches: [ storybook-staging ]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
