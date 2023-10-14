@@ -26,3 +26,4 @@ export * from "./list";
 export * from "./drawer";
 export * from "./form-control";
 export * from "./modal";
+export * from "./chart";
