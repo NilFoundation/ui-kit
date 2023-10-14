@@ -1,4 +1,5 @@
 import { MutableRefObject, useLayoutEffect } from "react";
+import debounce from "lodash.debounce";
 import { ChartApiRef } from "./types";
 
 export const useHandleChartResize = (chartApiRef: MutableRefObject<ChartApiRef>, container?: HTMLDivElement) => {
@@ -7,11 +8,11 @@ export const useHandleChartResize = (chartApiRef: MutableRefObject<ChartApiRef>,
 
     const chart = chartApiRef.current.api();
 
-    const handleResize = () => {
+    const handleResize = debounce(() => {
       chart?.applyOptions({
         width: container.clientWidth,
       });
-    };
+    }, 150);
 
     window.addEventListener("resize", handleResize);
 

@@ -1,20 +1,22 @@
-import { ForwardRefRenderFunction, ReactNode, forwardRef, useContext } from "react";
-import { ChartContext } from "../ChartContext";
+import { ForwardRefRenderFunction, ReactNode, forwardRef } from "react";
+import type { SeriesMarker, Time, SeriesType, SeriesDataItemTypeMap } from "lightweight-charts";
+import { SeriesContext } from "./SeriesContext";
+import { useInitSeries } from "./useInitSeries";
 
-export type SeriesProps = {
-  data: any;
-  children: ReactNode
+export type SeriesProps<T extends SeriesType> = {
+  type: T;
+  data: SeriesDataItemTypeMap[T][];
+  children?: ReactNode;
+  markers?: SeriesMarker<Time>[];
 };
 
 export const SeriesTemplateRenderFunction: ForwardRefRenderFunction<HTMLDivElement, SeriesProps> = (
-  { data, children },
+  { data, children, markers, type },
   ref
 ) => {
-  const parent = useContext(ChartContext);
+  const seriesApi = useInitSeries();
 
-  return (
-    
-  );
+  return <SeriesContext.Provider value={seriesApi.current}>{children}</SeriesContext.Provider>;
 };
 
 const SeriesTemplate = forwardRef(SeriesTemplateRenderFunction);

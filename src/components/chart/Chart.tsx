@@ -1,5 +1,5 @@
 import { ForwardRefRenderFunction, ReactNode, forwardRef, useCallback, useState } from "react";
-import type { ChartOptions, DeepPartial } from "lightweight-charts";
+import type { ChartOptions, DeepPartial, MouseEventHandler, Time } from "lightweight-charts";
 import { ChartContext } from "./ChartContext";
 import { useHandleChartResize } from "./useHandleChartResize";
 import { useInitChart } from "./useInitChart";
@@ -7,20 +7,30 @@ import { useInitChart } from "./useInitChart";
 export type ChartProps = {
   children: ReactNode;
   optionsOverrides?: DeepPartial<ChartOptions>;
+  onClick?: MouseEventHandler<Time>;
+  onCrosshairMove?: MouseEventHandler<Time>;
+  toolbar?: ReactNode;
+  legend?: ReactNode;
 };
 
 const ChartRenderFunction: ForwardRefRenderFunction<HTMLDivElement, ChartProps> = (
-  { children, optionsOverrides },
+  { children, optionsOverrides, onClick, onCrosshairMove, toolbar, legend },
   ref
 ) => {
   const [container, setContainer] = useState<HTMLDivElement>();
-  const handleRef = useCallback((ref: HTMLDivElement) => setContainer(ref), []);
-  const chartApiRef = useInitChart({ container, optionsOverrides });
+  const handleRef = useCallback((r: HTMLDivElement) => {
+    setContainer(r);
+  }, []);
+  const chartApiRef = useInitChart({ container, optionsOverrides, onClick, onCrosshairMove });
   useHandleChartResize(chartApiRef, container);
 
   return (
-    <div ref={handleRef}>
-      <ChartContext.Provider value={chartApiRef.current}>{children}</ChartContext.Provider>
+    <div ref={ref}>
+      <ChartContext.Provider value={chartApiRef.current}>
+        {legend}
+        {toolbar}
+        <div ref={handleRef}>{children}</div>
+      </ChartContext.Provider>
     </div>
   );
 };

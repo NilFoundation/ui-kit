@@ -7,9 +7,13 @@ import { ChartProps } from "./Chart";
 export const useInitChart = ({
   container,
   optionsOverrides = {},
+  onClick,
+  onCrosshairMove,
 }: {
   container?: HTMLDivElement;
   optionsOverrides?: ChartProps["optionsOverrides"];
+  onClick?: ChartProps["onClick"];
+  onCrosshairMove?: ChartProps["onCrosshairMove"];
 }) => {
   const chartApiRef = useRef<ChartApiRef>({
     _chart: null,
@@ -22,6 +26,14 @@ export const useInitChart = ({
           ...optionsOverrides,
         });
 
+        if (onClick) {
+          this._chart.subscribeClick(onClick);
+        }
+
+        if (onCrosshairMove) {
+          this._chart.subscribeCrosshairMove(onCrosshairMove);
+        }
+
         this._chart.timeScale().fitContent();
       }
 
@@ -29,6 +41,14 @@ export const useInitChart = ({
     },
     clear() {
       if (this._chart !== null) {
+        if (onClick) {
+          this._chart.unsubscribeClick(onClick);
+        }
+
+        if (onCrosshairMove) {
+          this._chart.unsubscribeCrosshairMove(onCrosshairMove);
+        }
+
         this._chart.remove();
       }
     },

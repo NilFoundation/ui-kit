@@ -4,14 +4,15 @@ import type {
   DeepPartial,
   CandlestickSeriesPartialOptions,
   LineSeriesPartialOptions,
+  SeriesType,
 } from "lightweight-charts";
 import { PRIMITIVE_COLORS } from "../../../shared";
 
-export const seriesBaseDefaultOptions: DeepPartial<SeriesOptionsCommon> = {
+const seriesBaseDefaultOptions: DeepPartial<SeriesOptionsCommon> = {
   priceLineColor: PRIMITIVE_COLORS.blue500,
 };
 
-export const seriesCandlestickDefaultOptions: CandlestickSeriesPartialOptions = {
+const seriesCandlestickDefaultOptions: CandlestickSeriesPartialOptions = {
   ...seriesBaseDefaultOptions,
   upColor: PRIMITIVE_COLORS.green500,
   downColor: PRIMITIVE_COLORS.red500,
@@ -25,7 +26,7 @@ export const seriesCandlestickDefaultOptions: CandlestickSeriesPartialOptions = 
   wickDownColor: PRIMITIVE_COLORS.red500,
 };
 
-export const seriesLineDefaultOptions: LineSeriesPartialOptions = {
+const seriesLineDefaultOptions: LineSeriesPartialOptions = {
   ...seriesBaseDefaultOptions,
   color: PRIMITIVE_COLORS.blue500,
   lineWidth: 2,
@@ -35,11 +36,24 @@ export const seriesLineDefaultOptions: LineSeriesPartialOptions = {
   crosshairMarkerBackgroundColor: PRIMITIVE_COLORS.blue500,
 };
 
-export const seriesHistogramDefaultOptions: HistogramSeriesPartialOptions = {
+const seriesHistogramDefaultOptions: HistogramSeriesPartialOptions = {
   ...seriesBaseDefaultOptions,
   color: PRIMITIVE_COLORS.blue500,
   base: 0,
   priceFormat: {
     type: "volume",
   },
+};
+
+export const getSeriesDefaultOptions = (type: SeriesType) => {
+  switch (type) {
+    case "Candlestick":
+      return seriesCandlestickDefaultOptions;
+    case "Line":
+      return seriesLineDefaultOptions;
+    case "Histogram":
+      return seriesHistogramDefaultOptions;
+    default:
+      return {};
+  }
 };
