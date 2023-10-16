@@ -21,6 +21,7 @@ export const useInitChart = ({
       if (!container) return this._chart;
 
       if (this._chart === null) {
+        console.log("cs");
         this._chart = createChart(container, {
           ...chartDefaultOptions,
           ...optionsOverrides,
@@ -53,6 +54,15 @@ export const useInitChart = ({
       }
     },
   });
+
+  useLayoutEffect(() => {
+    console.log("useInitChart useLayoutEffect", container);
+    chartApiRef.current.api();
+
+    return () => {
+      chartApiRef.current.clear();
+    };
+  }, [container]);
 
   useLayoutEffect(() => {
     if (!container) return;

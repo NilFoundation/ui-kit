@@ -1,54 +1,58 @@
 import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
-import CodeField from "./CodeField";
+import Chart from "./Chart";
 import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
 
-<Meta title="Data display/Code Field" component={CodeField} />
+<Meta title="Data display/Chart" component={Chart} />
 
 export const Template = (args) => {
-  return <CodeField {...args} />;
+  return (
+    <div style={{height: "600px", width: "800px"}}>
+      <Chart {...args}></Chart>
+    </div>
+  );
 };
 
-# Code Field
+# Chart
 
 <Canvas isColumn>
   <Story
-    name="Basic usage"
-    args={{ code: `const { useState } = require("react");` }}
+    name="Line chart"
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Candlestick chart"
     parameters={getFigmaParameters(
-      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=223-8049&mode=design&t=P3rN3pHdOl7FkE44-0"
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=232-214629&mode=design&t=U2zZv37g0Vi0MKGC-0"
     )}
   >
     {Template.bind({})}
   </Story>
   <Story
-    name="Without copy button"
-    args={{ code: `--cost <cost of the request> \\`, displayCopy: false }}
+    name="Bar chart"
     parameters={getFigmaParameters(
-      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=223-8049&mode=design&t=P3rN3pHdOl7FkE44-0"
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=353-205017&mode=design&t=U2zZv37g0Vi0MKGC-0"
     )}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable of={CodeField} />
+<ArgsTable of={Chart} />
 
 ### Usage:
 
-To use, import the component `CodeField` from `@nilfoundation/ui-kit`.
+To use, import the component `Chart` from `@nilfoundation/ui-kit`.
 
 <Source
   language="tsx"
   dark
   format={true}
   code={`
-        import {CodeField} from "@nilfoundation/ui-kit";
+        import {Chart} from "@nilfoundation/ui-kit";
         ...
-        <CodeField
-          code="console.log('Hello World')"
-          displayCopy={false}
-          onBeforeCopy={str => "Copied message: " + str}
-          onCopy={() => console.log("Copied!")}
-        />
+        <Chart>
+          <LineSeries data={[{ time: '2018-12-22', value: 32.51 }]} />
+        </Chart>
   `}
 />

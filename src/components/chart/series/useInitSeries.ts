@@ -19,9 +19,9 @@ export const useInitSeries = () => {
   const seriesApiRef = useRef<SeriesApiRef>({
     _series: null,
     api() {
-      if (!this._api) {
-        this._api = type === "line" ? parent.api().addLineSeries(rest) : parent.api().addAreaSeries(rest);
-        this._api.setData(data);
+      if (!this._series) {
+        this._series = type === "line" ? parent.api().addLineSeries(rest) : parent.api().addAreaSeries(rest);
+        this._series.setData(data);
       }
       return this._api;
     },

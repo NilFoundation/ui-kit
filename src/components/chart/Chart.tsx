@@ -15,21 +15,21 @@ export type ChartProps = {
 
 const ChartRenderFunction: ForwardRefRenderFunction<HTMLDivElement, ChartProps> = (
   { children, optionsOverrides, onClick, onCrosshairMove, toolbar, legend },
-  ref
+  containerRef
 ) => {
   const [container, setContainer] = useState<HTMLDivElement>();
-  const handleRef = useCallback((r: HTMLDivElement) => {
+  const chartRef = useCallback((r: HTMLDivElement) => {
     setContainer(r);
   }, []);
   const chartApiRef = useInitChart({ container, optionsOverrides, onClick, onCrosshairMove });
   useHandleChartResize(chartApiRef, container);
 
   return (
-    <div ref={ref}>
+    <div ref={containerRef}>
       <ChartContext.Provider value={chartApiRef.current}>
         {legend}
         {toolbar}
-        <div ref={handleRef}>{children}</div>
+        <div ref={chartRef}>{children}</div>
       </ChartContext.Provider>
     </div>
   );

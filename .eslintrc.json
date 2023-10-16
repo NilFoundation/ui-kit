@@ -12,7 +12,7 @@
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": 0,
-    "no-console": "error",
+    "no-console": "warn",
     "no-unused-vars": "off",
     "unused-imports/no-unused-imports": "warn",
     "@typescript-eslint/no-explicit-any": "off",

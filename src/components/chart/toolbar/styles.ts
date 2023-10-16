@@ -1,12 +1,17 @@
 import { StyleObject } from "styletron-standard";
-import { expandProperty } from "inline-style-expand-shorthand";
 
 const containerStyles: StyleObject = {
   display: "flex",
-  flexDirection: "column",
-  ...expandProperty("padding", "24px"),
+  height: "32px",
+};
+
+const timeIntervalsStyles: StyleObject = {
+  display: "flex",
+  gap: "10px",
+  marginRight: "auto",
 };
 
 export const styles = {
   containerStyles,
+  timeIntervalsStyles,
 };
