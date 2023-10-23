@@ -1,30 +1,23 @@
 import { useLayoutEffect, useRef } from "react";
 import { createChart } from "lightweight-charts";
-import { ChartApiRef } from "./types";
+import { ChartApiRef, ChartOptions } from "./types";
 import { chartDefaultOptions } from "./chartDefaultOptions";
-import { ChartProps } from "./Chart";
 
 export const useInitChart = ({
   container,
-  optionsOverrides = {},
-  onClick,
-  onCrosshairMove,
+  ...rest
 }: {
-  container?: HTMLDivElement;
-  optionsOverrides?: ChartProps["optionsOverrides"];
-  onClick?: ChartProps["onClick"];
-  onCrosshairMove?: ChartProps["onCrosshairMove"];
-}) => {
+  container: HTMLElement;
+} & ChartOptions) => {
+  const { onClick, onCrosshairMove, ...restOptions } = rest;
+
   const chartApiRef = useRef<ChartApiRef>({
     _chart: null,
     api() {
-      if (!container) return this._chart;
-
       if (this._chart === null) {
-        console.log("cs");
         this._chart = createChart(container, {
           ...chartDefaultOptions,
-          ...optionsOverrides,
+          ...restOptions,
         });
 
         if (onClick) {
@@ -39,6 +32,35 @@ export const useInitChart = ({
       }
 
       return this._chart;
+    },
+    update(options: ChartOptions) {
+      if (this._chart === null) {
+        return;
+      }
+
+      const { onClick: nextOnClick, onCrosshairMove: nextOnCrosshairMove, ...restOptions } = options;
+
+      if (onClick !== nextOnClick) {
+        if (onClick) {
+          this._chart.unsubscribeClick(onClick);
+        }
+
+        if (nextOnClick) {
+          this._chart.subscribeClick(nextOnClick);
+        }
+      }
+
+      if (onCrosshairMove !== nextOnCrosshairMove) {
+        if (onCrosshairMove) {
+          this._chart.unsubscribeCrosshairMove(onCrosshairMove);
+        }
+
+        if (nextOnCrosshairMove) {
+          this._chart.subscribeCrosshairMove(nextOnCrosshairMove);
+        }
+      }
+
+      this._chart.applyOptions(restOptions);
     },
     clear() {
       if (this._chart !== null) {
@@ -56,19 +78,18 @@ export const useInitChart = ({
   });
 
   useLayoutEffect(() => {
-    console.log("useInitChart useLayoutEffect", container);
     chartApiRef.current.api();
 
     return () => {
       chartApiRef.current.clear();
     };
-  }, [container]);
+  }, []);
 
   useLayoutEffect(() => {
     if (!container) return;
 
-    chartApiRef.current.api()?.applyOptions(optionsOverrides);
-  }, [optionsOverrides]);
+    chartApiRef.current.update(rest);
+  }, [rest]);
 
   return chartApiRef;
 };
