@@ -3,19 +3,16 @@ import { ChartContext } from "../ChartContext";
 import { useStyletron } from "styletron-react";
 import { Tabs, Tab } from "baseui/tabs";
 import { styles as s } from "./styles";
+import { TimeSpan } from "./TimeSpan";
 
 type TimeSpanSelectorProps = {
-  initialTimeSpan?: string;
+  initialTimeSpan?: TimeSpan;
 };
 
-const TimeSpanSelector = ({ initialTimeSpan = "1" }: TimeSpanSelectorProps) => {
+const TimeSpanSelector = ({ initialTimeSpan = TimeSpan["15M"] }: TimeSpanSelectorProps) => {
   const [activeKey, setActiveKey] = useState<string | number>(initialTimeSpan);
   const chart = useContext(ChartContext);
   const [css] = useStyletron();
-
-  if (!chart) {
-    throw new Error("Chart context found");
-  }
 
   return (
     <div className={css(s.timeIntervalsStyles)}>

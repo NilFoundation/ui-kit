@@ -3,14 +3,14 @@ import type { SeriesMarker, Time, SeriesType, SeriesDataItemTypeMap } from "ligh
 import { SeriesContext } from "./SeriesContext";
 import { useInitSeries } from "./useInitSeries";
 
-export type SeriesProps<T extends SeriesType> = {
+export type SeriesTemplateProps<T extends SeriesType> = {
   type: T;
   data: SeriesDataItemTypeMap[T][];
   children?: ReactNode;
   markers?: SeriesMarker<Time>[];
 };
 
-export const SeriesTemplateRenderFunction: ForwardRefRenderFunction<HTMLDivElement, SeriesProps> = (
+export const SeriesTemplateRenderFunction: ForwardRefRenderFunction<HTMLDivElement, SeriesTemplateProps> = (
   { data, children, markers, type },
   ref
 ) => {
