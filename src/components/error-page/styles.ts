@@ -9,6 +9,7 @@ const containerStyles = {
   width: "100%",
   height: "100%",
   color: PRIMITIVE_COLORS.white,
+  flexGrow: "1",
   background: `url(${svgInlineDotsPattern}), repeat`,
   [desktopMediaQuery]: {
     display: "grid",
