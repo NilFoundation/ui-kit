@@ -1,11 +1,11 @@
 import type { XOR } from "ts-xor";
 
-type ErrorPageBaseProps = {
+export type ErrorPageBaseProps = {
   errorCode: number;
   errorDescription: string;
 };
 
-type ErrorPageWithActionElementProps = {
+export type ErrorPageWithActionElementProps = {
   actionElement?: React.ReactNode;
 } & ErrorPageBaseProps;
 
@@ -14,6 +14,6 @@ export type RedirectProps = {
   redirectTitle: string;
 };
 
-type ErrorPageWithoutActionElementProps = RedirectProps & ErrorPageBaseProps;
+export type ErrorPageWithoutActionElementProps = RedirectProps & ErrorPageBaseProps;
 
 export type ErrorPageProps = XOR<ErrorPageWithActionElementProps, ErrorPageWithoutActionElementProps>;
