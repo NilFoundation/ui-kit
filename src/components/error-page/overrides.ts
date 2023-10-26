@@ -8,7 +8,7 @@ export const getErrorCodeOverrides = (): BlockOverrides => ({
     style: {
       letterSpacing: "-0.08em",
       ...expandProperty("margin", "0"),
-      background: PRIMITIVE_COLORS.gray800,
+      background: PRIMITIVE_COLORS.gray900,
       [desktopMediaQuery]: {
         height: "calc(100vh / 2.25)",
         lineHeight: "calc(100vh / 2.25)",
@@ -38,7 +38,7 @@ export const getRedirectOverrides = (): BlockOverrides => ({
       display: "inline-flex",
       alignItems: "center",
       cursor: "pointer",
-      ...expandProperty("margin", "20px"),
+      marginTop: "20px",
     },
   },
 });
