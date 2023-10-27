@@ -78,6 +78,9 @@ export const buttonKindModifiedStyles = {
       color: PRIMITIVE_COLORS.gray500,
     },
   },
+  [BUTTON_KIND.toggle]: {
+    backgroundColor: PRIMITIVE_COLORS.gray700,
+  },
 };
 
 export const buttonFocusedModifiedStyles = {

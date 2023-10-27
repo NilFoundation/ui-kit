@@ -33,6 +33,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const buttonOverrides = getButtonOverrides(kind, size, colors);
     const overrides = getMergedOverrides(buttonOverrides, baseOverrides);
+    const buttonKind = kind === BUTTON_KIND.danger || kind === BUTTON_KIND.toggle ? BUTTON_KIND.secondary : kind;
 
     return (
       <BaseButton
@@ -41,7 +42,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={className}
         isLoading={isLoading}
         shape={shape}
-        kind={kind === BUTTON_KIND.danger ? BUTTON_KIND.secondary : kind}
+        kind={buttonKind}
         size={size}
         disabled={disabled}
         startEnhancer={startEnhancer}
