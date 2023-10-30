@@ -32,7 +32,7 @@ export type ButtonCommonProps = Omit<BaseButtonProps, "kind" | "shape" | "size">
 };
 
 export type ToggleButtonProps = {
-  kind?: BUTTON_KIND.toggle;
+  kind: BUTTON_KIND.toggle;
   checked?: boolean;
 } & ButtonCommonProps;
 
