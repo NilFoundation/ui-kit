@@ -17,22 +17,33 @@ export type CodeFieldProps = {
   onCopy?: (code: string, isCopied: boolean) => void;
   transformOnCopy?: (code: string) => string;
   showLineNumbers?: boolean;
+  className?: string;
 };
 
 const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFieldProps> = (
-  { code, extensions = [], themeOverrides, displayCopy = true, onCopy, transformOnCopy, showLineNumbers = false },
+  {
+    code,
+    extensions = [],
+    themeOverrides,
+    displayCopy = true,
+    onCopy,
+    transformOnCopy,
+    showLineNumbers = false,
+    className,
+  },
   ref
 ) => {
   const [css] = useStyletron();
   const copyHandler = useCopyToClipboard(code, onCopy, transformOnCopy);
   const mergedExtensions = [...extensions];
+  const computedCn = className ? `${css(s.containerStyles)} ${className}` : css(s.containerStyles);
 
   if (showLineNumbers) {
     mergedExtensions.push(prefixLineNumberExtension);
   }
 
   return (
-    <div ref={ref} className={css(s.containerStyles)}>
+    <div ref={ref} className={computedCn}>
       <CodeMirror
         value={code}
         readOnly
