@@ -6,6 +6,7 @@ import {
   buttonFocusedModifiedStyles,
   buttonKindModifiedStyles,
   buttonModifiedStyles,
+  checkedToggleButtonModifiedStyles,
   spinnerModifiedStyles,
 } from "./style";
 import { PRIMITIVE_COLORS } from "../../shared";
@@ -24,7 +25,12 @@ const getSpinnerColor = (kind = "gray", disabled: boolean) => {
   return PRIMITIVE_COLORS.white;
 };
 
-export const getButtonOverrides = (kind: BUTTON_KIND, size: BUTTON_SIZE, colors?: CustomColors): ButtonOverrides => {
+export const getButtonOverrides = (
+  kind: BUTTON_KIND,
+  size: BUTTON_SIZE,
+  colors?: CustomColors,
+  isChecked?: boolean
+): ButtonOverrides => {
   const customColorsStyles = colors
     ? {
         ...colors,
@@ -43,6 +49,7 @@ export const getButtonOverrides = (kind: BUTTON_KIND, size: BUTTON_SIZE, colors?
           ...buttonKindModifiedStyles[kind],
           ...($isFocusVisible ? buttonFocusedModifiedStyles[kind] : {}),
           ...($disabled ? buttonDisabledModifiedStyles[kind] : {}),
+          ...(isChecked ? checkedToggleButtonModifiedStyles : {}),
           ...customColorsStyles,
         };
       },
