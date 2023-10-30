@@ -1,0 +1,93 @@
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
+import { useState } from "react";
+import ToggleGroup from "./ToggleGroup";
+import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
+
+<Meta title="Form/ToggleGroup" component={ToggleGroup} />
+
+export const Template = ({ children, ...args }) => {
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  return (
+    <div>
+      <ToggleGroup
+        {...args}
+        selectedOptions={selectedOptions}
+        onToggle={(options) => {
+          setSelectedOptions(options);
+        }}
+      />
+    </div>
+  );
+};
+
+# Toggle Group
+
+<Canvas isColumn>
+  <Story
+    name="Base"
+    args={{
+      options: [
+        { label: "Proof Market", key: "proof-market" },
+        { label: "zkLLVM", key: "zkLlvm" },
+      ],
+    }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=302-220793&mode=design&t=IoTNKEMYSa7jQu9x-0"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Multiple"
+    args={{
+      options: [
+        { label: "Proof Market", key: "proof-market" },
+        { label: "zkLLVM", key: "zkLlvm" },
+      ],
+      multiple: true,
+    }}
+    parameters={getFigmaParameters(
+      "hhttps://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=302-220793&mode=design&t=IoTNKEMYSa7jQu9x-0"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="With label"
+    args={{
+      options: [
+        { label: "Proof Market", key: "proof-market" },
+        { label: "zkLLVM", key: "zkLlvm" },
+      ],
+      label: "This is a Toggle group",
+    }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=302-220793&mode=design&t=IoTNKEMYSa7jQu9x-0"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={ToggleGroup} />
+
+### Usage:
+
+To use, import the component `ToggleGroup` and from `@nilfoundation/ui-kit`.
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+        import {Button, BUTTON_SIZE, BUTTON_SHAPE, BUTTON_KIND Upload} from "@nilfoundation/ui-kit";
+         ...
+        <ToggleGroup
+          options={[{ label: "Proof Market", key: "proof-market" }]}
+          selectedOptions={selectedOptions}
+          onToggle={(options) => {
+            setSelectedOptions(options);
+          }}
+        />
+  `}
+/>
