@@ -70,7 +70,7 @@ export const PRIMITIVE_COLORS = {
   purple900: "#27115D",
 
   mono600: "#292929",
-};
+} as const;
 
 export const createColors = (): DefaultTheme => {
   return {
