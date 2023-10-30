@@ -10,4 +10,4 @@ export const SPACE = {
   64: "64px",
   96: "96px",
   128: "128px",
-};
+} as const;
