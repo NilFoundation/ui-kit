@@ -6,7 +6,6 @@ import { BorderRadiusStyles } from "../../shared/styles/border";
 const buttonBaseStyles = {
   outline: "0",
   boxShadow: "none",
-  boxSizing: "border-box",
 };
 
 export const buttonModifiedStyles = {
@@ -93,12 +92,13 @@ export const buttonKindModifiedStyles = {
     },
 
     ":active": {
-      backgroundColor: PRIMITIVE_COLORS.gray50,
-      color: PRIMITIVE_COLORS.gray900,
+      backgroundColor: PRIMITIVE_COLORS.gray600,
+      color: PRIMITIVE_COLORS.gray100,
     },
 
     ":disabled": {
       color: PRIMITIVE_COLORS.gray400,
+      backgroundColor: PRIMITIVE_COLORS.gray800,
     },
   },
 };
@@ -148,6 +148,12 @@ export const buttonDisabledModifiedStyles = {
       color: PRIMITIVE_COLORS.gray500,
     },
   },
+  [BUTTON_KIND.toggle]: {
+    ":hover": {
+      color: PRIMITIVE_COLORS.gray400,
+      backgroundColor: PRIMITIVE_COLORS.gray800,
+    },
+  },
 };
 
 export const spinnerModifiedStyles = {
@@ -166,5 +172,20 @@ export const spinnerModifiedStyles = {
   [BUTTON_SIZE.large]: {
     ...expandProperty("margin", "0"),
     ...expandProperty("padding", `0 ${SPACE[16]}`),
+  },
+};
+
+export const checkedToggleButtonModifiedStyles = {
+  color: PRIMITIVE_COLORS.gray900,
+  backgroundColor: PRIMITIVE_COLORS.gray50,
+
+  ":hover": {
+    backgroundColor: PRIMITIVE_COLORS.gray50,
+    color: PRIMITIVE_COLORS.gray900,
+  },
+
+  ":active": {
+    backgroundColor: PRIMITIVE_COLORS.gray50,
+    color: PRIMITIVE_COLORS.gray900,
   },
 };

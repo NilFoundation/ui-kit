@@ -24,7 +24,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    const buttonOverrides = getButtonOverrides(kind, size, colors);
+    const buttonOverrides = getButtonOverrides(kind, size, colors, checked);
     const overrides = getMergedOverrides(buttonOverrides, baseOverrides);
     const buttonKind = kind === BUTTON_KIND.danger || kind === BUTTON_KIND.toggle ? BUTTON_KIND.secondary : kind;
     const buttonRole = role ?? (kind === BUTTON_KIND.toggle ? "switch" : undefined);
