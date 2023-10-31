@@ -11,8 +11,8 @@ export const Template = ({ ...args }) => {
     <div>
       <ToggleGroup
         {...args}
-        selectedOptions={selectedOptions}
-        onToggle={(options) => {
+        value={selectedOptions}
+        onChange={(options) => {
           setSelectedOptions(options);
         }}
       />

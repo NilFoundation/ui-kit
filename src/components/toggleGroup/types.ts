@@ -7,23 +7,23 @@ export type ToggleGroupOption = {
   disabled?: boolean;
 };
 
-export type ToggleGroupBaseProps = {
+export type ToggleGroupBaseProps<O extends ToggleGroupOption> = {
   label?: string;
-  options: ToggleGroupOption[];
-  onToggle: (selectedOptions: ToggleGroupOption[]) => void;
+  options: O[] | Readonly<O[]>;
+  onChange: (value: Array<O["key"]>) => void;
   className?: string;
   disabled?: boolean;
   size?: BUTTON_SIZE;
 };
 
-export type MultipleToggleGroupProps = {
+export type MultipleToggleGroupProps<O extends ToggleGroupOption> = {
   multiple: true;
-  selectedOptions: ToggleGroupOption[];
-} & ToggleGroupBaseProps;
+  value: Array<O["key"]>;
+} & ToggleGroupBaseProps<O>;
 
-export type SingleToggleGroupProps = {
+export type SingleToggleGroupProps<O extends ToggleGroupOption> = {
   multiple?: false;
-  selectedOptions: [ToggleGroupOption];
-} & ToggleGroupBaseProps;
+  value: [O["key"]];
+} & ToggleGroupBaseProps<O>;
 
-export type ToggleGroupProps = XOR<MultipleToggleGroupProps, SingleToggleGroupProps>;
+export type ToggleGroupProps<O extends ToggleGroupOption> = XOR<MultipleToggleGroupProps<O>, SingleToggleGroupProps<O>>;
