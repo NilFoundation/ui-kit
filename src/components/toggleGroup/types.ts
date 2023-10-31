@@ -4,6 +4,7 @@ import { BUTTON_SIZE } from "../button";
 export type ToggleGroupOption = {
   label: string;
   key: string;
+  disabled?: boolean;
 };
 
 export type ToggleGroupBaseProps = {

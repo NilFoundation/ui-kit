@@ -29,7 +29,7 @@ const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
           {options.map((option) => (
             <Button
               key={option.key}
-              disabled={disabled}
+              disabled={disabled || option.disabled}
               kind={BUTTON_KIND.toggle}
               size={size}
               checked={selectedOptions.some((x) => x.key === option.key)}
