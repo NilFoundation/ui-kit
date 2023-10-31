@@ -43,7 +43,7 @@ const ToggleGroupInner = <T extends ToggleGroupOption>(
 };
 
 const ToggleGroup = forwardRef(ToggleGroupInner) as <T extends ToggleGroupOption>(
-  props: ToggleGroupProps<T> & { ref?: React.ForwardedRef<HTMLDivElement> }
+  props: ToggleGroupProps<T> & { ref?: ForwardedRef<HTMLDivElement> }
 ) => ReturnType<typeof ToggleGroupInner>;
 
 export default ToggleGroup;
