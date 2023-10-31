@@ -5,7 +5,7 @@ import { BUTTON_KIND, BUTTON_SIZE, Button } from "../button";
 import { styles as s } from "./style";
 import { LabelMedium } from "baseui/typography";
 
-const ToggleGroupInner = <T extends ToggleGroupOption>(
+export const ToggleGroupInner = <T extends ToggleGroupOption>(
   { options, value, onChange, disabled, label, multiple, className, size = BUTTON_SIZE.compact }: ToggleGroupProps<T>,
   ref: ForwardedRef<HTMLDivElement>
 ) => {
