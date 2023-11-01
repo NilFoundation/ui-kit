@@ -48,8 +48,8 @@ export const getButtonOverrides = (
           ...buttonModifiedStyles[size],
           ...buttonKindModifiedStyles[kind],
           ...($isFocusVisible ? buttonFocusedModifiedStyles[kind] : {}),
-          ...($disabled ? buttonDisabledModifiedStyles[kind] : {}),
           ...(isChecked ? checkedToggleButtonModifiedStyles : {}),
+          ...($disabled ? buttonDisabledModifiedStyles[kind] : {}),
           ...customColorsStyles,
         };
       },
