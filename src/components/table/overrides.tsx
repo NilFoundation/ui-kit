@@ -8,7 +8,7 @@ export const getTableOverrides = (): TableOverrides => {
     TableHead: {
       style: () => ({
         borderBottom: `1px solid ${PRIMITIVE_COLORS.gray800}`,
-      })
+      }),
     },
     TableHeadRow: {
       style: () => ({
@@ -35,7 +35,7 @@ export const getTableOverrides = (): TableOverrides => {
           borderBottom: $divider !== TABLE_DIVIDER.clean ? `1px solid ${PRIMITIVE_COLORS.gray800}` : "none",
           fontSize: "14px",
           lineHeight: "16px",
-          padding: $size === 'compact' ? "4px 12px" : '12px',
+          padding: $size === "compact" ? "4px 12px" : "12px",
         };
       },
     },
@@ -50,7 +50,7 @@ export const getTableOverrides = (): TableOverrides => {
         lineHeight: "19px",
         color: PRIMITIVE_COLORS.gray200,
         border: "none",
-        padding: $size === 'compact' ? "8px 12px" : "12px",
+        padding: $size === "compact" ? "8px 12px" : "12px",
         ":hover": {
           backgroundColor: "transparent",
         },
