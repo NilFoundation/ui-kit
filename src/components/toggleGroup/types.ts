@@ -18,13 +18,13 @@ export type ToggleGroupBaseProps<O extends ToggleGroupOption> = {
 export type MultipleToggleGroupProps<O extends ToggleGroupOption> = {
   multiple: true;
   value: Array<O["key"]>;
-  onChange: (value: [O["key"]]) => void;
+  onChange: (value: Array<O["key"]>) => void;
 } & ToggleGroupBaseProps<O>;
 
 export type SingleToggleGroupProps<O extends ToggleGroupOption> = {
   multiple?: false;
   value: [O["key"]];
-  onChange: (value: Array<O["key"]>) => void;
+  onChange: (value: [O["key"]] | []) => void;
 } & ToggleGroupBaseProps<O>;
 
 export type ToggleGroupProps<O extends ToggleGroupOption> = XOR<MultipleToggleGroupProps<O>, SingleToggleGroupProps<O>>;
