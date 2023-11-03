@@ -184,8 +184,13 @@ export const checkedToggleButtonModifiedStyles = {
     color: PRIMITIVE_COLORS.gray900,
   },
 
-  ":active": {
+  ":active:not(:disabled)": {
     backgroundColor: PRIMITIVE_COLORS.gray50,
     color: PRIMITIVE_COLORS.gray900,
+  },
+
+  ":disabled": {
+    backgroundColor: PRIMITIVE_COLORS.gray800,
+    color: PRIMITIVE_COLORS.gray400,
   },
 };
