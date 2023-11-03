@@ -3,28 +3,16 @@ import { PRIMITIVE_COLORS } from "../../shared";
 import { TABLE_DIVIDER } from "./types";
 import { ChevronDownIcon, ChevronUpIcon } from "../icons";
 
-const getBorderProperties = (color: string) => {
-  return {
-    borderBottomColor: `${color}`,
-    borderRightColor: `${color}`,
-    borderLeftColor: `${color}`,
-    borderTopColor: `${color}`,
-  };
-};
-
 export const getTableOverrides = (): TableOverrides => {
   return {
+    TableHead: {
+      style: () => ({
+        borderBottom: `1px solid ${PRIMITIVE_COLORS.gray800}`,
+      })
+    },
     TableHeadRow: {
       style: () => ({
-        backgroundColor: PRIMITIVE_COLORS.gray900,
-
-        ":hover": {
-          backgroundColor: PRIMITIVE_COLORS.gray800,
-        },
-
-        ":hover > th": {
-          color: PRIMITIVE_COLORS.white,
-        },
+        borderBottom: `1px solid ${PRIMITIVE_COLORS.gray800}`,
       }),
     },
     // @ts-ignore
@@ -33,20 +21,21 @@ export const getTableOverrides = (): TableOverrides => {
         return {
           backgroundColor: "transparent",
           color: PRIMITIVE_COLORS.gray300,
-          borderBottom: $divider !== TABLE_DIVIDER.clean ? `1px solid ${PRIMITIVE_COLORS.white}` : "none",
-          fontSize: "14px",
+          borderBottom: $divider !== TABLE_DIVIDER.clean ? `1px solid ${PRIMITIVE_COLORS.gray800}` : "none",
+          fontSize: "12px",
           lineHeight: "16px",
         };
       },
     },
     TableHeadCell: {
-      style: ({ $divider }) => {
+      style: ({ $divider, $size }) => {
         return {
           backgroundColor: "transparent",
-          color: PRIMITIVE_COLORS.gray300,
-          borderBottom: $divider !== TABLE_DIVIDER.clean ? `1px solid ${PRIMITIVE_COLORS.white}` : "none",
+          color: PRIMITIVE_COLORS.gray400,
+          borderBottom: $divider !== TABLE_DIVIDER.clean ? `1px solid ${PRIMITIVE_COLORS.gray800}` : "none",
           fontSize: "14px",
           lineHeight: "16px",
+          padding: $size === 'compact' ? "4px 12px" : '12px',
         };
       },
     },
@@ -56,11 +45,23 @@ export const getTableOverrides = (): TableOverrides => {
       }),
     },
     TableBodyCell: {
-      style: () => ({
+      style: ({ $size }) => ({
         fontSize: "14px",
-        lineHeight: "16px",
-        color: PRIMITIVE_COLORS.white,
-        ...getBorderProperties(PRIMITIVE_COLORS.gray700),
+        lineHeight: "19px",
+        color: PRIMITIVE_COLORS.gray200,
+        border: "none",
+        padding: $size === 'compact' ? "8px 12px" : "12px",
+        ":hover": {
+          backgroundColor: "transparent",
+        },
+      }),
+    },
+    TableBodyRow: {
+      style: () => ({
+        backgroundColor: "transparent",
+        ":hover": {
+          backgroundColor: "transparent",
+        },
       }),
     },
     TableEmptyMessage: {
