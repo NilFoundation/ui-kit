@@ -1,18 +1,21 @@
-import { TagProps as BasTagProps } from "baseui/tag";
+import { TagProps as BaseTagProps } from "baseui/tag";
 
 export enum TAG_KIND {
   gray = "gray",
-  positive = "positive",
-  negative = "negative",
-  warning = "warning",
+  blue = "blue",
+  green = "green",
+  yellow = "yellow",
+  purple = "purple",
+  red = "red",
+  white = "white",
 }
 
-export enum TAG_VARIANT {
-  light = "light",
-  solid = "solid",
+export enum TAG_SIZE {
+  s = "s",
+  m = "m",
 }
 
-export type TagProps = Omit<BasTagProps, "kind" | "variant" | "color" | "size"> & {
+export type TagProps = Omit<BaseTagProps, "kind" | "variant" | "color" | "size" | "closeable" | "disabled"> & {
   kind?: TAG_KIND;
-  variant?: TAG_VARIANT;
+  size?: TAG_SIZE;
 };

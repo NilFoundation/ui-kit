@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
 import Tag from "./Tag";
-import { TAG_KIND, TAG_VARIANT } from "./types";
+import { TAG_KIND, TAG_SIZE } from "./types";
 
 <Meta title="Data display/Tag" component={Tag} />
 
@@ -11,22 +11,28 @@ export const Template = ({ ...args }) => {
 # Tag
 
 <Canvas isColumn>
-  <Story name="Primary" args={{ kind: TAG_KIND.gray }}>
+  <Story name="Gray" args={{ kind: TAG_KIND.gray }}>
     {Template.bind({})}
   </Story>
-  <Story name="Positive" args={{ kind: TAG_KIND.positive }}>
+  <Story name="Blue" args={{ kind: TAG_KIND.blue }}>
     {Template.bind({})}
   </Story>
-  <Story name="Warning" args={{ kind: TAG_KIND.warning }}>
+  <Story name="Yellow" args={{ kind: TAG_KIND.yellow }}>
     {Template.bind({})}
   </Story>
-  <Story name="Negative" args={{ kind: TAG_KIND.negative }}>
+  <Story name="Red" args={{ kind: TAG_KIND.red }}>
     {Template.bind({})}
   </Story>
-  <Story name="Disabled" args={{ disabled: true }}>
+  <Story name="Green" args={{ kind: TAG_KIND.green }}>
     {Template.bind({})}
   </Story>
-  <Story name="Variant Light" args={{ variant: TAG_VARIANT.light }}>
+  <Story name="Purple" args={{ kind: TAG_KIND.purle }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="White" args={{ kind: TAG_KIND.white }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Medium size" args={{ kind: TAG_KIND.white, size: TAG_SIZE.m }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -42,14 +48,14 @@ To use, import the component `Tag` from `@nilfoundation/ui-kit`.
   dark
   format={true}
   code={`
-        import {Tag, TAG_KIND, TAG_VARIANT} from "@nilfoundation/ui-kit";
+        import {Tag, TAG_KIND, TAG_SIZE} from "@nilfoundation/ui-kit";
         ...
          <Tag>Tag label</Tag>
         // Disabled
-         <Tag disabled>Tag label</Tag>
+         <Tag>Tag label</Tag>
         // With kind
-        <Tag kind={TAG_KIND.positive}>Tag label</Tag>
-        // With variant
-        <Tag variant={TAG_VARIANT.light}>Tag label</Tag>
+        <Tag kind={TAG_KIND.white}>Tag label</Tag>
+        // With size
+        <Tag size={TAG_SIZE.m}>Tag label</Tag>
   `}
 />
