@@ -72,7 +72,7 @@ export const buttonKindModifiedStyles = {
       backgroundColor: PRIMITIVE_COLORS.red500,
     },
 
-    ":active": {
+    ":active:not(:disabled)": {
       backgroundColor: PRIMITIVE_COLORS.red600,
     },
 
@@ -91,7 +91,7 @@ export const buttonKindModifiedStyles = {
       color: PRIMITIVE_COLORS.gray100,
     },
 
-    ":active": {
+    ":active:not(:disabled)": {
       backgroundColor: PRIMITIVE_COLORS.gray600,
       color: PRIMITIVE_COLORS.gray100,
     },
@@ -184,8 +184,13 @@ export const checkedToggleButtonModifiedStyles = {
     color: PRIMITIVE_COLORS.gray900,
   },
 
-  ":active": {
+  ":active:not(:disabled)": {
     backgroundColor: PRIMITIVE_COLORS.gray50,
     color: PRIMITIVE_COLORS.gray900,
+  },
+
+  ":disabled": {
+    backgroundColor: PRIMITIVE_COLORS.gray800,
+    color: PRIMITIVE_COLORS.gray400,
   },
 };
