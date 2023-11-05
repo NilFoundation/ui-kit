@@ -22,12 +22,12 @@ export type TableProps = Omit<BaseTableProps, "size" | "divider"> & {
   divider?: TABLE_DIVIDER;
 };
 
-export type TableBuilderProps = BaseTableBuilderProps<any> & {
+export type TableBuilderProps = Omit<BaseTableBuilderProps<any>, "size" | "divider"> & {
   size?: TABLE_SIZE;
   divider?: TABLE_DIVIDER;
 };
 
-export type TableBuilderColumnProps = BaseTableBuilderColumnProps<any> & {
+export type TableBuilderColumnProps = Omit<BaseTableBuilderColumnProps<any>, "size" | "divider"> & {
   size?: TABLE_SIZE;
   divider?: TABLE_DIVIDER;
 };
