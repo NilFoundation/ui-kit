@@ -6,7 +6,7 @@ import { CloseIcon } from "../icons";
 export const getTagOverrides = (kind: TAG_KIND, size: TAG_SIZE): TagOverrides => {
   return {
     Root: {
-      style: ({}) => {
+      style: () => {
         return {
           ...tagRootBaseStyles,
           ...tagRootKindModifiedStyles[kind],
