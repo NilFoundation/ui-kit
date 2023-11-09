@@ -11,6 +11,7 @@ export type DefaultFonts = {
   defaultRegularFont: string;
   defaultSemiBoldFont: string;
   defaultMonoRegularFont: string;
+  defaultMediumFont: string;
 };
 
 export type CreateThemeOptions = {
