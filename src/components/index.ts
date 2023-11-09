@@ -29,3 +29,4 @@ export * from "./modal";
 export * from "./error-page";
 export * from "./codefield";
 export * from "./toggleGroup";
+export * from "./button-icon";
