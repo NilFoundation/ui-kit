@@ -15,10 +15,12 @@ export const createTypography = (defaultFonts?: DefaultFonts): DefaultTheme => {
   const defaultRegularFont = defaultFonts ? `${defaultFonts.defaultRegularFont}, sans-serif` : "";
   const defaultSemiBoldFont = defaultFonts ? `${defaultFonts.defaultSemiBoldFont}, sans-serif` : "";
   const defaultMonoRegularFont = defaultFonts ? `${defaultFonts.defaultMonoRegularFont}, monospace` : "";
+  const defaultMediumFont = defaultFonts ? `${defaultFonts.defaultMediumFont}, sans-serif` : "";
 
   const defaultRegularFontProperty = defaultRegularFont ? { fontFamily: defaultRegularFont } : {};
   const defaultSemiBoldFontProperty = defaultSemiBoldFont ? { fontFamily: defaultSemiBoldFont } : {};
   const defaultMonoRegularFontProperty = defaultMonoRegularFont ? { fontFamily: defaultMonoRegularFont } : {};
+  const defaultMediumFontProperty = defaultMediumFont ? { fontFamily: defaultMediumFont } : {};
 
   return {
     primitives: {
@@ -59,13 +61,13 @@ export const createTypography = (defaultFonts?: DefaultFonts): DefaultTheme => {
         ...getTypographyOverrides(
           {
             LabelSmall: {
-              ...defaultRegularFontProperty,
+              ...defaultMediumFontProperty,
               fontSize: "12px",
               fontWeight: 500,
               lineHeight: "16px",
             },
             LabelMedium: {
-              ...defaultRegularFontProperty,
+              ...defaultMediumFontProperty,
               fontSize: "16px",
               fontWeight: 500,
               lineHeight: "24px",
@@ -77,31 +79,31 @@ export const createTypography = (defaultFonts?: DefaultFonts): DefaultTheme => {
         ...getTypographyOverrides(
           {
             HeadingXSmall: {
-              ...defaultRegularFontProperty,
+              ...defaultMediumFontProperty,
               fontSize: "12px",
               fontWeight: 500,
               lineHeight: "16px",
             },
             HeadingMedium: {
-              ...defaultRegularFontProperty,
+              ...defaultMediumFontProperty,
               fontSize: "16px",
               fontWeight: 500,
               lineHeight: "22px",
             },
             HeadingLarge: {
-              ...defaultRegularFontProperty,
+              ...defaultMediumFontProperty,
               fontSize: "24px",
               fontWeight: 500,
               lineHeight: "32px",
             },
             HeadingXLarge: {
-              ...defaultRegularFontProperty,
+              ...defaultMediumFontProperty,
               fontSize: "32px",
               fontWeight: 500,
               lineHeight: "40px",
             },
             HeadingXXLarge: {
-              ...defaultRegularFontProperty,
+              ...defaultMediumFontProperty,
               fontSize: "48px",
               fontWeight: 500,
               lineHeight: "56px",
