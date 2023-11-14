@@ -1,9 +1,9 @@
 import { ForwardRefRenderFunction, ReactNode, forwardRef, useContext } from "react";
-import { ChartContext } from "../ChartContext";
-import { ChartApiRef } from "../types";
+import { ChartContext } from "./ChartContext";
+import { ChartApiRef } from "./types";
 import { useStyletron } from "styletron-react";
-import { styles as s } from "./styles";
-import TimeSpanSelector from "./TimeSpanSelector";
+import { styles as s } from "./toolbar/styles";
+import TimeSpanSelector from "./toolbar/TimeSpanSelector";
 
 type ChartToolbarProps = {
   icons?: ReactNode | ((chartApi: ChartApiRef) => ReactNode);

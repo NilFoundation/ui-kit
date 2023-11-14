@@ -1,17 +1,12 @@
 import { ForwardRefRenderFunction, forwardRef } from "react";
 import { useStyletron } from "styletron-react";
 
-type ChartLegendProps = {
-};
+type ChartLegendProps = {};
 
 const ChartLegendRenderFunction: ForwardRefRenderFunction<HTMLDivElement, ChartLegendProps> = (_, ref) => {
   const [css] = useStyletron();
 
-  return (
-    <div ref={ref}>
-      ChartLegend
-    </div>
-  );
+  return <div ref={ref}>ChartLegend</div>;
 };
 
 const ChartLegend = forwardRef(ChartLegendRenderFunction);

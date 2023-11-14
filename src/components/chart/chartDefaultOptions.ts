@@ -8,7 +8,7 @@ export const chartDefaultOptions: DeepPartial<ChartOptions> = {
       type: ColorType.Solid,
       color: PRIMITIVE_COLORS.gray900,
     },
-    fontFamily: "inherit",
+    fontFamily: "Inter, sans-serif",
     textColor: PRIMITIVE_COLORS.gray100,
   },
   grid: {
@@ -31,5 +31,8 @@ export const chartDefaultOptions: DeepPartial<ChartOptions> = {
       labelVisible: true,
     },
     mode: 0,
+  },
+  localization: {
+    locale: "en-US",
   },
 };
