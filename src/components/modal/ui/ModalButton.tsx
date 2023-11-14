@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { useStyletron } from "baseui";
-import { Button, ButtonProps, BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE } from "../../button";
+import { Button, BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE, RegularButtonProps } from "../../button";
 import { modalButtonStyles } from "../styles";
 
-export type ModalButtonProps = ButtonProps;
+export type ModalButtonProps = RegularButtonProps;
 
 const ModalButton: FC<ModalButtonProps> = ({
   children,

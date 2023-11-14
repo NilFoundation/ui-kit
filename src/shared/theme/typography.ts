@@ -15,10 +15,12 @@ export const createTypography = (defaultFonts?: DefaultFonts): DefaultTheme => {
   const defaultRegularFont = defaultFonts ? `${defaultFonts.defaultRegularFont}, sans-serif` : "";
   const defaultSemiBoldFont = defaultFonts ? `${defaultFonts.defaultSemiBoldFont}, sans-serif` : "";
   const defaultMonoRegularFont = defaultFonts ? `${defaultFonts.defaultMonoRegularFont}, monospace` : "";
+  const defaultMediumFont = defaultFonts ? `${defaultFonts.defaultMediumFont}, sans-serif` : "";
 
   const defaultRegularFontProperty = defaultRegularFont ? { fontFamily: defaultRegularFont } : {};
   const defaultSemiBoldFontProperty = defaultSemiBoldFont ? { fontFamily: defaultSemiBoldFont } : {};
   const defaultMonoRegularFontProperty = defaultMonoRegularFont ? { fontFamily: defaultMonoRegularFont } : {};
+  const defaultMediumFontProperty = defaultMediumFont ? { fontFamily: defaultMediumFont } : {};
 
   return {
     primitives: {
@@ -32,25 +34,25 @@ export const createTypography = (defaultFonts?: DefaultFonts): DefaultTheme => {
               ...defaultRegularFontProperty,
               fontSize: "12px",
               fontWeight: "normal",
-              lineHeight: "20px",
+              lineHeight: "16px",
             },
             ParagraphSmall: {
               ...defaultRegularFontProperty,
               fontSize: "14px",
               fontWeight: "normal",
-              lineHeight: "20px",
+              lineHeight: "19px",
             },
             ParagraphMedium: {
               ...defaultRegularFontProperty,
               fontSize: "16px",
               fontWeight: "normal",
-              lineHeight: "24px",
+              lineHeight: "22px",
             },
             ParagraphLarge: {
               ...defaultRegularFontProperty,
               fontSize: "18px",
               fontWeight: "normal",
-              lineHeight: "28px",
+              lineHeight: "24px",
             },
           },
           defaultMonoRegularFontProperty
@@ -58,28 +60,16 @@ export const createTypography = (defaultFonts?: DefaultFonts): DefaultTheme => {
 
         ...getTypographyOverrides(
           {
-            LabelXSmall: {
-              ...defaultRegularFontProperty,
-              fontSize: "12px",
-              fontWeight: "normal",
-              lineHeight: "16px",
-            },
             LabelSmall: {
-              ...defaultRegularFontProperty,
-              fontSize: "14px",
-              fontWeight: "normal",
+              ...defaultMediumFontProperty,
+              fontSize: "12px",
+              fontWeight: 500,
               lineHeight: "16px",
             },
             LabelMedium: {
-              ...defaultRegularFontProperty,
+              ...defaultMediumFontProperty,
               fontSize: "16px",
-              fontWeight: "normal",
-              lineHeight: "20px",
-            },
-            LabelLarge: {
-              ...defaultRegularFontProperty,
-              fontSize: "18px",
-              fontWeight: "normal",
+              fontWeight: 500,
               lineHeight: "24px",
             },
           },
@@ -89,40 +79,34 @@ export const createTypography = (defaultFonts?: DefaultFonts): DefaultTheme => {
         ...getTypographyOverrides(
           {
             HeadingXSmall: {
-              ...defaultRegularFontProperty,
-              fontSize: "20px",
-              fontWeight: "normal",
-              lineHeight: "28px",
-            },
-            HeadingSmall: {
-              ...defaultRegularFontProperty,
-              fontSize: "24px",
-              fontWeight: "normal",
-              lineHeight: "32px",
+              ...defaultMediumFontProperty,
+              fontSize: "12px",
+              fontWeight: 500,
+              lineHeight: "16px",
             },
             HeadingMedium: {
-              ...defaultRegularFontProperty,
-              fontSize: "28px",
-              fontWeight: "normal",
-              lineHeight: "36px",
+              ...defaultMediumFontProperty,
+              fontSize: "16px",
+              fontWeight: 500,
+              lineHeight: "22px",
             },
             HeadingLarge: {
-              ...defaultRegularFontProperty,
-              fontSize: "32px",
-              fontWeight: "normal",
-              lineHeight: "40px",
+              ...defaultMediumFontProperty,
+              fontSize: "24px",
+              fontWeight: 500,
+              lineHeight: "32px",
             },
             HeadingXLarge: {
-              ...defaultRegularFontProperty,
-              fontSize: "36px",
-              fontWeight: "normal",
-              lineHeight: "44px",
+              ...defaultMediumFontProperty,
+              fontSize: "32px",
+              fontWeight: 500,
+              lineHeight: "40px",
             },
             HeadingXXLarge: {
-              ...defaultRegularFontProperty,
-              fontSize: "40px",
-              fontWeight: "normal",
-              lineHeight: "52px",
+              ...defaultMediumFontProperty,
+              fontSize: "48px",
+              fontWeight: 500,
+              lineHeight: "56px",
             },
           },
           defaultMonoRegularFontProperty

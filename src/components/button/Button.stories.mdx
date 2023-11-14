@@ -31,7 +31,7 @@ export const Template = ({ children, ...args }) => {
 <Canvas isColumn>
   <Story
     name="Primary"
-    args={{ kind: "gray" }}
+    args={{ kind: "primary" }}
     parameters={getFigmaParameters(
       "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=99-19984&mode=design&t=g655DrIEKA1td3Rn-0"
     )}
@@ -61,6 +61,15 @@ export const Template = ({ children, ...args }) => {
     args={{ kind: "danger" }}
     parameters={getFigmaParameters(
       "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=99-20865&mode=design&t=vdSasKmpFl6EHyXE-0"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Toggle"
+    args={{ kind: "toggle" }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/9IKNrBtLd7mkDHnkcVBa1b/Site?type=design&node-id=217-52646&mode=design&t=zAUctn6rIsUhG3nz-0"
     )}
   >
     {Template.bind({})}

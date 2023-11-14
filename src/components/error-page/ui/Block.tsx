@@ -2,7 +2,7 @@ import { styled } from "styletron-react";
 import { PRIMITIVE_COLORS } from "../../../shared";
 
 const blockStyles = {
-  background: PRIMITIVE_COLORS.gray800,
+  background: PRIMITIVE_COLORS.gray900,
   display: "flex",
   flexDirection: "column",
   flexGrow: "1",

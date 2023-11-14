@@ -28,10 +28,10 @@ const getTagKind = (isPositive: boolean, isError: boolean, isFocused: boolean): 
     return TAG_KIND.gray;
   }
   if (isError) {
-    return TAG_KIND.negative;
+    return TAG_KIND.red;
   }
   if (isPositive) {
-    return TAG_KIND.positive;
+    return TAG_KIND.green;
   }
   return TAG_KIND.gray;
 };

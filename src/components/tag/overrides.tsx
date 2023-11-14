@@ -1,17 +1,16 @@
 import { TagOverrides } from "baseui/tag";
-import { tagRootBaseStyles, tagRootDisabledStyles, tagRootKindModifiedStyles, tagRootLightStyles } from "./styles";
-import { TAG_KIND, TAG_VARIANT } from "./types";
+import { tagRootBaseStyles, tagRootKindModifiedStyles, mediumStyles } from "./styles";
+import { TAG_KIND, TAG_SIZE } from "./types";
 import { CloseIcon } from "../icons";
 
-export const getTagOverrides = (kind: TAG_KIND, variant: TAG_VARIANT): TagOverrides => {
+export const getTagOverrides = (kind: TAG_KIND, size: TAG_SIZE): TagOverrides => {
   return {
     Root: {
-      style: ({ $disabled }) => {
+      style: () => {
         return {
           ...tagRootBaseStyles,
           ...tagRootKindModifiedStyles[kind],
-          ...(variant === TAG_VARIANT.light ? tagRootLightStyles[kind] : {}),
-          ...($disabled ? tagRootDisabledStyles[kind] : {}),
+          ...(size === TAG_SIZE.m ? mediumStyles : {}),
         };
       },
     },

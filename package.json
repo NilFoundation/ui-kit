@@ -1,6 +1,6 @@
 {
   "name": "@nilfoundation/ui-kit",
-  "version": "2.0.20",
+  "version": "2.0.37",
   "description": "=Nil; Foundation user interface kit",
   "keywords": [
     "ui-kit",
@@ -33,7 +33,8 @@
     "lightweight-charts": ">=4.0.0 < 5",
     "react": ">=17.0.2",
     "react-dom": ">=17.0.2",
-    "styletron-react": ">=6.1.0 < 7"
+    "styletron-react": ">=6.1.0 < 7",
+    "ts-xor": ">=1.1.0 < 2"
   },
   "devDependencies": {
     "@babel/core": "^7.22.1",
@@ -68,7 +69,6 @@
     "size-limit": "^9.0.0",
     "storybook-addon-designs": "^6.3.1",
     "styletron-engine-atomic": "^1.5.0",
-    "ts-xor": "^1.1.0",
     "typescript": "4.9.5",
     "vite": "^4.3.9",
     "vite-plugin-dts": "^2.3.0",

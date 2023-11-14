@@ -1,17 +1,8 @@
 import { forwardRef } from "react";
-import { Button as BaseButton, ButtonProps as BaseButtonProps } from "baseui/button";
+import { Button as BaseButton } from "baseui/button";
 import { getButtonOverrides } from "./overrides";
-import { BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE } from "./types";
+import { BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE, ButtonProps } from "./types";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
-
-export type ButtonProps = Omit<BaseButtonProps, "kind" | "shape" | "size"> & {
-  kind?: BUTTON_KIND;
-  size?: BUTTON_SIZE;
-  shape?: BUTTON_SHAPE;
-  disabled?: boolean;
-  isLoading?: boolean;
-  className?: string;
-};
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -26,13 +17,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       endEnhancer,
       className,
       children,
+      role,
+      checked,
       overrides: baseOverrides,
       ...props
     },
     ref
   ) => {
-    const buttonOverrides = getButtonOverrides(kind, size, colors);
+    const buttonOverrides = getButtonOverrides(kind, size, colors, checked);
     const overrides = getMergedOverrides(buttonOverrides, baseOverrides);
+    const buttonKind = kind === BUTTON_KIND.danger || kind === BUTTON_KIND.toggle ? BUTTON_KIND.secondary : kind;
+    const buttonRole = role ?? (kind === BUTTON_KIND.toggle ? "switch" : undefined);
 
     return (
       <BaseButton
@@ -41,12 +36,14 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={className}
         isLoading={isLoading}
         shape={shape}
-        kind={kind === BUTTON_KIND.danger ? BUTTON_KIND.secondary : kind}
+        kind={buttonKind}
         size={size}
         disabled={disabled}
         startEnhancer={startEnhancer}
         endEnhancer={endEnhancer}
         overrides={overrides}
+        role={buttonRole}
+        aria-checked={checked}
       >
         {children}
       </BaseButton>

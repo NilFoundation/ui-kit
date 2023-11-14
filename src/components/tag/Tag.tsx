@@ -1,19 +1,14 @@
 import { FC } from "react";
 import { Tag as BaseTag } from "baseui/tag";
-import { TAG_KIND, TAG_VARIANT, TagProps } from "./types";
+import { TAG_KIND, TAG_SIZE, TagProps } from "./types";
 import { getTagOverrides } from "./overrides";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
-const Tag: FC<TagProps> = ({
-  kind = TAG_KIND.gray,
-  variant = TAG_VARIANT.solid,
-  overrides: baseOverrides,
-  ...props
-}) => {
-  const tagOverrides = getTagOverrides(kind, variant);
+const Tag: FC<TagProps> = ({ kind = TAG_KIND.gray, size = TAG_SIZE.s, overrides: baseOverrides, ...props }) => {
+  const tagOverrides = getTagOverrides(kind, size);
   const overrides = getMergedOverrides(tagOverrides, baseOverrides);
 
-  return <BaseTag {...props} overrides={overrides} />;
+  return <BaseTag {...props} overrides={overrides} closeable={false} />;
 };
 
 export default Tag;
