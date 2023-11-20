@@ -21,6 +21,9 @@ const containerStyles: StyleObject = {
 
 const codemirrorStyles: StyleObject = {
   minWidth: 0,
+  ":focus-within .cm-editor": {
+    outline: "none",
+  },
 };
 
 export const styles = {

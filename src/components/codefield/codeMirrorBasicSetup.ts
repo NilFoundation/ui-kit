@@ -1,8 +1,8 @@
 import { BasicSetupOptions } from "@uiw/react-codemirror";
 
-export const getCodeMirrorBasicSetup = (lineNumbers: boolean): BasicSetupOptions => ({
+export const getCodeMirrorBasicSetup = (lineNumbers: boolean, isEditable: boolean): BasicSetupOptions => ({
   lineNumbers,
-  highlightActiveLineGutter: false,
-  highlightActiveLine: false,
+  highlightActiveLineGutter: isEditable && lineNumbers,
+  highlightActiveLine: isEditable,
   foldGutter: lineNumbers,
 });
