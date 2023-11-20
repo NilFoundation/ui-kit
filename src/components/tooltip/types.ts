@@ -5,6 +5,5 @@ export const enum TOOLTIP_KIND {
 }
 
 export type TooltipCommonProps = {
-  /** @default TOOLTIP_KIND.DEFAULT */
   kind?: TOOLTIP_KIND;
 };
