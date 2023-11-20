@@ -15,8 +15,6 @@ export type ChartOptions = {
 export type ChartProps = {
   children: ReactNode;
   className?: string;
-  toolbar?: ReactNode;
-  legend?: ReactNode;
 } & ChartOptions;
 
 export type ChartApiRef = {

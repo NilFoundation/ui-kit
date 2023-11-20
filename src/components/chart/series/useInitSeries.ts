@@ -25,6 +25,11 @@ export const useInitSeries = () => {
       }
       return this._api;
     },
+    update(options: SeriesOptions) {
+      if (this._api) {
+        this._api.applyOptions(options);
+      }
+    },
     free() {
       if (this._api) {
         parent.free();

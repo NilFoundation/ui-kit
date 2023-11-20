@@ -35,4 +35,7 @@ export const chartDefaultOptions: DeepPartial<ChartOptions> = {
   localization: {
     locale: "en-US",
   },
+  timeScale: {
+    tickMarkMaxCharacterLength: 15,
+  },
 };

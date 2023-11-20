@@ -7,7 +7,6 @@ export type SeriesTemplateProps<T extends SeriesType> = {
   type: T;
   data: SeriesDataItemTypeMap[T][];
   children?: ReactNode;
-  markers?: SeriesMarker<Time>[];
 };
 
 export const SeriesTemplateRenderFunction: ForwardRefRenderFunction<HTMLDivElement, SeriesTemplateProps> = (
