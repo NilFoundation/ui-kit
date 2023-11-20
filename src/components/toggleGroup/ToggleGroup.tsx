@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef } from "react";
+import { ForwardedRef, forwardRef, useId } from "react";
 import { ToggleGroupOption, ToggleGroupProps } from "./types";
 import { useStyletron } from "styletron-react";
 import { BUTTON_KIND, BUTTON_SIZE, Button } from "../button";
@@ -10,6 +10,7 @@ export const ToggleGroupInner = <T extends ToggleGroupOption>(
   ref: ForwardedRef<HTMLDivElement>
 ) => {
   const [css] = useStyletron();
+  const labelId = useId();
   const onToggleHandler = ({ key }: ToggleGroupOption) => {
     const isSelected = value.some((x) => x === key);
 
@@ -23,8 +24,12 @@ export const ToggleGroupInner = <T extends ToggleGroupOption>(
 
   return (
     <div ref={ref} className={className}>
-      {label && <LabelMedium className={css(s.labelStyles)}>{label}</LabelMedium>}
-      <div className={css(s.toggleGroupStyles)}>
+      {label && (
+        <LabelMedium className={css(s.labelStyles)} id={labelId}>
+          {label}
+        </LabelMedium>
+      )}
+      <div className={css(s.toggleGroupStyles)} aria-labelledby={labelId}>
         {options.map((option) => (
           <Button
             key={option.key}
