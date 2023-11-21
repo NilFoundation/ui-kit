@@ -1,12 +1,19 @@
 {
-  "plugins": ["react", "react-hooks", "prettier", "unused-imports", "@typescript-eslint"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "prettier",
+    "unused-imports",
+    "@typescript-eslint"
+  ],
   "extends": [
     "eslint:recommended",
     "prettier",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:mdx/recommended"
+    "plugin:mdx/recommended",
+    "plugin:storybook/recommended"
   ],
   "rules": {
     "react/jsx-uses-react": "off",
@@ -31,7 +38,10 @@
   },
   "overrides": [
     {
-      "files": ["**/*.test.ts", "**/*.test.tsx"],
+      "files": [
+        "**/*.test.ts",
+        "**/*.test.tsx"
+      ],
       "env": {
         "jest": true
       }
