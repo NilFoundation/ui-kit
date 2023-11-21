@@ -1,4 +1,4 @@
-export const enum TOOLTIP_KIND {
+export enum TOOLTIP_KIND {
   DEFAULT = "default",
   ERROR = "error",
   SUCCESS = "success",
