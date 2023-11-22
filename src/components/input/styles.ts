@@ -23,13 +23,13 @@ export const inputContainerModifiedStyles = {
 
 export const inputModifiedStyles = {
   [INPUT_SIZE.small]: {
-    fontSize: "14px",
-    lineHeight: "20px",
+    fontSize: "12px",
+    lineHeight: "16px",
     ...expandProperty("padding", "8px 0"),
   },
   [INPUT_SIZE.medium]: {
     fontSize: "16px",
-    lineHeight: "24px",
+    lineHeight: "22px",
     ...expandProperty("padding", "12px 0"),
   },
   [INPUT_SIZE.large]: {
