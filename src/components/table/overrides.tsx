@@ -5,6 +5,12 @@ import { ChevronDownIcon, ChevronUpIcon } from "../icons";
 
 export const getTableOverrides = (): TableOverrides => {
   return {
+    Root: {
+      style: () => ({
+        backgroundColor: "transparent",
+        border: "none",
+      }),
+    },
     TableHead: {
       style: () => ({
         borderBottom: `1px solid ${PRIMITIVE_COLORS.gray800}`,
@@ -22,8 +28,6 @@ export const getTableOverrides = (): TableOverrides => {
           backgroundColor: "transparent",
           color: PRIMITIVE_COLORS.gray300,
           borderBottom: $divider !== TABLE_DIVIDER.clean ? `1px solid ${PRIMITIVE_COLORS.gray800}` : "none",
-          fontSize: "12px",
-          lineHeight: "16px",
         };
       },
     },
@@ -33,7 +37,8 @@ export const getTableOverrides = (): TableOverrides => {
           backgroundColor: "transparent",
           color: PRIMITIVE_COLORS.gray400,
           borderBottom: $divider !== TABLE_DIVIDER.clean ? `1px solid ${PRIMITIVE_COLORS.gray800}` : "none",
-          fontSize: "14px",
+          fontSize: "12px",
+          fontWeight: 500,
           lineHeight: "16px",
           padding: $size === "compact" ? "4px 12px" : "12px",
         };
@@ -47,7 +52,7 @@ export const getTableOverrides = (): TableOverrides => {
     TableBodyCell: {
       style: ({ $size }) => ({
         fontSize: "14px",
-        lineHeight: "19px",
+        lineHeight: "20px",
         color: PRIMITIVE_COLORS.gray200,
         border: "none",
         padding: $size === "compact" ? "8px 12px" : "12px",

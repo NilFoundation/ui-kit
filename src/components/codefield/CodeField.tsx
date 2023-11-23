@@ -1,4 +1,4 @@
-import { ForwardRefRenderFunction, forwardRef } from "react";
+import { ForwardRefRenderFunction, HTMLAttributes, forwardRef } from "react";
 import CodeMirror, { ReactCodeMirrorProps } from "@uiw/react-codemirror";
 import { getCodeMirrorTheme } from "./codeMirrorTheme";
 import { useStyletron } from "styletron-react";
@@ -18,7 +18,10 @@ export type CodeFieldProps = {
   transformOnCopy?: (code: string) => string;
   showLineNumbers?: boolean;
   className?: string;
-};
+  editable?: ReactCodeMirrorProps["editable"];
+  readOnly?: ReactCodeMirrorProps["readOnly"];
+  onChange?: ReactCodeMirrorProps["onChange"];
+} & HTMLAttributes<HTMLDivElement>;
 
 const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFieldProps> = (
   {
@@ -30,6 +33,10 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
     transformOnCopy,
     showLineNumbers = false,
     className,
+    editable = false,
+    readOnly = true,
+    onChange,
+    ...rest
   },
   ref
 ) => {
@@ -43,14 +50,15 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
   }
 
   return (
-    <div ref={ref} className={computedCn}>
+    <div ref={ref} className={computedCn} {...rest}>
       <CodeMirror
         value={code}
-        readOnly
-        editable={false}
+        readOnly={readOnly}
+        editable={editable}
         extensions={mergedExtensions}
+        onChange={onChange}
         theme={getCodeMirrorTheme(themeOverrides)}
-        basicSetup={getCodeMirrorBasicSetup(showLineNumbers)}
+        basicSetup={getCodeMirrorBasicSetup(showLineNumbers, editable)}
         className={css(s.codemirrorStyles)}
       />
       {displayCopy && <MemoizedCopyButton copyHandler={copyHandler} />}

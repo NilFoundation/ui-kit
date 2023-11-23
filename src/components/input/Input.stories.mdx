@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import Input from "./Input";
 import { useState } from "react";
 import { useStyletron } from "baseui";
@@ -42,9 +42,6 @@ export const Template = ({ value: baseValue, ...args }) => {
     {Template.bind({})}
   </Story>
   <Story name="Error" args={{ placeholder: "Error Field", error: true, size: INPUT_SIZE.small }}>
-    {Template.bind({})}
-  </Story>
-  <Story name="Positive" args={{ placeholder: "Positive Field", positive: true, size: INPUT_SIZE.small }}>
     {Template.bind({})}
   </Story>
   <Story name="Password" args={{ placeholder: "Password Field", type: "password", size: INPUT_SIZE.small }}>
