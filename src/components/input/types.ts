@@ -1,5 +1,10 @@
 export enum INPUT_SIZE {
   small = "small",
   medium = "medium",
-  large = "large",
+}
+
+export enum INPUT_KIND {
+  primary = "primary",
+  secondary = "secondary",
+  error = "error",
 }

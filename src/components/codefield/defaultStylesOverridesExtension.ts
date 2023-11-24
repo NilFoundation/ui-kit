@@ -17,16 +17,14 @@ export const createDefaultStylesOverridesExtension = (showLineNumbers: boolean) 
     ".cm-activeLine": {
       borderTopRightRadius: "2px",
       borderBottomRightRadius: "2px",
+      ...(showLineNumbers
+        ? {}
+        : {
+            borderTopLeftRadius: "2px",
+            borderBottomLeftRadius: "2px",
+          }),
     },
     ".cm-activeLineGutter": {
       color: PRIMITIVE_COLORS.gray200,
     },
-    ...(showLineNumbers
-      ? {}
-      : {
-          ".cm-activeLine": {
-            borderTopLeftRadius: "2px",
-            borderBottomLeftRadius: "2px",
-          },
-        }),
   });

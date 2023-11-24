@@ -1,30 +1,21 @@
 import { InputOverrides } from "baseui/input";
 import { inputContainerModifiedStyles, inputDisabledStyles, inputModifiedStyles } from "./styles";
-import { INPUT_SIZE } from "./types";
+import { INPUT_KIND, INPUT_SIZE } from "./types";
 import { PRIMITIVE_COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
 
-const getInputColor = (isError: boolean, isFocused: boolean): string => {
+const getColor = (isFocused: boolean, kind: INPUT_KIND): string => {
   if (isFocused) {
     return PRIMITIVE_COLORS.white;
   }
-  if (isError) {
+  if (kind === INPUT_KIND.error) {
     return PRIMITIVE_COLORS.red400;
   }
-  return PRIMITIVE_COLORS.gray500;
+
+  return PRIMITIVE_COLORS.gray200;
 };
 
-const getIconColor = (isError: boolean, isFocused: boolean): string => {
-  if (isFocused) {
-    return PRIMITIVE_COLORS.gray500;
-  }
-  if (isError) {
-    return PRIMITIVE_COLORS.red400;
-  }
-  return PRIMITIVE_COLORS.gray500;
-};
-
-export const getInputOverrides = (size: INPUT_SIZE): InputOverrides => {
+export const getInputOverrides = (size: INPUT_SIZE, kind: INPUT_KIND): InputOverrides => {
   return {
     Root: {
       style: ({ $disabled }) => ({
@@ -33,31 +24,32 @@ export const getInputOverrides = (size: INPUT_SIZE): InputOverrides => {
       }),
     },
     InputContainer: {
-      style: ({ $disabled }) => ({
+      style: ({ $disabled, $isFocused }) => ({
         ...($disabled ? inputDisabledStyles : {}),
+        ...($isFocused ? { outline: "red" } : {}),
       }),
     },
     Input: {
-      style: ({ $error, $isFocused }) => ({
+      style: ({ $isFocused }) => ({
         ...inputModifiedStyles[size],
-        color: getInputColor($error, $isFocused),
+        color: getColor($isFocused, kind),
         "-webkit-text-fill-color": "unset",
 
         "::placeholder": {
-          color: getInputColor($error, $isFocused),
+          color: getColor($isFocused, kind),
         },
       }),
     },
     StartEnhancer: {
       style: ({ $error, $isFocused }) => ({
-        color: getIconColor($error, $isFocused),
+        color: getColor($error, $isFocused),
         ...expandProperty("padding", "0 12px 0 0"),
       }),
     },
     EndEnhancer: {
       style: ({ $error, $isFocused }) => ({
         ...expandProperty("padding", "0 0 0 12px"),
-        color: getIconColor($error, $isFocused),
+        color: getColor($error, $isFocused),
       }),
     },
     ClearIcon: {
@@ -66,9 +58,10 @@ export const getInputOverrides = (size: INPUT_SIZE): InputOverrides => {
       },
     },
     MaskToggleButton: {
-      style: {
-        color: PRIMITIVE_COLORS.gray500,
-      },
+      style: ({ $error, $isFocused }) => ({
+        color: getColor($error, $isFocused),
+        cursor: "pointer",
+      }),
     },
   };
 };
