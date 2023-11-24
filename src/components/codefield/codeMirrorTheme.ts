@@ -12,7 +12,7 @@ const defaultSettings = {
   fontFamily: "Roboto Mono, monospace",
   caret: PRIMITIVE_COLORS.gray100,
   gutterBackground: "transparent",
-  gutterForeground: PRIMITIVE_COLORS.gray400,
+  gutterForeground: PRIMITIVE_COLORS.gray300,
 } satisfies CreateThemeOptions["settings"];
 
 const defaultStyles = [

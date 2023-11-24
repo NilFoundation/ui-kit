@@ -1,4 +1,4 @@
-import { ForwardRefRenderFunction, HTMLAttributes, forwardRef } from "react";
+import { ForwardRefRenderFunction, HTMLAttributes, forwardRef, useMemo } from "react";
 import CodeMirror, { ReactCodeMirrorProps } from "@uiw/react-codemirror";
 import { getCodeMirrorTheme } from "./codeMirrorTheme";
 import { useStyletron } from "styletron-react";
@@ -8,6 +8,7 @@ import { CreateThemeOptions } from "@uiw/codemirror-themes";
 import { prefixLineNumberExtension } from "./prefixLineNumberExtension";
 import { MemoizedCopyButton } from "./CopyButton";
 import { useCopyToClipboard } from "./useCopyToClipboard";
+import { createDefaultStylesOverridesExtension } from "./defaultStylesOverridesExtension";
 
 export type CodeFieldProps = {
   code: string;
@@ -42,7 +43,11 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
 ) => {
   const [css] = useStyletron();
   const copyHandler = useCopyToClipboard(code, onCopy, transformOnCopy);
-  const mergedExtensions = [...extensions];
+  const styleOverridesExtention = useMemo(
+    () => createDefaultStylesOverridesExtension(showLineNumbers),
+    [showLineNumbers]
+  );
+  const mergedExtensions = [styleOverridesExtention, ...extensions];
   const computedCn = className ? `${css(s.containerStyles)} ${className}` : css(s.containerStyles);
 
   if (showLineNumbers) {
