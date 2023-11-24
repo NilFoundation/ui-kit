@@ -54,12 +54,6 @@ export const Template = ({ value: baseValue, ...args }) => {
     {Template.bind({})}
   </Story>
   <Story
-    name="With Default Value"
-    args={{ placeholder: "Default Value", value: "Default Text", size: INPUT_SIZE.small }}
-  >
-    {Template.bind({})}
-  </Story>
-  <Story
     name="With Start Enhancer"
     args={{ placeholder: "Start Enhancer", startEnhancer: "@", size: INPUT_SIZE.small }}
   >
@@ -71,7 +65,7 @@ export const Template = ({ value: baseValue, ...args }) => {
   >
     {Template.bind({})}
   </Story>
-  <Story name="Clearable" args={{ placeholder: "Clearable", clearable: true, size: INPUT_SIZE.small }}>
+  <Story name="Clearable" args={{ placeholder: "Clearable. Type something to check", clearable: true, size: INPUT_SIZE.small }}>
     {Template.bind({})}
   </Story>
 </Canvas>
