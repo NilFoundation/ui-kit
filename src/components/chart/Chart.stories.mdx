@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import Chart from "./ChartWrapper";
 import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
 
@@ -6,7 +6,7 @@ import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
 
 export const Template = (args) => {
   return (
-    <div style={{height: "600px", width: "800px"}}>
+    <div style={{ height: "600px", width: "800px" }}>
       <Chart {...args}></Chart>
     </div>
   );
@@ -15,11 +15,7 @@ export const Template = (args) => {
 # Chart
 
 <Canvas isColumn>
-  <Story
-    name="Line chart"
-  >
-    {Template.bind({})}
-  </Story>
+  <Story name="Line chart">{Template.bind({})}</Story>
   <Story
     name="Candlestick chart"
     parameters={getFigmaParameters(
@@ -31,8 +27,13 @@ export const Template = (args) => {
   <Story
     name="Bar chart"
     parameters={getFigmaParameters(
-      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=353-205017&mode=design&t=U2zZv37g0Vi0MKGC-0"
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=546-5496&mode=design&t=7dumrRXwuL31wuyv-0"
     )}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Line chart"
   >
     {Template.bind({})}
   </Story>
