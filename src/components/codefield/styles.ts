@@ -12,7 +12,7 @@ const containerStyles: StyleObject = {
   justifyContent: "space-between",
   alignItems: "flex-start",
   flexWrap: "nowrap",
-  gap: "12px",
+  gap: "16px",
   transition: "background 0.15s",
   ":hover": {
     background: PRIMITIVE_COLORS.gray800,
@@ -21,6 +21,9 @@ const containerStyles: StyleObject = {
 
 const codemirrorStyles: StyleObject = {
   minWidth: 0,
+  ":focus-within .cm-editor": {
+    outline: "none",
+  },
 };
 
 export const styles = {

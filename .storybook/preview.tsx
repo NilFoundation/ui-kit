@@ -1,7 +1,9 @@
+import React from "react";
 import { ThemeWrapper } from "../src/shared/theme";
-import theme from './theme';
+import theme from "./theme";
+import type { Decorator, Parameters } from "@storybook/react";
 
-export const decorators = [
+export const decorators: Decorator[] = [
   (Story) => (
     <ThemeWrapper>
       <Story />
@@ -9,7 +11,7 @@ export const decorators = [
   ),
 ];
 
-export const parameters = {
+export const parameters: Parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
@@ -18,12 +20,12 @@ export const parameters = {
     },
   },
   docs: {
-    theme
+    theme,
   },
   options: {
     storySort: {
-      order: ['Documentation'],
+      order: ["Documentation"],
     },
-    panelPosition: 'right',
-  }
+    panelPosition: "right",
+  },
 };

@@ -1,8 +1,8 @@
-import { create } from '@storybook/theming';
-import { PRIMITIVE_COLORS } from '../src/shared/theme';
+import { create } from "@storybook/theming/create";
+import { PRIMITIVE_COLORS } from "../src/shared/theme";
 
 export default create({
-  base: 'dark',
+  base: "dark",
   colorSecondary: PRIMITIVE_COLORS.gray500,
   appBg: PRIMITIVE_COLORS.gray900,
   appContentBg: PRIMITIVE_COLORS.black,
@@ -16,6 +16,6 @@ export default create({
   inputBg: PRIMITIVE_COLORS.gray700,
   inputTextColor: PRIMITIVE_COLORS.gray50,
   inputBorderRadius: 0,
-  brandTitle: '=nil; Foundation UI kit storybook',
-  brandUrl: 'https://nil.foundation',
-})
+  brandTitle: "=nil; Foundation UI kit storybook",
+  brandUrl: "https://nil.foundation",
+});

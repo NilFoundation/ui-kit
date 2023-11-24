@@ -1,4 +1,4 @@
-import { ForwardRefRenderFunction, forwardRef } from "react";
+import { ForwardRefRenderFunction, HTMLAttributes, forwardRef, useMemo } from "react";
 import CodeMirror, { ReactCodeMirrorProps } from "@uiw/react-codemirror";
 import { getCodeMirrorTheme } from "./codeMirrorTheme";
 import { useStyletron } from "styletron-react";
@@ -8,6 +8,7 @@ import { CreateThemeOptions } from "@uiw/codemirror-themes";
 import { prefixLineNumberExtension } from "./prefixLineNumberExtension";
 import { MemoizedCopyButton } from "./CopyButton";
 import { useCopyToClipboard } from "./useCopyToClipboard";
+import { createDefaultStylesOverridesExtension } from "./defaultStylesOverridesExtension";
 
 export type CodeFieldProps = {
   code: string;
@@ -18,7 +19,10 @@ export type CodeFieldProps = {
   transformOnCopy?: (code: string) => string;
   showLineNumbers?: boolean;
   className?: string;
-};
+  editable?: ReactCodeMirrorProps["editable"];
+  readOnly?: ReactCodeMirrorProps["readOnly"];
+  onChange?: ReactCodeMirrorProps["onChange"];
+} & HTMLAttributes<HTMLDivElement>;
 
 const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFieldProps> = (
   {
@@ -30,12 +34,20 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
     transformOnCopy,
     showLineNumbers = false,
     className,
+    editable = false,
+    readOnly = true,
+    onChange,
+    ...rest
   },
   ref
 ) => {
   const [css] = useStyletron();
   const copyHandler = useCopyToClipboard(code, onCopy, transformOnCopy);
-  const mergedExtensions = [...extensions];
+  const styleOverridesExtention = useMemo(
+    () => createDefaultStylesOverridesExtension(showLineNumbers),
+    [showLineNumbers]
+  );
+  const mergedExtensions = [styleOverridesExtention, ...extensions];
   const computedCn = className ? `${css(s.containerStyles)} ${className}` : css(s.containerStyles);
 
   if (showLineNumbers) {
@@ -43,14 +55,15 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
   }
 
   return (
-    <div ref={ref} className={computedCn}>
+    <div ref={ref} className={computedCn} {...rest}>
       <CodeMirror
         value={code}
-        readOnly
-        editable={false}
+        readOnly={readOnly}
+        editable={editable}
         extensions={mergedExtensions}
+        onChange={onChange}
         theme={getCodeMirrorTheme(themeOverrides)}
-        basicSetup={getCodeMirrorBasicSetup(showLineNumbers)}
+        basicSetup={getCodeMirrorBasicSetup(showLineNumbers, editable)}
         className={css(s.codemirrorStyles)}
       />
       {displayCopy && <MemoizedCopyButton copyHandler={copyHandler} />}
