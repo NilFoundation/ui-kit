@@ -12,7 +12,7 @@ const containerStyles: StyleObject = {
 
 const legend = {
   marginBottom: SPACE[8],
-  height: "48px",
+  height: "56px",
   flexShrink: 0,
 };
 

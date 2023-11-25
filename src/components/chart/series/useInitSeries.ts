@@ -12,7 +12,6 @@ export const useInitSeries = <T extends SeriesType>({
   markers,
 }: Omit<SeriesTemplateProps<T>, "children">) => {
   const chart = useContext(ChartContext);
-  console.log(options);
 
   if (!chart) {
     throw new Error("Chart context found");
