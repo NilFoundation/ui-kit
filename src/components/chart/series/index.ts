@@ -1,3 +1,3 @@
-export { default as AreaSeries } from "./LineSeries";
-export { default as BarSeries } from "./BarSeries";
+export { default as LineSeries } from "./LineSeries";
+export { default as HistogramSeries } from "./HistogramSeries";
 export { default as CandlestickSeries } from "./CandlestickSeries";

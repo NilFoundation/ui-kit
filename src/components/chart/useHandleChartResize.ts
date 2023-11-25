@@ -6,13 +6,11 @@ export const useHandleChartResize = (chartApiRef: MutableRefObject<ChartApiRef>,
   useLayoutEffect(() => {
     if (!container) return;
 
-    const chart = chartApiRef.current.api();
-
     const handleResize = debounce(() => {
-      chart?.applyOptions({
+      chartApiRef.current?.update({
         width: container.clientWidth,
       });
-    }, 150);
+    }, 100);
 
     window.addEventListener("resize", handleResize);
 

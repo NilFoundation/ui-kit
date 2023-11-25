@@ -38,4 +38,16 @@ export const chartDefaultOptions: DeepPartial<ChartOptions> = {
   timeScale: {
     tickMarkMaxCharacterLength: 15,
   },
+  leftPriceScale: {
+    visible: true,
+    scaleMargins: {
+      top: 0.1,
+      bottom: 0.1,
+    },
+    minimumWidth: 48,
+    borderVisible: false,
+  },
+  rightPriceScale: {
+    visible: false,
+  },
 };

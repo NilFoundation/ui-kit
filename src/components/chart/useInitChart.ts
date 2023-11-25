@@ -73,6 +73,7 @@ export const useInitChart = ({
         }
 
         this._chart.remove();
+        this._chart = null;
       }
     },
   });
