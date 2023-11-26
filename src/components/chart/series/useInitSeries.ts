@@ -1,7 +1,7 @@
 import { useContext, useLayoutEffect, useRef } from "react";
 import { SeriesApiRef, SeriesTemplateProps, SeriesType } from "./types";
 import { ChartContext } from "../ChartContext";
-import { getSeriesDefaultOptions } from "./seriesDefaultOptions";
+import { getSeriesDefaultOptions } from "./seriesDefaulOptions";
 import { IChartApi, ISeriesApi } from "lightweight-charts";
 
 export const useInitSeries = <T extends SeriesType>({
