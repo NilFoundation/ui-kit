@@ -12,9 +12,9 @@ export type SeriesType = Extract<NativeSeriesType, "Line" | "Candlestick" | "His
 
 export type SeriesParameters<T extends SeriesType> = {
   data: SeriesDataItemTypeMap[T][];
-  markers: SeriesMarker<Time>[];
-  reactive: boolean;
-  options: SeriesOptions<T>;
+  markers?: SeriesMarker<Time>[];
+  reactive?: boolean;
+  options?: SeriesOptions<T>;
 };
 
 export type SeriesTemplateProps<T extends SeriesType> = {

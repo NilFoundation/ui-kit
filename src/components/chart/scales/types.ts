@@ -1,7 +1,6 @@
 import type {
   DeepPartial,
   IPriceScaleApi,
-  ISeriesApi,
   ITimeScaleApi,
   LogicalRangeChangeEventHandler,
   Range,
@@ -11,27 +10,26 @@ import type {
   TimeScaleOptions as TimeScaleNativeOptions,
   PriceScaleOptions as PriceScaleNativeOptions,
 } from "lightweight-charts";
-import { SeriesType } from "../series";
 
 export type TimeScaleOptions = DeepPartial<TimeScaleNativeOptions>;
 export type PriceScaleOptions = DeepPartial<PriceScaleNativeOptions>;
 
-export type TimeScaleApiRef<T extends SeriesType> = {
-  _timeScale: ITimeScaleApi<T> | null;
-  api: () => ISeriesApi<T> | null;
-  update: (p: any) => void;
+export type TimeScaleApiRef = {
+  _timeScale: ITimeScaleApi<Time> | null;
+  api: () => ITimeScaleApi<Time> | null;
+  update: (p: TimeScaleProps) => void;
   clear: () => void;
 };
 
 export type PriceScaleApiRef = {
-  _timeScale: IPriceScaleApi | null;
+  _priceScale: IPriceScaleApi | null;
   api: () => IPriceScaleApi | null;
-  update: (p: any) => void;
+  update: (p: PriceScaleProps) => void;
   clear: () => void;
 };
 
 export type TimeScaleProps = {
-  onVisibleTimeRangeChange?: TimeRangeChangeEventHandler<any>;
+  onVisibleTimeRangeChange?: TimeRangeChangeEventHandler<Time>;
   onVisibleLogicalRangeChange?: LogicalRangeChangeEventHandler;
   onSizeChange?: SizeChangeEventHandler;
   fitContent?: boolean;
@@ -40,7 +38,6 @@ export type TimeScaleProps = {
 };
 
 export type PriceScaleProps = {
-  onVisibleLogicalRangeChange?: LogicalRangeChangeEventHandler;
-  onSizeChange?: SizeChangeEventHandler;
   options?: PriceScaleOptions;
+  id: string;
 };

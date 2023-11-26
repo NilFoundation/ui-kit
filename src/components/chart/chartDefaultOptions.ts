@@ -17,14 +17,14 @@ export const chartDefaultOptions: DeepPartial<ChartOptions> = {
   },
   crosshair: {
     vertLine: {
-      color: PRIMITIVE_COLORS.gray600,
+      color: PRIMITIVE_COLORS.gray50,
       width: 1,
       style: 0,
       visible: true,
       labelVisible: true,
     },
     horzLine: {
-      color: PRIMITIVE_COLORS.gray600,
+      color: PRIMITIVE_COLORS.gray50,
       width: 1,
       style: 0,
       visible: true,
@@ -40,12 +40,6 @@ export const chartDefaultOptions: DeepPartial<ChartOptions> = {
   },
   leftPriceScale: {
     visible: true,
-    scaleMargins: {
-      top: 0.1,
-      bottom: 0.1,
-    },
-    minimumWidth: 48,
-    borderVisible: false,
   },
   rightPriceScale: {
     visible: false,

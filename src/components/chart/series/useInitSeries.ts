@@ -14,7 +14,7 @@ export const useInitSeries = <T extends SeriesType>({
   const chart = useContext(ChartContext);
 
   if (!chart) {
-    throw new Error("Chart context found");
+    throw new Error("Chart context not found");
   }
 
   const seriesApiRef = useRef<SeriesApiRef<T>>({
@@ -33,12 +33,14 @@ export const useInitSeries = <T extends SeriesType>({
           ...getSeriesDefaultOptions(type),
           ...options,
         });
+
+        this._series.setData(data);
       }
 
       return this._series;
     },
     update(params) {
-      const { data: nextData, markers: NextMarkers, reactive: nextReactive, options: nextOptions } = params;
+      const { data: nextData, markers: nextMarkers, reactive: nextReactive, options: nextOptions } = params;
       if (this._series === null) {
         return;
       }
@@ -47,11 +49,11 @@ export const useInitSeries = <T extends SeriesType>({
         this._series.setData(data);
       }
 
-      if (markers !== NextMarkers) {
-        this._series.setMarkers(NextMarkers);
+      if (markers !== nextMarkers && nextMarkers) {
+        this._series.setMarkers(nextMarkers);
       }
 
-      if (options !== nextOptions) {
+      if (options !== nextOptions && nextOptions) {
         this._series.applyOptions(nextOptions);
       }
     },
@@ -80,7 +82,7 @@ export const useInitSeries = <T extends SeriesType>({
       reactive,
       options,
     });
-  }, [options]);
+  }, [data, markers, reactive, options]);
 
   return seriesApiRef;
 };
