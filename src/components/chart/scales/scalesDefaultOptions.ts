@@ -9,4 +9,7 @@ export const priceScaleDefaultOptions = {
   minimumWidth: 48,
 } satisfies PriceScaleOptions;
 
-export const timeScaleDefaultOptions = {} satisfies TimeScaleOptions;
+export const timeScaleDefaultOptions = {
+  borderVisible: false,
+  tickMarkMaxCharacterLength: 15,
+} satisfies TimeScaleOptions;

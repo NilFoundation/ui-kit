@@ -7,9 +7,9 @@ type ChartComponentProps = {
   container: HTMLElement;
 } & ChartProps;
 
-const ChartComponent: React.FC<ChartComponentProps> = ({ children, container, ...rest }) => {
+const ChartComponent: React.FC<ChartComponentProps> = ({ children, container, autoResize = true, ...rest }) => {
   const chartApiRef = useInitChart({ container, ...rest });
-  useHandleChartResize(chartApiRef, container);
+  useHandleChartResize(chartApiRef, autoResize, container);
 
   return <ChartContext.Provider value={chartApiRef.current}>{children}</ChartContext.Provider>;
 };

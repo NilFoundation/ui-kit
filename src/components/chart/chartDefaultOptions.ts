@@ -2,6 +2,7 @@ import { ColorType } from "lightweight-charts";
 import type { ChartOptions, DeepPartial } from "lightweight-charts";
 import { PRIMITIVE_COLORS } from "../../shared";
 import { priceScaleDefaultOptions } from "./scales";
+import { timeScaleDefaultOptions } from "./scales/scalesDefaultOptions";
 
 export const chartDefaultOptions: DeepPartial<ChartOptions> = {
   layout: {
@@ -36,9 +37,7 @@ export const chartDefaultOptions: DeepPartial<ChartOptions> = {
   localization: {
     locale: "en-US",
   },
-  timeScale: {
-    tickMarkMaxCharacterLength: 15,
-  },
+  timeScale: timeScaleDefaultOptions,
   leftPriceScale: {
     visible: true,
     ...priceScaleDefaultOptions,

@@ -5,7 +5,7 @@ import { useStyletron } from "styletron-react";
 import { styles as s } from "./styles";
 
 const ChartRenderFunction: ForwardRefRenderFunction<HTMLDivElement, ChartProps> = (
-  { children, className, legend = null, ...rest },
+  { children, className, ...rest },
   ref
 ) => {
   const [css] = useStyletron();
@@ -27,7 +27,6 @@ const ChartRenderFunction: ForwardRefRenderFunction<HTMLDivElement, ChartProps> 
 
   return (
     <div ref={containerRef} className={`${className} ${css(s.containerStyles)}`}>
-      {legend}
       {!!container && (
         <ChartComponent container={container} {...rest}>
           {children}
