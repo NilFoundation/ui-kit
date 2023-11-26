@@ -1,5 +1,5 @@
 import { useContext, useLayoutEffect, useRef } from "react";
-import { SeriesApiRef, SeriesOptions, SeriesTemplateProps, SeriesType } from "./types";
+import { SeriesApiRef, SeriesTemplateProps, SeriesType } from "./types";
 import { ChartContext } from "../ChartContext";
 import { getSeriesDefaultOptions } from "./seriesDefaultOptions";
 import { IChartApi, ISeriesApi } from "lightweight-charts";
@@ -37,7 +37,8 @@ export const useInitSeries = <T extends SeriesType>({
 
       return this._series;
     },
-    update(options: SeriesOptions<T>) {
+    update(params) {
+      const { data: nextData, markers: NextMarkers, reactive: nextReactive, options: nextOptions } = params;
       if (this._series === null) {
         return;
       }
@@ -50,7 +51,9 @@ export const useInitSeries = <T extends SeriesType>({
         this._series.setMarkers(NextMarkers);
       }
 
-      this._series.applyOptions(rest);
+      if (options !== nextOptions) {
+        this._series.applyOptions(nextOptions);
+      }
     },
     clear() {
       if (this._series !== null) {
@@ -71,7 +74,12 @@ export const useInitSeries = <T extends SeriesType>({
   useLayoutEffect(() => {
     if (!chart) return;
 
-    seriesApiRef.current?.update(options);
+    seriesApiRef.current?.update({
+      data,
+      markers,
+      reactive,
+      options,
+    });
   }, [options]);
 
   return seriesApiRef;

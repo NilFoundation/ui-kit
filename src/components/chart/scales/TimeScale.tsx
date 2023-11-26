@@ -5,14 +5,7 @@ import type {
   Range,
   Time,
 } from "lightweight-charts";
-
-type TimeScaleProps = {
-  onVisibleTimeRangeChange?: TimeRangeChangeEventHandler<any>;
-  onVisibleLogicalRangeChange?: LogicalRangeChangeEventHandler;
-  onSizeChange?: SizeChangeEventHandler;
-  fitContent?: boolean;
-  initialVisibleRange?: Range<Time>;
-};
+import { TimeScaleProps } from "./types";
 
 const TimeScale = ({
   onVisibleTimeRangeChange,

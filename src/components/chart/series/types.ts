@@ -8,21 +8,24 @@ import type {
 } from "lightweight-charts";
 import { ReactNode } from "react";
 
+export type SeriesType = Extract<NativeSeriesType, "Line" | "Candlestick" | "Histogram">;
+
+export type SeriesParameters<T extends SeriesType> = {
+  data: SeriesDataItemTypeMap[T][];
+  markers: SeriesMarker<Time>[];
+  reactive: boolean;
+  options: SeriesOptions<T>;
+};
+
 export type SeriesTemplateProps<T extends SeriesType> = {
   type: T;
   children?: ReactNode;
-  data: SeriesDataItemTypeMap[T][];
-  options: SeriesOptions<T>;
-  reactive?: boolean;
-  markers?: SeriesMarker<Time>[];
-};
-
-export type SeriesType = Extract<NativeSeriesType, "Line" | "Candlestick" | "Histogram">;
+} & SeriesParameters<T>;
 
 export type SeriesApiRef<T extends SeriesType> = {
   _series: ISeriesApi<T> | null;
   api: () => ISeriesApi<T> | null;
-  update: (options: SeriesOptions<T>) => void;
+  update: (p: SeriesParameters<T>) => void;
   clear: () => void;
 };
 
