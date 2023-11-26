@@ -9,40 +9,37 @@ import type {
 import { PRIMITIVE_COLORS } from "../../../shared";
 
 const seriesBaseDefaultOptions: DeepPartial<SeriesOptionsCommon> = {
-  priceLineColor: PRIMITIVE_COLORS.blue500,
+  priceLineColor: PRIMITIVE_COLORS.blue300,
 };
 
 const seriesCandlestickDefaultOptions: CandlestickSeriesPartialOptions = {
   ...seriesBaseDefaultOptions,
-  upColor: PRIMITIVE_COLORS.green500,
-  downColor: PRIMITIVE_COLORS.red500,
+  upColor: PRIMITIVE_COLORS.green300,
+  downColor: PRIMITIVE_COLORS.red300,
   borderVisible: false,
   wickVisible: true,
-  borderColor: PRIMITIVE_COLORS.green500,
-  wickColor: PRIMITIVE_COLORS.green500,
-  borderUpColor: PRIMITIVE_COLORS.green500,
-  borderDownColor: PRIMITIVE_COLORS.red500,
-  wickUpColor: PRIMITIVE_COLORS.green500,
-  wickDownColor: PRIMITIVE_COLORS.red500,
+  borderColor: PRIMITIVE_COLORS.green300,
+  wickColor: PRIMITIVE_COLORS.green300,
+  borderUpColor: PRIMITIVE_COLORS.green300,
+  borderDownColor: PRIMITIVE_COLORS.red300,
+  wickUpColor: PRIMITIVE_COLORS.green300,
+  wickDownColor: PRIMITIVE_COLORS.red300,
 };
 
 const seriesLineDefaultOptions: LineSeriesPartialOptions = {
   ...seriesBaseDefaultOptions,
-  color: PRIMITIVE_COLORS.blue500,
+  color: PRIMITIVE_COLORS.blue300,
   lineWidth: 2,
   crosshairMarkerVisible: false,
   crosshairMarkerRadius: 0,
-  crosshairMarkerBorderColor: PRIMITIVE_COLORS.blue500,
-  crosshairMarkerBackgroundColor: PRIMITIVE_COLORS.blue500,
+  crosshairMarkerBorderColor: PRIMITIVE_COLORS.blue300,
+  crosshairMarkerBackgroundColor: PRIMITIVE_COLORS.blue300,
 };
 
 const seriesHistogramDefaultOptions: HistogramSeriesPartialOptions = {
   ...seriesBaseDefaultOptions,
-  color: PRIMITIVE_COLORS.blue500,
+  color: PRIMITIVE_COLORS.blue300,
   base: 0,
-  priceFormat: {
-    type: "volume",
-  },
 };
 
 export const getSeriesDefaultOptions = (type: SeriesType) => {

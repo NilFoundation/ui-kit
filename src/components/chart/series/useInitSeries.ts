@@ -46,7 +46,7 @@ export const useInitSeries = <T extends SeriesType>({
       }
 
       if (data !== nextData && nextReactive) {
-        this._series.setData(data);
+        this._series.setData(nextData);
       }
 
       if (markers !== nextMarkers && nextMarkers) {

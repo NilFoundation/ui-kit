@@ -1,6 +1,7 @@
 import { ColorType } from "lightweight-charts";
 import type { ChartOptions, DeepPartial } from "lightweight-charts";
 import { PRIMITIVE_COLORS } from "../../shared";
+import { priceScaleDefaultOptions } from "./scales";
 
 export const chartDefaultOptions: DeepPartial<ChartOptions> = {
   layout: {
@@ -9,7 +10,7 @@ export const chartDefaultOptions: DeepPartial<ChartOptions> = {
       color: PRIMITIVE_COLORS.gray900,
     },
     fontFamily: "Inter, sans-serif",
-    textColor: PRIMITIVE_COLORS.gray100,
+    textColor: PRIMITIVE_COLORS.gray400,
   },
   grid: {
     vertLines: { visible: false },
@@ -40,8 +41,10 @@ export const chartDefaultOptions: DeepPartial<ChartOptions> = {
   },
   leftPriceScale: {
     visible: true,
+    ...priceScaleDefaultOptions,
   },
   rightPriceScale: {
     visible: false,
+    ...priceScaleDefaultOptions,
   },
 };
