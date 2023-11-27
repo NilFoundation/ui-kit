@@ -1,6 +1,6 @@
 import { MutableRefObject, useLayoutEffect } from "react";
-import debounce from "lodash.debounce";
 import { ChartApiRef } from "./types";
+import { debounce } from "../../shared/utils/debounce";
 
 export const useHandleChartResize = (
   chartApiRef: MutableRefObject<ChartApiRef>,

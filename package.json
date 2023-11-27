@@ -54,7 +54,6 @@
     "@storybook/react-webpack5": "^7.5.3",
     "@storybook/testing-library": "^0.2.2",
     "@storybook/theming": "^7.5.3",
-    "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20.1.7",
     "@types/react": "^18.2.8",
     "@types/react-dom": "^18.2.4",
@@ -89,7 +88,6 @@
   "dependencies": {
     "copy-to-clipboard": "^3.3.3",
     "inline-style-expand-shorthand": "^1.6.0",
-    "lodash.debounce": "^4.0.8",
     "styletron-standard": "^3.1.0"
   },
   "pre-commit": [
