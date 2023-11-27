@@ -1,6 +1,6 @@
 import { ComponentProps, FC, ReactNode } from "react";
 import { INPUT_SIZE } from "../../input";
-import { LabelLarge, LabelMedium, LabelSmall } from "baseui/typography";
+import { LabelMedium, LabelSmall } from "baseui/typography";
 import { PRIMITIVE_COLORS } from "../../../shared";
 import { useStyletron } from "baseui";
 import { StyleObject } from "styletron-react";
@@ -17,7 +17,6 @@ type TypographyProps = ComponentProps<typeof LabelSmall>;
 const labelComponent = {
   [INPUT_SIZE.small]: (props: TypographyProps) => <LabelSmall {...props} />,
   [INPUT_SIZE.medium]: (props: TypographyProps) => <LabelMedium {...props} />,
-  [INPUT_SIZE.large]: (props: TypographyProps) => <LabelLarge {...props} />,
 };
 
 const containerStyles: StyleObject = {

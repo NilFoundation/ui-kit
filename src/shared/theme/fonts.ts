@@ -24,7 +24,7 @@ export const getDefaultFonts = (instance: StandardEngine): DefaultFonts => {
   });
 
   const InterMedium = instance.renderFontFace({
-    src: `url("${InterMediumUrl})`,
+    src: `url("${InterMediumUrl}")`,
     fontStyle: "normal",
     fontWeight: 500,
   });
