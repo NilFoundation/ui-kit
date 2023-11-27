@@ -13,7 +13,7 @@ export type ChartOptions = {
 } & DeepPartial<ChartNativeOptions>;
 
 export type ChartProps = {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
   autoResize?: boolean;
 } & ChartOptions;

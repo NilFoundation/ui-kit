@@ -40,6 +40,8 @@ export const useInitChart = ({
 
       const { onClick: nextOnClick, onCrosshairMove: nextOnCrosshairMove, ...restOptions } = options;
 
+      onClick && console.log(onClick(4 as any));
+
       if (onClick !== nextOnClick) {
         if (onClick) {
           this._chart.unsubscribeClick(onClick);
