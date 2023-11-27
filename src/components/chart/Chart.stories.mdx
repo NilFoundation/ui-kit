@@ -1,0 +1,101 @@
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
+import Chart from "./ChartWrapper";
+import { LineSeries, CandlestickSeries, HistogramSeries } from "./series";
+import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
+
+<Meta title="Data display/Chart" component={Chart} />
+
+export const Template = (args) => {
+  return (
+    <Chart width={600} height={400} {...args} />
+  );
+};
+
+# Chart
+
+<Canvas isColumn>
+  <Story name="Line chart">
+    <Template>
+      <LineSeries
+        data={[
+          { time: "2018-12-22", value: 23 },
+          { time: "2018-12-23", value: 54 },
+          { time: "2018-12-24", value: 36 },
+          { time: "2018-12-25", value: 48 },
+          { time: "2018-12-26", value: 24 },
+          { time: "2018-12-27", value: 73 },
+          { time: "2018-12-28", value: 287 },
+          { time: "2018-12-29", value: 96 },
+          { time: "2018-12-30", value: 37 },
+          { time: "2018-12-31", value: 54 },
+          { time: "2019-01-01", value: 62 },
+          { time: "2019-01-02", value: 71 },
+          { time: "2019-01-03", value: 88 },
+          { time: "2019-01-04", value: 99 },
+          { time: "2019-01-05", value: 13 },
+          { time: "2019-01-06", value: 28 },
+          { time: "2019-01-07", value: 92 },
+        ]}
+      />
+    </Template>
+  </Story>
+  <Story
+    name="Candlestick chart"
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=353-204999&mode=design&t=Xa4chShG78HsBTlk-0"
+    )}
+  >
+    <Template>
+      <CandlestickSeries
+        data={[
+          { time: "2018-10-19", open: 180.34, high: 180.99, low: 178.57, close: 179.85 },
+          { time: "2018-10-22", open: 180.82, high: 181.4, low: 177.56, close: 178.75 },
+          { time: "2018-10-23", open: 175.77, high: 179.49, low: 175.44, close: 178.53 },
+          { time: "2018-10-24", open: 178.58, high: 182.37, low: 176.31, close: 176.97 },
+          { time: "2018-10-25", open: 177.52, high: 180.5, low: 176.83, close: 179.07 },
+          { time: "2018-10-26", open: 176.88, high: 177.34, low: 170.91, close: 172.23 },
+          { time: "2018-10-29", open: 173.74, high: 175.99, low: 170.95, close: 173.2 },
+        ]}
+      />
+    </Template>
+  </Story>
+  <Story
+    name="Histogram chart"
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=353-205666&mode=design&t=Xa4chShG78HsBTlk-0"
+    )}
+  >
+    <Template>
+      <HistogramSeries
+        data={[
+          { time: "2018-12-22", value: 54 },
+          { time: "2018-12-23", value: 23 },
+          { time: "2018-12-24", value: 44 },
+          { time: "2018-12-25", value: 85 },
+          { time: "2018-12-26", value: 75 },
+          { time: "2018-12-27", value: 63 },
+          { time: "2018-12-28", value: 51 },
+        ]}
+      />
+    </Template>
+  </Story>
+</Canvas>
+
+<ArgsTable of={Chart} />
+
+### Usage:
+
+To use, import the component `Chart` from `@nilfoundation/ui-kit`.
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+        import {Chart} from "@nilfoundation/ui-kit";
+        ...
+        <Chart>
+          <LineSeries data={[{ time: '2018-12-22', value: 32.51 }]} />
+        </Chart>
+  `}
+/>

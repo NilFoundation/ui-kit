@@ -1,6 +1,6 @@
 {
   "name": "@nilfoundation/ui-kit",
-  "version": "2.1.8",
+  "version": "2.2.0",
   "description": "=Nil; Foundation user interface kit",
   "keywords": [
     "ui-kit",
@@ -30,6 +30,7 @@
     "@uiw/codemirror-themes": ">=4.21.0 < 5",
     "@uiw/react-codemirror": ">=4.21.0 < 5",
     "baseui": ">=13.0.0 < 14",
+    "lightweight-charts": ">=4.0.0 < 5",
     "react": ">=18.1.0 < 19",
     "react-dom": ">=18.1.0 < 19",
     "styletron-react": ">=6.1.0 < 7",
