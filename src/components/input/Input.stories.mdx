@@ -2,7 +2,7 @@ import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import Input from "./Input";
 import { useState } from "react";
 import { useStyletron } from "baseui";
-import { INPUT_SIZE } from "./types";
+import { INPUT_SIZE, INPUT_KIND } from "./types";
 import { HeartIcon, SearchIcon } from "../icons";
 
 <Meta title="Form/Input" component={Input} />
@@ -32,30 +32,24 @@ export const Template = ({ value: baseValue, ...args }) => {
   <Story name="Medium" args={{ placeholder: "Input Field", size: INPUT_SIZE.medium }}>
     {Template.bind({})}
   </Story>
-  <Story name="Large" args={{ placeholder: "Input Field", size: INPUT_SIZE.large }}>
-    {Template.bind({})}
-  </Story>
   <Story name="Disabled" args={{ placeholder: "Disabled Field", disabled: true, size: INPUT_SIZE.small }}>
     {Template.bind({})}
   </Story>
   <Story name="Readonly" args={{ placeholder: "Readonly Field", readOnly: true, size: INPUT_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="Error" args={{ placeholder: "Error Field", error: true, size: INPUT_SIZE.small }}>
+  <Story name="Password" args={{ placeholder: "Password Field", type: "password", size: INPUT_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="Password" args={{ placeholder: "Password Field", type: "password", size: INPUT_SIZE.small }}>
+  <Story name="Secondary" args={{ placeholder: "Secondary input", size: INPUT_SIZE.small, kind: INPUT_KIND.secondary }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Error" args={{ placeholder: "Error Field", size: INPUT_SIZE.small, kind: INPUT_KIND.error }}>
     {Template.bind({})}
   </Story>
   <Story
     name="Loading"
     args={{ placeholder: "Loading...", size: INPUT_SIZE.small, isLoading: true, endEnhancer: <HeartIcon /> }}
-  >
-    {Template.bind({})}
-  </Story>
-  <Story
-    name="With Default Value"
-    args={{ placeholder: "Default Value", value: "Default Text", size: INPUT_SIZE.small }}
   >
     {Template.bind({})}
   </Story>
@@ -71,7 +65,7 @@ export const Template = ({ value: baseValue, ...args }) => {
   >
     {Template.bind({})}
   </Story>
-  <Story name="Clearable" args={{ placeholder: "Clearable", clearable: true, size: INPUT_SIZE.small }}>
+  <Story name="Clearable" args={{ placeholder: "Clearable. Type something to check", clearable: true, size: INPUT_SIZE.small }}>
     {Template.bind({})}
   </Story>
 </Canvas>
