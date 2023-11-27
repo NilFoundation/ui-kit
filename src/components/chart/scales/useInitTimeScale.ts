@@ -32,6 +32,10 @@ export const useInitTimeScale = ({
           ...timeScaleDefaultOptions,
           ...options,
         });
+
+        if (visibleRange) {
+          this._timeScale.setVisibleRange(visibleRange);
+        }
       }
 
       return this._timeScale;
