@@ -30,19 +30,13 @@ export const useInitPriceScale = ({ options, id }: PriceScaleProps) => {
 
       return this._priceScale;
     },
-    update({ id: nextId, options: nextOptions }) {
+    setId(id) {
       if (this._priceScale === null) {
         return;
       }
 
-      if (options !== nextOptions && nextOptions) {
-        this._priceScale.applyOptions(nextOptions);
-      }
-
-      if (id !== nextId) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        this._priceScale = chart.api()!.priceScale(nextId);
-      }
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      this._priceScale = chart.api()!.priceScale(id);
     },
     clear() {
       if (this._priceScale !== null) {
@@ -62,13 +56,16 @@ export const useInitPriceScale = ({ options, id }: PriceScaleProps) => {
   useLayoutEffect(() => {
     if (!chart) return;
 
+    priceScaleApiRef.current?.setId(id);
+  }, [id]);
+
+  useLayoutEffect(() => {
+    if (!chart) return;
+
     if (options) {
-      priceScaleApiRef.current?.update({
-        options,
-        id,
-      });
+      priceScaleApiRef.current?.api()?.applyOptions(options);
     }
-  }, [options, id]);
+  }, [options]);
 
   return priceScaleApiRef;
 };

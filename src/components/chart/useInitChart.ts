@@ -9,7 +9,7 @@ export const useInitChart = ({
 }: {
   container: HTMLElement;
 } & ChartOptions) => {
-  const { onClick, onCrosshairMove, ...restOptions } = rest;
+  const { onClick, onCrosshairMove, onInit, ...restOptions } = rest;
 
   const chartApiRef = useRef<ChartApiRef>({
     _chart: null,
@@ -20,60 +20,15 @@ export const useInitChart = ({
           ...restOptions,
         });
 
-        if (onClick) {
-          this._chart.subscribeClick(onClick);
+        if (onInit) {
+          onInit(this._chart);
         }
-
-        if (onCrosshairMove) {
-          this._chart.subscribeCrosshairMove(onCrosshairMove);
-        }
-
-        this._chart.timeScale().fitContent();
       }
 
       return this._chart;
     },
-    update(options: ChartOptions) {
-      if (this._chart === null) {
-        return;
-      }
-
-      const { onClick: nextOnClick, onCrosshairMove: nextOnCrosshairMove, ...restOptions } = options;
-
-      onClick && console.log(onClick(4 as any));
-
-      if (onClick !== nextOnClick) {
-        if (onClick) {
-          this._chart.unsubscribeClick(onClick);
-        }
-
-        if (nextOnClick) {
-          this._chart.subscribeClick(nextOnClick);
-        }
-      }
-
-      if (onCrosshairMove !== nextOnCrosshairMove) {
-        if (onCrosshairMove) {
-          this._chart.unsubscribeCrosshairMove(onCrosshairMove);
-        }
-
-        if (nextOnCrosshairMove) {
-          this._chart.subscribeCrosshairMove(nextOnCrosshairMove);
-        }
-      }
-
-      this._chart.applyOptions(restOptions);
-    },
     clear() {
       if (this._chart !== null) {
-        if (onClick) {
-          this._chart.unsubscribeClick(onClick);
-        }
-
-        if (onCrosshairMove) {
-          this._chart.unsubscribeCrosshairMove(onCrosshairMove);
-        }
-
         this._chart.remove();
         this._chart = null;
       }
@@ -91,8 +46,36 @@ export const useInitChart = ({
   useLayoutEffect(() => {
     if (!container) return;
 
-    chartApiRef.current.update(rest);
-  }, [rest]);
+    if (onClick) {
+      chartApiRef.current.api()?.subscribeClick(onClick);
+    }
+
+    return () => {
+      if (onClick) {
+        chartApiRef.current.api()?.unsubscribeClick(onClick);
+      }
+    };
+  }, [onClick]);
+
+  useLayoutEffect(() => {
+    if (!container) return;
+
+    if (onCrosshairMove) {
+      chartApiRef.current.api()?.subscribeCrosshairMove(onCrosshairMove);
+    }
+
+    return () => {
+      if (onCrosshairMove) {
+        chartApiRef.current.api()?.unsubscribeCrosshairMove(onCrosshairMove);
+      }
+    };
+  }, [onCrosshairMove]);
+
+  useLayoutEffect(() => {
+    if (!container) return;
+
+    chartApiRef.current.api()?.applyOptions(restOptions);
+  }, [restOptions]);
 
   return chartApiRef;
 };

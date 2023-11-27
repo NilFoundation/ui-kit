@@ -25,7 +25,6 @@ export type SeriesTemplateProps<T extends SeriesType> = {
 export type SeriesApiRef<T extends SeriesType> = {
   _series: ISeriesApi<T> | null;
   api: () => ISeriesApi<T> | null;
-  update: (p: SeriesParameters<T>) => void;
   clear: () => void;
 };
 

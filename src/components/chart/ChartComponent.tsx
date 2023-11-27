@@ -5,11 +5,12 @@ import { ChartProps } from "./types";
 
 type ChartComponentProps = {
   container: HTMLElement;
-} & ChartProps;
+} & Omit<ChartProps, "className">;
 
-const ChartComponent: React.FC<ChartComponentProps> = ({ children, container, autoResize = true, ...rest }) => {
+const ChartComponent: React.FC<ChartComponentProps> = ({ children, container, ...rest }) => {
   const chartApiRef = useInitChart({ container, ...rest });
-  useHandleChartResize(chartApiRef, autoResize, container);
+  const autoResizeEnabled = rest.height === undefined && rest.width === undefined;
+  useHandleChartResize(chartApiRef, autoResizeEnabled, container);
 
   return <ChartContext.Provider value={chartApiRef.current}>{children}</ChartContext.Provider>;
 };

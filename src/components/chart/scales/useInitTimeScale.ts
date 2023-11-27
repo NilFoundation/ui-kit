@@ -7,8 +7,7 @@ export const useInitTimeScale = ({
   onVisibleTimeRangeChange,
   onVisibleLogicalRangeChange,
   onSizeChange,
-  fitContent,
-  initialVisibleRange,
+  visibleRange,
   options,
 }: TimeScaleProps) => {
   const chart = useContext(ChartContext);
@@ -28,25 +27,6 @@ export const useInitTimeScale = ({
         }
 
         this._timeScale = chartApi.timeScale();
-        if (onVisibleTimeRangeChange) {
-          this._timeScale.subscribeVisibleTimeRangeChange(onVisibleTimeRangeChange);
-        }
-
-        if (onVisibleLogicalRangeChange) {
-          this._timeScale.subscribeVisibleLogicalRangeChange(onVisibleLogicalRangeChange);
-        }
-
-        if (onSizeChange) {
-          this._timeScale.subscribeSizeChange(onSizeChange);
-        }
-
-        if (fitContent) {
-          this._timeScale.fitContent();
-        }
-
-        if (initialVisibleRange) {
-          this._timeScale.setVisibleRange(initialVisibleRange);
-        }
 
         this._timeScale.applyOptions({
           ...timeScaleDefaultOptions,
@@ -56,76 +36,8 @@ export const useInitTimeScale = ({
 
       return this._timeScale;
     },
-    update(params) {
-      if (this._timeScale === null) {
-        return;
-      }
-
-      const {
-        options: nextOptions,
-        onSizeChange: nextSizeChange,
-        initialVisibleRange: nextInitialVisibleRange,
-        onVisibleLogicalRangeChange: nextOnVisibleLogicalRangeChange,
-        onVisibleTimeRangeChange: nextOnVisibleTimeRangeChange,
-        fitContent: nextFitContent,
-      } = params;
-
-      if (options !== nextOptions && nextOptions) {
-        this._timeScale.applyOptions(nextOptions);
-      }
-
-      if (onSizeChange !== nextSizeChange && nextSizeChange) {
-        if (onSizeChange) {
-          this._timeScale.unsubscribeSizeChange(onSizeChange);
-        }
-
-        if (nextSizeChange) {
-          this._timeScale.subscribeSizeChange(nextSizeChange);
-        }
-      }
-
-      if (initialVisibleRange !== nextInitialVisibleRange && nextInitialVisibleRange) {
-        this._timeScale.setVisibleRange(nextInitialVisibleRange);
-      }
-
-      if (onVisibleLogicalRangeChange !== nextOnVisibleLogicalRangeChange && nextOnVisibleLogicalRangeChange) {
-        if (onVisibleLogicalRangeChange) {
-          this._timeScale.unsubscribeVisibleLogicalRangeChange(onVisibleLogicalRangeChange);
-        }
-
-        if (nextOnVisibleLogicalRangeChange) {
-          this._timeScale.subscribeVisibleLogicalRangeChange(nextOnVisibleLogicalRangeChange);
-        }
-      }
-
-      if (onVisibleTimeRangeChange !== nextOnVisibleTimeRangeChange && nextOnVisibleTimeRangeChange) {
-        if (onVisibleTimeRangeChange) {
-          this._timeScale.unsubscribeVisibleTimeRangeChange(onVisibleTimeRangeChange);
-        }
-
-        if (nextOnVisibleTimeRangeChange) {
-          this._timeScale.subscribeVisibleTimeRangeChange(nextOnVisibleTimeRangeChange);
-        }
-      }
-
-      if (fitContent !== nextFitContent && nextFitContent) {
-        this._timeScale.fitContent();
-      }
-    },
     clear() {
       if (this._timeScale !== null) {
-        if (onVisibleTimeRangeChange) {
-          this._timeScale.unsubscribeVisibleTimeRangeChange(onVisibleTimeRangeChange);
-        }
-
-        if (onVisibleLogicalRangeChange) {
-          this._timeScale.unsubscribeVisibleLogicalRangeChange(onVisibleLogicalRangeChange);
-        }
-
-        if (onSizeChange) {
-          this._timeScale.unsubscribeSizeChange(onSizeChange);
-        }
-
         this._timeScale = null;
       }
     },
@@ -143,16 +55,59 @@ export const useInitTimeScale = ({
     if (!chart) return;
 
     if (options) {
-      timeScaleApiRef.current?.update({
-        options,
-        fitContent,
-        initialVisibleRange,
-        onSizeChange,
-        onVisibleLogicalRangeChange,
-        onVisibleTimeRangeChange,
-      });
+      timeScaleApiRef.current?.api()?.applyOptions(options);
     }
-  }, [options, fitContent, initialVisibleRange, onSizeChange, onVisibleLogicalRangeChange, onVisibleTimeRangeChange]);
+  }, [options]);
+
+  useLayoutEffect(() => {
+    if (!chart) return;
+
+    if (onSizeChange) {
+      timeScaleApiRef.current?.api()?.subscribeSizeChange(onSizeChange);
+    }
+
+    return () => {
+      if (onSizeChange) {
+        timeScaleApiRef.current?.api()?.unsubscribeSizeChange(onSizeChange);
+      }
+    };
+  }, [onSizeChange]);
+
+  useLayoutEffect(() => {
+    if (!chart) return;
+
+    if (onVisibleLogicalRangeChange) {
+      timeScaleApiRef.current?.api()?.subscribeVisibleLogicalRangeChange(onVisibleLogicalRangeChange);
+    }
+
+    return () => {
+      if (onVisibleLogicalRangeChange) {
+        timeScaleApiRef.current?.api()?.unsubscribeVisibleLogicalRangeChange(onVisibleLogicalRangeChange);
+      }
+    };
+  }, [onVisibleLogicalRangeChange]);
+
+  useLayoutEffect(() => {
+    if (!chart) return;
+
+    if (onVisibleTimeRangeChange) {
+      timeScaleApiRef.current?.api()?.subscribeVisibleTimeRangeChange(onVisibleTimeRangeChange);
+    }
+
+    return () => {
+      if (onVisibleTimeRangeChange) {
+        timeScaleApiRef.current?.api()?.unsubscribeVisibleTimeRangeChange(onVisibleTimeRangeChange);
+      }
+    };
+  }, [onVisibleTimeRangeChange]);
+
+  useLayoutEffect(() => {
+    if (!chart) return;
+
+    if (visibleRange) {
+      timeScaleApiRef.current?.api()?.setVisibleRange(visibleRange);
+    }
+  }, [visibleRange]);
 
   return timeScaleApiRef;
 };

@@ -35,27 +35,13 @@ export const useInitSeries = <T extends SeriesType>({
         });
 
         this._series.setData(data);
+
+        if (markers) {
+          this._series.setMarkers(markers);
+        }
       }
 
       return this._series;
-    },
-    update(params) {
-      const { data: nextData, markers: nextMarkers, reactive: nextReactive, options: nextOptions } = params;
-      if (this._series === null) {
-        return;
-      }
-
-      if (data !== nextData && nextReactive) {
-        this._series.setData(nextData);
-      }
-
-      if (markers !== nextMarkers && nextMarkers) {
-        this._series.setMarkers(nextMarkers);
-      }
-
-      if (options !== nextOptions && nextOptions) {
-        this._series.applyOptions(nextOptions);
-      }
     },
     clear() {
       if (this._series !== null) {
@@ -76,13 +62,26 @@ export const useInitSeries = <T extends SeriesType>({
   useLayoutEffect(() => {
     if (!chart) return;
 
-    seriesApiRef.current?.update({
-      data,
-      markers,
-      reactive,
-      options,
-    });
-  }, [data, markers, reactive, options]);
+    if (markers && reactive) {
+      seriesApiRef.current.api()?.setMarkers(markers);
+    }
+  }, [markers, reactive]);
+
+  useLayoutEffect(() => {
+    if (!chart) return;
+
+    if (data && reactive) {
+      seriesApiRef.current.api()?.setData(data);
+    }
+  }, [data, reactive]);
+
+  useLayoutEffect(() => {
+    if (!chart) return;
+
+    if (options) {
+      seriesApiRef.current.api()?.applyOptions(options);
+    }
+  }, [options]);
 
   return seriesApiRef;
 };

@@ -2,13 +2,12 @@ import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import Chart from "./ChartWrapper";
 import { LineSeries, CandlestickSeries, HistogramSeries } from "./series";
 import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
-import {TestComponent} from './TestComponent';
 
 <Meta title="Data display/Chart" component={Chart} />
 
 export const Template = (args) => {
   return (
-    <TestComponent />
+    <Chart width={600} height={400} {...args} />
   );
 };
 

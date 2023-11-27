@@ -13,7 +13,7 @@ export const useHandleChartResize = (
     if (!autoResizeEnabled) return;
 
     const handleResize = debounce(() => {
-      chartApiRef.current?.update({
+      chartApiRef.current?.api()?.applyOptions({
         width: container.clientWidth,
         height: container.clientHeight,
       });

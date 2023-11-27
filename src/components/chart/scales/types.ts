@@ -17,14 +17,13 @@ export type PriceScaleOptions = DeepPartial<PriceScaleNativeOptions>;
 export type TimeScaleApiRef = {
   _timeScale: ITimeScaleApi<Time> | null;
   api: () => ITimeScaleApi<Time> | null;
-  update: (p: TimeScaleProps) => void;
   clear: () => void;
 };
 
 export type PriceScaleApiRef = {
   _priceScale: IPriceScaleApi | null;
   api: () => IPriceScaleApi | null;
-  update: (p: PriceScaleProps) => void;
+  setId: (id: string) => void;
   clear: () => void;
 };
 
@@ -32,8 +31,7 @@ export type TimeScaleProps = {
   onVisibleTimeRangeChange?: TimeRangeChangeEventHandler<Time>;
   onVisibleLogicalRangeChange?: LogicalRangeChangeEventHandler;
   onSizeChange?: SizeChangeEventHandler;
-  fitContent?: boolean;
-  initialVisibleRange?: Range<Time>;
+  visibleRange?: Range<Time>;
   options?: TimeScaleOptions;
 };
 
