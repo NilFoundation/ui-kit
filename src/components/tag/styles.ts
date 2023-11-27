@@ -1,11 +1,11 @@
 import { expandProperty } from "inline-style-expand-shorthand";
 import { TAG_KIND } from "./types";
 import { PRIMITIVE_COLORS } from "../../shared";
+import { WithoutBorderStyles } from "../../shared/styles/border";
 
 export const tagRootBaseStyles = {
-  ...expandProperty("border", "none"),
+  ...WithoutBorderStyles,
   ...expandProperty("padding", "2px 8px"),
-  ...expandProperty("margin", "2px"),
   ...expandProperty("borderRadius", "2px"),
   color: PRIMITIVE_COLORS.gray50,
   fontSize: "12px",
@@ -16,6 +16,7 @@ export const mediumStyles = {
   ...expandProperty("padding", "4px 12px"),
   fontSize: "16px",
   lineHeight: "22px",
+  height: "auto",
 };
 
 export const tagRootKindModifiedStyles = {
