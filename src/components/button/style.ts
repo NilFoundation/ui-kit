@@ -85,6 +85,7 @@ export const buttonKindModifiedStyles = {
     backgroundColor: PRIMITIVE_COLORS.gray800,
     color: PRIMITIVE_COLORS.gray200,
     ...expandProperty("borderRadius", SPACE[2]),
+    ...expandProperty("padding", "8px 12px"),
 
     ":hover": {
       backgroundColor: PRIMITIVE_COLORS.gray700,
