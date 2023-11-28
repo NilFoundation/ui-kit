@@ -32,6 +32,7 @@ export type TimeScaleProps = {
   onVisibleLogicalRangeChange?: LogicalRangeChangeEventHandler;
   onSizeChange?: SizeChangeEventHandler;
   visibleRange?: Range<Time>;
+  visibleLogicalRange?: Range<number>;
   options?: TimeScaleOptions;
 };
 
