@@ -2,7 +2,6 @@ import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import Chart from "./ChartWrapper";
 import { LineSeries, CandlestickSeries, HistogramSeries } from "./series";
 import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
-import {TestComponent} from './TestComponent';
 
 <Meta title="Data display/Chart" component={Chart} />
 
@@ -16,7 +15,29 @@ export const Template = (args) => {
 
 <Canvas isColumn>
   <Story name="Line chart">
-    <TestComponent />
+    <Template>
+      <LineSeries
+        data={[
+          { time: "2018-12-22", value: 23 },
+          { time: "2018-12-23", value: 54 },
+          { time: "2018-12-24", value: 36 },
+          { time: "2018-12-25", value: 48 },
+          { time: "2018-12-26", value: 24 },
+          { time: "2018-12-27", value: 73 },
+          { time: "2018-12-28", value: 287 },
+          { time: "2018-12-29", value: 96 },
+          { time: "2018-12-30", value: 37 },
+          { time: "2018-12-31", value: 54 },
+          { time: "2019-01-01", value: 62 },
+          { time: "2019-01-02", value: 71 },
+          { time: "2019-01-03", value: 88 },
+          { time: "2019-01-04", value: 99 },
+          { time: "2019-01-05", value: 13 },
+          { time: "2019-01-06", value: 28 },
+          { time: "2019-01-07", value: 92 },
+        ]}
+      />
+    </Template>
   </Story>
   <Story
     name="Candlestick chart"
