@@ -24,4 +24,5 @@ export type ChartApiRef = {
   _chart: IChartApi | null;
   api: () => IChartApi | null;
   clear: () => void;
+  destroyed: boolean;
 };

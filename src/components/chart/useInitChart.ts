@@ -14,7 +14,7 @@ export const useInitChart = ({
   const chartApiRef = useRef<ChartApiRef>({
     _chart: null,
     api() {
-      if (this._chart === null) {
+      if (this._chart === null && !this.destroyed) {
         this._chart = createChart(container, {
           ...chartDefaultOptions,
           ...restOptions,
@@ -31,8 +31,10 @@ export const useInitChart = ({
       if (this._chart !== null) {
         this._chart.remove();
         this._chart = null;
+        this.destroyed = true;
       }
     },
+    destroyed: false,
   });
 
   useLayoutEffect(() => {
