@@ -8,6 +8,7 @@ export const useInitTimeScale = ({
   onVisibleLogicalRangeChange,
   onSizeChange,
   visibleRange,
+  visibleLogicalRange,
   options,
 }: TimeScaleProps) => {
   const chart = useContext(ChartContext);
@@ -35,6 +36,10 @@ export const useInitTimeScale = ({
 
         if (visibleRange) {
           this._timeScale.setVisibleRange(visibleRange);
+        }
+
+        if (visibleLogicalRange) {
+          this._timeScale.setVisibleLogicalRange(visibleLogicalRange);
         }
       }
 
@@ -112,6 +117,14 @@ export const useInitTimeScale = ({
       timeScaleApiRef.current?.api()?.setVisibleRange(visibleRange);
     }
   }, [visibleRange]);
+
+  useLayoutEffect(() => {
+    if (!chart) return;
+
+    if (visibleLogicalRange) {
+      timeScaleApiRef.current?.api()?.setVisibleLogicalRange(visibleLogicalRange);
+    }
+  }, [visibleLogicalRange]);
 
   return timeScaleApiRef;
 };
