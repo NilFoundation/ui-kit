@@ -46,7 +46,7 @@ export const useInitSeries = <T extends SeriesType>({
     clear() {
       if (this._series !== null) {
         chart.api()?.removeSeries(this._series);
-        //this._series = null;
+        this._series = null;
       }
     },
   });
@@ -73,8 +73,6 @@ export const useInitSeries = <T extends SeriesType>({
     if (data && reactive) {
       seriesApiRef.current.api()?.setData(data);
     }
-
-    // check if we need to remove data here before adding new one
   }, [data, reactive]);
 
   useLayoutEffect(() => {
