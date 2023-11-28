@@ -27,6 +27,7 @@ export type SeriesApiRef<T extends SeriesType> = {
   _series: ISeriesApi<T> | null;
   api: () => ISeriesApi<T> | null;
   clear: () => void;
+  destroyed: boolean;
 };
 
 export type SeriesOptions<T extends SeriesType> = SeriesPartialOptionsMap[T];
