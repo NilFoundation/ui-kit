@@ -15,12 +15,12 @@ export type SeriesParameters<T extends SeriesType> = {
   markers?: SeriesMarker<Time>[];
   reactive?: boolean;
   options?: SeriesOptions<T>;
-  legendId?: string;
 };
 
 export type SeriesTemplateProps<T extends SeriesType> = {
   type: T;
   children?: ReactNode;
+  onInit?: (series: ISeriesApi<T>) => void;
 } & SeriesParameters<T>;
 
 export type SeriesApiRef<T extends SeriesType> = {

@@ -10,6 +10,7 @@ export const useInitTimeScale = ({
   visibleRange,
   visibleLogicalRange,
   options,
+  onInit,
 }: TimeScaleProps) => {
   const chart = useContext(ChartContext);
 
@@ -54,6 +55,11 @@ export const useInitTimeScale = ({
 
   useLayoutEffect(() => {
     timeScaleApiRef.current.api();
+
+    if (onInit) {
+      const timeScale = timeScaleApiRef.current.api();
+      timeScale && onInit(timeScale);
+    }
 
     return () => {
       timeScaleApiRef.current.clear();
