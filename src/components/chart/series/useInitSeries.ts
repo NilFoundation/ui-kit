@@ -10,6 +10,7 @@ export const useInitSeries = <T extends SeriesType>({
   options,
   reactive,
   markers,
+  legendId,
 }: Omit<SeriesTemplateProps<T>, "children">) => {
   const chart = useContext(ChartContext);
 
