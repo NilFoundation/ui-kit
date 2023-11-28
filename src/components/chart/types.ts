@@ -10,8 +10,10 @@ import { ReactNode } from "react";
 export type ChartOptions = {
   onClick?: MouseEventHandler<Time>;
   onCrosshairMove?: MouseEventHandler<Time>;
-  onInit?: (chart: IChartApi) => void;
+  onInit?: ChartInitHandler;
 } & DeepPartial<ChartNativeOptions>;
+
+export type ChartInitHandler = (chart: IChartApi) => void;
 
 export type ChartProps = {
   children?: ReactNode;

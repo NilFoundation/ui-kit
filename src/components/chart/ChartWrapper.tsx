@@ -26,7 +26,7 @@ const ChartRenderFunction: ForwardRefRenderFunction<HTMLDivElement, ChartProps> 
   );
 
   return (
-    <div ref={containerRef} className={`${className} ${css(s.containerStyles)}`}>
+    <div ref={containerRef} className={`${className ? className + " " : ""}${css(s.containerStyles)}`}>
       {!!container && (
         <ChartComponent container={container} {...rest}>
           {children}

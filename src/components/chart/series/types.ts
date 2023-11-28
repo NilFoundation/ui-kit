@@ -3,7 +3,7 @@ import type {
   SeriesType as NativeSeriesType,
   SeriesDataItemTypeMap,
   SeriesMarker,
-  SeriesOptionsMap,
+  SeriesPartialOptionsMap,
   Time,
 } from "lightweight-charts";
 import { ReactNode } from "react";
@@ -28,6 +28,6 @@ export type SeriesApiRef<T extends SeriesType> = {
   clear: () => void;
 };
 
-export type SeriesOptions<T extends SeriesType> = SeriesOptionsMap[T];
+export type SeriesOptions<T extends SeriesType> = SeriesPartialOptionsMap[T];
 
 export type SeriesProps<T extends SeriesType> = Omit<SeriesTemplateProps<T>, "type">;
