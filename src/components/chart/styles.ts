@@ -11,12 +11,6 @@ const containerStyles: StyleObject = {
   ...expandProperty("padding", SPACE[24]),
 };
 
-const legend = {
-  marginBottom: SPACE[8],
-  flexBasis: "56px",
-};
-
 export const styles = {
   containerStyles,
-  legend,
 };
