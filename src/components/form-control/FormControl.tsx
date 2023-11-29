@@ -9,7 +9,7 @@ export interface ICounter {
   length: number;
 }
 
-export type FormControlProps = Omit<BaseFormControlProps, "counter"> & {
+export type FormControlProps = Omit<BaseFormControlProps, "counter" | "positive"> & {
   size?: INPUT_SIZE;
   readOnly?: boolean;
   isLoading?: boolean;

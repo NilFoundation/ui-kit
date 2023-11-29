@@ -1,42 +1,47 @@
 import { InputOverrides } from "baseui/input";
-import { inputContainerModifiedStyles, inputDisabledStyles, inputModifiedStyles } from "./styles";
+import { inputContainerModifiedStyles, inputModifiedStyles } from "./styles";
 import { INPUT_KIND, INPUT_SIZE } from "./types";
 import { PRIMITIVE_COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { StyleObject } from "styletron-standard";
 
-const getColor = (isFocused: boolean, kind: INPUT_KIND): string => {
+const getColor = (isFocused: boolean, error: boolean, disabled: boolean): string => {
   if (isFocused) {
     return PRIMITIVE_COLORS.gray50;
   }
-  if (kind === INPUT_KIND.error) {
+
+  if (error) {
     return PRIMITIVE_COLORS.red500;
+  }
+
+  if (disabled) {
+    return PRIMITIVE_COLORS.gray400;
   }
 
   return PRIMITIVE_COLORS.gray200;
 };
 
-const getBorderStyle = (isFocused: boolean, kind: INPUT_KIND): StyleObject => {
+const getBorderStyle = (isFocused: boolean, kind: INPUT_KIND, error: boolean): StyleObject => {
   if (isFocused) {
     return {
-      borderColor: PRIMITIVE_COLORS.gray50,
+      ...expandProperty("borderColor", PRIMITIVE_COLORS.gray50),
     };
   }
 
-  if (kind === INPUT_KIND.error) {
+  if (error) {
     return {
-      borderColor: PRIMITIVE_COLORS.red500,
+      ...expandProperty("borderColor", PRIMITIVE_COLORS.red500),
     };
   }
 
   if (kind === INPUT_KIND.secondary) {
     return {
-      borderColor: PRIMITIVE_COLORS.gray900,
+      ...expandProperty("borderColor", PRIMITIVE_COLORS.gray900),
     };
   }
 
   return {
-    borderColor: PRIMITIVE_COLORS.gray800,
+    ...expandProperty("borderColor", PRIMITIVE_COLORS.gray800),
   };
 };
 
@@ -52,13 +57,19 @@ const getBackgroundColor = (kind: INPUT_KIND): StyleObject => {
   };
 };
 
-const getHoverStyles = (kind: INPUT_KIND): StyleObject => {
-  const transition = "background-color 0.15s ease-in-out";
+const getHoverStyles = (kind: INPUT_KIND, disabled: boolean, isFocused: boolean): StyleObject => {
+  if (disabled) {
+    return {};
+  }
+
+  const transition = "background-color 0.15s ease-in-out, border-color 0.15s ease-in-out";
+
   if (kind === INPUT_KIND.secondary) {
     return {
       transition,
       ":hover": {
         backgroundColor: PRIMITIVE_COLORS.gray800,
+        ...(!isFocused ? expandProperty("borderColor", PRIMITIVE_COLORS.gray800) : {}),
       },
     };
   }
@@ -67,6 +78,7 @@ const getHoverStyles = (kind: INPUT_KIND): StyleObject => {
     transition,
     ":hover": {
       backgroundColor: PRIMITIVE_COLORS.gray700,
+      ...(!isFocused ? expandProperty("borderColor", PRIMITIVE_COLORS.gray700) : {}),
     },
   };
 };
@@ -74,56 +86,54 @@ const getHoverStyles = (kind: INPUT_KIND): StyleObject => {
 export const getInputOverrides = (size: INPUT_SIZE, kind: INPUT_KIND): InputOverrides => {
   return {
     Root: {
-      style: ({ $disabled, $isFocused }) => ({
+      style: ({ $disabled, $isFocused, $error }) => ({
         ...getBackgroundColor(kind),
         ...inputContainerModifiedStyles[size],
-        ...($disabled ? inputDisabledStyles : {}),
-        ...getBorderStyle($isFocused, kind),
-        ...getHoverStyles(kind),
+        ...getBorderStyle($isFocused, kind, $error),
+        ...getHoverStyles(kind, $disabled, $isFocused),
       }),
     },
     InputContainer: {
-      style: ({ $disabled }) => ({
+      style: {
         backgroundColor: "transparent",
-        ...($disabled ? inputDisabledStyles : {}),
-      }),
+      },
     },
     Input: {
-      style: ({ $isFocused }) => ({
+      style: ({ $isFocused, $error, $disabled }) => ({
         ...inputModifiedStyles[size],
-        color: getColor($isFocused, kind),
+        color: getColor($isFocused, $error, $disabled),
         "-webkit-text-fill-color": "unset",
 
         "::placeholder": {
-          color: getColor($isFocused, kind),
+          color: getColor($isFocused, $error, $disabled),
         },
       }),
     },
     StartEnhancer: {
-      style: ({ $error, $isFocused }) => ({
+      style: ({ $error, $isFocused, $disabled }) => ({
         backgroundColor: "transparent",
-        color: getColor($error, $isFocused),
+        color: getColor($isFocused, $error, $disabled),
         ...expandProperty("padding", "0 12px 0 0"),
       }),
     },
     EndEnhancer: {
-      style: ({ $error, $isFocused }) => ({
+      style: ({ $error, $isFocused, $disabled }) => ({
         backgroundColor: "transparent",
         ...expandProperty("padding", "0 0 0 12px"),
-        color: getColor($error, $isFocused),
+        color: getColor($isFocused, $error, $disabled),
       }),
     },
     ClearIcon: {
       props: {
         size: "22px",
       },
-      style: ({ $error, $isFocused }) => ({
-        color: getColor($error, $isFocused),
+      style: ({ $error, $isFocused, $disabled }) => ({
+        color: getColor($isFocused, $error, $disabled),
       }),
     },
     MaskToggleButton: {
-      style: ({ $error, $isFocused }) => ({
-        color: getColor($error, $isFocused),
+      style: ({ $error, $isFocused, $disabled }) => ({
+        color: getColor($isFocused, $error, $disabled),
         cursor: "pointer",
       }),
     },

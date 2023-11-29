@@ -1,5 +1,4 @@
 import { INPUT_SIZE } from "./types";
-import { PRIMITIVE_COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
 
 export const inputContainerModifiedStyles = {
@@ -24,12 +23,6 @@ export const inputModifiedStyles = {
     lineHeight: "22px",
     ...expandProperty("padding", "12px 0"),
   },
-};
-
-export const inputDisabledStyles = {
-  backgroundColor: "transparent",
-  ...expandProperty("borderColor", PRIMITIVE_COLORS.gray600),
-  color: PRIMITIVE_COLORS.gray500,
 };
 
 export const spinnerStyles = {
