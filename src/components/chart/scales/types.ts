@@ -34,9 +34,11 @@ export type TimeScaleProps = {
   visibleRange?: Range<Time>;
   visibleLogicalRange?: Range<number>;
   options?: TimeScaleOptions;
+  onInit?: (timeScale: ITimeScaleApi<Time>) => void;
 };
 
 export type PriceScaleProps = {
   options?: PriceScaleOptions;
   id: string;
+  onInit?: (priceScale: IPriceScaleApi) => void;
 };

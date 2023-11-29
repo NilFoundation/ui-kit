@@ -11,13 +11,6 @@ const containerStyles: StyleObject = {
   ...expandProperty("padding", SPACE[24]),
 };
 
-const legend = {
-  marginBottom: SPACE[8],
-  height: "56px",
-  flexShrink: 0,
-};
-
 export const styles = {
   containerStyles,
-  legend,
 };
