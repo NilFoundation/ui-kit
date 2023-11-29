@@ -35,6 +35,17 @@ export const Template = ({ value: baseValue, ...args }) => {
   <Story name="Disabled" args={{ placeholder: "Disabled Field", disabled: true, size: INPUT_SIZE.small }}>
     {Template.bind({})}
   </Story>
+  <Story
+    name="Secondary disabled"
+    args={{
+      placeholder: "Disabled Secondary Field",
+      disabled: true,
+      size: INPUT_SIZE.small,
+      kind: INPUT_KIND.secondary,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
   <Story name="Readonly" args={{ placeholder: "Readonly Field", readOnly: true, size: INPUT_SIZE.small }}>
     {Template.bind({})}
   </Story>
@@ -44,7 +55,7 @@ export const Template = ({ value: baseValue, ...args }) => {
   <Story name="Secondary" args={{ placeholder: "Secondary input", size: INPUT_SIZE.small, kind: INPUT_KIND.secondary }}>
     {Template.bind({})}
   </Story>
-  <Story name="Error" args={{ placeholder: "Error Field", size: INPUT_SIZE.small, kind: INPUT_KIND.error }}>
+  <Story name="Error" args={{ placeholder: "Error Field", size: INPUT_SIZE.small, error: true }}>
     {Template.bind({})}
   </Story>
   <Story
@@ -65,7 +76,10 @@ export const Template = ({ value: baseValue, ...args }) => {
   >
     {Template.bind({})}
   </Story>
-  <Story name="Clearable" args={{ placeholder: "Clearable. Type something to check", clearable: true, size: INPUT_SIZE.small }}>
+  <Story
+    name="Clearable"
+    args={{ placeholder: "Clearable. Type something to check", clearable: true, size: INPUT_SIZE.small }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>

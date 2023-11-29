@@ -6,5 +6,4 @@ export enum INPUT_SIZE {
 export enum INPUT_KIND {
   primary = "primary",
   secondary = "secondary",
-  error = "error",
 }
