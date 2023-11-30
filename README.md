@@ -54,7 +54,7 @@ function App() {
 
 ## SSR
 
-Use [this workaround](https://github.com/vercel/next.js/tree/canary/examples/with-styletron) to make Styletron, which this package is levelraging, work with SSR.
+Use [this workaround](https://github.com/tajo/nextjs-baseweb) to make Styletron, which this package is levelraging, work with SSR.
 
 ## License
 
