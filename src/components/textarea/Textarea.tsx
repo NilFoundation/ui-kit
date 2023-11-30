@@ -7,7 +7,7 @@ import { useStyletron } from "baseui";
 import TextareaSpinner from "./ui/TextareaSpinner";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
-export type TextareaProps = BaseTextareaProps & {
+export type TextareaProps = Omit<BaseTextareaProps, "positive"> & {
   size?: TEXTAREA_SIZE;
   isLoading?: boolean;
 };

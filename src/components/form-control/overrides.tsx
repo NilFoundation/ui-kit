@@ -3,17 +3,16 @@ import { FormControlOverrides } from "baseui/form-control";
 import { PRIMITIVE_COLORS } from "../../shared";
 import FormControlLabel from "./ui/FormControlLabel";
 
-const getCaptionColor = (isError: boolean, isPositive: boolean, isDisabled: boolean): string => {
+const getCaptionColor = (isError: boolean, isDisabled: boolean): string => {
   if (isDisabled) {
-    return PRIMITIVE_COLORS.gray300;
+    return PRIMITIVE_COLORS.gray400;
   }
+
   if (isError) {
-    return PRIMITIVE_COLORS.red400;
+    return PRIMITIVE_COLORS.red500;
   }
-  if (isPositive) {
-    return PRIMITIVE_COLORS.green400;
-  }
-  return PRIMITIVE_COLORS.gray300;
+
+  return PRIMITIVE_COLORS.gray200;
 };
 
 export const getFormControlOverrides = (
@@ -28,8 +27,8 @@ export const getFormControlOverrides = (
       ),
     },
     Caption: {
-      style: ({ $error, $positive, $disabled }) => ({
-        color: getCaptionColor($error, $positive, $disabled),
+      style: ({ $error, $disabled }) => ({
+        color: getCaptionColor($error, $disabled),
       }),
     },
   };
