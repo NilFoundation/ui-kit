@@ -1,4 +1,4 @@
-import { ComponentProps, FC, memo, useCallback, useEffect, useRef, useState } from "react";
+import { ComponentProps, FC, memo, useCallback, useRef, useState } from "react";
 import {
   dashedBlockStyles,
   dashedBlockActiveStyles,
@@ -14,6 +14,7 @@ import { debounce } from "../../shared/utils/debounce";
 import { PROGRESS_BAR_SIZE } from "./types";
 import { ProgressBarProps as BaseProgressBarProps } from "baseui/progress-bar";
 import { LabelLarge, LabelMedium, LabelSmall } from "baseui/typography";
+import { useOnWindowResize } from "../../shared/hooks/useOnWindowResize";
 
 export type ProgressBarProps = Omit<BaseProgressBarProps, "steps"> & {
   size?: PROGRESS_BAR_SIZE;
@@ -64,16 +65,9 @@ const ProgressBar: FC<ProgressBarProps> = ({
     }
   }, [containerRef]);
 
-  useEffect(() => {
-    onResizeHandler();
+  const debouncedResizeHandler = debounce(onResizeHandler, 200);
 
-    const debouncedResizeHandler = debounce(onResizeHandler, 200);
-
-    window.addEventListener("resize", debouncedResizeHandler);
-    return () => {
-      window.removeEventListener("resize", debouncedResizeHandler);
-    };
-  }, [onResizeHandler]);
+  useOnWindowResize(debouncedResizeHandler);
 
   return (
     <Container className={className} ref={containerRef}>

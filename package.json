@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "bundle-types": "api-extractor run",
     "postbuild": "npm run bundle-types && rm -rf ./dist/.temp",
     "preview": "vite preview",
