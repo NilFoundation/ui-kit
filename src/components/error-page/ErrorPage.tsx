@@ -7,7 +7,7 @@ import { getErrorCodeOverrides, getErrorDescriptionOverrides } from "./overrides
 import WhiteRect from "./ui/WhiteRect";
 import { ErrorPageProps } from "./types";
 import Redirect from "./ui/Redirect";
-//import { useIsMobile } from "./useIsMobile";
+import { useIsMobile } from "./useIsMobile";
 
 const ErrorPage: React.FC<ErrorPageProps> = ({
   errorCode,
@@ -17,7 +17,7 @@ const ErrorPage: React.FC<ErrorPageProps> = ({
   redirectPath,
 }) => {
   const [css] = useStyletron();
-  const isMobile = false;
+  const isMobile = useIsMobile();
 
   return (
     <div className={css(s.containerStyles)}>
