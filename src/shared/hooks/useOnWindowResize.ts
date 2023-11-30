@@ -5,6 +5,7 @@ export function useOnWindowResize(callback: () => void) {
     currentCallback = _useRef.current;
 
   useEffect(function () {
+    currentCallback();
     window.addEventListener("resize", currentCallback);
 
     return function () {
