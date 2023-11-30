@@ -2,11 +2,19 @@ import { useState } from "react";
 import { mobileScreenMaxWidth } from "./styles";
 import { debounce } from "../../shared/utils/debounce";
 import { useOnWindowResize } from "../../shared/hooks/useOnWindowResize";
+import { isBrowser } from "../../shared/utils/isBrowser";
 
-const mediaQueryMobile = window.matchMedia(`(max-width: ${mobileScreenMaxWidth}px)`);
+const getUniversalMediaQueryMobile = () => {
+  if (!isBrowser()) {
+    return null;
+  }
+
+  return window.matchMedia(`(max-width: ${mobileScreenMaxWidth}px)`);
+};
 
 const getisMobile = (): boolean => {
-  return mediaQueryMobile.matches;
+  const mediaQueryMobile = getUniversalMediaQueryMobile();
+  return mediaQueryMobile ? mediaQueryMobile.matches : false;
 };
 
 export const useIsMobile = () => {
