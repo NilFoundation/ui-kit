@@ -1,9 +1,10 @@
-import { FC, ReactNode, useCallback, useEffect, useRef, useState, memo } from "react";
+import { FC, ReactNode, useCallback, useRef, useState, memo } from "react";
 import { styled } from "baseui";
 import { dotsWrapperStyles, getContainerStyles, getRowWrapperStyles } from "./styles";
 import { debounce } from "../../shared/utils/debounce";
 import { getArrayFromN } from "../../shared/utils/getArrayFromN";
 import { PATTERN_KIND } from "./types";
+import { useOnWindowResize } from "../../shared/hooks/useOnWindowResize";
 
 type PatternLayoutProps = {
   width?: string | number;
@@ -36,16 +37,9 @@ const PatternLayout: FC<PatternLayoutProps> = ({
     }
   }, [containerRef]);
 
-  useEffect(() => {
-    onResizeHandler();
+  const debouncedResizeHandler = debounce(onResizeHandler, 200);
 
-    const debouncedResizeHandler = debounce(onResizeHandler, 200);
-
-    window.addEventListener("resize", debouncedResizeHandler);
-    return () => {
-      window.removeEventListener("resize", debouncedResizeHandler);
-    };
-  }, [onResizeHandler]);
+  useOnWindowResize(debouncedResizeHandler);
 
   return (
     <Container ref={containerRef} className={className}>

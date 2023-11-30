@@ -1,5 +1,5 @@
 import React from "react";
-import { ThemeWrapper } from "../src/shared/theme";
+import { ThemeWrapper } from "../src/shared/theme/ThemeWrapper";
 import theme from "./theme";
 import type { Decorator, Parameters } from "@storybook/react";
 

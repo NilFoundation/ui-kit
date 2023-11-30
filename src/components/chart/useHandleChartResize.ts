@@ -1,28 +1,23 @@
-import { MutableRefObject, useLayoutEffect } from "react";
+import { MutableRefObject } from "react";
 import { ChartApiRef } from "./types";
 import { debounce } from "../../shared/utils/debounce";
+import { useOnWindowResize } from "../../shared/hooks/useOnWindowResize";
 
 export const useHandleChartResize = (
   chartApiRef: MutableRefObject<ChartApiRef>,
   autoResizeEnabled: boolean,
   container?: HTMLElement
 ) => {
-  useLayoutEffect(() => {
+  const handleResize = debounce(() => {
     if (!container) return;
 
     if (!autoResizeEnabled) return;
 
-    const handleResize = debounce(() => {
-      chartApiRef.current?.api()?.applyOptions({
-        width: container.clientWidth,
-        height: container.clientHeight,
-      });
-    }, 100);
+    chartApiRef.current?.api()?.applyOptions({
+      width: container.clientWidth,
+      height: container.clientHeight,
+    });
+  }, 100);
 
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [autoResizeEnabled, container]);
+  useOnWindowResize(handleResize);
 };
