@@ -10,7 +10,6 @@ type TextareaSpinnerProps = {
 const spinnerSize = {
   [TEXTAREA_SIZE.small]: SPINNER_SIZE.small,
   [TEXTAREA_SIZE.medium]: SPINNER_SIZE.medium,
-  [TEXTAREA_SIZE.large]: SPINNER_SIZE.large,
 };
 
 const TextareaSpinner: FC<TextareaSpinnerProps> = ({ size = TEXTAREA_SIZE.medium }) => {

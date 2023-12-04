@@ -39,6 +39,24 @@ export const Template = ({ checked: baseChecked, ...args }) => {
   <Story name="Indeterminate checkbox" args={{ children: "Label", isIndeterminate: true }}>
     {Template.bind({})}
   </Story>
+  <Story name="Toggle checked" args={{ children: "Label", checked: true, checkmarkType: "toggle" }}>
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Toggle checked with label placement"
+    args={{ children: "Label", checked: true, checkmarkType: "toggle", labelPlacement: LABEL_PLACEMENT.left }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story name="Toggle unchecked" args={{ children: "Label", checked: false, checkmarkType: "toggle" }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Toggle with error" args={{ children: "Label", error: true, checkmarkType: "toggle" }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Toggle disabled" args={{ children: "Label", disabled: true, checkmarkType: "toggle" }}>
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 <ArgsTable of={Checkbox} />

@@ -9,32 +9,94 @@ import {
   getCheckmarkErrorModifiedStyles,
 } from "./styles";
 import { PRIMITIVE_COLORS } from "../../shared";
+import { expandProperty } from "inline-style-expand-shorthand";
+import { StyleObject } from "styletron-standard";
 
 const getCheckmarkBackgroundImage = (isIndeterminate: boolean, isChecked: boolean, isError: boolean) => {
   if (isIndeterminate) {
     return `url("data:image/svg+xml,${isError ? whiteIndeterminateCheckmark : blackIndeterminateCheckmark}")`;
   }
+
   if (!isChecked) {
     return null;
   }
+
   return `url("data:image/svg+xml,${isError ? whiteCheckmark : blackCheckmark}")`;
+};
+
+const getToggleBackgroundStyles = (isChecked: boolean, isError: boolean): StyleObject => {
+  const transition = "background-color 0.15s";
+
+  if (isError) {
+    return {
+      backgroundColor: PRIMITIVE_COLORS.red500,
+      transition,
+    };
+  }
+
+  if (isChecked) {
+    return {
+      backgroundColor: PRIMITIVE_COLORS.green200,
+      transition,
+      ":hover": {
+        backgroundColor: PRIMITIVE_COLORS.green100,
+      },
+      ":active": {
+        backgroundColor: PRIMITIVE_COLORS.green50,
+      },
+    };
+  }
+
+  return {
+    backgroundColor: PRIMITIVE_COLORS.gray200,
+    transition,
+    ":hover": {
+      backgroundColor: PRIMITIVE_COLORS.gray100,
+    },
+    ":active": {
+      backgroundColor: PRIMITIVE_COLORS.gray50,
+    },
+  };
+};
+
+const getLabelColorStyles = ($disabled: boolean): StyleObject => {
+  const transition = "color 0.15s";
+
+  if ($disabled) {
+    return {
+      color: PRIMITIVE_COLORS.gray400,
+      transition,
+    };
+  }
+
+  return {
+    color: PRIMITIVE_COLORS.gray200,
+    transition,
+    ":hover": {
+      color: PRIMITIVE_COLORS.gray100,
+    },
+    ":active": {
+      color: PRIMITIVE_COLORS.gray50,
+    },
+  };
 };
 
 export const getCheckboxOverrides = (): CheckboxOverrides => {
   return {
     Root: {
-      style: {
+      style: ({ $disabled }) => ({
         alignItems: "center",
-      },
+        ...getLabelColorStyles($disabled),
+      }),
     },
     Label: {
       component: LabelMedium,
-      style: ({ $labelPlacement, $disabled }) => ({
+      style: ({ $labelPlacement }) => ({
         paddingBottom: $labelPlacement === "top" ? "10px" : null,
         paddingTop: $labelPlacement === "bottom" ? "10px" : null,
         paddingRight: $labelPlacement === "left" ? "10px" : null,
         paddingLeft: $labelPlacement === "right" ? "10px" : null,
-        color: $disabled ? PRIMITIVE_COLORS.gray600 : PRIMITIVE_COLORS.white,
+        color: "inherit",
       }),
     },
     Checkmark: {
@@ -46,6 +108,27 @@ export const getCheckboxOverrides = (): CheckboxOverrides => {
         ...($error ? getCheckmarkErrorModifiedStyles($isFocused) : {}),
         ...($checked || $isIndeterminate ? getCheckmarkCheckedModifiedStyles($isFocused, $error) : {}),
         ...($disabled ? getCheckmarkDisabledModifiedStyles($checked) : {}),
+      }),
+    },
+    Toggle: {
+      style: {
+        backgroundColor: PRIMITIVE_COLORS.gray800,
+        transition: "transform 0.15s",
+        width: "14px",
+        height: "14px",
+        ...expandProperty("borderRadius", "1px"),
+      },
+    },
+    ToggleTrack: {
+      style: ({ $checked, $error }) => ({
+        width: "30px",
+        height: "16px",
+        boxSizing: "border-box",
+        boxShadow: "none",
+        ...expandProperty("borderRadius", "1px"),
+        ...expandProperty("padding", "1px"),
+        ...getToggleBackgroundStyles($checked, $error),
+        ...expandProperty("margin", "0"),
       }),
     },
   };

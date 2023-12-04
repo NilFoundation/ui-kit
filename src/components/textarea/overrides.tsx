@@ -1,57 +1,44 @@
 import { TextareaOverrides } from "baseui/textarea";
-import { PRIMITIVE_COLORS } from "../../shared";
-import { TEXTAREA_SIZE } from "./types";
+import { TEXTAREA_KIND, TEXTAREA_SIZE } from "./types";
 import {
   clearIconContainerModifiedStyles,
   clearIconSize,
   inputContainerModifiedStyles,
-  inputDisabledStyles,
-  rootDisabledStyles,
+  inputModifiedStyles,
 } from "./styles";
-import { BorderRadiusStyles } from "../../shared/styles/border";
+import {
+  getBackgroundColor,
+  getBorderStyles,
+  getColor,
+  getHoverStyles,
+} from "../../shared/theme/textFieldCommonOverrides";
 
-const getTextareaColor = (isError: boolean, isPositive: boolean, isDisabled: boolean, isFocused: boolean): string => {
-  if (isFocused) {
-    return PRIMITIVE_COLORS.white;
-  }
-  if (isDisabled) {
-    return PRIMITIVE_COLORS.gray500;
-  }
-  if (isPositive) {
-    return PRIMITIVE_COLORS.white;
-  }
-  if (isError) {
-    return PRIMITIVE_COLORS.red400;
-  }
-  return PRIMITIVE_COLORS.gray500;
-};
-
-export const getTextareaOverrides = (size: TEXTAREA_SIZE, isLoading?: boolean): TextareaOverrides => {
+export const getTextareaOverrides = (size: TEXTAREA_SIZE, kind: TEXTAREA_KIND): TextareaOverrides => {
   return {
     Root: {
-      style: ({ $disabled }) => {
-        return {
-          position: "relative",
-          width: "100%",
-          ...BorderRadiusStyles,
-          ...(isLoading || $disabled ? rootDisabledStyles : {}),
-        };
-      },
-    },
-    InputContainer: {
-      style: ({ $disabled }) => ({
-        ...(isLoading || $disabled ? inputDisabledStyles : {}),
+      style: ({ $disabled, $isFocused, $error }) => ({
+        ...getBackgroundColor(kind),
+        ...inputContainerModifiedStyles[size],
+        ...getBorderStyles($isFocused, kind, $error),
+        ...getHoverStyles(kind, $disabled, $isFocused),
+        position: "relative",
+        width: "100%",
       }),
     },
+    InputContainer: {
+      style: {
+        backgroundColor: "transparent",
+      },
+    },
     Input: {
-      style: ({ $error, $positive, $isDisabled, $isFocused }) => {
+      style: ({ $error, $isFocused, $disabled }) => {
         return {
-          ...inputContainerModifiedStyles[size],
+          ...inputModifiedStyles[size],
+          color: getColor($isFocused, $error, $disabled),
           "-webkit-text-fill-color": "unset",
-          color: getTextareaColor($error, $positive, $isDisabled, $isFocused),
 
           "::placeholder": {
-            color: getTextareaColor($error, $positive, $isDisabled, $isFocused),
+            color: getColor($isFocused, $error, $disabled),
           },
 
           "::-webkit-resizer": {
@@ -61,9 +48,10 @@ export const getTextareaOverrides = (size: TEXTAREA_SIZE, isLoading?: boolean): 
       },
     },
     ClearIconContainer: {
-      style: {
+      style: ({ $error, $disabled, $isFocused }) => ({
         ...clearIconContainerModifiedStyles[size],
-      },
+        color: getColor($isFocused, $error, $disabled),
+      }),
     },
     ClearIcon: {
       props: {
