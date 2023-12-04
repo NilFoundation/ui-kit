@@ -1,5 +1,9 @@
 export enum TEXTAREA_SIZE {
   small = "small",
   medium = "medium",
-  large = "large",
+}
+
+export enum TEXTAREA_KIND {
+  primary = "primary",
+  secondary = "secondary",
 }
