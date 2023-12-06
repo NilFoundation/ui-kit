@@ -1,9 +1,9 @@
 import { StyleObject } from "styletron-standard";
-import { INPUT_KIND, TEXTAREA_KIND } from "../../components";
+import { INPUT_KIND, SELECT_KIND, TEXTAREA_KIND } from "../../components";
 import { PRIMITIVE_COLORS } from "./colors";
 import { expandProperty } from "inline-style-expand-shorthand";
 
-type TextFiledKindUnion = INPUT_KIND | TEXTAREA_KIND;
+type TextFiledKindUnion = INPUT_KIND | TEXTAREA_KIND | SELECT_KIND;
 
 export const getColor = (isFocused: boolean, error: boolean, disabled: boolean): string => {
   if (isFocused) {
@@ -62,11 +62,11 @@ export const getHoverStyles = (kind: TextFiledKindUnion, disabled: boolean, isFo
     return {};
   }
 
-  const transition = "background-color 0.15s ease-in-out, border-color 0.15s ease-in-out";
+  const transition = expandProperty("transition", "background-color 0.15s ease-in-out, border-color 0.15s ease-in-out");
 
   if (kind === INPUT_KIND.secondary) {
     return {
-      transition,
+      ...transition,
       ":hover": {
         backgroundColor: PRIMITIVE_COLORS.gray800,
         ...(!isFocused ? expandProperty("borderColor", PRIMITIVE_COLORS.gray800) : {}),
@@ -75,7 +75,7 @@ export const getHoverStyles = (kind: TextFiledKindUnion, disabled: boolean, isFo
   }
 
   return {
-    transition,
+    ...transition,
     ":hover": {
       backgroundColor: PRIMITIVE_COLORS.gray700,
       ...(!isFocused ? expandProperty("borderColor", PRIMITIVE_COLORS.gray700) : {}),

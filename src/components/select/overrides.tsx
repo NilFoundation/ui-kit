@@ -1,27 +1,20 @@
 import { SelectOverrides, Value } from "baseui/select";
 import SelectArrow from "./ui/SelectArrow";
 import MenuItem from "../menu/ui/MenuItem";
-import { SELECT_SIZE } from "./types";
+import { SELECT_KIND, SELECT_SIZE } from "./types";
 import SelectSpinner from "./ui/SelectSpinner";
 import { PRIMITIVE_COLORS } from "../../shared";
-import { controlContainerDisabledStyles, controlContainerModifiedStyles, typographyModifiedStyles } from "./styles";
+import { controlContainerModifiedStyles, typographyModifiedStyles } from "./styles";
 import { BorderRadiusStyles } from "../../shared/styles/border";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { Tag, TAG_KIND } from "../tag";
 import { Item } from "baseui/menu";
-
-const getColor = (isError: boolean, isPositive: boolean, isFocused: boolean, isDisabled: boolean): string => {
-  if (isDisabled) {
-    return PRIMITIVE_COLORS.gray600;
-  }
-  if (isPositive || isFocused) {
-    return PRIMITIVE_COLORS.white;
-  }
-  if (isError) {
-    return PRIMITIVE_COLORS.red400;
-  }
-  return PRIMITIVE_COLORS.gray500;
-};
+import {
+  getColor,
+  getBackgroundColor,
+  getBorderStyles,
+  getHoverStyles,
+} from "../../shared/theme/textFieldCommonOverrides";
 
 const getTagKind = (isPositive: boolean, isError: boolean, isFocused: boolean): TAG_KIND => {
   if (isFocused) {
@@ -48,15 +41,17 @@ const isSingleItemActive = (value: Value, item: Item, valueKey?: string): boolea
 export const getSelectOverrides = (
   size: SELECT_SIZE,
   isDisabled: boolean,
+  kind: SELECT_KIND,
   value?: Value,
   valueKey?: string
 ): SelectOverrides => {
   return {
     ControlContainer: {
-      style: ({ $isLoading }) => {
+      style: ({ $isFocused, $error, $disabled }) => {
         return {
-          ...BorderRadiusStyles,
-          ...(isDisabled || $isLoading ? controlContainerDisabledStyles : {}),
+          ...getBackgroundColor(kind),
+          ...getBorderStyles($isFocused, kind, $error),
+          ...getHoverStyles(kind, $disabled, $isFocused),
           ...controlContainerModifiedStyles[size],
         };
       },
@@ -105,24 +100,25 @@ export const getSelectOverrides = (
       },
     },
     Placeholder: {
-      style: ({ $error, $positive, $isFocused, $disabled }) => ({
-        color: getColor($error, $positive, $isFocused, $disabled),
+      style: ({ $error, $isFocused, $disabled }) => ({
+        color: getColor($isFocused, $error, $disabled),
         ...typographyModifiedStyles[size],
       }),
     },
     ValueContainer: {
-      style: ({ $error, $positive, $isFocused, $disabled }) => {
+      style: ({ $error, $isFocused, $disabled }) => {
         return {
           ...expandProperty("padding", "0"),
-          color: getColor($error, $positive, $isFocused, $disabled),
+          color: getColor($isFocused, $error, $disabled),
           ...typographyModifiedStyles[size],
         };
       },
     },
     ClearIcon: {
-      props: {
+      props: ({ $error, $isFocused, $disabled }) => ({
         size: "22px",
-      },
+        color: getColor($isFocused, $error, $disabled),
+      }),
     },
     Tag: {
       component: Tag,

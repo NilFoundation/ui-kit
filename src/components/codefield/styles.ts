@@ -13,7 +13,7 @@ const containerStyles: StyleObject = {
   alignItems: "flex-start",
   flexWrap: "nowrap",
   gap: "16px",
-  transition: "background 0.15s",
+  ...expandProperty("transition", "background 0.15s"),
   ":hover": {
     background: PRIMITIVE_COLORS.gray800,
   },
