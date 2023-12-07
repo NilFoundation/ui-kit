@@ -52,6 +52,7 @@ export const getSelectOverrides = (
           ...getBackgroundColor(kind),
           ...getBorderStyles($isFocused, kind, $error),
           ...getHoverStyles(kind, $disabled, $isFocused),
+          color: getColor($isFocused, $error, $disabled),
           ...controlContainerModifiedStyles[size],
         };
       },
@@ -100,8 +101,8 @@ export const getSelectOverrides = (
       },
     },
     Placeholder: {
-      style: ({ $error, $isFocused, $disabled }) => ({
-        color: getColor($isFocused, $error, $disabled),
+      style: ({ $error }) => ({
+        color: $error ? PRIMITIVE_COLORS.red500 : PRIMITIVE_COLORS.gray200,
         ...typographyModifiedStyles[size],
       }),
     },
@@ -112,6 +113,14 @@ export const getSelectOverrides = (
           color: getColor($isFocused, $error, $disabled),
           ...typographyModifiedStyles[size],
         };
+      },
+    },
+    Input: {
+      style: {
+        color: PRIMITIVE_COLORS.gray200,
+        ":focus-within": {
+          color: PRIMITIVE_COLORS.gray50,
+        },
       },
     },
     ClearIcon: {
