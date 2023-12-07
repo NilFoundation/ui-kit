@@ -3,7 +3,7 @@ import { PriceLineApiRef, PriceLineProps } from "./types";
 import { SeriesContext } from "../series/SeriesContext";
 import { priceLineDefaultOptions } from "./priceLineDefaultOptions";
 
-export const useInitPriceLine = ({ options, onInit, price }: PriceLineProps) => {
+export const useInitPriceLine = ({ options, price }: PriceLineProps) => {
   const series = useContext(SeriesContext);
 
   if (!series) {
@@ -39,11 +39,6 @@ export const useInitPriceLine = ({ options, onInit, price }: PriceLineProps) => 
 
   useLayoutEffect(() => {
     priceLineApiRef.current.api();
-
-    if (onInit) {
-      const priceLine = priceLineApiRef.current.api();
-      priceLine && onInit(priceLine);
-    }
 
     return () => {
       priceLineApiRef.current.clear();

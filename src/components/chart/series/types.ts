@@ -20,7 +20,6 @@ export type SeriesParameters<T extends SeriesType> = {
 export type SeriesTemplateProps<T extends SeriesType> = {
   type: T;
   children?: ReactNode;
-  onInit?: (series: ISeriesApi<T>) => void;
 } & SeriesParameters<T>;
 
 export type SeriesApiRef<T extends SeriesType> = {
