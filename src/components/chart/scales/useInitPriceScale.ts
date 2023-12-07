@@ -3,7 +3,7 @@ import { ChartContext } from "../ChartContext";
 import { PriceScaleProps, PriceScaleApiRef } from "./types";
 import { priceScaleDefaultOptions } from "./scalesDefaultOptions";
 
-export const useInitPriceScale = ({ options, id, onInit }: PriceScaleProps) => {
+export const useInitPriceScale = ({ options, id }: PriceScaleProps) => {
   const chart = useContext(ChartContext);
 
   if (!chart) {
@@ -47,11 +47,6 @@ export const useInitPriceScale = ({ options, id, onInit }: PriceScaleProps) => {
 
   useLayoutEffect(() => {
     priceScaleApiRef.current.api();
-
-    if (onInit) {
-      const priceScale = priceScaleApiRef.current.api();
-      priceScale && onInit(priceScale);
-    }
 
     return () => {
       priceScaleApiRef.current.clear();

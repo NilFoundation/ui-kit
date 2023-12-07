@@ -10,7 +10,6 @@ export const useInitSeries = <T extends SeriesType>({
   options,
   reactive,
   markers,
-  onInit,
 }: Omit<SeriesTemplateProps<T>, "children">) => {
   const chart = useContext(ChartContext);
 
@@ -56,11 +55,6 @@ export const useInitSeries = <T extends SeriesType>({
 
   useLayoutEffect(() => {
     seriesApiRef.current.api();
-
-    if (onInit) {
-      const series = seriesApiRef.current.api();
-      series && onInit(series);
-    }
 
     return () => {
       seriesApiRef.current.clear();
