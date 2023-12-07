@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import Select from "./Select";
-import { SELECT_SIZE } from "./types";
+import { SELECT_SIZE, SELECT_KIND } from "./types";
 import { useState } from "react";
 import { useStyletron } from "baseui";
 
@@ -75,6 +75,12 @@ export const options = [
   <Story
     name="With Default Value"
     args={{ options, placeholder: "With Default Value", value: [options[0]], size: SELECT_SIZE.small }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Seconday select"
+    args={{ options, placeholder: "Secondary select", kind: SELECT_KIND.secondary }}
   >
     {Template.bind({})}
   </Story>
