@@ -25,19 +25,19 @@ const getCheckmarkBackgroundImage = (isIndeterminate: boolean, isChecked: boolea
 };
 
 const getToggleBackgroundStyles = (isChecked: boolean, isError: boolean): StyleObject => {
-  const transition = "background-color 0.15s";
+  const transition = expandProperty("transition", "background-color 0.15s");
 
   if (isError) {
     return {
       backgroundColor: PRIMITIVE_COLORS.red500,
-      transition,
+      ...transition,
     };
   }
 
   if (isChecked) {
     return {
       backgroundColor: PRIMITIVE_COLORS.green200,
-      transition,
+      ...transition,
       ":hover": {
         backgroundColor: PRIMITIVE_COLORS.green100,
       },
@@ -49,7 +49,7 @@ const getToggleBackgroundStyles = (isChecked: boolean, isError: boolean): StyleO
 
   return {
     backgroundColor: PRIMITIVE_COLORS.gray200,
-    transition,
+    ...transition,
     ":hover": {
       backgroundColor: PRIMITIVE_COLORS.gray100,
     },
@@ -60,18 +60,18 @@ const getToggleBackgroundStyles = (isChecked: boolean, isError: boolean): StyleO
 };
 
 const getLabelColorStyles = ($disabled: boolean): StyleObject => {
-  const transition = "color 0.15s";
+  const transition = expandProperty("color 0.15s");
 
   if ($disabled) {
     return {
       color: PRIMITIVE_COLORS.gray400,
-      transition,
+      ...transition,
     };
   }
 
   return {
     color: PRIMITIVE_COLORS.gray200,
-    transition,
+    ...transition,
     ":hover": {
       color: PRIMITIVE_COLORS.gray100,
     },
@@ -113,7 +113,7 @@ export const getCheckboxOverrides = (): CheckboxOverrides => {
     Toggle: {
       style: {
         backgroundColor: PRIMITIVE_COLORS.gray800,
-        transition: "transform 0.15s",
+        ...expandProperty("transition", "transform 0.15s"),
         width: "14px",
         height: "14px",
         ...expandProperty("borderRadius", "1px"),
