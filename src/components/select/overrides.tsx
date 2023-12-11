@@ -51,7 +51,7 @@ export const getSelectOverrides = (
         return {
           ...getBackgroundColor(kind),
           ...getBorderStyles($isFocused, kind, $error),
-          ...getHoverStyles(kind, $disabled, $isFocused),
+          ...getHoverStyles(kind, $disabled, $isFocused, $error),
           color: getColor($isFocused, $error, $disabled),
           ...controlContainerModifiedStyles[size],
         };

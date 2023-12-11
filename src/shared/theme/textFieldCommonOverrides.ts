@@ -57,7 +57,12 @@ export const getBorderStyles = (isFocused: boolean, kind: TextFiledKindUnion, er
   };
 };
 
-export const getHoverStyles = (kind: TextFiledKindUnion, disabled: boolean, isFocused: boolean): StyleObject => {
+export const getHoverStyles = (
+  kind: TextFiledKindUnion,
+  disabled: boolean,
+  isFocused: boolean,
+  isError: boolean
+): StyleObject => {
   if (disabled) {
     return {};
   }
@@ -69,7 +74,7 @@ export const getHoverStyles = (kind: TextFiledKindUnion, disabled: boolean, isFo
       ...transition,
       ":hover": {
         backgroundColor: PRIMITIVE_COLORS.gray800,
-        ...(!isFocused ? expandProperty("borderColor", PRIMITIVE_COLORS.gray800) : {}),
+        ...(!isFocused && !isError ? expandProperty("borderColor", PRIMITIVE_COLORS.gray800) : {}),
       },
     };
   }
@@ -78,7 +83,7 @@ export const getHoverStyles = (kind: TextFiledKindUnion, disabled: boolean, isFo
     ...transition,
     ":hover": {
       backgroundColor: PRIMITIVE_COLORS.gray700,
-      ...(!isFocused ? expandProperty("borderColor", PRIMITIVE_COLORS.gray700) : {}),
+      ...(!isFocused && !isError ? expandProperty("borderColor", PRIMITIVE_COLORS.gray700) : {}),
     },
   };
 };

@@ -17,7 +17,7 @@ export const getInputOverrides = (size: INPUT_SIZE, kind: INPUT_KIND): InputOver
         ...getBackgroundColor(kind),
         ...inputContainerModifiedStyles[size],
         ...getBorderStyles($isFocused, kind, $error),
-        ...getHoverStyles(kind, $disabled, $isFocused),
+        ...getHoverStyles(kind, $disabled, $isFocused, $error),
       }),
     },
     InputContainer: {

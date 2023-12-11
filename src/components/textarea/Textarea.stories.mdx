@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import Textarea from "./Textarea";
-import { TEXTAREA_SIZE } from "./types";
+import { TEXTAREA_KIND, TEXTAREA_SIZE } from "./types";
 import { useState } from "react";
 import { useStyletron } from "baseui";
 
@@ -47,6 +47,9 @@ export const Template = ({ value: baseValue, ...args }) => {
     {Template.bind({})}
   </Story>
   <Story name="Loading" args={{ placeholder: "Loading Field", isLoading: true }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Secondary" args={{ placeholder: "Textarea Secondary", kind: TEXTAREA_KIND.secondary }}>
     {Template.bind({})}
   </Story>
 </Canvas>
