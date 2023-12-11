@@ -24,12 +24,19 @@ const getCheckmarkBackgroundImage = (isIndeterminate: boolean, isChecked: boolea
   return `url("data:image/svg+xml,${isError ? whiteCheckmark : blackCheckmark}")`;
 };
 
-const getToggleBackgroundStyles = (isChecked: boolean, isError: boolean): StyleObject => {
+const getToggleBackgroundStyles = (isChecked: boolean, isError: boolean, $disabled: boolean): StyleObject => {
   const transition = expandProperty("transition", "background-color 0.15s");
 
   if (isError) {
     return {
       backgroundColor: PRIMITIVE_COLORS.red500,
+      ...transition,
+    };
+  }
+
+  if ($disabled) {
+    return {
+      backgroundColor: PRIMITIVE_COLORS.gray400,
       ...transition,
     };
   }
@@ -120,14 +127,14 @@ export const getCheckboxOverrides = (): CheckboxOverrides => {
       },
     },
     ToggleTrack: {
-      style: ({ $checked, $error }) => ({
+      style: ({ $checked, $error, $disabled }) => ({
         width: "30px",
         height: "16px",
         boxSizing: "border-box",
         boxShadow: "none",
         ...expandProperty("borderRadius", "1px"),
         ...expandProperty("padding", "1px"),
-        ...getToggleBackgroundStyles($checked, $error),
+        ...getToggleBackgroundStyles($checked, $error, $disabled),
         ...expandProperty("margin", "0"),
       }),
     },
