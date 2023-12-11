@@ -13,6 +13,7 @@ export const getInputOverrides = (size: INPUT_SIZE, kind: INPUT_KIND): InputOver
   return {
     Root: {
       style: ({ $disabled, $isFocused, $error }) => ({
+        boxSizing: "border-box",
         ...getBackgroundColor(kind),
         ...inputContainerModifiedStyles[size],
         ...getBorderStyles($isFocused, kind, $error),

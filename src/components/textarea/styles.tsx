@@ -5,12 +5,12 @@ export const inputContainerModifiedStyles = {
   [TEXTAREA_SIZE.small]: {
     ...expandProperty("padding", "0"),
     ...expandProperty("borderRadius", "2px"),
-    minHeight: "48px",
+    height: "48px",
   },
   [TEXTAREA_SIZE.medium]: {
     ...expandProperty("padding", "0"),
     ...expandProperty("borderRadius", "2px"),
-    minHeight: "68px",
+    height: "68px",
   },
 };
 
@@ -19,11 +19,13 @@ export const inputModifiedStyles = {
     ...expandProperty("padding", "12px 8px"),
     fontSize: "12px",
     lineHeight: "16px",
+    height: "auto",
   },
   [TEXTAREA_SIZE.medium]: {
     ...expandProperty("padding", "16px 12px"),
     fontSize: "16px",
     lineHeight: "22px",
+    height: "auto",
   },
 };
 
