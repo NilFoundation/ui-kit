@@ -1,11 +1,6 @@
 import { TextareaOverrides } from "baseui/textarea";
 import { TEXTAREA_KIND, TEXTAREA_SIZE } from "./types";
-import {
-  clearIconContainerModifiedStyles,
-  clearIconSize,
-  inputContainerModifiedStyles,
-  inputModifiedStyles,
-} from "./styles";
+import { clearIconContainerModifiedStyles, clearIconSize, inputModifiedStyles, inputContainerStyles } from "./styles";
 import {
   getBackgroundColor,
   getBorderStyles,
@@ -17,10 +12,10 @@ export const getTextareaOverrides = (size: TEXTAREA_SIZE, kind: TEXTAREA_KIND): 
   return {
     Root: {
       style: ({ $disabled, $isFocused, $error }) => ({
+        ...inputContainerStyles,
         ...getBackgroundColor(kind),
-        ...inputContainerModifiedStyles[size],
         ...getBorderStyles($isFocused, kind, $error),
-        ...getHoverStyles(kind, $disabled, $isFocused),
+        ...getHoverStyles(kind, $disabled, $isFocused, $error),
         position: "relative",
         width: "100%",
       }),

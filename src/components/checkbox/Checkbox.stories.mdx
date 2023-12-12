@@ -30,9 +30,6 @@ export const Template = ({ checked: baseChecked, ...args }) => {
   <Story name="Disabled" args={{ children: "Label", disabled: true, checked: true }}>
     {Template.bind({})}
   </Story>
-  <Story name="Error" args={{ children: "Label", error: true }}>
-    {Template.bind({})}
-  </Story>
   <Story name="Label Placement" args={{ children: "Label", labelPlacement: LABEL_PLACEMENT.left }}>
     {Template.bind({})}
   </Story>
@@ -49,9 +46,6 @@ export const Template = ({ checked: baseChecked, ...args }) => {
     {Template.bind({})}
   </Story>
   <Story name="Toggle unchecked" args={{ children: "Label", checked: false, checkmarkType: "toggle" }}>
-    {Template.bind({})}
-  </Story>
-  <Story name="Toggle with error" args={{ children: "Label", error: true, checkmarkType: "toggle" }}>
     {Template.bind({})}
   </Story>
   <Story name="Toggle disabled" args={{ children: "Label", disabled: true, checkmarkType: "toggle" }}>

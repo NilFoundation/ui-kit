@@ -1,13 +1,20 @@
 import { INPUT_SIZE } from "./types";
 import { expandProperty } from "inline-style-expand-shorthand";
 
+const containerCommonStyles = {
+  ...expandProperty("borderRadius", "2px"),
+  ...expandProperty("borderWidth", "1px"),
+};
+
 export const inputContainerModifiedStyles = {
   [INPUT_SIZE.small]: {
-    ...expandProperty("borderRadius", "2px"),
+    height: "32px",
+    ...containerCommonStyles,
     ...expandProperty("padding", "0 12px"),
   },
   [INPUT_SIZE.medium]: {
-    ...expandProperty("borderRadius", "2px"),
+    height: "46px",
+    ...containerCommonStyles,
     ...expandProperty("padding", "0 16px"),
   },
 };
