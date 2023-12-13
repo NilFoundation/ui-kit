@@ -18,6 +18,7 @@ const SelectArrow: FC<SelectArrowProps> = ({ color = PRIMITIVE_COLORS.white, isR
       className={css({
         transform: isRotated ? "rotate(180deg)" : "unset",
         marginLeft: "16px",
+        cursor: "pointer",
       })}
     />
   );

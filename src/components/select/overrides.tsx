@@ -4,7 +4,7 @@ import MenuItem from "../menu/ui/MenuItem";
 import { SELECT_KIND, SELECT_SIZE } from "./types";
 import SelectSpinner from "./ui/SelectSpinner";
 import { PRIMITIVE_COLORS } from "../../shared";
-import { controlContainerModifiedStyles, typographyModifiedStyles } from "./styles";
+import { controlContainerModifiedStyles } from "./styles";
 import { BorderRadiusStyles } from "../../shared/styles/border";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { Tag, TAG_KIND } from "../tag";
@@ -15,6 +15,11 @@ import {
   getBorderStyles,
   getHoverStyles,
 } from "../../shared/theme/textFieldCommonOverrides";
+
+const selectTypographyStyles = {
+  lineHeight: "16px",
+  fontSize: "12px",
+};
 
 const getTagKind = (isPositive: boolean, isError: boolean, isFocused: boolean): TAG_KIND => {
   if (isFocused) {
@@ -54,6 +59,9 @@ export const getSelectOverrides = (
           ...getHoverStyles(kind, $disabled, $isFocused, $error),
           color: getColor($isFocused, $error, $disabled),
           ...controlContainerModifiedStyles[size],
+          ":has(input:focus-within)": {
+            ...expandProperty("borderColor", PRIMITIVE_COLORS.gray50),
+          },
         };
       },
     },
@@ -91,8 +99,13 @@ export const getSelectOverrides = (
       props: ({ $isOpen, $isFocused, $isLoading, ...props }) => ({
         ...props,
         isRotated: $isOpen,
-        color: (isDisabled || $isLoading) && !$isFocused ? PRIMITIVE_COLORS.gray600 : undefined,
+        color: (isDisabled || $isLoading) && !$isFocused ? PRIMITIVE_COLORS.gray400 : undefined,
       }),
+    },
+    IconsContainer: {
+      style: {
+        ...expandProperty("padding", "0"),
+      },
     },
     LoadingIndicator: {
       component: SelectSpinner,
@@ -101,9 +114,9 @@ export const getSelectOverrides = (
       },
     },
     Placeholder: {
-      style: ({ $error }) => ({
-        color: $error ? PRIMITIVE_COLORS.red500 : PRIMITIVE_COLORS.gray200,
-        ...typographyModifiedStyles[size],
+      style: ({ $error, $disabled, $isFocused }) => ({
+        color: getColor($isFocused, $error, $disabled),
+        ...selectTypographyStyles,
       }),
     },
     ValueContainer: {
@@ -111,22 +124,31 @@ export const getSelectOverrides = (
         return {
           ...expandProperty("padding", "0"),
           color: getColor($isFocused, $error, $disabled),
-          ...typographyModifiedStyles[size],
+          ...selectTypographyStyles,
         };
       },
+    },
+    SingleValue: {
+      style: selectTypographyStyles,
+    },
+    MultiValue: {
+      style: selectTypographyStyles,
     },
     Input: {
       style: {
         color: PRIMITIVE_COLORS.gray200,
+        ...selectTypographyStyles,
         ":focus-within": {
           color: PRIMITIVE_COLORS.gray50,
         },
       },
     },
     ClearIcon: {
-      props: ({ $error, $isFocused, $disabled }) => ({
+      props: ({ $error, $isFocused, $disabled, ...rest }) => ({
         size: "22px",
         color: getColor($isFocused, $error, $disabled),
+        cursor: "pointer",
+        ...rest,
       }),
     },
     Tag: {
