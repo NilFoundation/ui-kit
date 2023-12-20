@@ -7,6 +7,7 @@ import {
   getColor,
   getHoverStyles,
 } from "../../shared/theme/textFieldCommonOverrides";
+import { resetAutoCompleteStyles } from "../../shared/styles/resetAutoCompleteStyles";
 
 export const getTextareaOverrides = (size: TEXTAREA_SIZE, kind: TEXTAREA_KIND): TextareaOverrides => {
   return {
@@ -39,6 +40,7 @@ export const getTextareaOverrides = (size: TEXTAREA_SIZE, kind: TEXTAREA_KIND): 
           "::-webkit-resizer": {
             display: "none",
           },
+          ...resetAutoCompleteStyles,
         };
       },
     },

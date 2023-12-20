@@ -9,13 +9,13 @@ export const inputContainerStyles = {
 
 export const inputModifiedStyles = {
   [TEXTAREA_SIZE.small]: {
-    ...expandProperty("padding", "12px 8px"),
+    ...expandProperty("padding", "8px 12px"),
     fontSize: "12px",
     lineHeight: "16px",
     height: "46px",
   },
   [TEXTAREA_SIZE.medium]: {
-    ...expandProperty("padding", "16px 12px"),
+    ...expandProperty("padding", "12px 16px"),
     fontSize: "16px",
     lineHeight: "22px",
     height: "66px",
