@@ -8,6 +8,7 @@ import {
   getColor,
   getHoverStyles,
 } from "../../shared/theme/textFieldCommonOverrides";
+import { resetAutoCompleteStyles } from "../../shared/styles/resetAutoCompleteStyles";
 
 export const getInputOverrides = (size: INPUT_SIZE, kind: INPUT_KIND): InputOverrides => {
   return {
@@ -34,6 +35,7 @@ export const getInputOverrides = (size: INPUT_SIZE, kind: INPUT_KIND): InputOver
         "::placeholder": {
           color: getColor($isFocused, $error, $disabled),
         },
+        ...resetAutoCompleteStyles,
       }),
     },
     StartEnhancer: {
