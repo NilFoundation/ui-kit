@@ -23,13 +23,14 @@ export default defineConfig({
   plugins: [
     react(),
     eslint(),
-    externalizeDeps(),
+    //externalizeDeps(),
     dts({ staticImport: true, outputDir: './dist/.temp' }),
   ],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      formats: ['es', 'cjs'],
+      formats: ['es', 'cjs', 'iife'],
+      name: 'NilFoundationUIKit',
     },
     rollupOptions: {
       output: {

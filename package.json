@@ -8,6 +8,7 @@
   ],
   "main": "dist/ui-kit.js",
   "module": "dist/ui-kit.mjs",
+  "unpkg": "dist/ui-kit.iife.js",
   "types": "dist/ui-kit.d.ts",
   "files": [
     "dist"
