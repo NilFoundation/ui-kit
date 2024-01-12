@@ -19,24 +19,31 @@ const createBanner = () => {
  */`;
 }
 
-export default defineConfig({
-  plugins: [
-    react(),
-    eslint(),
-    //externalizeDeps(),
-    dts({ staticImport: true, outputDir: './dist/.temp' }),
-  ],
-  build: {
-    lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
-      formats: ['es', 'cjs', 'iife'],
-      name: 'NilFoundationUIKit',
-    },
-    rollupOptions: {
-      output: {
-        banner: createBanner(),
-        sourcemap: true,
+export default defineConfig(({mode}) => {
+  const plugins = [react(), eslint({include: ['./src/**/*.ts', './src/**/*.tsx']})];
+  const isStandalone = mode === 'standalone';
+
+  if (!isStandalone) {
+    plugins.push(
+      externalizeDeps(),
+      dts({ staticImport: true, outputDir: './dist/.temp' }),
+    );
+  }
+
+  return ({
+    plugins: plugins,
+    build: {
+      lib: {
+        entry: resolve(__dirname, 'src/index.ts'),
+        formats: isStandalone ? ['iife'] : ['es', 'cjs'],
+        name: 'NilFoundationUIKit',
+      },
+      rollupOptions: {
+        output: {
+          banner: createBanner(),
+          sourcemap: true,
+        },
       },
     },
-  },
+  })
 });

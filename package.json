@@ -17,6 +17,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "bundle-types": "api-extractor run",
+    "build:standalone": "vite build --mode standalone",
     "postbuild": "npm run bundle-types && rm -rf ./dist/.temp",
     "preview": "vite preview",
     "prettier": "prettier --write 'src/**/**/*.{js,ts,tsx,mdx}'",
