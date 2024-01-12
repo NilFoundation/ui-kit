@@ -19,13 +19,28 @@ const createBanner = () => {
  */`;
 }
 
+const packagesIncludeInStandalone = [
+  /baseui\/*/,
+  'lightweight-charts',
+  '@uiw/react-codemirror',
+  '@uiw/codemirror-themes',
+  'styletron-standard',
+  'styletron-react',
+  'copy-to-clipboard',
+  'inline-style-expand-shorthand',
+  'react/jsx-runtime',
+];
+
 export default defineConfig(({mode}) => {
-  const plugins = [react(), eslint({include: ['./src/**/*.ts', './src/**/*.tsx']})];
   const isStandalone = mode === 'standalone';
+  const plugins = [
+    react(),
+    eslint({include: ['./src/**/*.ts', './src/**/*.tsx']}),
+    externalizeDeps({except: isStandalone ? packagesIncludeInStandalone : []}),
+  ];
 
   if (!isStandalone) {
     plugins.push(
-      externalizeDeps(),
       dts({ staticImport: true, outputDir: './dist/.temp' }),
     );
   }
@@ -42,6 +57,10 @@ export default defineConfig(({mode}) => {
         output: {
           banner: createBanner(),
           sourcemap: true,
+          globals: isStandalone ? {
+            react: 'React',
+            'react-dom': 'ReactDOM',
+          } : undefined,
         },
       },
       outDir: 'dist',
