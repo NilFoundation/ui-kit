@@ -44,6 +44,8 @@ export default defineConfig(({mode}) => {
           sourcemap: true,
         },
       },
+      outDir: 'dist',
+      emptyOutDir: !isStandalone,
     },
   })
 });
