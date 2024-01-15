@@ -30,6 +30,14 @@ npm install @nilfoundation/ui-kit baseui styletron-engine-atomic styletron-react
 yarn add @nilfoundation/ui-kit baseui styletron-engine-atomic styletron-react
 ```
 
+### CDN
+
+```html
+<script src="https://unpkg.com/@nilfoundation/ui-kit/dist/ui-kit.iife.js"></script>
+```
+
+Notice, that global `React` variable should be accessible, because it is not included in the standalone bundle.
+
 ## Usage
 
 ```tsx

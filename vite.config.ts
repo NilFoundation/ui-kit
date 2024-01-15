@@ -19,23 +19,52 @@ const createBanner = () => {
  */`;
 }
 
-export default defineConfig({
-  plugins: [
+const packagesIncludeInStandalone = [
+  /baseui\/*/,
+  'lightweight-charts',
+  '@uiw/react-codemirror',
+  '@uiw/codemirror-themes',
+  'styletron-standard',
+  'styletron-react',
+  'copy-to-clipboard',
+  'inline-style-expand-shorthand',
+  'react/jsx-runtime',
+];
+
+export default defineConfig(({mode}) => {
+  const isStandalone = mode === 'standalone';
+  const plugins = [
     react(),
-    eslint(),
-    externalizeDeps(),
-    dts({ staticImport: true, outputDir: './dist/.temp' }),
-  ],
-  build: {
-    lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
-      formats: ['es', 'cjs'],
-    },
-    rollupOptions: {
-      output: {
-        banner: createBanner(),
-        sourcemap: true,
+    eslint({include: ['./src/**/*.ts', './src/**/*.tsx']}),
+    externalizeDeps({except: isStandalone ? packagesIncludeInStandalone : []}),
+  ];
+
+  if (!isStandalone) {
+    plugins.push(
+      dts({ staticImport: true, outputDir: './dist/.temp' }),
+    );
+  }
+
+  return ({
+    plugins: plugins,
+    build: {
+      lib: {
+        entry: resolve(__dirname, 'src/index.ts'),
+        formats: isStandalone ? ['iife'] : ['es', 'cjs'],
+        name: 'NilFoundationUIKit',
       },
+      rollupOptions: {
+        output: {
+          banner: createBanner(),
+          sourcemap: true,
+          globals: isStandalone ? {
+            react: 'React',
+            'react-dom': 'ReactDOM',
+          } : undefined,
+        },
+      },
+      outDir: 'dist',
+      emptyOutDir: !isStandalone,
     },
-  },
+  })
 });

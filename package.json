@@ -8,6 +8,7 @@
   ],
   "main": "dist/ui-kit.js",
   "module": "dist/ui-kit.mjs",
+  "unpkg": "dist/ui-kit.iife.js",
   "types": "dist/ui-kit.d.ts",
   "files": [
     "dist"
@@ -16,6 +17,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "bundle-types": "api-extractor run",
+    "build:standalone": "vite build --mode standalone",
     "postbuild": "npm run bundle-types && rm -rf ./dist/.temp",
     "preview": "vite preview",
     "prettier": "prettier --write 'src/**/**/*.{js,ts,tsx,mdx}'",
