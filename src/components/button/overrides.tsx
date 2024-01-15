@@ -56,12 +56,12 @@ export const getButtonOverrides = (
     },
     StartEnhancer: {
       style: {
-        marginRight: "8px",
+        marginRight: "4px",
       },
     },
     EndEnhancer: {
       style: {
-        marginLeft: "8px",
+        marginLeft: "4px",
       },
     },
     LoadingSpinner: {
