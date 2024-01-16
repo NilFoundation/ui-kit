@@ -1,83 +1,103 @@
 import { PRIMITIVE_COLORS, SPACE } from "../../shared";
 import { BUTTON_KIND, BUTTON_SIZE } from "./types";
 import { expandProperty } from "inline-style-expand-shorthand";
-import { BorderRadiusStyles } from "../../shared/styles/border";
 
 const buttonBaseStyles = {
   outline: "0",
   boxShadow: "none",
+  ...expandProperty("borderRadius", "8px"),
+};
+
+const focusedButtonBaseStyles = {
+  boxShadow: `0px 0px 0px 2px ${PRIMITIVE_COLORS.gray900}, 0px 0px 0px 4px ${PRIMITIVE_COLORS.gray50}`,
 };
 
 export const buttonModifiedStyles = {
   [BUTTON_SIZE.mini]: {
     ...buttonBaseStyles,
+    ...expandProperty("padding", "4px 8px"),
   },
   [BUTTON_SIZE.compact]: {
     ...buttonBaseStyles,
+    ...expandProperty("padding", "8px 16px"),
   },
   [BUTTON_SIZE.default]: {
     ...buttonBaseStyles,
+    ...expandProperty("padding", "12px 24px"),
   },
   [BUTTON_SIZE.large]: {
     ...buttonBaseStyles,
+    ...expandProperty("padding", "16px 32px"),
   },
 };
 
 export const buttonKindModifiedStyles = {
   [BUTTON_KIND.primary]: {
-    ...BorderRadiusStyles,
-    backgroundColor: PRIMITIVE_COLORS.white,
+    backgroundColor: PRIMITIVE_COLORS.gray50,
+    color: PRIMITIVE_COLORS.gray900,
 
     ":hover": {
-      backgroundColor: PRIMITIVE_COLORS.gray100,
+      backgroundColor: PRIMITIVE_COLORS.gray200,
+    },
+
+    ":active:not(:disabled)": {
+      backgroundColor: PRIMITIVE_COLORS.gray300,
     },
 
     ":disabled": {
-      backgroundColor: PRIMITIVE_COLORS.mono600,
+      backgroundColor: PRIMITIVE_COLORS.gray800,
       color: PRIMITIVE_COLORS.gray500,
     },
   },
   [BUTTON_KIND.secondary]: {
-    ...BorderRadiusStyles,
-    backgroundColor: PRIMITIVE_COLORS.gray700,
+    backgroundColor: PRIMITIVE_COLORS.gray800,
+    color: PRIMITIVE_COLORS.gray200,
 
     ":hover": {
+      backgroundColor: PRIMITIVE_COLORS.gray700,
+      color: PRIMITIVE_COLORS.gray50,
+    },
+
+    ":active:not(:disabled)": {
       backgroundColor: PRIMITIVE_COLORS.gray600,
+      color: PRIMITIVE_COLORS.gray50,
     },
 
     ":disabled": {
-      backgroundColor: PRIMITIVE_COLORS.mono600,
       color: PRIMITIVE_COLORS.gray500,
     },
   },
   [BUTTON_KIND.tertiary]: {
-    ...BorderRadiusStyles,
     backgroundColor: "transparent",
 
     ":hover": {
+      backgroundColor: PRIMITIVE_COLORS.gray800,
+      color: PRIMITIVE_COLORS.gray50,
+    },
+
+    ":active:not(:disabled)": {
       backgroundColor: PRIMITIVE_COLORS.gray700,
+      color: PRIMITIVE_COLORS.gray50,
     },
 
     ":disabled": {
-      backgroundColor: "transparent",
       color: PRIMITIVE_COLORS.gray500,
     },
   },
   [BUTTON_KIND.danger]: {
-    ...BorderRadiusStyles,
-    backgroundColor: PRIMITIVE_COLORS.red400,
-    color: PRIMITIVE_COLORS.white,
+    backgroundColor: PRIMITIVE_COLORS.red500,
+    color: PRIMITIVE_COLORS.gray50,
 
     ":hover": {
-      backgroundColor: PRIMITIVE_COLORS.red500,
-    },
-
-    ":active:not(:disabled)": {
       backgroundColor: PRIMITIVE_COLORS.red600,
     },
 
+    ":active:not(:disabled)": {
+      backgroundColor: PRIMITIVE_COLORS.red800,
+    },
+
     ":disabled": {
-      backgroundColor: PRIMITIVE_COLORS.mono600,
+      backgroundColor: PRIMITIVE_COLORS.red800,
       color: PRIMITIVE_COLORS.gray500,
     },
   },
@@ -106,28 +126,30 @@ export const buttonKindModifiedStyles = {
 
 export const buttonFocusedModifiedStyles = {
   [BUTTON_KIND.primary]: {
-    backgroundColor: PRIMITIVE_COLORS.gray200,
+    backgroundColor: PRIMITIVE_COLORS.gray50,
+    ...focusedButtonBaseStyles,
   },
   [BUTTON_KIND.secondary]: {
-    backgroundColor: PRIMITIVE_COLORS.gray200,
-    color: PRIMITIVE_COLORS.black,
+    color: PRIMITIVE_COLORS.gray50,
+    ...focusedButtonBaseStyles,
   },
   [BUTTON_KIND.tertiary]: {
-    backgroundColor: PRIMITIVE_COLORS.gray600,
+    ...focusedButtonBaseStyles,
   },
   [BUTTON_KIND.danger]: {
-    backgroundColor: PRIMITIVE_COLORS.red600,
+    ...focusedButtonBaseStyles,
   },
   [BUTTON_KIND.toggle]: {
     color: PRIMITIVE_COLORS.gray50,
     border: `1px solid ${PRIMITIVE_COLORS.gray50}`,
+    backgroundColor: PRIMITIVE_COLORS.gray800,
   },
 };
 
 export const buttonDisabledModifiedStyles = {
   [BUTTON_KIND.primary]: {
     ":hover": {
-      backgroundColor: PRIMITIVE_COLORS.mono600,
+      backgroundColor: PRIMITIVE_COLORS.gray800,
       color: PRIMITIVE_COLORS.gray500,
     },
   },
