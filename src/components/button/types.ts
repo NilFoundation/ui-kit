@@ -8,6 +8,7 @@ export enum BUTTON_KIND {
   tertiary = "tertiary",
   danger = "danger",
   toggle = "toggle",
+  text = "text",
 }
 
 export enum BUTTON_SIZE {

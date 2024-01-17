@@ -74,6 +74,15 @@ export const Template = ({ children, ...args }) => {
   >
     {Template.bind({})}
   </Story>
+  <Story
+    name="Text"
+    args={{ kind: "text" }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?node-id=1562%3A10133&mode=dev"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
   <Story name="Disabled" args={{ disabled: true }}>
     {Template.bind({})}
   </Story>

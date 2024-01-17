@@ -7,7 +7,7 @@ const buttonBaseStyles = {
   boxShadow: "none",
   ...expandProperty("borderRadius", "8px"),
   transitionProperty: "background-color, color",
-  transitionDuration: "0.2s",
+  transitionDuration: "0.15s",
   transitionTimingFunction: "ease-in",
 };
 
@@ -68,6 +68,7 @@ export const buttonKindModifiedStyles = {
 
     ":disabled": {
       color: PRIMITIVE_COLORS.gray500,
+      backgroundColor: PRIMITIVE_COLORS.gray800,
     },
   },
   [BUTTON_KIND.tertiary]: {
@@ -120,6 +121,26 @@ export const buttonKindModifiedStyles = {
 
     ":disabled": {
       color: PRIMITIVE_COLORS.gray500,
+      backgroundColor: PRIMITIVE_COLORS.gray800,
+    },
+  },
+  [BUTTON_KIND.text]: {
+    backgroundColor: "transparent",
+    color: PRIMITIVE_COLORS.gray200,
+
+    ":hover": {
+      backgroundColor: "transparent",
+      color: PRIMITIVE_COLORS.gray50,
+    },
+
+    ":active:not(:disabled)": {
+      backgroundColor: "transparent",
+      color: PRIMITIVE_COLORS.gray50,
+    },
+
+    ":disabled": {
+      backgroundColor: "transparent",
+      color: PRIMITIVE_COLORS.gray500,
     },
   },
 };
@@ -143,6 +164,10 @@ export const buttonFocusedModifiedStyles = {
     color: PRIMITIVE_COLORS.gray50,
     ...focusedButtonBaseStyles,
   },
+  [BUTTON_KIND.text]: {
+    color: PRIMITIVE_COLORS.gray50,
+    ...focusedButtonBaseStyles,
+  },
 };
 
 export const buttonDisabledModifiedStyles = {
@@ -154,7 +179,7 @@ export const buttonDisabledModifiedStyles = {
   },
   [BUTTON_KIND.secondary]: {
     ":hover": {
-      backgroundColor: PRIMITIVE_COLORS.mono600,
+      backgroundColor: PRIMITIVE_COLORS.gray800,
       color: PRIMITIVE_COLORS.gray500,
     },
   },
@@ -166,14 +191,20 @@ export const buttonDisabledModifiedStyles = {
   },
   [BUTTON_KIND.danger]: {
     ":hover": {
-      backgroundColor: PRIMITIVE_COLORS.mono600,
+      backgroundColor: PRIMITIVE_COLORS.red800,
       color: PRIMITIVE_COLORS.gray500,
     },
   },
   [BUTTON_KIND.toggle]: {
     ":hover": {
-      color: PRIMITIVE_COLORS.gray400,
+      color: PRIMITIVE_COLORS.gray500,
       backgroundColor: PRIMITIVE_COLORS.gray800,
+    },
+  },
+  [BUTTON_KIND.text]: {
+    ":hover": {
+      color: PRIMITIVE_COLORS.gray500,
+      backgroundColor: "transparent",
     },
   },
 };
