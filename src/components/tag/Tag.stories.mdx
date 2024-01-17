@@ -1,11 +1,19 @@
 import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import Tag from "./Tag";
 import { TAG_KIND, TAG_SIZE } from "./types";
+import StoriesLayout from "../../shared/ui/stories-layout";
 
 <Meta title="Data display/Tag" component={Tag} />
 
 export const Template = ({ ...args }) => {
-  return <Tag {...args}>text</Tag>;
+  return (
+    <StoriesLayout>
+      <Tag {...args}>text</Tag>
+      <Tag {...args} size={TAG_SIZE.m}>text</Tag>
+      <Tag {...args} fill>text</Tag>
+      <Tag {...args} size={TAG_SIZE.m} fill>text</Tag>
+    </StoriesLayout>
+  )
 };
 
 # Tag
@@ -30,9 +38,6 @@ export const Template = ({ ...args }) => {
     {Template.bind({})}
   </Story>
   <Story name="White" args={{ kind: TAG_KIND.white }}>
-    {Template.bind({})}
-  </Story>
-  <Story name="Medium size" args={{ kind: TAG_KIND.white, size: TAG_SIZE.m }}>
     {Template.bind({})}
   </Story>
 </Canvas>

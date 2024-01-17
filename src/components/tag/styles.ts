@@ -5,18 +5,21 @@ import { WithoutBorderStyles } from "../../shared/styles/border";
 
 export const tagRootBaseStyles = {
   ...WithoutBorderStyles,
-  ...expandProperty("padding", "2px 8px"),
-  ...expandProperty("borderRadius", "2px"),
+  fontWeight: 500,
   color: PRIMITIVE_COLORS.gray50,
   fontSize: "12px",
   lineHeight: "16px",
 };
 
-export const mediumStyles = {
-  ...expandProperty("padding", "4px 12px"),
-  fontSize: "16px",
-  lineHeight: "22px",
+export const smallStyles = {
+  ...expandProperty("padding", "2px 8px"),
+  ...expandProperty("borderRadius", "16px"),
   height: "auto",
+};
+
+export const mediumStyles = {
+  ...expandProperty("padding", "4px 16px"),
+  ...expandProperty("borderRadius", "32px"),
 };
 
 export const tagRootKindModifiedStyles = {
@@ -24,22 +27,57 @@ export const tagRootKindModifiedStyles = {
     backgroundColor: PRIMITIVE_COLORS.gray600,
   },
   [TAG_KIND.blue]: {
-    backgroundColor: PRIMITIVE_COLORS.blue600,
+    backgroundColor: PRIMITIVE_COLORS.blue500,
   },
   [TAG_KIND.green]: {
-    backgroundColor: PRIMITIVE_COLORS.green600,
+    backgroundColor: PRIMITIVE_COLORS.green500,
   },
   [TAG_KIND.yellow]: {
-    backgroundColor: PRIMITIVE_COLORS.yellow600,
+    backgroundColor: PRIMITIVE_COLORS.yellow500,
   },
   [TAG_KIND.purple]: {
-    backgroundColor: PRIMITIVE_COLORS.purple600,
+    backgroundColor: PRIMITIVE_COLORS.purple500,
   },
   [TAG_KIND.red]: {
-    backgroundColor: PRIMITIVE_COLORS.red600,
+    backgroundColor: PRIMITIVE_COLORS.red500,
   },
   [TAG_KIND.white]: {
     backgroundColor: PRIMITIVE_COLORS.gray50,
     color: PRIMITIVE_COLORS.gray900,
+  },
+};
+
+export const tagRootFillBaseStyles = {
+  backgroundColor: "transparent",
+};
+
+export const tagRootFillKindModifiedStyles = {
+  [TAG_KIND.gray]: {
+    color: PRIMITIVE_COLORS.gray300,
+    ...expandProperty("border", `1px solid ${PRIMITIVE_COLORS.gray300}`),
+  },
+  [TAG_KIND.blue]: {
+    color: PRIMITIVE_COLORS.blue300,
+    ...expandProperty("border", `1px solid ${PRIMITIVE_COLORS.blue300}`),
+  },
+  [TAG_KIND.green]: {
+    color: PRIMITIVE_COLORS.green300,
+    ...expandProperty("border", `1px solid ${PRIMITIVE_COLORS.green300}`),
+  },
+  [TAG_KIND.yellow]: {
+    color: PRIMITIVE_COLORS.yellow300,
+    ...expandProperty("border", `1px solid ${PRIMITIVE_COLORS.yellow300}`),
+  },
+  [TAG_KIND.purple]: {
+    color: PRIMITIVE_COLORS.purple300,
+    ...expandProperty("border", `1px solid ${PRIMITIVE_COLORS.purple300}`),
+  },
+  [TAG_KIND.red]: {
+    color: PRIMITIVE_COLORS.red300,
+    ...expandProperty("border", `1px solid ${PRIMITIVE_COLORS.red300}`),
+  },
+  [TAG_KIND.white]: {
+    color: PRIMITIVE_COLORS.gray50,
+    ...expandProperty("border", `1px solid ${PRIMITIVE_COLORS.gray50}`),
   },
 };

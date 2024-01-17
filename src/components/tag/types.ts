@@ -18,4 +18,5 @@ export enum TAG_SIZE {
 export type TagProps = Omit<BaseTagProps, "kind" | "variant" | "color" | "size" | "closeable" | "disabled"> & {
   kind?: TAG_KIND;
   size?: TAG_SIZE;
+  fill?: boolean;
 };
