@@ -6,6 +6,9 @@ const buttonBaseStyles = {
   outline: "0",
   boxShadow: "none",
   ...expandProperty("borderRadius", "8px"),
+  transitionProperty: "background-color, color",
+  transitionDuration: "0.2s",
+  transitionTimingFunction: "ease-in",
 };
 
 const focusedButtonBaseStyles = {
@@ -104,22 +107,19 @@ export const buttonKindModifiedStyles = {
   [BUTTON_KIND.toggle]: {
     backgroundColor: PRIMITIVE_COLORS.gray800,
     color: PRIMITIVE_COLORS.gray200,
-    ...expandProperty("borderRadius", SPACE[2]),
-    ...expandProperty("padding", "8px 12px"),
 
     ":hover": {
       backgroundColor: PRIMITIVE_COLORS.gray700,
-      color: PRIMITIVE_COLORS.gray100,
+      color: PRIMITIVE_COLORS.gray50,
     },
 
     ":active:not(:disabled)": {
       backgroundColor: PRIMITIVE_COLORS.gray600,
-      color: PRIMITIVE_COLORS.gray100,
+      color: PRIMITIVE_COLORS.gray50,
     },
 
     ":disabled": {
-      color: PRIMITIVE_COLORS.gray400,
-      backgroundColor: PRIMITIVE_COLORS.gray800,
+      color: PRIMITIVE_COLORS.gray500,
     },
   },
 };
@@ -141,8 +141,7 @@ export const buttonFocusedModifiedStyles = {
   },
   [BUTTON_KIND.toggle]: {
     color: PRIMITIVE_COLORS.gray50,
-    border: `1px solid ${PRIMITIVE_COLORS.gray50}`,
-    backgroundColor: PRIMITIVE_COLORS.gray800,
+    ...focusedButtonBaseStyles,
   },
 };
 
@@ -199,21 +198,19 @@ export const spinnerModifiedStyles = {
 };
 
 export const checkedToggleButtonModifiedStyles = {
-  color: PRIMITIVE_COLORS.gray900,
   backgroundColor: PRIMITIVE_COLORS.gray50,
+  color: PRIMITIVE_COLORS.gray900,
 
   ":hover": {
-    backgroundColor: PRIMITIVE_COLORS.gray50,
-    color: PRIMITIVE_COLORS.gray900,
+    backgroundColor: PRIMITIVE_COLORS.gray200,
   },
 
   ":active:not(:disabled)": {
-    backgroundColor: PRIMITIVE_COLORS.gray50,
-    color: PRIMITIVE_COLORS.gray900,
+    backgroundColor: PRIMITIVE_COLORS.gray300,
   },
 
   ":disabled": {
     backgroundColor: PRIMITIVE_COLORS.gray800,
-    color: PRIMITIVE_COLORS.gray400,
+    color: PRIMITIVE_COLORS.gray500,
   },
 };
