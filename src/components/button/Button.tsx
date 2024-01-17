@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { Button as BaseButton } from "baseui/button";
 import { getButtonOverrides } from "./overrides";
-import { BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE, ButtonProps } from "./types";
+import { BUTTON_KIND, BUTTON_SIZE, ButtonProps } from "./types";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -9,7 +9,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     {
       kind = BUTTON_KIND.primary,
       size = BUTTON_SIZE.default,
-      shape = BUTTON_SHAPE.default,
       disabled,
       isLoading,
       colors,
@@ -38,7 +37,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
         className={className}
         isLoading={isLoading}
-        shape={shape}
         kind={buttonKind}
         size={size}
         disabled={disabled}
