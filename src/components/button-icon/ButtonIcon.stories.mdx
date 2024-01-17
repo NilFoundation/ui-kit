@@ -1,0 +1,83 @@
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/addon-docs/blocks";
+import { ButtonIcon } from "./ButtonIcon";
+import { BUTTON_ICON_KIND, BUTTON_ICON_SIZE } from "./types";
+import StoriesLayout from "../../shared/ui/stories-layout";
+import { HeartIcon } from "../icons";
+import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
+
+<Meta title="Form/ButtonIcon" component={ButtonIcon} />
+
+export const Template = ({ ...args }) => {
+  return (
+    <StoriesLayout color="#141414">
+      <ButtonIcon size={BUTTON_ICON_SIZE.s} icon={<HeartIcon />} {...args} />
+      <ButtonIcon size={BUTTON_ICON_SIZE.m} icon={<HeartIcon />} {...args} />
+      <ButtonIcon size={BUTTON_ICON_SIZE.l} icon={<HeartIcon />} {...args} />
+      <ButtonIcon size={BUTTON_ICON_SIZE.m} icon={<HeartIcon />} {...args} disabled />
+      <ButtonIcon
+        size={BUTTON_ICON_SIZE.m}
+        icon={<HeartIcon />}
+        {...args}
+        role="link"
+        href="https://explore.nil.foundation"
+      />
+    </StoriesLayout>
+  );
+};
+
+# ButtonIcon
+
+<Canvas isColumn>
+  <Story
+    name="Primary"
+    args={{ kind: BUTTON_ICON_KIND.primary }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=232-213837&mode=design&t=XhBpCIs1qM5XGz0i-0"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Secondary"
+    args={{ kind: BUTTON_ICON_KIND.secondary }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=232-213837&mode=design&t=XhBpCIs1qM5XGz0i-0"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Tertiary"
+    args={{ kind: BUTTON_ICON_KIND.tertiar }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=232-213837&mode=design&t=XhBpCIs1qM5XGz0i-0"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Danger"
+    args={{ kind: BUTTON_ICON_KIND.danger }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=232-213837&mode=design&t=XhBpCIs1qM5XGz0i-0"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={ButtonIcon} />
+
+### Usage:
+
+To use, import the component `ButtonIcon` and from `@nilfoundation/ui-kit`.
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+        import {ButtonIcon, BUTTON_ICON_SIZE, BUTTON_ICON_KIND, HeartIcon } from "@nilfoundation/ui-kit";
+         ...
+  `}
+/>
