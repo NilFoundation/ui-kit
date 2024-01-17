@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import Button from "./Button";
-import { BUTTON_SHAPE, BUTTON_SIZE } from "./types";
+import { BUTTON_SIZE } from "./types";
 import StoriesLayout from "../../shared/ui/stories-layout";
 import { HeartIcon } from "../icons";
 import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
@@ -33,7 +33,7 @@ export const Template = ({ children, ...args }) => {
     name="Primary"
     args={{ kind: "primary" }}
     parameters={getFigmaParameters(
-      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=99-19984&mode=design&t=g655DrIEKA1td3Rn-0"
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?node-id=1562%3A9551&mode=dev"
     )}
   >
     {Template.bind({})}
@@ -42,7 +42,7 @@ export const Template = ({ children, ...args }) => {
     name="Secondary"
     args={{ kind: "secondary" }}
     parameters={getFigmaParameters(
-      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=99-20213&mode=design&t=g655DrIEKA1td3Rn-0"
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?node-id=1562%3A9745&mode=dev"
     )}
   >
     {Template.bind({})}
@@ -51,7 +51,7 @@ export const Template = ({ children, ...args }) => {
     name="Tertiary"
     args={{ kind: "tertiary" }}
     parameters={getFigmaParameters(
-      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=99-20442&mode=design&t=vdSasKmpFl6EHyXE-0"
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?node-id=1562%3A9939&mode=dev"
     )}
   >
     {Template.bind({})}
@@ -60,7 +60,7 @@ export const Template = ({ children, ...args }) => {
     name="Danger"
     args={{ kind: "danger" }}
     parameters={getFigmaParameters(
-      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=99-20865&mode=design&t=vdSasKmpFl6EHyXE-0"
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?node-id=1562%3A10302&mode=dev"
     )}
   >
     {Template.bind({})}
@@ -69,7 +69,16 @@ export const Template = ({ children, ...args }) => {
     name="Toggle"
     args={{ kind: "toggle" }}
     parameters={getFigmaParameters(
-      "https://www.figma.com/file/9IKNrBtLd7mkDHnkcVBa1b/Site?type=design&node-id=217-52646&mode=design&t=zAUctn6rIsUhG3nz-0"
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?node-id=1403%3A40014&mode=dev"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Text"
+    args={{ kind: "text" }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?node-id=1562%3A10133&mode=dev"
     )}
   >
     {Template.bind({})}
@@ -78,9 +87,6 @@ export const Template = ({ children, ...args }) => {
     {Template.bind({})}
   </Story>
   <Story name="Loading" args={{ isLoading: true, children: "" }}>
-    {Template.bind({})}
-  </Story>
-  <Story name="Shape Square" args={{ shape: BUTTON_SHAPE.square, children: <HeartIcon size={20} /> }}>
     {Template.bind({})}
   </Story>
   <Story name="With Start Enhancer" args={{ startEnhancer: () => <HeartIcon /> }}>
@@ -102,15 +108,13 @@ To use, import the component `Button` and from `@nilfoundation/ui-kit`.
   dark
   format={true}
   code={`
-        import {Button, BUTTON_SIZE, BUTTON_SHAPE, BUTTON_KIND Upload} from "@nilfoundation/ui-kit";
+        import {Button, BUTTON_SIZE, BUTTON_KIND Upload} from "@nilfoundation/ui-kit";
          ...
         <Button>Button Label</Button>
         // With size
         <Button size={BUTTON_SIZE.mini}>Button Label</Button>
         // With kind
         <Button kind={BUTTON_KIND.gray}>Button Label</Button>
-        // With shape
-        <Button shape={BUTTON_SHAPE.square}>Button Label</Button>
         // Disabled
         <Button disabled>Button Label</Button>
         // Loading

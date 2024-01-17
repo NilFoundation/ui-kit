@@ -8,6 +8,7 @@ export enum BUTTON_KIND {
   tertiary = "tertiary",
   danger = "danger",
   toggle = "toggle",
+  text = "text",
 }
 
 export enum BUTTON_SIZE {
@@ -17,14 +18,8 @@ export enum BUTTON_SIZE {
   large = "large",
 }
 
-export enum BUTTON_SHAPE {
-  default = "default",
-  square = "square",
-}
-
 export type ButtonCommonProps = Omit<BaseButtonProps, "kind" | "shape" | "size"> & {
   size?: BUTTON_SIZE;
-  shape?: BUTTON_SHAPE;
   disabled?: boolean;
   isLoading?: boolean;
   className?: string;

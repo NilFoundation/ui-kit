@@ -1,0 +1,94 @@
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
+import ButtonIcon from "./ButtonIcon";
+import { BUTTON_SIZE } from "../button";
+import StoriesLayout from "../../shared/ui/stories-layout";
+import { HeartIcon } from "../icons";
+import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
+
+<Meta title="Form/ButtonIcon" component={ButtonIcon} />
+
+export const Template = ({ children, ...args }) => {
+  return (
+    <StoriesLayout>
+      <ButtonIcon size={BUTTON_SIZE.compact} icon={<HeartIcon />} {...args} />
+      <ButtonIcon size={BUTTON_SIZE.default} icon={<HeartIcon />} {...args} />
+      <ButtonIcon size={BUTTON_SIZE.large} icon={<HeartIcon />} {...args} />
+    </StoriesLayout>
+  );
+};
+
+# ButtonIcon
+
+<Canvas isColumn>
+  <Story
+    name="Primary"
+    args={{ kind: "primary" }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?node-id=1159%3A27732&mode=dev"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Secondary"
+    args={{ kind: "secondary" }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?node-id=1172%3A28254&mode=dev"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Tertiary"
+    args={{ kind: "tertiary" }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?node-id=1172%3A28528&mode=dev"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Danger"
+    args={{ kind: "danger" }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Toggle"
+    args={{ kind: "toggle" }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Text"
+    args={{ kind: "text" }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story name="Disabled" args={{ disabled: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={ButtonIcon} />
+
+### Usage:
+
+To use, import the component `ButtonIcon` and from `@nilfoundation/ui-kit`.
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+        import {ButtonIcon, BUTTON_SIZE, BUTTON_KIND} from "@nilfoundation/ui-kit";
+         ...
+        <ButtonIcon icon={<HeartIcon />} />
+        // With size
+        <ButtonIcon size={BUTTON_SIZE.large} icon={<HeartIcon />} />
+        // With kind
+        <Button kind={BUTTON_KIND.gray} icon={<HeartIcon />}>Button Label</Button>
+        // Disabled
+        <Button disabled icon={<HeartIcon />}>Button Label</Button>
+  `}
+/>

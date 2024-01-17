@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Button, BUTTON_SHAPE, BUTTON_SIZE, ButtonProps } from "../../button";
+import { Button, BUTTON_SIZE, ButtonProps } from "../../button";
 import { useStyletron } from "baseui";
 
 type ActionWrapperProps = ButtonProps & {
@@ -12,13 +12,7 @@ const ActionWrapper = forwardRef<HTMLDivElement, ActionWrapperProps>(
 
     return (
       <div ref={ref} className={css({ marginTop: "22px", display: isDragActive ? "none" : "block" })}>
-        <Button
-          kind={kind}
-          shape={BUTTON_SHAPE.default}
-          size={BUTTON_SIZE.compact}
-          onClick={onClick}
-          disabled={disabled}
-        >
+        <Button kind={kind} size={BUTTON_SIZE.compact} onClick={onClick} disabled={disabled}>
           {children}
         </Button>
       </div>

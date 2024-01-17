@@ -2,7 +2,7 @@ import { FC } from "react";
 import { getNavigationBurgerStyles, getNavigationListStyles, navigationNavWrapperStyles } from "../../styles";
 import NavItem from "./NavItem";
 import AuthBlock from "../auth/AuthBlock";
-import { Button, BUTTON_SHAPE, BUTTON_SIZE } from "../../../button";
+import { Button, BUTTON_SIZE } from "../../../button";
 import { MenuIcon } from "../../../icons";
 import { NavigationBarProps } from "../../types";
 import { useStyletron } from "baseui";
@@ -45,7 +45,7 @@ const MenuNavigation: FC<MenuNavigationProps> = ({
         )}
       </ul>
       <div className={css(getNavigationBurgerStyles(mediaQuery))}>
-        <Button onClick={onDrawerButtonClick} size={BUTTON_SIZE.compact} shape={BUTTON_SHAPE.square}>
+        <Button onClick={onDrawerButtonClick} size={BUTTON_SIZE.compact}>
           <MenuIcon size={24} />
         </Button>
       </div>
