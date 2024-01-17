@@ -80,7 +80,8 @@ export const getSelectOverrides = (
     },
     Dropdown: {
       style: () => ({
-        ...BorderRadiusStyles,
+        ...expandProperty("borderRadius", "8px"),
+        backgroundColor: PRIMITIVE_COLORS.gray800,
       }),
     },
     Popover: {
