@@ -1,4 +1,4 @@
-import { lineNumbers } from "@uiw/react-codemirror";
+import { lineNumbers } from "@codemirror/view";
 
 export const prefixLineNumberExtension = lineNumbers({
   formatNumber: (line: number) => {

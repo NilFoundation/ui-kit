@@ -23,7 +23,7 @@ export const mediumStyles = {
   ...expandProperty("borderRadius", "32px"),
 };
 
-export const tagRootKindModifiedStyles = {
+export const tagRootFillKindModifiedStyles = {
   [TAG_KIND.gray]: {
     backgroundColor: PRIMITIVE_COLORS.gray600,
   },
@@ -52,7 +52,7 @@ export const tagRootFillBaseStyles = {
   backgroundColor: "transparent",
 };
 
-export const tagRootFillKindModifiedStyles = {
+export const tagRootKindModifiedStyles = {
   [TAG_KIND.gray]: {
     color: PRIMITIVE_COLORS.gray300,
     ...expandProperty("border", `1px solid ${PRIMITIVE_COLORS.gray300}`),
