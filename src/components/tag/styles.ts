@@ -9,6 +9,7 @@ export const tagRootBaseStyles = {
   color: PRIMITIVE_COLORS.gray50,
   fontSize: "12px",
   lineHeight: "16px",
+  cursor: "text",
 };
 
 export const smallStyles = {
