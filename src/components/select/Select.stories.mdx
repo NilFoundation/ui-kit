@@ -32,6 +32,20 @@ export const options = [
   { label: "Beige", id: "#F5F5DC" },
 ];
 
+export const grouppedOptions = {
+  __ungrouped: [{id: 'Black', color: '#000000'}],
+  Blueish: [
+    {id: 'AliceBlue', color: '#F0F8FF'},
+    {id: 'Aqua', color: '#00FFFF'},
+    {id: 'Aquamarine', color: '#7FFFD4'},
+  ],
+  Whiteish: [
+    {id: 'AntiqueWhite', color: '#FAEBD7'},
+    {id: 'Azure', color: '#F0FFFF'},
+    {id: 'Beige', color: '#F5F5DC'},
+  ],
+};
+
 # Select
 
 <Canvas isColumn>
@@ -42,6 +56,9 @@ export const options = [
     {Template.bind({})}
   </Story>
   <Story name="Multiple" args={{ options, placeholder: "Multiple Select", multi: true, size: SELECT_SIZE.small }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Multiple Medium" args={{ options, placeholder: "Multiple Medium Select", multi: true, size: SELECT_SIZE.medium }}>
     {Template.bind({})}
   </Story>
   <Story
@@ -68,7 +85,7 @@ export const options = [
   </Story>
   <Story
     name="Without Searchable"
-    args={{ options, placeholder: "Select", searchable: false, size: SELECT_SIZE.small }}
+    args={{ options, placeholder: "Without Searchable Select", searchable: false, size: SELECT_SIZE.small }}
   >
     {Template.bind({})}
   </Story>
@@ -79,6 +96,9 @@ export const options = [
     {Template.bind({})}
   </Story>
   <Story name="Seconday select" args={{ options, placeholder: "Secondary select", kind: SELECT_KIND.secondary }}>
+    {Template.bind({})}
+  </Story>
+    <Story name="With groupped options" args={{ options: grouppedOptions, placeholder: "Select With Groupped options", size: SELECT_SIZE.medium }}>
     {Template.bind({})}
   </Story>
 </Canvas>

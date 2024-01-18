@@ -9,7 +9,6 @@ type SelectSpinnerProps = {
 const spinnerSize = {
   [SELECT_SIZE.small]: SPINNER_SIZE.small,
   [SELECT_SIZE.medium]: SPINNER_SIZE.medium,
-  [SELECT_SIZE.large]: SPINNER_SIZE.large,
 };
 
 const SelectSpinner: FC<SelectSpinnerProps> = ({ size }) => {

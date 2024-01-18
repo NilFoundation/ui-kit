@@ -1,7 +1,7 @@
 import { StyleObject } from "styletron-react";
 import { MENU_SIZE } from "./types";
 import { PRIMITIVE_COLORS } from "../../shared";
-import { BorderRadiusStyles } from "../../shared/styles/border";
+import { withoutBorderStyles } from "../../shared/styles/borderStyles";
 
 export const headerBaseStyles: StyleObject = {
   display: "flex",
@@ -93,7 +93,7 @@ export const getItemContainerStyles = (
     cursor: "pointer",
     gap: "16px",
     color: PRIMITIVE_COLORS.gray500,
-    ...BorderRadiusStyles,
+    ...withoutBorderStyles,
 
     ":hover": {
       backgroundColor: PRIMITIVE_COLORS.gray800,

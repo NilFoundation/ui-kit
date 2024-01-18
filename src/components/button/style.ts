@@ -1,6 +1,7 @@
 import { PRIMITIVE_COLORS, SPACE } from "../../shared";
 import { BUTTON_KIND, BUTTON_SIZE } from "./types";
 import { expandProperty } from "inline-style-expand-shorthand";
+import { boxShadowFocusStyles } from "../../shared/styles/boxShadowFocusStyles";
 
 const buttonBaseStyles = {
   outline: "0",
@@ -9,10 +10,6 @@ const buttonBaseStyles = {
   transitionProperty: "background-color, color",
   transitionDuration: "0.15s",
   transitionTimingFunction: "ease-in",
-};
-
-const focusedButtonBaseStyles = {
-  boxShadow: `0px 0px 0px 2px ${PRIMITIVE_COLORS.gray900}, 0px 0px 0px 4px ${PRIMITIVE_COLORS.gray50}`,
 };
 
 export const buttonModifiedStyles = {
@@ -148,25 +145,25 @@ export const buttonKindModifiedStyles = {
 export const buttonFocusedModifiedStyles = {
   [BUTTON_KIND.primary]: {
     backgroundColor: PRIMITIVE_COLORS.gray50,
-    ...focusedButtonBaseStyles,
+    ...boxShadowFocusStyles,
   },
   [BUTTON_KIND.secondary]: {
     color: PRIMITIVE_COLORS.gray50,
-    ...focusedButtonBaseStyles,
+    ...boxShadowFocusStyles,
   },
   [BUTTON_KIND.tertiary]: {
-    ...focusedButtonBaseStyles,
+    ...boxShadowFocusStyles,
   },
   [BUTTON_KIND.danger]: {
-    ...focusedButtonBaseStyles,
+    ...boxShadowFocusStyles,
   },
   [BUTTON_KIND.toggle]: {
     color: PRIMITIVE_COLORS.gray50,
-    ...focusedButtonBaseStyles,
+    ...boxShadowFocusStyles,
   },
   [BUTTON_KIND.text]: {
     color: PRIMITIVE_COLORS.gray50,
-    ...focusedButtonBaseStyles,
+    ...boxShadowFocusStyles,
   },
 };
 

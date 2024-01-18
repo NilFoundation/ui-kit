@@ -1,5 +1,5 @@
 import { ModalOverrides } from "baseui/modal";
-import { BorderRadiusStyles } from "../../shared/styles/border";
+import { withoutBorderStyles } from "../../shared/styles/borderStyles";
 import ModalClose from "./ui/ModalClose";
 import { PRIMITIVE_COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
@@ -13,7 +13,7 @@ export const getModalOverrides = (): ModalOverrides => ({
   Dialog: {
     style: ({ $size }) => {
       return {
-        ...BorderRadiusStyles,
+        ...withoutBorderStyles,
         ...expandProperty("padding", "32px 24px 16px"),
         ...($size === "default" ? { width: "500px" } : {}),
         backgroundColor: PRIMITIVE_COLORS.gray800,

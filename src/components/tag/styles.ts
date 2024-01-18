@@ -1,10 +1,12 @@
 import { expandProperty } from "inline-style-expand-shorthand";
 import { TAG_KIND } from "./types";
 import { PRIMITIVE_COLORS } from "../../shared";
-import { WithoutBorderStyles } from "../../shared/styles/border";
+import { withoutBorderStyles } from "../../shared/styles/borderStyles";
+import { withoutMarginStyles } from "../../shared/styles/withoutMarginStyles";
 
 export const tagRootBaseStyles = {
-  ...WithoutBorderStyles,
+  ...withoutBorderStyles,
+  ...withoutMarginStyles,
   fontWeight: 500,
   color: PRIMITIVE_COLORS.gray50,
   fontSize: "12px",

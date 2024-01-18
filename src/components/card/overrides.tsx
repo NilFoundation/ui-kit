@@ -1,7 +1,7 @@
 import { CardOverrides } from "baseui/card";
-import { BorderRadiusStyles } from "../../shared/styles/border";
+import { withoutBorderStyles } from "../../shared/styles/borderStyles";
 import { PRIMITIVE_COLORS } from "../../shared";
-import { MarginStyles } from "../../shared/styles/margin";
+import { withoutMarginStyles } from "../../shared/styles/withoutMarginStyles";
 import { expandProperty } from "inline-style-expand-shorthand";
 
 export const BorderStyle = expandProperty("border", "none");
@@ -10,7 +10,7 @@ export const getCardOverrides = (headline: boolean, border: boolean): CardOverri
   return {
     Root: {
       style: {
-        ...BorderRadiusStyles,
+        ...withoutBorderStyles,
         position: "relative",
         paddingRight: "16px",
         paddingLeft: "16px",
@@ -29,7 +29,7 @@ export const getCardOverrides = (headline: boolean, border: boolean): CardOverri
     },
     Contents: {
       style: {
-        ...MarginStyles,
+        ...withoutMarginStyles,
       },
     },
     Thumbnail: {

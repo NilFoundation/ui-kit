@@ -1,9 +1,9 @@
 import { PRIMITIVE_COLORS } from "../../shared";
-import { MarginStyles } from "../../shared/styles/margin";
+import { withoutMarginStyles } from "../../shared/styles/withoutMarginStyles";
 import { expandProperty } from "inline-style-expand-shorthand";
 
 export const tabBaseStyles = {
-  ...MarginStyles,
+  ...withoutMarginStyles,
   paddingLeft: "24px",
   paddingRight: "24px",
   color: PRIMITIVE_COLORS.white,
