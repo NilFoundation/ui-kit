@@ -11,6 +11,7 @@ import {
 import { PRIMITIVE_COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { StyleObject } from "styletron-standard";
+import { boxShadowFocusStyles } from "../../shared/styles/boxShadowFocusStyles";
 
 const getCheckmarkBackgroundImage = (isIndeterminate: boolean, isChecked: boolean, isError: boolean) => {
   if (isIndeterminate) {
@@ -115,27 +116,29 @@ export const getCheckboxOverrides = (): CheckboxOverrides => {
         ...($error ? getCheckmarkErrorModifiedStyles($isFocused) : {}),
         ...($checked || $isIndeterminate ? getCheckmarkCheckedModifiedStyles($isFocused, $error) : {}),
         ...($disabled ? getCheckmarkDisabledModifiedStyles($checked) : {}),
+        ...($isFocused ? boxShadowFocusStyles : {}),
       }),
     },
     Toggle: {
       style: {
         backgroundColor: PRIMITIVE_COLORS.gray800,
         ...expandProperty("transition", "transform 0.15s"),
-        width: "14px",
-        height: "14px",
-        ...expandProperty("borderRadius", "1px"),
+        width: "12px",
+        height: "12px",
+        ...expandProperty("borderRadius", "2px"),
       },
     },
     ToggleTrack: {
-      style: ({ $checked, $error, $disabled }) => ({
+      style: ({ $checked, $error, $disabled, $isFocused }) => ({
         width: "30px",
         height: "16px",
         boxSizing: "border-box",
         boxShadow: "none",
-        ...expandProperty("borderRadius", "1px"),
-        ...expandProperty("padding", "1px"),
+        ...expandProperty("borderRadius", "4px"),
+        ...expandProperty("padding", "2px"),
         ...getToggleBackgroundStyles($checked, $error, $disabled),
         ...expandProperty("margin", "0"),
+        ...($isFocused ? boxShadowFocusStyles : {}),
       }),
     },
   };
