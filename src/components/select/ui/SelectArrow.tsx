@@ -13,11 +13,11 @@ const SelectArrow: FC<SelectArrowProps> = ({ color = PRIMITIVE_COLORS.white, isR
 
   return (
     <ChevronDownIcon
-      size={16}
+      size={18}
       color={color}
       className={css({
         transform: isRotated ? "rotate(180deg)" : "unset",
-        marginLeft: "16px",
+        marginLeft: "8px",
         cursor: "pointer",
       })}
     />

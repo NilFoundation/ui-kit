@@ -1,3 +1,3 @@
 import { expandProperty } from "inline-style-expand-shorthand";
 
-export const MarginStyles = expandProperty("margin", 0);
+export const withoutMarginStyles = expandProperty("margin", 0);

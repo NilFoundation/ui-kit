@@ -1,10 +1,10 @@
-import { BorderRadiusStyles } from "../../shared/styles/border";
+import { withoutBorderStyles } from "../../shared/styles/borderStyles";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { BADGE_COLOR } from "./types";
 import { PRIMITIVE_COLORS } from "../../shared";
 
 export const badgeBaseStyles = {
-  ...BorderRadiusStyles,
+  ...withoutBorderStyles,
   ...expandProperty("border", "none"),
   ...expandProperty("padding", "0 4px"),
   lineHeight: "20px",

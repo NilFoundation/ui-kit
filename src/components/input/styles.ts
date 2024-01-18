@@ -2,7 +2,7 @@ import { INPUT_SIZE } from "./types";
 import { expandProperty } from "inline-style-expand-shorthand";
 
 const containerCommonStyles = {
-  ...expandProperty("borderRadius", "2px"),
+  ...expandProperty("borderRadius", "8px"),
   ...expandProperty("borderWidth", "1px"),
 };
 

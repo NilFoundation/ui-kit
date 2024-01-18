@@ -3,7 +3,7 @@ import { expandProperty } from "inline-style-expand-shorthand";
 
 export const inputContainerStyles = {
   ...expandProperty("padding", "0"),
-  ...expandProperty("borderRadius", "2px"),
+  ...expandProperty("borderRadius", "8px"),
   ...expandProperty("borderWidth", "1px"),
 };
 

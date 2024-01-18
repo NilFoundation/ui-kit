@@ -1,8 +1,8 @@
-import { BorderRadiusStyles } from "../../shared/styles/border";
+import { withoutBorderStyles } from "../../shared/styles/borderStyles";
 import { PRIMITIVE_COLORS } from "../../shared";
 
 export const tooltipBodyStyles = {
-  ...BorderRadiusStyles,
+  ...withoutBorderStyles,
   backgroundColor: PRIMITIVE_COLORS.gray700,
   maxWidth: "216px",
 };

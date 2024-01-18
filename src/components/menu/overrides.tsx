@@ -3,14 +3,14 @@ import MenuEmptyState from "./ui/MenuEmptyState";
 import { MENU_SIZE } from "./types";
 import MenuItem from "./ui/MenuItem";
 import MenuHeader from "./ui/MenuHeader";
-import { BorderRadiusStyles } from "../../shared/styles/border";
+import { withoutBorderStyles } from "../../shared/styles/borderStyles";
 import { PRIMITIVE_COLORS } from "../../shared";
 
 export const getMenuOverrides = (size: MENU_SIZE, isLight: boolean): MenuOverrides => {
   return {
     List: {
       style: {
-        ...BorderRadiusStyles,
+        ...withoutBorderStyles,
         outline: "none !important",
         ...(isLight
           ? {

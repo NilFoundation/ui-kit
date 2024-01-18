@@ -1,10 +1,12 @@
 import { expandProperty } from "inline-style-expand-shorthand";
 import { TAG_KIND } from "./types";
 import { PRIMITIVE_COLORS } from "../../shared";
-import { WithoutBorderStyles } from "../../shared/styles/border";
+import { withoutBorderStyles } from "../../shared/styles/borderStyles";
+import { withoutMarginStyles } from "../../shared/styles/withoutMarginStyles";
 
 export const tagRootBaseStyles = {
-  ...WithoutBorderStyles,
+  ...withoutBorderStyles,
+  ...withoutMarginStyles,
   fontWeight: 500,
   color: PRIMITIVE_COLORS.gray50,
   fontSize: "12px",
@@ -23,7 +25,7 @@ export const mediumStyles = {
   ...expandProperty("borderRadius", "32px"),
 };
 
-export const tagRootKindModifiedStyles = {
+export const tagRootFillKindModifiedStyles = {
   [TAG_KIND.gray]: {
     backgroundColor: PRIMITIVE_COLORS.gray600,
   },
@@ -52,7 +54,7 @@ export const tagRootFillBaseStyles = {
   backgroundColor: "transparent",
 };
 
-export const tagRootFillKindModifiedStyles = {
+export const tagRootKindModifiedStyles = {
   [TAG_KIND.gray]: {
     color: PRIMITIVE_COLORS.gray300,
     ...expandProperty("border", `1px solid ${PRIMITIVE_COLORS.gray300}`),

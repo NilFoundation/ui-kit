@@ -4,7 +4,7 @@ import UploaderProgressBar from "./ui/UploaderProgressBar";
 import ActionWrapper from "./ui/ActionWrapper";
 import { getEntityWithoutProperties } from "../../shared/utils/getEntityWithoutProperties";
 import { BUTTON_KIND } from "../button";
-import { MarginStyles } from "../../shared/styles/margin";
+import { withoutMarginStyles } from "../../shared/styles/withoutMarginStyles";
 
 export const getFileUploaderOverrides = (isProgress: boolean, isError: boolean): FileUploaderOverrides => {
   return {
@@ -69,12 +69,12 @@ export const getFileUploaderOverrides = (isProgress: boolean, isError: boolean):
     ContentMessage: {
       style: ({ $theme, $isDragActive }) => ({
         color: `${$isDragActive ? $theme.colors.white : $theme.colors.gray300}`,
-        ...MarginStyles,
+        ...withoutMarginStyles,
       }),
     },
     ErrorMessage: {
       style: () => ({
-        ...MarginStyles,
+        ...withoutMarginStyles,
       }),
     },
     ProgressBar: {

@@ -3,7 +3,7 @@ import { TOOLTIP_KIND } from "./types";
 import { PRIMITIVE_COLORS, SPACE } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
 
-const borderRadiusStyles = expandProperty("borderRadius", "2px");
+const borderRadiusStyles = expandProperty("borderRadius", "8px");
 
 export const getTooltipOverrides = (kind: TOOLTIP_KIND): PopoverOverrides => {
   return {
@@ -30,6 +30,9 @@ export const getTooltipOverrides = (kind: TOOLTIP_KIND): PopoverOverrides => {
     Arrow: {
       style: {
         ...getBackgroundKindStyles(kind),
+        width: "14px",
+        height: "14px",
+        ...expandProperty("borderRadius", "2px"),
       },
     },
   };

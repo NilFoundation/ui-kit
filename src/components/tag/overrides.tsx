@@ -5,6 +5,7 @@ import {
   mediumStyles,
   smallStyles,
   tagRootFillKindModifiedStyles,
+  tagRootFillBaseStyles,
 } from "./styles";
 import { TAG_KIND, TAG_SIZE } from "./types";
 import { CloseIcon } from "../icons";
@@ -16,7 +17,7 @@ export const getTagOverrides = (kind: TAG_KIND, size: TAG_SIZE, fill: boolean): 
         return {
           ...tagRootBaseStyles,
           ...(size === TAG_SIZE.m ? mediumStyles : smallStyles),
-          ...(fill ? tagRootBaseStyles : {}),
+          ...(fill ? tagRootFillBaseStyles : {}),
           ...(fill ? tagRootFillKindModifiedStyles[kind] : tagRootKindModifiedStyles[kind]),
         };
       },
