@@ -5,8 +5,9 @@ import { boxShadowFocusStyles } from "../../shared/styles/boxShadowFocusStyles";
 import { getCheckmarkLabelStyles } from "../../shared/theme/checkmarkCommonLabelStyles";
 import { getSwitchBackgroundStyles } from "./styles";
 import { withoutMarginStyles } from "../../shared/styles/withoutMarginStyles";
+import { LabelMedium } from "baseui/typography";
 
-export const getToggleOverrides = (disabled: boolean): CheckboxOverrides => {
+export const getToggleOverrides = (disabled?: boolean): CheckboxOverrides => {
   return {
     Root: {
       style: {
@@ -14,9 +15,14 @@ export const getToggleOverrides = (disabled: boolean): CheckboxOverrides => {
       },
     },
     Label: {
-      style: {
-        ...getCheckmarkLabelStyles(disabled),
-      },
+      component: LabelMedium,
+      style: ({ $labelPlacement }) => ({
+        paddingBottom: $labelPlacement === "top" ? "10px" : null,
+        paddingTop: $labelPlacement === "bottom" ? "10px" : null,
+        paddingRight: $labelPlacement === "left" ? "10px" : null,
+        paddingLeft: $labelPlacement === "right" ? "10px" : null,
+        ...getCheckmarkLabelStyles(!!disabled),
+      }),
     },
     Toggle: {
       style: ({ $checked }) => ({

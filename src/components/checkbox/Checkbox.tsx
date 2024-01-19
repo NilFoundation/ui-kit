@@ -12,7 +12,7 @@ const Checkbox: FC<CheckboxProps> = ({
   const checkboxOverrides = getCheckboxOverrides();
   const overrides = getMergedOverrides(checkboxOverrides, baseOverrides);
 
-  return <BaseCheckbox {...props} overrides={overrides} labelPlacement={labelPlacement} />;
+  return <BaseCheckbox {...props} overrides={overrides} labelPlacement={labelPlacement} checkmarkType="default" />;
 };
 
 export { LABEL_PLACEMENT };
