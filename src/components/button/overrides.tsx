@@ -18,11 +18,23 @@ const spinnerSize = {
   [BUTTON_SIZE.large]: SPINNER_SIZE.large,
 };
 
-const getSpinnerColor = (kind = "gray", disabled: boolean) => {
-  if (!disabled) {
-    return kind !== "gray" ? PRIMITIVE_COLORS.white : PRIMITIVE_COLORS.black;
+const getSpinnerColor = (kind: BUTTON_KIND, disabled: boolean) => {
+  if (disabled) {
+    return PRIMITIVE_COLORS.gray500;
   }
-  return PRIMITIVE_COLORS.white;
+
+  switch (kind) {
+    case BUTTON_KIND.primary:
+      return PRIMITIVE_COLORS.gray900;
+    case BUTTON_KIND.secondary:
+    case BUTTON_KIND.tertiary:
+    case BUTTON_KIND.text:
+    case BUTTON_KIND.toggle:
+    case BUTTON_KIND.danger:
+      return PRIMITIVE_COLORS.gray50;
+    default:
+      return PRIMITIVE_COLORS.black;
+  }
 };
 
 export const getButtonOverrides = (

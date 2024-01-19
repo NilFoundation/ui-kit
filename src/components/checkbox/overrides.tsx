@@ -1,6 +1,5 @@
 import { CheckboxOverrides } from "baseui/checkbox";
 import { LabelMedium } from "baseui/typography";
-import { blackCheckmark, blackIndeterminateCheckmark, whiteCheckmark, whiteIndeterminateCheckmark } from "./checkmarks";
 import {
   getCheckmarkBaseModifiedStyles,
   getCheckmarkBaseStyles,
@@ -12,18 +11,7 @@ import { PRIMITIVE_COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { StyleObject } from "styletron-standard";
 import { boxShadowFocusStyles } from "../../shared/styles/boxShadowFocusStyles";
-
-const getCheckmarkBackgroundImage = (isIndeterminate: boolean, isChecked: boolean, isError: boolean) => {
-  if (isIndeterminate) {
-    return `url("data:image/svg+xml,${isError ? whiteIndeterminateCheckmark : blackIndeterminateCheckmark}")`;
-  }
-
-  if (!isChecked) {
-    return null;
-  }
-
-  return `url("data:image/svg+xml,${isError ? whiteCheckmark : blackCheckmark}")`;
-};
+import { getCheckmarkBackgroundImage } from "./checkboxStyles";
 
 const getToggleBackgroundStyles = (isChecked: boolean, isError: boolean, $disabled: boolean): StyleObject => {
   const transition = expandProperty("transition", "background-color 0.15s");
@@ -111,7 +99,6 @@ export const getCheckboxOverrides = (): CheckboxOverrides => {
       style: ({ $error, $disabled, $checked, $isIndeterminate, $isFocused }) => ({
         ...getCheckmarkBaseStyles($isIndeterminate),
         backgroundImage: getCheckmarkBackgroundImage($isIndeterminate, $checked, $error),
-
         ...getCheckmarkBaseModifiedStyles($isFocused),
         ...($error ? getCheckmarkErrorModifiedStyles($isFocused) : {}),
         ...($checked || $isIndeterminate ? getCheckmarkCheckedModifiedStyles($isFocused, $error) : {}),

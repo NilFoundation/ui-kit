@@ -30,3 +30,4 @@ export * from "./chart";
 export * from "./error-page";
 export * from "./codefield";
 export * from "./toggleGroup";
+export * from "./toggle";

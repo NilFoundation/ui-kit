@@ -124,6 +124,7 @@ export const buttonKindModifiedStyles = {
   [BUTTON_KIND.text]: {
     backgroundColor: "transparent",
     color: PRIMITIVE_COLORS.gray200,
+    textDecoration: "underline",
 
     ":hover": {
       backgroundColor: "transparent",

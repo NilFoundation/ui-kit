@@ -1,0 +1,46 @@
+import { CheckboxOverrides } from "baseui/checkbox";
+import { PRIMITIVE_COLORS } from "../../shared";
+import { expandProperty } from "inline-style-expand-shorthand";
+import { boxShadowFocusStyles } from "../../shared/styles/boxShadowFocusStyles";
+import { getCheckmarkLabelStyles } from "../../shared/theme/checkmarkCommonLabelStyles";
+import { getSwitchBackgroundStyles } from "./styles";
+import { withoutMarginStyles } from "../../shared/styles/withoutMarginStyles";
+
+export const getToggleOverrides = (disabled: boolean): CheckboxOverrides => {
+  return {
+    Root: {
+      style: {
+        alignItems: "center",
+      },
+    },
+    Label: {
+      style: {
+        ...getCheckmarkLabelStyles(disabled),
+      },
+    },
+    Toggle: {
+      style: ({ $checked }) => ({
+        backgroundColor: PRIMITIVE_COLORS.gray800,
+        ...expandProperty("transition", "transform 0.15s ease-in"),
+        width: "12px",
+        height: "12px",
+        ...expandProperty("borderRadius", "2px"),
+        ...($checked ? { transform: "translateX(14px)" } : {}),
+      }),
+    },
+    ToggleTrack: {
+      style: ({ $checked, $disabled, $isFocused }) => ({
+        width: "30px",
+        height: "16px",
+        boxSizing: "border-box",
+        boxShadow: "none",
+        ...expandProperty("transition", "transform 0.15s ease-in"),
+        ...expandProperty("borderRadius", "4px"),
+        ...expandProperty("padding", "2px"),
+        ...getSwitchBackgroundStyles($checked, $disabled),
+        ...withoutMarginStyles,
+        ...($isFocused ? boxShadowFocusStyles : {}),
+      }),
+    },
+  };
+};
