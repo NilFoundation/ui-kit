@@ -19,6 +19,17 @@ export const controlContainerModifiedStyles = {
   },
 };
 
+export const valueContainerModifiedStyles = {
+  [SELECT_SIZE.small]: {
+    top: "3px",
+    bottom: "3px",
+  },
+  [SELECT_SIZE.medium]: {
+    top: "10px",
+    bottom: "10px",
+  },
+};
+
 export const selectTypographyStyles = {
   [SELECT_SIZE.small]: {
     fontSize: "12px",

@@ -22,7 +22,7 @@
     "preview": "vite preview",
     "prettier": "prettier --write 'src/**/**/*.{js,ts,tsx,mdx}'",
     "prettier:check": "prettier --check 'src/**/**/*.{js,ts,tsx,mdx}'",
-    "lint": "eslint 'src/**/**/*.{js,ts,mdx}'",
+    "lint": "eslint src/**/**/*.{js,ts,tsx,mdx}",
     "tsc": "tsc --noEmit",
     "storybook": "storybook dev -s ./src/assets -p 6006",
     "build-storybook": "storybook build"

@@ -7,7 +7,7 @@ import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
 
 <Meta title="Form/ButtonIcon" component={ButtonIcon} />
 
-export const Template = ({ children, ...args }) => {
+export const Template = ({ children: _, ...args }) => {
   return (
     <StoriesLayout>
       <ButtonIcon size={BUTTON_SIZE.compact} icon={<HeartIcon />} {...args} />
@@ -47,22 +47,13 @@ export const Template = ({ children, ...args }) => {
   >
     {Template.bind({})}
   </Story>
-  <Story
-    name="Danger"
-    args={{ kind: "danger" }}
-  >
+  <Story name="Danger" args={{ kind: "danger" }}>
     {Template.bind({})}
   </Story>
-  <Story
-    name="Toggle"
-    args={{ kind: "toggle" }}
-  >
+  <Story name="Toggle" args={{ kind: "toggle" }}>
     {Template.bind({})}
   </Story>
-  <Story
-    name="Text"
-    args={{ kind: "text" }}
-  >
+  <Story name="Text" args={{ kind: "text" }}>
     {Template.bind({})}
   </Story>
   <Story name="Disabled" args={{ disabled: true }}>

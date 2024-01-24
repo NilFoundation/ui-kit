@@ -18,7 +18,7 @@ export const Template = ({ checked: baseChecked, ...args }) => {
 # Toggle
 
 <Canvas isColumn>
-  <Story name="Toggle checked" args={{ children: "Label", checked: true, }}>
+  <Story name="Toggle checked" args={{ children: "Label", checked: true }}>
     {Template.bind({})}
   </Story>
   <Story
@@ -27,7 +27,7 @@ export const Template = ({ checked: baseChecked, ...args }) => {
   >
     {Template.bind({})}
   </Story>
-  <Story name="Toggle unchecked" args={{ children: "Label", checked: false, }}>
+  <Story name="Toggle unchecked" args={{ children: "Label", checked: false }}>
     {Template.bind({})}
   </Story>
   <Story name="Toggle disabled" args={{ children: "Label", disabled: true }}>
