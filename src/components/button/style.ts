@@ -16,18 +16,22 @@ export const buttonModifiedStyles = {
   [BUTTON_SIZE.mini]: {
     ...buttonBaseStyles,
     ...expandProperty("padding", "4px 8px"),
+    fontSize: "12px",
   },
   [BUTTON_SIZE.compact]: {
     ...buttonBaseStyles,
     ...expandProperty("padding", "8px 16px"),
+    fontSize: "12px",
   },
   [BUTTON_SIZE.default]: {
     ...buttonBaseStyles,
     ...expandProperty("padding", "12px 24px"),
+    fontSize: "16px",
   },
   [BUTTON_SIZE.large]: {
     ...buttonBaseStyles,
     ...expandProperty("padding", "16px 32px"),
+    fontSize: "16px",
   },
 };
 

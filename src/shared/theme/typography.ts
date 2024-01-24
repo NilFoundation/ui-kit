@@ -60,6 +60,12 @@ export const createTypography = (defaultFonts?: DefaultFonts): DefaultTheme => {
 
         ...getTypographyOverrides(
           {
+            LabelXSmall: {
+              ...defaultMediumFontProperty,
+              fontSize: "10px",
+              fontWeight: 500,
+              lineHeight: "16px",
+            },
             LabelSmall: {
               ...defaultMediumFontProperty,
               fontSize: "12px",
@@ -69,6 +75,12 @@ export const createTypography = (defaultFonts?: DefaultFonts): DefaultTheme => {
             LabelMedium: {
               ...defaultMediumFontProperty,
               fontSize: "16px",
+              fontWeight: 500,
+              lineHeight: "24px",
+            },
+            LabelLarge: {
+              ...defaultMediumFontProperty,
+              fontSize: "18px",
               fontWeight: 500,
               lineHeight: "24px",
             },
