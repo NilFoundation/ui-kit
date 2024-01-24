@@ -4,6 +4,7 @@ import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
 import { externalizeDeps } from 'vite-plugin-externalize-deps';
 import eslint from 'vite-plugin-eslint';
+import replace from '@rollup/plugin-replace';
 
 const packageJson = require('./package.json');
 
@@ -62,6 +63,14 @@ export default defineConfig(({mode}) => {
             'react-dom': 'ReactDOM',
           } : undefined,
         },
+        plugins: [
+          replace({
+            preventAssignment: true,
+            values: {
+              'process.env.NODE_ENV': JSON.stringify('production')
+            }
+          })
+        ],
       },
       outDir: 'dist',
       emptyOutDir: !isStandalone,
