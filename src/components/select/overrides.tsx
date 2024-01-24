@@ -4,9 +4,9 @@ import MenuItem from "../menu/ui/MenuItem";
 import { SELECT_KIND, SELECT_SIZE } from "./types";
 import SelectSpinner from "./ui/SelectSpinner";
 import { PRIMITIVE_COLORS } from "../../shared";
-import { controlContainerModifiedStyles, selectTypographyStyles } from "./styles";
+import { controlContainerModifiedStyles, selectTypographyStyles, valueContainerModifiedStyles } from "./styles";
 import { expandProperty } from "inline-style-expand-shorthand";
-import { Tag, TAG_KIND, TAG_SIZE } from "../tag";
+import { Tag, TAG_SIZE } from "../tag";
 import { Item } from "baseui/menu";
 import {
   getColor,
@@ -15,19 +15,8 @@ import {
   getHoverStyles,
 } from "../../shared/theme/textFieldCommonOverrides";
 import { boxShadowFocusStyles } from "../../shared/styles/boxShadowFocusStyles";
-
-const getTagKind = (isPositive: boolean, isError: boolean, isFocused: boolean): TAG_KIND => {
-  if (isFocused) {
-    return TAG_KIND.gray;
-  }
-  if (isError) {
-    return TAG_KIND.red;
-  }
-  if (isPositive) {
-    return TAG_KIND.green;
-  }
-  return TAG_KIND.gray;
-};
+import ValueContainer from "./ui/ValueContainer/ValueContainer";
+import { getTagKind, tagOverrides } from "./sharedUtils";
 
 const isSingleItemActive = (value: Value, item: Item, valueKey?: string): boolean => {
   if (value?.length !== 1) {
@@ -117,12 +106,13 @@ export const getSelectOverrides = (
       }),
     },
     ValueContainer: {
+      component: ValueContainer,
       style: ({ $error, $isFocused, $disabled }) => {
         return {
           ...expandProperty("padding", "0"),
           color: getColor($isFocused, $error, $disabled),
           ...selectTypographyStyles[size],
-          flexWrap: "nowrap",
+          ...valueContainerModifiedStyles[size],
         };
       },
     },
@@ -154,16 +144,10 @@ export const getSelectOverrides = (
     },
     Tag: {
       component: Tag,
-      props: ({ $positive, $error, $isFocused, ...props }) => ({
+      props: ({ $error, $isFocused, ...props }) => ({
         ...props,
-        overrides: {
-          Root: {
-            style: {
-              marginRight: "8px",
-            },
-          },
-        },
-        kind: getTagKind($positive, $error, $isFocused),
+        overrides: tagOverrides,
+        kind: getTagKind($error, $isFocused),
         size: TAG_SIZE.m,
       }),
     },
