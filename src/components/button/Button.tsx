@@ -31,6 +31,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         : kind;
     const buttonRole = role ?? (kind === BUTTON_KIND.toggle ? "switch" : undefined);
 
+    // eslint-disable-next-line no-console
+    console.log(window.location.pathname);
+
     return (
       <BaseButton
         ref={ref}

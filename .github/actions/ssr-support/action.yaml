@@ -1,0 +1,30 @@
+name: SSR Support
+description: 'Check if the app supports SSR'
+runs:
+  using: "composite"
+  steps:
+    - name: Link package
+      shell: bash
+      run: npm link
+    - name: Create SSR app with nextjs pages dir (< 13)
+      shell: bash
+      run: |
+        cd ..
+        npx create-next-app@12 ssr-app --typescript
+        cd ssr-app
+        npm link @nilfoundation/ui-kit
+    - name: Use component
+      shell: bash
+      working-directory: ../ssr-app
+      run: |
+        echo "import * as UIKit from '@nilfoundation/ui-kit';" >> pages/index.tsx
+        echo "<UIKit.Button>Click me</UIKit.Button>" >> pages/index.tsx
+        npm run build
+    - name: Cold start
+      shell: bash
+      working-directory: ../ssr-app
+      run: |
+        npm run start &
+        sleep 5
+        curl http://localhost:3000
+        exit 0
