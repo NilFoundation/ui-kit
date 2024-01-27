@@ -18,7 +18,7 @@ runs:
       working-directory: ../ssr-app
       run: |
         echo "import * as UIKit from '@nilfoundation/ui-kit';" >> pages/index.tsx
-        echo "<UIKit.CodeField code="xxx" />" >> pages/index.tsx
+        echo "<UIKit.Button>Click me</UIKit.Button>" >> pages/index.tsx
         npm run build
     - name: Cold start
       shell: bash
