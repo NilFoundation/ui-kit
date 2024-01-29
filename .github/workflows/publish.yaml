@@ -6,6 +6,8 @@ on:
 jobs:
   publish:
     name: Publish
+    permissions:
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
