@@ -8,7 +8,7 @@ const labelStyles: StyleObject = {
 const toggleGroupStyles: StyleObject = {
   display: "flex",
   flexWrap: "wrap",
-  gap: SPACE[16],
+  gap: SPACE[8],
 };
 
 export const styles = {
