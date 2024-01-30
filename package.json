@@ -33,10 +33,11 @@
     "@uiw/react-codemirror": ">=4.21.0 < 5",
     "baseui": ">=13.0.0 < 14",
     "lightweight-charts": ">=4.0.0 < 5",
-    "react": ">=18.1.0 < 19",
-    "react-dom": ">=18.1.0 < 19",
+    "react": ">=18 < 19",
+    "react-dom": ">=18 < 19",
     "styletron-react": ">=6.1.0 < 7",
-    "ts-xor": ">=1.1.0 < 2"
+    "ts-xor": ">=1.1.0 < 2",
+    "@codemirror/state": "6.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.1",
@@ -86,7 +87,8 @@
   "repository": "https://github.com/NilFoundation/ui-kit",
   "homepage": "https://github.com/NilFoundation/ui-kit#readme",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "dependencies": {
     "copy-to-clipboard": "^3.3.3",
@@ -96,5 +98,10 @@
   "pre-commit": [
     "tsc",
     "lint"
-  ]
+  ],
+  "overrides": {
+    "react": "$react",
+    "react-dom": "$react-dom",
+    "@codemirror/state": "$@codemirror/state"
+  }
 }
