@@ -20,10 +20,10 @@ export const getCheckboxOverrides = (): CheckboxOverrides => {
     Label: {
       component: LabelMedium,
       style: ({ $labelPlacement, $disabled }) => ({
-        paddingBottom: $labelPlacement === "top" ? "10px" : null,
-        paddingTop: $labelPlacement === "bottom" ? "10px" : null,
-        paddingRight: $labelPlacement === "left" ? "10px" : null,
-        paddingLeft: $labelPlacement === "right" ? "10px" : null,
+        paddingBottom: $labelPlacement === "top" ? "12px" : null,
+        paddingTop: $labelPlacement === "bottom" ? "12px" : null,
+        paddingRight: $labelPlacement === "left" ? "12px" : null,
+        paddingLeft: $labelPlacement === "right" ? "12px" : null,
         ...getCheckmarkLabelStyles(!!$disabled),
       }),
     },

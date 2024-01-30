@@ -9,10 +9,10 @@ export const getCheckmarkBaseStyles = (isIndeterminate: boolean) => ({
   boxSizing: "border-box",
   ...withoutBorderStyles,
   ...withoutMarginStyles,
-  backgroundSize: isIndeterminate ? "8px" : "9px",
+  backgroundSize: isIndeterminate ? "8px" : "12px",
   outline: "none",
-  backgroundPositionY: isIndeterminate ? "center" : "4px",
-  backgroundPositionX: isIndeterminate ? "center" : "4px",
+  backgroundPositionY: isIndeterminate ? "center" : "2px",
+  backgroundPositionX: isIndeterminate ? "center" : "2px",
   ...expandProperty("borderRadius", "2px"),
 });
 

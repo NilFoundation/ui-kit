@@ -42,13 +42,13 @@ export const getInputOverrides = (size: INPUT_SIZE, kind: INPUT_KIND): InputOver
       style: ({ $error, $isFocused, $disabled }) => ({
         backgroundColor: "transparent",
         color: getColor($isFocused, $error, $disabled),
-        ...expandProperty("padding", "0 12px 0 0"),
+        ...expandProperty("padding", "0 8px 0 0"),
       }),
     },
     EndEnhancer: {
       style: ({ $error, $isFocused, $disabled }) => ({
         backgroundColor: "transparent",
-        ...expandProperty("padding", "0 0 0 12px"),
+        ...expandProperty("padding", "0 0 0 8px"),
         color: getColor($isFocused, $error, $disabled),
       }),
     },
