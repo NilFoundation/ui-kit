@@ -1,13 +1,8 @@
 import React from "react";
-import {
-  StatefulTooltip as BaseStatefulTooltip,
-  StatefulTooltipProps as BaseStatefulTooltipProps,
-} from "baseui/tooltip";
+import { StatefulTooltip as BaseStatefulTooltip } from "baseui/tooltip";
 import { getTooltipOverrides } from "./overrides";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
-import { TOOLTIP_KIND, TooltipCommonProps } from "./types";
-
-export type StatefulTooltipProps = BaseStatefulTooltipProps & TooltipCommonProps;
+import { StatefulTooltipProps, TOOLTIP_KIND } from "./types";
 
 const StatefulTooltip: React.FC<StatefulTooltipProps> = ({
   overrides: baseOverrides,
@@ -17,7 +12,7 @@ const StatefulTooltip: React.FC<StatefulTooltipProps> = ({
   const tooltipOverrides = getTooltipOverrides(kind);
   const overrides = getMergedOverrides(tooltipOverrides, baseOverrides);
 
-  return <BaseStatefulTooltip popoverMargin={16} {...props} overrides={overrides} />;
+  return <BaseStatefulTooltip popoverMargin={4} {...props} overrides={overrides} />;
 };
 
 export default StatefulTooltip;

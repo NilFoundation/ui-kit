@@ -9,85 +9,58 @@ import { Button, BUTTON_KIND, BUTTON_SIZE } from "../button";
 export const Template = ({ ...args }) => {
   const [css] = useStyletron();
   return (
-    <ul
+    <div
       className={css({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
-        minHeight: "240px",
         listStyle: "none",
         padding: "0",
       })}
-    >
-      <li>
-        <StatefulTooltip {...args} showArrow content="StatefulTooltip placement is left" placement="left">
-          <span tabIndex={0}>
-            <Button kind={BUTTON_KIND.tertiary} size={BUTTON_SIZE.compact}>
-              Hover me
-            </Button>
-          </span>
-        </StatefulTooltip>
-      </li>
-      <li>
-        <StatefulTooltip {...args} showArrow content="StatefulTooltip on click" placement="top" triggerType="click">
-          <span tabIndex={0}>
-            <Button kind={BUTTON_KIND.tertiary} size={BUTTON_SIZE.compact}>
-              Click me
-            </Button>
-          </span>
-        </StatefulTooltip>
-      </li>
-      <li>
-        <StatefulTooltip
-          {...args}
-          showArrow
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-          placement="bottom"
-        >
-          <span tabIndex={0}>
-            <Button kind={BUTTON_KIND.tertiary} size={BUTTON_SIZE.compact}>
-              Hover me
-            </Button>
-          </span>
-        </StatefulTooltip>
-      </li>
-      <li>
-        <StatefulTooltip {...args} showArrow content="StatefulTooltip placement is bottom" placement="bottom">
-          <span tabIndex={0}>
-            <Button kind={BUTTON_KIND.tertiary} size={BUTTON_SIZE.compact}>
-              Hover me
-            </Button>
-          </span>
-        </StatefulTooltip>
-      </li>
-      <li>
-        <StatefulTooltip {...args} showArrow content="StatefulTooltip placement is top" placement="top">
-          <span tabIndex={0}>
-            <Button kind={BUTTON_KIND.tertiary} size={BUTTON_SIZE.compact}>
-              Hover me
-            </Button>
-          </span>
-        </StatefulTooltip>
-      </li>
-      <li>
-        <StatefulTooltip {...args} showArrow content="StatefulTooltip placement is right" placement="right">
-          <span tabIndex={0}>
-            <Button kind={BUTTON_KIND.tertiary} size={BUTTON_SIZE.compact}>
-              Hover me
-            </Button>
-          </span>
-        </StatefulTooltip>
-      </li>
-    </ul>
+      {...args}
+    />
   );
 };
 
 # Tooltip
 
 <Canvas isColumn>
-  <Story name="Base" args={{}}>
-    {Template.bind({})}
+  <Story name="On hover tooltip" args={{}}>
+    <Template>
+      <StatefulTooltip showArrow content="Base tooltip on hover">
+        <Button kind={BUTTON_KIND.secondary} size={BUTTON_SIZE.compact}>
+          Hover me
+        </Button>
+      </StatefulTooltip>
+    </Template>
+  </Story>
+  <Story name="On click tooltip" args={{}}>
+    <Template>
+      <StatefulTooltip showArrow content="Base tooltip on click" triggerType="click">
+        <Button kind={BUTTON_KIND.secondary} size={BUTTON_SIZE.compact}>
+          Click me
+        </Button>
+      </StatefulTooltip>
+    </Template>
+  </Story>
+  <Story name="Tooltip without arrow" args={{}}>
+    <Template>
+      <StatefulTooltip showArrow={false} content="Base tooltip without arrow">
+        <Button kind={BUTTON_KIND.secondary} size={BUTTON_SIZE.compact}>
+          Hover me
+        </Button>
+      </StatefulTooltip>
+    </Template>
+  </Story>
+  <Story name="Tooltip with placement" args={{}}>
+    <Template>
+      <StatefulTooltip showArrow content="Base tooltip with placement" placement="right">
+        <Button kind={BUTTON_KIND.secondary} size={BUTTON_SIZE.compact}>
+          Hover me
+        </Button>
+      </StatefulTooltip>
+    </Template>
   </Story>
 </Canvas>
 
