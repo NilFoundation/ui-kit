@@ -2,6 +2,7 @@ import type {
   ChartOptions as ChartNativeOptions,
   DeepPartial,
   IChartApi,
+  LineData,
   MouseEventHandler,
   Time,
 } from "lightweight-charts";
@@ -26,3 +27,8 @@ export type ChartApiRef = {
   clear: () => void;
   destroyed: boolean;
 };
+
+export type ChartWidgetProps = {
+  data: LineData[];
+  color?: string;
+} & Omit<ChartProps, "children" | "onCrosshairMove">;
