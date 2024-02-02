@@ -12,14 +12,47 @@ runs:
         cd ..
         npx create-next-app@12 ssr-app --typescript
         cd ssr-app
+        npm i baseui styletron-engine-atomic styletron-react
         npm link @nilfoundation/ui-kit
-    - name: Use component
+    - name: Create starter app
       shell: bash
       working-directory: ../ssr-app
       run: |
-        echo "import * as UIKit from '@nilfoundation/ui-kit';" >> pages/index.tsx
-        echo "<UIKit.Button>Click me</UIKit.Button>" >> pages/index.tsx
-        npm run build
+        echo "
+        import { Client, Server } from 'styletron-engine-atomic'
+        const getHydrateClass = () =>
+          document.getElementsByClassName('_styletron_hydrate_') as HTMLCollectionOf<HTMLStyleElement>
+        export const styletron =
+          typeof window === 'undefined'
+            ? new Server()
+            : new Client({
+                hydrate: getHydrateClass(),
+              })
+        " > ./styletron.ts
+
+        echo "
+        import { AppProps } from 'next/app'
+        import { styletron } from '../styletron'
+        import { Provider as StyletronProvider } from 'styletron-react'
+        import { BaseProvider } from 'baseui'
+        import { createTheme } from '@nilfoundation/ui-kit'
+        const MyApp = ({ Component, pageProps }: AppProps) => {
+          const { theme } = createTheme(styletron)
+          return (
+            <StyletronProvider value={styletron}>
+              <BaseProvider theme={theme}>
+                <Component {...pageProps} />
+              </BaseProvider>
+            </StyletronProvider>
+          )
+        }
+        export default MyApp
+        " > pages/index.tsx
+
+    - name: Build
+      shell: bash
+      working-directory: ../ssr-app
+      run: npm run build
     - name: Cold start
       shell: bash
       working-directory: ../ssr-app
