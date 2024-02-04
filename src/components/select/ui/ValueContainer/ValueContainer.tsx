@@ -1,8 +1,8 @@
 import { styled } from "styletron-react";
-import { useOverflow } from "./useOverflow";
+import { useHiddenInput } from "./useHiddenInput";
 import { FC, useContext } from "react";
 import { modifyChildren } from "./modifyChildren";
-import ValueContext from "../../ValueContext";
+import SelectContext from "../../SelectContext";
 
 const StyledDiv = styled<"div", any>("div", (props) => ({
   display: "flex",
@@ -12,6 +12,7 @@ const StyledDiv = styled<"div", any>("div", (props) => ({
   position: "absolute",
   overflow: "hidden",
   maxWidth: "100%",
+  ...(props.$width ? { width: `${props.$width}px` } : {}),
   ...(props.$hidden
     ? {
         visibility: "hidden",
@@ -22,17 +23,19 @@ const StyledDiv = styled<"div", any>("div", (props) => ({
 }));
 
 const ValueContainer: FC<any> = (props) => {
-  const { value } = useContext(ValueContext);
-  const { ref, isOverflow } = useOverflow(value);
-  const modifiedChildren = modifyChildren(value, isOverflow, props);
+  const { value } = useContext(SelectContext);
+  const { hiddenInputRef, mockInputRef, mockInputWidth, isHiddenInputOverflow } = useHiddenInput(value);
+  const modifiedChildren = modifyChildren(value, isHiddenInputOverflow, props);
   const { children, ...restProps } = props;
 
   return (
     <>
-      <StyledDiv {...restProps} ref={ref} $hidden>
+      <StyledDiv {...restProps} ref={hiddenInputRef} $hidden>
         {children}
       </StyledDiv>
-      <StyledDiv {...restProps}>{modifiedChildren}</StyledDiv>
+      <StyledDiv {...restProps} ref={mockInputRef} $width={mockInputWidth}>
+        {modifiedChildren}
+      </StyledDiv>
     </>
   );
 };
