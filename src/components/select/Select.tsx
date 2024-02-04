@@ -1,9 +1,9 @@
 import React from "react";
-import { Select as BaseSelect, SIZE } from "baseui/select";
+import { Select as BaseSelect, ImperativeMethods, SIZE } from "baseui/select";
 import { getSelectOverrides } from "./overrides";
 import { SELECT_KIND, SELECT_SIZE, SelectProps } from "./types";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
-import ValueContext from "./ValueContext";
+import SelectContext from "./SelectContext";
 
 const Select: React.FC<SelectProps> = ({
   value,
@@ -16,9 +16,10 @@ const Select: React.FC<SelectProps> = ({
 }) => {
   const selectOverrides = getSelectOverrides(size, !!disabled, kind, value, valueKey);
   const overrides = getMergedOverrides(selectOverrides, baseOverrides);
+  const controlRef = React.useRef<ImperativeMethods>(null);
 
   return (
-    <ValueContext.Provider value={{ value }}>
+    <SelectContext.Provider value={{ value, controlRef }}>
       <BaseSelect
         {...props}
         valueKey={valueKey}
@@ -26,8 +27,9 @@ const Select: React.FC<SelectProps> = ({
         disabled={disabled}
         overrides={overrides}
         filterOutSelected={false}
+        controlRef={controlRef}
       />
-    </ValueContext.Provider>
+    </SelectContext.Provider>
   );
 };
 

@@ -10,7 +10,7 @@ export enum SELECT_KIND {
   secondary = "secondary",
 }
 
-export type SelectProps = Omit<BaseSelectProps, "size" | "positive" | "filterOutSelected"> & {
+export type SelectProps = Omit<BaseSelectProps, "size" | "positive" | "filterOutSelected" | "openOnClick"> & {
   size?: SELECT_SIZE;
   kind?: SELECT_KIND;
 };
