@@ -7,9 +7,10 @@ import SelectContext from "../SelectContext";
 type SelectArrowProps = {
   isRotated?: boolean;
   color?: string;
+  searchable?: boolean;
 };
 
-const SelectArrow: FC<SelectArrowProps> = ({ color = PRIMITIVE_COLORS.white, isRotated, ...restProps }) => {
+const SelectArrow: FC<SelectArrowProps> = ({ color = PRIMITIVE_COLORS.white, isRotated, searchable, ...restProps }) => {
   const [css] = useStyletron();
   const { controlRef } = useContext(SelectContext);
   const onClick = () => {
@@ -31,7 +32,7 @@ const SelectArrow: FC<SelectArrowProps> = ({ color = PRIMITIVE_COLORS.white, isR
         cursor: "pointer",
       })}
       // @ts-ignore
-      onClick={onClick}
+      onClick={searchable ? onClick : undefined}
     />
   );
 };

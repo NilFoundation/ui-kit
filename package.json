@@ -24,7 +24,7 @@
     "prettier:check": "prettier --check 'src/**/**/*.{js,ts,tsx,mdx}'",
     "lint": "eslint src/**/**/*.{js,ts,tsx,mdx}",
     "tsc": "tsc --noEmit",
-    "storybook": "storybook dev -s ./src/assets -p 6006",
+    "storybook": "storybook dev -s ./src/assets -p 6006 --no-open",
     "build-storybook": "storybook build"
   },
   "license": "MIT",
