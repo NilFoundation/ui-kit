@@ -12,7 +12,7 @@ runs:
         cd ..
         npx create-next-app@12 ssr-app --typescript
         cd ssr-app
-        npm i baseui styletron-engine-atomic styletron-react
+        npm i baseui@13 styletron-engine-atomic styletron-react
         npm link @nilfoundation/ui-kit
     - name: Create starter app
       shell: bash
