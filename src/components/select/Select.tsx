@@ -1,9 +1,10 @@
 import React from "react";
-import { Select as BaseSelect, ImperativeMethods, SIZE } from "baseui/select";
+import { Select as BaseSelect, SIZE } from "baseui/select";
 import { getSelectOverrides } from "./overrides";
 import { SELECT_KIND, SELECT_SIZE, SelectProps } from "./types";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 import SelectContext from "./SelectContext";
+import { useControlRef } from "./useControlRef";
 
 const Select: React.FC<SelectProps> = ({
   value,
@@ -12,11 +13,12 @@ const Select: React.FC<SelectProps> = ({
   kind = SELECT_KIND.primary,
   valueKey,
   overrides: baseOverrides,
+  controlRef: controlRefFromProps,
   ...props
 }) => {
   const selectOverrides = getSelectOverrides(size, !!disabled, kind, value, valueKey);
   const overrides = getMergedOverrides(selectOverrides, baseOverrides);
-  const controlRef = React.useRef<ImperativeMethods>(null);
+  const controlRef = useControlRef(controlRefFromProps);
 
   return (
     <SelectContext.Provider value={{ value, controlRef }}>
