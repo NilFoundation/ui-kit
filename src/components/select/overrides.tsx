@@ -82,10 +82,11 @@ export const getSelectOverrides = (
     },
     SelectArrow: {
       component: SelectArrow,
-      props: ({ $isOpen, $isFocused, $isLoading, ...props }) => ({
+      props: ({ $isOpen, $isFocused, $isLoading, $searchable, ...props }) => ({
         ...props,
         isRotated: $isOpen,
         color: (isDisabled || $isLoading) && !$isFocused ? PRIMITIVE_COLORS.gray400 : undefined,
+        searchable: $searchable,
       }),
     },
     IconsContainer: {

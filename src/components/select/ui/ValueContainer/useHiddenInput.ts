@@ -16,11 +16,11 @@ export const useHiddenInput = (value: SelectProps["value"]) => {
   };
 
   const getHiddenInputWidth = () => {
-    const defaulOssfet = 10;
+    const minWidth = 150;
     if (!hiddenInputRef.current) {
-      return defaulOssfet;
+      return minWidth;
     }
-    return hiddenInputRef.current.clientWidth + defaulOssfet;
+    return hiddenInputRef.current.clientWidth > minWidth ? hiddenInputRef.current.clientWidth : minWidth;
   };
 
   useEffect(() => {
