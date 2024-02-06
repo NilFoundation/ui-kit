@@ -1,7 +1,7 @@
 import { PRIMITIVE_COLORS, SPACE } from "../../shared";
 import { BUTTON_KIND, BUTTON_SIZE } from "./types";
 import { expandProperty } from "inline-style-expand-shorthand";
-import { boxShadowFocusStyles } from "../../shared/styles/boxShadowFocusStyles";
+import { boxShadowFocusStyles } from "../../shared/styles/boxShadowSharedStyles";
 
 const buttonBaseStyles = {
   outline: "0",

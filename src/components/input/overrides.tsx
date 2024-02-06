@@ -4,11 +4,11 @@ import { INPUT_KIND, INPUT_SIZE } from "./types";
 import { expandProperty } from "inline-style-expand-shorthand";
 import {
   getBackgroundColor,
-  getBorderStyles,
   getColor,
   getHoverStyles,
 } from "../../shared/theme/textFieldCommonOverrides";
 import { resetAutoCompleteStyles } from "../../shared/styles/resetAutoCompleteStyles";
+import { boxShadowFocusStyles, boxShadowErrorStyles } from "../../shared/styles/boxShadowSharedStyles";
 
 export const getInputOverrides = (size: INPUT_SIZE, kind: INPUT_KIND): InputOverrides => {
   return {
@@ -17,8 +17,9 @@ export const getInputOverrides = (size: INPUT_SIZE, kind: INPUT_KIND): InputOver
         boxSizing: "border-box",
         ...getBackgroundColor(kind),
         ...inputContainerModifiedStyles[size],
-        ...getBorderStyles($isFocused, kind, $error),
         ...getHoverStyles(kind, $disabled, $isFocused, $error),
+        ...($isFocused ? boxShadowFocusStyles : {}),
+        ...($error ? boxShadowErrorStyles : {}),
       }),
     },
     InputContainer: {
