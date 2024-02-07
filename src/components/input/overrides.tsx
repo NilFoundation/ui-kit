@@ -2,11 +2,7 @@ import { InputOverrides } from "baseui/input";
 import { inputContainerModifiedStyles, inputModifiedStyles } from "./styles";
 import { INPUT_KIND, INPUT_SIZE } from "./types";
 import { expandProperty } from "inline-style-expand-shorthand";
-import {
-  getBackgroundColor,
-  getColor,
-  getHoverStyles,
-} from "../../shared/theme/textFieldCommonOverrides";
+import { getBackgroundColor, getColor, getHoverStyles } from "../../shared/theme/textFieldCommonOverrides";
 import { resetAutoCompleteStyles } from "../../shared/styles/resetAutoCompleteStyles";
 import { boxShadowFocusStyles, boxShadowErrorStyles } from "../../shared/styles/boxShadowSharedStyles";
 

@@ -1,6 +1,6 @@
 import { SELECT_SIZE } from "./types";
 import { expandProperty } from "inline-style-expand-shorthand";
-import { withoutBorderStyles} from '../../shared/styles/borderStyles'
+import { withoutBorderStyles } from "../../shared/styles/borderStyles";
 
 const containerCommonStyles = {
   ...expandProperty("borderRadius", "8px"),
