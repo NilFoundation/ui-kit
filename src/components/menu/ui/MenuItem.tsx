@@ -1,95 +1,74 @@
-import React, { ComponentProps, forwardRef, MouseEventHandler, ReactNode } from "react";
-import { Item } from "baseui/menu";
-import { MENU_SIZE } from "../types";
+import React, { forwardRef, ReactElement, ReactNode } from "react";
+import { MENU_SIZE, MenuItemProps, MenuItemTypographyProps } from "../types";
 import { ParagraphSmall, ParagraphMedium, ParagraphLarge } from "baseui/typography";
 import { useStyletron, styled } from "baseui";
 import { SPINNER_SIZE } from "../../spinner";
 import { Checkbox } from "../../checkbox";
-import { RenderItemProps } from "baseui/menu/types";
 import { getItemContainerStyles, ItemEndWrapperStyles, itemTypographyStyles, svgActiveStyles } from "../styles";
 import { SeparatorIcon } from "../../icons";
 import { PRIMITIVE_COLORS } from "../../../shared";
 
-type TExpandedItem = Item & {
-  selected?: boolean;
-  suffixText?: string;
-  startEnhancer?: ReactNode;
-  endEnhancer?: ReactNode;
-  isActive?: boolean;
-};
-
-type MenuItemProps = RenderItemProps & {
-  item: TExpandedItem;
-  size: MENU_SIZE;
-  disabled?: boolean;
-  ariaSelected?: boolean;
-  isHighlighted?: boolean;
-  isLight?: boolean;
-  children?: ReactNode;
-};
-
-type TypographyProps = ComponentProps<typeof ParagraphSmall>;
-
 const paragraphComponent = {
-  [SPINNER_SIZE.small]: (props: TypographyProps) => <ParagraphSmall color="gray500" as="div" {...props} />,
-  [SPINNER_SIZE.medium]: (props: TypographyProps) => <ParagraphMedium color="gray500" as="div" {...props} />,
-  [SPINNER_SIZE.large]: (props: TypographyProps) => <ParagraphLarge color="gray500" as="div" {...props} />,
-};
-
-const getParagraphColor = (isActive: boolean, isDisabled: boolean, isLight: boolean) => {
-  if (isDisabled) {
-    return isLight ? PRIMITIVE_COLORS.gray300 : PRIMITIVE_COLORS.gray600;
-  }
-  if (isActive) {
-    return PRIMITIVE_COLORS.white;
-  }
-  return isLight ? PRIMITIVE_COLORS.gray800 : PRIMITIVE_COLORS.gray500;
-};
+  [MENU_SIZE.small]: (props) => <ParagraphSmall as="div" {...props} />,
+  [SPINNER_SIZE.medium]: (props) => <ParagraphMedium as="div" {...props} />,
+  [SPINNER_SIZE.large]: (props) => <ParagraphLarge as="div" {...props} />,
+} satisfies Record<MENU_SIZE, (p: MenuItemTypographyProps) => ReactNode>;
 
 const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
-  ({ size, item, onClick, disabled, ariaSelected, isHighlighted, isLight, onMouseEnter, id }, ref) => {
+  (
+    {
+      selected,
+      suffixText,
+      startEnhancer,
+      endEnhancer,
+      isActive,
+      size,
+      ariaSelected,
+      label,
+      disabled,
+      isFocused,
+      isHighlighted,
+      onClick,
+      onMouseEnter,
+      resetMenu,
+      id,
+      href,
+      linkComponent : LinkComponent,
+      ...linkComponentProps
+    },
+    ref
+  ) => {
     const [css] = useStyletron();
 
     const isAreaSelected = ariaSelected && !disabled;
-    const paragraphColor = getParagraphColor(isAreaSelected || !!isHighlighted, !!disabled, !!isLight);
-
-    const Item = styled("li", getItemContainerStyles(size, !!disabled, !!isHighlighted, !!ariaSelected, !!isLight));
+    const Item = styled("li", getItemContainerStyles(size, !!disabled, !!isHighlighted, !!ariaSelected));
     const EndWrapper = styled("span", ItemEndWrapperStyles);
     const TypographyComponent = paragraphComponent[size];
 
-    const onClickHandler: MouseEventHandler<HTMLLIElement> = (event) => {
-      onClick?.(event);
-    };
-
     return (
-      <Item ref={ref} onMouseEnter={onMouseEnter} id={id ?? undefined} onClick={onClickHandler}>
-        {item?.selected != null && <Checkbox checked={item.selected} />}
-        {item?.startEnhancer &&
-          React.cloneElement(item.startEnhancer, {
-            size: 20,
+      <Item ref={ref} onMouseEnter={onMouseEnter} id={id ?? undefined} onClick={onClick}>
+        {selected && <Checkbox checked={selected} />}
+        {startEnhancer &&
+          React.cloneElement(startEnhancer as ReactElement, {
+            size: 16,
             className: css(isAreaSelected ? svgActiveStyles : {}),
           })}
-        <TypographyComponent
-          className={css(itemTypographyStyles)}
-          as={item?.href ? "a" : "div"}
-          href={item?.href}
-          color={paragraphColor}
-        >
-          {item.label}
+        <TypographyComponent className={css(itemTypographyStyles)} as={item?.href ? "a" : "div"} href={item?.href}>
+          {label}
         </TypographyComponent>
         <EndWrapper>
-          {item?.suffixText && <TypographyComponent color={paragraphColor}>{item.suffixText}</TypographyComponent>}
-          {item?.endEnhancer &&
-            React.cloneElement(item.endEnhancer, {
+          {suffixText && <TypographyComponent>{suffixText}</TypographyComponent>}
+          {endEnhancer &&
+            React.cloneElement(endEnhancer as ReactElement, {
               size: 20,
               className: css(isAreaSelected ? svgActiveStyles : {}),
             })}
         </EndWrapper>
-        {item?.isActive && <SeparatorIcon size={20} color={PRIMITIVE_COLORS.gray300} />}
+        {isActive && <SeparatorIcon size={20} color={PRIMITIVE_COLORS.gray300} />}
       </Item>
     );
   }
 );
-MenuItem.displayName = "MenuItem";
 
+MenuItem.displayName = "MenuItem";
 export default MenuItem;

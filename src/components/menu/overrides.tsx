@@ -3,21 +3,13 @@ import MenuEmptyState from "./ui/MenuEmptyState";
 import { MENU_SIZE } from "./types";
 import MenuItem from "./ui/MenuItem";
 import MenuHeader from "./ui/MenuHeader";
-import { withoutBorderStyles } from "../../shared/styles/borderStyles";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { listStyles } from "./styles";
+import { BlockOverrides } from "baseui/block";
 
-export const getMenuOverrides = (size: MENU_SIZE, isLight: boolean): MenuOverrides => {
+export const getMenuOverrides = (size: MENU_SIZE): MenuOverrides => {
   return {
     List: {
-      style: {
-        ...withoutBorderStyles,
-        outline: "none !important",
-        ...(isLight
-          ? {
-              backgroundColor: PRIMITIVE_COLORS.white,
-            }
-          : {}),
-      },
+      style: listStyles,
     },
     OptgroupHeader: {
       component: MenuHeader,
@@ -33,7 +25,6 @@ export const getMenuOverrides = (size: MENU_SIZE, isLight: boolean): MenuOverrid
         id,
         size,
         item,
-        isLight,
         disabled: $disabled,
         isFocused: $isFocused,
         ariaSelected: props?.["aria-selected"],
@@ -44,3 +35,17 @@ export const getMenuOverrides = (size: MENU_SIZE, isLight: boolean): MenuOverrid
     },
   };
 };
+
+export const getMenuItemTypographyElementOverrides = (
+  isHover: boolean
+): BlockOverrides => {
+  return {
+    Block: {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+      },
+    },
+  };
+}
