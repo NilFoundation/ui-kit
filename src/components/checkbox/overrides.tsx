@@ -6,7 +6,7 @@ import {
   checkmarkCheckedModifiedStyles,
   getCheckmarkDisabledModifiedStyles,
 } from "./styles";
-import { boxShadowFocusStyles } from "../../shared/styles/boxShadowFocusStyles";
+import { boxShadowFocusStyles } from "../../shared/styles/boxShadowSharedStyles";
 import { getCheckmarkBackgroundImage } from "./checkmarks";
 import { getCheckmarkLabelStyles } from "../../shared/theme/checkmarkCommonLabelStyles";
 

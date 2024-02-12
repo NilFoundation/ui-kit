@@ -1,7 +1,7 @@
 import { CheckboxOverrides } from "baseui/checkbox";
 import { PRIMITIVE_COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
-import { boxShadowFocusStyles } from "../../shared/styles/boxShadowFocusStyles";
+import { boxShadowFocusStyles } from "../../shared/styles/boxShadowSharedStyles";
 import { getCheckmarkLabelStyles } from "../../shared/theme/checkmarkCommonLabelStyles";
 import { getSwitchBackgroundStyles } from "./styles";
 import { withoutMarginStyles } from "../../shared/styles/withoutMarginStyles";

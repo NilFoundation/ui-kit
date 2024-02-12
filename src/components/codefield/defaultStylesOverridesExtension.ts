@@ -11,17 +11,17 @@ export const createDefaultStylesOverridesExtension = (showLineNumbers: boolean) 
       width: "12px",
     },
     ".cm-lineNumbers .cm-activeLineGutter": {
-      borderTopLeftRadius: "2px",
-      borderBottomLeftRadius: "2px",
+      borderTopLeftRadius: "4px",
+      borderBottomLeftRadius: "4px",
     },
     ".cm-activeLine": {
-      borderTopRightRadius: "2px",
-      borderBottomRightRadius: "2px",
+      borderTopRightRadius: "4px",
+      borderBottomRightRadius: "4px",
       ...(showLineNumbers
         ? {}
         : {
-            borderTopLeftRadius: "2px",
-            borderBottomLeftRadius: "2px",
+            borderTopLeftRadius: "4px",
+            borderBottomLeftRadius: "4px",
           }),
     },
     ".cm-activeLineGutter": {

@@ -1,13 +1,10 @@
 import { TextareaOverrides } from "baseui/textarea";
 import { TEXTAREA_KIND, TEXTAREA_SIZE } from "./types";
 import { clearIconContainerModifiedStyles, clearIconSize, inputModifiedStyles, inputContainerStyles } from "./styles";
-import {
-  getBackgroundColor,
-  getBorderStyles,
-  getColor,
-  getHoverStyles,
-} from "../../shared/theme/textFieldCommonOverrides";
+import { getBackgroundColor, getColor, getHoverStyles } from "../../shared/theme/textFieldCommonOverrides";
 import { resetAutoCompleteStyles } from "../../shared/styles/resetAutoCompleteStyles";
+import { expandProperty } from "inline-style-expand-shorthand";
+import { boxShadowFocusStyles, boxShadowErrorStyles } from "../../shared/styles/boxShadowSharedStyles";
 
 export const getTextareaOverrides = (size: TEXTAREA_SIZE, kind: TEXTAREA_KIND): TextareaOverrides => {
   return {
@@ -15,10 +12,11 @@ export const getTextareaOverrides = (size: TEXTAREA_SIZE, kind: TEXTAREA_KIND): 
       style: ({ $disabled, $isFocused, $error }) => ({
         ...inputContainerStyles,
         ...getBackgroundColor(kind),
-        ...getBorderStyles($isFocused, kind, $error),
         ...getHoverStyles(kind, $disabled, $isFocused, $error),
         position: "relative",
         width: "100%",
+        ...($isFocused ? boxShadowFocusStyles : {}),
+        ...($error ? boxShadowErrorStyles : {}),
       }),
     },
     InputContainer: {
@@ -41,12 +39,14 @@ export const getTextareaOverrides = (size: TEXTAREA_SIZE, kind: TEXTAREA_KIND): 
             display: "none",
           },
           ...resetAutoCompleteStyles,
+          ...expandProperty("transition", "color 0.15s ease-in"),
         };
       },
     },
     ClearIconContainer: {
       style: ({ $error, $disabled, $isFocused }) => ({
         ...clearIconContainerModifiedStyles[size],
+        ...expandProperty("transition", "color 0.15s ease-in"),
         color: getColor($isFocused, $error, $disabled),
       }),
     },

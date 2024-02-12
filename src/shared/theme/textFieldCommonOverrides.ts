@@ -11,7 +11,7 @@ export const getColor = (isFocused: boolean, error: boolean, disabled: boolean):
   }
 
   if (error) {
-    return PRIMITIVE_COLORS.red500;
+    return PRIMITIVE_COLORS.red400;
   }
 
   if (disabled) {
@@ -30,30 +30,6 @@ export const getBackgroundColor = (kind: TextFiledKindUnion): StyleObject => {
 
   return {
     backgroundColor: PRIMITIVE_COLORS.gray800,
-  };
-};
-
-export const getBorderStyles = (isFocused: boolean, kind: TextFiledKindUnion, error: boolean): StyleObject => {
-  if (isFocused) {
-    return {
-      ...expandProperty("borderColor", PRIMITIVE_COLORS.gray50),
-    };
-  }
-
-  if (error) {
-    return {
-      ...expandProperty("borderColor", PRIMITIVE_COLORS.red500),
-    };
-  }
-
-  if (kind === INPUT_KIND.secondary) {
-    return {
-      ...expandProperty("borderColor", PRIMITIVE_COLORS.gray900),
-    };
-  }
-
-  return {
-    ...expandProperty("borderColor", PRIMITIVE_COLORS.gray800),
   };
 };
 

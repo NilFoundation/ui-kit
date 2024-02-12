@@ -8,13 +8,8 @@ import { controlContainerModifiedStyles, selectTypographyStyles, valueContainerM
 import { expandProperty } from "inline-style-expand-shorthand";
 import { Tag, TAG_SIZE } from "../tag";
 import { Item } from "baseui/menu";
-import {
-  getColor,
-  getBackgroundColor,
-  getBorderStyles,
-  getHoverStyles,
-} from "../../shared/theme/textFieldCommonOverrides";
-import { boxShadowFocusStyles } from "../../shared/styles/boxShadowFocusStyles";
+import { getColor, getBackgroundColor, getHoverStyles } from "../../shared/theme/textFieldCommonOverrides";
+import { boxShadowFocusStyles, boxShadowErrorStyles } from "../../shared/styles/boxShadowSharedStyles";
 import ValueContainer from "./ui/ValueContainer/ValueContainer";
 import { getTagKind, tagOverrides } from "./sharedUtils";
 
@@ -29,7 +24,6 @@ const isSingleItemActive = (value: Value, item: Item, valueKey?: string): boolea
 
 export const getSelectOverrides = (
   size: SELECT_SIZE,
-  isDisabled: boolean,
   kind: SELECT_KIND,
   value?: Value,
   valueKey?: string
@@ -39,7 +33,6 @@ export const getSelectOverrides = (
       style: ({ $isFocused, $error, $disabled }) => {
         return {
           ...getBackgroundColor(kind),
-          ...getBorderStyles(false, kind, $error),
           ...getHoverStyles(kind, $disabled, $isFocused, $error),
           color: getColor($isFocused, $error, $disabled),
           ...controlContainerModifiedStyles[size],
@@ -47,6 +40,7 @@ export const getSelectOverrides = (
             ...boxShadowFocusStyles,
           },
           ...($isFocused ? boxShadowFocusStyles : {}),
+          ...($error ? boxShadowErrorStyles : {}),
         };
       },
     },
@@ -82,10 +76,10 @@ export const getSelectOverrides = (
     },
     SelectArrow: {
       component: SelectArrow,
-      props: ({ $isOpen, $isFocused, $isLoading, $searchable, ...props }) => ({
+      props: ({ $isOpen, $isFocused, $searchable, $error, $disabled, ...props }) => ({
         ...props,
         isRotated: $isOpen,
-        color: (isDisabled || $isLoading) && !$isFocused ? PRIMITIVE_COLORS.gray400 : undefined,
+        color: getColor($isFocused, $error, $disabled),
         searchable: $searchable,
       }),
     },
