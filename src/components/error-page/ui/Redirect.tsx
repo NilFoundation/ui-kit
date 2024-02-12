@@ -5,6 +5,7 @@ import { getRedirectOverrides } from "../overrides";
 import { useStyletron } from "styletron-react";
 import { styles as s } from "../styles";
 import { RedirectProps } from "../types";
+import { isExternalLink } from "../../../shared/utils/isExternalLink";
 
 const Redirect: FC<RedirectProps> = ({ redirectPath, redirectTitle }) => {
   const [css] = useStyletron();
@@ -25,6 +26,3 @@ const Redirect: FC<RedirectProps> = ({ redirectPath, redirectTitle }) => {
 };
 
 export default Redirect;
-
-const isExternalLink = (link: string) =>
-  /^https?:\/\//.test(link) || ["mailto:", "tel:", "sms:", "geo:", "data:"].some((prefix) => link.startsWith(prefix));

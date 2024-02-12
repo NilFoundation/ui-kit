@@ -148,9 +148,3 @@ export const emptyStateTitleStyles = {
   width: "304px",
   maxWidth: "100%",
 };
-
-export const emptyStateTextStyles = {
-  margin: "0",
-  width: "304px",
-  maxWidth: "100%",
-};
