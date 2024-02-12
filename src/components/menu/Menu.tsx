@@ -1,12 +1,18 @@
 import { FC, useEffect, useRef } from "react";
-import { StatefulMenu } from "baseui/menu";
+import { StatefulMenu, StatefulMenuProps } from "baseui/menu";
 import { getMenuOverrides } from "./overrides";
-import { MENU_SIZE, MenuProps } from "./types";
+import { MENU_SIZE } from "./types";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
-const Menu: FC<MenuProps> = ({ size = MENU_SIZE.medium, overrides: baseOverrides, ...props }) => {
+export type MenuProps = StatefulMenuProps & {
+  size?: MENU_SIZE;
+  isLight?: boolean;
+};
+
+const Menu: FC<MenuProps> = ({ size = MENU_SIZE.medium, overrides: baseOverrides, isLight, ...props }) => {
   const rootRef = useRef<HTMLUListElement | null>(null);
-  const menuOverrides = getMenuOverrides(size);
+
+  const menuOverrides = getMenuOverrides(size, !!isLight);
   const overrides = getMergedOverrides(menuOverrides, baseOverrides);
 
   useEffect(() => {

@@ -2,16 +2,6 @@ import { StyleObject } from "styletron-react";
 import { MENU_SIZE } from "./types";
 import { PRIMITIVE_COLORS } from "../../shared";
 import { withoutBorderStyles } from "../../shared/styles/borderStyles";
-import { expandProperty } from "inline-style-expand-shorthand";
-
-export const listStyles = {
-  ...withoutBorderStyles,
-  ...expandProperty("borderRadius", "8px"),
-  ...expandProperty("padding", "8px"),
-  ...expandProperty("boxShadow", "none"),
-  outline: "none !important",
-  backgroundColor: PRIMITIVE_COLORS.gray900,
-};
 
 export const headerBaseStyles: StyleObject = {
   display: "flex",
@@ -39,8 +29,8 @@ export const headerModifiedStyles = {
 
 const itemModifiedStyles = {
   [MENU_SIZE.small]: {
-    padding: "6px 12px",
-    height: "32px",
+    padding: "0 16px",
+    height: "36px",
   },
   [MENU_SIZE.medium]: {
     padding: "0 16px",
@@ -56,23 +46,27 @@ const itemSelectedStyles: StyleObject = {
   backgroundColor: PRIMITIVE_COLORS.gray800,
 };
 
-const itemDisabledStyles = {
-  backgroundColor: "transparent",
-  color: PRIMITIVE_COLORS.gray600,
-  cursor: "not-allowed",
+const getItemDisabledStyles = (isLight: boolean) => {
+  const color = isLight ? PRIMITIVE_COLORS.gray300 : PRIMITIVE_COLORS.gray600;
 
-  ":hover": {
+  return {
     backgroundColor: "transparent",
     color: PRIMITIVE_COLORS.gray600,
-  },
+    cursor: "not-allowed",
 
-  ":hover > div": {
-    color: PRIMITIVE_COLORS.gray600,
-  },
+    ":hover": {
+      backgroundColor: "transparent",
+      color,
+    },
 
-  ":hover > svg": {
-    fill: PRIMITIVE_COLORS.gray600,
-  },
+    ":hover > div": {
+      color,
+    },
+
+    ":hover > svg": {
+      fill: color,
+    },
+  };
 };
 
 const itemHighlightedStyles: StyleObject = {
@@ -88,7 +82,8 @@ export const getItemContainerStyles = (
   size: MENU_SIZE,
   disabled: boolean,
   isHighlighted: boolean,
-  ariaSelected: boolean
+  ariaSelected: boolean,
+  isLight: boolean
 ): StyleObject => {
   return {
     display: "flex",
@@ -96,10 +91,9 @@ export const getItemContainerStyles = (
     width: "100%",
     boxSizing: "border-box",
     cursor: "pointer",
-    gap: "8px",
-    color: PRIMITIVE_COLORS.gray200,
-    fontWeight: 500,
-    ...expandProperty("borderRadius", "4px"),
+    gap: "16px",
+    color: PRIMITIVE_COLORS.gray500,
+    ...withoutBorderStyles,
 
     ":hover": {
       backgroundColor: PRIMITIVE_COLORS.gray800,
@@ -117,7 +111,7 @@ export const getItemContainerStyles = (
     ...itemModifiedStyles[size],
     ...(ariaSelected ? itemSelectedStyles : {}),
     ...(isHighlighted ? itemHighlightedStyles : {}),
-    ...(disabled ? itemDisabledStyles : {}),
+    ...(disabled ? getItemDisabledStyles(isLight) : {}),
   };
 };
 
@@ -145,6 +139,12 @@ export const EmptyStateContainerStyles: StyleObject = {
 
 export const emptyStateTitleStyles = {
   margin: "0 0 12px",
+  width: "304px",
+  maxWidth: "100%",
+};
+
+export const emptyStateTextStyles = {
+  margin: "0",
   width: "304px",
   maxWidth: "100%",
 };
