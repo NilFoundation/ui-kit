@@ -2,12 +2,13 @@ import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import Menu from "./Menu";
 import { MENU_SIZE } from "./types";
 import { SearchIcon } from "../icons";
+import { PRIMITIVE_COLORS } from "../../shared";
 
 <Meta title="Overlay/Menu" component={Menu} />
 
 export const Template = ({ ...args }) => {
   return (
-    <div style={{ maxWidth: "420px" }}>
+    <div style={{ maxWidth: "480px", padding: "32px", backgroundColor: PRIMITIVE_COLORS.black }}>
       <Menu {...args} />
     </div>
   );
@@ -22,6 +23,13 @@ export const ITEMS_WITH_DIVIDER = [
   { label: "Item Three", disabled: true },
   { divider: true },
   { label: "Item Four" },
+];
+
+export const ITEMS_WITH_LINKS = [
+  { label: "Item One", href: "/" },
+  { divider: true },
+  { label: "Item Two", href: "tel:0000000" },
+  { label: "Item Three", linkComponent: "a", href: "/" },
 ];
 
 export const ITEMS_WITH_HEADER = {
@@ -74,6 +82,9 @@ export const ActiveItem = { label: "Item Active", isActive: true };
     {Template.bind({})}
   </Story>
   <Story name="With Header" args={{ items: ITEMS_WITH_HEADER }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Links" args={{ items: ITEMS_WITH_LINKS }}>
     {Template.bind({})}
   </Story>
   <Story name="Empty State" args={{ items: [], size: MENU_SIZE.large }}>
