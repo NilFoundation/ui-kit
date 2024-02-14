@@ -131,7 +131,7 @@ export const getLinkComponentStyles = () => {
     color: "inherit",
     gap: "8px",
   };
-}
+};
 
 export const getItemParagraphColor = (isActive: boolean, isDisabled: boolean) => {
   if (isDisabled) {

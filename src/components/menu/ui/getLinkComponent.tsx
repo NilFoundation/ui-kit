@@ -6,15 +6,17 @@ type LinkComponentProps = {
   className?: string;
 };
 
-export const getLinkComponent = (LinkComponent?: ReactElement, href?: string) => {
+export const getLinkComponent = (linkComponent?: ReactElement, href?: string) => {
   return useMemo(() => {
-    if (LinkComponent) {
-      return ({ children, className }: LinkComponentProps) => cloneElement(LinkComponent, { className, children });
+    if (linkComponent) {
+      return function LinkComponent({ children, className }: LinkComponentProps) {
+        return cloneElement(linkComponent, { className, children });
+      };
     }
 
     if (href) {
-      return ({ children, className }: LinkComponentProps) =>
-        createElement(
+      return function LinkComponent({ children, className }: LinkComponentProps) {
+        return createElement(
           "a",
           {
             href,
@@ -23,8 +25,9 @@ export const getLinkComponent = (LinkComponent?: ReactElement, href?: string) =>
           },
           children
         );
+      };
     }
 
     return Fragment;
-  }, [LinkComponent, href]);
+  }, [linkComponent, href]);
 };
