@@ -1,7 +1,6 @@
-import { RenderItemProps, StatefulMenuProps } from "baseui/menu";
+import { Item, RenderItemProps, StatefulMenuProps } from "baseui/menu";
 import { ParagraphSmall } from "baseui/typography";
-import { ComponentProps, ComponentType, ElementType, ReactNode } from "react";
-import type { XOR } from "ts-xor";
+import { ComponentProps, ReactElement, ReactNode } from "react";
 
 export enum MENU_SIZE {
   "small" = "small",
@@ -15,23 +14,20 @@ export type MenuProps = StatefulMenuProps & {
 
 export type MenuItemTypographyProps = ComponentProps<typeof ParagraphSmall>;
 
-export type MenuItemBaseProps = RenderItemProps & {
+export type TExpandedItem = Item & {
   selected?: boolean;
   suffixText?: string;
-  startEnhancer?: ReactNode | ComponentType<any>;
-  endEnhancer?: ReactNode | ComponentType<any>;
+  startEnhancer?: ReactNode;
+  endEnhancer?: ReactNode;
   isActive?: boolean;
+  linkComponent?: ReactElement;
+};
+
+export type MenuItemProps = RenderItemProps & {
+  item: TExpandedItem;
   size: MENU_SIZE;
+  disabled?: boolean;
   ariaSelected?: boolean;
-  label?: string;
+  isHighlighted?: boolean;
+  children?: ReactNode;
 };
-
-export type MenuItemPropsWithHref = MenuItemBaseProps & {
-  href?: string;
-};
-
-export type MenuItemPropsWithLinkComponent<T extends ElementType = ElementType> = MenuItemBaseProps & {
-  linkComponent?: T;
-} & Omit<ComponentProps<T>, keyof MenuItemBaseProps>;
-
-export type MenuItemProps = XOR<MenuItemPropsWithHref, MenuItemPropsWithLinkComponent>;

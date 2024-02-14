@@ -121,6 +121,18 @@ export const getItemContainerStyles = (
   };
 };
 
+export const getLinkComponentStyles = () => {
+  return {
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
+    textDecoration: "none",
+    color: "inherit",
+    gap: "8px",
+  };
+}
+
 export const getItemParagraphColor = (isActive: boolean, isDisabled: boolean) => {
   if (isDisabled) {
     return PRIMITIVE_COLORS.gray600;

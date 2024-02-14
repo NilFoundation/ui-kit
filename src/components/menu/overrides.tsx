@@ -35,17 +35,3 @@ export const getMenuOverrides = (size: MENU_SIZE): MenuOverrides => {
     },
   };
 };
-
-export const getMenuItemTypographyElementOverrides = (
-  isHover: boolean
-): BlockOverrides => {
-  return {
-    Block: {
-      style: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-      },
-    },
-  };
-}

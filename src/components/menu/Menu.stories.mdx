@@ -3,6 +3,7 @@ import Menu from "./Menu";
 import { MENU_SIZE } from "./types";
 import { SearchIcon } from "../icons";
 import { PRIMITIVE_COLORS } from "../../shared";
+import { BUTTON_KIND, Button } from "../button";
 
 <Meta title="Overlay/Menu" component={Menu} />
 
@@ -27,9 +28,8 @@ export const ITEMS_WITH_DIVIDER = [
 
 export const ITEMS_WITH_LINKS = [
   { label: "Item One", href: "/" },
-  { divider: true },
-  { label: "Item Two", href: "tel:0000000" },
-  { label: "Item Three", linkComponent: "a", href: "/" },
+  { label: "Item Two", href: "tel:0000000", startEnhancer: <SearchIcon /> },
+  { label: "Item Three", linkComponent: <Button kind={BUTTON_KIND.secondary} />, href: "/" },
 ];
 
 export const ITEMS_WITH_HEADER = {
