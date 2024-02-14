@@ -1,10 +1,11 @@
 import { TEXTAREA_SIZE } from "./types";
 import { expandProperty } from "inline-style-expand-shorthand";
+import { withoutBorderStyles } from "../../shared/styles/borderStyles";
 
 export const inputContainerStyles = {
   ...expandProperty("padding", "0"),
   ...expandProperty("borderRadius", "8px"),
-  ...expandProperty("borderWidth", "1px"),
+  ...withoutBorderStyles,
 };
 
 export const inputModifiedStyles = {

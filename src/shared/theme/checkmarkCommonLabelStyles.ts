@@ -3,7 +3,7 @@ import { StyleObject } from "styletron-standard";
 import { PRIMITIVE_COLORS } from "./colors";
 
 export const getCheckmarkLabelStyles = (disabled: boolean): StyleObject => {
-  const transition = expandProperty("color 0.15s ease-in");
+  const transition = expandProperty("transition", "color 0.15sease-in");
 
   if (disabled) {
     return {

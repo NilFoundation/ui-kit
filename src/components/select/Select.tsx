@@ -16,7 +16,7 @@ const Select: React.FC<SelectProps> = ({
   controlRef: controlRefFromProps,
   ...props
 }) => {
-  const selectOverrides = getSelectOverrides(size, !!disabled, kind, value, valueKey);
+  const selectOverrides = getSelectOverrides(size, kind, value, valueKey);
   const overrides = getMergedOverrides(selectOverrides, baseOverrides);
   const controlRef = useControlRef(controlRefFromProps);
 
