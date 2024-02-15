@@ -29,7 +29,11 @@ export const ITEMS_WITH_DIVIDER = [
 export const ITEMS_WITH_LINKS = [
   { label: "Item One", href: "/" },
   { label: "Item Two", href: "tel:0000000", startEnhancer: <SearchIcon /> },
-  { label: "Item Three", linkComponent: ({children}) => <Button kind={BUTTON_KIND.secondary} children={children} />, href: "/" },
+  {
+    label: "Item Three",
+    linkComponent: ({ children }) => <Button kind={BUTTON_KIND.secondary} children={children} />,
+    href: "/",
+  },
 ];
 
 export const ITEMS_WITH_HEADER = {
