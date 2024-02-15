@@ -31,7 +31,7 @@ export const ITEMS_WITH_LINKS = [
   { label: "Item Two", href: "tel:0000000", startEnhancer: <SearchIcon /> },
   {
     label: "Item Three",
-    linkComponent: ({ children }) => <Button kind={BUTTON_KIND.secondary} children={children} />,
+    linkComponent: ({ children }) => <Button kind={BUTTON_KIND.secondary}>{children}</Button>,
     href: "/",
   },
 ];
