@@ -1,16 +1,19 @@
-import React, { Fragment, ReactElement, cloneElement, createElement, useMemo } from "react";
+import React, { Fragment, ReactElement, createElement, useMemo } from "react";
 import { isExternalLink } from "../../../shared/utils/isExternalLink";
 
 type LinkComponentProps = {
   children?: React.ReactNode;
   className?: string;
+  href?: string;
 };
 
-export const getLinkComponent = (linkComponent?: ReactElement, href?: string) => {
+type LinkComponentRenderFunction = (props: LinkComponentProps) => ReactElement;
+
+export const getLinkComponent = (linkComponent?: LinkComponentRenderFunction, href?: string) => {
   return useMemo(() => {
     if (linkComponent) {
       return function LinkComponent({ children, className }: LinkComponentProps) {
-        return cloneElement(linkComponent, { className, children });
+        return linkComponent({ children, className, href });
       };
     }
 
