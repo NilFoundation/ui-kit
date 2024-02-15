@@ -17,6 +17,7 @@ npm-debug.log*
 .idea
 .vscode/*
 !.vscode/settings.json
+!.vscode/extensions.json
 
 # storybook
 storybook-static
