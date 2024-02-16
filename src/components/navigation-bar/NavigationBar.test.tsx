@@ -45,10 +45,10 @@ describe("NavigationBar", () => {
   it("handles drawer open/close", () => {
     render(<NavigationBar brand={<div>Brand</div>} items={items} />);
 
-    userEvent.click(screen.getByRole("button")); // Assuming the button opens the drawer
-    expect(screen.getByRole("dialog")).toBeVisible(); // Assuming the drawer is a dialog
+    userEvent.click(screen.getByRole("button"));
+    expect(screen.getByRole("dialog")).toBeVisible();
 
-    userEvent.click(screen.getByText("Close")); // Assuming there's a 'Close' button in the drawer
+    userEvent.click(screen.getByText("Close"));
     expect(screen.getByRole("dialog")).not.toBeVisible();
   });
 

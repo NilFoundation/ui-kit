@@ -1,5 +1,6 @@
 import { FC, ReactNode } from "react";
 import { styled } from "styletron-react";
+import { VisuallyHidden } from "../../../shared/ui/visually-hidden/VisuallyHidden";
 
 type SpinnerBlockProps = {
   children?: ReactNode;
@@ -14,7 +15,12 @@ const SpinnerBlock: FC<SpinnerBlockProps> = ({ children, className }) => {
     width: "max-content",
   });
 
-  return <RotatedBlock className={className}>{children}</RotatedBlock>;
+  return (
+    <RotatedBlock role="status" className={className}>
+      {children}
+      <VisuallyHidden>loading</VisuallyHidden>
+    </RotatedBlock>
+  );
 };
 
 export default SpinnerBlock;
