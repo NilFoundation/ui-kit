@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { PatternLayout } from "../pattern-layout";
+import { PatternLayout } from "../../shared/ui/pattern-layout";
 import { containerStyles, getWrapperStyles, rowItemStyles } from "./styles";
 import { useStyletron, styled } from "baseui";
 import type { SkeletonPropsT } from "baseui/skeleton";

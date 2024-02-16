@@ -1,4 +1,4 @@
-import { PRIMITIVE_COLORS } from "../../shared";
+import { PRIMITIVE_COLORS } from "../..";
 import { StyleObject } from "styletron-react";
 import { PATTERN_KIND } from "./types";
 

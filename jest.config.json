@@ -1,0 +1,20 @@
+{
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "testMatch": [
+    "**/**/*.test.{ts,tsx}"
+  ],
+  "preset": "ts-jest",
+  "testEnvironment": "jsdom",
+  "testPathIgnorePatterns": [
+    "<rootDir>/build/",
+    "<rootDir>/node_modules/"
+  ],
+  "resetMocks": true,
+  "collectCoverage": false,
+  "setupFilesAfterEnv": [
+    "<rootDir>/jest.setup.ts"
+  ],
+  "bail": 50
+}

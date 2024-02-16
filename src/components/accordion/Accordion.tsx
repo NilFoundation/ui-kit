@@ -3,7 +3,9 @@ import { Accordion as BaseAccordion, AccordionProps as BaseAccordionProps } from
 import { getAccordionOverrides } from "./overrides";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
-export type AccordionProps = BaseAccordionProps;
+export type AccordionProps = Omit<BaseAccordionProps, "stateReducer"> & {
+  stateReducer?: BaseAccordionProps["stateReducer"];
+};
 
 const Accordion: FC<AccordionProps> = ({ overrides: baseOverrides, ...props }) => {
   const accordionOverrides = getAccordionOverrides();

@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 import { Link as BaseLink } from "baseui/link/styled-components";
-import { styled } from "baseui";
+import { withStyle } from "baseui";
 import { PRIMITIVE_COLORS } from "../../shared";
 
 export type BreadcrumbsItemProps = {
@@ -28,7 +28,7 @@ const getLinkHoverColor = (isActive?: boolean, isDisabled?: boolean): string => 
 };
 
 const BreadcrumbsItem: FC<BreadcrumbsItemProps> = ({ isActive, disabled, href, children }) => {
-  const Link = styled(BaseLink, {
+  const Link = withStyle(BaseLink, {
     textDecoration: "none !important",
     color: `${getLinkColor(isActive, disabled)} !important`,
     cursor: disabled ? "not-allowed" : "pointer",
@@ -42,7 +42,7 @@ const BreadcrumbsItem: FC<BreadcrumbsItemProps> = ({ isActive, disabled, href, c
     },
   });
 
-  return <Link href={!disabled && href}>{children}</Link>;
+  return <Link href={!disabled ? href : undefined}>{children}</Link>;
 };
 
 export default BreadcrumbsItem;

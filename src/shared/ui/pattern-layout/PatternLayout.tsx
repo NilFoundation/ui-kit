@@ -1,10 +1,10 @@
 import { FC, ReactNode, useCallback, useRef, useState, memo } from "react";
 import { styled } from "baseui";
 import { dotsWrapperStyles, getContainerStyles, getRowWrapperStyles } from "./styles";
-import { debounce } from "../../shared/utils/debounce";
-import { getArrayFromN } from "../../shared/utils/getArrayFromN";
+import { debounce } from "../../utils/debounce";
+import { getArrayFromN } from "../../utils/getArrayFromN";
 import { PATTERN_KIND } from "./types";
-import { useOnWindowResize } from "../../shared/hooks/useOnWindowResize";
+import { useOnWindowResize } from "../../hooks/useOnWindowResize";
 
 type PatternLayoutProps = {
   width?: string | number;

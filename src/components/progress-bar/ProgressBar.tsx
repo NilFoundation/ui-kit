@@ -1,4 +1,4 @@
-import { ComponentProps, FC, memo, useCallback, useRef, useState } from "react";
+import { ComponentProps, FC, useCallback, useRef, useState } from "react";
 import {
   dashedBlockStyles,
   dashedBlockActiveStyles,
@@ -16,7 +16,7 @@ import { ProgressBarProps as BaseProgressBarProps } from "baseui/progress-bar";
 import { LabelLarge, LabelMedium, LabelSmall } from "baseui/typography";
 import { useOnWindowResize } from "../../shared/hooks/useOnWindowResize";
 
-export type ProgressBarProps = Omit<BaseProgressBarProps, "steps"> & {
+export type ProgressBarProps = Omit<BaseProgressBarProps, "steps" | "size"> & {
   size?: PROGRESS_BAR_SIZE;
   className?: string;
 };
@@ -99,4 +99,4 @@ const ProgressBar: FC<ProgressBarProps> = ({
   );
 };
 
-export default memo(ProgressBar);
+export default ProgressBar;
