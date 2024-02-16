@@ -68,7 +68,6 @@ const NavItem: FC<NavItemProps> = ({ item, onItemClick, itemAs }) => {
           popoverMargin={20}
           content={
             <Menu
-              isLight
               items={children.map((menuItem) => ({
                 ...menuItem,
                 label: itemAs ? getItemAsValue(itemAs, menuItem) : menuItem.label,
