@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, cloneElement, isValidElement } from "react";
 import { ListItem as BaseListItem, ListProps as BaseListProps } from "baseui/list";
 import { getListItemOverrides } from "./overrides";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
@@ -9,8 +9,8 @@ export type ListItemProps = BaseListProps & {
 };
 
 const getChildrenNode = (node: React.ReactNode, disabled: boolean) => {
-  if (React.isValidElement(node)) {
-    return React.cloneElement(node as React.ReactElement, {
+  if (isValidElement(node)) {
+    return cloneElement(node as React.ReactElement, {
       disabled,
     });
   }

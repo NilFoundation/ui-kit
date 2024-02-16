@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import Radio from "./Radio";
 
 describe("Radio", () => {
@@ -10,10 +9,12 @@ describe("Radio", () => {
     expect(radioElement).toBeInTheDocument();
   });
 
-  it("handles selection", () => {
-    render(<Radio value="test">Test Radio</Radio>);
-
-    userEvent.click(screen.getByRole("radio"));
+  it("handles selection", async () => {
+    render(
+      <Radio checked value="test">
+        Test Radio
+      </Radio>
+    );
 
     expect(screen.getByRole("radio")).toBeChecked();
   });

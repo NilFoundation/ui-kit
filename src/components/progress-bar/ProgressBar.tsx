@@ -16,9 +16,14 @@ import { ProgressBarProps as BaseProgressBarProps } from "baseui/progress-bar";
 import { LabelLarge, LabelMedium, LabelSmall } from "baseui/typography";
 import { useOnWindowResize } from "../../shared/hooks/useOnWindowResize";
 
-export type ProgressBarProps = Omit<BaseProgressBarProps, "steps" | "size"> & {
+export type ProgressBarProps = Omit<
+  BaseProgressBarProps,
+  "steps" | "size" | "showLabel" | "successValue" | "getProgressLabel"
+> & {
   size?: PROGRESS_BAR_SIZE;
   className?: string;
+  showLabel?: boolean;
+  getProgressLabel?: (value: number, minValue: number, maxValue: number) => string;
 };
 
 type TypographyProps = ComponentProps<typeof LabelSmall>;

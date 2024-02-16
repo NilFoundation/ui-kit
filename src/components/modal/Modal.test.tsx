@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Modal from "./Modal";
 import { ROLE } from "baseui/modal";
@@ -15,7 +15,7 @@ describe("Modal", () => {
     expect(modalElement).toBeInTheDocument();
   });
 
-  it("handles close events", () => {
+  it("handles close events", async () => {
     const handleClose = jest.fn();
     render(
       <Modal isOpen={true} onClose={handleClose} role={ROLE.dialog}>
@@ -26,7 +26,7 @@ describe("Modal", () => {
     const closeButton = screen.getByRole("button");
     userEvent.click(closeButton);
 
-    expect(handleClose).toHaveBeenCalledTimes(1);
+    await waitFor(() => expect(handleClose).toHaveBeenCalledTimes(1));
   });
 
   // Add more tests as needed

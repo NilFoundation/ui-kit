@@ -4,7 +4,7 @@ import { PROGRESS_BAR_SIZE } from "./types";
 
 describe("ProgressBar", () => {
   it("renders without crashing", () => {
-    render(<ProgressBar value={50} size={PROGRESS_BAR_SIZE.medium} />);
+    render(<ProgressBar value={50} size={PROGRESS_BAR_SIZE.medium} infinite minValue={0} maxValue={100} />);
 
     const progressBarElement = screen.getByRole("progressbar");
     expect(progressBarElement).toBeInTheDocument();
@@ -12,12 +12,14 @@ describe("ProgressBar", () => {
   });
 
   it("handles size prop", () => {
-    const { rerender } = render(<ProgressBar value={50} size={PROGRESS_BAR_SIZE.medium} />);
+    const { rerender } = render(
+      <ProgressBar infinite minValue={0} maxValue={100} value={50} size={PROGRESS_BAR_SIZE.medium} />
+    );
 
     let progressBarElement = screen.getByRole("progressbar");
     expect(progressBarElement).toBeInTheDocument();
 
-    rerender(<ProgressBar value={50} size={PROGRESS_BAR_SIZE.large} />);
+    rerender(<ProgressBar infinite minValue={0} maxValue={100} value={50} size={PROGRESS_BAR_SIZE.large} />);
 
     progressBarElement = screen.getByRole("progressbar");
     expect(progressBarElement).toBeInTheDocument();
