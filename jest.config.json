@@ -16,5 +16,5 @@
   "setupFilesAfterEnv": [
     "<rootDir>/jest.setup.ts"
   ],
-  "bail": 50
+  "bail": 0
 }
