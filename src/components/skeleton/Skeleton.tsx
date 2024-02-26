@@ -12,10 +12,18 @@ const Container = styled("div", containerStyles);
 const Skeleton: FC<SkeletonProps> = ({ height, animation, rows, ...props }) => {
   const [css] = useStyletron();
   const SkeletonWrapper = styled("div", getWrapperStyles(!!animation));
+  const accessibilityProps = {
+    role: "progressbar",
+    "aria-valuemin": 0,
+    "aria-valuemax": 100,
+    "aria-valuenow": 0,
+    "aria-valuetext": "Loading",
+    "aria-busy": true,
+  };
 
   if (rows) {
     return (
-      <Container>
+      <Container {...accessibilityProps}>
         {getArrayFromN(rows).map((index) => (
           <PatternLayout key={index.toString()} {...props} height="18px" className={css(rowItemStyles)}>
             <SkeletonWrapper />
@@ -26,7 +34,7 @@ const Skeleton: FC<SkeletonProps> = ({ height, animation, rows, ...props }) => {
   }
 
   return (
-    <Container>
+    <Container {...accessibilityProps}>
       <PatternLayout {...props} height={height}>
         <SkeletonWrapper />
       </PatternLayout>

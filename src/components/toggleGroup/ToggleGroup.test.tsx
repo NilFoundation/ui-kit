@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ToggleGroup from "./ToggleGroup";
 import { BUTTON_SIZE } from "../button";
@@ -17,7 +17,7 @@ describe("ToggleGroupInner", () => {
     });
   });
 
-  it("handles toggle events", () => {
+  it("handles toggle events", async () => {
     const handleChange = jest.fn();
     const options = [
       { key: "1", label: "Option 1" },
@@ -28,7 +28,9 @@ describe("ToggleGroupInner", () => {
     const optionElement = screen.getByText(/Option 1/i);
     userEvent.click(optionElement);
 
-    expect(handleChange).toHaveBeenCalledTimes(1);
+    await waitFor(() => {
+      expect(handleChange).toHaveBeenCalledTimes(1);
+    });
   });
 
   // Add more tests as needed

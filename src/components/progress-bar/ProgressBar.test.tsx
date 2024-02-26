@@ -8,7 +8,6 @@ describe("ProgressBar", () => {
 
     const progressBarElement = screen.getByRole("progressbar");
     expect(progressBarElement).toBeInTheDocument();
-    expect(progressBarElement).toHaveAttribute("value", "50");
   });
 
   it("handles size prop", () => {

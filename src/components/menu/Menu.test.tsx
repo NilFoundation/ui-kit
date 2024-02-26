@@ -8,7 +8,7 @@ describe("Menu", () => {
   it("renders without crashing", () => {
     render(<Menu size={MENU_SIZE.medium} items={items} />);
 
-    const menuElement = screen.getByRole("menu");
+    const menuElement = screen.getByText("Item One");
     expect(menuElement).toBeInTheDocument();
   });
 

@@ -76,7 +76,7 @@ const ProgressBar: FC<ProgressBarProps> = ({
 
   return (
     <Container className={className} ref={containerRef}>
-      <ProgressWrapper>
+      <ProgressWrapper role="progressbar">
         {getArrayFromN(dashedCount).map((index) => (
           <DashedBlock
             key={index.toString()}
