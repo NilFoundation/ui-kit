@@ -18,7 +18,11 @@ export const getColor = (isFocused: boolean, error: boolean, disabled: boolean):
     return PRIMITIVE_COLORS.gray400;
   }
 
-  return PRIMITIVE_COLORS.gray200;
+  return PRIMITIVE_COLORS.gray50;
+};
+
+export const getPlaceholderColor = (disabled: boolean): string => {
+  return disabled ? PRIMITIVE_COLORS.gray400 : PRIMITIVE_COLORS.gray200;
 };
 
 export const getBackgroundColor = (kind: TextFiledKindUnion): StyleObject => {

@@ -14,11 +14,13 @@ const Select: React.FC<SelectProps> = ({
   valueKey,
   overrides: baseOverrides,
   controlRef: controlRefFromProps,
+  closeOnSelect,
   ...props
 }) => {
   const selectOverrides = getSelectOverrides(size, kind, value, valueKey);
   const overrides = getMergedOverrides(selectOverrides, baseOverrides);
   const controlRef = useControlRef(controlRefFromProps);
+  const shouldCloseOnSelect = closeOnSelect === undefined ? !props.multi : closeOnSelect;
 
   return (
     <SelectContext.Provider value={{ value, controlRef }}>
@@ -30,6 +32,7 @@ const Select: React.FC<SelectProps> = ({
         overrides={overrides}
         filterOutSelected={false}
         controlRef={controlRef}
+        closeOnSelect={shouldCloseOnSelect}
       />
     </SelectContext.Provider>
   );
