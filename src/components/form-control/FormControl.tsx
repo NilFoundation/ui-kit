@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC, cloneElement } from "react";
 import { FormControl as BaseFormControl, FormControlProps as BaseFormControlProps } from "baseui/form-control";
 import { INPUT_SIZE } from "../input";
 import { getFormControlOverrides } from "./overrides";
@@ -35,7 +35,7 @@ const FormControl: FC<FormControlProps> = ({
   return (
     <BaseFormControl {...props} overrides={overrides}>
       {/*@ts-ignore*/}
-      {React.cloneElement(children, {
+      {cloneElement(children, {
         size,
         readOnly,
         isLoading,

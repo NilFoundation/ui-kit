@@ -1,0 +1,26 @@
+{
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "testMatch": [
+    "**/**/*.test.{ts,tsx}"
+  ],
+  "preset": "ts-jest",
+  "testEnvironment": "jsdom",
+  "testPathIgnorePatterns": [
+    "<rootDir>/build/",
+    "<rootDir>/node_modules/"
+  ],
+  "resetMocks": true,
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "src/components/**/*.{ts,tsx}",
+    "!src/**/*.d.ts",
+    "!src/**/*.stories.tsx",
+    "!src/**/*Story.{ts,tsx}"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/jest.setup.ts"
+  ],
+  "bail": 0
+}

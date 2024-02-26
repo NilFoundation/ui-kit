@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import { FC, ReactNode, cloneElement, isValidElement } from "react";
 import { Tab as BaseTab, TabProps as BaseTabProps } from "baseui/tabs";
 import { getTabOverrides } from "./overrides";
 import { useStyletron } from "baseui";
@@ -11,8 +11,8 @@ export type TabProps = BaseTabProps & {
 };
 
 const getEnhancer = (node: ReactNode) => {
-  if (React.isValidElement(node)) {
-    return React.cloneElement(node as any, {
+  if (isValidElement(node)) {
+    return cloneElement(node as any, {
       size: 20,
     });
   }

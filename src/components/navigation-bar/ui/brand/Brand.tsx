@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { PRIMITIVE_COLORS } from "../../../../shared";
 
 export type BrandProps = {
   color?: string;

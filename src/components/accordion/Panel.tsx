@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { ReactNode, forwardRef } from "react";
 import { Panel as BasePanel, PanelProps as BasePanelProps } from "baseui/accordion";
 import PanelTitle from "./ui/PanelTitle";
 
@@ -7,8 +7,9 @@ export type PanelProps = BasePanelProps & {
   icon?: ReactNode;
 };
 
-const Panel: FC<PanelProps> = ({ icon, title, description, ...props }) => {
-  return <BasePanel {...props} title={<PanelTitle title={title} icon={icon} description={description} />} />;
-};
+const Panel = forwardRef<HTMLElement, PanelProps>(({ icon, title, description, ...props }, ref) => {
+  return <BasePanel ref={ref} {...props} title={<PanelTitle title={title} icon={icon} description={description} />} />;
+});
 
+Panel.displayName = "Panel";
 export default Panel;

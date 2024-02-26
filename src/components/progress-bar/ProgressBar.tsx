@@ -1,4 +1,4 @@
-import { ComponentProps, FC, memo, useCallback, useRef, useState } from "react";
+import { ComponentProps, FC, useCallback, useRef, useState } from "react";
 import {
   dashedBlockStyles,
   dashedBlockActiveStyles,
@@ -16,9 +16,14 @@ import { ProgressBarProps as BaseProgressBarProps } from "baseui/progress-bar";
 import { LabelLarge, LabelMedium, LabelSmall } from "baseui/typography";
 import { useOnWindowResize } from "../../shared/hooks/useOnWindowResize";
 
-export type ProgressBarProps = Omit<BaseProgressBarProps, "steps"> & {
+export type ProgressBarProps = Omit<
+  BaseProgressBarProps,
+  "steps" | "size" | "showLabel" | "successValue" | "getProgressLabel"
+> & {
   size?: PROGRESS_BAR_SIZE;
   className?: string;
+  showLabel?: boolean;
+  getProgressLabel?: (value: number, minValue: number, maxValue: number) => string;
 };
 
 type TypographyProps = ComponentProps<typeof LabelSmall>;
@@ -71,7 +76,7 @@ const ProgressBar: FC<ProgressBarProps> = ({
 
   return (
     <Container className={className} ref={containerRef}>
-      <ProgressWrapper>
+      <ProgressWrapper role="progressbar">
         {getArrayFromN(dashedCount).map((index) => (
           <DashedBlock
             key={index.toString()}
@@ -99,4 +104,4 @@ const ProgressBar: FC<ProgressBarProps> = ({
   );
 };
 
-export default memo(ProgressBar);
+export default ProgressBar;
