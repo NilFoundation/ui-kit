@@ -1,6 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import ProgressBar from "./ProgressBar";
 import { PROGRESS_BAR_SIZE } from "./types";
+import { render } from "../../test-utils/render";
 
 describe("ProgressBar", () => {
   it("renders without crashing", () => {

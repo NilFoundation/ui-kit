@@ -1,7 +1,8 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Textarea from "./Textarea";
 import { TEXTAREA_KIND } from "./types";
+import { render } from "../../test-utils/render";
 
 describe("Textarea", () => {
   it("renders without crashing", () => {

@@ -1,6 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import Badge from "./Badge";
 import { BADGE_COLOR } from "./types";
+import { render } from "../../test-utils/render";
 
 const content = "Badge";
 

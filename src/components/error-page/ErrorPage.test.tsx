@@ -1,6 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import ErrorPage from "./ErrorPage";
 import { MockViewport, mockViewport } from "jsdom-testing-mocks";
+import { render } from "../../test-utils/render";
 
 let viewport: MockViewport;
 

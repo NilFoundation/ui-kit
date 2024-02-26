@@ -1,5 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import Radio from "./Radio";
+import { render } from "../../test-utils/render";
 
 describe("Radio", () => {
   it("renders without crashing", () => {

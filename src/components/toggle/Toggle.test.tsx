@@ -1,6 +1,7 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Toggle, { LABEL_PLACEMENT } from "./Toggle";
+import { render } from "../../test-utils/render";
 
 describe("Toggle", () => {
   it("renders without crashing", async () => {

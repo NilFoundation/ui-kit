@@ -1,6 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import Notification from "./Notification";
 import { NOTIFICATION_KIND } from "./types";
+import { render } from "../../test-utils/render";
 
 describe("Notification", () => {
   it("renders without crashing", () => {

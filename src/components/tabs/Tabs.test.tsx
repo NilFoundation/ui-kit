@@ -1,5 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import Tab from "./Tab";
+import { render } from "../../test-utils/render";
 
 describe("Tab", () => {
   it("renders without crashing", () => {

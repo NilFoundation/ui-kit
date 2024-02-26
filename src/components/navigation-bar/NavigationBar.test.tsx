@@ -1,5 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import NavigationBar from "./NavigationBar";
+import { render } from "../../test-utils/render";
 
 export const items = [
   {

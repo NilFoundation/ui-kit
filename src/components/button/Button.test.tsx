@@ -1,7 +1,8 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Button from "./Button";
 import { BUTTON_KIND } from "./types";
+import { render } from "../../test-utils/render";
 
 describe("Button", () => {
   it("renders without crashing", () => {

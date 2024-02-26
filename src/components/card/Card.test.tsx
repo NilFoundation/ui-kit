@@ -1,5 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import Card from "./Card";
+import { render } from "../../test-utils/render";
 
 describe("Card", () => {
   it("renders without crashing", () => {

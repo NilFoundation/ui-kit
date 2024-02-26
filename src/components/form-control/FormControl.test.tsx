@@ -1,6 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import FormControl from "./FormControl";
 import { INPUT_SIZE, Input } from "../input";
+import { render } from "../../test-utils/render";
 
 describe("FormControl", () => {
   it("renders without crashing", async () => {

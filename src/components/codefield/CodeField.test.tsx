@@ -1,5 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import CodeField from "./CodeField";
+import { render } from "../../test-utils/render";
 
 describe("CodeField", () => {
   it("renders without crashing", () => {

@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render } from "../../test-utils/render";
 import Breadcrumbs from "./Breadcrumbs";
 import BreadcrumbsItem from "./BreadcrumbsItem";
 

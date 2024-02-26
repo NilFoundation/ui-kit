@@ -1,7 +1,8 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Input from "./Input";
 import { INPUT_KIND, INPUT_SIZE } from "./types";
+import { render } from "../../test-utils/render";
 
 describe("Input", () => {
   it("renders without crashing", () => {
