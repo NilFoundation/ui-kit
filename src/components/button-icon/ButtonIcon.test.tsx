@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import ButtonIcon from "./ButtonIcon";
 import { BUTTON_SIZE } from "../button/types";
 import { render } from "../../test-utils/render";
+import { createComponentSSRTest } from "../../createComponentSSRTest";
 
 describe("ButtonIcon", () => {
   it("renders without crashing", () => {
@@ -20,6 +21,12 @@ describe("ButtonIcon", () => {
     userEvent.click(buttonElement);
 
     await waitFor(() => expect(handleClick).toHaveBeenCalledTimes(1));
+  });
+
+  it("renders ssr without crashing", () => {
+    createComponentSSRTest(
+      <ButtonIcon size={BUTTON_SIZE.default} data-testid="Test Button" icon={<span>Icon</span>}></ButtonIcon>
+    );
   });
 
   // Add more tests as needed

@@ -1,6 +1,7 @@
 import { screen } from "@testing-library/react";
 import FileUploader from "./FileUploader";
 import { render } from "../../test-utils/render";
+import { createComponentSSRTest } from "../../createComponentSSRTest";
 
 describe("FileUploader", () => {
   it("renders without crashing", () => {
@@ -9,5 +10,10 @@ describe("FileUploader", () => {
     const fileUploaderElement = screen.getByRole("button");
     expect(fileUploaderElement).toBeInTheDocument();
   });
+
+  it("renders ssr without crashing", () => {
+    createComponentSSRTest(<FileUploader />);
+  });
+
   // Add more tests as needed
 });

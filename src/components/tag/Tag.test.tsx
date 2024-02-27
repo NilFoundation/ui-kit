@@ -2,6 +2,7 @@ import { screen, waitFor } from "@testing-library/react";
 import Tag from "./Tag";
 import { TAG_KIND, TAG_SIZE } from "./types";
 import { render } from "../../test-utils/render";
+import { createComponentSSRTest } from "../../createComponentSSRTest";
 
 describe("Tag", () => {
   it("renders without crashing", () => {
@@ -35,6 +36,14 @@ describe("Tag", () => {
     await waitFor(() => {
       expect(tagElement).toBeInTheDocument();
     });
+  });
+
+  it("renders ssr without crashing", () => {
+    createComponentSSRTest(
+      <Tag kind={TAG_KIND.gray} size={TAG_SIZE.s}>
+        Test Tag
+      </Tag>
+    );
   });
 
   // Add more tests as needed

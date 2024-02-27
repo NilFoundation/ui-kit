@@ -1,6 +1,7 @@
 import { screen } from "@testing-library/react";
 import Radio from "./Radio";
 import { render } from "../../test-utils/render";
+import { createComponentSSRTest } from "../../createComponentSSRTest";
 
 describe("Radio", () => {
   it("renders without crashing", () => {
@@ -18,6 +19,10 @@ describe("Radio", () => {
     );
 
     expect(screen.getByRole("radio")).toBeChecked();
+  });
+
+  it("renders ssr without crashing", () => {
+    createComponentSSRTest(<Radio value="test">Test Radio</Radio>);
   });
 
   // Add more tests as needed

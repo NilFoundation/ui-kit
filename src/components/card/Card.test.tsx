@@ -1,6 +1,7 @@
 import { screen } from "@testing-library/react";
 import Card from "./Card";
 import { render } from "../../test-utils/render";
+import { createComponentSSRTest } from "../../createComponentSSRTest";
 
 describe("Card", () => {
   it("renders without crashing", () => {
@@ -8,6 +9,10 @@ describe("Card", () => {
 
     const cardElement = screen.getByText(/Test Card/i);
     expect(cardElement).toBeInTheDocument();
+  });
+
+  it("renders ssr without crashing", () => {
+    createComponentSSRTest(<Card>Test Card</Card>);
   });
 
   // Add more tests as needed

@@ -3,6 +3,7 @@ import Chart from "./ChartWrapper";
 import { LineSeries } from "./series";
 import { MockViewport, mockViewport } from "jsdom-testing-mocks";
 import { setupJestCanvasMock } from "jest-canvas-mock";
+import { createComponentSSRTest } from "../../createComponentSSRTest";
 
 let viewport: MockViewport;
 
@@ -38,6 +39,14 @@ const lineData = [
 describe("Chart", () => {
   it("renders without crashing", () => {
     render(
+      <Chart height={400}>
+        <LineSeries data={lineData} />
+      </Chart>
+    );
+  });
+
+  it("renders without crashing in SSR", () => {
+    createComponentSSRTest(
       <Chart height={400}>
         <LineSeries data={lineData} />
       </Chart>

@@ -2,13 +2,14 @@ import { screen, waitFor } from "@testing-library/react";
 import Table from "./Table";
 import { TABLE_DIVIDER, TABLE_SIZE } from "./types";
 import { render } from "../../test-utils/render";
+import { createComponentSSRTest } from "../../createComponentSSRTest";
 
-export const data = [
+const data = [
   ["Sarah Brown", 31, "100 Broadway st. New York City, New York"],
   ["Jane Smith", 32, "100 Market st. San Francisco, California"],
   ["Joe Black", 33, "100 Macquarie st. Sydney, Australia"],
 ];
-export const columns = ["Name", "Age", "Address"];
+const columns = ["Name", "Age", "Address"];
 
 describe("Table", () => {
   it("renders without crashing", () => {
@@ -32,6 +33,12 @@ describe("Table", () => {
     await waitFor(() => {
       expect(tableElement).toBeInTheDocument();
     });
+  });
+
+  it("renders ssr without crashing", () => {
+    createComponentSSRTest(
+      <Table divider={TABLE_DIVIDER.horizontal} size={TABLE_SIZE.default} data={data} columns={columns}></Table>
+    );
   });
 
   // Add more tests as needed

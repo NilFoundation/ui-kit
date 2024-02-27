@@ -1,6 +1,7 @@
 import { screen } from "@testing-library/react";
 import CodeField from "./CodeField";
 import { render } from "../../test-utils/render";
+import { createComponentSSRTest } from "../../createComponentSSRTest";
 
 describe("CodeField", () => {
   it("renders without crashing", () => {
@@ -8,6 +9,10 @@ describe("CodeField", () => {
 
     const codeElement = screen.getByText(/Test Code/i);
     expect(codeElement).toBeInTheDocument();
+  });
+
+  it("renders ssr without crashing", () => {
+    createComponentSSRTest(<CodeField code="Test Code" />);
   });
 
   // Add more tests as needed

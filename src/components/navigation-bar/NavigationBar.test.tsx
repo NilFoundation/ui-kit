@@ -1,6 +1,7 @@
 import { screen } from "@testing-library/react";
 import NavigationBar from "./NavigationBar";
 import { render } from "../../test-utils/render";
+import { createComponentSSRTest } from "../../createComponentSSRTest";
 
 export const items = [
   {
@@ -40,6 +41,17 @@ describe("NavigationBar", () => {
 
     const navigationBarElement = screen.getByRole("banner");
     expect(navigationBarElement).toBeInTheDocument();
+  });
+
+  it("handles custom brand", () => {
+    render(<NavigationBar brand={<div>Brand</div>} items={items} />);
+
+    const brandElement = screen.getByText("Brand");
+    expect(brandElement).toBeInTheDocument();
+  });
+
+  it("renders ssr without crashing", () => {
+    createComponentSSRTest(<NavigationBar brand={<div>Brand</div>} items={items} />);
   });
 
   // Add more tests as needed

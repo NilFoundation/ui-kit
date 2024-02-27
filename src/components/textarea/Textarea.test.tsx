@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import Textarea from "./Textarea";
 import { TEXTAREA_KIND } from "./types";
 import { render } from "../../test-utils/render";
+import { createComponentSSRTest } from "../../createComponentSSRTest";
 
 describe("Textarea", () => {
   it("renders without crashing", () => {
@@ -22,6 +23,10 @@ describe("Textarea", () => {
     await waitFor(() => {
       expect(handleChange).toHaveBeenCalledTimes(13); // "Hello, World!" is 13 characters long
     });
+  });
+
+  it("renders ssr without crashing", () => {
+    createComponentSSRTest(<Textarea kind={TEXTAREA_KIND.primary} />);
   });
 
   // Add more tests as needed
