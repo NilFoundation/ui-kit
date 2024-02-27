@@ -1,6 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import Spinner from "./Spinner";
 import { SPINNER_SIZE } from "./types";
+import { render } from "../../test-utils/render";
 
 describe("Spinner", () => {
   it("renders without crashing", () => {

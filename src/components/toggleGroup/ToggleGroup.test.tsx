@@ -1,7 +1,8 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ToggleGroup from "./ToggleGroup";
 import { BUTTON_SIZE } from "../button";
+import { render } from "../../test-utils/render";
 
 describe("ToggleGroupInner", () => {
   it("renders without crashing", () => {

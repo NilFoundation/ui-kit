@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { cloneElement, forwardRef } from "react";
 import { MenuItemProps, MenuItemTypographyProps } from "../types";
 import { ParagraphSmall, ParagraphMedium, ParagraphLarge } from "baseui/typography";
 import { useStyletron, styled } from "baseui";
@@ -38,7 +38,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
         <LinkComponent className={css(getLinkComponentStyles())}>
           {item?.selected != null && <Checkbox checked={item.selected} />}
           {item?.startEnhancer &&
-            React.cloneElement(item.startEnhancer, {
+            cloneElement(item.startEnhancer, {
               size: 16,
               className: css(isAreaSelected ? svgActiveStyles : {}),
             })}
@@ -48,7 +48,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
           <EndWrapper>
             {item?.suffixText && <TypographyComponent color={paragraphColor}>{item.suffixText}</TypographyComponent>}
             {item?.endEnhancer &&
-              React.cloneElement(item.endEnhancer, {
+              cloneElement(item.endEnhancer, {
                 size: 16,
                 className: css(isAreaSelected ? svgActiveStyles : {}),
               })}

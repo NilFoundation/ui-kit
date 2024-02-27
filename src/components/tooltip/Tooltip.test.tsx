@@ -1,6 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import Tooltip from "./Tooltip";
 import { TOOLTIP_KIND } from "./types";
+import { render } from "../../test-utils/render";
 
 describe("Tooltip", () => {
   it("renders without crashing", () => {

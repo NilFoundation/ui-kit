@@ -1,6 +1,7 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Checkbox, { LABEL_PLACEMENT } from "./Checkbox";
+import { render } from "../../test-utils/render";
 
 describe("Checkbox", () => {
   it("renders without crashing", () => {

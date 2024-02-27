@@ -1,6 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import ListItem from "./ListItem";
 import ListItemLabel from "./ListItemLabel";
+import { render } from "../../test-utils/render";
 
 describe("List", () => {
   it("renders without crashing", () => {

@@ -1,5 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import Select from "./Select";
+import { render } from "../../test-utils/render";
 
 describe("Select", () => {
   it("renders without crashing", () => {

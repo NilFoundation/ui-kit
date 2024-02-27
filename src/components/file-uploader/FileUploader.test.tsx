@@ -1,5 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import FileUploader from "./FileUploader";
+import { render } from "../../test-utils/render";
 
 describe("FileUploader", () => {
   it("renders without crashing", () => {
