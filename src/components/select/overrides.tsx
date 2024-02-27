@@ -8,7 +8,12 @@ import { controlContainerModifiedStyles, selectTypographyStyles, valueContainerM
 import { expandProperty } from "inline-style-expand-shorthand";
 import { Tag, TAG_SIZE } from "../tag";
 import { Item } from "baseui/menu";
-import { getColor, getBackgroundColor, getHoverStyles } from "../../shared/theme/textFieldCommonOverrides";
+import {
+  getColor,
+  getBackgroundColor,
+  getHoverStyles,
+  getPlaceholderColor,
+} from "../../shared/theme/textFieldCommonOverrides";
 import { boxShadowFocusStyles, boxShadowErrorStyles } from "../../shared/styles/boxShadowSharedStyles";
 import ValueContainer from "./ui/ValueContainer/ValueContainer";
 import { getTagKind, tagOverrides } from "./sharedUtils";
@@ -76,10 +81,10 @@ export const getSelectOverrides = (
     },
     SelectArrow: {
       component: SelectArrow,
-      props: ({ $isOpen, $isFocused, $searchable, $error, $disabled, ...props }) => ({
+      props: ({ $isOpen, $searchable, $disabled, ...props }) => ({
         ...props,
         isRotated: $isOpen,
-        color: getColor($isFocused, $error, $disabled),
+        color: getPlaceholderColor($disabled),
         searchable: $searchable,
       }),
     },
@@ -95,8 +100,8 @@ export const getSelectOverrides = (
       },
     },
     Placeholder: {
-      style: ({ $error, $disabled, $isFocused }) => ({
-        color: getColor($isFocused, $error, $disabled),
+      style: ({ $disabled }) => ({
+        color: getPlaceholderColor($disabled),
         ...selectTypographyStyles[size],
       }),
     },
@@ -121,18 +126,18 @@ export const getSelectOverrides = (
       style: selectTypographyStyles[size],
     },
     Input: {
-      style: {
-        color: PRIMITIVE_COLORS.gray200,
+      style: ({ $error, $isFocused, $disabled }) => ({
+        color: getColor($isFocused, $error, $disabled),
         ...selectTypographyStyles[size],
         ":focus-within": {
           color: PRIMITIVE_COLORS.gray50,
         },
-      },
+      }),
     },
     ClearIcon: {
-      props: ({ $error, $isFocused, $disabled, ...rest }) => ({
+      props: ({ $disabled, ...rest }) => ({
         size: "22px",
-        color: getColor($isFocused, $error, $disabled),
+        color: getPlaceholderColor($disabled),
         cursor: "pointer",
         ...rest,
       }),

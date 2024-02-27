@@ -76,6 +76,9 @@ export const Template = ({ value: baseValue, ...args }) => {
   >
     {Template.bind({})}
   </Story>
+  <Story name="With End Enhancer Text" args={{ placeholder: "End Enhancer With Text", endEnhancer: "USD" }}>
+    {Template.bind({})}
+  </Story>
   <Story
     name="Clearable"
     args={{ placeholder: "Clearable. Type something to check", clearable: true, size: INPUT_SIZE.small }}

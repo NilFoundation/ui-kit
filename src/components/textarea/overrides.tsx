@@ -1,7 +1,12 @@
 import { TextareaOverrides } from "baseui/textarea";
 import { TEXTAREA_KIND, TEXTAREA_SIZE } from "./types";
 import { clearIconContainerModifiedStyles, clearIconSize, inputModifiedStyles, inputContainerStyles } from "./styles";
-import { getBackgroundColor, getColor, getHoverStyles } from "../../shared/theme/textFieldCommonOverrides";
+import {
+  getBackgroundColor,
+  getColor,
+  getHoverStyles,
+  getPlaceholderColor,
+} from "../../shared/theme/textFieldCommonOverrides";
 import { resetAutoCompleteStyles } from "../../shared/styles/resetAutoCompleteStyles";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { boxShadowFocusStyles, boxShadowErrorStyles } from "../../shared/styles/boxShadowSharedStyles";
@@ -32,7 +37,7 @@ export const getTextareaOverrides = (size: TEXTAREA_SIZE, kind: TEXTAREA_KIND): 
           "-webkit-text-fill-color": "unset",
 
           "::placeholder": {
-            color: getColor($isFocused, $error, $disabled),
+            color: getPlaceholderColor($disabled),
           },
 
           "::-webkit-resizer": {
@@ -44,10 +49,10 @@ export const getTextareaOverrides = (size: TEXTAREA_SIZE, kind: TEXTAREA_KIND): 
       },
     },
     ClearIconContainer: {
-      style: ({ $error, $disabled, $isFocused }) => ({
+      style: ({ $disabled }) => ({
         ...clearIconContainerModifiedStyles[size],
         ...expandProperty("transition", "color 0.15s ease-in"),
-        color: getColor($isFocused, $error, $disabled),
+        color: getPlaceholderColor($disabled),
       }),
     },
     ClearIcon: {
