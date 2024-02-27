@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import Input from "./Input";
 import { INPUT_KIND, INPUT_SIZE } from "./types";
 import { render } from "../../test-utils/render";
+import { createComponentSSRTest } from "../../createComponentSSRTest";
 
 describe("Input", () => {
   it("renders without crashing", () => {
@@ -20,6 +21,10 @@ describe("Input", () => {
     userEvent.type(inputElement, "New Value");
 
     await waitFor(() => expect(handleChange).toHaveBeenCalledTimes(1));
+  });
+
+  it("renders ssr without crashing", () => {
+    createComponentSSRTest(<Input size={INPUT_SIZE.medium} kind={INPUT_KIND.primary}></Input>);
   });
 
   // Add more tests as needed

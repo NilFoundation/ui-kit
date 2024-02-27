@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import Button from "./Button";
 import { BUTTON_KIND } from "./types";
 import { render } from "../../test-utils/render";
+import { createComponentSSRTest } from "../../createComponentSSRTest";
 
 describe("Button", () => {
   it("renders without crashing", () => {
@@ -20,6 +21,10 @@ describe("Button", () => {
 
     userEvent.click(buttonElement);
     await waitFor(() => expect(handleClick).toHaveBeenCalledTimes(1));
+  });
+
+  it("renders ssr without crashing", () => {
+    createComponentSSRTest(<Button kind={BUTTON_KIND.secondary}>Test Button</Button>);
   });
 
   // Add more tests as needed

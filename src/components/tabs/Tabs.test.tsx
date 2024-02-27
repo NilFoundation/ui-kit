@@ -1,6 +1,7 @@
 import { screen } from "@testing-library/react";
 import Tab from "./Tab";
 import { render } from "../../test-utils/render";
+import { createComponentSSRTest } from "../../createComponentSSRTest";
 
 describe("Tab", () => {
   it("renders without crashing", () => {
@@ -21,6 +22,10 @@ describe("Tab", () => {
     const endEnhancerElement = screen.getByText(/End/i);
     expect(startEnhancerElement).toBeInTheDocument();
     expect(endEnhancerElement).toBeInTheDocument();
+  });
+
+  it("renders ssr without crashing", () => {
+    createComponentSSRTest(<Tab>Test Tab</Tab>);
   });
 
   // Add more tests as needed

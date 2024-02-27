@@ -2,6 +2,7 @@ import { screen } from "@testing-library/react";
 import Spinner from "./Spinner";
 import { SPINNER_SIZE } from "./types";
 import { render } from "../../test-utils/render";
+import { createComponentSSRTest } from "../../createComponentSSRTest";
 
 describe("Spinner", () => {
   it("renders without crashing", () => {
@@ -21,6 +22,10 @@ describe("Spinner", () => {
 
     spinnerElement = screen.getByRole("status");
     expect(spinnerElement).toBeInTheDocument();
+  });
+
+  it("renders ssr without crashing", () => {
+    createComponentSSRTest(<Spinner size={SPINNER_SIZE.medium} animation={true} />);
   });
 
   // Add more tests as needed
