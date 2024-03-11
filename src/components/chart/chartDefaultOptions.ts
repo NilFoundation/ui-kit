@@ -22,8 +22,8 @@ export const chartDefaultOptions: DeepPartial<ChartOptions> = {
       color: COLORS.gray50,
       width: 1,
       style: 0,
-      visible: true,
-      labelVisible: true,
+      labelVisible: false,
+      visible: false,
     },
     horzLine: {
       color: COLORS.gray50,
