@@ -3,6 +3,7 @@ import { SeriesApiRef, SeriesTemplateProps, SeriesType } from "./types";
 import { ChartContext } from "../ChartContext";
 import { getSeriesDefaultOptions } from "./seriesDefaultOptions";
 import { IChartApi, ISeriesApi } from "lightweight-charts";
+import { CustomHistogramSeries } from "./plugins/CustomHistogramSeries";
 
 export const useInitSeries = <T extends SeriesType>({
   type,
@@ -98,9 +99,11 @@ const addSeries = <T extends SeriesType>(chart: IChartApi, type: T) => {
     case "Candlestick":
       series = chart.addCandlestickSeries();
       break;
-    case "Histogram":
-      series = chart.addHistogramSeries();
+    case "Histogram": {
+      const customSeries = new CustomHistogramSeries();
+      series = chart.addCustomSeries(customSeries);
       break;
+    }
     default:
       throw new Error(`Unknown series type: ${type}`);
   }
