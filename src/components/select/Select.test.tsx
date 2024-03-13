@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import Select from "./Select";
 import { render } from "../../test-utils/render";
 import { SELECT_SIZE } from "./types";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 describe("Select", () => {
   it("renders without crashing", () => {

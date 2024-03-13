@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import Drawer from "./Drawer";
 import { ANCHOR, SIZE } from "baseui/drawer";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 describe("Drawer", () => {
   it("renders without crashing", () => {

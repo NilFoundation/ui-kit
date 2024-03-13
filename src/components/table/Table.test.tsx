@@ -2,7 +2,7 @@ import { screen, waitFor } from "@testing-library/react";
 import Table from "./Table";
 import { TABLE_DIVIDER, TABLE_SIZE } from "./types";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 const data = [
   ["Sarah Brown", 31, "100 Broadway st. New York City, New York"],

@@ -1,7 +1,7 @@
 import { render } from "../../test-utils/render";
 import Breadcrumbs from "./Breadcrumbs";
 import BreadcrumbsItem from "./BreadcrumbsItem";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 describe("Breadcrumbs", () => {
   it("renders without crashing", () => {

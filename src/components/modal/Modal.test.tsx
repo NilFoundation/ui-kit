@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import Modal from "./Modal";
 import { ROLE } from "baseui/modal";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 describe("Modal", () => {
   it("renders without crashing", () => {

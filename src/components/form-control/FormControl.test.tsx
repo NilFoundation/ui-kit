@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import FormControl from "./FormControl";
 import { INPUT_SIZE, Input } from "../input";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 describe("FormControl", () => {
   it("renders without crashing", async () => {
