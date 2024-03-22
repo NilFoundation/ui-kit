@@ -3,7 +3,7 @@ import { PRIMITIVE_COLORS } from "../../shared";
 import { TABLE_DIVIDER } from "./types";
 import { ChevronDownIcon, ChevronUpIcon } from "../icons";
 
-export const getTableOverrides = (): TableOverrides => {
+export const getTableSemanticOverrides = (): TableOverrides => {
   return {
     Root: {
       style: () => ({

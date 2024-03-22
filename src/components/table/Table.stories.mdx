@@ -4,8 +4,8 @@ import Table from "./Table";
 import { TABLE_DIVIDER, TABLE_SIZE } from "./types";
 import { useStyletron } from "baseui";
 import { PRIMITIVE_COLORS } from "../../shared";
-import TableBuilder from "./TableBuilder";
-import TableBuilderColumn from "./TableBuilderColumn";
+import TableSemanticBuilder from "./TableSemanticBuilder";
+import TableSemanticBuilderColumn from "./TableSemanticBuilderColumn";
 import { Checkbox } from "../checkbox";
 import { Link } from "baseui/link/styled-components";
 
@@ -48,7 +48,7 @@ export const Template = ({ ...args }) => {
   );
 };
 
-export const TableBuilderTemplate = ({ ...args }) => {
+export const TableSemanticBuilderTemplate = ({ ...args }) => {
   const [css] = useStyletron();
   const [data, setData] = useState(TABLE_BUILDER_DATA);
   const [sortAsc, setSortAsc] = useState(true);
@@ -81,19 +81,24 @@ export const TableBuilderTemplate = ({ ...args }) => {
         borderRadius: "8px",
       })}
     >
-      <TableBuilder {...args} data={data} sortOrder={sortAsc ? "ASC" : "DESC"} onSort={() => setSortAsc(!sortAsc)}>
-        <TableBuilderColumn
+      <TableSemanticBuilder
+        {...args}
+        data={data}
+        sortOrder={sortAsc ? "ASC" : "DESC"}
+        onSort={() => setSortAsc(!sortAsc)}
+      >
+        <TableSemanticBuilderColumn
           header={<Checkbox checked={hasAll} isIndeterminate={!hasAll && hasSome} onChange={toggleAll} />}
         >
           {(row) => <Checkbox name={"" + row.foo} checked={row.selected} onChange={toggle} />}
-        </TableBuilderColumn>
-        <TableBuilderColumn header="Produce" sortable>
+        </TableSemanticBuilderColumn>
+        <TableSemanticBuilderColumn header="Produce" sortable>
           {(row) => <Link href={row.url}>{row.bar}</Link>}
-        </TableBuilderColumn>
-        <TableBuilderColumn header="Quantity" numeric>
+        </TableSemanticBuilderColumn>
+        <TableSemanticBuilderColumn header="Quantity" numeric>
           {(row) => row.foo}
-        </TableBuilderColumn>
-      </TableBuilder>
+        </TableSemanticBuilderColumn>
+      </TableSemanticBuilder>
     </div>
   );
 };
@@ -133,7 +138,7 @@ export const COLUMNS = ["Name", "Age", "Address"];
     {Template.bind({})}
   </Story>
   <Story name="Table Builder" args={{}}>
-    {TableBuilderTemplate.bind({})}
+    {TableSemanticBuilderTemplate.bind({})}
   </Story>
 </Canvas>
 
@@ -148,7 +153,7 @@ To use, import the component `Table` from `@nilfoundation/ui-kit`.
   dark
   format={true}
   code={`
-        import {Table, TABLE_SIZE, TABLE_DIVIDER, TableBuilder, TableBuilderColumn, ...} from "@nilfoundation/ui-kit";
+        import {Table, TABLE_SIZE, TABLE_DIVIDER, TableSemanticBuilder, TableSemanticBuilderColumn, ...} from "@nilfoundation/ui-kit";
         export const DATA = [
           ["Sarah Brown", 31, "100 Broadway st. New York City, New York"],
           ["Jane Smith", 32, "100 Market st. San Francisco, California"],
@@ -164,18 +169,19 @@ To use, import the component `Table` from `@nilfoundation/ui-kit`.
         // With custom empty message
         <Table columns={COLUMNS} data={[]} emptyMessage="Custom empty message" />
         // With table builder
-        <TableBuilder data={data}>
-          <TableBuilderColumn
+        <TableSemanticBuilder data={data}>
+          <TableSemanticBuilderColumn
             header={<Checkbox checked={hasAll} isIndeterminate={!hasAll && hasSome} onChange={toggleAll} />}
           >
             {(row: Row) => <Checkbox name={"" + row.foo} checked={row.selected} onChange={toggle} />}
-          </TableBuilderColumn>
-          <TableBuilderColumn header="Produce" sortable>
+          </TableSemanticBuilderColumn>
+          <TableSemanticBuilderColumn header="Produce" sortable>
             {(row: Row) => <Link href={row.url}>{row.bar}</Link>}
-          </TableBuilderColumn>
-          <TableBuilderColumn header="Quantity" numeric>
+          </TableSemanticBuilderColumn>
+          <TableSemanticBuilderColumn header="Quantity" numeric>
             {(row: Row) => row.foo}
-          </TableBuilderColumn>
-        </TableBuilder>
+          </TableSemanticBuilderColumn>
+        </TableSemanticBuilder>
   `}
 />
+./TableSemantic../TableSemanticBuilderColumn/TableSemanticBuilder

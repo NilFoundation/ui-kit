@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
 import { Checkbox } from "../../checkbox";
 import { StyledLink as Link } from "baseui/link";
-import TableBuilder from "../TableBuilder";
-import TableBuilderColumn from "../TableBuilderColumn";
-import { TableBuilderProps } from "../types";
+import TableSemanticBuilder from "../TableSemanticBuilder";
+import TableSemanticBuilderColumn from "../TableSemanticBuilderColumn";
+import { TableSemanticBuilderProps } from "../types";
 
 type Row = {
   foo: number;
@@ -33,7 +33,7 @@ const TABLE_BUILDER_DATA = [
   },
 ];
 
-const TableBuilderStory: FC<TableBuilderProps> = ({ ...props }) => {
+const TableSemanticBuilderStory: FC<TableSemanticBuilderProps> = ({ ...props }) => {
   const [data, setData] = useState<Row[]>(TABLE_BUILDER_DATA);
   const [sortAsc, setSortAsc] = useState(true);
 
@@ -58,20 +58,25 @@ const TableBuilderStory: FC<TableBuilderProps> = ({ ...props }) => {
     );
   }
   return (
-    <TableBuilder {...props} data={data} sortOrder={sortAsc ? "ASC" : "DESC"} onSort={() => setSortAsc(!sortAsc)}>
-      <TableBuilderColumn
+    <TableSemanticBuilder
+      {...props}
+      data={data}
+      sortOrder={sortAsc ? "ASC" : "DESC"}
+      onSort={() => setSortAsc(!sortAsc)}
+    >
+      <TableSemanticBuilderColumn
         header={<Checkbox checked={hasAll} isIndeterminate={!hasAll && hasSome} onChange={toggleAll} />}
       >
         {(row: Row) => <Checkbox name={"" + row.foo} checked={row.selected} onChange={toggle} />}
-      </TableBuilderColumn>
-      <TableBuilderColumn header="Produce" sortable>
+      </TableSemanticBuilderColumn>
+      <TableSemanticBuilderColumn header="Produce" sortable>
         {(row: Row) => <Link href={row.url}>{row.bar}</Link>}
-      </TableBuilderColumn>
-      <TableBuilderColumn header="Quantity" numeric>
+      </TableSemanticBuilderColumn>
+      <TableSemanticBuilderColumn header="Quantity" numeric>
         {(row: Row) => row.foo}
-      </TableBuilderColumn>
-    </TableBuilder>
+      </TableSemanticBuilderColumn>
+    </TableSemanticBuilder>
   );
 };
 
-export default TableBuilderStory;
+export default TableSemanticBuilderStory;
