@@ -6,6 +6,14 @@ import { TABLE_DIVIDER, TABLE_SIZE } from "./types";
 import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 import { SORT_DIRECTIONS } from "baseui/data-table";
+import {
+  StyledTableSemanticRoot,
+  StyledTableSemantic,
+  StyledTableSemanticHeadRow,
+  StyledTableSemanticHeadCell,
+  StyledTableSemanticBodyRow,
+  StyledTableSemanticBodyCell,
+} from "./TableSemanticStyledElements";
 
 const data = [
   ["Sarah Brown", 31, "100 Broadway st. New York City, New York"],
@@ -73,6 +81,28 @@ describe("Table", () => {
       <TableSemanticBuilder data={data} sortOrder={SORT_DIRECTIONS.ASC}>
         <TableSemanticBuilderColumn header="Name">{(row) => <div>{row[0]}</div>}</TableSemanticBuilderColumn>
       </TableSemanticBuilder>
+    );
+
+    const tableElement = screen.getByText(/Sarah Brown/i);
+    expect(tableElement).toBeInTheDocument();
+  });
+
+  it("renders Table semantic styled elements without crashing", () => {
+    render(
+      <StyledTableSemanticRoot>
+        <StyledTableSemantic>
+          <StyledTableSemanticHeadRow>
+            <StyledTableSemanticHeadCell>Name</StyledTableSemanticHeadCell>
+            <StyledTableSemanticHeadCell>Age</StyledTableSemanticHeadCell>
+            <StyledTableSemanticHeadCell>Address</StyledTableSemanticHeadCell>
+          </StyledTableSemanticHeadRow>
+          <StyledTableSemanticBodyRow>
+            <StyledTableSemanticBodyCell>Sarah Brown</StyledTableSemanticBodyCell>
+            <StyledTableSemanticBodyCell>31</StyledTableSemanticBodyCell>
+            <StyledTableSemanticBodyCell>100 Broadway st. New York City, New York</StyledTableSemanticBodyCell>
+          </StyledTableSemanticBodyRow>
+        </StyledTableSemantic>
+      </StyledTableSemanticRoot>
     );
 
     const tableElement = screen.getByText(/Sarah Brown/i);

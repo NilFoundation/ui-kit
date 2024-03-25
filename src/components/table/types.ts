@@ -1,5 +1,5 @@
 import {
-  TableProps as BaseTableProps,
+  TableProps as BaseTableSemanticProps,
   TableBuilderProps as BaseTableSemanticBuilderProps,
   TableBuilderColumnProps as BaseTableSemanticBuilderColumnProps,
 } from "baseui/table-semantic/types";
@@ -17,7 +17,7 @@ export enum TABLE_DIVIDER {
   clean = "clean",
 }
 
-export type TableSemanticProps = Omit<BaseTableProps, "size" | "divider"> & {
+export type TableSemanticProps = Omit<BaseTableSemanticProps, "size" | "divider"> & {
   size?: TABLE_SIZE;
   divider?: TABLE_DIVIDER;
 };

@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import { useState } from "react";
-import Table from "./Table";
+import Table from "./TableSemantic";
 import { TABLE_DIVIDER, TABLE_SIZE } from "./types";
 import { useStyletron } from "baseui";
 import { PRIMITIVE_COLORS } from "../../shared";
@@ -8,6 +8,16 @@ import TableSemanticBuilder from "./TableSemanticBuilder";
 import TableSemanticBuilderColumn from "./TableSemanticBuilderColumn";
 import { Checkbox } from "../checkbox";
 import { Link } from "baseui/link/styled-components";
+import {
+  StyledTableSemanticRoot,
+  StyledTableSemantic,
+  StyledTableSemanticHeadRow,
+  StyledTableSemanticHeadCell,
+  StyledTableSemanticBodyRow,
+  StyledTableSemanticBodyCell,
+  StyledTableSemanticHead,
+  StyledTableSemanticBody,
+} from "./TableSemanticStyledElements";
 
 <Meta title="Data display/Table" component={Table} />
 
@@ -103,6 +113,37 @@ export const TableSemanticBuilderTemplate = ({ ...args }) => {
   );
 };
 
+export const TableWithStyledElementsTemplate = ({ ...args }) => {
+  return (
+    <StyledTableSemanticRoot>
+      <StyledTableSemantic>
+        <StyledTableSemanticHead>
+          <StyledTableSemanticHeadRow>
+            <StyledTableSemanticHeadCell colSpan={2}>Parent</StyledTableSemanticHeadCell>
+            <StyledTableSemanticHeadCell colSpan={2}>Children</StyledTableSemanticHeadCell>
+          </StyledTableSemanticHeadRow>
+        </StyledTableSemanticHead>
+        <StyledTableSemanticBody StyledTableSemanticBody>
+          <StyledTableSemanticBodyRow>
+            <StyledTableSemanticBodyCell rowSpan={3}>Sarah</StyledTableSemanticBodyCell>
+            <StyledTableSemanticBodyCell rowSpan={3}>Brown</StyledTableSemanticBodyCell>
+            <StyledTableSemanticBodyCell>Sally</StyledTableSemanticBodyCell>
+            <StyledTableSemanticBodyCell>Brown</StyledTableSemanticBodyCell>
+          </StyledTableSemanticBodyRow>
+          <StyledTableSemanticBodyRow>
+            <StyledTableSemanticBodyCell>Jimmy</StyledTableSemanticBodyCell>
+            <StyledTableSemanticBodyCell>Brown</StyledTableSemanticBodyCell>
+          </StyledTableSemanticBodyRow>
+          <StyledTableSemanticBodyRow>
+            <StyledTableSemanticBodyCell>Joe</StyledTableSemanticBodyCell>
+            <StyledTableSemanticBodyCell>Black</StyledTableSemanticBodyCell>
+          </StyledTableSemanticBodyRow>
+        </StyledTableSemanticBody>
+      </StyledTableSemantic>
+    </StyledTableSemanticRoot>
+  );
+};
+
 export const DATA = [
   ["Sarah Brown", 31, "100 Broadway st. New York City, New York"],
   ["Jane Smith", 32, "100 Market st. San Francisco, California"],
@@ -139,6 +180,9 @@ export const COLUMNS = ["Name", "Age", "Address"];
   </Story>
   <Story name="Table Builder" args={{}}>
     {TableSemanticBuilderTemplate.bind({})}
+  </Story>
+  <Story name="Table With Styled Elements" args={{}}>
+    {TableWithStyledElementsTemplate.bind({})}
   </Story>
 </Canvas>
 
@@ -184,4 +228,3 @@ To use, import the component `Table` from `@nilfoundation/ui-kit`.
         </TableSemanticBuilder>
   `}
 />
-./TableSemantic../TableSemanticBuilderColumn/TableSemanticBuilder
