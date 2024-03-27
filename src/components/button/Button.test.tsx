@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import Button from "./Button";
 import { BUTTON_KIND } from "./types";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 describe("Button", () => {
   it("renders without crashing", () => {

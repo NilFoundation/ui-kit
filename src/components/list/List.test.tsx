@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import ListItem from "./ListItem";
 import ListItemLabel from "./ListItemLabel";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 describe("List", () => {
   it("renders without crashing", () => {

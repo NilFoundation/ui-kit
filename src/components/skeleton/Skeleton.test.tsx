@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import Skeleton from "./Skeleton";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 describe("Skeleton", () => {
   it("renders without crashing", () => {

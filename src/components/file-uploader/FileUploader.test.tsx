@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import FileUploader from "./FileUploader";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 describe("FileUploader", () => {
   it("renders without crashing", () => {

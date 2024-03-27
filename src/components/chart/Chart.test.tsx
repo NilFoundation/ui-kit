@@ -3,7 +3,7 @@ import Chart from "./ChartWrapper";
 import { LineSeries } from "./series";
 import { MockViewport, mockViewport } from "jsdom-testing-mocks";
 import { setupJestCanvasMock } from "jest-canvas-mock";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 let viewport: MockViewport;
 

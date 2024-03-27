@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import ErrorPage from "./ErrorPage";
 import { MockViewport, mockViewport } from "jsdom-testing-mocks";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 let viewport: MockViewport;
 

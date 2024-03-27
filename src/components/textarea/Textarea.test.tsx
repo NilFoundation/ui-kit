@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import Textarea from "./Textarea";
 import { TEXTAREA_KIND } from "./types";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 describe("Textarea", () => {
   it("renders without crashing", () => {

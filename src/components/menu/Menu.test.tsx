@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import Menu from "./Menu";
 import { MENU_SIZE } from "./types";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 const items = [{ label: "Item One" }, { label: "Item Two" }, { label: "Item Three" }, { label: "Item Four" }];
 
