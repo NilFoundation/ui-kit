@@ -1,20 +1,18 @@
 import { useState } from "react";
 import { StatefulTooltip, TOOLTIP_KIND } from "../../../components";
 import { ACCESSIBILITY_TYPE, PLACEMENT } from "baseui/popover";
-
-type CopyToClipboardComponentProps = {
-  copyHandler: () => boolean;
-  render: (props: { onClick: () => void; copied: boolean }) => JSX.Element;
-  copyTooltipText?: string;
-  copiedTooltipText?: string;
-};
+import { useCopyToClipboard } from "./useCopyToClipboard";
+import { CopyToClipboardComponentProps } from "./types";
 
 const CopyToClipboardComponent = ({
-  copyHandler,
+  textToCopy,
+  transformOnCopy,
+  onCopy,
   render,
   copyTooltipText = "Copy",
   copiedTooltipText = "Copied",
 }: CopyToClipboardComponentProps) => {
+  const copyHandler = useCopyToClipboard(textToCopy, onCopy, transformOnCopy);
   const [copied, setCopied] = useState(false);
   const onClick = () => {
     const isCopied = copyHandler();

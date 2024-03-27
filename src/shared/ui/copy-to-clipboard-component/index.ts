@@ -1,2 +1,2 @@
-export { default as PatternLayout } from "./CopyToClipboardComponent";
-export { PATTERN_KIND } from "./types";
+export { default as CopyToClipboardComponent } from "./CopyToClipboardComponent";
+export type { CopyToClipboardComponentProps } from "./types";
