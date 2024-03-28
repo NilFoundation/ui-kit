@@ -34,8 +34,8 @@ const CopyButtonRenderFunction: ForwardRefRenderFunction<HTMLButtonElement, Copy
           kind={kind}
           {...buttonProps}
           onClick={(e) => {
-            onClickProp && onClickProp(e);
             onClick();
+            onClickProp?.(e);
           }}
         />
       )}
