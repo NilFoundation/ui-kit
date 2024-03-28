@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StatefulTooltip, TOOLTIP_KIND } from "../../../components";
+import { StatefulTooltip, TOOLTIP_KIND } from "../../../components/tooltip";
 import { ACCESSIBILITY_TYPE, PLACEMENT } from "baseui/popover";
 import { useCopyToClipboard } from "./useCopyToClipboard";
 import { CopyToClipboardComponentProps } from "./types";

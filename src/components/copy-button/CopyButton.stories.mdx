@@ -12,16 +12,16 @@ export const Template = ({ ...args }) => {
 
 <Canvas isColumn>
   <Story name="Default" args={{ textToCopy: "text to copy" }}>
-    {Template}
+    {Template.bind({})}
   </Story>
   <Story
     name="With size"
     args={{
       textToCopy: "text to copy",
-      size: BUTTON_SIZE.compact,
+      size: BUTTON_SIZE.large,
     }}
   >
-    {Template}
+    {Template.bind({})}
   </Story>
 </Canvas>
 

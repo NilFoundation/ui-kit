@@ -2,20 +2,20 @@ import { useCallback } from "react";
 import copy from "copy-to-clipboard";
 
 export const useCopyToClipboard = (
-  code: string,
-  onCopy?: (code: string) => void,
+  text: string,
+  onCopy?: (text: string) => void,
   transformOnCopy?: (code: string) => string
 ) => {
   const onClick = useCallback(() => {
-    const codeToCopy = transformOnCopy ? transformOnCopy(code) : code;
-    const result = copy(codeToCopy);
+    const textToCopy = transformOnCopy ? transformOnCopy(text) : text;
+    const result = copy(textToCopy);
 
     if (onCopy && result) {
-      onCopy(codeToCopy);
+      onCopy(textToCopy);
     }
 
     return result;
-  }, [code, onCopy, transformOnCopy]);
+  }, [text, onCopy, transformOnCopy]);
 
   return onClick;
 };
