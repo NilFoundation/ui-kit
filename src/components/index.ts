@@ -31,3 +31,4 @@ export * from "./codefield";
 export * from "./toggleGroup";
 export * from "./toggle";
 export * from "./button-icon";
+export * from "./copy-button";

@@ -1,0 +1,43 @@
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
+import CopyButton from "./CopyButton";
+import { BUTTON_SIZE } from "../button";
+
+<Meta title="Form/CopyButton" component={CopyButton} />
+
+export const Template = ({ ...args }) => {
+  return <CopyButton {...args} />;
+};
+
+# CopyButton
+
+<Canvas isColumn>
+  <Story name="Default" args={{ textToCopy: "text to copy" }}>
+    {Template}
+  </Story>
+  <Story
+    name="With size"
+    args={{
+      textToCopy: "text to copy",
+      size: BUTTON_SIZE.compact,
+    }}
+  >
+    {Template}
+  </Story>
+</Canvas>
+
+<ArgsTable of={CopyButton} />
+
+### Usage:
+
+To use, import the component `CopyButton` from `@nilfoundation/ui-kit`.
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+        import {CopyButton} from "@nilfoundation/ui-kit";
+        ...
+         <CopyButton textToCopy="text to copy" onCopy={() => alert("Copied!")} />
+  `}
+/>
