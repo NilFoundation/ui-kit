@@ -2,7 +2,7 @@ import { screen, waitFor } from "@testing-library/react";
 import Tag from "./Tag";
 import { TAG_KIND, TAG_SIZE } from "./types";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 describe("Tag", () => {
   it("renders without crashing", () => {

@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import Notification from "./Notification";
 import { NOTIFICATION_KIND } from "./types";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 describe("Notification", () => {
   it("renders without crashing", () => {

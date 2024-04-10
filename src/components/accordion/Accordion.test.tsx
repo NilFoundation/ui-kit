@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import Accordion from "./Accordion";
 import Panel from "./Panel";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 const text = "Text";
 

@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import Input from "./Input";
 import { INPUT_KIND, INPUT_SIZE } from "./types";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 describe("Input", () => {
   it("renders without crashing", () => {

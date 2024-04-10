@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import ProgressBar from "./ProgressBar";
 import { PROGRESS_BAR_SIZE } from "./types";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 describe("ProgressBar", () => {
   it("renders without crashing", () => {

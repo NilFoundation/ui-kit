@@ -62,6 +62,19 @@ export const Template = ({ ...args }) => {
       </StatefulTooltip>
     </Template>
   </Story>
+  <Story name="Tooltip with long text" args={{}}>
+    <Template>
+      <StatefulTooltip
+        showArrow
+        content="Long, long text. Long, long text. Long, long text. Long, long text. Long, long text. Long, long text. Long, long text."
+        placement="right"
+      >
+        <Button kind={BUTTON_KIND.secondary} size={BUTTON_SIZE.compact}>
+          Hover me for long text
+        </Button>
+      </StatefulTooltip>
+    </Template>
+  </Story>
 </Canvas>
 
 ### StatefulTooltip props

@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import Badge from "./Badge";
 import { BADGE_COLOR } from "./types";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 const content = "Badge";
 

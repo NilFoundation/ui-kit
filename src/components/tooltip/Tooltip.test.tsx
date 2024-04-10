@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import Tooltip from "./Tooltip";
 import { TOOLTIP_KIND } from "./types";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 describe("Tooltip", () => {
   it("renders without crashing", () => {

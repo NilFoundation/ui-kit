@@ -1,18 +1,18 @@
 import { screen } from "@testing-library/react";
-import FileUploader from "./FileUploader";
+import CopyButton from "./CopyButton";
 import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
-describe("FileUploader", () => {
+describe("CopyButton", () => {
   it("renders without crashing", () => {
-    render(<FileUploader />);
+    render(<CopyButton textToCopy="Text" data-testid="Button" />);
 
-    const fileUploaderElement = screen.getByRole("button");
-    expect(fileUploaderElement).toBeInTheDocument();
+    const el = screen.getByTestId("Button");
+    expect(el).toBeInTheDocument();
   });
 
   it("renders ssr without crashing", () => {
-    createComponentSSRTest(<FileUploader />);
+    createComponentSSRTest(<CopyButton textToCopy="Text" />);
   });
 
   // Add more tests as needed

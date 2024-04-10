@@ -1,4 +1,4 @@
-import { ForwardRefRenderFunction, HTMLAttributes, forwardRef, useMemo } from "react";
+import { ForwardRefRenderFunction, HTMLAttributes, forwardRef, memo, useMemo } from "react";
 import CodeMirror, { ReactCodeMirrorProps } from "@uiw/react-codemirror";
 import { getCodeMirrorTheme } from "./codeMirrorTheme";
 import { useStyletron } from "styletron-react";
@@ -6,16 +6,18 @@ import { styles as s } from "./styles";
 import { getCodeMirrorBasicSetup } from "./codeMirrorBasicSetup";
 import { CreateThemeOptions } from "@uiw/codemirror-themes";
 import { prefixLineNumberExtension } from "./prefixLineNumberExtension";
-import { MemoizedCopyButton } from "./CopyButton";
-import { useCopyToClipboard } from "./useCopyToClipboard";
 import { createDefaultStylesOverridesExtension } from "./defaultStylesOverridesExtension";
+import { CopyButton } from "../copy-button";
+import { BUTTON_KIND, BUTTON_SIZE } from "../button";
+
+const MemoizedCopyButton = memo(CopyButton);
 
 export type CodeFieldProps = {
   code: string;
   extensions?: ReactCodeMirrorProps["extensions"];
   themeOverrides?: Partial<CreateThemeOptions>;
   displayCopy?: boolean;
-  onCopy?: (code: string, isCopied: boolean) => void;
+  onCopy?: (code: string) => void;
   transformOnCopy?: (code: string) => string;
   showLineNumbers?: boolean;
   className?: string;
@@ -42,7 +44,6 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
   ref
 ) => {
   const [css] = useStyletron();
-  const copyHandler = useCopyToClipboard(code, onCopy, transformOnCopy);
   const styleOverridesExtention = useMemo(
     () => createDefaultStylesOverridesExtension(showLineNumbers),
     [showLineNumbers]
@@ -66,7 +67,15 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
         basicSetup={getCodeMirrorBasicSetup(showLineNumbers, editable)}
         className={css(s.codemirrorStyles)}
       />
-      {displayCopy && <MemoizedCopyButton copyHandler={copyHandler} />}
+      {displayCopy && (
+        <MemoizedCopyButton
+          onCopy={onCopy}
+          textToCopy={code}
+          transformOnCopy={transformOnCopy}
+          size={BUTTON_SIZE.default}
+          kind={BUTTON_KIND.text}
+        />
+      )}
     </div>
   );
 };

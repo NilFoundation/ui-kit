@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import ToggleGroup from "./ToggleGroup";
 import { BUTTON_SIZE } from "../button";
 import { render } from "../../test-utils/render";
-import { createComponentSSRTest } from "../../createComponentSSRTest";
+import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 
 const options = [
   { key: "1", label: "Option 1" },
