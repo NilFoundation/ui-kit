@@ -14,6 +14,7 @@ export type FormControlProps = Omit<BaseFormControlProps, "counter" | "positive"
   readOnly?: boolean;
   isLoading?: boolean;
   counter?: ICounter;
+  required?: boolean;
 };
 
 const getValueLabel = (counter: ICounter): string => {
@@ -26,10 +27,16 @@ const FormControl: FC<FormControlProps> = ({
   size = INPUT_SIZE.medium,
   children,
   counter,
+  required,
   overrides: baseOverrides,
   ...props
 }) => {
-  const formControlOverrides = getFormControlOverrides(size, !!readOnly, counter ? getValueLabel(counter) : undefined);
+  const formControlOverrides = getFormControlOverrides(
+    size,
+    !!readOnly,
+    counter ? getValueLabel(counter) : undefined,
+    required
+  );
   const overrides = getMergedOverrides(formControlOverrides, baseOverrides);
 
   return (

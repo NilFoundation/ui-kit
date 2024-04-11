@@ -66,6 +66,9 @@ export const InputFieldProps = {
   <Story name="With Max Length" args={{ ...InputFieldProps, isCounter: true, size: INPUT_SIZE.small }}>
     {Template.bind({})}
   </Story>
+  <Story name="Required" args={{ ...InputFieldProps, required: true }}>
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 <ArgsTable of={FormControl} />
