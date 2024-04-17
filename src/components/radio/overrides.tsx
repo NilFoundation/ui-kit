@@ -1,5 +1,5 @@
 import { RadioOverrides } from "baseui/radio";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import {
   getRadioMarkInnerErrorStyles,
   getRadioMarkInnerStyles,
@@ -30,12 +30,12 @@ export const getRadioOverrides = (): RadioOverrides => ({
   },
   Label: {
     style: ({ $disabled }) => ({
-      color: $disabled ? PRIMITIVE_COLORS.gray300 : PRIMITIVE_COLORS.white,
+      color: $disabled ? COLORS.gray300 : COLORS.white,
     }),
   },
   Description: {
     style: ({ $disabled }) => ({
-      color: $disabled ? PRIMITIVE_COLORS.gray300 : PRIMITIVE_COLORS.white,
+      color: $disabled ? COLORS.gray300 : COLORS.white,
     }),
   },
 });

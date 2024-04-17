@@ -1,5 +1,5 @@
 import { CheckboxOverrides } from "baseui/checkbox";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { boxShadowFocusStyles } from "../../shared/styles/boxShadowSharedStyles";
 import { getCheckmarkLabelStyles } from "../../shared/theme/checkmarkCommonLabelStyles";
@@ -26,7 +26,7 @@ export const getToggleOverrides = (disabled?: boolean): CheckboxOverrides => {
     },
     Toggle: {
       style: ({ $checked }) => ({
-        backgroundColor: PRIMITIVE_COLORS.gray800,
+        backgroundColor: COLORS.gray800,
         ...expandProperty("transition", "transform 0.15s ease-in"),
         width: "12px",
         height: "12px",

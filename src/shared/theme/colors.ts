@@ -1,6 +1,6 @@
 import { DefaultTheme } from "./types";
 
-export const PRIMITIVE_COLORS = {
+export const COLORS = {
   gray50: "#F1F1F1",
   gray100: "#D6D6D6",
   gray200: "#BDBDBD",
@@ -86,22 +86,22 @@ export const PRIMITIVE_COLORS = {
 export const createColors = (): DefaultTheme => {
   return {
     primitives: {
-      ...PRIMITIVE_COLORS,
-      primaryA: PRIMITIVE_COLORS.gray200,
-      primaryB: PRIMITIVE_COLORS.gray900,
+      ...COLORS,
+      primaryA: COLORS.gray200,
+      primaryB: COLORS.gray900,
     },
     overrides: {
       colors: {
-        gray50: PRIMITIVE_COLORS.gray50,
-        gray100: PRIMITIVE_COLORS.gray100,
-        gray200: PRIMITIVE_COLORS.gray200,
-        gray300: PRIMITIVE_COLORS.gray300,
-        gray400: PRIMITIVE_COLORS.gray400,
-        gray500: PRIMITIVE_COLORS.gray500,
-        gray600: PRIMITIVE_COLORS.gray600,
-        gray700: PRIMITIVE_COLORS.gray700,
-        gray800: PRIMITIVE_COLORS.gray800,
-        gray900: PRIMITIVE_COLORS.gray900,
+        gray50: COLORS.gray50,
+        gray100: COLORS.gray100,
+        gray200: COLORS.gray200,
+        gray300: COLORS.gray300,
+        gray400: COLORS.gray400,
+        gray500: COLORS.gray500,
+        gray600: COLORS.gray600,
+        gray700: COLORS.gray700,
+        gray800: COLORS.gray800,
+        gray900: COLORS.gray900,
       },
     },
   };

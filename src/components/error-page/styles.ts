@@ -1,4 +1,4 @@
-import { PRIMITIVE_COLORS, svgInlineDotsPattern } from "../../shared";
+import { COLORS, svgInlineDotsPattern } from "../../shared";
 import { StyleObject } from "styletron-standard";
 
 export const mobileScreenMaxWidth = 767;
@@ -8,7 +8,7 @@ export const mobileMediaQuery = `@media (max-width: ${mobileScreenMaxWidth}px)`;
 const containerStyles = {
   width: "100%",
   height: "100%",
-  color: PRIMITIVE_COLORS.white,
+  color: COLORS.white,
   flexGrow: "1",
   background: `url(${svgInlineDotsPattern}), repeat`,
   [desktopMediaQuery]: {

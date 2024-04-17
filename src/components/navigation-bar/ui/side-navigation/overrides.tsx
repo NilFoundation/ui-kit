@@ -1,6 +1,6 @@
 import { TreeViewOverrides } from "baseui/tree-view";
 import { expandProperty } from "inline-style-expand-shorthand";
-import { PRIMITIVE_COLORS } from "../../../../shared";
+import { COLORS } from "../../../../shared";
 import { CaretDownIcon, CaretUpIcon } from "../../../icons";
 import NavTreeLabel from "./NavTreeLabel";
 import { NavigationItem } from "../../types";
@@ -11,7 +11,7 @@ export const getDrawerOverrides = (): DrawerOverrides => {
   return {
     DrawerContainer: {
       style: {
-        backgroundColor: PRIMITIVE_COLORS.white,
+        backgroundColor: COLORS.white,
       },
     },
     DrawerBody: {
@@ -43,13 +43,13 @@ export const getTreeViewOverrides = (itemAs?: (item: NavigationItem) => ReactNod
       style: ({ $hasChildren }) => {
         return {
           ...expandProperty("padding", "16px 8px"),
-          ...expandProperty("borderBottom", `1px solid ${PRIMITIVE_COLORS.gray100}`),
+          ...expandProperty("borderBottom", `1px solid ${COLORS.gray100}`),
           color: "inherit",
           marginLeft: !$hasChildren ? "-20px" : "0",
-          backgroundColor: PRIMITIVE_COLORS.white,
+          backgroundColor: COLORS.white,
 
           ":hover": {
-            backgroundColor: PRIMITIVE_COLORS.white,
+            backgroundColor: COLORS.white,
           },
         };
       },

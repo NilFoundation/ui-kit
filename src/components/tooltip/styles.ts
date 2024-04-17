@@ -1,19 +1,19 @@
 import { withoutBorderStyles } from "../../shared/styles/borderStyles";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 
 export const tooltipBodyStyles = {
   ...withoutBorderStyles,
-  backgroundColor: PRIMITIVE_COLORS.gray700,
+  backgroundColor: COLORS.gray700,
   maxWidth: "216px",
 };
 
 export const tooltipInnerStyles = {
-  backgroundColor: PRIMITIVE_COLORS.gray700,
-  color: PRIMITIVE_COLORS.white,
+  backgroundColor: COLORS.gray700,
+  color: COLORS.white,
   textAlign: "center",
   lineHeight: "20px",
 };
 
 export const tooltipArrowStyles = {
-  backgroundColor: PRIMITIVE_COLORS.gray700,
+  backgroundColor: COLORS.gray700,
 };

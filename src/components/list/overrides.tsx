@@ -7,7 +7,7 @@ import {
   listItemContentDisabledStyles,
   listItemContentStyles,
 } from "./styles";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 
 export const getListItemOverrides = (isActive: boolean, isDisabled: boolean): ListOverrides => {
   return {
@@ -23,7 +23,7 @@ export const getListItemOverrides = (isActive: boolean, isDisabled: boolean): Li
     ArtworkContainer: {
       style: () => {
         return {
-          color: PRIMITIVE_COLORS.white,
+          color: COLORS.white,
           size: "40px",
         };
       },
@@ -43,7 +43,7 @@ export const getListItemLabelOverrides = (isDisabled: boolean): LabelOverrides =
     LabelDescription: {
       style: () => {
         return {
-          color: isDisabled ? PRIMITIVE_COLORS.gray600 : PRIMITIVE_COLORS.gray500,
+          color: isDisabled ? COLORS.gray600 : COLORS.gray500,
         };
       },
     },

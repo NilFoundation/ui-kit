@@ -1,6 +1,6 @@
 import { StyleObject } from "styletron-react";
 import { PROGRESS_BAR_SIZE } from "./types";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 
 export const containerStyles: StyleObject = {
   display: "flex",
@@ -31,15 +31,15 @@ export const dashedBlockStyles: StyleObject = {
 };
 
 export const dashedBlockActiveStyles: StyleObject = {
-  backgroundImage: `linear-gradient(to right, ${PRIMITIVE_COLORS.white} 50%, transparent 50%)`,
+  backgroundImage: `linear-gradient(to right, ${COLORS.white} 50%, transparent 50%)`,
 };
 
 export const dashedBlockErrorStyles: StyleObject = {
-  backgroundImage: `linear-gradient(to right, ${PRIMITIVE_COLORS.red400} 50%, transparent 50%)`,
+  backgroundImage: `linear-gradient(to right, ${COLORS.red400} 50%, transparent 50%)`,
 };
 
 export const dashedBlockNotActiveStyles: StyleObject = {
-  backgroundImage: `linear-gradient(to right, ${PRIMITIVE_COLORS.gray700} 50%, transparent 50%)`,
+  backgroundImage: `linear-gradient(to right, ${COLORS.gray700} 50%, transparent 50%)`,
 };
 
 export const labelStyles: StyleObject = {

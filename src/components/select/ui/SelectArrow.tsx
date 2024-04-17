@@ -1,6 +1,6 @@
 import { FC, memo, useContext } from "react";
 import { useStyletron } from "baseui";
-import { PRIMITIVE_COLORS } from "../../../shared";
+import { COLORS } from "../../../shared";
 import { ChevronDownIcon } from "../../icons";
 import SelectContext from "../SelectContext";
 
@@ -10,7 +10,7 @@ type SelectArrowProps = {
   searchable?: boolean;
 };
 
-const SelectArrow: FC<SelectArrowProps> = ({ color = PRIMITIVE_COLORS.white, isRotated, searchable, ...restProps }) => {
+const SelectArrow: FC<SelectArrowProps> = ({ color = COLORS.white, isRotated, searchable, ...restProps }) => {
   const [css] = useStyletron();
   const { controlRef } = useContext(SelectContext);
   const onClick = () => {

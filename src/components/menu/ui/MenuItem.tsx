@@ -13,7 +13,7 @@ import {
   svgActiveStyles,
 } from "../styles";
 import { SeparatorIcon } from "../../icons";
-import { PRIMITIVE_COLORS } from "../../../shared";
+import { COLORS } from "../../../shared";
 import { getLinkComponent } from "./getLinkComponent";
 
 const paragraphComponent = {
@@ -53,7 +53,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
                 className: css(isAreaSelected ? svgActiveStyles : {}),
               })}
           </EndWrapper>
-          {item?.isActive && <SeparatorIcon size={20} color={PRIMITIVE_COLORS.gray300} />}
+          {item?.isActive && <SeparatorIcon size={20} color={COLORS.gray300} />}
         </LinkComponent>
       </Item>
     );

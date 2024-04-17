@@ -1,6 +1,6 @@
 import { StyleObject } from "styletron-react";
 import { MENU_SIZE } from "./types";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import { withoutBorderStyles } from "../../shared/styles/borderStyles";
 import { expandProperty } from "inline-style-expand-shorthand";
 
@@ -10,7 +10,7 @@ export const listStyles = {
   ...expandProperty("padding", "8px"),
   ...expandProperty("boxShadow", "none"),
   outline: "none !important",
-  backgroundColor: PRIMITIVE_COLORS.gray900,
+  backgroundColor: COLORS.gray900,
 };
 
 export const headerBaseStyles: StyleObject = {
@@ -53,35 +53,35 @@ const itemModifiedStyles = {
 };
 
 const itemSelectedStyles: StyleObject = {
-  backgroundColor: PRIMITIVE_COLORS.gray800,
+  backgroundColor: COLORS.gray800,
 };
 
 const itemDisabledStyles = {
   backgroundColor: "transparent",
-  color: PRIMITIVE_COLORS.gray600,
+  color: COLORS.gray600,
   cursor: "not-allowed",
 
   ":hover": {
     backgroundColor: "transparent",
-    color: PRIMITIVE_COLORS.gray600,
+    color: COLORS.gray600,
   },
 
   ":hover > div": {
-    color: PRIMITIVE_COLORS.gray600,
+    color: COLORS.gray600,
   },
 
   ":hover > svg": {
-    fill: PRIMITIVE_COLORS.gray600,
+    fill: COLORS.gray600,
   },
 };
 
 const itemHighlightedStyles: StyleObject = {
-  backgroundColor: PRIMITIVE_COLORS.gray800,
-  color: PRIMITIVE_COLORS.white,
+  backgroundColor: COLORS.gray800,
+  color: COLORS.white,
 };
 
 export const svgActiveStyles: StyleObject = {
-  fill: PRIMITIVE_COLORS.white,
+  fill: COLORS.white,
 };
 
 export const getItemContainerStyles = (
@@ -97,21 +97,21 @@ export const getItemContainerStyles = (
     boxSizing: "border-box",
     cursor: "pointer",
     gap: "8px",
-    color: PRIMITIVE_COLORS.gray200,
+    color: COLORS.gray200,
     fontWeight: 500,
     ...expandProperty("borderRadius", "4px"),
 
     ":hover": {
-      backgroundColor: PRIMITIVE_COLORS.gray800,
-      color: PRIMITIVE_COLORS.white,
+      backgroundColor: COLORS.gray800,
+      color: COLORS.white,
     },
 
     ":hover > div": {
-      color: PRIMITIVE_COLORS.white,
+      color: COLORS.white,
     },
 
     ":hover > svg": {
-      fill: PRIMITIVE_COLORS.white,
+      fill: COLORS.white,
     },
 
     ...itemModifiedStyles[size],
@@ -135,12 +135,12 @@ export const getLinkComponentStyles = () => {
 
 export const getItemParagraphColor = (isActive: boolean, isDisabled: boolean) => {
   if (isDisabled) {
-    return PRIMITIVE_COLORS.gray600;
+    return COLORS.gray600;
   }
   if (isActive) {
-    return PRIMITIVE_COLORS.white;
+    return COLORS.white;
   }
-  return PRIMITIVE_COLORS.gray500;
+  return COLORS.gray500;
 };
 
 export const itemTypographyStyles = {

@@ -1,5 +1,5 @@
 export { createTheme } from "./theme";
-export { PRIMITIVE_COLORS } from "./colors";
+export { COLORS } from "./colors";
 export { svgInlineDotsPattern } from "./pattern";
 export { SPACE } from "./space";
 

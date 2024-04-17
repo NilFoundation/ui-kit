@@ -1,5 +1,5 @@
 import { StyleObject } from "styletron-react";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 
 export const styledWhiteHeadline: StyleObject = {
   position: "absolute",
@@ -7,5 +7,5 @@ export const styledWhiteHeadline: StyleObject = {
   left: 0,
   width: "100%",
   height: "8px",
-  background: PRIMITIVE_COLORS.white,
+  background: COLORS.white,
 };

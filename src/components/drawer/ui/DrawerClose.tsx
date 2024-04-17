@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useStyletron } from "baseui";
 import { CloseIcon } from "../../icons";
-import { PRIMITIVE_COLORS } from "../../../shared";
+import { COLORS } from "../../../shared";
 
 type DrawerCloseProps = {
   onBlur?: React.FocusEventHandler;
@@ -31,7 +31,7 @@ const DrawerClose: FC<DrawerCloseProps> = ({ onClick, onFocus, onBlur }) => {
   return (
     // @ts-ignore
     <button onClick={onClick} onFocus={onFocus} onBlur={onBlur} className={css(buttonStyles)}>
-      <CloseIcon size={24} color={PRIMITIVE_COLORS.white} />
+      <CloseIcon size={24} color={COLORS.white} />
     </button>
   );
 };
