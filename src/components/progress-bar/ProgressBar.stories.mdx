@@ -30,6 +30,9 @@ export const Template = ({ ...args }) => {
   <Story name="With Error Message" args={{ value: 72, errorMessage: "Error message", showLabel: true }}>
     {Template.bind({})}
   </Story>
+  <Story name="Infinite" args={{ infinite: true }}>
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 <ArgsTable of={ProgressBar} />
