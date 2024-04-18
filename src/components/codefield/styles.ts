@@ -1,11 +1,11 @@
 import { StyleObject } from "styletron-react";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
 
 const containerStyles: StyleObject = {
   position: "relative",
   overflow: "hidden",
-  background: PRIMITIVE_COLORS.gray900,
+  background: COLORS.gray900,
   borderRadius: "4px",
   ...expandProperty("padding", "24px"),
   display: "flex",
@@ -15,7 +15,7 @@ const containerStyles: StyleObject = {
   gap: "16px",
   ...expandProperty("transition", "background 0.15s"),
   ":hover": {
-    background: PRIMITIVE_COLORS.gray800,
+    background: COLORS.gray800,
   },
 };
 

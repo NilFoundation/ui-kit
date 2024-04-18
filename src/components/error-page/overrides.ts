@@ -1,5 +1,5 @@
 import { BlockOverrides } from "baseui/block";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { desktopMediaQuery, mobileMediaQuery } from "./styles";
 
@@ -8,7 +8,7 @@ export const getErrorCodeOverrides = (): BlockOverrides => ({
     style: {
       letterSpacing: "-0.08em",
       ...expandProperty("margin", "0"),
-      background: PRIMITIVE_COLORS.gray900,
+      background: COLORS.gray900,
       [desktopMediaQuery]: {
         height: "calc(100vh / 2.25)",
         lineHeight: "calc(100vh / 2.25)",

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useStyletron } from "baseui";
 import { CloseIcon } from "../../icons";
-import { PRIMITIVE_COLORS } from "../../../shared";
+import { COLORS } from "../../../shared";
 import { StyleObject } from "styletron-react";
 
 type DrawerCloseProps = {
@@ -31,7 +31,7 @@ const ModalClose: FC<DrawerCloseProps> = ({ ...props }) => {
 
   return (
     <button {...props} className={css(buttonStyles)}>
-      <CloseIcon size={24} color={PRIMITIVE_COLORS.white} />
+      <CloseIcon size={24} color={COLORS.white} />
     </button>
   );
 };

@@ -1,5 +1,5 @@
 import { StyleObject } from "styletron-standard";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
 
 export const getSwitchBackgroundStyles = (isChecked: boolean, $disabled: boolean): StyleObject => {
@@ -7,32 +7,32 @@ export const getSwitchBackgroundStyles = (isChecked: boolean, $disabled: boolean
 
   if ($disabled) {
     return {
-      backgroundColor: PRIMITIVE_COLORS.gray500,
+      backgroundColor: COLORS.gray500,
       ...transition,
     };
   }
 
   if (isChecked) {
     return {
-      backgroundColor: PRIMITIVE_COLORS.green200,
+      backgroundColor: COLORS.green200,
       ...transition,
       ":hover": {
-        backgroundColor: PRIMITIVE_COLORS.green100,
+        backgroundColor: COLORS.green100,
       },
       ":active": {
-        backgroundColor: PRIMITIVE_COLORS.green50,
+        backgroundColor: COLORS.green50,
       },
     };
   }
 
   return {
-    backgroundColor: PRIMITIVE_COLORS.gray200,
+    backgroundColor: COLORS.gray200,
     ...transition,
     ":hover": {
-      backgroundColor: PRIMITIVE_COLORS.gray100,
+      backgroundColor: COLORS.gray100,
     },
     ":active": {
-      backgroundColor: PRIMITIVE_COLORS.gray50,
+      backgroundColor: COLORS.gray50,
     },
   };
 };

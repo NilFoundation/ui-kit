@@ -1,6 +1,6 @@
 import { FC, ReactNode, useState } from "react";
 import { LabelSmall } from "baseui/typography";
-import { PRIMITIVE_COLORS } from "../../../../shared";
+import { COLORS } from "../../../../shared";
 import { useStyletron } from "baseui";
 import NavPopover from "../NavPopover";
 import { Menu } from "../../../menu";
@@ -47,7 +47,7 @@ const NavItem: FC<NavItemProps> = ({ item, onItemClick, itemAs }) => {
     className: css({
       marginLeft: "4px",
     }),
-    color: disabled ? PRIMITIVE_COLORS.gray300 : PRIMITIVE_COLORS.gray800,
+    color: disabled ? COLORS.gray300 : COLORS.gray800,
     size: 16,
   };
 

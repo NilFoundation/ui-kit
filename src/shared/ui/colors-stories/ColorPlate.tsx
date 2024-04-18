@@ -2,7 +2,7 @@ import { LabelMedium, LabelXSmall } from "baseui/typography";
 import { useStyletron } from "styletron-react";
 import { StyleObject } from "styletron-standard";
 import { CopyButton } from "../../../components";
-import { PRIMITIVE_COLORS } from "../../theme";
+import { COLORS } from "../../theme";
 
 type ColorPlateProps = {
   colorHex: string;
@@ -21,7 +21,7 @@ const containerStyles: StyleObject = {
 const ColorPlate: React.FC<ColorPlateProps> = ({ colorHex, colorName }) => {
   const [css] = useStyletron();
   const colorInteger = hexToInteger(colorHex);
-  const bgColor = colorInteger < 5000000 ? PRIMITIVE_COLORS.gray300 : "transparent";
+  const bgColor = colorInteger < 5000000 ? COLORS.gray300 : "transparent";
 
   return (
     <div className={css({ ...containerStyles, backgroundColor: bgColor })}>
@@ -29,7 +29,7 @@ const ColorPlate: React.FC<ColorPlateProps> = ({ colorHex, colorName }) => {
         {colorName}
         <CopyButton textToCopy={colorHex} />
       </LabelMedium>
-      <LabelXSmall color={PRIMITIVE_COLORS.gray500}>{colorHex}</LabelXSmall>
+      <LabelXSmall color={COLORS.gray500}>{colorHex}</LabelXSmall>
     </div>
   );
 };

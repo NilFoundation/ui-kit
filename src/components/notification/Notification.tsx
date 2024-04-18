@@ -5,7 +5,7 @@ import { NOTIFICATION_KIND, NotificationProps } from "./types";
 import NotificationContent from "./ui/NotificationContent";
 import { CancelIcon, CompleteIcon, IconProps, InfoIcon, WarningIcon } from "../icons";
 import { Button, BUTTON_KIND, BUTTON_SIZE } from "../button";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
 const semanticIcon = {
@@ -18,16 +18,16 @@ const semanticIcon = {
 const actionColors = {
   [NOTIFICATION_KIND.info]: undefined,
   [NOTIFICATION_KIND.warning]: {
-    backgroundColor: PRIMITIVE_COLORS.yellow600,
-    color: PRIMITIVE_COLORS.white,
+    backgroundColor: COLORS.yellow600,
+    color: COLORS.white,
   },
   [NOTIFICATION_KIND.negative]: {
-    backgroundColor: PRIMITIVE_COLORS.red600,
-    color: PRIMITIVE_COLORS.white,
+    backgroundColor: COLORS.red600,
+    color: COLORS.white,
   },
   [NOTIFICATION_KIND.positive]: {
-    backgroundColor: PRIMITIVE_COLORS.green600,
-    color: PRIMITIVE_COLORS.white,
+    backgroundColor: COLORS.green600,
+    color: COLORS.white,
   },
 };
 

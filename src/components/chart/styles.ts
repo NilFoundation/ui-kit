@@ -1,5 +1,5 @@
 import { StyleObject } from "styletron-standard";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 
 const containerStyles: StyleObject = {
   width: "100%",
@@ -19,7 +19,7 @@ const widgetShadowStyles: StyleObject = {
   left: 0,
   width: "24px",
   height: "100%",
-  background: `linear-gradient(90deg, ${PRIMITIVE_COLORS.gray900} 0%, rgba(33, 33, 33, 0) 100%)`,
+  background: `linear-gradient(90deg, ${COLORS.gray900} 0%, rgba(33, 33, 33, 0) 100%)`,
   zIndex: 2,
 };
 

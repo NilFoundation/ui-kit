@@ -7,24 +7,15 @@ import {
   containerStyles,
   labelStyles,
   dashedBlockErrorStyles,
+  getDashedBlockInfiniteStyles,
 } from "./styles";
 import { getArrayFromN } from "../../shared/utils/getArrayFromN";
 import { useStyletron, styled } from "baseui";
 import { debounce } from "../../shared/utils/debounce";
-import { PROGRESS_BAR_SIZE } from "./types";
-import { ProgressBarProps as BaseProgressBarProps } from "baseui/progress-bar";
+import { PROGRESS_BAR_SIZE, ProgressBarProps } from "./types";
 import { LabelLarge, LabelMedium, LabelSmall } from "baseui/typography";
 import { useOnWindowResize } from "../../shared/hooks/useOnWindowResize";
-
-export type ProgressBarProps = Omit<
-  BaseProgressBarProps,
-  "steps" | "size" | "showLabel" | "successValue" | "getProgressLabel"
-> & {
-  size?: PROGRESS_BAR_SIZE;
-  className?: string;
-  showLabel?: boolean;
-  getProgressLabel?: (value: number, minValue: number, maxValue: number) => string;
-};
+import { COLORS } from "../../shared";
 
 type TypographyProps = ComponentProps<typeof LabelSmall>;
 
@@ -50,6 +41,7 @@ const ProgressBar: FC<ProgressBarProps> = ({
   errorMessage,
   size = PROGRESS_BAR_SIZE.medium,
   className,
+  infinite,
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [dashedCount, setDashedCount] = useState<number>(0);
@@ -74,24 +66,29 @@ const ProgressBar: FC<ProgressBarProps> = ({
 
   useOnWindowResize(debouncedResizeHandler);
 
+  const getDashedBlockClassName = (index: number) => {
+    if (infinite) {
+      return css(getDashedBlockInfiniteStyles(index, dashedCount));
+    }
+
+    return css(
+      index < progressedCount
+        ? errorMessage
+          ? dashedBlockErrorStyles
+          : dashedBlockActiveStyles
+        : dashedBlockNotActiveStyles
+    );
+  };
+
   return (
     <Container className={className} ref={containerRef}>
       <ProgressWrapper role="progressbar">
         {getArrayFromN(dashedCount).map((index) => (
-          <DashedBlock
-            key={index.toString()}
-            className={css(
-              index < progressedCount
-                ? errorMessage
-                  ? dashedBlockErrorStyles
-                  : dashedBlockActiveStyles
-                : dashedBlockNotActiveStyles
-            )}
-          />
+          <DashedBlock key={index.toString()} className={getDashedBlockClassName(index)} />
         ))}
       </ProgressWrapper>
       {showLabel && (
-        <TypographyComponent className={css(labelStyles)} color={errorMessage ? "error500" : "gray500"}>
+        <TypographyComponent className={css(labelStyles)} color={errorMessage ? COLORS.red400 : COLORS.gray400}>
           {errorMessage
             ? errorMessage
             : getProgressLabel

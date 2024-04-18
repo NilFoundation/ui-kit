@@ -1,8 +1,8 @@
 import { StyleObject } from "styletron-react";
-import { PRIMITIVE_COLORS } from "../../../../shared";
+import { COLORS } from "../../../../shared";
 
 const getColor = (isSelected: boolean, isDisabled: boolean) => {
-  return isDisabled ? PRIMITIVE_COLORS.gray300 : isSelected ? PRIMITIVE_COLORS.gray500 : PRIMITIVE_COLORS.gray800;
+  return isDisabled ? COLORS.gray300 : isSelected ? COLORS.gray500 : COLORS.gray800;
 };
 
 export const getListItemStyles = (isSelected: boolean, isDisabled: boolean): StyleObject => {
@@ -14,15 +14,15 @@ export const getListItemStyles = (isSelected: boolean, isDisabled: boolean): Sty
     textDecoration: "none !important",
 
     ":hover": {
-      color: `${isDisabled ? PRIMITIVE_COLORS.gray300 : PRIMITIVE_COLORS.gray600} !important`,
+      color: `${isDisabled ? COLORS.gray300 : COLORS.gray600} !important`,
     },
 
     ":focus": {
-      color: `${isDisabled ? PRIMITIVE_COLORS.gray300 : PRIMITIVE_COLORS.gray500} !important`,
+      color: `${isDisabled ? COLORS.gray300 : COLORS.gray500} !important`,
     },
 
     ":active": {
-      color: `${isDisabled ? PRIMITIVE_COLORS.gray300 : PRIMITIVE_COLORS.gray500} !important`,
+      color: `${isDisabled ? COLORS.gray300 : COLORS.gray500} !important`,
     },
   };
 };
@@ -37,10 +37,10 @@ export const getButtonStyles = (isSelected: boolean, isDisabled: boolean) => ({
   color: getColor(isSelected, isDisabled),
 
   ":hover": {
-    color: `${isDisabled ? PRIMITIVE_COLORS.gray300 : PRIMITIVE_COLORS.gray600} !important`,
+    color: `${isDisabled ? COLORS.gray300 : COLORS.gray600} !important`,
   },
 
   ":focus": {
-    color: `${PRIMITIVE_COLORS.gray500} !important`,
+    color: `${COLORS.gray500} !important`,
   },
 });

@@ -1,5 +1,5 @@
 import { EditorView } from "@codemirror/view";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 
 export const createDefaultStylesOverridesExtension = (showLineNumbers: boolean) =>
   EditorView.theme({
@@ -25,6 +25,6 @@ export const createDefaultStylesOverridesExtension = (showLineNumbers: boolean) 
           }),
     },
     ".cm-activeLineGutter": {
-      color: PRIMITIVE_COLORS.gray200,
+      color: COLORS.gray200,
     },
   });

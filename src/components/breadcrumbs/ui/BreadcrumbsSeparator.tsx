@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { useStyletron } from "baseui";
-import { PRIMITIVE_COLORS } from "../../../shared";
+import { COLORS } from "../../../shared";
 
 const containerStyles = {
   display: "inline-flex",
@@ -15,7 +15,7 @@ const containerStyles = {
 const squareStyles = {
   width: "5px",
   height: "5px",
-  backgroundColor: PRIMITIVE_COLORS.white,
+  backgroundColor: COLORS.white,
 };
 
 const BreadcrumbsSeparator: FC = () => {

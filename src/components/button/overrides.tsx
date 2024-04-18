@@ -9,7 +9,7 @@ import {
   checkedToggleButtonModifiedStyles,
   spinnerModifiedStyles,
 } from "./style";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 
 const spinnerSize = {
   [BUTTON_SIZE.mini]: SPINNER_SIZE.xSmall,
@@ -20,20 +20,20 @@ const spinnerSize = {
 
 const getSpinnerColor = (kind: BUTTON_KIND, disabled: boolean) => {
   if (disabled) {
-    return PRIMITIVE_COLORS.gray500;
+    return COLORS.gray500;
   }
 
   switch (kind) {
     case BUTTON_KIND.primary:
-      return PRIMITIVE_COLORS.gray900;
+      return COLORS.gray900;
     case BUTTON_KIND.secondary:
     case BUTTON_KIND.tertiary:
     case BUTTON_KIND.text:
     case BUTTON_KIND.toggle:
     case BUTTON_KIND.danger:
-      return PRIMITIVE_COLORS.gray50;
+      return COLORS.gray50;
     default:
-      return PRIMITIVE_COLORS.black;
+      return COLORS.black;
   }
 };
 

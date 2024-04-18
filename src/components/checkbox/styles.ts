@@ -1,4 +1,4 @@
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { withoutMarginStyles } from "../../shared/styles/withoutMarginStyles";
 import { withoutBorderStyles } from "../../shared/styles/borderStyles";
@@ -17,29 +17,29 @@ export const getCheckmarkBaseStyles = (isIndeterminate: boolean) => ({
 });
 
 export const checkmarkBaseModifiedStyles = {
-  backgroundColor: PRIMITIVE_COLORS.gray700,
+  backgroundColor: COLORS.gray700,
 
   ":hover": {
-    backgroundColor: PRIMITIVE_COLORS.gray600,
+    backgroundColor: COLORS.gray600,
   },
   ":active": {
-    backgroundColor: PRIMITIVE_COLORS.gray500,
+    backgroundColor: COLORS.gray500,
   },
 };
 
 export const checkmarkCheckedModifiedStyles = {
-  backgroundColor: PRIMITIVE_COLORS.gray200,
+  backgroundColor: COLORS.gray200,
 
   ":hover": {
-    backgroundColor: PRIMITIVE_COLORS.gray100,
+    backgroundColor: COLORS.gray100,
   },
   ":active": {
-    backgroundColor: PRIMITIVE_COLORS.gray50,
+    backgroundColor: COLORS.gray50,
   },
 };
 
 export const getCheckmarkDisabledModifiedStyles = (isChecked: boolean) => {
-  const backgroundColor = isChecked ? PRIMITIVE_COLORS.gray700 : PRIMITIVE_COLORS.gray800;
+  const backgroundColor = isChecked ? COLORS.gray700 : COLORS.gray800;
 
   return {
     backgroundColor,

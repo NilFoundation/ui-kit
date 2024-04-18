@@ -1,4 +1,4 @@
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import { StyleObject } from "styletron-react";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { MediaQuery } from "baseui/theme";
@@ -23,7 +23,7 @@ export const navigationWrapperStyles: StyleObject = {
   width: "100%",
   height: "100%",
   minHeight: "44px",
-  backgroundColor: PRIMITIVE_COLORS.white,
+  backgroundColor: COLORS.white,
   boxSizing: "border-box",
   ...expandProperty("padding", "0 16px"),
 };
@@ -60,20 +60,20 @@ export const getNavigationBurgerStyles = (media: MediaQuery): StyleObject => ({
 
 const treeLabelDisabledStyles: StyleObject = {
   cursor: "not-allowed",
-  color: `${PRIMITIVE_COLORS.gray300} !important`,
+  color: `${COLORS.gray300} !important`,
 
   ":hover": {
-    color: `${PRIMITIVE_COLORS.gray300} !important`,
+    color: `${COLORS.gray300} !important`,
   },
 };
 
 export const getTreeLabelStyles = (isSelected: boolean, disabled: boolean): StyleObject => {
   return {
-    color: `${isSelected ? PRIMITIVE_COLORS.gray500 : PRIMITIVE_COLORS.gray800} !important`,
+    color: `${isSelected ? COLORS.gray500 : COLORS.gray800} !important`,
     textDecoration: "none !important",
 
     ":hover": {
-      color: `${isSelected ? PRIMITIVE_COLORS.gray500 : PRIMITIVE_COLORS.gray600} !important`,
+      color: `${isSelected ? COLORS.gray500 : COLORS.gray600} !important`,
     },
 
     ...(disabled ? treeLabelDisabledStyles : {}),

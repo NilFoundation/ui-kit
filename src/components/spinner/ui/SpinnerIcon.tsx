@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { styled, useStyletron } from "baseui";
-import { PRIMITIVE_COLORS } from "../../../shared";
+import { COLORS } from "../../../shared";
 
 type SpinnerIconProps = {
   size?: string;
@@ -87,7 +87,7 @@ const rectList: TRect[] = [
 ];
 
 const SpinnerIcon = forwardRef<SVGSVGElement, SpinnerIconProps>(
-  ({ size = "12", color = PRIMITIVE_COLORS.white, animation }, ref) => {
+  ({ size = "12", color = COLORS.white, animation }, ref) => {
     const [css] = useStyletron();
 
     const RectItem = styled("rect", {

@@ -1,39 +1,39 @@
 import { StyleObject } from "styletron-standard";
 import { INPUT_KIND, SELECT_KIND, TEXTAREA_KIND } from "../../components";
-import { PRIMITIVE_COLORS } from "./colors";
+import { COLORS } from "./colors";
 import { expandProperty } from "inline-style-expand-shorthand";
 
 type TextFiledKindUnion = INPUT_KIND | TEXTAREA_KIND | SELECT_KIND;
 
 export const getColor = (isFocused: boolean, error: boolean, disabled: boolean): string => {
   if (isFocused) {
-    return PRIMITIVE_COLORS.gray50;
+    return COLORS.gray50;
   }
 
   if (error) {
-    return PRIMITIVE_COLORS.red400;
+    return COLORS.red400;
   }
 
   if (disabled) {
-    return PRIMITIVE_COLORS.gray400;
+    return COLORS.gray400;
   }
 
-  return PRIMITIVE_COLORS.gray50;
+  return COLORS.gray50;
 };
 
 export const getPlaceholderColor = (disabled: boolean): string => {
-  return disabled ? PRIMITIVE_COLORS.gray400 : PRIMITIVE_COLORS.gray200;
+  return disabled ? COLORS.gray400 : COLORS.gray200;
 };
 
 export const getBackgroundColor = (kind: TextFiledKindUnion): StyleObject => {
   if (kind === INPUT_KIND.secondary) {
     return {
-      backgroundColor: PRIMITIVE_COLORS.gray900,
+      backgroundColor: COLORS.gray900,
     };
   }
 
   return {
-    backgroundColor: PRIMITIVE_COLORS.gray800,
+    backgroundColor: COLORS.gray800,
   };
 };
 
@@ -53,8 +53,8 @@ export const getHoverStyles = (
     return {
       ...transition,
       ":hover": {
-        backgroundColor: PRIMITIVE_COLORS.gray800,
-        ...(!isFocused && !isError ? expandProperty("borderColor", PRIMITIVE_COLORS.gray800) : {}),
+        backgroundColor: COLORS.gray800,
+        ...(!isFocused && !isError ? expandProperty("borderColor", COLORS.gray800) : {}),
       },
     };
   }
@@ -62,8 +62,8 @@ export const getHoverStyles = (
   return {
     ...transition,
     ":hover": {
-      backgroundColor: PRIMITIVE_COLORS.gray700,
-      ...(!isFocused && !isError ? expandProperty("borderColor", PRIMITIVE_COLORS.gray700) : {}),
+      backgroundColor: COLORS.gray700,
+      ...(!isFocused && !isError ? expandProperty("borderColor", COLORS.gray700) : {}),
     },
   };
 };

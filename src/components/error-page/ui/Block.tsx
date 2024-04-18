@@ -1,8 +1,8 @@
 import { styled } from "styletron-react";
-import { PRIMITIVE_COLORS } from "../../../shared";
+import { COLORS } from "../../../shared";
 
 const blockStyles = {
-  background: PRIMITIVE_COLORS.gray900,
+  background: COLORS.gray900,
   display: "flex",
   flexDirection: "column",
   flexGrow: "1",
