@@ -1,6 +1,6 @@
 import React, { FC, ReactElement, ReactNode } from "react";
 import { useStyletron } from "baseui";
-import { PRIMITIVE_COLORS } from "../../../shared";
+import { COLORS } from "../../../shared";
 import { ParagraphSmall } from "baseui/typography";
 
 type PanelTitle = {
@@ -31,13 +31,13 @@ const PanelTitle: FC<PanelTitle> = ({ title, description, icon }) => {
       {icon &&
         React.cloneElement(icon as ReactElement, {
           size: "20px",
-          color: PRIMITIVE_COLORS.white,
+          color: COLORS.white,
           className: css(iconStyles),
         })}
       <div>
         {title}
         {description && (
-          <ParagraphSmall color={PRIMITIVE_COLORS.white} className={css(descriptionStyles)}>
+          <ParagraphSmall color={COLORS.white} className={css(descriptionStyles)}>
             {description}
           </ParagraphSmall>
         )}

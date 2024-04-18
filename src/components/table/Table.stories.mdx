@@ -3,7 +3,7 @@ import { useState } from "react";
 import Table from "./TableSemantic";
 import { TABLE_DIVIDER, TABLE_SIZE } from "./types";
 import { useStyletron } from "baseui";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import TableSemanticBuilder from "./TableSemanticBuilder";
 import TableSemanticBuilderColumn from "./TableSemanticBuilderColumn";
 import { Checkbox } from "../checkbox";
@@ -48,7 +48,7 @@ export const Template = ({ ...args }) => {
     <div
       className={css({
         maxWidth: "650px",
-        backgroundColor: PRIMITIVE_COLORS.gray900,
+        backgroundColor: COLORS.gray900,
         padding: "24px",
         borderRadius: "8px",
       })}
@@ -86,7 +86,7 @@ export const TableSemanticBuilderTemplate = ({ ...args }) => {
     <div
       className={css({
         maxWidth: "650px",
-        backgroundColor: PRIMITIVE_COLORS.gray900,
+        backgroundColor: COLORS.gray900,
         padding: "24px",
         borderRadius: "8px",
       })}

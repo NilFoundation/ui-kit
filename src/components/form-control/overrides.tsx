@@ -1,16 +1,16 @@
 import { INPUT_SIZE } from "../input";
 import { FormControlOverrides } from "baseui/form-control";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import FormControlLabel from "./ui/FormControlLabel";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { ParagraphXSmall } from "baseui/typography";
 
 const getCaptionColor = (isError: boolean): string => {
   if (isError) {
-    return PRIMITIVE_COLORS.red400;
+    return COLORS.red400;
   }
 
-  return PRIMITIVE_COLORS.gray300;
+  return COLORS.gray300;
 };
 
 export const getFormControlOverrides = (
@@ -31,7 +31,7 @@ export const getFormControlOverrides = (
         />
       ),
       style: {
-        color: PRIMITIVE_COLORS.gray50,
+        color: COLORS.gray50,
         ...expandProperty("margin", "4px 0"),
       },
     },

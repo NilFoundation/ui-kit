@@ -1,4 +1,4 @@
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import { withoutMarginStyles } from "../../shared/styles/withoutMarginStyles";
 import { expandProperty } from "inline-style-expand-shorthand";
 
@@ -6,39 +6,39 @@ export const tabBaseStyles = {
   ...withoutMarginStyles,
   paddingLeft: "24px",
   paddingRight: "24px",
-  color: PRIMITIVE_COLORS.white,
+  color: COLORS.white,
 
   ":hover": {
-    borderColor: PRIMITIVE_COLORS.gray700,
-    backgroundColor: PRIMITIVE_COLORS.gray800,
+    borderColor: COLORS.gray700,
+    backgroundColor: COLORS.gray800,
   },
 };
 
 export const tabStyles = {
   ...tabBaseStyles,
-  borderBottom: `4px solid ${PRIMITIVE_COLORS.gray500}`,
+  borderBottom: `4px solid ${COLORS.gray500}`,
 };
 
 export const tabVerticalStyles = {
   ...tabBaseStyles,
-  borderRight: `4px solid ${PRIMITIVE_COLORS.gray500}`,
+  borderRight: `4px solid ${COLORS.gray500}`,
   borderBottom: "none",
 };
 
 export const tabActiveStyles = {
-  borderColor: `${PRIMITIVE_COLORS.white} !important`,
+  borderColor: `${COLORS.white} !important`,
 
   ":hover": {
-    borderColor: `${PRIMITIVE_COLORS.white} !important`,
+    borderColor: `${COLORS.white} !important`,
   },
 };
 
 export const tabDisabledStyles = {
-  borderColor: PRIMITIVE_COLORS.gray500,
-  color: PRIMITIVE_COLORS.gray600,
+  borderColor: COLORS.gray500,
+  color: COLORS.gray600,
 
   ":hover": {
-    borderColor: PRIMITIVE_COLORS.gray500,
+    borderColor: COLORS.gray500,
     backgroundColor: "transparent",
   },
 };
@@ -48,7 +48,7 @@ export const tabsBarStyles = {
 };
 
 export const tabContentStyles = {
-  color: PRIMITIVE_COLORS.white,
+  color: COLORS.white,
   ...expandProperty("padding", "24px"),
 };
 

@@ -1,6 +1,6 @@
 import { FC, ReactNode, useState } from "react";
 import { Button, BUTTON_SIZE } from "../../../button";
-import { PRIMITIVE_COLORS } from "../../../../shared";
+import { COLORS } from "../../../../shared";
 import { CaretDownIcon, CaretUpIcon } from "../../../icons";
 import AuthAvatar from "./AuthAvatar";
 import NavPopover from "../NavPopover";
@@ -13,7 +13,7 @@ type AvatarBlockProps = {
 
 const iconProps = {
   size: 16,
-  color: PRIMITIVE_COLORS.gray800,
+  color: COLORS.gray800,
 };
 
 const AvatarBlock: FC<AvatarBlockProps> = ({ username, authDropdownContainer }) => {

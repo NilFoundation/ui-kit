@@ -1,6 +1,6 @@
 import { CardOverrides } from "baseui/card";
 import { withoutBorderStyles } from "../../shared/styles/borderStyles";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import { withoutMarginStyles } from "../../shared/styles/withoutMarginStyles";
 import { expandProperty } from "inline-style-expand-shorthand";
 
@@ -18,8 +18,8 @@ export const getCardOverrides = (headline: boolean, border: boolean): CardOverri
         paddingBottom: "0px",
         boxSizing: "border-box",
         maxWidth: "328px",
-        backgroundColor: PRIMITIVE_COLORS.gray800,
-        border: border ? `1px solid ${PRIMITIVE_COLORS.gray700}` : `1px solid transparent`,
+        backgroundColor: COLORS.gray800,
+        border: border ? `1px solid ${COLORS.gray700}` : `1px solid transparent`,
       },
     },
     HeaderImage: {

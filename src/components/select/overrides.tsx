@@ -3,7 +3,7 @@ import SelectArrow from "./ui/SelectArrow";
 import MenuItem from "../menu/ui/MenuItem";
 import { SELECT_KIND, SELECT_SIZE } from "./types";
 import SelectSpinner from "./ui/SelectSpinner";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import { controlContainerModifiedStyles, selectTypographyStyles, valueContainerModifiedStyles } from "./styles";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { Tag, TAG_SIZE } from "../tag";
@@ -65,7 +65,7 @@ export const getSelectOverrides = (
     Dropdown: {
       style: () => ({
         ...expandProperty("borderRadius", "8px"),
-        backgroundColor: PRIMITIVE_COLORS.gray800,
+        backgroundColor: COLORS.gray800,
       }),
     },
     Popover: {
@@ -130,7 +130,7 @@ export const getSelectOverrides = (
         color: getColor($isFocused, $error, $disabled),
         ...selectTypographyStyles[size],
         ":focus-within": {
-          color: PRIMITIVE_COLORS.gray50,
+          color: COLORS.gray50,
         },
       }),
     },

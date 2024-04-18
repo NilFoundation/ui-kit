@@ -2,7 +2,7 @@ import { FC, ReactNode } from "react";
 import { useStyletron } from "baseui";
 import AuthAvatar from "./ui/auth/AuthAvatar";
 import { LabelSmall } from "baseui/typography";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import { LogoutIcon } from "../icons";
 import { Button, BUTTON_SIZE } from "../button";
 
@@ -41,13 +41,13 @@ const AuthDropdownContainer: FC<AuthDropdownContainerProps> = ({ username, child
         <div className={css(wrapperStyles)}>
           <div className={css(authWrapperStyles)}>
             <AuthAvatar username={username} />
-            <LabelSmall className={css(labelStyles)} color={PRIMITIVE_COLORS.gray800}>
+            <LabelSmall className={css(labelStyles)} color={COLORS.gray800}>
               {username}
             </LabelSmall>
           </div>
           <Button onClick={onLogout} size={BUTTON_SIZE.mini}>
-            <LogoutIcon color={PRIMITIVE_COLORS.gray800} />
-            <LabelSmall className={css(labelStyles)} color={PRIMITIVE_COLORS.gray800}>
+            <LogoutIcon color={COLORS.gray800} />
+            <LabelSmall className={css(labelStyles)} color={COLORS.gray800}>
               Log Out
             </LabelSmall>
           </Button>

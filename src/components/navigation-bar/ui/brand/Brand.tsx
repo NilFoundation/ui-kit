@@ -1,12 +1,12 @@
 import { FC, memo } from "react";
-import { PRIMITIVE_COLORS } from "../../../../shared";
+import { COLORS } from "../../../../shared";
 
 export type BrandProps = {
   color?: string;
   className?: string;
 };
 
-export const Brand: FC<BrandProps> = ({ color = PRIMITIVE_COLORS.gray800, className }) => {
+export const Brand: FC<BrandProps> = ({ color = COLORS.gray800, className }) => {
   return (
     <svg
       className={className}

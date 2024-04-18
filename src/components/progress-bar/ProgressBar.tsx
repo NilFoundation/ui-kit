@@ -15,7 +15,7 @@ import { debounce } from "../../shared/utils/debounce";
 import { PROGRESS_BAR_SIZE, ProgressBarProps } from "./types";
 import { LabelLarge, LabelMedium, LabelSmall } from "baseui/typography";
 import { useOnWindowResize } from "../../shared/hooks/useOnWindowResize";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 
 type TypographyProps = ComponentProps<typeof LabelSmall>;
 
@@ -88,10 +88,7 @@ const ProgressBar: FC<ProgressBarProps> = ({
         ))}
       </ProgressWrapper>
       {showLabel && (
-        <TypographyComponent
-          className={css(labelStyles)}
-          color={errorMessage ? PRIMITIVE_COLORS.red400 : PRIMITIVE_COLORS.gray400}
-        >
+        <TypographyComponent className={css(labelStyles)} color={errorMessage ? COLORS.red400 : COLORS.gray400}>
           {errorMessage
             ? errorMessage
             : getProgressLabel

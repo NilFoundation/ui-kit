@@ -1,5 +1,5 @@
 import { AvatarOverrides } from "baseui/avatar";
-import { PRIMITIVE_COLORS } from "../../../../shared";
+import { COLORS } from "../../../../shared";
 import { PopoverOverrides } from "baseui/popover";
 import { expandProperty } from "inline-style-expand-shorthand";
 
@@ -7,7 +7,7 @@ export const getAvatarOverrides = (): AvatarOverrides => {
   return {
     Root: {
       style: {
-        backgroundColor: PRIMITIVE_COLORS.gray100,
+        backgroundColor: COLORS.gray100,
         marginRight: "4px",
       },
     },
@@ -15,7 +15,7 @@ export const getAvatarOverrides = (): AvatarOverrides => {
       style: {
         fontSize: "14px",
         lineHeight: "16px",
-        color: PRIMITIVE_COLORS.gray800,
+        color: COLORS.gray800,
       },
     },
   };
@@ -31,7 +31,7 @@ export const getPopoverOverrides = (): PopoverOverrides => {
     },
     Inner: {
       style: {
-        backgroundColor: PRIMITIVE_COLORS.white,
+        backgroundColor: COLORS.white,
         ...expandProperty("borderRadius", "0"),
       },
     },

@@ -1,5 +1,5 @@
 import { StyleObject } from "styletron-react";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { withoutBorderStyles } from "../../shared/styles/borderStyles";
 
@@ -13,9 +13,9 @@ export const getUploaderContainerStyles = (isDragActive?: boolean): StyleObject 
     width: "100%",
     minHeight: "136px",
     boxSizing: "border-box",
-    backgroundColor: PRIMITIVE_COLORS.gray800,
+    backgroundColor: COLORS.gray800,
     ...withoutBorderStyles,
-    ...expandProperty("border", `2px solid ${isDragActive ? PRIMITIVE_COLORS.white : PRIMITIVE_COLORS.gray700}`),
+    ...expandProperty("border", `2px solid ${isDragActive ? COLORS.white : COLORS.gray700}`),
     ...expandProperty("padding", `${isDragActive ? 0 : "32px 32px 22px 32px"}`),
   };
 };

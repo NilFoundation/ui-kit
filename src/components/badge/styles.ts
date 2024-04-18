@@ -1,7 +1,7 @@
 import { withoutBorderStyles } from "../../shared/styles/borderStyles";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { BADGE_COLOR } from "./types";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 
 export const badgeBaseStyles = {
   ...withoutBorderStyles,
@@ -12,38 +12,38 @@ export const badgeBaseStyles = {
 
 export const badgeColorModifiedStyles = {
   [BADGE_COLOR.accent]: {
-    backgroundColor: PRIMITIVE_COLORS.white,
-    color: PRIMITIVE_COLORS.black,
+    backgroundColor: COLORS.white,
+    color: COLORS.black,
   },
   [BADGE_COLOR.positive]: {
-    backgroundColor: PRIMITIVE_COLORS.green500,
-    color: PRIMITIVE_COLORS.white,
+    backgroundColor: COLORS.green500,
+    color: COLORS.white,
   },
   [BADGE_COLOR.warning]: {
-    backgroundColor: PRIMITIVE_COLORS.yellow500,
-    color: PRIMITIVE_COLORS.black,
+    backgroundColor: COLORS.yellow500,
+    color: COLORS.black,
   },
   [BADGE_COLOR.negative]: {
-    backgroundColor: PRIMITIVE_COLORS.red500,
-    color: PRIMITIVE_COLORS.white,
+    backgroundColor: COLORS.red500,
+    color: COLORS.white,
   },
 };
 
 export const badgeLowStyles = {
   [BADGE_COLOR.accent]: {
-    backgroundColor: PRIMITIVE_COLORS.gray700,
-    color: PRIMITIVE_COLORS.gray200,
+    backgroundColor: COLORS.gray700,
+    color: COLORS.gray200,
   },
   [BADGE_COLOR.positive]: {
-    backgroundColor: PRIMITIVE_COLORS.green700,
-    color: PRIMITIVE_COLORS.green300,
+    backgroundColor: COLORS.green700,
+    color: COLORS.green300,
   },
   [BADGE_COLOR.warning]: {
-    backgroundColor: PRIMITIVE_COLORS.yellow700,
-    color: PRIMITIVE_COLORS.yellow300,
+    backgroundColor: COLORS.yellow700,
+    color: COLORS.yellow300,
   },
   [BADGE_COLOR.negative]: {
-    backgroundColor: PRIMITIVE_COLORS.red700,
-    color: PRIMITIVE_COLORS.red300,
+    backgroundColor: COLORS.red700,
+    color: COLORS.red300,
   },
 };

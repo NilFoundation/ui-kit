@@ -3,7 +3,7 @@ import { ChartWidgetProps } from "./types";
 import ChartWrapper from "./ChartWrapper";
 import { ChartOptions, DeepPartial } from "lightweight-charts";
 import { LineSeries } from "./series";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 import { styles } from "./styles";
 import { useStyletron } from "styletron-react";
 
@@ -22,7 +22,7 @@ const chartWidgetDefaultOptions: DeepPartial<ChartOptions> = {
 };
 
 const ChartWidgetRender: ForwardRefRenderFunction<HTMLDivElement, ChartWidgetProps> = (
-  { data, color = PRIMITIVE_COLORS.blue300, className, ...rest },
+  { data, color = COLORS.blue300, className, ...rest },
   ref
 ) => {
   const [css] = useStyletron();

@@ -1,6 +1,6 @@
 import { Meta, Source, Canvas, Story } from "@storybook/blocks";
 import StoriesLayout from "../stories-layout";
-import { PRIMITIVE_COLORS } from "../../theme";
+import { COLORS } from "../../theme";
 import ColorPlate from "./ColorPlate";
 
 <Meta title="Media/Colors" />
@@ -10,8 +10,8 @@ import ColorPlate from "./ColorPlate";
 export const Template = () => {
   return (
     <StoriesLayout isColumn>
-      {Object.keys(PRIMITIVE_COLORS).map((color) => (
-        <ColorPlate key={color} colorHex={PRIMITIVE_COLORS[color]} colorName={color} />
+      {Object.keys(COLORS).map((color) => (
+        <ColorPlate key={color} colorHex={COLORS[color]} colorName={color} />
       ))}
     </StoriesLayout>
   );
@@ -28,13 +28,13 @@ export const Template = () => {
   dark
   format={true}
   code={`
-    import { LabelMedium, PRIMITIVE_COLORS } from "@nilfoundation/ui-kit";
+    import { LabelMedium, COLORS } from "@nilfoundation/ui-kit";
 
     ...
     function MyComponent() {
       ...
       return (
-        <LabelMedium color={PRIMITIVE_COLORS.red300}>Label</LabelMedium>
+        <LabelMedium color={COLORS.red300}>Label</LabelMedium>
       )
     }
 

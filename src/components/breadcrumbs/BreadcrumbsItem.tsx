@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import { Link as BaseLink } from "baseui/link/styled-components";
 import { withStyle } from "baseui";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { COLORS } from "../../shared";
 
 export type BreadcrumbsItemProps = {
   href?: string;
@@ -12,19 +12,19 @@ export type BreadcrumbsItemProps = {
 
 const getLinkColor = (isActive?: boolean, isDisabled?: boolean): string => {
   if (isDisabled) {
-    return PRIMITIVE_COLORS.gray500;
+    return COLORS.gray500;
   }
   if (isActive) {
-    return PRIMITIVE_COLORS.gray300;
+    return COLORS.gray300;
   }
-  return PRIMITIVE_COLORS.white;
+  return COLORS.white;
 };
 
 const getLinkHoverColor = (isActive?: boolean, isDisabled?: boolean): string => {
   if (isDisabled || isActive) {
     return getLinkColor(isActive, isDisabled);
   }
-  return PRIMITIVE_COLORS.gray200;
+  return COLORS.gray200;
 };
 
 const BreadcrumbsItem: FC<BreadcrumbsItemProps> = ({ isActive, disabled, href, children }) => {
@@ -38,7 +38,7 @@ const BreadcrumbsItem: FC<BreadcrumbsItemProps> = ({ isActive, disabled, href, c
     },
 
     ":focus": {
-      color: `${PRIMITIVE_COLORS.gray300} !important`,
+      color: `${COLORS.gray300} !important`,
     },
   });
 
