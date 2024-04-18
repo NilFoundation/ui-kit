@@ -83,6 +83,12 @@ export const COLORS = {
   mono600: "#292929",
 } as const;
 
+/**
+ * @deprecated
+ * Use `COLORS` instead.
+ */
+export const PRIMITIVE_COLORS = { ...COLORS };
+
 export const createColors = (): DefaultTheme => {
   return {
     primitives: {
