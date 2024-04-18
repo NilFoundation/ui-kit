@@ -8,6 +8,7 @@ export const containerStyles: StyleObject = {
   alignItems: "center",
   width: "100%",
 };
+
 export const getProgressWrapperStyles = (size: PROGRESS_BAR_SIZE): StyleObject => {
   const heightBySize = {
     [PROGRESS_BAR_SIZE.small]: "4px",
@@ -44,4 +45,25 @@ export const dashedBlockNotActiveStyles: StyleObject = {
 
 export const labelStyles: StyleObject = {
   marginTop: "12px",
+};
+
+export const getDashedBlockInfiniteStyles = (index: number, totalAmountOfBlocks: number): StyleObject => {
+  const timePerOneBlock = 0.015;
+  const animationDuration = totalAmountOfBlocks * timePerOneBlock;
+  const animationDelay = index * timePerOneBlock;
+
+  return {
+    animationDuration: `${animationDuration}s`,
+    animationDelay: `${animationDelay}s`,
+    animationIterationCount: "infinite",
+    backgroundImage: `linear-gradient(to right, ${COLORS.gray700} 50%, transparent 50%)`,
+    animationName: {
+      from: {
+        backgroundImage: `linear-gradient(to right, ${COLORS.white} 50%, transparent 50%)`,
+      },
+      to: {
+        backgroundImage: `linear-gradient(to right, ${COLORS.gray700} 50%, transparent 50%)`,
+      },
+    },
+  };
 };
