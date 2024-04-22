@@ -1,5 +1,5 @@
-import { FC, memo } from "react";
-import { COLORS } from "../../../../shared";
+import { FC } from "react";
+import { COLORS } from "../../shared";
 
 export type BrandProps = {
   color?: string;
@@ -26,4 +26,4 @@ export const Brand: FC<BrandProps> = ({ color = COLORS.gray800, className }) => 
   );
 };
 
-export default memo(Brand);
+export default Brand;

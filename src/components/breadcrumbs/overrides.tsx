@@ -7,17 +7,15 @@ export const getBreadcrumbsOverrides = (): BreadcrumbsOverrides => {
       component: BreadcrumbsSeparator,
     },
     List: {
-      style: () => ({
+      style: {
         display: "flex",
         alignItems: "center",
-      }),
+      },
     },
     ListItem: {
-      style: () => {
-        return {
-          display: "flex",
-          alignItems: "center",
-        };
+      style: {
+        display: "flex",
+        alignItems: "center",
       },
     },
   };
