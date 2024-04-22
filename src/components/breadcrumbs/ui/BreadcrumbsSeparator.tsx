@@ -1,31 +1,23 @@
-import { FC, memo } from "react";
-import { useStyletron } from "baseui";
+import { FC } from "react";
+import { ParagraphXSmall } from "baseui/typography";
 import { COLORS } from "../../../shared";
+import { BlockOverrides } from "baseui/block";
+import { expandProperty } from "inline-style-expand-shorthand";
 
-const containerStyles = {
-  display: "inline-flex",
-  justifyContent: "center",
-  alignItems: "center",
-  marginLeft: "4px",
-  marginRight: "4px",
-  width: "20px",
-  height: "20px",
-};
-
-const squareStyles = {
-  width: "5px",
-  height: "5px",
-  backgroundColor: COLORS.white,
+const overrides: BlockOverrides = {
+  Block: {
+    style: {
+      ...expandProperty("padding", "0 4px"),
+    },
+  },
 };
 
 const BreadcrumbsSeparator: FC = () => {
-  const [css] = useStyletron();
-
   return (
-    <div className={css(containerStyles)}>
-      <div className={css(squareStyles)} />
-    </div>
+    <ParagraphXSmall color={COLORS.gray400} overrides={overrides}>
+      /
+    </ParagraphXSmall>
   );
 };
 
-export default memo(BreadcrumbsSeparator);
+export default BreadcrumbsSeparator;
