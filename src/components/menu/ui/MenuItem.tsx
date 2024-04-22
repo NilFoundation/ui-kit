@@ -14,7 +14,7 @@ import {
 } from "../styles";
 import { SeparatorIcon } from "../../icons";
 import { COLORS } from "../../../shared";
-import { getLinkComponent } from "./getLinkComponent";
+import { getCustomLinkComponent } from "../../../shared/ui/getCustomLinkComponent";
 
 const paragraphComponent = {
   [SPINNER_SIZE.small]: (props: MenuItemTypographyProps) => <ParagraphSmall as="div" {...props} />,
@@ -31,7 +31,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
     const Item = styled("li", getItemContainerStyles(size, !!disabled, !!isHighlighted, !!ariaSelected));
     const EndWrapper = styled("span", ItemEndWrapperStyles);
     const TypographyComponent = paragraphComponent[size];
-    const LinkComponent = getLinkComponent(item.linkComponent, item.href);
+    const LinkComponent = getCustomLinkComponent(item.linkComponent, item.href);
 
     return (
       <Item ref={ref} onMouseEnter={onMouseEnter} id={id ?? undefined} onClick={onClick}>

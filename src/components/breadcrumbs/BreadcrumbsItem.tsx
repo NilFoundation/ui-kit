@@ -1,48 +1,60 @@
 import { FC, ReactNode } from "react";
-import { Link as BaseLink } from "baseui/link/styled-components";
-import { withStyle } from "baseui";
 import { COLORS } from "../../shared";
+import { ParagraphXSmall } from "baseui/typography";
+import { BlockOverrides } from "baseui/block";
+import { expandProperty } from "inline-style-expand-shorthand";
+import { LinkComponentRenderFunction, getCustomLinkComponent } from "../../shared/ui/getCustomLinkComponent";
 
 export type BreadcrumbsItemProps = {
   href?: string;
   isActive?: boolean;
   disabled?: boolean;
   children?: ReactNode;
+  linkComponent?: LinkComponentRenderFunction;
 };
 
-const getLinkColor = (isActive?: boolean, isDisabled?: boolean): string => {
+const getColor = (isActive?: boolean, isDisabled?: boolean): string => {
   if (isDisabled) {
     return COLORS.gray500;
   }
   if (isActive) {
-    return COLORS.gray300;
+    return COLORS.gray50;
   }
-  return COLORS.white;
+  return COLORS.gray400;
 };
 
 const getLinkHoverColor = (isActive?: boolean, isDisabled?: boolean): string => {
-  if (isDisabled || isActive) {
-    return getLinkColor(isActive, isDisabled);
+  if (isDisabled) {
+    return COLORS.gray500;
+  }
+  if (isActive) {
+    return COLORS.gray50;
   }
   return COLORS.gray200;
 };
 
-const BreadcrumbsItem: FC<BreadcrumbsItemProps> = ({ isActive, disabled, href, children }) => {
-  const Link = withStyle(BaseLink, {
-    textDecoration: "none !important",
-    color: `${getLinkColor(isActive, disabled)} !important`,
-    cursor: disabled ? "not-allowed" : "pointer",
-
-    ":hover": {
-      color: `${getLinkHoverColor(isActive, disabled)} !important`,
+const getParagraphOverrides = (isActive?: boolean, isDisabled?: boolean, hasLink?: boolean): BlockOverrides => ({
+  Block: {
+    style: {
+      ...expandProperty("transition", "color 0.15s ease-in-out"),
+      ...expandProperty("padding", "0"),
+      color: getColor(isActive, isDisabled),
+      ":hover": {
+        color: getLinkHoverColor(isActive, isDisabled),
+      },
+      cursor: isDisabled ? "not-allowed" : hasLink ? "pointer" : "auto",
     },
+  },
+});
 
-    ":focus": {
-      color: `${COLORS.gray300} !important`,
-    },
-  });
+const BreadcrumbsItem: FC<BreadcrumbsItemProps> = ({ isActive, disabled, href, children, linkComponent }) => {
+  const LinkComponent = getCustomLinkComponent(linkComponent, href);
 
-  return <Link href={!disabled ? href : undefined}>{children}</Link>;
+  return (
+    <ParagraphXSmall overrides={getParagraphOverrides(isActive, disabled, !!href || !!linkComponent)}>
+      <LinkComponent>{children}</LinkComponent>
+    </ParagraphXSmall>
+  );
 };
 
 export default BreadcrumbsItem;
