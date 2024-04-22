@@ -6,3 +6,6 @@ export type { AuthDropdownContainerProps } from "./AuthDropdownContainer";
 
 export { default as AuthItem } from "./AuthItem";
 export type { AuthItemProps } from "./AuthItem";
+
+export { default as Brand } from "./Brand";
+export type { BrandProps } from "./Brand";
