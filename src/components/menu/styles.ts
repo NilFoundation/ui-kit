@@ -16,38 +16,40 @@ export const listStyles = {
 export const headerBaseStyles: StyleObject = {
   display: "flex",
   alignItems: "center",
-  paddingLeft: "8px",
   width: "100%",
-  height: "36px",
   boxSizing: "border-box",
 };
 
 export const headerModifiedStyles = {
   [MENU_SIZE.small]: {
     ...headerBaseStyles,
-    height: "36px",
+    height: "24px",
+    ...expandProperty("padding", "4px 12px"),
   },
   [MENU_SIZE.medium]: {
     ...headerBaseStyles,
-    height: "48px",
+    height: "32px",
+    ...expandProperty("padding", "4px 16px"),
   },
   [MENU_SIZE.large]: {
     ...headerBaseStyles,
-    height: "56px",
+    height: "40px",
+    ...expandProperty("padding", "4px 16px"),
   },
 };
 
 const itemModifiedStyles = {
   [MENU_SIZE.small]: {
     padding: "6px 12px",
+    ...expandProperty("padding", "6px 12px"),
     height: "32px",
   },
   [MENU_SIZE.medium]: {
-    padding: "0 16px",
+    ...expandProperty("padding", "0 16px"),
     height: "48px",
   },
   [MENU_SIZE.large]: {
-    padding: "0 16px",
+    ...expandProperty("padding", "0 16px"),
     height: "56px",
   },
 };
@@ -100,6 +102,7 @@ export const getItemContainerStyles = (
     color: COLORS.gray200,
     fontWeight: 500,
     ...expandProperty("borderRadius", "4px"),
+    ...expandProperty("transition", "color 0.15s"),
 
     ":hover": {
       backgroundColor: COLORS.gray800,
@@ -121,16 +124,12 @@ export const getItemContainerStyles = (
   };
 };
 
-export const getLinkComponentStyles = () => {
-  return {
-    display: "flex",
-    alignItems: "center",
-    width: "100%",
-    height: "100%",
-    textDecoration: "none",
-    color: "inherit",
-    gap: "8px",
-  };
+export const LinkComponentStyles = {
+  display: "flex",
+  alignItems: "center",
+  width: "100%",
+  height: "100%",
+  gap: "8px",
 };
 
 export const getItemParagraphColor = (isActive: boolean, isDisabled: boolean) => {
@@ -138,9 +137,9 @@ export const getItemParagraphColor = (isActive: boolean, isDisabled: boolean) =>
     return COLORS.gray600;
   }
   if (isActive) {
-    return COLORS.white;
+    return COLORS.gray50;
   }
-  return COLORS.gray500;
+  return COLORS.gray200;
 };
 
 export const itemTypographyStyles = {
@@ -169,4 +168,9 @@ export const emptyStateTitleStyles = {
   margin: "0 0 12px",
   width: "304px",
   maxWidth: "100%",
+};
+
+export const menuDividerStyles = {
+  borderBottom: `1px solid ${COLORS.gray700}`,
+  ...expandProperty("margin", "4px 0"),
 };

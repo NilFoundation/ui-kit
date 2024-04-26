@@ -1,16 +1,19 @@
 import { FC } from "react";
-import { HeadingXSmall } from "baseui/typography";
+import { LabelSmall } from "baseui/typography";
 import { useStyletron, styled } from "baseui";
 import { EmptyStateContainerStyles, emptyStateTitleStyles } from "../styles";
+import { COLORS } from "../../../shared";
+
+const Wrapper = styled("div", EmptyStateContainerStyles);
 
 const MenuEmptyState: FC = () => {
   const [css] = useStyletron();
 
-  const Wrapper = styled("div", EmptyStateContainerStyles);
-
   return (
     <Wrapper>
-      <HeadingXSmall className={css(emptyStateTitleStyles)}>No results found</HeadingXSmall>
+      <LabelSmall color={COLORS.gray400} className={css(emptyStateTitleStyles)}>
+        No results found
+      </LabelSmall>
     </Wrapper>
   );
 };
