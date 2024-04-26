@@ -17,7 +17,7 @@ const Select: React.FC<SelectProps> = ({
   closeOnSelect,
   ...props
 }) => {
-  const selectOverrides = getSelectOverrides(size, kind, value, valueKey);
+  const selectOverrides = getSelectOverrides(size, kind, value, valueKey, props.multi);
   const overrides = getMergedOverrides(selectOverrides, baseOverrides);
   const controlRef = useControlRef(controlRefFromProps);
   const shouldCloseOnSelect = closeOnSelect === undefined ? !props.multi : closeOnSelect;

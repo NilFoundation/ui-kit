@@ -17,8 +17,9 @@ import {
 import { boxShadowFocusStyles, boxShadowErrorStyles } from "../../shared/styles/boxShadowSharedStyles";
 import ValueContainer from "./ui/ValueContainer/ValueContainer";
 import { getTagKind, tagOverrides } from "./sharedUtils";
+import { MENU_SIZE } from "../menu";
 
-const isSingleItemActive = (value: Value, item: Item, valueKey?: string): boolean => {
+const isSingleItemActive = (item: Item, value?: Value, valueKey?: string): boolean => {
   if (value?.length !== 1) {
     return false;
   }
@@ -27,11 +28,21 @@ const isSingleItemActive = (value: Value, item: Item, valueKey?: string): boolea
   return singleItem?.[key] === item?.[key];
 };
 
+const isItemSelected = (item: Item, value?: Value, valueKey?: string): boolean => {
+  if (!value?.length) {
+    return false;
+  }
+
+  const key = valueKey || "id";
+  return value.some((v) => v?.[key] === item?.[key]);
+};
+
 export const getSelectOverrides = (
   size: SELECT_SIZE,
   kind: SELECT_KIND,
   value?: Value,
-  valueKey?: string
+  valueKey?: string,
+  isMulti?: boolean
 ): SelectOverrides => {
   return {
     ControlContainer: {
@@ -53,11 +64,13 @@ export const getSelectOverrides = (
       component: MenuItem,
       props: ({ item, ...props }) => {
         const isHighlighted = props?.$isHighlighted;
-        const isActive = value ? isSingleItemActive(value, item, valueKey) : false;
+        const isActive = !isMulti ? isSingleItemActive(item, value, valueKey) : false;
+        const selected = isMulti ? isItemSelected(item, value, valueKey) : undefined;
+
         return {
           ...props,
-          item: { ...item, isActive },
-          size,
+          item: { ...item, isActive, selected },
+          size: MENU_SIZE.small,
           isHighlighted,
         };
       },

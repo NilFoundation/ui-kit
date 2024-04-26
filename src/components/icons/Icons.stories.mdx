@@ -31,6 +31,7 @@ import TelegramIcon from "./TelegramIcon";
 import SeparatorIcon from "./SeparatorIcon";
 import ArrowUpIcon from "./ArrowUpIcon";
 import DotsIcon from "./DotsIcon";
+import CheckmarkIcon from "./CheckmarkIcon";
 import { useStyletron } from "baseui";
 
 <Meta title="Media/Icons" component={HeartIcon} />
@@ -153,6 +154,9 @@ export const Template = ({ color, size, icon }) => {
     {Template.bind({})}
   </Story>
   <Story name="Dots" args={{ icon: <DotsIcon /> }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Checkmark" args={{ icon: <CheckmarkIcon /> }}>
     {Template.bind({})}
   </Story>
 </Canvas>

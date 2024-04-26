@@ -1,25 +1,30 @@
 import { cloneElement, forwardRef } from "react";
-import { MenuItemProps, MenuItemTypographyProps } from "../types";
+import { MENU_SIZE, MenuItemProps, MenuItemTypographyProps } from "../types";
 import { ParagraphSmall, ParagraphMedium, ParagraphLarge } from "baseui/typography";
 import { useStyletron, styled } from "baseui";
-import { SPINNER_SIZE } from "../../spinner";
 import { Checkbox } from "../../checkbox";
 import {
   getItemContainerStyles,
   getItemParagraphColor,
-  getLinkComponentStyles,
+  LinkComponentStyles,
   ItemEndWrapperStyles,
   itemTypographyStyles,
   svgActiveStyles,
 } from "../styles";
-import { SeparatorIcon } from "../../icons";
+import { CheckmarkIcon } from "../../icons";
 import { COLORS } from "../../../shared";
 import { getCustomLinkComponent } from "../../../shared/ui/getCustomLinkComponent";
 
 const paragraphComponent = {
-  [SPINNER_SIZE.small]: (props: MenuItemTypographyProps) => <ParagraphSmall as="div" {...props} />,
-  [SPINNER_SIZE.medium]: (props: MenuItemTypographyProps) => <ParagraphMedium as="div" {...props} />,
-  [SPINNER_SIZE.large]: (props: MenuItemTypographyProps) => <ParagraphLarge as="div" {...props} />,
+  [MENU_SIZE.small]: (props: MenuItemTypographyProps) => <ParagraphSmall as="div" {...props} />,
+  [MENU_SIZE.medium]: (props: MenuItemTypographyProps) => <ParagraphMedium as="div" {...props} />,
+  [MENU_SIZE.large]: (props: MenuItemTypographyProps) => <ParagraphLarge as="div" {...props} />,
+};
+
+const iconSizeMap = {
+  [MENU_SIZE.small]: 16,
+  [MENU_SIZE.medium]: 24,
+  [MENU_SIZE.large]: 32,
 };
 
 const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
@@ -35,11 +40,11 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
 
     return (
       <Item ref={ref} onMouseEnter={onMouseEnter} id={id ?? undefined} onClick={onClick}>
-        <LinkComponent className={css(getLinkComponentStyles())}>
+        <LinkComponent className={css(LinkComponentStyles)}>
           {item?.selected != null && <Checkbox checked={item.selected} />}
           {item?.startEnhancer &&
             cloneElement(item.startEnhancer, {
-              size: 16,
+              size: iconSizeMap[size],
               className: css(isAreaSelected ? svgActiveStyles : {}),
             })}
           <TypographyComponent className={css(itemTypographyStyles)} color={paragraphColor}>
@@ -49,11 +54,11 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
             {item?.suffixText && <TypographyComponent color={paragraphColor}>{item.suffixText}</TypographyComponent>}
             {item?.endEnhancer &&
               cloneElement(item.endEnhancer, {
-                size: 16,
+                size: iconSizeMap[size],
                 className: css(isAreaSelected ? svgActiveStyles : {}),
               })}
           </EndWrapper>
-          {item?.isActive && <SeparatorIcon size={20} color={COLORS.gray300} />}
+          {item?.isActive && <CheckmarkIcon size={iconSizeMap[size]} color={COLORS.gray300} />}
         </LinkComponent>
       </Item>
     );

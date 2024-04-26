@@ -1,8 +1,9 @@
 import { ComponentProps, FC, ReactNode } from "react";
-import { LabelLarge, LabelMedium, LabelSmall, ParagraphSmall } from "baseui/typography";
+import { HeadingMedium, HeadingSmall, HeadingXSmall, ParagraphSmall } from "baseui/typography";
 import { useStyletron } from "baseui";
 import { MENU_SIZE } from "../types";
 import { headerModifiedStyles } from "../styles";
+import { COLORS } from "../../../shared";
 
 type MenuHeader = {
   size: MENU_SIZE;
@@ -12,9 +13,9 @@ type MenuHeader = {
 type TypographyProps = ComponentProps<typeof ParagraphSmall>;
 
 const paragraphComponent = {
-  [MENU_SIZE.small]: (props: TypographyProps) => <LabelSmall color="gray300" as="li" {...props} />,
-  [MENU_SIZE.medium]: (props: TypographyProps) => <LabelMedium color="gray300" as="li" {...props} />,
-  [MENU_SIZE.large]: (props: TypographyProps) => <LabelLarge color="gray300" as="li" {...props} />,
+  [MENU_SIZE.small]: (props: TypographyProps) => <HeadingXSmall as="li" {...props} />,
+  [MENU_SIZE.medium]: (props: TypographyProps) => <HeadingSmall as="li" {...props} />,
+  [MENU_SIZE.large]: (props: TypographyProps) => <HeadingMedium as="li" {...props} />,
 };
 
 const MenuHeader: FC<MenuHeader> = ({ size, children }) => {
@@ -23,7 +24,7 @@ const MenuHeader: FC<MenuHeader> = ({ size, children }) => {
   const TypographyComponent = paragraphComponent[size];
 
   return (
-    <TypographyComponent className={css(headerModifiedStyles[size])} as="li">
+    <TypographyComponent color={COLORS.gray400} className={css(headerModifiedStyles[size])}>
       {children}
     </TypographyComponent>
   );
