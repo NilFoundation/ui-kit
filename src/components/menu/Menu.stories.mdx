@@ -29,9 +29,14 @@ export const ITEMS_WITH_DIVIDER = [
 export const ITEMS_WITH_LINKS = [
   { label: "Item One", href: "/" },
   { label: "Item Two", href: "tel:0000000", startEnhancer: <SearchIcon /> },
+  { divider: true },
   {
     label: "Item Three",
-    linkComponent: ({ children }) => <Button kind={BUTTON_KIND.secondary}>{children}</Button>,
+    linkComponent: ({ children, href }) => (
+      <Button kind={BUTTON_KIND.secondary}>
+        <a href={href}>{children}</a>
+      </Button>
+    ),
     href: "/",
   },
 ];
@@ -49,7 +54,7 @@ export const ITEMS_WITH_HEADER = {
   ],
 };
 
-export const CheckboxItem = { label: "Item Fifth", selected: false };
+export const CheckboxItem = { label: "Item Fifth", selected: true };
 export const StartEnhancerItem = { label: "Item Fifth", startEnhancer: <SearchIcon /> };
 export const EndEnhancerItem = { label: "Item Fifth", endEnhancer: <SearchIcon /> };
 export const SuffixTextItem = { label: "Item Fifth", suffixText: "Text", endEnhancer: <SearchIcon /> };
@@ -85,10 +90,10 @@ export const ActiveItem = { label: "Item Active", isActive: true };
   <Story name="With Suffix Text" args={{ items: [...ITEMS_WITH_DIVIDER, SuffixTextItem] }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Header" args={{ items: ITEMS_WITH_HEADER }}>
+  <Story name="With Header" args={{ items: ITEMS_WITH_HEADER, size: MENU_SIZE.small }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Links" args={{ items: ITEMS_WITH_LINKS }}>
+  <Story name="With Links" args={{ items: ITEMS_WITH_LINKS, size: MENU_SIZE.small }}>
     {Template.bind({})}
   </Story>
   <Story name="Empty State" args={{ items: [], size: MENU_SIZE.large }}>

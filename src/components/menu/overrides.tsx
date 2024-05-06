@@ -3,7 +3,7 @@ import MenuEmptyState from "./ui/MenuEmptyState";
 import { MENU_SIZE } from "./types";
 import MenuItem from "./ui/MenuItem";
 import MenuHeader from "./ui/MenuHeader";
-import { listStyles } from "./styles";
+import { listStyles, menuDividerStyles } from "./styles";
 
 export const getMenuOverrides = (size: MENU_SIZE): MenuOverrides => {
   return {
@@ -31,6 +31,9 @@ export const getMenuOverrides = (size: MENU_SIZE): MenuOverrides => {
     },
     EmptyState: {
       component: MenuEmptyState,
+    },
+    MenuDivider: {
+      style: menuDividerStyles,
     },
   };
 };
