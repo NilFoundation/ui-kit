@@ -17,8 +17,11 @@ export class CustomHistogramSeries implements ICustomSeriesPaneView {
     this._renderer = new CustomHistogramRenderer();
   }
 
-  priceValueBuilder(data: CustomHistogramSeriesData): CustomSeriesPricePlotValues {
-    
+  priceValueBuilder(plotRow: CustomHistogramSeriesData): CustomSeriesPricePlotValues {
+    const midPoint = plotRow.value / 2;
+    //* The values returned here are used for the autoscaling behaviour on the chart,
+    //* and the last value is also used as the price value for the crosshair and price label.
+    return [plotRow.low, plotRow.high, midPoint];
   }
 
   isWhitespace(data: CustomHistogramSeriesData): data is WhitespaceData {
