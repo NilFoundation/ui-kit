@@ -9,6 +9,7 @@ import { prefixLineNumberExtension } from "./prefixLineNumberExtension";
 import { createDefaultStylesOverridesExtension } from "./defaultStylesOverridesExtension";
 import { CopyButton } from "../copy-button";
 import { BUTTON_KIND, BUTTON_SIZE } from "../button";
+import { CODE_FIELD_SIZE } from "./types";
 
 const MemoizedCopyButton = memo(CopyButton);
 
@@ -24,6 +25,7 @@ export type CodeFieldProps = {
   editable?: ReactCodeMirrorProps["editable"];
   readOnly?: ReactCodeMirrorProps["readOnly"];
   onChange?: ReactCodeMirrorProps["onChange"];
+  size?: CODE_FIELD_SIZE;
 } & HTMLAttributes<HTMLDivElement>;
 
 const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFieldProps> = (
@@ -39,6 +41,7 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
     editable = false,
     readOnly = true,
     onChange,
+    size = CODE_FIELD_SIZE.medium,
     ...rest
   },
   ref
@@ -49,7 +52,7 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
     [showLineNumbers]
   );
   const mergedExtensions = [styleOverridesExtention, ...extensions];
-  const computedCn = className ? `${css(s.containerStyles)} ${className}` : css(s.containerStyles);
+  const computedCn = className ? `${css(s.getContainerStyles(size))} ${className}` : css(s.getContainerStyles(size));
 
   if (showLineNumbers) {
     mergedExtensions.push(prefixLineNumberExtension);
