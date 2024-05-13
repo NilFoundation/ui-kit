@@ -31,6 +31,8 @@
   "license": "MIT",
   "peerDependencies": {
     "@codemirror/state": "6.4.0",
+    "@codemirror/view": ">=6.4.0 < 7",
+    "@lezer/highlight": "1.2.0",
     "@uiw/codemirror-themes": ">=4.21.0 < 5",
     "@uiw/react-codemirror": ">=4.21.0 < 5",
     "baseui": ">=13.0.0 < 14",
