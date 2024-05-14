@@ -1,6 +1,7 @@
-import { Item, RenderItemProps, StatefulMenuProps } from "baseui/menu";
+import { StatefulMenuProps } from "baseui/menu";
 import { ParagraphSmall } from "baseui/typography";
 import { ComponentProps, ReactElement, ReactNode } from "react";
+import { LinkComponentRenderFunction } from "../../shared";
 
 export enum MENU_SIZE {
   "small" = "small",
@@ -8,26 +9,36 @@ export enum MENU_SIZE {
   "large" = "large",
 }
 
-export type MenuProps = StatefulMenuProps & {
-  size?: MENU_SIZE;
-};
-
 export type MenuItemTypographyProps = ComponentProps<typeof ParagraphSmall>;
 
-export type TExpandedItem = Item & {
+export type MenuItem = {
+  /** Highlights item nad adds a checkbox if true */
   selected?: boolean;
   suffixText?: string;
-  startEnhancer?: ReactNode;
-  endEnhancer?: ReactNode;
+  startEnhancer?: ReactElement;
+  endEnhancer?: ReactElement;
+  /** Adds checkmark */
   isActive?: boolean;
-  linkComponent?: ReactElement;
+  linkComponent?: LinkComponentRenderFunction;
+  href?: string;
+  /** Highlights item as it was selected */
+  isHighlighted?: boolean;
+  label: ReactNode;
+  disabled?: boolean;
 };
 
-export type MenuItemProps = RenderItemProps & {
-  item: TExpandedItem;
-  size: MENU_SIZE;
-  disabled?: boolean;
-  ariaSelected?: boolean;
-  isHighlighted?: boolean;
-  children?: ReactNode;
+export type ItemDivider = {
+  divider: true;
+};
+
+export type Items = Array<MenuItem | ItemDivider>;
+
+export type GroupedItems = {
+  __ungrouped: Items;
+  [x: string]: Items;
+};
+
+export type MenuProps = Omit<StatefulMenuProps, "items"> & {
+  size?: MENU_SIZE;
+  items: Items | GroupedItems;
 };

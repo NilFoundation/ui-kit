@@ -13,6 +13,7 @@ export type LinkComponentRenderFunction = (props: LinkComponentProps) => ReactEl
 const ResetLink = styled("a", {
   color: "inherit",
   cursor: "unset",
+  backgroundColor: "transparent",
   textDecoration: "none",
   ":hover": {
     textDecoration: "none",
