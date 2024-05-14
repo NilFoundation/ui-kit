@@ -1,13 +1,7 @@
-export const modalButtonStyles = {
-  width: "100%",
-  marginBottom: "12px",
-};
-
 export const modalHeaderStyles = {
-  paddingBottom: "8px",
+  paddingBottom: "24px",
 };
 
 export const modalBodyStyles = {
-  paddingTop: "8px",
-  paddingBottom: "20px",
+  paddingBottom: "24px",
 };

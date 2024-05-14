@@ -90,7 +90,7 @@ export const createTypography = (defaultFonts?: DefaultFonts): DefaultTheme => {
 
         ...getTypographyOverrides(
           {
-            HeadingXSmall: {
+            HeadingSmall: {
               ...defaultMediumFontProperty,
               fontSize: "12px",
               fontWeight: 500,

@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import { HeadingSmall } from "baseui/typography";
+import { HeadingMedium } from "baseui/typography";
 import { useStyletron } from "baseui";
 import { modalHeaderStyles } from "../styles";
 
@@ -11,9 +11,7 @@ const ModalHeader: FC<ModalHeaderProps> = ({ children }) => {
   const [css] = useStyletron();
   return (
     <div className={css(modalHeaderStyles)}>
-      <HeadingSmall as="div" margin={0}>
-        {children}
-      </HeadingSmall>
+      <HeadingMedium as="div">{children}</HeadingMedium>
     </div>
   );
 };
