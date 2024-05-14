@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import Modal from "./Modal";
 import { BUTTON_KIND, Button } from "../button";
+import { FormControl } from "../form-control";
+import { Input } from "../input";
 import ModalHeader from "./ui/ModalHeader";
 import ModalBody from "./ui/ModalBody";
 import ModalFooter from "./ui/ModalFooter";
-import ModalButton from "./ui/ModalButton";
 
 <Meta title="Overlay/Modal" component={Modal} />
 
@@ -18,14 +19,14 @@ export const Template = ({ ...args }) => {
     <>
       <Button onClick={() => setIsOpen(true)}>Open modal</Button>
       <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <ModalHeader>Great job!</ModalHeader>
+        <ModalHeader>Create project</ModalHeader>
         <ModalBody>
-          We’ve got enough game data. Let’s order a zk proof for your round speedrun to add it to the Ethereum
-          leaderboard.
+          <FormControl label="Project name" counter={{ maxLength: 100, length: 0 }}>
+            <Input placeholder="Project name" />
+          </FormControl>
         </ModalBody>
         <ModalFooter>
-          <ModalButton>Let’s do it!</ModalButton>
-          <ModalButton kind={BUTTON_KIND.secondary}>Let’s do it!</ModalButton>
+          <Button>{"Save & run"}</Button>
         </ModalFooter>
       </Modal>
     </>
@@ -62,8 +63,8 @@ export const NestedTemplate = ({ ...args }) => {
           leaderboard.
         </ModalBody>
         <ModalFooter>
-          <ModalButton onClick={openSecondModal}>Let’s do it!</ModalButton>
-          <ModalButton kind={BUTTON_KIND.secondary}>Let’s do it!</ModalButton>
+          <Button onClick={openSecondModal}>Let’s do it!</Button>
+          <Button kind={BUTTON_KIND.secondary}>Let’s do it!</Button>
         </ModalFooter>
       </Modal>
       <Modal {...args} isOpen={isSecondOpen} onClose={() => setIsSecondOpen(false)}>
