@@ -3,7 +3,6 @@ import Menu from "./Menu";
 import { MENU_SIZE } from "./types";
 import { SearchIcon } from "../icons";
 import { COLORS } from "../../shared";
-import { BUTTON_KIND, Button } from "../button";
 
 <Meta title="Overlay/Menu" component={Menu} />
 
@@ -18,7 +17,7 @@ export const Template = ({ ...args }) => {
 export const ITEMS = [{ label: "Item One" }, { label: "Item Two" }, { label: "Item Three" }, { label: "Item Four" }];
 
 export const ITEMS_WITH_DIVIDER = [
-  { label: "Item One" },
+  { label: <div>Item One</div> },
   { divider: true },
   { label: "Item Two" },
   { label: "Item Three", disabled: true },
@@ -32,10 +31,10 @@ export const ITEMS_WITH_LINKS = [
   { divider: true },
   {
     label: "Item Three",
-    linkComponent: ({ children, href }) => (
-      <Button kind={BUTTON_KIND.secondary}>
-        <a href={href}>{children}</a>
-      </Button>
+    linkComponent: ({ children, href, className }) => (
+      <a href={href} className={className}>
+        {children}
+      </a>
     ),
     href: "/",
   },
@@ -131,5 +130,11 @@ To use, import the component `Menu` from `@nilfoundation/ui-kit`.
         <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", endEnhancer: <SearchIcon />}]} />
         // With suffix text
         <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", suffixText: "Text"}]} />
+        // With custom link component
+        <Menu items={[{
+          label: "Item One",
+          href: "/",
+          linkComponent: ({ children, href, className }) => <a href={href} className={className}>{children}</a>
+        }]} />
   `}
 />
