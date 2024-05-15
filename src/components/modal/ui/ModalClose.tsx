@@ -1,39 +1,22 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { useStyletron } from "baseui";
 import { CloseIcon } from "../../icons";
-import { COLORS } from "../../../shared";
 import { StyleObject } from "styletron-react";
+import { ButtonIcon, ButtonIconProps } from "../../button-icon";
+import { BUTTON_KIND } from "../../button";
 
-type DrawerCloseProps = {
-  onBlur?: React.FocusEventHandler;
-  onFocus?: React.FocusEventHandler;
-  onClick?: React.MouseEventHandler;
-};
+type ModalCloseProps = Omit<ButtonIconProps, "icon" | "kind">;
 
 const buttonStyles: StyleObject = {
   position: "absolute",
-  top: "8px",
-  right: "8px",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  width: "24px",
-  height: "24px",
-  padding: "0",
-  background: "none",
-  border: "none",
-  outline: "none",
-  cursor: "pointer",
+  top: "24px",
+  right: "24px",
 };
 
-const ModalClose: FC<DrawerCloseProps> = ({ ...props }) => {
+const ModalClose: FC<ModalCloseProps> = ({ ...props }) => {
   const [css] = useStyletron();
 
-  return (
-    <button {...props} className={css(buttonStyles)}>
-      <CloseIcon size={24} color={COLORS.white} />
-    </button>
-  );
+  return <ButtonIcon className={css(buttonStyles)} icon={<CloseIcon />} kind={BUTTON_KIND.secondary} {...props} />;
 };
 
 export default ModalClose;
