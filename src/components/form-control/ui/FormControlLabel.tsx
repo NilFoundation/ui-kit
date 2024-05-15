@@ -23,7 +23,7 @@ const labelComponent = {
 const containerStyles: StyleObject = {
   display: "flex",
   alignItems: "center",
-  justifyContent: "flex-start",
+  justifyContent: "space-between",
   gap: "1ch",
   width: "100%",
 };

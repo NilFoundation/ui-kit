@@ -24,7 +24,7 @@ const NavItem: FC<NavItemProps> = ({ item, onItemClick, itemAs }) => {
   const [isOpen, setOpen] = useState(false);
 
   const { label } = item;
-  const isSelected = !!item?.isSelected;
+  const isSelected = !!item?.selected;
   const disabled = !!item?.disabled;
   const children = item?.children ?? [];
 

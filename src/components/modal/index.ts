@@ -9,6 +9,3 @@ export type { ModalBodyProps } from "./ui/ModalBody";
 
 export { default as ModalFooter } from "./ui/ModalFooter";
 export type { ModalFooterProps } from "./ui/ModalFooter";
-
-export { default as ModalButton } from "./ui/ModalButton";
-export type { ModalButtonProps } from "./ui/ModalButton";
