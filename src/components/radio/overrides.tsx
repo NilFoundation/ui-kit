@@ -30,12 +30,12 @@ export const getRadioOverrides = (): RadioOverrides => ({
   },
   Label: {
     style: ({ $disabled }) => ({
-      color: $disabled ? COLORS.gray300 : COLORS.white,
+      color: $disabled ? COLORS.gray300 : COLORS.gray50,
     }),
   },
   Description: {
     style: ({ $disabled }) => ({
-      color: $disabled ? COLORS.gray300 : COLORS.white,
+      color: $disabled ? COLORS.gray300 : COLORS.gray50,
     }),
   },
 });

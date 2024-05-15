@@ -23,7 +23,7 @@ export const navigationWrapperStyles: StyleObject = {
   width: "100%",
   height: "100%",
   minHeight: "44px",
-  backgroundColor: COLORS.white,
+  backgroundColor: COLORS.gray50,
   boxSizing: "border-box",
   ...expandProperty("padding", "0 16px"),
 };

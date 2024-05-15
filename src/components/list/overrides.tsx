@@ -23,7 +23,7 @@ export const getListItemOverrides = (isActive: boolean, isDisabled: boolean): Li
     ArtworkContainer: {
       style: () => {
         return {
-          color: COLORS.white,
+          color: COLORS.gray50,
           size: "40px",
         };
       },

@@ -5,7 +5,7 @@ const whiteRectangleStyles = {
   width: "100%",
   height: "30px",
   flexShrink: 0,
-  background: COLORS.white,
+  background: COLORS.gray50,
 } as const;
 
 const WhiteRect = styled("div", whiteRectangleStyles);

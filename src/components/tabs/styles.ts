@@ -6,7 +6,7 @@ export const tabBaseStyles = {
   ...withoutMarginStyles,
   paddingLeft: "24px",
   paddingRight: "24px",
-  color: COLORS.white,
+  color: COLORS.gray50,
 
   ":hover": {
     borderColor: COLORS.gray700,
@@ -26,10 +26,10 @@ export const tabVerticalStyles = {
 };
 
 export const tabActiveStyles = {
-  borderColor: `${COLORS.white} !important`,
+  borderColor: `${COLORS.gray50} !important`,
 
   ":hover": {
-    borderColor: `${COLORS.white} !important`,
+    borderColor: `${COLORS.gray50} !important`,
   },
 };
 
@@ -48,7 +48,7 @@ export const tabsBarStyles = {
 };
 
 export const tabContentStyles = {
-  color: COLORS.white,
+  color: COLORS.gray50,
   ...expandProperty("padding", "24px"),
 };
 

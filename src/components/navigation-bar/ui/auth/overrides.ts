@@ -31,7 +31,7 @@ export const getPopoverOverrides = (): PopoverOverrides => {
     },
     Inner: {
       style: {
-        backgroundColor: COLORS.white,
+        backgroundColor: COLORS.gray50,
         ...expandProperty("borderRadius", "0"),
       },
     },

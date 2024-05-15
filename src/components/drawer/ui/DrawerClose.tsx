@@ -31,7 +31,7 @@ const DrawerClose: FC<DrawerCloseProps> = ({ onClick, onFocus, onBlur }) => {
   return (
     // @ts-ignore
     <button onClick={onClick} onFocus={onFocus} onBlur={onBlur} className={css(buttonStyles)}>
-      <CloseIcon size={24} color={COLORS.white} />
+      <CloseIcon size={24} color={COLORS.gray50} />
     </button>
   );
 };

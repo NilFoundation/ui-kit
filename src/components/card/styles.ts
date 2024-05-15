@@ -7,5 +7,5 @@ export const styledWhiteHeadline: StyleObject = {
   left: 0,
   width: "100%",
   height: "8px",
-  background: COLORS.white,
+  background: COLORS.gray50,
 };
