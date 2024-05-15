@@ -1,10 +1,11 @@
 import { forwardRef } from "react";
 import { styled, useStyletron } from "baseui";
 import { COLORS } from "../../../shared";
+import { SPINNER_KIND } from "../types";
 
 type SpinnerIconProps = {
   size?: string;
-  color?: string;
+  kind: SPINNER_KIND;
   animation?: boolean;
 };
 
@@ -86,52 +87,56 @@ const rectList: TRect[] = [
   },
 ];
 
-const SpinnerIcon = forwardRef<SVGSVGElement, SpinnerIconProps>(
-  ({ size = "12", color = COLORS.white, animation }, ref) => {
-    const [css] = useStyletron();
+const SpinnerColorMap = {
+  [SPINNER_KIND.light]: COLORS.gray50,
+  [SPINNER_KIND.dark]: COLORS.gray900,
+} as const;
 
-    const RectItem = styled("rect", {
-      animationDuration: "1.2s",
-      animationTimingFunction: "linear",
-      animationIterationCount: "infinite",
-      animationName: animation
-        ? {
-            from: {
-              opacity: "1",
-            },
-            to: {
-              opacity: "0",
-            },
-          }
-        : "unset",
-    });
+const SpinnerIcon = forwardRef<SVGSVGElement, SpinnerIconProps>(({ size = "12", kind, animation }, ref) => {
+  const [css] = useStyletron();
+  const color = SpinnerColorMap[kind];
 
-    return (
-      <svg ref={ref} width={size} height={size} viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g clipPath="url(#clip0_22275_878)">
-          {rectList.map((rectItem, index) => (
-            <RectItem
-              key={index.toString()}
-              {...rectItem}
-              className={css({
-                animationDelay: `${-1.2 + index * 0.1}s`,
-              })}
-              opacity={animation ? "1" : rectItem.opacity}
-              width="0.75"
-              height="1.5"
-              fill={color}
-            />
-          ))}
-        </g>
-        <defs>
-          <clipPath id="clip0_22275_878">
-            <rect width="12" height="12" fill="white" />
-          </clipPath>
-        </defs>
-      </svg>
-    );
-  }
-);
+  const RectItem = styled("rect", {
+    animationDuration: "1.2s",
+    animationTimingFunction: "linear",
+    animationIterationCount: "infinite",
+    animationName: animation
+      ? {
+          from: {
+            opacity: "1",
+          },
+          to: {
+            opacity: "0",
+          },
+        }
+      : "unset",
+  });
+
+  return (
+    <svg ref={ref} width={size} height={size} viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clipPath="url(#clip0_22275_878)">
+        {rectList.map((rectItem, index) => (
+          <RectItem
+            key={index.toString()}
+            {...rectItem}
+            className={css({
+              animationDelay: `${-1.2 + index * 0.1}s`,
+            })}
+            opacity={animation ? "1" : rectItem.opacity}
+            width="0.75"
+            height="1.5"
+            fill={color}
+          />
+        ))}
+      </g>
+      <defs>
+        <clipPath id="clip0_22275_878">
+          <rect width="12" height="12" fill={color} />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+});
 
 SpinnerIcon.displayName = "SpinnerIcon";
 

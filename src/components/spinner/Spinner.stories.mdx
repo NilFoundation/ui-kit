@@ -1,11 +1,16 @@
 import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import Spinner from "./Spinner";
-import { SPINNER_SIZE } from "./types";
+import { SPINNER_KIND, SPINNER_SIZE } from "./types";
+import { COLORS } from "../../shared";
 
 <Meta title="Feedback/Spinner" component={Spinner} />
 
 export const Template = ({ ...args }) => {
-  return <Spinner {...args} />;
+  return (
+    <div style={args.kind === SPINNER_KIND.dark ? { backgroundColor: COLORS.gray100, padding: "24px" } : {}}>
+      <Spinner {...args} />
+    </div>
+  );
 };
 
 # Spinner
@@ -32,6 +37,9 @@ export const Template = ({ ...args }) => {
   <Story name="With Label" args={{ label: "Uploading...", animation: true }}>
     {Template.bind({})}
   </Story>
+  <Story name="With kind" args={{ label: "Uploading...", animation: true, kind: SPINNER_KIND.dark }}>
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 <ArgsTable of={Spinner} />
@@ -54,5 +62,7 @@ To use, import the component `Spinner` from `@nilfoundation/ui-kit`.
         <Spinner animation />
         // With label
         <Spinner animation label="Uploading..." />
+        // With kind
+        <Spinner animation label="Uploading..." kind={SPINNER_KIND.dark} />
   `}
 />
