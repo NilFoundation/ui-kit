@@ -1,6 +1,6 @@
 import { ButtonOverrides, CustomColors } from "baseui/button";
 import { BUTTON_KIND, BUTTON_SIZE } from "./types";
-import { Spinner, SPINNER_SIZE } from "../spinner";
+import { Spinner, SPINNER_KIND, SPINNER_SIZE } from "../spinner";
 import {
   buttonDisabledModifiedStyles,
   buttonFocusedModifiedStyles,
@@ -9,7 +9,6 @@ import {
   checkedToggleButtonModifiedStyles,
   spinnerModifiedStyles,
 } from "./style";
-import { COLORS } from "../../shared";
 
 const spinnerSize = {
   [BUTTON_SIZE.mini]: SPINNER_SIZE.xSmall,
@@ -18,23 +17,12 @@ const spinnerSize = {
   [BUTTON_SIZE.large]: SPINNER_SIZE.large,
 };
 
-const getSpinnerColor = (kind: BUTTON_KIND, disabled: boolean) => {
-  if (disabled) {
-    return COLORS.gray500;
+const getSpinnerKind = (kind: BUTTON_KIND, disabled: boolean) => {
+  if (kind === BUTTON_KIND.primary) {
+    return SPINNER_KIND.dark;
   }
 
-  switch (kind) {
-    case BUTTON_KIND.primary:
-      return COLORS.gray900;
-    case BUTTON_KIND.secondary:
-    case BUTTON_KIND.tertiary:
-    case BUTTON_KIND.text:
-    case BUTTON_KIND.toggle:
-    case BUTTON_KIND.danger:
-      return COLORS.gray50;
-    default:
-      return COLORS.black;
-  }
+  return disabled ? SPINNER_KIND.light : SPINNER_KIND.dark;
 };
 
 export const getButtonOverrides = (
@@ -78,7 +66,7 @@ export const getButtonOverrides = (
     },
     LoadingSpinner: {
       component: ({ $disabled }) => (
-        <Spinner color={getSpinnerColor(kind, $disabled)} size={spinnerSize[size]} animation />
+        <Spinner kind={getSpinnerKind(kind, $disabled)} size={spinnerSize[size]} animation />
       ),
     },
     LoadingSpinnerContainer: {

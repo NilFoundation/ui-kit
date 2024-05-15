@@ -1,15 +1,15 @@
 import React, { memo } from "react";
 import SpinnerIcon from "./ui/SpinnerIcon";
 import SpinnerBlock from "./ui/SpinnerBlock";
-import { SPINNER_SIZE } from "./types";
+import { SPINNER_KIND, SPINNER_SIZE } from "./types";
 import SpinnerLabel from "./ui/SpinnerLabel";
 
 export type SpinnerProps = {
   size?: SPINNER_SIZE;
   label?: React.ReactNode;
   animation?: boolean;
-  color?: string;
   className?: string;
+  kind?: SPINNER_KIND;
 };
 
 const spinnerIconSize = {
@@ -20,11 +20,21 @@ const spinnerIconSize = {
   [SPINNER_SIZE.xLarge]: "32",
 };
 
-const Spinner: React.FC<SpinnerProps> = ({ size = SPINNER_SIZE.medium, color, animation, label, ...props }) => {
+const Spinner: React.FC<SpinnerProps> = ({
+  size = SPINNER_SIZE.medium,
+  kind = SPINNER_KIND.light,
+  animation,
+  label,
+  ...props
+}) => {
   return (
     <SpinnerBlock {...props}>
-      <SpinnerIcon animation={animation} color={color} size={spinnerIconSize[size]} />
-      {label && <SpinnerLabel size={size}>{label}</SpinnerLabel>}
+      <SpinnerIcon animation={animation} kind={kind} size={spinnerIconSize[size]} />
+      {label && (
+        <SpinnerLabel kind={kind} size={size}>
+          {label}
+        </SpinnerLabel>
+      )}
     </SpinnerBlock>
   );
 };

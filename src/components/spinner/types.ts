@@ -5,3 +5,8 @@ export enum SPINNER_SIZE {
   large = "large",
   xLarge = "xLarge",
 }
+
+export enum SPINNER_KIND {
+  dark = "dark",
+  light = "light",
+}
