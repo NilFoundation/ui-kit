@@ -8,9 +8,9 @@ export const listStyles = {
   ...withoutBorderStyles,
   ...expandProperty("borderRadius", "8px"),
   ...expandProperty("padding", "8px"),
-  ...expandProperty("boxShadow", "none"),
+  boxShadow: "none",
   outline: "none !important",
-  backgroundColor: COLORS.gray900,
+  backgroundColor: COLORS.gray800,
 };
 
 export const headerBaseStyles: StyleObject = {
@@ -40,7 +40,6 @@ export const headerModifiedStyles = {
 
 const itemModifiedStyles = {
   [MENU_SIZE.small]: {
-    padding: "6px 12px",
     ...expandProperty("padding", "6px 12px"),
     height: "32px",
   },
@@ -54,45 +53,39 @@ const itemModifiedStyles = {
   },
 };
 
-const itemSelectedStyles: StyleObject = {
-  backgroundColor: COLORS.gray800,
-};
-
-const itemDisabledStyles = {
-  backgroundColor: "transparent",
-  color: COLORS.gray600,
-  cursor: "not-allowed",
-
-  ":hover": {
-    backgroundColor: "transparent",
-    color: COLORS.gray600,
+const linkComponentModifiedStyles = {
+  [MENU_SIZE.small]: {
+    ...expandProperty("margin", "-6px -12px"),
+    ...expandProperty("padding", "6px 12px"),
   },
-
-  ":hover > div": {
-    color: COLORS.gray600,
+  [MENU_SIZE.medium]: {
+    ...expandProperty("margin", "-6px -16px"),
+    ...expandProperty("padding", "0 16px"),
   },
-
-  ":hover > svg": {
-    fill: COLORS.gray600,
+  [MENU_SIZE.large]: {
+    ...expandProperty("margin", "-6px -16px"),
+    ...expandProperty("padding", "0 16px"),
   },
 };
 
-const itemHighlightedStyles: StyleObject = {
-  backgroundColor: COLORS.gray800,
-  color: COLORS.white,
+const ativeItemStyles: StyleObject = {
+  backgroundColor: COLORS.gray600,
+  color: COLORS.gray50,
+  fill: COLORS.gray50,
 };
 
-export const svgActiveStyles: StyleObject = {
-  fill: COLORS.white,
+export const svgStyles: StyleObject = {
+  fill: "inherit",
 };
 
 export const getItemContainerStyles = (
   size: MENU_SIZE,
   disabled: boolean,
   isHighlighted: boolean,
-  ariaSelected: boolean
+  selected: boolean,
+  isActive: boolean
 ): StyleObject => {
-  return {
+  const constantStyles = {
     display: "flex",
     alignItems: "center",
     width: "100%",
@@ -100,47 +93,48 @@ export const getItemContainerStyles = (
     cursor: "pointer",
     gap: "8px",
     color: COLORS.gray200,
+    backgroundColor: "transparent",
     fontWeight: 500,
     ...expandProperty("borderRadius", "4px"),
-    ...expandProperty("transition", "color 0.15s"),
-
-    ":hover": {
-      backgroundColor: COLORS.gray800,
-      color: COLORS.white,
-    },
-
-    ":hover > div": {
-      color: COLORS.white,
-    },
-
-    ":hover > svg": {
-      fill: COLORS.white,
-    },
-
+    ...expandProperty("transition", "background-color 0.15s, color 0.15s, fill 0.15s"),
     ...itemModifiedStyles[size],
-    ...(ariaSelected ? itemSelectedStyles : {}),
-    ...(isHighlighted ? itemHighlightedStyles : {}),
-    ...(disabled ? itemDisabledStyles : {}),
+  } as const;
+
+  if (disabled) {
+    return {
+      ...constantStyles,
+      backgroundColor: "transparent",
+      color: COLORS.gray600,
+      cursor: "not-allowed",
+    };
+  }
+
+  if (selected || isHighlighted || isActive) {
+    return {
+      ...constantStyles,
+      ...ativeItemStyles,
+    };
+  }
+
+  return {
+    ...constantStyles,
+    ":hover": {
+      backgroundColor: COLORS.gray700,
+      color: COLORS.gray50,
+      fill: COLORS.gray50,
+    },
   };
 };
 
-export const LinkComponentStyles = {
+export const getLinkComponentStyles = (size: MENU_SIZE): StyleObject => ({
   display: "flex",
   alignItems: "center",
   width: "100%",
   height: "100%",
   gap: "8px",
-};
-
-export const getItemParagraphColor = (isActive: boolean, isDisabled: boolean) => {
-  if (isDisabled) {
-    return COLORS.gray600;
-  }
-  if (isActive) {
-    return COLORS.gray50;
-  }
-  return COLORS.gray200;
-};
+  backgroundColor: "transparent",
+  ...linkComponentModifiedStyles[size],
+});
 
 export const itemTypographyStyles = {
   textDecoration: "none",

@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 export type NavigationItem<T = unknown> = T & {
   id: string;
   label: ReactNode;
-  isSelected?: boolean;
+  selected?: boolean;
   disabled?: boolean;
   children?: Array<NavigationItem<T>>;
   href?: string;

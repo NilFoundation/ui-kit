@@ -78,7 +78,11 @@ export const getSelectOverrides = (
     Dropdown: {
       style: () => ({
         ...expandProperty("borderRadius", "8px"),
+        ...expandProperty("padding", "8px"),
         backgroundColor: COLORS.gray800,
+        display: "flex",
+        flexDirection: "column",
+        gap: "2px",
       }),
     },
     Popover: {
