@@ -166,5 +166,5 @@ export const emptyStateTitleStyles = {
 
 export const menuDividerStyles = {
   borderBottom: `1px solid ${COLORS.gray700}`,
-  ...expandProperty("margin", "4px 0"),
+  ...expandProperty("margin", "8px 0"),
 };

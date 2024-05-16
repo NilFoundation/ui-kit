@@ -1,5 +1,5 @@
 import { ComponentProps, FC, ReactNode } from "react";
-import { HeadingMedium, HeadingSmall, HeadingXSmall, ParagraphSmall } from "baseui/typography";
+import { ParagraphLarge, ParagraphMedium, ParagraphSmall } from "baseui/typography";
 import { useStyletron } from "baseui";
 import { MENU_SIZE } from "../types";
 import { headerModifiedStyles } from "../styles";
@@ -13,9 +13,9 @@ type MenuHeader = {
 type TypographyProps = ComponentProps<typeof ParagraphSmall>;
 
 const paragraphComponent = {
-  [MENU_SIZE.small]: (props: TypographyProps) => <HeadingXSmall as="li" {...props} />,
-  [MENU_SIZE.medium]: (props: TypographyProps) => <HeadingSmall as="li" {...props} />,
-  [MENU_SIZE.large]: (props: TypographyProps) => <HeadingMedium as="li" {...props} />,
+  [MENU_SIZE.small]: (props: TypographyProps) => <ParagraphSmall as="li" {...props} />,
+  [MENU_SIZE.medium]: (props: TypographyProps) => <ParagraphMedium as="li" {...props} />,
+  [MENU_SIZE.large]: (props: TypographyProps) => <ParagraphLarge as="li" {...props} />,
 };
 
 const MenuHeader: FC<MenuHeader> = ({ size, children }) => {
