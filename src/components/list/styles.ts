@@ -19,12 +19,12 @@ export const listItemContentStyles = {
 };
 
 export const listItemContentActiveStyles = {
-  backgroundImage: `linear-gradient(to right, ${COLORS.white} 100%, rgba(255,255,255,0) 0%)`,
-  color: COLORS.white,
+  backgroundImage: `linear-gradient(to right, ${COLORS.gray50} 100%, rgba(255,255,255,0) 0%)`,
+  color: COLORS.gray50,
 
   ":hover": {
-    backgroundImage: `linear-gradient(to right, ${COLORS.white} 100%, rgba(255,255,255,0) 0%)`,
-    color: COLORS.white,
+    backgroundImage: `linear-gradient(to right, ${COLORS.gray50} 100%, rgba(255,255,255,0) 0%)`,
+    color: COLORS.gray50,
   },
 };
 
@@ -43,7 +43,7 @@ export const listHeadingContentStyles = {
   ...expandProperty("padding", "8px 0"),
   position: "relative",
   marginLeft: "0",
-  color: COLORS.white,
+  color: COLORS.gray50,
 };
 
 export const listHeadingContainerStyles = {

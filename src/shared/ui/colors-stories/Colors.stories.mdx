@@ -1,20 +1,12 @@
 import { Meta, Source, Canvas, Story } from "@storybook/blocks";
-import StoriesLayout from "../stories-layout";
-import { COLORS } from "../../theme";
-import ColorPlate from "./ColorPlate";
+import ColorsContainer from "./ColorsContainer";
 
 <Meta title="Media/Colors" />
 
 # Colors
 
 export const Template = () => {
-  return (
-    <StoriesLayout isColumn>
-      {Object.keys(COLORS).map((color) => (
-        <ColorPlate key={color} colorHex={COLORS[color]} colorName={color} />
-      ))}
-    </StoriesLayout>
-  );
+  return <ColorsContainer />;
 };
 
 <Canvas isColumn>

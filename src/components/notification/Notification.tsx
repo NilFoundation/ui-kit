@@ -19,15 +19,15 @@ const actionColors = {
   [NOTIFICATION_KIND.info]: undefined,
   [NOTIFICATION_KIND.warning]: {
     backgroundColor: COLORS.yellow600,
-    color: COLORS.white,
+    color: COLORS.gray50,
   },
   [NOTIFICATION_KIND.negative]: {
     backgroundColor: COLORS.red600,
-    color: COLORS.white,
+    color: COLORS.gray50,
   },
   [NOTIFICATION_KIND.positive]: {
     backgroundColor: COLORS.green600,
-    color: COLORS.white,
+    color: COLORS.gray50,
   },
 };
 

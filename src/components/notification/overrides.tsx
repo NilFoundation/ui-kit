@@ -11,7 +11,7 @@ export const getNotificationOverrides = (): ToastOverrides => {
       style: ({ $kind }) => {
         const modifiedStyles = notificationBodyModifiedStyles?.[$kind as NOTIFICATION_KIND] ?? {};
         return {
-          color: COLORS.white,
+          color: COLORS.gray50,
           ...withoutBorderStyles,
           ...expandProperty("padding", "16px 20px"),
           ...modifiedStyles,

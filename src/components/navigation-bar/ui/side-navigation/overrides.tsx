@@ -11,7 +11,7 @@ export const getDrawerOverrides = (): DrawerOverrides => {
   return {
     DrawerContainer: {
       style: {
-        backgroundColor: COLORS.white,
+        backgroundColor: COLORS.gray50,
       },
     },
     DrawerBody: {
@@ -46,10 +46,10 @@ export const getTreeViewOverrides = (itemAs?: (item: NavigationItem) => ReactNod
           ...expandProperty("borderBottom", `1px solid ${COLORS.gray100}`),
           color: "inherit",
           marginLeft: !$hasChildren ? "-20px" : "0",
-          backgroundColor: COLORS.white,
+          backgroundColor: COLORS.gray50,
 
           ":hover": {
-            backgroundColor: COLORS.white,
+            backgroundColor: COLORS.gray50,
           },
         };
       },

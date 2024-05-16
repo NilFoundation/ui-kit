@@ -39,7 +39,7 @@ const FormControlLabel: FC<FormControlLabelProps> = ({
   const [css] = useStyletron();
   const LabelComponent = labelComponent[size];
 
-  const labelColor = isDisabled ? COLORS.gray300 : COLORS.white;
+  const labelColor = isDisabled ? COLORS.gray300 : COLORS.gray50;
 
   return (
     <div className={css(containerStyles)}>
