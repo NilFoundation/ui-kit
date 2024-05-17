@@ -1,17 +1,18 @@
 import { StyleObject } from "styletron-react";
-import { MENU_SIZE } from "./types";
+import { MENU_SIZE, MenuProps } from "./types";
 import { COLORS } from "../../shared";
 import { withoutBorderStyles } from "../../shared/styles/borderStyles";
 import { expandProperty } from "inline-style-expand-shorthand";
+import { MenuItemComponentProps } from "./ui/types";
 
-export const listStyles = {
+export const getListStyles = (isDropdown: MenuProps["isDropdown"]): StyleObject => ({
   ...withoutBorderStyles,
   ...expandProperty("borderRadius", "8px"),
   ...expandProperty("padding", "8px"),
   boxShadow: "none",
   outline: "none !important",
-  backgroundColor: COLORS.gray800,
-};
+  backgroundColor: isDropdown ? COLORS.gray800 : COLORS.gray900,
+});
 
 export const headerBaseStyles: StyleObject = {
   display: "flex",
@@ -29,12 +30,12 @@ export const headerModifiedStyles = {
   [MENU_SIZE.medium]: {
     ...headerBaseStyles,
     height: "32px",
-    ...expandProperty("padding", "4px 16px"),
+    ...expandProperty("padding", "6px 16px"),
   },
   [MENU_SIZE.large]: {
     ...headerBaseStyles,
     height: "40px",
-    ...expandProperty("padding", "4px 16px"),
+    ...expandProperty("padding", "6px 16px"),
   },
 };
 
@@ -44,11 +45,11 @@ const itemModifiedStyles = {
     height: "32px",
   },
   [MENU_SIZE.medium]: {
-    ...expandProperty("padding", "0 16px"),
+    ...expandProperty("padding", "8px 16px"),
     height: "48px",
   },
   [MENU_SIZE.large]: {
-    ...expandProperty("padding", "0 16px"),
+    ...expandProperty("padding", "8px 16px"),
     height: "56px",
   },
 };
@@ -68,11 +69,11 @@ const linkComponentModifiedStyles = {
   },
 };
 
-const ativeItemStyles: StyleObject = {
-  backgroundColor: COLORS.gray600,
+const getActiveItemStyles = (isDropdownItem: MenuItemComponentProps["isDropdownItem"]): StyleObject => ({
+  backgroundColor: isDropdownItem ? COLORS.gray600 : COLORS.gray700,
   color: COLORS.gray50,
   fill: COLORS.gray50,
-};
+});
 
 export const svgStyles: StyleObject = {
   fill: "inherit",
@@ -83,7 +84,8 @@ export const getItemContainerStyles = (
   disabled: boolean,
   isHighlighted: boolean,
   selected: boolean,
-  isActive: boolean
+  isActive: boolean,
+  isDropdownItem: MenuItemComponentProps["isDropdownItem"]
 ): StyleObject => {
   const constantStyles = {
     display: "flex",
@@ -112,14 +114,14 @@ export const getItemContainerStyles = (
   if (selected || isHighlighted || isActive) {
     return {
       ...constantStyles,
-      ...ativeItemStyles,
+      ...getActiveItemStyles(isDropdownItem),
     };
   }
 
   return {
     ...constantStyles,
     ":hover": {
-      backgroundColor: COLORS.gray700,
+      backgroundColor: isDropdownItem ? COLORS.gray700 : COLORS.gray800,
       color: COLORS.gray50,
       fill: COLORS.gray50,
     },

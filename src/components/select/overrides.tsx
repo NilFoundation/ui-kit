@@ -72,18 +72,19 @@ export const getSelectOverrides = (
           item: { ...item, isActive, selected },
           size: MENU_SIZE.small,
           isHighlighted,
+          isDropdownItem: true,
         };
       },
     },
     Dropdown: {
-      style: () => ({
+      style: {
         ...expandProperty("borderRadius", "8px"),
         ...expandProperty("padding", "8px"),
         backgroundColor: COLORS.gray800,
         display: "flex",
         flexDirection: "column",
         gap: "2px",
-      }),
+      },
     },
     Popover: {
       props: {

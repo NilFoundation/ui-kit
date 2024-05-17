@@ -1,6 +1,6 @@
 import { cloneElement, forwardRef } from "react";
 import { MENU_SIZE, MenuItemTypographyProps } from "../types";
-import { ParagraphSmall, ParagraphMedium, ParagraphLarge } from "baseui/typography";
+import { LabelSmall, LabelMedium, LabelLarge } from "baseui/typography";
 import { useStyletron, styled } from "baseui";
 import { Checkbox } from "../../checkbox";
 import {
@@ -16,9 +16,9 @@ import { getCustomLinkComponent } from "../../../shared/ui/getCustomLinkComponen
 import { MenuItemComponentProps } from "./types";
 
 const paragraphComponent = {
-  [MENU_SIZE.small]: (props: MenuItemTypographyProps) => <ParagraphSmall as="div" {...props} />,
-  [MENU_SIZE.medium]: (props: MenuItemTypographyProps) => <ParagraphMedium as="div" {...props} />,
-  [MENU_SIZE.large]: (props: MenuItemTypographyProps) => <ParagraphLarge as="div" {...props} />,
+  [MENU_SIZE.small]: (props: MenuItemTypographyProps) => <LabelSmall as="div" {...props} />,
+  [MENU_SIZE.medium]: (props: MenuItemTypographyProps) => <LabelMedium as="div" {...props} />,
+  [MENU_SIZE.large]: (props: MenuItemTypographyProps) => <LabelLarge as="div" {...props} />,
 };
 
 const iconSizeMap = {
@@ -28,13 +28,13 @@ const iconSizeMap = {
 };
 
 const MenuItem = forwardRef<HTMLLIElement, MenuItemComponentProps>(
-  ({ size, item, onClick, disabled, onMouseEnter, id }, ref) => {
+  ({ size, item, onClick, disabled, onMouseEnter, id, isDropdownItem }, ref) => {
     const [css] = useStyletron();
 
     const isSelected = item.selected && !disabled;
     const Item = styled(
       "li",
-      getItemContainerStyles(size, !!disabled, !!item.isHighlighted, !!isSelected, !!item.isActive)
+      getItemContainerStyles(size, !!disabled, !!item.isHighlighted, !!isSelected, !!item.isActive, isDropdownItem)
     );
     const EndWrapper = styled("span", ItemEndWrapperStyles);
     const TypographyComponent = paragraphComponent[size];

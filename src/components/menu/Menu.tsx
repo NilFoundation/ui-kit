@@ -4,9 +4,9 @@ import { getMenuOverrides } from "./overrides";
 import { MENU_SIZE, MenuProps } from "./types";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
-const Menu: FC<MenuProps> = ({ size = MENU_SIZE.medium, overrides: baseOverrides, ...props }) => {
+const Menu: FC<MenuProps> = ({ size = MENU_SIZE.medium, overrides: baseOverrides, isDropdown = false, ...props }) => {
   const rootRef = useRef<HTMLUListElement | null>(null);
-  const menuOverrides = getMenuOverrides(size);
+  const menuOverrides = getMenuOverrides(size, isDropdown);
   const overrides = getMergedOverrides(menuOverrides, baseOverrides);
 
   useEffect(() => {

@@ -10,4 +10,5 @@ export type MenuItemComponentProps = {
   onClick?: () => void;
   onMouseEnter?: () => void;
   id?: string;
+  isDropdownItem?: boolean;
 };

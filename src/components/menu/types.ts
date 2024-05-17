@@ -12,7 +12,7 @@ export enum MENU_SIZE {
 export type MenuItemTypographyProps = ComponentProps<typeof ParagraphSmall>;
 
 export type MenuItem = {
-  /** Highlights item nad adds a checkbox if true */
+  /** Highlights item and adds a checkbox if true */
   selected?: boolean;
   suffixText?: string;
   startEnhancer?: ReactElement;
@@ -41,4 +41,5 @@ export type GroupedItems = {
 export type MenuProps = Omit<StatefulMenuProps, "items"> & {
   size?: MENU_SIZE;
   items: Items | GroupedItems;
+  isDropdown?: boolean;
 };
