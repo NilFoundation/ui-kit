@@ -3,7 +3,7 @@ import { COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
 
 export const getRadioMarkOuterStyles = (isChecked: boolean, isFocused: boolean): StyleObject => {
-  const backgroundColor = isChecked ? COLORS.white : COLORS.gray500;
+  const backgroundColor = isChecked ? COLORS.gray50 : COLORS.gray500;
   const backgroundColorHover = isChecked ? COLORS.gray50 : COLORS.gray500;
 
   return {

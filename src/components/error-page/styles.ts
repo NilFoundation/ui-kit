@@ -8,7 +8,7 @@ export const mobileMediaQuery = `@media (max-width: ${mobileScreenMaxWidth}px)`;
 const containerStyles = {
   width: "100%",
   height: "100%",
-  color: COLORS.white,
+  color: COLORS.gray50,
   flexGrow: "1",
   background: `url(${svgInlineDotsPattern}), repeat`,
   [desktopMediaQuery]: {

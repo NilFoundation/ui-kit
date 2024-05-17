@@ -32,7 +32,7 @@ export const dashedBlockStyles: StyleObject = {
 };
 
 export const dashedBlockActiveStyles: StyleObject = {
-  backgroundImage: `linear-gradient(to right, ${COLORS.white} 50%, transparent 50%)`,
+  backgroundImage: `linear-gradient(to right, ${COLORS.gray50} 50%, transparent 50%)`,
 };
 
 export const dashedBlockErrorStyles: StyleObject = {
@@ -59,7 +59,7 @@ export const getDashedBlockInfiniteStyles = (index: number, totalAmountOfBlocks:
     backgroundImage: `linear-gradient(to right, ${COLORS.gray700} 50%, transparent 50%)`,
     animationName: {
       from: {
-        backgroundImage: `linear-gradient(to right, ${COLORS.white} 50%, transparent 50%)`,
+        backgroundImage: `linear-gradient(to right, ${COLORS.gray50} 50%, transparent 50%)`,
       },
       to: {
         backgroundImage: `linear-gradient(to right, ${COLORS.gray700} 50%, transparent 50%)`,

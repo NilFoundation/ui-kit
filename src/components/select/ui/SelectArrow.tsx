@@ -10,7 +10,7 @@ type SelectArrowProps = {
   searchable?: boolean;
 };
 
-const SelectArrow: FC<SelectArrowProps> = ({ color = COLORS.white, isRotated, searchable, ...restProps }) => {
+const SelectArrow: FC<SelectArrowProps> = ({ color = COLORS.gray50, isRotated, searchable, ...restProps }) => {
   const [css] = useStyletron();
   const { controlRef } = useContext(SelectContext);
   const onClick = () => {

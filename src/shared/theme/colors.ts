@@ -11,7 +11,6 @@ export const COLORS = {
   gray700: "#444444",
   gray800: "#2F2F2F",
   gray900: "#212121",
-  white: "#F1F1F1",
   black: "#0F0F0F",
 
   red50: "#FBEBEC",
@@ -79,8 +78,6 @@ export const COLORS = {
   orange700: "#5D4901",
   orange800: "#403303",
   orange900: "#241D05",
-
-  mono600: "#292929",
 } as const;
 
 /**

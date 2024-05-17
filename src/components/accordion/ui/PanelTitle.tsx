@@ -31,13 +31,13 @@ const PanelTitle: FC<PanelTitle> = ({ title, description, icon }) => {
       {icon &&
         React.cloneElement(icon as ReactElement, {
           size: "20px",
-          color: COLORS.white,
+          color: COLORS.gray50,
           className: css(iconStyles),
         })}
       <div>
         {title}
         {description && (
-          <ParagraphSmall color={COLORS.white} className={css(descriptionStyles)}>
+          <ParagraphSmall color={COLORS.gray50} className={css(descriptionStyles)}>
             {description}
           </ParagraphSmall>
         )}

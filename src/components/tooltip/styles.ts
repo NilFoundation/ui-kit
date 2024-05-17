@@ -9,7 +9,7 @@ export const tooltipBodyStyles = {
 
 export const tooltipInnerStyles = {
   backgroundColor: COLORS.gray700,
-  color: COLORS.white,
+  color: COLORS.gray50,
   textAlign: "center",
   lineHeight: "20px",
 };

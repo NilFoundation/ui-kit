@@ -12,12 +12,12 @@ export const badgeBaseStyles = {
 
 export const badgeColorModifiedStyles = {
   [BADGE_COLOR.accent]: {
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.gray50,
     color: COLORS.black,
   },
   [BADGE_COLOR.positive]: {
     backgroundColor: COLORS.green500,
-    color: COLORS.white,
+    color: COLORS.gray50,
   },
   [BADGE_COLOR.warning]: {
     backgroundColor: COLORS.yellow500,
@@ -25,7 +25,7 @@ export const badgeColorModifiedStyles = {
   },
   [BADGE_COLOR.negative]: {
     backgroundColor: COLORS.red500,
-    color: COLORS.white,
+    color: COLORS.gray50,
   },
 };
 

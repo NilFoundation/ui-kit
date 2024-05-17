@@ -3,7 +3,7 @@ import { COLORS } from "../../shared";
 
 export const notificationBodyModifiedStyles = {
   [NOTIFICATION_KIND.info]: {
-    backgroundColor: COLORS.mono600,
+    backgroundColor: COLORS.gray700,
   },
   [NOTIFICATION_KIND.warning]: {
     backgroundColor: COLORS.yellow700,
