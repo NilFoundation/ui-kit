@@ -19,14 +19,14 @@ export const chartDefaultOptions: DeepPartial<ChartOptions> = {
   },
   crosshair: {
     vertLine: {
-      color: COLORS.gray50,
+      color: COLORS.gray400,
       width: 1,
       style: 0,
-      visible: true,
-      labelVisible: true,
+      labelVisible: false,
+      visible: false,
     },
     horzLine: {
-      color: COLORS.gray50,
+      color: COLORS.gray400,
       width: 1,
       style: 0,
       visible: true,
