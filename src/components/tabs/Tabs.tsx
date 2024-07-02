@@ -1,9 +1,8 @@
 import { FC } from "react";
-import { Tabs as BaseTabs, TabsProps as BaseTabsProps, ORIENTATION } from "baseui/tabs";
+import { Tabs as BaseTabs, ORIENTATION } from "baseui/tabs";
 import { getTabsOverrides } from "./overrides";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
-
-export type TabsProps = BaseTabsProps;
+import { TabsProps } from "./types";
 
 const Tabs: FC<TabsProps> = ({ overrides: baseOverrides, ...props }) => {
   const tabsOverrides = getTabsOverrides();
