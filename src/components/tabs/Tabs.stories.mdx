@@ -3,23 +3,30 @@ import Tabs, { ORIENTATION } from "./Tabs";
 import Tab from "./Tab";
 import { HeartIcon } from "../icons";
 import { useState } from "react";
+import { TAB_KIND } from "./types";
 
 <Meta title="Disclosure/Tabs" component={Tabs} />
 
-export const Template = ({ startEnhancer, endEnhancer, activeKey: baseActiveKey = "0", ...args }) => {
+export const Template = ({
+  startEnhancer,
+  endEnhancer,
+  activeKey: baseActiveKey = "0",
+  tabKind = TAB_KIND.primary,
+  ...args
+}) => {
   const [activeKey, setActiveKey] = useState(baseActiveKey);
   const onChangeHandler = (currentKey) => {
     setActiveKey(currentKey.activeKey);
   };
   return (
     <Tabs {...args} activeKey={activeKey} onChange={onChangeHandler}>
-      <Tab title="Tab Link 1" startEnhancer={startEnhancer} endEnhancer={endEnhancer}>
+      <Tab title="Tab Link 1" startEnhancer={startEnhancer} endEnhancer={endEnhancer} kind={tabKind}>
         <span>Tab Content 1</span>
       </Tab>
-      <Tab title="Tab Link 2">
+      <Tab title="Tab Link 2" kind={tabKind}>
         <span>Tab Content 2</span>
       </Tab>
-      <Tab title="Tab Link 3">
+      <Tab title="Tab Link 3" kind={tabKind}>
         <span>Tab Content 3</span>
       </Tab>
     </Tabs>
@@ -45,6 +52,12 @@ export const Template = ({ startEnhancer, endEnhancer, activeKey: baseActiveKey 
     {Template.bind({})}
   </Story>
   <Story name="With End Enhancer" args={{ endEnhancer: <HeartIcon /> }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Secondary Tab Kind" args={{ tabKind: TAB_KIND.secondary, startEnhancer: <HeartIcon /> }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Disabled With Secondary Tab Kind" args={{ tabKind: TAB_KIND.secondary, disabled: true }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -90,6 +103,12 @@ To use, import the components `Tabs` and `Tab` from `@nilfoundation/ui-kit`.
         // Vertical
         <Tabs orientation={TABS_ORIENTATION.vertical}>
           ...
+        </Tabs>
+        // With secondary tab kind
+        <Tabs>
+          <Tab title="Tab Link 3" kind={TAB_KIND.secondary}>
+            <span>Tab Content 3</span>
+          </Tab>
         </Tabs>
   `}
 />

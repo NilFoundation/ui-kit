@@ -1,20 +1,30 @@
 import { ORIENTATION, TabOverrides, TabsOverrides } from "baseui/tabs";
 import {
-  tabActiveStyles,
+  tabPrimaryActiveStyles,
   tabContentStyles,
-  tabDisabledStyles,
+  tabPrimaryDisabledStyles,
   tabsBarStyles,
-  tabStyles,
-  tabVerticalStyles,
+  tabSecondaryActiveStyles,
+  tabSecondaryStyles,
+  tabPrimaryStyles,
+  tabPrimaryVerticalStyles,
+  tabSecondaryDisabledStyles,
 } from "./styles";
+import { TAB_KIND } from "./types";
 
-export const getTabOverrides = (): TabOverrides => {
+export const getTabOverrides = (kind: TAB_KIND): TabOverrides => {
+  const tabStyles = kind === TAB_KIND.primary ? tabPrimaryStyles : tabSecondaryStyles;
+  const activeStyles = kind === TAB_KIND.primary ? tabPrimaryActiveStyles : tabSecondaryActiveStyles;
+  const tabDisabledStyles = kind === TAB_KIND.primary ? tabPrimaryDisabledStyles : tabSecondaryDisabledStyles;
+  const tabVerticalStyles = kind === TAB_KIND.primary ? tabPrimaryVerticalStyles : {};
+
   return {
     Tab: {
       style: ({ $disabled, $active, $orientation, $isFocusVisible }) => {
         return {
-          ...($orientation === ORIENTATION.vertical ? tabVerticalStyles : tabStyles),
-          ...($active || $isFocusVisible ? tabActiveStyles : {}),
+          ...tabStyles,
+          ...($orientation === ORIENTATION.vertical ? tabVerticalStyles : {}),
+          ...($active || $isFocusVisible ? activeStyles : {}),
           ...($disabled ? tabDisabledStyles : {}),
         };
       },
