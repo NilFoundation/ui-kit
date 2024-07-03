@@ -3,4 +3,5 @@ import Tab from "./Tab";
 
 export { Tabs, Tab, TABS_ORIENTATION };
 
-export type { TabProps, TabsProps, TAB_KIND } from "./types";
+export { TAB_KIND } from "./types";
+export type { TabProps, TabsProps } from "./types";
