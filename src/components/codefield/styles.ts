@@ -11,7 +11,7 @@ const getContainerStyles = (size: CODE_FIELD_SIZE): StyleObject => ({
   ...expandProperty("padding", "24px"),
   display: "flex",
   justifyContent: "space-between",
-  alignItems: "center",
+  alignItems: "flex-start",
   flexWrap: "nowrap",
   gap: "16px",
   ...expandProperty("transition", "background 0.15s"),
@@ -23,6 +23,7 @@ const getContainerStyles = (size: CODE_FIELD_SIZE): StyleObject => ({
 
 const codemirrorStyles: StyleObject = {
   minWidth: 0,
+  flexGrow: 1,
   ":focus-within .cm-editor": {
     outline: "none",
   },

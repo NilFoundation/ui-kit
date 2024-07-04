@@ -26,6 +26,7 @@ export type CodeFieldProps = {
   readOnly?: ReactCodeMirrorProps["readOnly"];
   onChange?: ReactCodeMirrorProps["onChange"];
   size?: CODE_FIELD_SIZE;
+  codeMirrorClassName?: number;
 } & HTMLAttributes<HTMLDivElement>;
 
 const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFieldProps> = (
@@ -42,6 +43,7 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
     readOnly = true,
     onChange,
     size = CODE_FIELD_SIZE.medium,
+    codeMirrorClassName,
     ...rest
   },
   ref
@@ -68,7 +70,7 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
         onChange={onChange}
         theme={getCodeMirrorTheme(themeOverrides)}
         basicSetup={getCodeMirrorBasicSetup(showLineNumbers, editable)}
-        className={css(s.codemirrorStyles)}
+        className={`${css(s.codemirrorStyles)} ${codeMirrorClassName}`}
       />
       {displayCopy && (
         <MemoizedCopyButton
