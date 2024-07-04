@@ -26,7 +26,7 @@ export type CodeFieldProps = {
   readOnly?: ReactCodeMirrorProps["readOnly"];
   onChange?: ReactCodeMirrorProps["onChange"];
   size?: CODE_FIELD_SIZE;
-  codeMirrorClassName?: number;
+  codeMirrorClassName?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
 const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFieldProps> = (
