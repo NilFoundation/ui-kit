@@ -20,11 +20,11 @@ export const getTabOverrides = (kind: TAB_KIND): TabOverrides => {
 
   return {
     Tab: {
-      style: ({ $disabled, $active, $orientation, $isFocusVisible }) => {
+      style: ({ $disabled, $active, $orientation }) => {
         return {
           ...tabStyles,
           ...($orientation === ORIENTATION.vertical ? tabVerticalStyles : {}),
-          ...($active || $isFocusVisible ? activeStyles : {}),
+          ...($active ? activeStyles : {}),
           ...($disabled ? tabDisabledStyles : {}),
         };
       },

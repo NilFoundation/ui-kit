@@ -69,7 +69,7 @@ export const contentWrapperSecondaryStyles = {
 export const tabSecondaryStyles = {
   color: COLORS.gray200,
   height: "32px",
-  background: "transparent",
+  background: COLORS.gray900,
   ...expandProperty("borderRadius", "8px"),
   ...expandProperty("padding", "0"),
   ...expandProperty("margin", "4px"),
@@ -79,25 +79,25 @@ export const tabSecondaryStyles = {
   transition: "background-color 0.15s, color 0.15s",
 
   ":hover": {
-    backgroundColor: COLORS.gray800,
+    background: COLORS.gray800,
   },
 };
 
 export const tabSecondaryActiveStyles = {
-  backgroundColor: COLORS.gray50,
+  background: COLORS.gray50,
   color: COLORS.gray900,
 
   ":hover": {
-    backgroundColor: COLORS.gray50,
+    background: COLORS.gray50,
     color: COLORS.gray900,
   },
 };
 
 export const tabSecondaryDisabledStyles = {
   color: COLORS.gray500,
-  backgroundColor: "transparent",
+  background: COLORS.gray900,
 
   ":hover": {
-    backgroundColor: "transparent",
+    background: COLORS.gray900,
   },
 };
