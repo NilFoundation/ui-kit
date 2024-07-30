@@ -24,6 +24,7 @@ export type ButtonCommonProps = Omit<BaseButtonProps, "kind" | "shape" | "size">
   isLoading?: boolean;
   className?: string;
   role?: AriaRole;
+  tabIndex?: number;
 };
 
 export type ToggleButtonProps = {

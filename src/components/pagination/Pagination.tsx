@@ -4,15 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "../icons";
 import { PageElementProps, PaginationProps } from "./types";
 import { useStyletron } from "baseui";
 
-export const PageElement = ({
-  page,
-  linkMapper,
-  pageHandler,
-  label,
-  disabled,
-  active,
-  buttonSize,
-}: PageElementProps) => {
+const PageElement = ({ page, linkMapper, pageHandler, label, disabled, active, buttonSize }: PageElementProps) => {
   const buttonProps: ButtonProps = {
     disabled,
     kind: active ? BUTTON_KIND.primary : BUTTON_KIND.secondary,
@@ -36,7 +28,7 @@ export const PageElement = ({
           aria-label={`${active ? "Current Page, " : ""}Page ${page}`}
           aria-current={active}
         >
-          <Button tab-index={-1} {...buttonProps}>
+          <Button tabIndex={-1} {...buttonProps}>
             {label ?? page}
           </Button>
         </a>
@@ -44,9 +36,11 @@ export const PageElement = ({
     );
   }
   return (
-    <Button {...buttonProps} aria-label={`${active ? "Current Page, " : ""}Page ${page}`} aria-current={active}>
-      {label ?? page}
-    </Button>
+    <li>
+      <Button {...buttonProps} aria-label={`${active ? "Current Page, " : ""}Page ${page}`} aria-current={active}>
+        {label ?? page}
+      </Button>
+    </li>
   );
 };
 
@@ -102,21 +96,21 @@ export const Pagination = ({
     for (const page of pages) {
       if (page - prevPage > 1) {
         elements.push(
-          <Button kind={BUTTON_KIND.tertiary} size={buttonSize} disabled>
-            ...
-          </Button>
+          <li>
+            <Button kind={BUTTON_KIND.tertiary} size={buttonSize} disabled>
+              ...
+            </Button>
+          </li>
         );
       }
       elements.push(
-        <li key={page} className="page-item">
-          <PageElement
-            page={page}
-            linkMapper={linkMapper}
-            pageHandler={pageHandler}
-            active={page === currentPage}
-            buttonSize={buttonSize}
-          />
-        </li>
+        <PageElement
+          page={page}
+          linkMapper={linkMapper}
+          pageHandler={pageHandler}
+          active={page === currentPage}
+          buttonSize={buttonSize}
+        />
       );
       prevPage = page;
     }
