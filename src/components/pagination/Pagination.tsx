@@ -53,7 +53,7 @@ export const PageElement = ({
 export const Pagination = ({
   currentPage,
   totalPages,
-  visiblePages = 3,
+  visiblePages = 5,
   pageHandler,
   linkMapper,
   buttonSize = BUTTON_SIZE.default,
@@ -61,15 +61,38 @@ export const Pagination = ({
   const [css] = useStyletron();
 
   const pages = useMemo(() => {
-    const pages = [1];
-    for (
-      let i = Math.max(currentPage - visiblePages, 2);
-      i <= Math.min(totalPages - 1, currentPage + visiblePages);
-      i++
-    ) {
+    if (visiblePages >= totalPages) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+    const pages = [];
+    let leftPages = visiblePages - 1; // minus current
+    let startPage = currentPage;
+    let endPage = currentPage;
+    while (leftPages > 0) {
+      if (startPage > 1) {
+        startPage--;
+        leftPages--;
+      }
+      if (endPage < totalPages) {
+        endPage++;
+        leftPages--;
+      }
+    }
+
+    if (startPage > 1) {
+      startPage += 2;
+      pages.push(1);
+    }
+
+    if (endPage < totalPages) {
+      endPage -= 2;
+    }
+    for (let i = startPage; i <= endPage; i++) {
       pages.push(i);
     }
-    pages.push(totalPages);
+    if (endPage < totalPages) {
+      pages.push(totalPages);
+    }
     return pages;
   }, [currentPage, totalPages, visiblePages]);
 
