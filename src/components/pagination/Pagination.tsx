@@ -53,7 +53,7 @@ export const PageElement = ({
 export const Pagination = ({
   currentPage,
   totalPages,
-  visiblePages = 5,
+  visiblePages = 7,
   pageHandler,
   linkMapper,
   buttonSize = BUTTON_SIZE.default,
