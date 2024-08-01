@@ -1,0 +1,56 @@
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
+import { Pagination } from "./Pagination";
+import { useState } from "react";
+import { BUTTON_SIZE } from "../button/types";
+
+<Meta title="Navigation/Pagination" component={Pagination} />
+
+export const Template = ({ ...args }) => {
+  const [page, setPage] = useState(args.currentPage);
+  return (
+    <Pagination
+      {...args}
+      currentPage={page}
+      pageHandler={(p) => {
+        setPage(p);
+      }}
+    />
+  );
+};
+
+# Pagination
+
+<Canvas isColumn>
+  <Story name="Default" args={{ currentPage: 1, totalPages: 12 }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Mini" args={{ currentPage: 1, totalPages: 12, buttonSize: BUTTON_SIZE.mini }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Compact" args={{ currentPage: 1, totalPages: 12, buttonSize: BUTTON_SIZE.compact }}>
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Link"
+    args={{ currentPage: 1, totalPages: 12, buttonSize: BUTTON_SIZE.compact, linkMapper: (p) => `/page/${p}` }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Pagination} />
+
+### Usage:
+
+To use, import the component `Pagination` from `@nilfoundation/ui-kit`.
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+        import {Pagination} from "@nilfoundation/ui-kit";
+        ...
+        <Pagination currentPage={1} totalPages={5} />
+  `}
+/>

@@ -33,3 +33,4 @@ export * from "./toggle";
 export * from "./button-icon";
 export * from "./copy-button";
 export * from "./menu";
+export * from "./pagination";
