@@ -10,7 +10,7 @@ const PageElement = ({ page, linkMapper, pageHandler, label, disabled, active, b
     kind: active ? BUTTON_KIND.primary : BUTTON_KIND.secondary,
     size: buttonSize,
   };
-  if (pageHandler) {
+  if (pageHandler && !linkMapper) {
     buttonProps.onClick = (e) => {
       e.preventDefault();
       pageHandler(page);

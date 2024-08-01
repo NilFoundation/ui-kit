@@ -1,6 +1,7 @@
 import { AriaRole } from "react";
 import { ButtonProps as BaseButtonProps } from "baseui/button";
 import type { XOR } from "ts-xor";
+import { Merge } from "ts-essentials";
 
 export enum BUTTON_KIND {
   primary = "primary",
@@ -18,22 +19,36 @@ export enum BUTTON_SIZE {
   large = "large",
 }
 
-export type ButtonCommonProps = Omit<BaseButtonProps, "kind" | "shape" | "size"> & {
-  size?: BUTTON_SIZE;
-  disabled?: boolean;
-  isLoading?: boolean;
-  className?: string;
-  role?: AriaRole;
-  tabIndex?: number;
-};
+export type ButtonCommonProps = Omit<
+  Merge<
+    React.ComponentProps<"button">,
+    Merge<
+      BaseButtonProps,
+      {
+        size?: BUTTON_SIZE;
+        disabled?: boolean;
+        isLoading?: boolean;
+        className?: string;
+        role?: AriaRole;
+      }
+    >
+  >,
+  "ref"
+>;
 
-export type ToggleButtonProps = {
-  kind: BUTTON_KIND.toggle;
-  checked?: boolean;
-} & ButtonCommonProps;
+export type ToggleButtonProps = Merge<
+  ButtonCommonProps,
+  {
+    kind: BUTTON_KIND.toggle;
+    checked?: boolean;
+  }
+>;
 
-export type RegularButtonProps = {
-  kind?: Exclude<BUTTON_KIND, BUTTON_KIND.toggle>;
-} & ButtonCommonProps;
+export type RegularButtonProps = Merge<
+  ButtonCommonProps,
+  {
+    kind?: Exclude<BUTTON_KIND, BUTTON_KIND.toggle>;
+  }
+>;
 
 export type ButtonProps = XOR<ToggleButtonProps, RegularButtonProps>;
