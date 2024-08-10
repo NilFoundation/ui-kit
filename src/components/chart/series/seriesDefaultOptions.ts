@@ -5,6 +5,7 @@ import type {
   CandlestickSeriesPartialOptions,
   LineSeriesPartialOptions,
   SeriesType,
+  AreaSeriesPartialOptions,
 } from "lightweight-charts";
 import { COLORS } from "../../../shared";
 
@@ -42,6 +43,15 @@ const seriesHistogramDefaultOptions: HistogramSeriesPartialOptions = {
   base: 0,
 };
 
+const seriesAreaDefaultOptions: AreaSeriesPartialOptions = {
+  ...seriesBaseDefaultOptions,
+  topColor: COLORS.blue300,
+  bottomColor: "transparent",
+  lineColor: COLORS.blue300,
+  lineStyle: 0,
+  lineWidth: 2,
+};
+
 export const getSeriesDefaultOptions = (type: SeriesType) => {
   switch (type) {
     case "Candlestick":
@@ -50,6 +60,8 @@ export const getSeriesDefaultOptions = (type: SeriesType) => {
       return seriesLineDefaultOptions;
     case "Histogram":
       return seriesHistogramDefaultOptions;
+    case "Area":
+      return seriesAreaDefaultOptions;
     default:
       return {};
   }

@@ -1,7 +1,7 @@
 import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import Chart from "./ChartWrapper";
 import ChartWidget from "./ChartWidget";
-import { LineSeries, CandlestickSeries, HistogramSeries } from "./series";
+import { LineSeries, CandlestickSeries, HistogramSeries, AreaSeries } from "./series";
 import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
 
 <Meta title="Data display/Chart" component={Chart} />
@@ -83,6 +83,21 @@ export const lineData = [
     )}
   >
     <ChartWidget height={106} width={168} data={lineData} />
+  </Story>
+  <Story name="Area chart">
+    <Template>
+      <AreaSeries
+        data={[
+          { time: "2018-12-22", value: 54 },
+          { time: "2018-12-23", value: 23 },
+          { time: "2018-12-24", value: 44 },
+          { time: "2018-12-25", value: 85 },
+          { time: "2018-12-26", value: 75 },
+          { time: "2018-12-27", value: 63 },
+          { time: "2018-12-28", value: 51 },
+        ]}
+      />
+    </Template>
   </Story>
 </Canvas>
 
