@@ -8,7 +8,7 @@ import type {
 } from "lightweight-charts";
 import { ReactNode } from "react";
 
-export type SeriesType = Extract<NativeSeriesType, "Line" | "Candlestick" | "Histogram">;
+export type SeriesType = Extract<NativeSeriesType, "Line" | "Candlestick" | "Histogram" | "Area">;
 
 export type SeriesParameters<T extends SeriesType> = {
   data: SeriesDataItemTypeMap[T][];
