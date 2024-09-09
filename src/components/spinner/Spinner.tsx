@@ -1,42 +1,50 @@
-import React, { memo } from "react";
-import SpinnerIcon from "./ui/SpinnerIcon";
-import SpinnerBlock from "./ui/SpinnerBlock";
+import { FC } from "react";
 import { SPINNER_KIND, SPINNER_SIZE } from "./types";
-import SpinnerLabel from "./ui/SpinnerLabel";
+import { Spinner as BaseSpinner } from "baseui/spinner";
+import { StyleObject, withStyle } from "styletron-react";
+import { COLORS } from "../../shared";
+import { expandProperty } from "inline-style-expand-shorthand";
 
 export type SpinnerProps = {
   size?: SPINNER_SIZE;
-  label?: React.ReactNode;
-  animation?: boolean;
-  className?: string;
   kind?: SPINNER_KIND;
+  style?: StyleObject;
 };
 
 const spinnerIconSize = {
-  [SPINNER_SIZE.xSmall]: "12",
-  [SPINNER_SIZE.small]: "16",
-  [SPINNER_SIZE.medium]: "20",
-  [SPINNER_SIZE.large]: "24",
-  [SPINNER_SIZE.xLarge]: "32",
+  [SPINNER_SIZE.xSmall]: "12px",
+  [SPINNER_SIZE.small]: "16px",
+  [SPINNER_SIZE.medium]: "20px",
+  [SPINNER_SIZE.large]: "24px",
+  [SPINNER_SIZE.xLarge]: "32px",
 };
 
-const Spinner: React.FC<SpinnerProps> = ({
-  size = SPINNER_SIZE.medium,
-  kind = SPINNER_KIND.light,
-  animation,
-  label,
-  ...props
-}) => {
-  return (
-    <SpinnerBlock {...props}>
-      <SpinnerIcon animation={animation} kind={kind} size={spinnerIconSize[size]} />
-      {label && (
-        <SpinnerLabel kind={kind} size={size}>
-          {label}
-        </SpinnerLabel>
-      )}
-    </SpinnerBlock>
-  );
+const getSpinnerStylesByKind = (kind: SPINNER_KIND) => {
+  switch (kind) {
+    case SPINNER_KIND.dark:
+      return {
+        ...expandProperty("borderColor", COLORS.gray500),
+        borderTopColor: COLORS.gray800,
+      };
+    case SPINNER_KIND.light:
+      return {
+        ...expandProperty("borderColor", COLORS.gray600),
+        borderTopColor: COLORS.gray100,
+      };
+  }
 };
 
-export default memo(Spinner);
+const Spinner: FC<SpinnerProps> = ({ size = SPINNER_SIZE.medium, kind = SPINNER_KIND.light, style: styleProp }) => {
+  const style = {
+    width: spinnerIconSize[size],
+    height: spinnerIconSize[size],
+    ...getSpinnerStylesByKind(kind),
+    ...styleProp,
+  } satisfies StyleObject;
+
+  const StyledElement = withStyle(BaseSpinner, style);
+
+  return <StyledElement />;
+};
+
+export default Spinner;

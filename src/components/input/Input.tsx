@@ -3,7 +3,6 @@ import { Input as BaseInput, InputProps as BaseInputProps, Input as InputType } 
 import { getInputOverrides } from "./overrides";
 import { INPUT_KIND, INPUT_SIZE } from "./types";
 import { Spinner, SPINNER_SIZE } from "../spinner";
-import { useStyletron } from "baseui";
 import { spinnerStyles } from "./styles";
 import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
@@ -23,8 +22,6 @@ const Input = forwardRef<InputType, InputProps>(
     { isLoading, endEnhancer, size = INPUT_SIZE.medium, kind = INPUT_KIND.primary, overrides: baseOverrides, ...props },
     ref
   ) => {
-    const [css] = useStyletron();
-
     const inputOverrides = getInputOverrides(size, kind);
     const overrides = getMergedOverrides(inputOverrides, baseOverrides);
 
@@ -32,7 +29,7 @@ const Input = forwardRef<InputType, InputProps>(
       endEnhancer || isLoading ? (
         <>
           {endEnhancer}
-          {isLoading && <Spinner animation className={css(spinnerStyles)} size={spinnerSize[size]} />}
+          {isLoading && <Spinner style={spinnerStyles} size={spinnerSize[size]} />}
         </>
       ) : null;
 

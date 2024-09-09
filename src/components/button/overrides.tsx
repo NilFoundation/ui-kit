@@ -65,9 +65,7 @@ export const getButtonOverrides = (
       },
     },
     LoadingSpinner: {
-      component: ({ $disabled }) => (
-        <Spinner kind={getSpinnerKind(kind, $disabled)} size={spinnerSize[size]} animation />
-      ),
+      component: ({ $disabled }) => <Spinner kind={getSpinnerKind(kind, $disabled)} size={spinnerSize[size]} />,
     },
     LoadingSpinnerContainer: {
       style: {

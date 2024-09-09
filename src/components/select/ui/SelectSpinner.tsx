@@ -12,7 +12,7 @@ const spinnerSize = {
 };
 
 const SelectSpinner: FC<SelectSpinnerProps> = ({ size }) => {
-  return <Spinner animation size={spinnerSize[size]} />;
+  return <Spinner size={spinnerSize[size]} />;
 };
 
 export default memo(SelectSpinner);
