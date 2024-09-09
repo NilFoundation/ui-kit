@@ -31,13 +31,7 @@ export const Template = ({ ...args }) => {
   <Story name="XLarge" args={{ size: SPINNER_SIZE.xLarge }}>
     {Template.bind({})}
   </Story>
-  <Story name="Animated" args={{ size: SPINNER_SIZE.xLarge, animation: true }}>
-    {Template.bind({})}
-  </Story>
-  <Story name="With Label" args={{ label: "Uploading...", animation: true }}>
-    {Template.bind({})}
-  </Story>
-  <Story name="With kind" args={{ label: "Uploading...", animation: true, kind: SPINNER_KIND.dark }}>
+  <Story name="With kind" args={{ kind: SPINNER_KIND.dark }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -58,10 +52,6 @@ To use, import the component `Spinner` from `@nilfoundation/ui-kit`.
         <Spinner />
         // With size
         <Spinner size={SPINNER_SIZE.large} />
-        // With animation
-        <Spinner animation />
-        // With label
-        <Spinner animation label="Uploading..." />
         // With kind
         <Spinner animation label="Uploading..." kind={SPINNER_KIND.dark} />
   `}
