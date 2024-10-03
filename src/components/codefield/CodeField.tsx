@@ -27,6 +27,7 @@ export type CodeFieldProps = {
   onChange?: ReactCodeMirrorProps["onChange"];
   size?: CODE_FIELD_SIZE;
   codeMirrorClassName?: string;
+  highlightOnHover?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
 const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFieldProps> = (
@@ -44,6 +45,7 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
     onChange,
     size = CODE_FIELD_SIZE.medium,
     codeMirrorClassName,
+    highlightOnHover = true,
     ...rest
   },
   ref
@@ -54,7 +56,9 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
     [showLineNumbers]
   );
   const mergedExtensions = [styleOverridesExtention, ...extensions];
-  const computedCn = className ? `${css(s.getContainerStyles(size))} ${className}` : css(s.getContainerStyles(size));
+  const computedCn = className
+    ? `${css(s.getContainerStyles(size, highlightOnHover))} ${className}`
+    : css(s.getContainerStyles(size, highlightOnHover));
 
   if (showLineNumbers) {
     mergedExtensions.push(prefixLineNumberExtension);

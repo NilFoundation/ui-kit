@@ -3,7 +3,7 @@ import { COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
 import { CODE_FIELD_SIZE } from "./types";
 
-const getContainerStyles = (size: CODE_FIELD_SIZE): StyleObject => ({
+const getContainerStyles = (size: CODE_FIELD_SIZE, highlightOnHover: boolean): StyleObject => ({
   position: "relative",
   overflow: "hidden",
   background: COLORS.gray900,
@@ -14,10 +14,12 @@ const getContainerStyles = (size: CODE_FIELD_SIZE): StyleObject => ({
   alignItems: "flex-start",
   flexWrap: "nowrap",
   gap: "16px",
-  ...expandProperty("transition", "background 0.15s"),
-  ":hover": {
-    background: COLORS.gray800,
-  },
+  ...(highlightOnHover && {
+    ...expandProperty("transition", "background 0.15s"),
+    ":hover": {
+      background: COLORS.gray800,
+    },
+  }),
   fontSize: size === CODE_FIELD_SIZE.small ? "14px" : "16px",
 });
 
