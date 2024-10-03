@@ -99,8 +99,7 @@
   "repository": "https://github.com/NilFoundation/ui-kit",
   "homepage": "https://github.com/NilFoundation/ui-kit#readme",
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "dependencies": {
     "copy-to-clipboard": "^3.3.3",
