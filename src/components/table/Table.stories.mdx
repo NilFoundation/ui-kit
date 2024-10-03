@@ -1,18 +1,148 @@
-import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
-import Table from "./Table";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
+import { useState } from "react";
+import Table from "./TableSemantic";
+import { TABLE_DIVIDER, TABLE_SIZE } from "./types";
+import { useStyletron } from "baseui";
+import { COLORS } from "../../shared";
+import TableSemanticBuilder from "./TableSemanticBuilder";
+import TableSemanticBuilderColumn from "./TableSemanticBuilderColumn";
+import { Checkbox } from "../checkbox";
+import { Link } from "baseui/link/styled-components";
+import {
+  StyledTableSemanticRoot,
+  StyledTableSemantic,
+  StyledTableSemanticHeadRow,
+  StyledTableSemanticHeadCell,
+  StyledTableSemanticBodyRow,
+  StyledTableSemanticBodyCell,
+  StyledTableSemanticHead,
+  StyledTableSemanticBody,
+} from "./TableSemanticStyledElements";
 
-<Meta
-    title="Table"
-    component={Table}
-/>
+<Meta title="Data display/Table" component={Table} />
 
-export const Template = ({...args}) => {
-    return (
-      <div style={{maxWidth: "650px"}}>
-        <Table {...args} />
-      </div>
+export const TABLE_BUILDER_DATA = [
+  {
+    foo: 10,
+    bar: "banana",
+    url: "https://example.com/b",
+    selected: true,
+  },
+  {
+    foo: 1,
+    bar: "carrot",
+    url: "https://example.com/c",
+    selected: false,
+  },
+  {
+    foo: 2,
+    bar: "apple",
+    url: "https://example.com/a",
+    selected: false,
+  },
+];
+
+export const Template = ({ ...args }) => {
+  const [css] = useStyletron();
+  return (
+    <div
+      className={css({
+        maxWidth: "650px",
+        backgroundColor: COLORS.gray900,
+        padding: "24px",
+        borderRadius: "8px",
+      })}
+    >
+      <Table {...args} />
+    </div>
+  );
+};
+
+export const TableSemanticBuilderTemplate = ({ ...args }) => {
+  const [css] = useStyletron();
+  const [data, setData] = useState(TABLE_BUILDER_DATA);
+  const [sortAsc, setSortAsc] = useState(true);
+  const hasAny = Boolean(data.length);
+  const hasAll = hasAny && data.every((x) => x.selected);
+  const hasSome = hasAny && data.some((x) => x.selected);
+  function toggleAll() {
+    setData((data) =>
+      data.map((row) => ({
+        ...row,
+        selected: !hasAll,
+      }))
     );
-}
+  }
+  function toggle(event) {
+    const { name, checked } = event.currentTarget;
+    setData((data) =>
+      data.map((row) => ({
+        ...row,
+        selected: String(row.foo) === name ? checked : row.selected,
+      }))
+    );
+  }
+  return (
+    <div
+      className={css({
+        maxWidth: "650px",
+        backgroundColor: COLORS.gray900,
+        padding: "24px",
+        borderRadius: "8px",
+      })}
+    >
+      <TableSemanticBuilder
+        {...args}
+        data={data}
+        sortOrder={sortAsc ? "ASC" : "DESC"}
+        onSort={() => setSortAsc(!sortAsc)}
+      >
+        <TableSemanticBuilderColumn
+          header={<Checkbox checked={hasAll} isIndeterminate={!hasAll && hasSome} onChange={toggleAll} />}
+        >
+          {(row) => <Checkbox name={"" + row.foo} checked={row.selected} onChange={toggle} />}
+        </TableSemanticBuilderColumn>
+        <TableSemanticBuilderColumn header="Produce" sortable>
+          {(row) => <Link href={row.url}>{row.bar}</Link>}
+        </TableSemanticBuilderColumn>
+        <TableSemanticBuilderColumn header="Quantity" numeric>
+          {(row) => row.foo}
+        </TableSemanticBuilderColumn>
+      </TableSemanticBuilder>
+    </div>
+  );
+};
+
+export const TableWithStyledElementsTemplate = () => {
+  return (
+    <StyledTableSemanticRoot>
+      <StyledTableSemantic>
+        <StyledTableSemanticHead>
+          <StyledTableSemanticHeadRow>
+            <StyledTableSemanticHeadCell colSpan={2}>Parent</StyledTableSemanticHeadCell>
+            <StyledTableSemanticHeadCell colSpan={2}>Children</StyledTableSemanticHeadCell>
+          </StyledTableSemanticHeadRow>
+        </StyledTableSemanticHead>
+        <StyledTableSemanticBody StyledTableSemanticBody>
+          <StyledTableSemanticBodyRow>
+            <StyledTableSemanticBodyCell rowSpan={3}>Sarah</StyledTableSemanticBodyCell>
+            <StyledTableSemanticBodyCell rowSpan={3}>Brown</StyledTableSemanticBodyCell>
+            <StyledTableSemanticBodyCell>Sally</StyledTableSemanticBodyCell>
+            <StyledTableSemanticBodyCell>Brown</StyledTableSemanticBodyCell>
+          </StyledTableSemanticBodyRow>
+          <StyledTableSemanticBodyRow>
+            <StyledTableSemanticBodyCell>Jimmy</StyledTableSemanticBodyCell>
+            <StyledTableSemanticBodyCell>Brown</StyledTableSemanticBodyCell>
+          </StyledTableSemanticBodyRow>
+          <StyledTableSemanticBodyRow>
+            <StyledTableSemanticBodyCell>Joe</StyledTableSemanticBodyCell>
+            <StyledTableSemanticBodyCell>Black</StyledTableSemanticBodyCell>
+          </StyledTableSemanticBodyRow>
+        </StyledTableSemanticBody>
+      </StyledTableSemantic>
+    </StyledTableSemanticRoot>
+  );
+};
 
 export const DATA = [
   ["Sarah Brown", 31, "100 Broadway st. New York City, New York"],
@@ -23,17 +153,78 @@ export const COLUMNS = ["Name", "Age", "Address"];
 
 # Table
 
-
 <Canvas isColumn>
-  <Story name="Base" args={{columns: COLUMNS, data: DATA}}>
+  <Story name="Compact" args={{ columns: COLUMNS, data: DATA, size: TABLE_SIZE.compact }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Horizontal Scroll" args={{columns: COLUMNS, data: DATA, horizontalScrollWidth: "750px"}}>
+  <Story name="Default" args={{ columns: COLUMNS, data: DATA, size: TABLE_SIZE.default }}>
     {Template.bind({})}
+  </Story>
+  <Story name="Spacious" args={{ columns: COLUMNS, data: DATA, size: TABLE_SIZE.spacious }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Vertical Divider" args={{ columns: COLUMNS, data: DATA, divider: TABLE_DIVIDER.vertical }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Grid Divider" args={{ columns: COLUMNS, data: DATA, divider: TABLE_DIVIDER.grid }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Clean Divider" args={{ columns: COLUMNS, data: DATA, divider: TABLE_DIVIDER.clean }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Horizontal Scroll" args={{ columns: COLUMNS, data: DATA, horizontalScrollWidth: "750px" }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Empty message" args={{ columns: COLUMNS, data: [], emptyMessage: "Custom empty message" }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Table Builder" args={{}}>
+    {TableSemanticBuilderTemplate.bind({})}
+  </Story>
+  <Story name="Table With Styled Elements" args={{}}>
+    {TableWithStyledElementsTemplate.bind({})}
   </Story>
 </Canvas>
 
 <ArgsTable of={Table} />
 
-### Использование:
+### Usage:
 
+To use, import the component `Table` from `@nilfoundation/ui-kit`.
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+        import {Table, TABLE_SIZE, TABLE_DIVIDER, TableSemanticBuilder, TableSemanticBuilderColumn, ...} from "@nilfoundation/ui-kit";
+        export const DATA = [
+          ["Sarah Brown", 31, "100 Broadway st. New York City, New York"],
+          ["Jane Smith", 32, "100 Market st. San Francisco, California"],
+          ["Joe Black", 33, "100 Macquarie st. Sydney, Australia"]
+        ];
+        export const COLUMNS = ["Name", "Age", "Address"];
+        ...
+        <Table columns={COLUMNS} data={DATA} size={TABLE_SIZE.compact} />
+        // With divider
+        <Table columns={COLUMNS} data={DATA} divider={TABLE_DIVIDER.vertical} />
+        // With horizontal scroll
+        <Table columns={COLUMNS} data={DATA} horizontalScrollWidth="750px" />
+        // With custom empty message
+        <Table columns={COLUMNS} data={[]} emptyMessage="Custom empty message" />
+        // With table builder
+        <TableSemanticBuilder data={data}>
+          <TableSemanticBuilderColumn
+            header={<Checkbox checked={hasAll} isIndeterminate={!hasAll && hasSome} onChange={toggleAll} />}
+          >
+            {(row: Row) => <Checkbox name={"" + row.foo} checked={row.selected} onChange={toggle} />}
+          </TableSemanticBuilderColumn>
+          <TableSemanticBuilderColumn header="Produce" sortable>
+            {(row: Row) => <Link href={row.url}>{row.bar}</Link>}
+          </TableSemanticBuilderColumn>
+          <TableSemanticBuilderColumn header="Quantity" numeric>
+            {(row: Row) => row.foo}
+          </TableSemanticBuilderColumn>
+        </TableSemanticBuilder>
+  `}
+/>

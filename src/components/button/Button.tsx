@@ -1,40 +1,56 @@
-import React from "react";
-import { Button as BaseButton, ButtonProps as BaseButtonProps } from "baseui/button";
+import { forwardRef } from "react";
+import { Button as BaseButton } from "baseui/button";
 import { getButtonOverrides } from "./overrides";
-import { BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE } from "./types";
+import { BUTTON_KIND, BUTTON_SIZE, ButtonProps } from "./types";
+import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
-export type ButtonProps = Omit<BaseButtonProps, "kind" | "shape" | "size"> & {
-  kind?: BUTTON_KIND;
-  size?: BUTTON_SIZE;
-  shape?: BUTTON_SHAPE;
-  disabled?: boolean;
-  isLoading?: boolean;
-  className?: string;
-};
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      kind = BUTTON_KIND.primary,
+      size = BUTTON_SIZE.default,
+      disabled,
+      isLoading,
+      colors,
+      startEnhancer,
+      endEnhancer,
+      className,
+      children,
+      role,
+      checked,
+      overrides: baseOverrides,
+      ...props
+    },
+    ref
+  ) => {
+    const buttonOverrides = getButtonOverrides(kind, size, colors, checked);
+    const overrides = getMergedOverrides(buttonOverrides, baseOverrides);
+    const buttonKind =
+      kind === BUTTON_KIND.danger || kind === BUTTON_KIND.toggle || kind === BUTTON_KIND.text
+        ? BUTTON_KIND.secondary
+        : kind;
+    const buttonRole = role ?? (kind === BUTTON_KIND.toggle ? "switch" : undefined);
 
-const Button: React.FC<ButtonProps> = ({
-  kind = BUTTON_KIND.primary,
-  size = BUTTON_SIZE.default,
-  shape = BUTTON_SHAPE.default,
-  disabled,
-  isLoading,
-  className,
-  ...props
-}) => {
-  const overrides = getButtonOverrides(kind, shape, size);
-
-  return (
-    <BaseButton
-      {...props}
-      className={className}
-      isLoading={isLoading}
-      shape={shape}
-      kind={kind}
-      size={size}
-      disabled={disabled}
-      overrides={overrides}
-    />
-  );
-};
+    return (
+      <BaseButton
+        ref={ref}
+        {...props}
+        className={className}
+        isLoading={isLoading}
+        kind={buttonKind}
+        size={size}
+        disabled={disabled}
+        startEnhancer={startEnhancer}
+        endEnhancer={endEnhancer}
+        overrides={overrides}
+        role={buttonRole}
+        aria-checked={checked}
+      >
+        {children}
+      </BaseButton>
+    );
+  }
+);
+Button.displayName = "Button";
 
 export default Button;

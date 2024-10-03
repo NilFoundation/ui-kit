@@ -10,7 +10,7 @@ export type ThemeWrapperProps = {
 
 const engine = new Styletron();
 
-const Theme = createTheme(engine);
+const { theme: Theme } = createTheme(engine);
 
 export const ThemeWrapper: React.FC<ThemeWrapperProps> = ({ children }) => {
   return (

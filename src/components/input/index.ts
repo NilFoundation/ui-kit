@@ -1,2 +1,3 @@
 export { default as Input } from "./Input";
-export type { InputProps, SIZE as INPUT_SIZE } from "./Input";
+export { INPUT_SIZE, INPUT_KIND } from "./types";
+export type { InputProps } from "./Input";

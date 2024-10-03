@@ -1,28 +1,33 @@
-import { FC, ChangeEventHandler, useState } from "react";
-import {
-  Checkbox as BaseCheckbox,
-  CheckboxProps as BaseCheckboxProps,
-  LABEL_PLACEMENT,
-  STYLE_TYPE,
-} from "baseui/checkbox";
-
-export type CheckboxProps = BaseCheckboxProps;
+import { FC, useRef } from "react";
+import { Checkbox as BaseCheckbox, LABEL_PLACEMENT } from "baseui/checkbox";
+import { getCheckboxOverrides } from "./overrides";
+import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
+import { CheckboxProps } from "./types";
+import { TapArea } from "../../shared/ui/tap-area";
 
 const Checkbox: FC<CheckboxProps> = ({
-  checked: baseChecked,
-  onChange,
   labelPlacement = LABEL_PLACEMENT.right,
+  overrides: baseOverrides,
+  inputRef,
   ...props
 }) => {
-  const [checked, setChecked] = useState<boolean | undefined>(baseChecked);
+  const checkboxOverrides = getCheckboxOverrides();
+  const overrides = getMergedOverrides(checkboxOverrides, baseOverrides);
+  const checkboxRef = useRef<HTMLInputElement>(null);
+  const finalRef = inputRef || checkboxRef;
 
-  const onChangeHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
-    onChange?.(event);
-    setChecked(event.target.checked);
-  };
-
-  return <BaseCheckbox {...props} checked={checked} onChange={onChangeHandler} labelPlacement={labelPlacement} />;
+  return (
+    <TapArea onClick={() => finalRef.current?.click()}>
+      <BaseCheckbox
+        {...props}
+        overrides={overrides}
+        labelPlacement={labelPlacement}
+        checkmarkType="default"
+        inputRef={finalRef}
+      />
+    </TapArea>
+  );
 };
 
-export { LABEL_PLACEMENT, STYLE_TYPE };
+export { LABEL_PLACEMENT };
 export default Checkbox;

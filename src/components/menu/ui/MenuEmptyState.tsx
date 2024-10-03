@@ -1,21 +1,21 @@
-import { FC, memo } from "react";
-import { HeadingXSmall, ParagraphMedium } from "baseui/typography";
+import { FC } from "react";
+import { LabelSmall } from "baseui/typography";
 import { useStyletron, styled } from "baseui";
-import { EmptyStateContainerStyles, emptyStateTextStyles, emptyStateTitleStyles } from "../styles";
+import { EmptyStateContainerStyles, emptyStateTitleStyles } from "../styles";
+import { COLORS } from "../../../shared";
+
+const Wrapper = styled("div", EmptyStateContainerStyles);
 
 const MenuEmptyState: FC = () => {
   const [css] = useStyletron();
 
-  const Wrapper = styled("div", EmptyStateContainerStyles);
-
   return (
     <Wrapper>
-      <HeadingXSmall className={css(emptyStateTitleStyles)}>No results found</HeadingXSmall>
-      <ParagraphMedium color="primary300" className={css(emptyStateTextStyles)}>
-        Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare faucibus.
-      </ParagraphMedium>
+      <LabelSmall color={COLORS.gray400} className={css(emptyStateTitleStyles)}>
+        No results found
+      </LabelSmall>
     </Wrapper>
   );
 };
 
-export default memo(MenuEmptyState);
+export default MenuEmptyState;

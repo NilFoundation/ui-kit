@@ -1,36 +1,36 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
-import ProgressBar from "./ProgressBar"; import {PROGRESS_BAR_SIZE} from "./types";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
+import ProgressBar from "./ProgressBar";
+import { PROGRESS_BAR_SIZE } from "./types";
 
-<Meta
-    title="Progress Bar"
-    component={ProgressBar}
-/>
+<Meta title="Feedback/Progress Bar" component={ProgressBar} />
 
-export const Template = ({...args}) => {
-    return (
-      <div style={{width: "226px"}}>
-        <ProgressBar {...args} />
-      </div>
-    );
-}
+export const Template = ({ ...args }) => {
+  return (
+    <div style={{ width: "226px" }}>
+      <ProgressBar {...args} />
+    </div>
+  );
+};
 
 # ProgressBar
 
-
 <Canvas isColumn>
-  <Story name="Small" args={{size: PROGRESS_BAR_SIZE.small, value: 64}}>
+  <Story name="Small" args={{ size: PROGRESS_BAR_SIZE.small, value: 64 }}>
     {Template.bind({})}
   </Story>
-  <Story name="Medium" args={{size: PROGRESS_BAR_SIZE.medium, value: 48}}>
+  <Story name="Medium" args={{ size: PROGRESS_BAR_SIZE.medium, value: 48 }}>
     {Template.bind({})}
   </Story>
-  <Story name="Large" args={{size: PROGRESS_BAR_SIZE.large, value: 81}}>
+  <Story name="Large" args={{ size: PROGRESS_BAR_SIZE.large, value: 81 }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Label" args={{value: 72, showLabel: true, getProgressLabel: () => `Uploading...` }}>
+  <Story name="With Label" args={{ value: 72, showLabel: true, getProgressLabel: () => `Uploading...` }}>
     {Template.bind({})}
   </Story>
-  <Story name="With Error Message" args={{value: 72, errorMessage: "Error message", showLabel: true }}>
+  <Story name="With Error Message" args={{ value: 72, errorMessage: "Error message", showLabel: true }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Infinite" args={{ infinite: true }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -42,7 +42,7 @@ export const Template = ({...args}) => {
 To use, import the component `ProgressBar` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
@@ -59,4 +59,3 @@ To use, import the component `ProgressBar` from `@nilfoundation/ui-kit`.
         <ProgressBar value={48} errorMessage="Error message" showLabel />
   `}
 />
-

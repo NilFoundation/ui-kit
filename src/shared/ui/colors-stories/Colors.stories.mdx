@@ -1,0 +1,34 @@
+import { Meta, Source, Canvas, Story } from "@storybook/blocks";
+import ColorsContainer from "./ColorsContainer";
+
+<Meta title="Media/Colors" />
+
+# Colors
+
+export const Template = () => {
+  return <ColorsContainer />;
+};
+
+<Canvas isColumn>
+  <Story name="Colors list">{Template.bind({})}</Story>
+</Canvas>
+
+### Usage
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+    import { LabelMedium, COLORS } from "@nilfoundation/ui-kit";
+
+    ...
+    function MyComponent() {
+      ...
+      return (
+        <LabelMedium color={COLORS.red300}>Label</LabelMedium>
+      )
+    }
+
+`}
+/>

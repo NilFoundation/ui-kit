@@ -1,0 +1,56 @@
+import { FC } from "react";
+import { getNavigationBurgerStyles, getNavigationListStyles, navigationNavWrapperStyles } from "../../styles";
+import NavItem from "./NavItem";
+import AuthBlock from "../auth/AuthBlock";
+import { Button, BUTTON_SIZE } from "../../../button";
+import { MenuIcon } from "../../../icons";
+import { NavigationBarProps } from "../../types";
+import { useStyletron } from "baseui";
+
+type MenuNavigationProps = Omit<NavigationBarProps, "className" | "brand" | "noLogin"> & {
+  onDrawerButtonClick?: () => void;
+  isAuthVisible?: boolean;
+};
+
+const MenuNavigation: FC<MenuNavigationProps> = ({
+  username,
+  items,
+  isAuthVisible,
+  isAuth,
+  onLogin,
+  authDropdownContainer,
+  onItemClick,
+  onDrawerButtonClick,
+  itemAs,
+}) => {
+  const [css, theme] = useStyletron();
+
+  const { mediaQuery } = theme;
+
+  return (
+    <nav className={css(navigationNavWrapperStyles)}>
+      <ul className={css(getNavigationListStyles(mediaQuery))}>
+        {items.map((item) => (
+          <NavItem key={item.id} item={item} onItemClick={onItemClick} itemAs={itemAs} />
+        ))}
+        {isAuthVisible && (
+          <li>
+            <AuthBlock
+              username={username}
+              isAuth={isAuth}
+              onLogin={onLogin}
+              authDropdownContainer={authDropdownContainer}
+            />
+          </li>
+        )}
+      </ul>
+      <div className={css(getNavigationBurgerStyles(mediaQuery))}>
+        <Button onClick={onDrawerButtonClick} size={BUTTON_SIZE.compact}>
+          <MenuIcon size={24} />
+        </Button>
+      </div>
+    </nav>
+  );
+};
+
+export default MenuNavigation;

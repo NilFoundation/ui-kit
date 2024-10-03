@@ -1,0 +1,49 @@
+import { Meta, Source } from "@storybook/blocks";
+
+<Meta title="Documentation/Introduction" />
+
+# Introduction
+
+<br />
+
+## Installing
+
+<Source
+  language="bash"
+  dark
+  format={true}
+  code={`
+        # using yarn
+        yarn add @nilfoundation/ui-kit baseui styletron-engine-atomic styletron-react
+        # using npm
+        npm install @nilfoundation/ui-kit baseui styletron-engine-atomic styletron-react
+  `}
+/>
+
+## Usage
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+    import { BaseProvider } from "baseui";
+    import { Client as Styletron } from "styletron-engine-atomic";
+    import { Provider as StyletronProvider } from "styletron-react";
+    import { createTheme, Button } from "@nilfoundation/ui-kit"
+    ...
+    const engine = new Styletron();
+    const {theme} = createTheme(engine);
+    ...
+    function App() {
+      ...
+      return (
+        <StyletronProvider value={engine}>
+          <BaseProvider theme={theme}>
+            <Button>Button Label</Button>
+          </BaseProvider>
+        </StyletronProvider>
+      )
+    }
+`}
+/>

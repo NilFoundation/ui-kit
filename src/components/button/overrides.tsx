@@ -1,55 +1,75 @@
-import { ButtonOverrides } from "baseui/button";
-import { BUTTON_KIND, BUTTON_SHAPE, BUTTON_SIZE } from "./types";
-import { PRIMITIVE_COLORS } from "../../shared";
-import { Spinner } from "../spinner";
+import { ButtonOverrides, CustomColors } from "baseui/button";
+import { BUTTON_KIND, BUTTON_SIZE } from "./types";
+import { Spinner, SPINNER_KIND, SPINNER_SIZE } from "../spinner";
 import {
-  getBackgroundColor,
-  getHoverBackgroundColor,
-  getSpinnerColor,
-  getSpinnerSize,
-  getSquareButtonPaddings,
+  buttonDisabledModifiedStyles,
+  buttonFocusedModifiedStyles,
+  buttonKindModifiedStyles,
+  buttonModifiedStyles,
+  checkedToggleButtonModifiedStyles,
+  spinnerModifiedStyles,
 } from "./style";
 
-export const getButtonOverrides = (kind: BUTTON_KIND, shape: BUTTON_SHAPE, size: BUTTON_SIZE): ButtonOverrides => {
+const spinnerSize = {
+  [BUTTON_SIZE.mini]: SPINNER_SIZE.xSmall,
+  [BUTTON_SIZE.compact]: SPINNER_SIZE.small,
+  [BUTTON_SIZE.default]: SPINNER_SIZE.medium,
+  [BUTTON_SIZE.large]: SPINNER_SIZE.large,
+};
+
+const getSpinnerKind = (kind: BUTTON_KIND, disabled: boolean) => {
+  if (kind === BUTTON_KIND.primary) {
+    return SPINNER_KIND.dark;
+  }
+
+  return disabled ? SPINNER_KIND.light : SPINNER_KIND.dark;
+};
+
+export const getButtonOverrides = (
+  kind: BUTTON_KIND,
+  size: BUTTON_SIZE,
+  colors?: CustomColors,
+  isChecked?: boolean
+): ButtonOverrides => {
+  const customColorsStyles = colors
+    ? {
+        ...colors,
+
+        ":hover": {
+          ...colors,
+        },
+      }
+    : {};
+
   return {
     Root: {
-      style: ({ $disabled }) => ({
-        alignItems: "center",
-        justifyContent: "center",
-        borderBottomLeftRadius: "2px",
-        borderTopLeftRadius: "2px",
-        borderBottomRightRadius: "2px",
-        borderTopRightRadius: "2px",
-        backgroundColor: getBackgroundColor(kind),
-        padding: shape === BUTTON_SHAPE.square ? getSquareButtonPaddings(size) : "",
-        ":disabled": {
-          color: PRIMITIVE_COLORS.primary500,
-          backgroundColor: PRIMITIVE_COLORS.mono600,
-        },
-        ":hover": {
-          backgroundColor: getHoverBackgroundColor(kind, $disabled),
-        },
-      }),
+      style: ({ $disabled, $isFocusVisible }) => {
+        return {
+          ...buttonModifiedStyles[size],
+          ...buttonKindModifiedStyles[kind],
+          ...($isFocusVisible ? buttonFocusedModifiedStyles[kind] : {}),
+          ...(isChecked ? checkedToggleButtonModifiedStyles : {}),
+          ...($disabled ? buttonDisabledModifiedStyles[kind] : {}),
+          ...customColorsStyles,
+        };
+      },
     },
     StartEnhancer: {
       style: {
-        marginRight: "8px",
+        marginRight: "4px",
       },
     },
     EndEnhancer: {
       style: {
-        marginLeft: "8px",
+        marginLeft: "4px",
       },
     },
     LoadingSpinner: {
-      component: ({ $disabled }) => <Spinner color={getSpinnerColor(kind, $disabled)} size={getSpinnerSize(size)} />,
+      component: ({ $disabled }) => <Spinner kind={getSpinnerKind(kind, $disabled)} size={spinnerSize[size]} />,
     },
     LoadingSpinnerContainer: {
       style: {
-        marginTop: "0px",
-        marginBottom: "0px",
-        paddingLeft: shape !== "square" ? "10px" : "0px",
-        paddingRight: shape !== "square" ? "10px" : "0px",
+        ...spinnerModifiedStyles[size],
       },
     },
   };

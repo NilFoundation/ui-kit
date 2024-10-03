@@ -1,4 +1,4 @@
-import { ComponentProps, FC, memo, useCallback, useEffect, useRef, useState } from "react";
+import { ComponentProps, FC, useCallback, useRef, useState } from "react";
 import {
   dashedBlockStyles,
   dashedBlockActiveStyles,
@@ -7,18 +7,15 @@ import {
   containerStyles,
   labelStyles,
   dashedBlockErrorStyles,
+  getDashedBlockInfiniteStyles,
 } from "./styles";
 import { getArrayFromN } from "../../shared/utils/getArrayFromN";
 import { useStyletron, styled } from "baseui";
 import { debounce } from "../../shared/utils/debounce";
-import { PROGRESS_BAR_SIZE } from "./types";
-import { ProgressBarProps as BaseProgressBarProps } from "baseui/progress-bar";
+import { PROGRESS_BAR_SIZE, ProgressBarProps } from "./types";
 import { LabelLarge, LabelMedium, LabelSmall } from "baseui/typography";
-
-export type ProgressBarProps = Omit<BaseProgressBarProps, "steps"> & {
-  size?: PROGRESS_BAR_SIZE;
-  className?: string;
-};
+import { useOnWindowResize } from "../../shared/hooks/useOnWindowResize";
+import { COLORS } from "../../shared";
 
 type TypographyProps = ComponentProps<typeof LabelSmall>;
 
@@ -44,6 +41,7 @@ const ProgressBar: FC<ProgressBarProps> = ({
   errorMessage,
   size = PROGRESS_BAR_SIZE.medium,
   className,
+  infinite,
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [dashedCount, setDashedCount] = useState<number>(0);
@@ -64,35 +62,33 @@ const ProgressBar: FC<ProgressBarProps> = ({
     }
   }, [containerRef]);
 
-  useEffect(() => {
-    onResizeHandler();
+  const debouncedResizeHandler = debounce(onResizeHandler, 200);
 
-    const debouncedResizeHandler = debounce(onResizeHandler, 200);
+  useOnWindowResize(debouncedResizeHandler);
 
-    window.addEventListener("resize", debouncedResizeHandler);
-    return () => {
-      window.removeEventListener("resize", debouncedResizeHandler);
-    };
-  }, [onResizeHandler]);
+  const getDashedBlockClassName = (index: number) => {
+    if (infinite) {
+      return css(getDashedBlockInfiniteStyles(index, dashedCount));
+    }
+
+    return css(
+      index < progressedCount
+        ? errorMessage
+          ? dashedBlockErrorStyles
+          : dashedBlockActiveStyles
+        : dashedBlockNotActiveStyles
+    );
+  };
 
   return (
     <Container className={className} ref={containerRef}>
-      <ProgressWrapper>
+      <ProgressWrapper role="progressbar">
         {getArrayFromN(dashedCount).map((index) => (
-          <DashedBlock
-            key={index.toString()}
-            className={css(
-              index < progressedCount
-                ? errorMessage
-                  ? dashedBlockErrorStyles
-                  : dashedBlockActiveStyles
-                : dashedBlockNotActiveStyles
-            )}
-          />
+          <DashedBlock key={index.toString()} className={getDashedBlockClassName(index)} />
         ))}
       </ProgressWrapper>
       {showLabel && (
-        <TypographyComponent className={css(labelStyles)} color={errorMessage ? "error500" : "primary500"}>
+        <TypographyComponent className={css(labelStyles)} color={errorMessage ? COLORS.red400 : COLORS.gray400}>
           {errorMessage
             ? errorMessage
             : getProgressLabel
@@ -105,4 +101,4 @@ const ProgressBar: FC<ProgressBarProps> = ({
   );
 };
 
-export default memo(ProgressBar);
+export default ProgressBar;

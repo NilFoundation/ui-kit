@@ -1,7 +1,7 @@
 import { forwardRef, ReactNode } from "react";
 import { useStyletron } from "styletron-react";
 import { contentWrapperStyles, getUploaderContainerStyles, uploaderPatternStyles } from "../styles";
-import { PATTERN_KIND, PatternLayout } from "../../pattern-layout";
+import { PATTERN_KIND, PatternLayout } from "../../../shared/ui/pattern-layout";
 
 type UploaderWrapperProps = {
   children: ReactNode;

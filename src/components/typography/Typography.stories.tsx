@@ -7,7 +7,7 @@ import HeadingStory from "./ui/HeadingStory";
 import DisplayStory from "./ui/DisplayStory";
 
 export default {
-  title: "Typography",
+  title: "Typography/Typography",
   component: ParagraphStory,
 } as ComponentMeta<typeof ParagraphStory>;
 

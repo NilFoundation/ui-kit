@@ -1,16 +1,25 @@
 {
-  "plugins": ["react", "react-hooks", "prettier", "unused-imports", "@typescript-eslint"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "prettier",
+    "unused-imports",
+    "@typescript-eslint"
+  ],
   "extends": [
     "eslint:recommended",
     "prettier",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:mdx/recommended",
+    "plugin:storybook/recommended"
   ],
   "rules": {
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
-    "no-console": "error",
+    "react/prop-types": 0,
+    "no-console": "warn",
     "no-unused-vars": "off",
     "unused-imports/no-unused-imports": "warn",
     "@typescript-eslint/no-explicit-any": "off",
@@ -25,11 +34,23 @@
         "args": "after-used",
         "argsIgnorePattern": "^_"
       }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
     ]
   },
   "overrides": [
     {
-      "files": ["**/*.test.ts", "**/*.test.tsx"],
+      "files": [
+        "**/*.test.ts",
+        "**/*.test.tsx"
+      ],
       "env": {
         "jest": true
       }

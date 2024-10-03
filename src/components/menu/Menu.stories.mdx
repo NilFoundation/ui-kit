@@ -1,88 +1,103 @@
-import {Canvas, Meta, Story, ArgsTable, Source} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import Menu from "./Menu";
-import {MENU_SIZE} from "./types";
-import {Search} from "baseui/icon"
+import { MENU_SIZE } from "./types";
+import { SearchIcon } from "../icons";
+import { COLORS } from "../../shared";
 
-<Meta
-    title="Menu"
-    component={Menu}
-/>
+<Meta title="Overlay/Menu" component={Menu} />
 
-export const Template = ({...args}) => {
-    return (
-      <div style={{maxWidth: "420px"}}>
-        <Menu {...args} />
-      </div>
-    );
-}
+export const Template = ({ ...args }) => {
+  return (
+    <div style={{ maxWidth: "480px", padding: "32px", backgroundColor: COLORS.black }}>
+      <Menu {...args} />
+    </div>
+  );
+};
 
-export const ITEMS = [
-  { label: "Item One" },
-  { label: "Item Two" },
-  { label: "Item Three" },
-  { label: "Item Four" }
-]
+export const ITEMS = [{ label: "Item One" }, { label: "Item Two" }, { label: "Item Three" }, { label: "Item Four" }];
 
 export const ITEMS_WITH_DIVIDER = [
-  { label: "Item One" },
-  {divider: true},
+  { label: <div>Item One</div> },
+  { divider: true },
   { label: "Item Two" },
   { label: "Item Three", disabled: true },
-  {divider: true},
-  { label: "Item Four" }
-]
+  { divider: true },
+  { label: "Item Four" },
+];
+
+export const ITEMS_WITH_LINKS = [
+  { label: "Item One", href: "/" },
+  { label: "Item Two", href: "tel:0000000", startEnhancer: <SearchIcon /> },
+  { divider: true },
+  {
+    label: "Item Three",
+    linkComponent: ({ children, href, className }) => (
+      <a href={href} className={className}>
+        {children}
+      </a>
+    ),
+    href: "/",
+  },
+];
 
 export const ITEMS_WITH_HEADER = {
-  Blueish: [
+  "Blueish:": [
     { label: "AliceBlue", value: "#F0F8FF" },
     { label: "Aqua", value: "#00FFFF" },
     { label: "Aquamarine", value: "#7FFFD4" },
+    { divider: true },
   ],
-  Whiteish: [
+  "Whiteish:": [
     { label: "AntiqueWhite", value: "#FAEBD7" },
     { label: "Azure", value: "#F0FFFF" },
     { label: "Beige", value: "#F5F5DC" },
   ],
 };
 
-export const CheckboxItem = { label: "Item Fifth", selected: false};
-export const StartEnhancerItem =  { label: "Item Fifth", startEnhancer: <Search />};
-export const EndEnhancerItem =  { label: "Item Fifth", endEnhancer: <Search />};
-export const SuffixTextItem =  { label: "Item Fifth", suffixText: "Text", endEnhancer: <Search />};
+export const CheckboxItem = { label: "Item Fifth", selected: true };
+export const StartEnhancerItem = { label: "Item Fifth", startEnhancer: <SearchIcon /> };
+export const EndEnhancerItem = { label: "Item Fifth", endEnhancer: <SearchIcon /> };
+export const SuffixTextItem = { label: "Item Fifth", suffixText: "Text", endEnhancer: <SearchIcon /> };
+export const ActiveItem = { label: "Item Active", isActive: true };
 
 # Menu
 
-
 <Canvas isColumn>
-  <Story name="Small" args={{items: ITEMS,  size: MENU_SIZE.small}}>
-      {Template.bind({})}
+  <Story name="Small" args={{ items: ITEMS, size: MENU_SIZE.small }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Medium" args={{items: ITEMS, size: MENU_SIZE.medium}}>
-      {Template.bind({})}
+  <Story name="Medium" args={{ items: ITEMS, size: MENU_SIZE.medium }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Large" args={{items: ITEMS, size: MENU_SIZE.large}}>
-      {Template.bind({})}
+  <Story name="Large" args={{ items: ITEMS, size: MENU_SIZE.large }}>
+    {Template.bind({})}
   </Story>
-  <Story name="With Divider" args={{items: ITEMS_WITH_DIVIDER}}>
-      {Template.bind({})}
+  <Story name="Active" args={{ items: [...ITEMS_WITH_DIVIDER, ActiveItem] }}>
+    {Template.bind({})}
   </Story>
-  <Story name="With Checkbox" args={{items: [...ITEMS_WITH_DIVIDER, CheckboxItem]}}>
-      {Template.bind({})}
+  <Story name="With Divider" args={{ items: ITEMS_WITH_DIVIDER }}>
+    {Template.bind({})}
   </Story>
-  <Story name="With Start Enhancer" args={{items: [...ITEMS_WITH_DIVIDER, StartEnhancerItem]}}>
-      {Template.bind({})}
+  <Story name="With Checkbox" args={{ items: [...ITEMS_WITH_DIVIDER, CheckboxItem] }}>
+    {Template.bind({})}
   </Story>
-  <Story name="With End Enhancer" args={{items: [...ITEMS_WITH_DIVIDER, EndEnhancerItem]}}>
-      {Template.bind({})}
+  <Story name="With Start Enhancer" args={{ items: [...ITEMS_WITH_DIVIDER, StartEnhancerItem] }}>
+    {Template.bind({})}
   </Story>
-  <Story name="With Suffix Text" args={{items: [...ITEMS_WITH_DIVIDER, SuffixTextItem]}}>
-      {Template.bind({})}
+  <Story name="With End Enhancer" args={{ items: [...ITEMS_WITH_DIVIDER, EndEnhancerItem] }}>
+    {Template.bind({})}
   </Story>
-  <Story name="With Header" args={{items: ITEMS_WITH_HEADER}}>
-      {Template.bind({})}
+  <Story name="With Suffix Text" args={{ items: [...ITEMS_WITH_DIVIDER, SuffixTextItem] }}>
+    {Template.bind({})}
   </Story>
-  <Story name="Empty State" args={{items: [], size: MENU_SIZE.large}}>
-      {Template.bind({})}
+  <Story name="With Header" args={{ items: ITEMS_WITH_HEADER, size: MENU_SIZE.small }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Links" args={{ items: ITEMS_WITH_LINKS, size: MENU_SIZE.small }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Empty State" args={{ items: [], size: MENU_SIZE.large }}>
+    {Template.bind({})}
   </Story>
 </Canvas>
 
@@ -93,11 +108,11 @@ export const SuffixTextItem =  { label: "Item Fifth", suffixText: "Text", endEnh
 To use, import the component `Menu` from `@nilfoundation/ui-kit`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={true}
   code={`
-        import {Menu, MENU_SIZE, Search} from "@nilfoundation/ui-kit";
+        import {Menu, MENU_SIZE, SearchIcon} from "@nilfoundation/ui-kit";
         const ITEMS = [
           { label: "Item One" },
           { label: "Item Two" },
@@ -111,11 +126,16 @@ To use, import the component `Menu` from `@nilfoundation/ui-kit`.
         // Disabled item
         <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", disabled: true}]} />
         // With start enhancer
-        <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", startEnhancer: <Search />}]} />
+        <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", startEnhancer: <SearchIcon />}]} />
          // With end enhancer
-        <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", endEnhancer: <Search />}]} />
+        <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", endEnhancer: <SearchIcon />}]} />
         // With suffix text
         <Menu size={MENU_SIZE.small} items={[...ITEMS, { label: "Item Fifth", suffixText: "Text"}]} />
+        // With custom link component
+        <Menu items={[{
+          label: "Item One",
+          href: "/",
+          linkComponent: ({ children, href, className }) => <a href={href} className={className}>{children}</a>
+        }]} />
   `}
 />
-

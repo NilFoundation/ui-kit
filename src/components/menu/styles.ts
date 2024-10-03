@@ -1,81 +1,147 @@
 import { StyleObject } from "styletron-react";
-import { MENU_SIZE } from "./types";
-import { PRIMITIVE_COLORS } from "../../shared";
+import { MENU_SIZE, MenuProps } from "./types";
+import { COLORS } from "../../shared";
+import { withoutBorderStyles } from "../../shared/styles/borderStyles";
+import { expandProperty } from "inline-style-expand-shorthand";
+import { MenuItemComponentProps } from "./ui/types";
+
+export const getListStyles = (isDropdown: MenuProps["isDropdown"]): StyleObject => ({
+  ...withoutBorderStyles,
+  ...expandProperty("borderRadius", "8px"),
+  ...expandProperty("padding", "8px"),
+  boxShadow: "none",
+  outline: "none !important",
+  backgroundColor: isDropdown ? COLORS.gray800 : COLORS.gray900,
+});
 
 export const headerBaseStyles: StyleObject = {
   display: "flex",
   alignItems: "center",
-  paddingLeft: "8px",
   width: "100%",
-  height: "36px",
   boxSizing: "border-box",
 };
 
 export const headerModifiedStyles = {
   [MENU_SIZE.small]: {
     ...headerBaseStyles,
-    height: "36px",
+    height: "24px",
+    ...expandProperty("padding", "4px 12px"),
   },
   [MENU_SIZE.medium]: {
     ...headerBaseStyles,
-    height: "48px",
+    height: "32px",
+    ...expandProperty("padding", "6px 16px"),
   },
   [MENU_SIZE.large]: {
     ...headerBaseStyles,
-    height: "56px",
+    height: "40px",
+    ...expandProperty("padding", "6px 16px"),
   },
 };
 
 const itemModifiedStyles = {
   [MENU_SIZE.small]: {
-    padding: "0 16px",
-    height: "36px",
+    ...expandProperty("padding", "6px 12px"),
+    height: "32px",
   },
   [MENU_SIZE.medium]: {
-    padding: "0 16px",
+    ...expandProperty("padding", "8px 16px"),
     height: "48px",
   },
   [MENU_SIZE.large]: {
-    padding: "0 16px",
+    ...expandProperty("padding", "8px 16px"),
     height: "56px",
   },
 };
 
-const itemActiveStyles: StyleObject = {
-  backgroundColor: PRIMITIVE_COLORS.primary800,
+const linkComponentModifiedStyles = {
+  [MENU_SIZE.small]: {
+    ...expandProperty("margin", "-6px -12px"),
+    ...expandProperty("padding", "6px 12px"),
+  },
+  [MENU_SIZE.medium]: {
+    ...expandProperty("margin", "-6px -16px"),
+    ...expandProperty("padding", "0 16px"),
+  },
+  [MENU_SIZE.large]: {
+    ...expandProperty("margin", "-6px -16px"),
+    ...expandProperty("padding", "0 16px"),
+  },
 };
 
-export const svgActiveStyles: StyleObject = {
-  fill: PRIMITIVE_COLORS.white,
+const getActiveItemStyles = (isDropdownItem: MenuItemComponentProps["isDropdownItem"]): StyleObject => ({
+  backgroundColor: isDropdownItem ? COLORS.gray600 : COLORS.gray700,
+  color: COLORS.gray50,
+  fill: COLORS.gray50,
+});
+
+export const svgStyles: StyleObject = {
+  fill: "inherit",
 };
 
-export const paragraphActiveStyles: StyleObject = {
-  color: PRIMITIVE_COLORS.white,
+export const getItemContainerStyles = (
+  size: MENU_SIZE,
+  disabled: boolean,
+  isHighlighted: boolean,
+  selected: boolean,
+  isActive: boolean,
+  isDropdownItem: MenuItemComponentProps["isDropdownItem"]
+): StyleObject => {
+  const constantStyles = {
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    boxSizing: "border-box",
+    cursor: "pointer",
+    gap: "8px",
+    color: COLORS.gray200,
+    backgroundColor: "transparent",
+    fontWeight: 500,
+    ...expandProperty("borderRadius", "4px"),
+    ...expandProperty("transition", "background-color 0.15s, color 0.15s, fill 0.15s"),
+    ...itemModifiedStyles[size],
+  } as const;
+
+  if (disabled) {
+    return {
+      ...constantStyles,
+      backgroundColor: "transparent",
+      color: COLORS.gray600,
+      cursor: "not-allowed",
+    };
+  }
+
+  if (selected || isHighlighted || isActive) {
+    return {
+      ...constantStyles,
+      ...getActiveItemStyles(isDropdownItem),
+    };
+  }
+
+  return {
+    ...constantStyles,
+    ":hover": {
+      backgroundColor: isDropdownItem ? COLORS.gray700 : COLORS.gray800,
+      color: COLORS.gray50,
+      fill: COLORS.gray50,
+    },
+  };
 };
 
-export const getItemContainerStyles = (size: MENU_SIZE, disabled: boolean, ariaSelected: boolean): StyleObject => ({
+export const getLinkComponentStyles = (size: MENU_SIZE): StyleObject => ({
   display: "flex",
   alignItems: "center",
   width: "100%",
-  boxSizing: "border-box",
-  cursor: disabled ? "not-allowed" : "pointer",
-  borderRadius: "2px",
-  gap: "16px",
-  ...itemModifiedStyles[size],
-  ...(ariaSelected && !disabled ? itemActiveStyles : {}),
-
-  ":hover": {
-    backgroundColor: disabled ? "inherit" : PRIMITIVE_COLORS.primary800,
-  },
-
-  ":hover > p": {
-    color: disabled ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.white,
-  },
-
-  ":hover > svg": {
-    fill: disabled ? PRIMITIVE_COLORS.primary500 : PRIMITIVE_COLORS.white,
-  },
+  height: "100%",
+  gap: "8px",
+  backgroundColor: "transparent",
+  ...linkComponentModifiedStyles[size],
 });
+
+export const itemTypographyStyles = {
+  textDecoration: "none",
+  width: "100%",
+};
 
 export const ItemEndWrapperStyles: StyleObject = {
   display: "flex",
@@ -100,8 +166,7 @@ export const emptyStateTitleStyles = {
   maxWidth: "100%",
 };
 
-export const emptyStateTextStyles = {
-  margin: "0",
-  width: "304px",
-  maxWidth: "100%",
+export const menuDividerStyles = {
+  borderBottom: `1px solid ${COLORS.gray700}`,
+  ...expandProperty("margin", "8px 0"),
 };

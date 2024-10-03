@@ -1,35 +1,60 @@
-import {Canvas, Meta, Story, ArgsTable} from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
 import Breadcrumbs from "./Breadcrumbs";
-import {Link} from "baseui/link/styled-components";
+import BreadcrumbsItem from "./BreadcrumbsItem";
 
-<Meta
-    title="Breadcrumbs"
-    component={Breadcrumbs}
-/>
+<Meta title="Navigation/Breadcrumbs" component={Breadcrumbs} />
 
-export const Template = ({...args}) => {
-    return (
-      <Breadcrumbs {...args}>
-        <Link href="#">Parent Page</Link>
-        <Link href="#">Sub-Parent Page</Link>
-        <span>Current Page</span>
-      </Breadcrumbs>
-    );
-}
+export const Template = ({ isDisabled, ...args }) => {
+  return (
+    <Breadcrumbs {...args}>
+      <BreadcrumbsItem disabled={isDisabled} href="#">
+        Parent Page
+      </BreadcrumbsItem>
+      <BreadcrumbsItem href="#">Sub-Parent Page</BreadcrumbsItem>
+      <BreadcrumbsItem isActive href="#">
+        Current Page
+      </BreadcrumbsItem>
+    </Breadcrumbs>
+  );
+};
 
 # Breadcrumbs
 
-
 <Canvas isColumn>
   <Story name="Base" args={{}}>
-      {Template.bind({})}
+    {Template.bind({})}
   </Story>
-  <Story name="With Trailing Separator" args={{showTrailingSeparator: true}}>
-      {Template.bind({})}
+  <Story name="With Disabled Item" args={{ isDisabled: true }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Trailing Separator" args={{ showTrailingSeparator: true }}>
+    {Template.bind({})}
   </Story>
 </Canvas>
 
 <ArgsTable of={Breadcrumbs} />
 
-### Использование:
+### Usage:
 
+To use, import the component `Breadcrumbs` from `@nilfoundation/ui-kit`.
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+        import {Breadcrumbs, BreadcrumbsItem} from "@nilfoundation/ui-kit";
+        ...
+        <Breadcrumbs>
+          <BreadcrumbsItem href="#">Parent Page</BreadcrumbsItem>
+          <BreadcrumbsItem href="#">Sub-Parent Page</BreadcrumbsItem>
+          <BreadcrumbsItem isActive>Current Page</BreadcrumbsItem>
+        </Breadcrumbs>
+        // With disabled item
+        <Breadcrumbs>
+          <BreadcrumbsItem disabled href="#">Parent Page</BreadcrumbsItem>
+          <BreadcrumbsItem href="#">Sub-Parent Page</BreadcrumbsItem>
+          <BreadcrumbsItem isActive>Current Page</BreadcrumbsItem>
+        </Breadcrumbs>
+  `}
+/>

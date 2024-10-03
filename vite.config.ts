@@ -4,6 +4,7 @@ import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
 import { externalizeDeps } from 'vite-plugin-externalize-deps';
 import eslint from 'vite-plugin-eslint';
+import replace from '@rollup/plugin-replace';
 
 const packageJson = require('./package.json');
 
@@ -19,24 +20,60 @@ const createBanner = () => {
  */`;
 }
 
-export default defineConfig({
-  plugins: [
+const packagesIncludeInStandalone = [
+  /baseui\/*/,
+  'lightweight-charts',
+  '@uiw/react-codemirror',
+  '@uiw/codemirror-themes',
+  'styletron-standard',
+  'styletron-react',
+  'copy-to-clipboard',
+  'inline-style-expand-shorthand',
+  'react/jsx-runtime',
+];
+
+export default defineConfig(({mode}) => {
+  const isStandalone = mode === 'standalone';
+  const plugins = [
     react(),
-    eslint(),
-    externalizeDeps(),
-    dts({ staticImport: true, outputDir: './dist/.temp' }),
-  ],
-  build: {
-    lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
-      formats: ['es', 'cjs'],
-    },
-    rollupOptions: {
-      output: {
-        banner: createBanner(),
-        sourcemap: true,
+    eslint({include: ['./src/**/*.ts', './src/**/*.tsx']}),
+    externalizeDeps({except: isStandalone ? packagesIncludeInStandalone : []}),
+  ];
+
+  if (!isStandalone) {
+    plugins.push(
+      dts({ staticImport: true, outputDir: './dist/.temp' }),
+    );
+  }
+
+  return ({
+    plugins: plugins,
+    build: {
+      lib: {
+        entry: resolve(__dirname, 'src/index.ts'),
+        formats: isStandalone ? ['iife'] : ['es', 'cjs'],
+        name: 'NilFoundationUIKit',
       },
+      rollupOptions: {
+        output: {
+          banner: createBanner(),
+          sourcemap: true,
+          globals: isStandalone ? {
+            react: 'React',
+            'react-dom': 'ReactDOM',
+          } : undefined,
+        },
+        plugins: [
+          replace({
+            preventAssignment: true,
+            values: {
+              'process.env.NODE_ENV': JSON.stringify('production')
+            }
+          })
+        ],
+      },
+      outDir: 'dist',
+      emptyOutDir: !isStandalone,
     },
-  },
-  publicDir: "./src/assets/",
+  })
 });

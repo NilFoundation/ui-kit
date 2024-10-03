@@ -1,0 +1,73 @@
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
+import CodeField from "./CodeField";
+import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
+import { useState } from "react";
+
+<Meta title="Data display/Code Field" component={CodeField} />
+
+export const Template = (args) => {
+  return <CodeField {...args} />;
+};
+
+export const EditableTemplate = (args) => {
+  const [code, setCode] = useState(args.code);
+  return <CodeField {...args} code={code} onChange={(code) => setCode(code)} />;
+};
+
+# Code Field
+
+<Canvas isColumn>
+  <Story
+    name="Basic usage"
+    args={{ code: `const { useState } = require("react");` }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=223-8049&mode=design&t=P3rN3pHdOl7FkE44-0"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Without copy button"
+    args={{ code: `--cost <cost of the request> \\`, displayCopy: false }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=223-8049&mode=design&t=P3rN3pHdOl7FkE44-0"
+    )}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Editable"
+    args={{
+      code: `--cost <cost of the request> \\`,
+      editable: true,
+      readOnly: false,
+    }}
+    parameters={getFigmaParameters(
+      "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=223-8049&mode=design&t=P3rN3pHdOl7FkE44-0"
+    )}
+  >
+    {EditableTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={CodeField} />
+
+### Usage:
+
+To use, import the component `CodeField` from `@nilfoundation/ui-kit`.
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+        import {CodeField} from "@nilfoundation/ui-kit";
+        ...
+        <CodeField
+          code="console.log('Hello World')"
+          displayCopy={false}
+          onBeforeCopy={str => "Copied message: " + str}
+          onCopy={() => console.log("Copied!")}
+        />
+  `}
+/>

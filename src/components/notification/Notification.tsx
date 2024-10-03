@@ -1,12 +1,76 @@
 import React from "react";
 import { Notification as BaseNotification } from "baseui/notification";
+import { getNotificationOverrides } from "./overrides";
+import { NOTIFICATION_KIND, NotificationProps } from "./types";
+import NotificationContent from "./ui/NotificationContent";
+import { CancelIcon, CompleteIcon, IconProps, InfoIcon, WarningIcon } from "../icons";
+import { Button, BUTTON_KIND, BUTTON_SIZE } from "../button";
+import { COLORS } from "../../shared";
+import { getMergedOverrides } from "../../shared/utils/getMergedOverrides";
 
-export type NotificationProps = React.ComponentProps<typeof BaseNotification> & {
-  children: React.ReactNode;
+const semanticIcon = {
+  [NOTIFICATION_KIND.info]: ({ ...props }: IconProps) => <InfoIcon size={20} {...props} />,
+  [NOTIFICATION_KIND.warning]: ({ ...props }: IconProps) => <WarningIcon size={20} {...props} />,
+  [NOTIFICATION_KIND.positive]: ({ ...props }: IconProps) => <CompleteIcon size={20} {...props} />,
+  [NOTIFICATION_KIND.negative]: ({ ...props }: IconProps) => <CancelIcon size={20} {...props} />,
 };
 
-const Notification: React.FC<NotificationProps> = ({ children, ...props }) => {
-  return <BaseNotification {...props}>{children}</BaseNotification>;
+const actionColors = {
+  [NOTIFICATION_KIND.info]: undefined,
+  [NOTIFICATION_KIND.warning]: {
+    backgroundColor: COLORS.yellow600,
+    color: COLORS.gray50,
+  },
+  [NOTIFICATION_KIND.negative]: {
+    backgroundColor: COLORS.red600,
+    color: COLORS.gray50,
+  },
+  [NOTIFICATION_KIND.positive]: {
+    backgroundColor: COLORS.green600,
+    color: COLORS.gray50,
+  },
+};
+
+const Notification: React.FC<NotificationProps> = ({
+  kind = NOTIFICATION_KIND.info,
+  hideIcon,
+  children,
+  icon,
+  isAction,
+  actionLabel = "Close",
+  overrides: baseOverrides,
+  ...props
+}) => {
+  const getMainNotificationOverrides = getNotificationOverrides();
+  const overrides = getMergedOverrides(getMainNotificationOverrides, baseOverrides);
+
+  const Icon = semanticIcon[kind];
+
+  return (
+    <BaseNotification {...props} kind={kind} overrides={overrides}>
+      {({ dismiss }) => (
+        <NotificationContent
+          icon={icon ?? (!hideIcon && <Icon />)}
+          action={
+            <>
+              {isAction && (
+                <Button
+                  onClick={dismiss}
+                  kind={BUTTON_KIND.secondary}
+                  size={BUTTON_SIZE.compact}
+                  colors={actionColors[kind]}
+                >
+                  {actionLabel}
+                </Button>
+              )}
+            </>
+          }
+        >
+          {children}
+        </NotificationContent>
+      )}
+    </BaseNotification>
+  );
 };
 
 export default Notification;

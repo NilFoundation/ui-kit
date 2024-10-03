@@ -1,0 +1,72 @@
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
+import Tag from "./Tag";
+import { TAG_KIND, TAG_SIZE } from "./types";
+import StoriesLayout from "../../shared/ui/stories-layout";
+
+<Meta title="Data display/Tag" component={Tag} />
+
+export const Template = ({ ...args }) => {
+  return (
+    <StoriesLayout>
+      <Tag {...args}>text</Tag>
+      <Tag {...args} size={TAG_SIZE.m}>
+        text
+      </Tag>
+      <Tag {...args} fill={false}>
+        text
+      </Tag>
+      <Tag {...args} size={TAG_SIZE.m} fill={false}>
+        text
+      </Tag>
+    </StoriesLayout>
+  );
+};
+
+# Tag
+
+<Canvas isColumn>
+  <Story name="Gray" args={{ kind: TAG_KIND.gray }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Blue" args={{ kind: TAG_KIND.blue }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Yellow" args={{ kind: TAG_KIND.yellow }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Red" args={{ kind: TAG_KIND.red }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Green" args={{ kind: TAG_KIND.green }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Purple" args={{ kind: TAG_KIND.purle }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="White" args={{ kind: TAG_KIND.white }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Tag} />
+
+### Usage:
+
+To use, import the component `Tag` from `@nilfoundation/ui-kit`.
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+        import {Tag, TAG_KIND, TAG_SIZE} from "@nilfoundation/ui-kit";
+        ...
+         <Tag>Tag label</Tag>
+        // Disabled
+         <Tag>Tag label</Tag>
+        // With kind
+        <Tag kind={TAG_KIND.white}>Tag label</Tag>
+        // With size
+        <Tag size={TAG_SIZE.m}>Tag label</Tag>
+  `}
+/>

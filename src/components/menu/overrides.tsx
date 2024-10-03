@@ -1,18 +1,14 @@
 import { MenuOverrides } from "baseui/menu";
 import MenuEmptyState from "./ui/MenuEmptyState";
-import { MENU_SIZE } from "./types";
+import { MENU_SIZE, MenuProps } from "./types";
 import MenuItem from "./ui/MenuItem";
 import MenuHeader from "./ui/MenuHeader";
+import { getListStyles, menuDividerStyles } from "./styles";
 
-export const getMenuOverrides = (size: MENU_SIZE): MenuOverrides => {
+export const getMenuOverrides = (size: MENU_SIZE, isDropdown: MenuProps["isDropdown"]): MenuOverrides => {
   return {
     List: {
-      style: {
-        borderBottomLeftRadius: "2px",
-        borderBottomRightRadius: "2px",
-        borderTopLeftRadius: "2px",
-        borderTopRightRadius: "2px",
-      },
+      style: getListStyles(isDropdown),
     },
     OptgroupHeader: {
       component: MenuHeader,
@@ -21,7 +17,7 @@ export const getMenuOverrides = (size: MENU_SIZE): MenuOverrides => {
         size,
       }),
     },
-    Option: {
+    ListItem: {
       component: MenuItem,
       props: ({ item, id, $disabled, $isFocused, ...props }) => ({
         ...props,
@@ -31,10 +27,14 @@ export const getMenuOverrides = (size: MENU_SIZE): MenuOverrides => {
         disabled: $disabled,
         isFocused: $isFocused,
         ariaSelected: props?.["aria-selected"],
+        isDropdownItem: isDropdown,
       }),
     },
     EmptyState: {
       component: MenuEmptyState,
+    },
+    MenuDivider: {
+      style: menuDividerStyles,
     },
   };
 };

@@ -1,0 +1,64 @@
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
+import Toggle, { LABEL_PLACEMENT } from "./Toggle";
+import { useState, useEffect } from "react";
+
+<Meta title="Form/Toggle" component={Toggle} />
+
+export const Template = ({ checked: baseChecked, ...args }) => {
+  const [checked, setChecked] = useState(baseChecked);
+  const onChangeHandler = (event) => {
+    setChecked(event.target.checked);
+  };
+  useEffect(() => {
+    setChecked(baseChecked);
+  }, [baseChecked]);
+  return <Toggle {...args} checked={checked} onChange={onChangeHandler} />;
+};
+
+# Toggle
+
+<Canvas isColumn>
+  <Story name="Toggle checked" args={{ children: "Label", checked: true }}>
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Toggle checked with label placement"
+    args={{ children: "Label", checked: true, labelPlacement: LABEL_PLACEMENT.left }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story name="Toggle unchecked" args={{ children: "Label", checked: false }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Toggle disabled" args={{ children: "Label", disabled: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Toggle} />
+
+### Usage:
+
+To use, import the component `Toggle` from `@nilfoundation/ui-kit`.
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+        import {Toggle, TOGGLE_LABEL_PLACEMENT} from "@nilfoundation/ui-kit";
+        ...
+        // Base toggle
+        <Toggle />
+        // Toggle with Label
+        <Toggle>Some text</Toggle>
+        // Toggle with default checked
+        <Toggle checked>With default checked</Toggle>
+        // Disabled toggle
+        <Toggle disabled>Disabled</Toggle>
+        // Error checkbox
+        <Toggle error>Error</Toggle>
+        // Label placement of checkbox is from the left
+        <Toggle labelPlacement={TOGGLE_LABEL_PLACEMENT.left}>Label placement</Toggle>
+    `}
+/>

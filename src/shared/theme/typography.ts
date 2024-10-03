@@ -1,187 +1,164 @@
-import StyletronClient from "styletron-engine-atomic/lib/client/client";
-import { Primitives } from "baseui/themes/types";
+import { DefaultFonts, DefaultTheme } from "./types";
 
-type CreateTheme = {
-  primitives?: Partial<Primitives>;
-  overrides?: any;
-};
-
-const getTypographyOverrides = (overrides: any = {}, monoFontName: string) => {
+const getTypographyOverrides = (overrides: any = {}, monoStyles: any = {}) => {
   const monoOverrides: any = {};
   for (const typographyName in overrides) {
     monoOverrides[`Mono${typographyName}`] = {
       ...overrides[typographyName],
-      fontFamily: monoFontName,
+      ...monoStyles,
     };
   }
   return { ...overrides, ...monoOverrides };
 };
 
-export const createTypography = (instance: StyletronClient): CreateTheme => {
-  const InterRegular = instance.renderFontFace({
-    src: 'url("/fonts/inter/Inter-Regular.ttf")',
-    fontStyle: "normal",
-    fontWeight: 400,
-  });
-  const InterSemiBold = instance.renderFontFace({
-    src: 'url("/fonts/inter/Inter-SemiBold.ttf")',
-    fontStyle: "normal",
-    fontWeight: 600,
-  });
+export const createTypography = (defaultFonts?: DefaultFonts): DefaultTheme => {
+  const defaultRegularFont = defaultFonts ? `${defaultFonts.defaultRegularFont}, sans-serif` : "";
+  const defaultSemiBoldFont = defaultFonts ? `${defaultFonts.defaultSemiBoldFont}, sans-serif` : "";
+  const defaultMonoRegularFont = defaultFonts ? `${defaultFonts.defaultMonoRegularFont}, monospace` : "";
+  const defaultMediumFont = defaultFonts ? `${defaultFonts.defaultMediumFont}, sans-serif` : "";
 
-  const RobotoMonoRegular = instance.renderFontFace({
-    src: 'url("/fonts/roboto-mono/RobotoMono-Regular.ttf")',
-    fontStyle: "normal",
-    fontWeight: 400,
-  });
-
-  const interFontFamily = `${InterRegular}, sans-serif`;
-  const interSemiBoldFontFamily = `${InterSemiBold}, sans-serif`;
-  const robotoFontFamily = `${RobotoMonoRegular}, monospace`;
+  const defaultRegularFontProperty = defaultRegularFont ? { fontFamily: defaultRegularFont } : {};
+  const defaultSemiBoldFontProperty = defaultSemiBoldFont ? { fontFamily: defaultSemiBoldFont } : {};
+  const defaultMonoRegularFontProperty = defaultMonoRegularFont ? { fontFamily: defaultMonoRegularFont } : {};
+  const defaultMediumFontProperty = defaultMediumFont ? { fontFamily: defaultMediumFont } : {};
 
   return {
     primitives: {
-      primaryFontFamily: interFontFamily,
+      primaryFontFamily: defaultRegularFont || undefined,
     },
     overrides: {
       typography: {
         ...getTypographyOverrides(
           {
             ParagraphXSmall: {
-              fontFamily: interFontFamily,
+              ...defaultRegularFontProperty,
               fontSize: "12px",
               fontWeight: "normal",
-              lineHeight: "20px",
+              lineHeight: "16px",
             },
             ParagraphSmall: {
-              fontFamily: interFontFamily,
+              ...defaultRegularFontProperty,
               fontSize: "14px",
               fontWeight: "normal",
-              lineHeight: "20px",
+              lineHeight: "19px",
             },
             ParagraphMedium: {
-              fontFamily: interFontFamily,
+              ...defaultRegularFontProperty,
               fontSize: "16px",
+              fontWeight: "normal",
+              lineHeight: "22px",
+            },
+            ParagraphLarge: {
+              ...defaultRegularFontProperty,
+              fontSize: "18px",
               fontWeight: "normal",
               lineHeight: "24px",
             },
-            ParagraphLarge: {
-              fontFamily: interFontFamily,
-              fontSize: "18px",
-              fontWeight: "normal",
-              lineHeight: "28px",
-            },
           },
-          robotoFontFamily
+          defaultMonoRegularFontProperty
         ),
 
         ...getTypographyOverrides(
           {
             LabelXSmall: {
-              fontFamily: interFontFamily,
-              fontSize: "12px",
-              fontWeight: "normal",
+              ...defaultMediumFontProperty,
+              fontSize: "10px",
+              fontWeight: 500,
               lineHeight: "16px",
             },
             LabelSmall: {
-              fontFamily: interFontFamily,
-              fontSize: "14px",
-              fontWeight: "normal",
+              ...defaultMediumFontProperty,
+              fontSize: "12px",
+              fontWeight: 500,
               lineHeight: "16px",
             },
             LabelMedium: {
-              fontFamily: interFontFamily,
+              ...defaultMediumFontProperty,
               fontSize: "16px",
-              fontWeight: "normal",
-              lineHeight: "20px",
+              fontWeight: 500,
+              lineHeight: "24px",
             },
             LabelLarge: {
-              fontFamily: interFontFamily,
+              ...defaultMediumFontProperty,
               fontSize: "18px",
-              fontWeight: "normal",
+              fontWeight: 500,
               lineHeight: "24px",
             },
           },
-          robotoFontFamily
+          defaultMonoRegularFontProperty
         ),
 
         ...getTypographyOverrides(
           {
-            HeadingXSmall: {
-              fontFamily: interFontFamily,
-              fontSize: "20px",
-              fontWeight: "normal",
-              lineHeight: "28px",
-            },
             HeadingSmall: {
-              fontFamily: interFontFamily,
-              fontSize: "24px",
-              fontWeight: "normal",
-              lineHeight: "32px",
+              ...defaultMediumFontProperty,
+              fontSize: "12px",
+              fontWeight: 500,
+              lineHeight: "16px",
             },
             HeadingMedium: {
-              fontFamily: interFontFamily,
-              fontSize: "28px",
-              fontWeight: "normal",
-              lineHeight: "36px",
+              ...defaultMediumFontProperty,
+              fontSize: "16px",
+              fontWeight: 500,
+              lineHeight: "22px",
             },
             HeadingLarge: {
-              fontFamily: interFontFamily,
-              fontSize: "32px",
-              fontWeight: "normal",
-              lineHeight: "40px",
+              ...defaultMediumFontProperty,
+              fontSize: "24px",
+              fontWeight: 500,
+              lineHeight: "32px",
             },
             HeadingXLarge: {
-              fontFamily: interFontFamily,
-              fontSize: "36px",
-              fontWeight: "normal",
-              lineHeight: "44px",
+              ...defaultMediumFontProperty,
+              fontSize: "32px",
+              fontWeight: 500,
+              lineHeight: "40px",
             },
             HeadingXXLarge: {
-              fontFamily: interFontFamily,
-              fontSize: "40px",
-              fontWeight: "normal",
-              lineHeight: "52px",
+              ...defaultMediumFontProperty,
+              fontSize: "48px",
+              fontWeight: 500,
+              lineHeight: "56px",
             },
           },
-          robotoFontFamily
+          defaultMonoRegularFontProperty
         ),
 
         ...getTypographyOverrides(
           {
             DisplayXSmall: {
-              fontFamily: interSemiBoldFontFamily,
-              fontSize: "24px",
+              ...defaultSemiBoldFontProperty,
+              fontSize: "22px",
               fontWeight: 600,
-              lineHeight: "32px",
+              lineHeight: "28px",
             },
             DisplaySmall: {
-              fontFamily: interSemiBoldFontFamily,
+              ...defaultSemiBoldFontProperty,
               fontSize: "44px",
               fontWeight: 600,
               lineHeight: "52px",
             },
             DisplayMedium: {
-              fontFamily: interSemiBoldFontFamily,
+              ...defaultSemiBoldFontProperty,
               fontSize: "52px",
               fontWeight: 600,
               lineHeight: "64px",
             },
             DisplayLarge: {
-              fontFamily: interSemiBoldFontFamily,
+              ...defaultSemiBoldFontProperty,
               fontSize: "96px",
               fontWeight: 600,
               lineHeight: "112px",
             },
           },
-          robotoFontFamily
+          defaultMonoRegularFontProperty
         ),
 
         MonoDisplayXSmall: {
-          fontFamily: robotoFontFamily,
-          fontSize: "36px",
+          ...defaultMonoRegularFontProperty,
+          fontSize: "22px",
           fontWeight: 400,
-          lineHeight: "44px",
+          lineHeight: "28px",
         },
       },
     },
