@@ -6,8 +6,9 @@ import { tags as t } from "@lezer/highlight";
 const defaultSettings = {
   background: "transparent",
   foreground: COLORS.gray100,
-  lineHighlight: COLORS.gray700,
-  selection: COLORS.gray600,
+  // make line half transparent to allow selection highlight
+  lineHighlight: COLORS.gray700 + "80",
+  selection: COLORS.blue200,
   selectionMatch: COLORS.gray600,
   fontFamily: "Roboto Mono, monospace",
   caret: COLORS.gray100,
