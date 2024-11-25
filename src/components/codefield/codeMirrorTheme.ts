@@ -12,7 +12,6 @@ const defaultSettings = {
   selectionMatch: COLORS.gray600,
   fontFamily: "Roboto Mono, monospace",
   caret: COLORS.gray100,
-  gutterBackground: "transparent",
   gutterForeground: COLORS.gray300,
 } satisfies CreateThemeOptions["settings"];
 
