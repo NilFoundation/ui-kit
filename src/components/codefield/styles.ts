@@ -18,6 +18,9 @@ const getContainerStyles = (size: CODE_FIELD_SIZE, highlightOnHover: boolean): S
     ...expandProperty("transition", "background 0.15s"),
     ":hover": {
       background: COLORS.gray800,
+      ":first-child .cm-gutters": {
+        backgroundColor: COLORS.gray800,
+      },
     },
   }),
   fontSize: size === CODE_FIELD_SIZE.small ? "14px" : "16px",
