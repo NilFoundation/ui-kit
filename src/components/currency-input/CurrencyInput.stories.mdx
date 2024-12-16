@@ -1,0 +1,103 @@
+import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
+import CurrencyInput from "./CurrencyInput";
+import { useState } from "react";
+import { useStyletron } from "baseui";
+import { INPUT_SIZE, INPUT_KIND } from "../input";
+import { HeartIcon } from "../icons";
+
+<Meta title="Form/CurrencyInput" component={CurrencyInput} />
+
+export const Template = ({ ...args }) => {
+  const [value, setValue] = useState({
+    currency: "USDT",
+    amount: "",
+  });
+  const [css] = useStyletron();
+  const currencies = [
+    "USDT",
+    "BTC",
+    "ETH",
+    "BNB",
+    "ADA",
+    "XRP",
+  ];
+
+const onChange = ({ currency, amount }) => {
+setValue({ currency, amount });
+};
+
+return (
+
+<div
+  className={css({
+    width: "400px",
+  })}
+>
+  <CurrencyInput {...args} value={value} currencies={currencies} onChange={onChange} />
+</div>
+); };
+
+# Input
+
+<Canvas isColumn>
+  <Story name="Small" args={{ placeholder: "Input Field", size: INPUT_SIZE.small }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Medium" args={{ placeholder: "Input Field" }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Disabled" args={{ placeholder: "Disabled Field", disabled: true }}>
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Secondary disabled"
+    args={{
+      placeholder: "Disabled Secondary Small",
+      disabled: true,
+      size: INPUT_SIZE.small,
+      kind: INPUT_KIND.secondary,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story name="Secondary" args={{ placeholder: "Secondary input", kind: INPUT_KIND.secondary }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Error" args={{ placeholder: "Error Field", error: true }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="With Start Enhancer" args={{ placeholder: "With start enchancer", startEnhancer: <HeartIcon /> }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={CurrencyInput} />
+
+### Usage:
+
+To use, import the component `CurrencyInput` from `@nilfoundation/ui-kit`.
+
+<Source
+  language="tsx"
+  dark
+  format={true}
+  code={`
+        import {CurrencyInput} from "@nilfoundation/ui-kit";
+        ...
+        const onChange = ({ currency, amount }) => {
+          setValue({ currency, amount });
+        };
+
+        const currencies = [
+          "USDT",
+          "BTC",
+          "ETH",
+          "BNB",
+          "ADA",
+          "XRP",
+        ];
+
+        <CurrencyInput placeholder="Currency input field" size={INPUT_SIZE.small} currencies={currencies} onChange={onChange} />
+
+`}
+/>
