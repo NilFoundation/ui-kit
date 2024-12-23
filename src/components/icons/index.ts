@@ -31,5 +31,6 @@ export { default as ArrowUpIcon } from "./ArrowUpIcon";
 export { default as DotsIcon } from "./DotsIcon";
 export { default as CopyIcon } from "./CopyIcon";
 export { default as CheckmarkIcon } from "./CheckmarkIcon";
+export { default as DownloadIcon } from "./DownloadIcon";
 
 export type { IconProps } from "./types";
