@@ -32,6 +32,7 @@ import SeparatorIcon from "./SeparatorIcon";
 import ArrowUpIcon from "./ArrowUpIcon";
 import DotsIcon from "./DotsIcon";
 import CheckmarkIcon from "./CheckmarkIcon";
+import DownloadIcon from "./DownloadIcon";
 import { useStyletron } from "baseui";
 
 <Meta title="Media/Icons" component={HeartIcon} />
@@ -157,6 +158,9 @@ export const Template = ({ color, size, icon }) => {
     {Template.bind({})}
   </Story>
   <Story name="Checkmark" args={{ icon: <CheckmarkIcon /> }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="Download" args={{ icon: <DownloadIcon /> }}>
     {Template.bind({})}
   </Story>
 </Canvas>
