@@ -1,8 +1,9 @@
 import { EditorView } from "@codemirror/view";
 import { COLORS } from "../../shared";
 import { expandProperty } from "inline-style-expand-shorthand";
+import { CustomStyles } from "./types";
 
-export const createDefaultStylesOverridesExtension = (showLineNumbers: boolean) =>
+export const createDefaultStylesOverridesExtension = (showLineNumbers: boolean, customStyles: CustomStyles = {}) =>
   EditorView.theme({
     ".cm-lineNumbers .cm-gutterElement": {
       paddingLeft: "8px",
@@ -32,4 +33,5 @@ export const createDefaultStylesOverridesExtension = (showLineNumbers: boolean) 
       backgroundColor: COLORS.gray900,
       ...expandProperty("transition", "background 0.15s"),
     },
+    ...customStyles,
   });

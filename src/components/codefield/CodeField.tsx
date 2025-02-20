@@ -9,7 +9,7 @@ import { prefixLineNumberExtension } from "./prefixLineNumberExtension";
 import { createDefaultStylesOverridesExtension } from "./defaultStylesOverridesExtension";
 import { CopyButton } from "../copy-button";
 import { BUTTON_KIND, BUTTON_SIZE } from "../button";
-import { CODE_FIELD_SIZE } from "./types";
+import { CODE_FIELD_SIZE, CustomStyles } from "./types";
 
 const MemoizedCopyButton = memo(CopyButton);
 
@@ -28,6 +28,7 @@ export type CodeFieldProps = {
   size?: CODE_FIELD_SIZE;
   codeMirrorClassName?: string;
   highlightOnHover?: boolean;
+  customStyles?: CustomStyles;
 } & HTMLAttributes<HTMLDivElement>;
 
 const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFieldProps> = (
@@ -46,14 +47,15 @@ const CodeFieldRenderFunction: ForwardRefRenderFunction<HTMLDivElement, CodeFiel
     size = CODE_FIELD_SIZE.medium,
     codeMirrorClassName,
     highlightOnHover = true,
+    customStyles = {},
     ...rest
   },
   ref
 ) => {
   const [css] = useStyletron();
   const styleOverridesExtention = useMemo(
-    () => createDefaultStylesOverridesExtension(showLineNumbers),
-    [showLineNumbers]
+    () => createDefaultStylesOverridesExtension(showLineNumbers, customStyles),
+    [showLineNumbers, customStyles]
   );
   const mergedExtensions = [styleOverridesExtention, ...extensions];
   const computedCn = className
