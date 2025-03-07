@@ -28,7 +28,7 @@ const iconSizeMap = {
 };
 
 const MenuItem = forwardRef<HTMLLIElement, MenuItemComponentProps>(
-  ({ size, item, onClick, disabled, onMouseEnter, id, isDropdownItem }, ref) => {
+  ({ size, item, onClick, disabled, onMouseEnter, id, isDropdownItem, $style }, ref) => {
     const [css] = useStyletron();
 
     const isSelected = item.selected && !disabled;
@@ -41,7 +41,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemComponentProps>(
     const LinkComponent = getCustomLinkComponent(item.linkComponent, item.href);
 
     return (
-      <Item ref={ref} onMouseEnter={onMouseEnter} id={id ?? undefined} onClick={onClick}>
+      <Item ref={ref} onMouseEnter={onMouseEnter} id={id ?? undefined} onClick={onClick} $style={$style}>
         <LinkComponent className={css(getLinkComponentStyles(size))}>
           {item?.selected != null && <Checkbox checked={item.selected} />}
           {item?.startEnhancer &&
