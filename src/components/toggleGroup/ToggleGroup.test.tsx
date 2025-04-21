@@ -4,6 +4,7 @@ import ToggleGroup from "./ToggleGroup";
 import { BUTTON_SIZE } from "../button";
 import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { describe, expect, it, vi } from "vitest";
 
 const options = [
   { key: "1", label: "Option 1" },
@@ -21,7 +22,7 @@ describe("ToggleGroupInner", () => {
   });
 
   it("handles toggle events", async () => {
-    const handleChange = jest.fn();
+    const handleChange = vi.fn();
     render(<ToggleGroup options={options} value={["1"]} onChange={handleChange} size={BUTTON_SIZE.compact} />);
 
     const optionElement = screen.getByText(/Option 1/i);

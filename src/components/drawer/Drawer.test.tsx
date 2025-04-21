@@ -3,6 +3,7 @@ import Drawer from "./Drawer";
 import { ANCHOR, SIZE } from "baseui/drawer";
 import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { describe, expect, it } from "vitest";
 
 describe("Drawer", () => {
   it("renders without crashing", () => {

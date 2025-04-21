@@ -4,6 +4,7 @@ import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
 import CurrencyInput from "./CurrencyInput";
 import { INPUT_SIZE } from "../input";
+import { describe, expect, it, vi } from "vitest";
 
 describe("CurrencyInput", () => {
   it("renders without crashing", () => {
@@ -14,7 +15,7 @@ describe("CurrencyInput", () => {
   });
 
   it("handles input changes", async () => {
-    const handleChange = jest.fn();
+    const handleChange = vi.fn();
     render(
       <CurrencyInput
         size={INPUT_SIZE.medium}

@@ -49,6 +49,7 @@ export default defineConfig(({mode}) => {
   return ({
     plugins: plugins,
     build: {
+      sourcemap: true,
       lib: {
         entry: resolve(__dirname, 'src/index.ts'),
         formats: isStandalone ? ['iife'] : ['es', 'cjs'],
@@ -57,7 +58,6 @@ export default defineConfig(({mode}) => {
       rollupOptions: {
         output: {
           banner: createBanner(),
-          sourcemap: true,
           globals: isStandalone ? {
             react: 'React',
             'react-dom': 'ReactDOM',

@@ -4,6 +4,7 @@ import ButtonIcon from "./ButtonIcon";
 import { BUTTON_SIZE } from "../button/types";
 import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { describe, expect, it, vi } from "vitest";
 
 describe("ButtonIcon", () => {
   it("renders without crashing", () => {
@@ -14,7 +15,7 @@ describe("ButtonIcon", () => {
   });
 
   it("handles click events", async () => {
-    const handleClick = jest.fn();
+    const handleClick = vi.fn();
     render(<ButtonIcon onClick={handleClick} data-testid="Click me" icon={<span>Icon</span>}></ButtonIcon>);
 
     const buttonElement = screen.getByTestId(/Click Me/i);

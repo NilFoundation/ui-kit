@@ -4,6 +4,7 @@ import Button from "./Button";
 import { BUTTON_KIND } from "./types";
 import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { describe, expect, it, vi } from "vitest";
 
 describe("Button", () => {
   it("renders without crashing", () => {
@@ -14,7 +15,7 @@ describe("Button", () => {
   });
 
   it("handles click events", async () => {
-    const handleClick = jest.fn();
+    const handleClick = vi.fn();
     render(<Button onClick={handleClick}>Click Me</Button>);
 
     const buttonElement = screen.getByText(/Click Me/i);

@@ -2,6 +2,7 @@ import { screen } from "@testing-library/react";
 import Tab from "./Tab";
 import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { describe, expect, it } from "vitest";
 
 describe("Tab", () => {
   it("renders without crashing", () => {

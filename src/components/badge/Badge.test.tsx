@@ -3,6 +3,7 @@ import Badge from "./Badge";
 import { BADGE_COLOR } from "./types";
 import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { describe, expect, it } from "vitest";
 
 const content = "Badge";
 

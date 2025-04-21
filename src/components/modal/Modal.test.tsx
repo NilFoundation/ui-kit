@@ -4,6 +4,7 @@ import Modal from "./Modal";
 import { ROLE } from "baseui/modal";
 import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { describe, expect, it, vi } from "vitest";
 
 describe("Modal", () => {
   it("renders without crashing", () => {
@@ -18,7 +19,7 @@ describe("Modal", () => {
   });
 
   it("handles close events", async () => {
-    const handleClose = jest.fn();
+    const handleClose = vi.fn();
     render(
       <Modal isOpen={true} onClose={handleClose} role={ROLE.dialog}>
         Test Modal

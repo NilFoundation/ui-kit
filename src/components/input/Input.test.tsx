@@ -4,6 +4,7 @@ import Input from "./Input";
 import { INPUT_KIND, INPUT_SIZE } from "./types";
 import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { describe, expect, it, vi } from "vitest";
 
 describe("Input", () => {
   it("renders without crashing", () => {
@@ -14,7 +15,7 @@ describe("Input", () => {
   });
 
   it("handles input changes", async () => {
-    const handleChange = jest.fn();
+    const handleChange = vi.fn();
     render(<Input size={INPUT_SIZE.medium} kind={INPUT_KIND.primary} onChange={handleChange}></Input>);
 
     const inputElement = screen.getByRole("textbox");

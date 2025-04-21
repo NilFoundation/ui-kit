@@ -3,6 +3,7 @@ import Select from "./Select";
 import { render } from "../../test-utils/render";
 import { SELECT_SIZE } from "./types";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { describe, expect, it } from "vitest";
 
 describe("Select", () => {
   it("renders without crashing", () => {

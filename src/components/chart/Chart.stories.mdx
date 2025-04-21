@@ -1,12 +1,12 @@
 import { Canvas, Meta, Story, ArgsTable, Source } from "@storybook/blocks";
-import Chart from "./ChartWrapper";
+import Chart from "./StyledChart";
 import ChartWidget from "./ChartWidget";
-import { LineSeries, CandlestickSeries, HistogramSeries, AreaSeries } from "./series";
+import { LineSeries, CandlestickSeries, HistogramSeries, AreaSeries } from "lightweight-charts-react-components";
 import { getFigmaParameters } from "../../shared/ui/getFigmaParameters";
 
 <Meta title="Data display/Chart" component={Chart} />
 
-export const Template = (args) => <Chart height={400} {...args} />;
+export const Template = (args) => <Chart options={{ height: 400 }} {...args} />;
 
 export const lineData = [
   { time: "2018-12-22", value: 23 },
@@ -82,7 +82,7 @@ export const lineData = [
       "https://www.figma.com/file/YjE625ScDMf2ILjWB1sTMc/System?type=design&node-id=1839-62884&mode=design&t=HSeW4QjkrUj25Kdq-0"
     )}
   >
-    <ChartWidget height={106} width={168} data={lineData} />
+    <ChartWidget options={{ height: 106, width: 160 }} data={lineData} />
   </Story>
   <Story name="Area chart">
     <Template>
@@ -113,6 +113,7 @@ To use, import the component `Chart` from `@nilfoundation/ui-kit`.
   format={true}
   code={`
         import {Chart} from "@nilfoundation/ui-kit";
+        import {LineSeries} from "lightweight-charts-react-components";
         ...
         <Chart>
           <LineSeries data={[{ time: '2018-12-22', value: 32.51 }]} />

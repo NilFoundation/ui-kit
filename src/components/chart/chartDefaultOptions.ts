@@ -1,10 +1,9 @@
 import { ColorType } from "lightweight-charts";
 import type { ChartOptions, DeepPartial } from "lightweight-charts";
 import { COLORS } from "../../shared";
-import { priceScaleDefaultOptions } from "./scales";
-import { timeScaleDefaultOptions } from "./scales/scalesDefaultOptions";
 
 export const chartDefaultOptions: DeepPartial<ChartOptions> = {
+  autoSize: false,
   layout: {
     background: {
       type: ColorType.Solid,
@@ -12,6 +11,7 @@ export const chartDefaultOptions: DeepPartial<ChartOptions> = {
     },
     fontFamily: "Inter, sans-serif",
     textColor: COLORS.gray400,
+    attributionLogo: false,
   },
   grid: {
     vertLines: { visible: false },
@@ -21,29 +21,17 @@ export const chartDefaultOptions: DeepPartial<ChartOptions> = {
     vertLine: {
       color: COLORS.gray50,
       width: 1,
-      style: 0,
+      style: 2,
       visible: true,
       labelVisible: true,
     },
     horzLine: {
-      color: COLORS.gray50,
-      width: 1,
-      style: 0,
-      visible: true,
-      labelVisible: true,
+      visible: false,
+      labelVisible: false,
     },
     mode: 0,
   },
   localization: {
     locale: "en-US",
-  },
-  timeScale: timeScaleDefaultOptions,
-  leftPriceScale: {
-    visible: true,
-    ...priceScaleDefaultOptions,
-  },
-  rightPriceScale: {
-    visible: false,
-    ...priceScaleDefaultOptions,
   },
 };

@@ -3,6 +3,7 @@ import Accordion from "./Accordion";
 import Panel from "./Panel";
 import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { describe, expect, it } from "vitest";
 
 const text = "Text";
 

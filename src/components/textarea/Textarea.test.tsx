@@ -4,6 +4,7 @@ import Textarea from "./Textarea";
 import { TEXTAREA_KIND } from "./types";
 import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { describe, expect, it, vi } from "vitest";
 
 describe("Textarea", () => {
   it("renders without crashing", () => {
@@ -14,7 +15,7 @@ describe("Textarea", () => {
   });
 
   it("handles input events", async () => {
-    const handleChange = jest.fn();
+    const handleChange = vi.fn();
     render(<Textarea kind={TEXTAREA_KIND.primary} onChange={handleChange} />);
 
     const textareaElement = screen.getByRole("textbox");

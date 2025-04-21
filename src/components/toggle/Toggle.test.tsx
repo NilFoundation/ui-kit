@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import Toggle, { LABEL_PLACEMENT } from "./Toggle";
 import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { describe, expect, it, vi } from "vitest";
 
 describe("Toggle", () => {
   it("renders without crashing", async () => {
@@ -19,7 +20,7 @@ describe("Toggle", () => {
   });
 
   it("handles toggle events", async () => {
-    const handleChange = jest.fn();
+    const handleChange = vi.fn();
     render(
       <Toggle labelPlacement={LABEL_PLACEMENT.right} checked={false} onChange={handleChange}>
         Test Toggle
