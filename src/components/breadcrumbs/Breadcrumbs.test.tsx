@@ -2,6 +2,7 @@ import { render } from "../../test-utils/render";
 import Breadcrumbs from "./Breadcrumbs";
 import BreadcrumbsItem from "./BreadcrumbsItem";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { describe, it } from "vitest";
 
 describe("Breadcrumbs", () => {
   it("renders without crashing", () => {

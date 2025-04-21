@@ -3,6 +3,7 @@ import Tag from "./Tag";
 import { TAG_KIND, TAG_SIZE } from "./types";
 import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { describe, expect, it } from "vitest";
 
 describe("Tag", () => {
   it("renders without crashing", () => {

@@ -1,6 +1,7 @@
 import { isValidElement } from "react";
 import * as Icons from ".";
 import { render } from "../../test-utils/render";
+import { describe, expect, it } from "vitest";
 
 describe("Icons", () => {
   it("all icons render", () => {

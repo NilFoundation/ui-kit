@@ -1,15 +1,14 @@
 import { render } from "@testing-library/react";
-import Chart from "./ChartWrapper";
-import { LineSeries } from "./series";
+import Chart from "./StyledChart";
 import { MockViewport, mockViewport } from "jsdom-testing-mocks";
-import { setupJestCanvasMock } from "jest-canvas-mock";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { LineSeries } from "lightweight-charts-react-components";
+import { afterEach, beforeEach, describe, it } from "vitest";
 
 let viewport: MockViewport;
 
 beforeEach(() => {
   viewport = mockViewport({ width: "1320px", height: "568px" });
-  setupJestCanvasMock();
 });
 
 afterEach(() => {
@@ -39,7 +38,7 @@ const lineData = [
 describe("Chart", () => {
   it("renders without crashing", () => {
     render(
-      <Chart height={400}>
+      <Chart options={{ height: 400 }}>
         <LineSeries data={lineData} />
       </Chart>
     );
@@ -47,7 +46,7 @@ describe("Chart", () => {
 
   it("renders without crashing in SSR", () => {
     createComponentSSRTest(
-      <Chart height={400}>
+      <Chart options={{ height: 400 }}>
         <LineSeries data={lineData} />
       </Chart>
     );

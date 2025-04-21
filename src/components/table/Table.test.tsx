@@ -14,6 +14,7 @@ import {
   StyledTableSemanticBodyRow,
   StyledTableSemanticBodyCell,
 } from "./TableSemanticStyledElements";
+import { describe, expect, it } from "vitest";
 
 const data = [
   ["Sarah Brown", 31, "100 Broadway st. New York City, New York"],

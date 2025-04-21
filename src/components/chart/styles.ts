@@ -9,7 +9,7 @@ const containerStyles: StyleObject = {
   flexGrow: 1,
 };
 
-const chartWidgetContianerStyles: StyleObject = {
+const chartWidgetContainerStyles: StyleObject = {
   position: "relative",
 };
 
@@ -25,6 +25,6 @@ const widgetShadowStyles: StyleObject = {
 
 export const styles = {
   containerStyles,
-  chartWidgetContianerStyles,
+  chartWidgetContainerStyles,
   widgetShadowStyles,
 };

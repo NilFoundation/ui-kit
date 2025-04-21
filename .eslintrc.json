@@ -52,7 +52,7 @@
         "**/*.test.tsx"
       ],
       "env": {
-        "jest": true
+        "jest": false
       }
     }
   ],

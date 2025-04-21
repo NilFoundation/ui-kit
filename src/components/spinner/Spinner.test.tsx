@@ -2,6 +2,7 @@ import Spinner from "./Spinner";
 import { SPINNER_SIZE } from "./types";
 import { render } from "../../test-utils/render";
 import { createComponentSSRTest } from "../../test-utils/createComponentSSRTest";
+import { describe, expect, it } from "vitest";
 
 describe("Spinner", () => {
   it("renders without crashing", () => {
