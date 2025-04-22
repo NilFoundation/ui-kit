@@ -7,7 +7,7 @@
     "react"
   ],
   "main": "dist/ui-kit.cjs",
-  "module": "dist/ui-kit.mjs",
+  "module": "dist/ui-kit.js",
   "unpkg": "dist/ui-kit.iife.js",
   "types": "dist/ui-kit.d.ts",
   "files": [
