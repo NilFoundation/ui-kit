@@ -16,7 +16,6 @@ const Menu: FC<MenuProps> = ({ size = MENU_SIZE.medium, overrides: baseOverrides
       menuElement.removeAttribute("tabindex");
     }
   }, [rootRef]);
-
   return <StatefulMenu {...props} overrides={overrides} rootRef={rootRef} />;
 };
 

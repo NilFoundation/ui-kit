@@ -99,6 +99,9 @@ export const ActiveItem = { label: "Item Active", isActive: true };
   <Story name="Empty State" args={{ items: [], size: MENU_SIZE.large }}>
     {Template.bind({})}
   </Story>
+  <Story name="Overrides" args={{ items: ITEMS, size: MENU_SIZE.large, overrides: {'ListItem': {style: { ':hover': { backgroundColor: "#fff" } }}} }}>
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 <ArgsTable of={Menu} />
