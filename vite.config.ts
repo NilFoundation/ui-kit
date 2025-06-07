@@ -52,8 +52,14 @@ export default defineConfig(({mode}) => {
       sourcemap: true,
       lib: {
         entry: resolve(__dirname, 'src/index.ts'),
-        formats: isStandalone ? ['iife'] : ['es', 'cjs'],
+        formats: isStandalone ? ['iife'] : ['es'],
         name: 'NilFoundationUIKit',
+        fileName: () => {
+          if (isStandalone) {
+            return 'ui-kit.iife.js';
+          }
+          return `ui-kit.mjs`;
+        },
       },
       rollupOptions: {
         output: {
