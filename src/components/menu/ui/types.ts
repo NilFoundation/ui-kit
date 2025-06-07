@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { MENU_SIZE, MenuItem } from "../types";
+import { StyleObject } from "styletron-standard";
 
 export type MenuItemComponentProps = {
   item: MenuItem;
@@ -11,4 +12,5 @@ export type MenuItemComponentProps = {
   onMouseEnter?: () => void;
   id?: string;
   isDropdownItem?: boolean;
+  $style: StyleObject
 };
