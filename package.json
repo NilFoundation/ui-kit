@@ -6,14 +6,21 @@
     "ui-kit",
     "react"
   ],
-  "main": "dist/ui-kit.cjs",
-  "module": "dist/ui-kit.js",
+  "main": "dist/ui-kit.mjs",
+  "module": "dist/ui-kit.mjs",
   "unpkg": "dist/ui-kit.iife.js",
   "types": "dist/ui-kit.d.ts",
   "files": [
     "dist"
   ],
   "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/ui-kit.d.ts",
+      "import": "./dist/ui-kit.mjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -102,7 +109,7 @@
   "dependencies": {
     "copy-to-clipboard": "^3.3.3",
     "inline-style-expand-shorthand": "^1.6.0",
-    "lightweight-charts-react-components": "^0.3.3",
+    "lightweight-charts-react-components": "^0.4.0",
     "styletron-standard": "^3.1.0",
     "ts-deepmerge": "^7.0.2",
     "ts-essentials": "^10.0.1"
