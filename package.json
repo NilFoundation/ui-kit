@@ -111,7 +111,7 @@
     "inline-style-expand-shorthand": "^1.6.0",
     "lightweight-charts-react-components": "^0.4.0",
     "styletron-standard": "^3.1.0",
-    "ts-deepmerge": "^7.0.2",
+    "ts-deepmerge": "^8.0.0",
     "ts-essentials": "^10.0.1"
   },
   "pre-commit": [
